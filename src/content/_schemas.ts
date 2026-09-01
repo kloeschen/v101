@@ -24,7 +24,9 @@ export const slug = z
   .string()
   .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug: nur a-z, 0-9 und Bindestriche");
 
-export const httpsUrl = z.string().url().startsWith("https://", "Nur https-URLs");
+// Zod 4: z.url() statt des veralteten z.string().url(). Die Protokollprüfung
+// steckt jetzt in der Option statt in einem nachgelagerten startsWith().
+export const httpsUrl = z.url({ protocol: /^https$/, error: "Nur https-URLs" });
 
 export const isoDate = z.coerce.date();
 

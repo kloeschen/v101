@@ -17,6 +17,7 @@
  * nächsten Lauf neue Links dazu — das ist gewollt.
  *
  *   npx tsx scripts/sync-autolinks.ts --dry-run     # nur zeigen
+ *   npx tsx scripts/sync-autolinks.ts --check       # Exit 1 bei Drift (CI)
  *   npx tsx scripts/sync-autolinks.ts               # schreiben
  *   npx tsx scripts/sync-autolinks.ts --collection artikel
  *   npx tsx scripts/sync-autolinks.ts --max 8
@@ -24,7 +25,6 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry, autolink } from "../src/lib/links";
 import { collectionNames, type CollectionName } from "../src/content/_schemas";
@@ -35,7 +35,11 @@ function main() {
     const i = argv.indexOf(n);
     return i >= 0 ? argv[i + 1] : undefined;
   };
-  const trocken = argv.includes("--dry-run");
+  // --check ist --dry-run mit Aussagekraft für Maschinen: Exit 1, wenn der
+  // Lauf etwas ändern würde. Die CI soll den Zustand am Exitcode ablesen und
+  // nicht an deutscher Prosa — genau daran ist der erste Lauf gescheitert.
+  const pruefen = argv.includes("--check");
+  const trocken = pruefen || argv.includes("--dry-run");
   const nurCollection = wert("--collection") as CollectionName | undefined;
   const maxLinks = Number(wert("--max") ?? 12);
 
@@ -49,6 +53,7 @@ function main() {
 
   if (registry.begriffe.length === 0) {
     console.log("Kein Lexikonbegriff vorhanden — nichts zu verlinken.");
+    console.log("\n0 Datei(en) betroffen, 0 Link(s) gesetzt.");
     return;
   }
 
@@ -97,8 +102,15 @@ function main() {
   }
 
   console.log(
-    `\n${geaendert} Datei(en) ${trocken ? "würden geändert" : "geändert"}, ${neueLinks} Link(s) gesetzt.`,
+    `\n${geaendert} Datei(en) ${trocken ? "betroffen" : "geändert"}, ${neueLinks} Link(s) gesetzt.`,
   );
+
+  if (pruefen && geaendert > 0) {
+    console.error(
+      "Autolink ist nicht synchron. Lokal `npm run autolink` ausführen und das Ergebnis committen.",
+    );
+    process.exit(1);
+  }
 }
 
 main();

@@ -19,7 +19,6 @@ import {
   sameAs,
   saeubern,
   isoDatum,
-  absolut,
   adressKnoten,
   geoKnoten,
   eventStatusMap,
@@ -286,7 +285,7 @@ export const lexikonBuilder: Builder = {
     });
   },
 
-  zusatz(d) {
+  zusatz() {
     // Der Set-Knoten wird auf jeder Lexikonseite mitgeliefert, damit der
     // Begriff auch isoliert abgerufen seine Zugehörigkeit trägt.
     return [

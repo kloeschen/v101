@@ -17,7 +17,7 @@
 import path from "node:path";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
-import { pruefKadenzTage, type CollectionName } from "../src/content/_schemas";
+import { pruefKadenzTage } from "../src/content/_schemas";
 
 interface Posten {
   art: "entwurf" | "ueberfaellig" | "vergangen" | "reihe-ohne-folge" | "verwaiste-band" | "ohne-quelle";

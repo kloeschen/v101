@@ -38,7 +38,9 @@ const nichtIndexieren = noindex || !indexierbar;
     <meta property="og:description" content={beschreibung} />
     <meta property="og:url" content={`${site.url}${kanonisch}`} />
     <meta property="og:type" content="website" />
-    {jsonld && <script type="application/ld+json" set:html={jsonldSicher(jsonld)} />}
+    {/* is:inline ist hier richtig: Der Graph soll unverarbeitet im HTML stehen,
+        nicht durch Astros Skript-Pipeline laufen. */}
+    {jsonld && <script is:inline type="application/ld+json" set:html={jsonldSicher(jsonld)} />}
   </head>
   <body>
     <main><slot /></main>

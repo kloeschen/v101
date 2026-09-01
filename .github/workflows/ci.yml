@@ -39,12 +39,9 @@ jobs:
         # Wenn der Lauf hier etwas ändern würde, wurde vor dem Commit
         # vergessen, npm run autolink auszuführen. Die CI schreibt nicht
         # selbst — sie meldet nur, dass Quelle und Lexikon auseinanderlaufen.
-        run: |
-          npx tsx scripts/sync-autolinks.ts --dry-run | tee /tmp/autolink.log
-          grep -q "^0 Datei(en) würden geändert" /tmp/autolink.log || {
-            echo "::error::Autolink ist nicht synchron — lokal 'npm run autolink' ausführen und committen."
-            exit 1
-          }
+        # --check liefert das Ergebnis als Exitcode; die frühere Variante las
+        # deutsche Prosa und scheiterte am leeren Register.
+        run: npx tsx scripts/sync-autolinks.ts --check
 
       - name: Build
         run: npm run build
