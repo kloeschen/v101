@@ -1,0 +1,73 @@
+/*
+ * Design-Tokens — der Vertrag zwischen Gestaltung und Umsetzung.
+ *
+ * Diese Datei ist die einzige Stelle, an der Claude Design (oder wer sonst
+ * gestaltet) Werte setzt. Die Komponenten greifen ausschließlich auf diese
+ * Variablen zu, nie auf feste Farben oder Größen. Vorteil: Eine neue
+ * Gestaltung ist ein Austausch dieser Datei, kein Umbau des Markups — und
+ * das Markup trägt die SEO- und Barrierefreiheitsentscheidungen, die nicht
+ * verhandelbar sind.
+ *
+ * Die Werte hier sind bewusst nüchtern gehalten: ein funktionierender,
+ * lesbarer Ausgangszustand, kein Gestaltungsvorschlag.
+ */
+
+:root {
+  /* --- Farbe ------------------------------------------------------ */
+  --farbe-grund: #fbfaf7;
+  --farbe-flaeche: #ffffff;
+  --farbe-text: #1c1a17;
+  --farbe-text-leise: #5a544c;
+  --farbe-linie: #ddd8cf;
+  --farbe-akzent: #8c2f24;
+  --farbe-akzent-text: #ffffff;
+  --farbe-link: #8c2f24;
+  --farbe-link-besucht: #6b2a3e;
+  --farbe-hinweis-grund: #fdf6e3;
+  --farbe-hinweis-linie: #d9c9a3;
+
+  /* --- Schrift ---------------------------------------------------- */
+  /* Systemschriften als Standard: kein Netzwerkabruf, kein CLS, keine
+     Drittanbieter im Datenschutzhinweis. Wer ersetzt, hostet selbst. */
+  --schrift-text: ui-serif, Georgia, "Iowan Old Style", serif;
+  --schrift-titel: var(--schrift-text);
+  --schrift-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --groesse-basis: 1.0625rem;   /* Publikum skaliert älter — nicht kleiner */
+  --groesse-klein: 0.9375rem;
+  --groesse-h1: clamp(1.9rem, 1.3rem + 2.4vw, 2.9rem);
+  --groesse-h2: clamp(1.35rem, 1.1rem + 1.1vw, 1.75rem);
+  --groesse-h3: 1.15rem;
+  --zeilenhoehe: 1.65;
+  --zeilenhoehe-titel: 1.18;
+
+  /* --- Raum ------------------------------------------------------- */
+  --raum-1: 0.25rem;
+  --raum-2: 0.5rem;
+  --raum-3: 1rem;
+  --raum-4: 1.5rem;
+  --raum-5: 2.5rem;
+  --raum-6: 4rem;
+  --zeilenlaenge: 68ch;   /* Lesbarkeit schlägt Bildschirmbreite */
+  --inhalt-breite: 76rem;
+
+  /* --- Form ------------------------------------------------------- */
+  --radius: 2px;
+  --linie: 1px solid var(--farbe-linie);
+  --schatten: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --farbe-grund: #16140f;
+    --farbe-flaeche: #1e1b16;
+    --farbe-text: #efe9df;
+    --farbe-text-leise: #a9a094;
+    --farbe-linie: #383229;
+    --farbe-akzent: #e0705f;
+    --farbe-link: #e0705f;
+    --farbe-link-besucht: #c98fa4;
+    --farbe-hinweis-grund: #2a2418;
+    --farbe-hinweis-linie: #4d4331;
+  }
+}

@@ -1,0 +1,64 @@
+---
+/**
+ * Das universelle Seitengerüst für alle sechs Entitätstypen.
+ *
+ * Die Reihenfolge ist nicht Geschmackssache, sondern die Extraktionsfläche:
+ * H1 → Antwortkapsel (erster Absatz des Fließtexts) → Faktenblock → Inhalt →
+ * FAQ → Rückverweise → Belege. Wer sie ändert, ändert, was ein Modell aus
+ * den ersten Tokens der Seite mitnimmt.
+ */
+import BasisLayout from "./BasisLayout.astro";
+import Faktenblock from "../components/Faktenblock.astro";
+import FaqBlock from "../components/FaqBlock.astro";
+import Quellen from "../components/Quellen.astro";
+import EintragsListe from "../components/EintragsListe.astro";
+import { buildGraph } from "../lib/jsonld";
+import { verwandtes, type Registry } from "../lib/links";
+import { SAMMLUNGSNAME, sammlungsPfad } from "../lib/faktenblock";
+import type { CollectionName } from "../content/_schemas";
+
+interface Props {
+  collection: CollectionName;
+  slug: string;
+  daten: Record<string, any>;
+  registry: Registry;
+  /** Zusätzliche abgeleitete Listen, je nach Entitätstyp. */
+  listen?: { titel: string; eintraege: any[] }[];
+}
+const { collection, slug, daten, registry, listen = [] } = Astro.props;
+
+const graph = buildGraph(collection, slug, daten);
+const pfad = `${sammlungsPfad(collection)}${slug}/`;
+const verwandt = verwandtes(registry, collection, slug);
+const entwurf = daten.status !== "veroeffentlicht";
+---
+<BasisLayout
+  titel={daten.name}
+  beschreibung={daten.kurzbeschreibung}
+  kanonisch={pfad}
+  noindex={entwurf || daten.noindex}
+  jsonld={graph}
+>
+  <nav aria-label="Brotkrumen">
+    <a href="/">Start</a> ›
+    <a href={sammlungsPfad(collection)}>{SAMMLUNGSNAME[collection]}</a> ›
+    <span aria-current="page">{daten.name}</span>
+  </nav>
+
+  <article>
+    <h1>{daten.name}</h1>
+    {entwurf && <p class="hinweis"><strong>Entwurf</strong> — noch nicht redaktionell freigegeben.</p>}
+
+    <Faktenblock collection={collection} daten={daten} registry={registry} />
+
+    <div class="inhalt"><slot /></div>
+
+    <FaqBlock faq={daten.faq ?? []} />
+
+    {listen.map((l) => <EintragsListe titel={l.titel} eintraege={l.eintraege} />)}
+
+    <EintragsListe titel="Verwandtes" eintraege={verwandt} />
+
+    <Quellen quellen={daten.quellen ?? []} geprueftAm={daten.geprueftAm} autor={daten.autor} />
+  </article>
+</BasisLayout>

@@ -1,0 +1,53 @@
+---
+/**
+ * HTML-Rahmen. Bewusst minimal — hier gehört Design hin, keine Logik.
+ * Wichtig ist nur, dass der Textinhalt früh im DOM steht: Navigation und
+ * Deko kommen nach <main>, nicht davor.
+ */
+import { site, indexierbar } from "../site.config";
+// Reihenfolge zählt: erst der Token-Vertrag, dann die Gestaltung, die ihn
+// benutzt. Eine neue Gestaltung tauscht basis.css und ergänzt tokens.css —
+// das Markup bleibt unangetastet.
+import "../styles/tokens.css";
+import "../styles/basis.css";
+import { jsonldSicher } from "../lib/jsonld";
+
+interface Props {
+  titel: string;
+  beschreibung: string;
+  kanonisch: string;
+  noindex?: boolean;
+  jsonld?: unknown;
+}
+const { titel, beschreibung, kanonisch, noindex = false, jsonld } = Astro.props;
+
+// Der globale Schalter sticht jede Einzelentscheidung: Solange die Site
+// nicht freigegeben ist, wird nichts indexiert.
+const nichtIndexieren = noindex || !indexierbar;
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titel} — {site.name}</title>
+    <meta name="description" content={beschreibung} />
+    <link rel="canonical" href={`${site.url}${kanonisch}`} />
+    {nichtIndexieren && <meta name="robots" content="noindex, follow" />}
+    <meta property="og:title" content={titel} />
+    <meta property="og:description" content={beschreibung} />
+    <meta property="og:url" content={`${site.url}${kanonisch}`} />
+    <meta property="og:type" content="website" />
+    {jsonld && <script type="application/ld+json" set:html={jsonldSicher(jsonld)} />}
+  </head>
+  <body>
+    <main><slot /></main>
+    <nav aria-label="Hauptnavigation">
+      <a href="/">Start</a>
+      <a href="/events/">Events</a>
+      <a href="/bands/">Bands</a>
+      <a href="/regionen/">Regionen</a>
+      <a href="/lexikon/">Lexikon</a>
+    </nav>
+  </body>
+</html>

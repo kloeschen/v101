@@ -1,0 +1,50 @@
+# CI: jeder Push und jeder PR läuft durch dieselben Tore wie die lokale
+# Arbeit — npm run verify, nur mit --strict, damit Warnungen hier auffallen
+# und nicht erst im Betrieb.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Typen (astro check)
+        run: npm run check
+
+      - name: Zeitzonen-Konvention
+        run: npx tsx scripts/check-zeitzonen.ts
+
+      - name: Inhalte validieren (strict)
+        run: npx tsx scripts/validate-content.ts --strict
+
+      - name: JSON-LD-Graphen (strict)
+        run: npx tsx scripts/check-jsonld.ts --strict
+
+      - name: Tests
+        run: npm test
+
+      - name: Autolink-Drift erkennen
+        # Wenn der Lauf hier etwas ändern würde, wurde vor dem Commit
+        # vergessen, npm run autolink auszuführen. Die CI schreibt nicht
+        # selbst — sie meldet nur, dass Quelle und Lexikon auseinanderlaufen.
+        run: |
+          npx tsx scripts/sync-autolinks.ts --dry-run | tee /tmp/autolink.log
+          grep -q "^0 Datei(en) würden geändert" /tmp/autolink.log || {
+            echo "::error::Autolink ist nicht synchron — lokal 'npm run autolink' ausführen und committen."
+            exit 1
+          }
+
+      - name: Build
+        run: npm run build

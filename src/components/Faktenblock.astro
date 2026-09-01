@@ -1,0 +1,51 @@
+---
+/**
+ * Der Faktenblock — direkt unter der Antwortkapsel.
+ *
+ * Bewusst eine Definitionsliste: <dl> macht die Feld-Wert-Beziehung auch für
+ * Maschinen explizit, ohne dass man Tabellensemantik vortäuschen muss.
+ * Die Zeilen kommen aus faktZeilen() und damit aus demselben Vertrag, gegen
+ * den check-jsonld.ts die Content Parity prüft.
+ *
+ * Externe Links hier tragen bewusst KEIN nofollow: Es sind die offiziellen
+ * Websites und Profile der beschriebenen Entitäten — dieselben URLs, die im
+ * JSON-LD als sameAs stehen. Ein nofollow würde das eigene Identitätssignal
+ * entwerten. nofollow bleibt den Belegquellen vorbehalten (Quellen.astro).
+ */
+import { faktZeilen } from "../lib/faktenblock";
+import type { Registry } from "../lib/links";
+import type { CollectionName } from "../content/_schemas";
+
+interface Props {
+  collection: CollectionName;
+  daten: Record<string, any>;
+  registry: Registry;
+}
+const { collection, daten, registry } = Astro.props;
+const zeilen = faktZeilen(collection, daten, registry);
+---
+{zeilen.length > 0 && (
+  <dl class="fakten">
+    {zeilen.map((zeile) => (
+      <div class="fakten__zeile" data-feld={zeile.feld}>
+        <dt>{zeile.label}</dt>
+        <dd>
+          {zeile.stuecke.map((s, i) => (
+            <>
+              {i > 0 && <span class="trenner">, </span>}
+              {s.href ? (
+                <a
+                  href={s.href}
+                  rel={s.extern ? "noopener" : undefined}
+                  target={s.extern ? "_blank" : undefined}
+                >{s.text}</a>
+              ) : (
+                <span>{s.text}</span>
+              )}
+            </>
+          ))}
+        </dd>
+      </div>
+    ))}
+  </dl>
+)}

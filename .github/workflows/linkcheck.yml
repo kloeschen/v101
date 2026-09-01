@@ -1,0 +1,54 @@
+# Externe Links wöchentlich prüfen — bewusst getrennt von der CI: Das Netz
+# ist kein Grund, einen Merge zu blockieren. Tote Links erzeugen ein Issue,
+# in dem der Bericht steht.
+name: Externe Links
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # montags 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Cache für Linkprüfung
+        uses: actions/cache@v4
+        with:
+          path: .cache/link-check.json
+          key: link-check-${{ github.run_id }}
+          restore-keys: link-check-
+
+      - name: Links prüfen
+        id: pruefen
+        run: |
+          set +e
+          npx tsx scripts/check-links.ts --max-age 7 | tee bericht.txt
+          echo "exitcode=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Issue bei toten Links
+        if: steps.pruefen.outputs.exitcode != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const bericht = fs.readFileSync("bericht.txt", "utf8").slice(0, 60000);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Tote externe Links — ${new Date().toISOString().slice(0, 10)}`,
+              labels: ["linkcheck"],
+              body: "Der wöchentliche Linkcheck hat tote Links gefunden.\n\n```\n" + bericht + "\n```",
+            });

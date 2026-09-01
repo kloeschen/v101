@@ -1,0 +1,59 @@
+---
+/**
+ * Eine Route für alle sechs Entitätstypen.
+ *
+ * Möglich, weil das URL-Präfix jeder Collection ihrem Namen entspricht —
+ * definiert an genau einer Stelle in src/content/_schemas.ts (urlPrefix).
+ * Sechs fast identische Routendateien wären sechs Stellen, an denen etwas
+ * auseinanderlaufen kann.
+ */
+import { getCollection, render } from "astro:content";
+import EntitaetsLayout from "../../layouts/EntitaetsLayout.astro";
+import { holeRegistry, istSichtbar } from "../../lib/registry";
+import { auftritte, inRegion, aufloesenViele } from "../../lib/links";
+import { collectionNames, type CollectionName } from "../../content/_schemas";
+import { SAMMLUNGSNAME } from "../../lib/faktenblock";
+
+export async function getStaticPaths() {
+  const pfade = [];
+  for (const typ of collectionNames) {
+    const eintraege = await getCollection(typ as CollectionName);
+    for (const eintrag of eintraege) {
+      if (!istSichtbar(eintrag.data as any)) continue;
+      pfade.push({ params: { typ, slug: eintrag.id }, props: { eintrag, typ } });
+    }
+  }
+  return pfade;
+}
+
+const { eintrag, typ } = Astro.props;
+const registry = await holeRegistry();
+const { Content } = await render(eintrag);
+const daten = eintrag.data as Record<string, any>;
+
+/**
+ * Abgeleitete Listen. Keine dieser Beziehungen wird im Frontmatter gepflegt —
+ * sie fallen aus den Daten der jeweils anderen Seite heraus.
+ */
+const listen: { titel: string; eintraege: any[] }[] = [];
+
+if (typ === "bands") {
+  const { kommend, vergangen } = auftritte(registry, eintrag.id);
+  if (kommend.length) listen.push({ titel: "Kommende Auftritte", eintraege: kommend.map((a) => a.event) });
+  if (vergangen.length) listen.push({ titel: "Frühere Auftritte", eintraege: vergangen.map((a) => a.event) });
+}
+
+if (typ === "regionen") {
+  for (const [collection, eintraege] of inRegion(registry, eintrag.id)) {
+    listen.push({ titel: `${SAMMLUNGSNAME[collection]} in der Region`, eintraege });
+  }
+}
+
+if (typ === "events") {
+  const bands = aufloesenViele(registry, "bands", daten.lineupBands ?? []);
+  if (bands.length) listen.push({ titel: "Bands mit eigenem Profil", eintraege: bands });
+}
+---
+<EntitaetsLayout collection={typ} slug={eintrag.id} daten={daten} registry={registry} listen={listen}>
+  <Content />
+</EntitaetsLayout>

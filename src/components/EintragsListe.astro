@@ -1,0 +1,27 @@
+---
+/**
+ * Liste von Registry-Einträgen. Wird für Rückverweise verwendet: Auftritte
+ * einer Band, Inhalte einer Region, Verwandtes im Fußbereich.
+ *
+ * Diese Listen werden abgeleitet, nicht gepflegt — deshalb sind sie
+ * automatisch vollständig und laufen nie auseinander.
+ */
+import type { EintragMeta } from "../lib/links";
+
+interface Props { titel: string; eintraege: EintragMeta[]; ebene?: 2 | 3 }
+const { titel, eintraege, ebene = 2 } = Astro.props;
+const Ueberschrift = `h${ebene}` as "h2" | "h3";
+---
+{eintraege.length > 0 && (
+  <section class="liste">
+    <Ueberschrift>{titel}</Ueberschrift>
+    <ul>
+      {eintraege.map((e) => (
+        <li>
+          <a href={e.pfad}>{e.name}</a>
+          {e.kurzbeschreibung && <span class="liste__beschreibung"> — {e.kurzbeschreibung}</span>}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

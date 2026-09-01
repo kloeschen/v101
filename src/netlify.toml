@@ -1,0 +1,64 @@
+# Netlify-Konfiguration.
+#
+# Wichtig: Im statischen Build verwirft Astro die Response-Header aus den
+# Endpunkt-Dateien — `Access-Control-Allow-Origin` aus events.json.ts und
+# [bereich].ics.ts landet NICHT im Output. Ohne die Header-Blöcke hier wäre
+# die dokumentierte offene Schnittstelle aus dem Browser nicht nutzbar und
+# .ics-Dateien würden als Download statt als Kalenderabo behandelt.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Kontextabhängige Indexierung.
+#
+# Sobald die Produktion freigegeben ist, würden Deploy Previews und
+# Branch-Deploys denselben Wert erben — und dieselbe Site wäre unter
+# xyz--deploy-preview-17.netlify.app indexierbar. Das ist Duplicate Content
+# gegen die eigene Domain, erzeugt von der eigenen Vorschau. Deshalb wird
+# der Schalter je Kontext gesetzt und nicht global.
+
+[context.production.environment]
+  # Erst auf "true" umstellen, wenn die Startschwelle erreicht ist —
+  # siehe BETRIEB.md. Diese eine Zeile ist der Go-Live.
+  PUBLIC_INDEXIERBAR = "false"
+
+[context.deploy-preview.environment]
+  # Vorschauen bleiben dauerhaft unsichtbar, auch nach dem Go-Live.
+  PUBLIC_INDEXIERBAR = "false"
+
+[context.branch-deploy.environment]
+  PUBLIC_INDEXIERBAR = "false"
+
+# Offene Daten brauchen offene Header.
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/kalender/*"
+  [headers.values]
+    Content-Type = "text/calendar; charset=utf-8"
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Astro schreibt Seiten als Verzeichnisse; Netlify löst das selbst auf.
+# Nur die alten Facetten-URLs ohne Segment umleiten, falls je verlinkt.
+[[redirects]]
+  from = "/events/:jahr"
+  to = "/events/jahr/:jahr/"
+  status = 301
+  force = false
+  [redirects.conditions]
+    # greift nur für vierstellige Jahre, nicht für Event-Slugs

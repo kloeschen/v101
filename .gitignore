@@ -1,0 +1,5 @@
+dist/
+node_modules/
+.astro/
+# Cache des externen Linkchecks — reproduzierbar, gehört nicht ins Repo.
+.cache/

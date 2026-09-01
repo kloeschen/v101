@@ -1,0 +1,54 @@
+# Wöchentliche Pflege — deterministisch, ohne Modell.
+#
+# Bewusst getrennt von allem Agentischen: Was ein Skript zuverlässig kann,
+# soll kein Modell tun. Das hier kostet nichts, schlägt nie fehl aus
+# Kontextgründen und ist im Diff vollständig nachvollziehbar.
+name: Pflege
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # montags 05:00 UTC, vor dem Linkcheck
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pflege:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Vergangene Termine archivieren
+        run: npx tsx scripts/archive-events.ts
+
+      - name: Autolink synchronisieren
+        run: npx tsx scripts/sync-autolinks.ts
+
+      - name: Prüfen, dass alles noch gültig ist
+        run: |
+          npx tsx scripts/validate-content.ts
+          npx tsx scripts/check-jsonld.ts
+
+      - name: Bericht erzeugen
+        run: npx tsx scripts/stale-report.ts > pflegebericht.txt || true
+
+      - name: Pull Request statt Direktcommit
+        # Auch deterministische Änderungen laufen über einen PR: Die CI
+        # prüft sie, und die Änderung bleibt im Verlauf sichtbar statt
+        # unbemerkt auf main zu landen.
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: pflege/woechentlich
+          title: "Wöchentliche Pflege: Statusabgleich und Autolink"
+          body-path: pflegebericht.txt
+          commit-message: "Pflege: vergangene Termine archiviert, Autolinks synchronisiert"
+          delete-branch: true
+          add-paths: src/content

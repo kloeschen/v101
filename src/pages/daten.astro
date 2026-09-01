@@ -1,0 +1,74 @@
+---
+/**
+ * Die Datenseite.
+ *
+ * Strategisch der wichtigste Nebeneffekt des ganzen Feed-Blocks: Wer die
+ * Daten unter einer klaren Lizenz nachnutzt, nennt die Quelle. Daraus
+ * entstehen genau die verteilten, konsistenten Erwähnungen, aus denen
+ * Entitätsautorität wächst — mehr als aus jeder llms.txt.
+ */
+import BasisLayout from "../layouts/BasisLayout.astro";
+import { holeRegistry } from "../lib/registry";
+import { site } from "../site.config";
+import { collectionNames } from "../content/_schemas";
+import { SAMMLUNGSNAME } from "../lib/faktenblock";
+
+const registry = await holeRegistry();
+const regionen = [...registry.eintraege.values()]
+  .filter((e) => e.collection === "regionen")
+  .sort((a, b) => a.name.localeCompare(b.name, "de"));
+
+const bestand = collectionNames.map((c) => ({
+  name: SAMMLUNGSNAME[c],
+  anzahl: [...registry.eintraege.values()].filter((e) => e.collection === c).length,
+}));
+
+const kapsel = `Alle Daten dieses Registers stehen als JSON-, Kalender- und RSS-Feed zur freien Nachnutzung unter CC BY 4.0 bereit.`;
+---
+<BasisLayout titel="Daten und Schnittstellen" beschreibung={kapsel} kanonisch="/daten/">
+  <h1>Daten und Schnittstellen</h1>
+  <p class="kapsel">{kapsel}</p>
+
+  <h2>Feeds</h2>
+  <dl>
+    <dt><a href="/api/events.json">/api/events.json</a></dt>
+    <dd>Das vollständige Eventregister als JSON, mit Ort, Region, Line-up, Preisen und Prüfdatum. CORS ist offen.</dd>
+    <dt><a href="/kalender/alle.ics">/kalender/alle.ics</a></dt>
+    <dd>Alle Termine als iCalendar-Feed zum Abonnieren.</dd>
+    <dt><a href="/rss.xml">/rss.xml</a></dt>
+    <dd>Zuletzt erfasste und aktualisierte Einträge.</dd>
+    <dt><a href="/sitemap-index.xml">/sitemap-index.xml</a></dt>
+    <dd>Sitemaps, getrennt nach Entitätstyp.</dd>
+  </dl>
+
+  <h2>Kalender je Region</h2>
+  <ul>
+    {regionen.map((r) => (
+      <li><a href={`/kalender/${r.slug}.ics`}>{r.name}</a></li>
+    ))}
+  </ul>
+
+  <h2>Bestand</h2>
+  <ul>
+    {bestand.map((b) => <li>{b.name}: {b.anzahl}</li>)}
+  </ul>
+
+  <h2>Lizenz</h2>
+  <p>
+    Die Daten stehen unter <a href={site.datenLizenz} rel="license nofollow noopener">CC BY 4.0</a>.
+    Nachnutzung ist ausdrücklich erwünscht, auch kommerziell. Bedingung ist die
+    Nennung von <strong>{site.name}</strong> mit Link auf <a href="/">{site.url}</a>.
+  </p>
+  <p>
+    Nicht von der Lizenz erfasst sind Fotos und Logos: Bei ihnen liegen die
+    Rechte bei den jeweiligen Urhebern, die auf der Seite des Eintrags genannt
+    sind.
+  </p>
+
+  <h2>Hinweise zur Nutzung</h2>
+  <ul>
+    <li>Die Feeds werden bei jedem Deploy neu erzeugt. Ein Abruf häufiger als stündlich lohnt nicht.</li>
+    <li>Jeder Eintrag trägt ein Prüfdatum. Termine und Preise können sich nach diesem Datum geändert haben.</li>
+    <li>Fehler und fehlende Veranstaltungen bitte melden — das Register lebt von Korrekturen.</li>
+  </ul>
+</BasisLayout>

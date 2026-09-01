@@ -1,0 +1,36 @@
+---
+/**
+ * Belegkette und Prüfstand. Beides sichtbar, weil Nachprüfbarkeit das
+ * Vertrauenssignal ist, das ein Register von einer Meinungsseite trennt.
+ */
+import { site } from "../site.config";
+
+interface Props {
+  quellen: { url: string; titel?: string; abgerufenAm: Date; art: string }[];
+  geprueftAm: Date;
+  autor?: string;
+}
+const { quellen, geprueftAm, autor } = Astro.props;
+// Vierte Instanz derselben Fehlerklasse, gefunden vom Zeitzonen-Check:
+// ohne timeZone verschiebt ein UTC-Server Mitternachtsdaten um einen Tag.
+const datum = new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeZone: site.zeitzone });
+---
+<footer class="belege">
+  <p class="belege__stand">
+    Zuletzt geprüft am <time datetime={geprueftAm.toISOString().slice(0, 10)}>{datum.format(geprueftAm)}</time>
+    {autor && <> von <span class="belege__autor">{autor}</span></>}
+  </p>
+  {quellen.length > 0 && (
+    <details class="belege__quellen">
+      <summary>Quellen ({quellen.length})</summary>
+      <ul>
+        {quellen.map((q) => (
+          <li>
+            <a href={q.url} rel="nofollow noopener" target="_blank">{q.titel ?? q.url}</a>
+            <span class="belege__abgerufen"> — abgerufen am {datum.format(q.abgerufenAm)}</span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+</footer>

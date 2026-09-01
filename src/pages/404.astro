@@ -1,0 +1,45 @@
+---
+/**
+ * 404. Bei einem Register wichtiger als bei den meisten Seiten: Slugs
+ * ändern sich, Events wandern ins Archiv, Leute tippen Namen falsch.
+ * Deshalb kein Sackgassen-404, sondern Wege zurück ins Register.
+ */
+import BasisLayout from "../layouts/BasisLayout.astro";
+import { holeRegistry } from "../lib/registry";
+import { SAMMLUNGSNAME, sammlungsPfad } from "../lib/faktenblock";
+import { collectionNames } from "../content/_schemas";
+
+const registry = await holeRegistry();
+const bestand = collectionNames.map((c) => ({
+  name: SAMMLUNGSNAME[c],
+  pfad: sammlungsPfad(c),
+  anzahl: [...registry.eintraege.values()].filter((e) => e.collection === c).length,
+})).filter((b) => b.anzahl > 0);
+---
+<BasisLayout
+  titel="Seite nicht gefunden"
+  beschreibung="Diese Adresse gibt es nicht (mehr)."
+  kanonisch="/404/"
+  noindex={true}
+>
+  <h1>Seite nicht gefunden</h1>
+  <p class="kapsel">
+    Diese Adresse gibt es nicht — oder nicht mehr. Vergangene Veranstaltungen
+    bleiben allerdings erhalten; wenn du einen alten Link hast, lohnt die Suche
+    im jeweiligen Register.
+  </p>
+
+  <section class="liste">
+    <h2>Ins Register</h2>
+    <ul>
+      {bestand.map((b) => (
+        <li><a href={b.pfad}>{b.name}</a> <span class="liste__beschreibung">({b.anzahl})</span></li>
+      ))}
+    </ul>
+  </section>
+
+  <p>
+    Fehlt hier etwas, das es geben sollte? <a href="/daten/">Sag Bescheid</a> —
+    das Register lebt von Korrekturen.
+  </p>
+</BasisLayout>

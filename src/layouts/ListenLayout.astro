@@ -1,0 +1,54 @@
+---
+/**
+ * Gerüst für Übersichts- und Facettenseiten.
+ *
+ * Gleiche Logik wie beim Entitätslayout: Antwort zuerst. Hier ist die
+ * Antwort die Anzahl und die Einordnung, nicht eine Definition — deshalb
+ * steht die Kapsel über der Liste, nicht darunter.
+ */
+import BasisLayout from "./BasisLayout.astro";
+import EintragsListe from "../components/EintragsListe.astro";
+import { buildListenGraph } from "../lib/jsonld";
+import type { EintragMeta } from "../lib/links";
+
+interface Props {
+  titel: string;
+  kapsel: string;
+  pfad: string;
+  eintraege: EintragMeta[];
+  breadcrumb: { name: string; url?: string }[];
+  noindex?: boolean;
+  /** Wird nur in der Entwicklung angezeigt. */
+  indexGrund?: string;
+}
+const { titel, kapsel, pfad, eintraege, breadcrumb, noindex = false, indexGrund } = Astro.props;
+
+const graph = buildListenGraph({
+  pfad,
+  titel,
+  beschreibung: kapsel,
+  eintraege: eintraege.map((e) => ({ name: e.name, pfad: e.pfad })),
+  breadcrumb: [{ name: "Start", url: "/" }, ...breadcrumb],
+});
+---
+<BasisLayout titel={titel} beschreibung={kapsel} kanonisch={pfad} noindex={noindex} jsonld={graph}>
+  <nav aria-label="Brotkrumen">
+    <a href="/">Start</a>
+    {breadcrumb.map((b, i) => (
+      <> › {b.url && i < breadcrumb.length - 1 ? <a href={b.url}>{b.name}</a> : <span aria-current="page">{b.name}</span>}</>
+    ))}
+  </nav>
+
+  <h1>{titel}</h1>
+  <p class="kapsel">{kapsel}</p>
+
+  {indexGrund && import.meta.env.DEV && (
+    <p class="hinweis"><strong>noindex</strong> — {indexGrund}</p>
+  )}
+
+  <slot name="einleitung" />
+
+  <EintragsListe titel="Einträge" eintraege={eintraege} />
+
+  <slot />
+</BasisLayout>

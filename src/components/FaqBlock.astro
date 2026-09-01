@@ -1,0 +1,20 @@
+---
+/**
+ * FAQ. Die Fragen stehen im Frontmatter und fließen zusätzlich als FAQPage
+ * ins JSON-LD — hier wird derselbe Inhalt sichtbar ausgegeben, sonst wäre es
+ * ein Paritätsverstoß.
+ */
+interface Props { faq: { frage: string; antwort: string }[] }
+const { faq } = Astro.props;
+---
+{faq.length > 0 && (
+  <section class="faq" aria-labelledby="faq-titel">
+    <h2 id="faq-titel">Häufige Fragen</h2>
+    {faq.map((f) => (
+      <div class="faq__eintrag">
+        <h3>{f.frage}</h3>
+        <p>{f.antwort}</p>
+      </div>
+    ))}
+  </section>
+)}

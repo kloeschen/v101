@@ -1,0 +1,53 @@
+---
+/**
+ * Übersichtsseite je Collection: /events/, /bands/, /lexikon/ …
+ *
+ * Diese Seiten sind immer indexierbar — sie sind der Einstieg ins Register
+ * und der Ankerpunkt, von dem aus Crawler alle Entitäten erreichen.
+ */
+import ListenLayout from "../../layouts/ListenLayout.astro";
+import { holeRegistry } from "../../lib/registry";
+import { sammleFacetten, indexierbarkeit } from "../../lib/facetten";
+import { einleitungFuer } from "../../lib/facetten-einleitungen";
+import { collectionNames, type CollectionName } from "../../content/_schemas";
+import { SAMMLUNGSNAME, sammlungsPfad } from "../../lib/faktenblock";
+
+export async function getStaticPaths() {
+  return collectionNames.map((typ) => ({ params: { typ }, props: { typ } }));
+}
+
+const { typ } = Astro.props as { typ: CollectionName };
+const registry = await holeRegistry();
+
+const eintraege = [...registry.eintraege.values()]
+  .filter((e) => e.collection === typ)
+  .sort((a, b) => a.name.localeCompare(b.name, "de"));
+
+// Nur indexierbare Facetten verlinken. Auf eine noindex-Seite zu verlinken
+// ist nicht falsch, aber es lenkt Crawler auf Seiten, die nichts beitragen.
+const facetten = sammleFacetten(registry)
+  .filter((f) => f.collection === typ && indexierbarkeit(f, einleitungFuer(f)).indexierbar)
+  .sort((a, b) => a.label.localeCompare(b.label, "de"));
+
+const kapsel = `Das Register enthält ${eintraege.length} ${
+  eintraege.length === 1 ? "Eintrag" : "Einträge"
+} in der Kategorie ${SAMMLUNGSNAME[typ]}.`;
+---
+<ListenLayout
+  titel={SAMMLUNGSNAME[typ]}
+  kapsel={kapsel}
+  pfad={sammlungsPfad(typ)}
+  eintraege={eintraege}
+  breadcrumb={[{ name: SAMMLUNGSNAME[typ], url: sammlungsPfad(typ) }]}
+>
+  {facetten.length > 0 && (
+    <section class="facetten">
+      <h2>Nach Kriterium</h2>
+      <ul>
+        {facetten.map((f) => (
+          <li><a href={f.pfad}>{f.label}</a> <span>({f.eintraege.length})</span></li>
+        ))}
+      </ul>
+    </section>
+  )}
+</ListenLayout>

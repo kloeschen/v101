@@ -1,0 +1,72 @@
+/*
+ * Grundlayout. Nutzt ausschließlich Tokens — keine festen Werte.
+ *
+ * Diese Datei darf eine Gestaltung ersetzen. tokens.css und das Markup
+ * dürfen es nicht: Das eine ist der Vertrag, das andere trägt die
+ * Struktur, an der Extrahierbarkeit und Barrierefreiheit hängen.
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--farbe-grund);
+  color: var(--farbe-text);
+  font-family: var(--schrift-text);
+  font-size: var(--groesse-basis);
+  line-height: var(--zeilenhoehe);
+  -webkit-text-size-adjust: 100%;
+}
+
+main {
+  max-width: var(--inhalt-breite);
+  margin: 0 auto;
+  padding: var(--raum-5) var(--raum-4) var(--raum-6);
+}
+
+article, .inhalt { max-width: var(--zeilenlaenge); }
+
+h1, h2, h3 { font-family: var(--schrift-titel); line-height: var(--zeilenhoehe-titel); text-wrap: balance; }
+h1 { font-size: var(--groesse-h1); margin: 0 0 var(--raum-3); }
+h2 { font-size: var(--groesse-h2); margin: var(--raum-5) 0 var(--raum-2); }
+h3 { font-size: var(--groesse-h3); margin: var(--raum-4) 0 var(--raum-1); }
+p { margin: 0 0 var(--raum-3); }
+
+a { color: var(--farbe-link); text-underline-offset: 0.15em; }
+a:visited { color: var(--farbe-link-besucht); }
+a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
+
+/* Antwortkapsel: der erste Absatz trägt die Antwort und wird deshalb
+   optisch hervorgehoben — ohne die Lesbarkeit zu opfern. */
+.kapsel { font-size: 1.1em; color: var(--farbe-text); }
+
+/* Faktenblock als Definitionsliste. Zweispaltig ab Tablet, gestapelt
+   darunter — die dt/dd-Beziehung bleibt in beiden Fällen erhalten. */
+.fakten { margin: var(--raum-4) 0; border-top: var(--linie); }
+.fakten__zeile { display: grid; gap: var(--raum-1); padding: var(--raum-2) 0; border-bottom: var(--linie); }
+.fakten dt { font-family: var(--schrift-ui); font-size: var(--groesse-klein); color: var(--farbe-text-leise); }
+.fakten dd { margin: 0; }
+@media (min-width: 40rem) {
+  .fakten__zeile { grid-template-columns: minmax(9rem, 14rem) 1fr; gap: var(--raum-3); align-items: baseline; }
+}
+
+.liste { margin: var(--raum-5) 0; }
+.liste ul { margin: 0; padding: 0; list-style: none; }
+.liste li { padding: var(--raum-2) 0; border-bottom: var(--linie); }
+.liste__beschreibung { color: var(--farbe-text-leise); font-size: var(--groesse-klein); }
+
+.faq__eintrag { margin: var(--raum-3) 0; }
+
+.facetten ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--raum-2) var(--raum-3); }
+
+.belege { margin-top: var(--raum-6); padding-top: var(--raum-3); border-top: var(--linie); font-size: var(--groesse-klein); color: var(--farbe-text-leise); font-family: var(--schrift-ui); }
+.belege__abgerufen { color: var(--farbe-text-leise); }
+
+.hinweis { background: var(--farbe-hinweis-grund); border: 1px solid var(--farbe-hinweis-linie); border-radius: var(--radius); padding: var(--raum-2) var(--raum-3); font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
+
+nav[aria-label] { font-family: var(--schrift-ui); font-size: var(--groesse-klein); color: var(--farbe-text-leise); }
+nav[aria-label="Hauptnavigation"] { max-width: var(--inhalt-breite); margin: 0 auto; padding: var(--raum-4); border-top: var(--linie); display: flex; gap: var(--raum-3); flex-wrap: wrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

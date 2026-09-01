@@ -1,0 +1,317 @@
+# Code Review — Vintage & Rockabilly Szenen-Guide
+
+Stand: 29. August 2026 · Geprüft: alles, was in dieser Session entstanden ist
+(46 Dateien: Datenvertrag, Validatoren, JSON-LD-Graph, Verlinkung, Layouts,
+Facetten, Feeds, Linkcheck).
+
+**Vorgehen:** Jeder Verdacht wurde vor Aufnahme in diesen Bericht am laufenden
+Code verifiziert — durch gezielte Testläufe, Negativtests oder Inspektion des
+gebauten HTML. Befunde ohne Nachweis stehen nicht hier. Kritische und hohe
+Befunde wurden im Zuge des Reviews behoben, jeweils mit Regressionstest;
+mittlere und niedrige sind mit Empfehlung dokumentiert und offen.
+
+Nach den Korrekturen: alle fünf Prüfskripte grün (42 + 23 + 47 Behauptungen
+in den Testharnischen plus die zwei Validator-Suiten), Build mit 19 Seiten und
+13 Feed-Dateien fehlerfrei.
+
+---
+
+## 1. Kritische Befunde — behoben
+
+### K1 · `</script>` im Inhalt bricht aus dem JSON-LD aus
+
+**Fundort:** `BasisLayout.astro` (`set:html={JSON.stringify(graph)}`)
+**Nachweis:** `JSON.stringify` maskiert `<` nicht. Eine `definition` mit
+`</script><b>x</b>` beendete im gebauten HTML das Script-Element mitten im
+Graphen; der Rest wurde als HTML interpretiert.
+**Warum das hier real ist:** Die Kurzbeschreibungen schreiben
+Recherche-Agenten aus Webquellen ab. Ein Veranstaltertext mit HTML-Resten
+reicht — das ist kein theoretischer Angreifer, sondern der normale Betrieb.
+**Fix:** `jsonldSicher()` in `src/lib/jsonld/index.ts` maskiert `<`, `>`,
+U+2028/U+2029 als Unicode-Escapes; das Layout verwendet ausschließlich diese
+Funktion. Verifiziert im Build: Der Block bleibt intakt, `JSON.parse` liefert
+den Text unverfälscht zurück. Regressionstest in `test-feeds.ts`.
+
+### K2 · Events ohne explizite Region waren regional unsichtbar
+
+**Fundort:** `links.ts` / `_schemas.ts`
+**Nachweis:** Das Schema kommentiert bei `events.region` „wird sonst aus der
+Location abgeleitet" — abgeleitet hat es niemand. Ein Event ohne das Feld
+erschien weder auf der Regionsseite (`inRegion()`) noch im regionalen
+ICS-Feed noch im `region`-Feld des JSON-Feeds.
+**Warum das schwer wiegt:** Die Regionsseiten sind laut Architektur der
+strategisch wertvollste Seitentyp, und der Fehler ist still — nichts bricht,
+es fehlt nur etwas.
+**Fix:** `buildRegistry()` löst das Versprechen jetzt ein: erste Passage
+sammelt die Regionen der Locations, Events ohne `region` erben sie
+(nicht-destruktiv, per Kopie der Daten). Damit ziehen Regionsseite,
+Kalender-Feed und JSON-Feed automatisch nach. Zwei Regressionstests in
+`test-links.ts`.
+
+### K3 · `--changed` mit gelöschtem Pfad stürzt ab
+
+**Fundort:** `scripts/_laden.ts`
+**Nachweis:** `validate-content.ts --changed <gelöschte-datei>` endete mit
+ungefangenem `readFileSync`-Fehler. Der ursprüngliche Loader hatte einen
+`existsSync`-Filter; beim Refactoring auf den gemeinsamen Loader ist er
+verloren gegangen — ein klassischer Refactoring-Regress, den kein Test hielt.
+**Warum das zählt:** Genau dieser Aufrufpfad ist der PostToolUse-Hook. Ein
+Hook, der bei Umbenennungen crasht, wird irgendwann abgeschaltet.
+**Fix:** Explizit übergebene Pfade werden auf Existenz gefiltert;
+nicht vorhandene Dateien sind „nichts zu prüfen", kein Fehler.
+
+---
+
+## 2. Hohe Befunde — behoben
+
+### H1 · Jahresfacette rechnete in der Server-Zeitzone
+
+`new Date(beginn).getFullYear()` auf einem UTC-Runner steckt einen
+Silvesterball (01.01., 00:30 Uhr Ortszeit) ins Vorjahr — nachgewiesen mit
+`TZ=UTC`. Dritter Zeitzonenfehler derselben Klasse in dieser Codebasis
+(nach JSON-LD-`startDate` und Faktenblock-Anzeige); das Muster ist
+offensichtlich systematisch. **Fix:** Jahresermittlung über `Intl` in
+`site.zeitzone`, Regressionstest läuft unter `TZ=UTC`.
+**Empfehlung darüber hinaus:** eine Lint-Regel oder Konvention, die
+`getFullYear`/`toLocaleString` ohne explizite Zeitzone im `src/`-Baum
+verbietet — die vierte Instanz kommt sonst bestimmt.
+
+### H2 · `nofollow` auf den eigenen Identitätslinks
+
+Der Faktenblock setzte `rel="nofollow"` auf alle externen Links — also auch
+auf offizielle Websites, Discogs, MusicBrainz, Wikidata. Das sind dieselben
+URLs, die im JSON-LD als `sameAs` stehen: Sichtbar entwertet, was maschinell
+behauptet wird, konterkariert die eigene Entitätsstrategie. **Fix:**
+Faktenblock-Links tragen nur noch `noopener`; `nofollow` bleibt den
+Belegquellen in `Quellen.astro` vorbehalten, wo es hingehört.
+
+### H3 · Jede Seite verlinkte auf einen internen 404
+
+`/autoren/{slug}/` existiert nicht, wurde aber aus Faktenblock, Quellen-Fußzeile
+und als `url` im Person-Knoten verlinkt — ein toter interner Link auf jeder
+einzelnen Seite, ausgerechnet am E-E-A-T-Signal. **Fix:** Autor wird als Text
+gerendert, der Person-Knoten trägt nur noch die `@id` (eine URI muss nicht
+auflösen, eine deklarierte `url` schon). Der richtige Fix bleibt die
+Autoren-Collection; bis dahin ist kein Link ehrlicher als ein toter.
+
+### H4 · Solokünstler bekamen ungültiges Markup
+
+`typ: solo|dj` erzeugte `Person` mit `genre` — eine Eigenschaft, die
+schema.org auf Person nicht kennt. Ausgerechnet die Kante ins Lexikon, die
+den Genre-Graphen trägt, wäre bei Solokünstlern ungültig gewesen. **Fix:**
+Durchgängig `MusicGroup` — schema.org definiert den Typ ausdrücklich
+einschließlich Einzelmusiker. Im Build verifiziert.
+
+### H5 · `accessibilityFeature` ist auf Place ungültig
+
+CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
+`amenityFeature` mit `LocationFeatureSpecification` („Rollstuhlgerecht",
+`value: true/false`), jetzt auch für `teilweise`. Im Build verifiziert.
+
+---
+
+## 3. Mittlere Befunde — offen, mit Empfehlung
+
+**M1 · `sync-autolinks` ersetzt den Body über einen fragilen Index.**
+`roh.indexOf(parsed.content, …)` funktioniert, kippt aber bei leerem Body
+(`indexOf("")` liefert die Suchposition) und theoretisch, wenn der
+Body-Anfang wörtlich im Frontmatter vorkommt. Empfehlung: den
+Frontmatter-Block per Regex `^---\r?\n[\s\S]*?\r?\n---\r?\n` abtrennen und
+dahinter ersetzen. Klein, aber das Skript schreibt in Quelldateien —
+da ist „funktioniert meistens" die falsche Kategorie.
+
+**M2 · `check-jsonld` prüft nur die oberste Graph-Ebene.**
+`@type`/`@id`/Pflichtfelder werden je Knoten in `@graph` geprüft;
+verschachtelte Knoten (Offers, Member-Personen, `foundingLocation`) nie.
+Die `PFLICHT`-Einträge für `Offer` und `Person` sind dadurch faktisch tote
+Tabellenzeilen — der Offer-Preis wird nur von der separaten Event-Regel
+erfasst. Empfehlung: rekursive Knotenprüfung (Objekt mit `@type` = Knoten)
+oder die toten Tabellenzeilen streichen, damit die Tabelle nicht mehr
+Abdeckung suggeriert, als existiert.
+
+**M3 · Mindestlink-Regel zählt Duplikate.**
+Dreimal derselbe interne Link erfüllt `interne-links` (Ziel: 5). Empfehlung:
+über `new Set(pfade)` zählen.
+
+**M4 · Linkcheck meldet `http→https` als „fremde Domain".**
+Der Origin-Vergleich schlägt bei reinem Schema-Upgrade an; die Meldung
+(„Domain verkauft, Veranstalter aufgegeben") ist dann irreführend.
+Empfehlung: Hostname statt Origin vergleichen und Schema-Upgrades als
+eigenen, milden Hinweis führen („Quelle auf https umstellen").
+
+**M5 · Linkcheck ohne Drosselung pro Host.**
+Acht parallele Anfragen können denselben Host treffen. Bei den heutigen
+Mengen egal, bei 500 Discogs-Links nicht mehr — und 429-Antworten
+verfälschen dann den Bericht. Empfehlung: Warteschlange je Hostname.
+
+**M6 · Kalender-Route: Regions-Slug `alle` würde kollidieren.**
+`/kalender/alle.ics` ist reserviert, aber nirgends erzwungen — eine Region
+mit Slug `alle` überschriebe den Gesamtfeed. Empfehlung: `alle` in
+`RESERVIERTE_SEGMENTE` aufnehmen (die Validator-Regel greift dann mit).
+
+**M7 · Begriffs-Deduplizierung hängt an der Dateireihenfolge.**
+Tragen zwei Lexikoneinträge denselben Alias, „gewinnt der erste" — und
+erster heißt: Reihenfolge von `fast-glob`. Praktisch stabil, aber nicht
+garantiert. Empfehlung: Alias-Kollisionen zwischen Lexikoneinträgen im
+Validator als Fehler melden (die Duplikatprüfung tut das bereits innerhalb
+der Collection — dieser Fall ist damit abgedeckt, sobald beide Begriffe
+denselben Alias führen; der stille Fall „Name des einen = Alias des
+anderen" läuft durch die Normalisierung ebenfalls hinein). Kurz geprüft:
+abgedeckt — verbleibendes Restrisiko ist nur die Reihenfolge bei bewusst
+gleichnamigen Begriffen, akzeptabel.
+
+---
+
+## 4. Niedrige Befunde — dokumentiert
+
+- **RSS:** sortiert nach `veroeffentlichtAm ?? erstelltAm`; „aktualisierte
+  Einträge" (llms.txt-Text) stimmt damit nur halb. Entweder `geaendertAm`
+  einbeziehen oder die Beschreibung präzisieren.
+- **`sitemapXml` escapet `loc` nicht.** Derzeit sicher, weil Slugs auf
+  `[a-z0-9-]` beschränkt sind — der Schutz liegt also im Zod-Regex, nicht in
+  der Funktion. Ein Kommentar dort sollte diese Abhängigkeit benennen.
+- **FAQ-Markup:** Googles FAQ-Rich-Results sind seit 2023 auf Behörden- und
+  Gesundheitsseiten beschränkt. Das Markup bleibt für Verständnis und andere
+  Konsumenten sinnvoll — nur keine Rich-Result-Erwartung daran knüpfen.
+- **Sub-Feld-Parität:** `preise[].gueltigBis` fließt als `validThrough` ins
+  JSON-LD, der Faktenblock zeigt es nicht. Die Paritätsprüfung arbeitet auf
+  Feldebene und sieht das nicht. Bekannte, bewusste Granularitätsgrenze —
+  im Code dokumentieren.
+- **`marked` rendert Facetten-Einleitungen ohne Sanitizer.** Vertretbar,
+  weil es redaktionelle Repo-Dateien sind — aber sobald ein Agent diese
+  Dateien schreibt, gilt K1 sinngemäß auch hier.
+- **`herkunftLand` ist bei Bands Pflicht.** Für DJs mit unklarer Herkunft
+  womöglich zu streng; bei der ersten echten Reibung optional machen statt
+  Fantasiewerte zu provozieren.
+- **Astro-Log zeigt dynamische Endpunkte mit Schrägstrich** — kosmetisch,
+  Dateien sind korrekt; als Stolperfalle im README erwähnenswert.
+
+---
+
+## 5. Strukturelle Bewertung
+
+**Was trägt:** Der zentrale Zod-Vertrag mit `.strict()` überall; die
+maschinelle Content-Parität (Builder-Felder ⊆ Faktenblock, im Negativtest
+nachgewiesen); abgeleitete statt gepflegte Rückverweise; der
+Indexierungs-Schwellenwert als Funktion; Slug-Referenzen mit zentraler
+Prüfung statt verstreuter `reference()`-Aufrufe; die konsequente
+Trennung Vite-gebundener Module (`facetten-einleitungen.ts`), ohne die
+die Facettenlogik untestbar wäre.
+
+**Was fehlt oder schwächelt:**
+
+1. **Kein `package.json`, kein `tsconfig.json`, keine CI-Datei im
+   Deliverable.** Der Plan nannte `.github/workflows/ci.yml`; die
+   npm-Skripte existieren nur im README. `astro check` im `verify`-Skript
+   setzt zudem `@astrojs/check` + `typescript` voraus — nirgends erwähnt.
+   Das ist die größte Lücke zwischen Plan und Lieferung.
+2. **Handgerollter Testharness.** Fünfmal dieselben `pruefe`/`gleich`-Helfer.
+   Für die Projektgröße in Ordnung, aber beim nächsten Skript in ein
+   gemeinsames `scripts/_test.ts` ziehen — oder gleich Vitest, das mit Astro
+   gut zusammenspielt und Watch-Mode mitbringt.
+3. **Doppelte Ladewege.** Astro lädt über Collections, die Skripte über
+   `_laden.ts`. Architektonisch begründet (Node vs. Vite), aber die
+   Filterlogik (`_`-Präfix, Collection-Erkennung) existiert zweimal —
+   `content.config.ts` und `_laden.ts` müssen synchron gehalten werden.
+   Ein gemeinsames Konstanten-Modul für Pattern und Präfixregeln würde die
+   Drift-Gefahr nehmen.
+4. **`validate-content` lädt im Volllauf alles doppelt** (`ladeEintraege` +
+   `baueKontext`). Bei sechs Dateien egal, bei zweitausend nicht — der
+   Kontextaufbau sollte die bereits geladenen Einträge wiederverwenden.
+5. **Zeitzonenfehler als Serienfehler** (drei Instanzen, siehe H1). Die
+   Konvention „nie ohne explizite Zone formatieren oder rechnen" gehört in
+   CLAUDE.md *und* als grep-basierter Check in die Validator-Suite.
+
+**Testabdeckung, ehrlich eingeordnet:** 112 Behauptungen plus zwei
+Regel-Suiten klingen gut, decken aber vor allem `lib/` ab. Ungetestet sind:
+die Astro-Komponenten selbst (nur indirekt über den Build verifiziert),
+`sync-autolinks` (manuell geprüft, kein automatisierter Idempotenztest),
+`check-links` (manuell gegen das echte Netz). Die beiden letzten sind die
+Skripte, die in Quelldateien schreiben bzw. in der CI laufen sollen —
+dort wären automatisierte Tests am wertvollsten.
+
+---
+
+## 6. Empfohlene Reihenfolge der offenen Punkte
+
+1. `package.json`, `tsconfig.json`, CI-Workflow nachliefern (Lücke Nr. 1) —
+   inklusive `--strict` für die Prüfskripte in der CI.
+2. M1 (`sync-autolinks`-Splice) — schreibt in Quelldateien, vor dem ersten
+   großen Autolink-Lauf beheben.
+3. M6 (`alle` reservieren) — eine Zeile, verhindert eine stille Kollision.
+4. M2 (rekursive Knotenprüfung oder tote Tabellenzeilen streichen).
+5. Zeitzonen-Konvention festschreiben (H1-Empfehlung).
+6. M3–M5 bei Gelegenheit; Rest wie dokumentiert.
+
+Nichts davon blockiert die inhaltliche Arbeit — die Reihenfolge im
+ursprünglichen Plan (Phase 0/1 abschließen, dann Content) bleibt richtig.
+
+---
+
+## Nachtrag — Punkte 1–3 der Empfehlungsliste umgesetzt
+
+**Zu 1 (Projektgerüst):** `package.json` (inkl. `@astrojs/check`,
+`typescript` und `@types/node` — ohne Letzteres meldet `astro check` 40
+Scheinfehler in den Skripten), `tsconfig.json` auf Astros strict-Preset,
+sowie zwei Workflows: `ci.yml` fährt `verify` mit `--strict` und bricht
+zusätzlich ab, wenn `sync-autolinks --dry-run` Änderungen melden würde —
+Autolink-Drift fällt damit im PR auf, nicht im Betrieb. `linkcheck.yml`
+läuft wöchentlich, getrennt von der CI (das Netz ist kein Grund, einen Merge
+zu blockieren), und eröffnet bei toten Links ein Issue mit dem Bericht.
+`astro check` deckte dabei einen weiteren kleinen Fehler auf: `rel="author"`
+auf einem `<span>` ist ungültig — entfernt.
+
+**Zu 2 (M1):** `sync-autolinks` trennt das Frontmatter jetzt per Regex ab
+statt über `indexOf` des Body-Texts. Dazu die im Review geforderte
+Testabdeckung: `test-sync-autolinks.ts` lässt das Skript als Kind-Prozess in
+einer Wegwerf-Arbeitskopie laufen und prüft neun Behauptungen — darunter die
+nachgestellte M1-Falle (Body beginnt wörtlich mit der `kurzbeschreibung`,
+ein YAML-Wert enthält `---`), byteidentisches Frontmatter, Idempotenz des
+zweiten Laufs und dass `--dry-run` nie schreibt.
+
+**Zu 3 (M6):** `alle` steht in `RESERVIERTE_SEGMENTE`; die bestehende
+Validator-Regel verhindert damit den Regions-Slug, der den Gesamtfeed
+`/kalender/alle.ics` überschreiben würde.
+
+Stand danach: `astro check` 0 Fehler, sechs Suiten grün (121 Behauptungen),
+Build fehlerfrei, Autolink-Drift-Prüfung im Trockenlauf sauber.
+
+**Zu 4 (M2):** `check-jsonld.ts` prüft den Graphen jetzt rekursiv.
+`sammleKnoten()` erfasst jedes Objekt mit `@type`, egal wie tief; die
+`PFLICHT`-Tabelle gilt damit auch für Offers, Bandmitglieder, Adressen,
+Geokoordinaten, FAQ-Fragen und die `EventSeries`. Verschachtelte Knoten
+dürfen ohne `@id` bleiben (Blank Nodes) — tragen sie eine, gelten dieselben
+Regeln wie oben (Eindeutigkeit, eigene Domain, keine Wissensbasis-URL).
+Fehlermeldungen nennen jetzt den Pfad im Graphen (`[5].offers[0]`). Die
+Tabelle wurde dabei kontextneutral gestellt: `Organization` verlangt nur noch
+`name` (ein verschachtelter Veranstalter braucht keine URL — die des
+Site-Knotens garantiert `organisationsKnoten()`), `Person` nichts (der
+Autoren-Knoten trägt bis zur Autoren-Collection bewusst nur die `@id`), und
+`Offer` verlangt nun auch `availability`, wodurch die frühere Doppelwarnung
+in der Eventregel entfallen konnte. Nachgewiesen mit drei verschachtelten
+Negativtests: Offer ohne `priceCurrency`, `EventSeries` ohne `name` und eine
+Wikidata-URL als `@id` eines Mitglieds — alle drei schlagen mit präzisem
+Pfad an; der Lauf auf den echten Daten bleibt sauber.
+
+**Zu 5 (Zeitzonen-Konvention) und M3–M5 — Restliste abgeschlossen:**
+
+- **Zeitzonen-Check** (`check-zeitzonen.ts`): verbietet lokale Datums-Getter,
+  `toLocaleString`-Formatierung und `Intl.DateTimeFormat` ohne `timeZone` in
+  `src/` und `scripts/`; Ausnahmen per begründetem `zeitzone-ok`-Kommentar,
+  Tests ausgenommen. In `verify` und CI verankert. Der erste Lauf fand die
+  **vierte Instanz** der Fehlerklasse (`Quellen.astro`, „Zuletzt geprüft am"
+  ohne `timeZone`) — behoben; die beiden Zahlenformatierungs-Treffer wurden
+  auf `Intl.NumberFormat` umgestellt statt Ausnahmen zu markieren.
+- **M3:** Die Mindestlink-Regel zählt eindeutige Ziele (`new Set`), nicht
+  Vorkommen; Meldung entsprechend präzisiert.
+- **M4:** Der Linkcheck vergleicht Hostnamen statt Origins. Ein
+  `http→https`-Redirect auf demselben Host meldet jetzt eigenständig „Link
+  direkt auf https umstellen" statt fälschlich „fremde Domain" — gegen das
+  echte Netz verifiziert (http://de.wikipedia.org → Warnung `[http]`).
+- **M5:** `--concurrency` steuert gleichzeitig bearbeitete Hosts; je Host
+  arbeitet eine serielle Warteschlange mit `--pause` (Standard 250 ms).
+
+Endstand: sieben Suiten bzw. Checks grün (validate, jsonld, zeitzonen, vier
+Testharnische mit 121 Behauptungen), `astro check` 0 Fehler, Build mit 19
+Seiten und 13 Feed-Dateien fehlerfrei. Aus dem Review offen bleiben nur noch
+die dokumentierten niedrigen Befunde (Abschnitt 4) — alle bewusst vertagt.

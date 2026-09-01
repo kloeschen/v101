@@ -1,0 +1,11 @@
+---
+import BasisLayout from "../layouts/BasisLayout.astro";
+import { holeRegistry } from "../lib/registry";
+import { site } from "../site.config";
+const registry = await holeRegistry();
+const anzahl = [...registry.eintraege.values()].length;
+---
+<BasisLayout titel="Start" beschreibung={site.kurzbeschreibung} kanonisch="/">
+  <h1>{site.name}</h1>
+  <p>{site.kurzbeschreibung} Aktuell {anzahl} Einträge im Register.</p>
+</BasisLayout>

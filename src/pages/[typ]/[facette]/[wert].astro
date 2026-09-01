@@ -1,0 +1,52 @@
+---
+/**
+ * Facettenseiten: /events/jahr/2027/, /events/typ/weekender/,
+ * /events/reihe/walldorf-weekender/, /lexikon/kategorie/mode/ …
+ *
+ * Das Facettensegment liegt zwischen Collection und Wert, damit sich diese
+ * Route niemals mit /events/{slug}/ überschneiden kann. Die Segmentnamen
+ * sind in RESERVIERTE_SEGMENTE gesperrt.
+ *
+ * Ob eine dieser Seiten in den Index darf, entscheidet indexierbarkeit() —
+ * eine Funktion, keine Redaktionsregel.
+ */
+import { marked } from "marked";
+import ListenLayout from "../../../layouts/ListenLayout.astro";
+import { holeRegistry } from "../../../lib/registry";
+import { sammleFacetten, indexierbarkeit } from "../../../lib/facetten";
+import { einleitungFuer } from "../../../lib/facetten-einleitungen";
+import { SAMMLUNGSNAME, sammlungsPfad } from "../../../lib/faktenblock";
+
+export async function getStaticPaths() {
+  const registry = await holeRegistry();
+  return sammleFacetten(registry).map((seite) => ({
+    params: { typ: seite.collection, facette: seite.segment, wert: seite.wert },
+    props: { seite },
+  }));
+}
+
+const { seite } = Astro.props;
+const einleitung = einleitungFuer(seite);
+const { indexierbar, grund } = indexierbarkeit(seite, einleitung);
+
+const istReihe = seite.segment === "reihe";
+const anzahl = seite.eintraege.length;
+
+const kapsel = istReihe
+  ? `Die Reihe ${seite.label} ist mit ${anzahl} ${anzahl === 1 ? "Ausgabe" : "Ausgaben"} im Register erfasst.`
+  : `${anzahl} ${anzahl === 1 ? "Eintrag" : "Einträge"} im Register: ${seite.label}.`;
+---
+<ListenLayout
+  titel={seite.label}
+  kapsel={kapsel}
+  pfad={seite.pfad}
+  eintraege={seite.eintraege}
+  breadcrumb={[
+    { name: SAMMLUNGSNAME[seite.collection], url: sammlungsPfad(seite.collection) },
+    { name: seite.label, url: seite.pfad },
+  ]}
+  noindex={!indexierbar}
+  indexGrund={grund}
+>
+  {einleitung && <div slot="einleitung" set:html={marked.parse(einleitung)} />}
+</ListenLayout>
