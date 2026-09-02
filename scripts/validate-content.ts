@@ -288,8 +288,13 @@ const REGELN: Regel[] = [
       if (!e.daten) return [];
       const pflicht = belegpflichtigeFelder[e.collection];
       if (pflicht.length === 0) return [];
+      // Kein Sammelwert mehr: `felder: [alle]` hat diese Schleife früher
+      // komplett übersprungen. Die Abkürzung erspart genau die Arbeit, um die
+      // es geht — wer eine Quelle Feld für Feld zuordnet, prüft dabei Feld für
+      // Feld. Das ist der Zweck, nicht die Buchführung. Eine Quelle, die
+      // wirklich alles deckt, kann die Felder auch aufzählen.
+      // "alle" ist damit ungültig; `quellen-felder-gueltig` fängt es ab.
       const belegt = belegteFelder(e.daten);
-      if (belegt.has("alle")) return [];
       const b: Befund[] = [];
       for (const feld of pflicht) {
         const wert = e.daten[feld];
@@ -304,6 +309,49 @@ const REGELN: Regel[] = [
             code: "",
             feld,
             nachricht: `Feld "${feld}" ist gesetzt, aber von keiner Quelle gedeckt (quellen[].felder).`,
+          });
+        }
+      }
+      return b;
+    },
+  },
+
+  {
+    /**
+     * Was in `quellen[].felder` steht, muss nachprüfbar sein. Sonst belegt die
+     * Liste nichts, sie behauptet nur. Zwei Formen sind gültig:
+     *
+     *   - ein Feldname der Collection — die gültigen Namen kommen aus dem
+     *     Schema selbst (`.shape`), nicht aus einer zweiten Liste, die
+     *     auseinanderlaufen könnte;
+     *   - `body:<abschnitt>` für Aussagen im Fließtext. Die entstand als
+     *     Versehen (der Petticoat-Eintrag trug "aufbau", "geschichte" und
+     *     "gegenwart" ein, allesamt Textabschnitte, keine Frontmatter-Felder).
+     *     Die Absicht war richtig, also ist sie jetzt explizit und geprüft.
+     */
+    code: "quellen-felder-gueltig",
+    collections: "*",
+    pruefe(e) {
+      if (!e.daten) return [];
+      const feldNamen = new Set(Object.keys((collectionSchemas[e.collection] as any).shape));
+      const bodyMuster = /^body:[a-z0-9]+(?:-[a-z0-9]+)*$/;
+      const ebene: Ebene = e.daten.status === "veroeffentlicht" ? "fehler" : "warnung";
+      const b: Befund[] = [];
+      const gesehen = new Set<string>();
+      for (const q of e.daten.quellen ?? []) {
+        for (const f of q.felder ?? []) {
+          if (feldNamen.has(f) || bodyMuster.test(f)) continue;
+          if (gesehen.has(f)) continue;
+          gesehen.add(f);
+          const hinweis =
+            f === "alle"
+              ? 'Sammelwert "alle" ist nicht mehr zulässig — er schaltete die Belegpflicht komplett ab. Felder einzeln aufzählen.'
+              : `Erlaubt ist ein Feldname der Collection "${e.collection}" oder das Muster "body:<abschnitt>" (Kleinbuchstaben, keine Umlaute, z. B. body:geschichte).`;
+          b.push({
+            ebene,
+            code: "",
+            feld: "quellen",
+            nachricht: `Ungültiger Wert "${f}" in quellen[].felder. ${hinweis}`,
           });
         }
       }

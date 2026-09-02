@@ -30,42 +30,63 @@ redaktionsnotiz: >-
   Kleidungsstücks ist nicht belegt — belegt ist nur die Wortentlehnung aus
   dem Englischen im 20. Jahrhundert. Die früheren aliases
   "Petticoat-Unterrock" und "Tüllunterrock" sind in Duden, DWDS und
-  Wikipedia nicht nachweisbar und wurden entfernt.
+  Wikipedia nicht nachweisbar und wurden entfernt. Der Szene-Abschnitt wurde
+  am 2026-09-02 neu recherchiert; die drei Fachhandels-Quellen dazu tragen
+  art "sonstige", weil der Vertrag für den spezialisierten Handel bisher
+  keine eigene Kategorie kennt — sie sind für Trage- und Pflegepraxis die
+  belastbarsten verfügbaren Belege. Die Pflegeempfehlungen von Dance-Fit und
+  Peggy Sue Vintage widersprechen sich bei Waschart und Lagerung; das steht
+  so im Text und wird nicht geglättet.
 quellen:
   - url: https://de.wikipedia.org/wiki/Petticoat
     titel: Petticoat (Wikipedia)
     abgerufenAm: 2026-09-02
-    felder: [definition, kurzbeschreibung, aufbau, geschichte, gegenwart]
-    art: sonstige
+    felder: [definition, kurzbeschreibung, body:aufbau, body:geschichte, body:szene]
+    art: nachschlagewerk
   - url: https://www.duden.de/rechtschreibung/Petticoat
     titel: Petticoat (Duden online)
     abgerufenAm: 2026-09-02
     felder: [definition, kurzbeschreibung, abgrenzung]
-    art: sonstige
+    art: nachschlagewerk
   - url: https://www.dwds.de/wb/Petticoat
     titel: Petticoat (DWDS, mit Etymologischem Wörterbuch nach Pfeifer)
     abgerufenAm: 2026-09-02
-    felder: [definition, bezeichnungEn, abgrenzung, geschichte]
-    art: sonstige
+    felder: [definition, bezeichnungEn, abgrenzung, body:geschichte]
+    art: nachschlagewerk
   - url: https://nat.museum-digital.de/object/1287756
     titel: Petticoat beige Tüll, Freilichtmuseum Roscheider Hof (museum-digital)
     abgerufenAm: 2026-09-02
-    felder: [aufbau]
-    art: aggregator
+    felder: [body:aufbau]
+    art: museum
   - url: https://www.vam.ac.uk/articles/the-golden-age-of-couture
     titel: The Golden Age of Couture (Victoria and Albert Museum)
     abgerufenAm: 2026-09-02
-    felder: [geschichte]
-    art: sonstige
+    felder: [body:geschichte]
+    art: museum
   - url: https://de.wikipedia.org/wiki/Reifrock
     titel: Reifrock (Wikipedia)
     abgerufenAm: 2026-09-02
-    felder: [abgrenzung]
-    art: sonstige
+    felder: [abgrenzung, body:abgrenzung]
+    art: nachschlagewerk
   - url: https://de.wikipedia.org/wiki/Unterrock
     titel: Unterrock (Wikipedia)
     abgerufenAm: 2026-09-02
-    felder: [abgrenzung]
+    felder: [abgrenzung, body:abgrenzung]
+    art: nachschlagewerk
+  - url: https://www.peggysuevintage.de/Informationen/Blog/Petticoat-Beratung/
+    titel: 12 Tipps für Ihren perfekten Petticoat-Look (Peggy Sue Vintage)
+    abgerufenAm: 2026-09-02
+    felder: [body:szene]
+    art: sonstige
+  - url: https://www.petticoatkleid.de/Petticoats-Tuell
+    titel: Petticoats Tüll — Staffelung nach Yard (Tanzkleid der 50er)
+    abgerufenAm: 2026-09-02
+    felder: [body:szene]
+    art: sonstige
+  - url: https://www.dance-fit.de/media/image/storage/opc/petticoat-pflegeanleitung.pdf
+    titel: Petticoat — Pflegeanleitung (Dance-Fit, Siegburg)
+    abgerufenAm: 2026-09-02
+    felder: [body:szene]
     art: sonstige
 ---
 
@@ -95,4 +116,70 @@ Ebenso ist ein Petticoat kein gewöhnlicher Unterrock. Der dient dem Erhalt der 
 
 ## Petticoat in der Vintage- und Rockabilly-Szene
 
-Längere Petticoats mit oft sehr vielen Stofflagen gehören heute zur Rockabilly- und Western-Szene und sind Teil der traditionellen Tanzkleidung beim Square Dance. Daneben haben sich kurze Varianten unter den Garderöcken von Tanzmariechen gehalten, die längste Variante als Bestandteil der Brautmode und eine etwa knielange in der aus Japan stammenden Lolita-Mode.
+In der Szene sind die längeren Varianten mit oft sehr vielen Lagen Stoff
+gemeint; sie gehören zur Rockabilly- und Western-Szene und sind Teil der
+traditionellen Tanzkleidung beim Square Dance. Wer einen kaufen will, stößt
+im Fachhandel auf zwei Maße, die nebeneinander stehen. Das eine ist die
+Lagenzahl — eine Lage ergibt mittleres Volumen, zwei Lagen einen
+voluminösen, drei Lagen einen extrem weiten Petticoat. Das andere ist die
+verarbeitete Stoffmenge in Yard, die aus dem Square Dance stammt: leicht
+sind rund 20 Yard, mittel 35 bis 40, voluminös 70 bis 80. Eine ideale Zahl
+gibt es nicht — sie richtet sich nach Rockform und Stoffgewicht. Ein
+leichter einlagiger Petticoat unter einem Kleid aus schwerem Stoff zeigt
+kaum Wirkung und wirkt dann wie ein gewöhnlicher Unterrock.
+
+Zwischen Alltag und Bühne trennt vor allem das Material. Für den Alltag
+gelten weiche Petticoats aus Polyestertüll als praktikabel; leichte,
+einlagige Modelle werden auch unter weiten Röcken im Büro getragen,
+voluminöse eher in der Freizeit und zu festlichen Anlässen. Steifer
+Nylontüll erzeugt mit wenigen Lagen viel Volumen und ist formstabil, kratzt
+aber, kann feine Strümpfe ruinieren und verträgt häufiges Waschen schlecht —
+er wird heute vor allem für Faschings- und Bühnenkostüme verwendet. Chiffon
+ist ebenfalls steif und besonders standfest und deshalb das Material der
+großen Square-Dance-Petticoats.
+
+Die Länge richtet sich nach dem Überrock: Der Petticoat sollte dieselbe
+Länge haben wie der Rock, gemessen ab der Unterkante des Taillenbunds. Ist
+er zu kurz, klappt der Rock an dieser Stelle um und bildet eine harte
+Kante. Im Handel üblich sind drei Standardlängen — 20 Zoll (50,8 cm)
+knielang, 23 Zoll (58 cm) knieumspielend, 26 Zoll (66 cm) wadenlang. Ob er
+sichtbar sein darf, ist eine Stilfrage mit historischem Hintergrund: Für
+einen zeitgetreuen Fünfziger-Look schließt der Petticoat mit dem Rocksaum
+ab, denn er war Unterwäsche. Im modernen Rockabilly-Look darf die unterste
+Rüsche darunter hervorblitzen — genau die Frage, über die 1958 öffentlich
+gestritten wurde.
+
+Beim Tanzen zeigt sich der Unterschied zum Reifrock am deutlichsten: Ein
+Petticoat hat kein Gestell, das eine Form erzwingt, sondern bewegt sich mit.
+Damit das funktioniert, muss der Rock darüber weit genug sein — ein zu
+voluminöser Petticoat unter einem zu wenig ausgestellten Rock kann sich
+nicht entfalten und steht steif ab. Ebenso wichtig ist der Sitz: Der Bund
+gehört in die natürliche Taille über den Hüftknochen. Hängt er auf der
+Hüfte, rutscht der Petticoat beim Laufen und Tanzen nach unten. Unter dem
+Petticoat werden meist rüschenverzierte Spitzenhöschen aus Baumwolle oder
+Kunstfaser getragen, die sogenannten Pettipants.
+
+Bei der Pflege gehen die Empfehlungen des Fachhandels auseinander, und zwar
+sichtbar entlang der Machart. Der Square-Dance-Ausstatter Dance-Fit rät, so
+selten wie möglich zu waschen — meist genüge Auslüften — und dann von Hand
+und ohne Zusätze. Peggy Sue Vintage wäscht seine weichen
+Polyestertüll-Modelle dagegen im Woll- oder Schonwaschgang, im
+Kopfkissenbezug oder Wäschenetz, damit der Petticoat nicht an der Trommel
+hängenbleibt. Einig sind sich beide in zwei Punkten: kein Weichspüler und
+kein Trockner. Zum Trocknen wird der Petticoat locker auf einen
+Wäscheständer gelegt oder auf links gedreht am Gummibund aufgehängt, nie auf
+die Heizung.
+
+Das Aufplustern ist Handarbeit und gehört vor jedes Tragen: Die einzelnen
+Lagen werden auseinandergezogen, damit sich das Material gegeneinander
+abdrückt und Volumen aufbaut. Verliert ein Petticoat mit den Jahren an
+Standfestigkeit, lässt sich mit Sprühstärke ein Teil davon wiederherstellen
+— ausdrücklich nur ein Teil. Beim Lagern widersprechen sich die beiden
+Häuser offen: Dance-Fit rät, den Petticoat weder gequetscht noch hängend
+aufzubewahren, sondern zusammengerafft in einem Baumwollbeutel, und
+keinesfalls in verschlossenen Plastikbeuteln, weil dort Stockflecken
+entstehen. Peggy Sue Vintage schreibt, die eigenen Modelle ließen sich ohne
+Volumenverlust klein zusammenquetschen, in ein Petticoatsäckchen, einen
+Turnbeutel oder einen Kopfkissenbezug, für längere Pausen auch in einen
+Vakuumbeutel. Wer ein bestimmtes Stück pflegt, folgt sinnvollerweise der
+Anleitung seines Herstellers.

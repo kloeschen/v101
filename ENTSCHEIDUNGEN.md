@@ -13,6 +13,88 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-02 — Belegkette: `alle` gestrichen, `felder` geprüft, `art` erweitert
+
+Drei Änderungen am Datenvertrag, in einem Zug, weil sie dieselbe Schwachstelle
+betreffen: Die Belegkette war bisher eine Behauptung, die niemand nachrechnete.
+
+**1. Der Sammelwert `alle` ist weg.** `belegpflicht` in
+`validate-content.ts` stieg bei `if (belegt.has("alle")) return []` sofort
+aus — eine einzige Quelle mit `felder: [alle]` schaltete die Prüfung für den
+gesamten Eintrag ab. Der allererste inhaltliche Eintrag des Registers hat
+genau das getan (Befund M0). Eine Hintertür, die sofort benutzt wird, ist
+keine Hintertür, sondern der Normalfall.
+
+Begründung für die Streichung statt einer Einschränkung: Die Abkürzung
+erspart genau die Arbeit, um die es geht. Wer eine Quelle Feld für Feld
+zuordnet, prüft dabei Feld für Feld — das ist der Zweck, nicht die
+Buchführung. Eine Quelle, die wirklich alles deckt, kann die Felder auch
+aufzählen.
+
+**2. Neue Regel `quellen-felder-gueltig`.** `alle` ist damit ein ungültiger
+Wert und braucht jemanden, der ihn abfängt. Gültig ist ein Wert in
+`quellen[].felder`, wenn er ein Feldname der jeweiligen Collection ist oder
+dem Muster `body:<abschnitt>` folgt. Fehler bei `status: veroeffentlicht`,
+sonst Warnung; `alle` bekommt einen eigenen Hinweistext.
+
+Das `body:`-Muster macht etwas explizit, das versehentlich entstanden war:
+Der Petticoat-Eintrag trug `aufbau`, `geschichte` und `gegenwart` in
+`felder` — Abschnitte im Fließtext, keine Frontmatter-Felder. Die Absicht
+war richtig, auch Aussagen im Text sollen belegt sein, aber nichts prüfte
+sie. Jetzt heißen sie `body:aufbau`, `body:geschichte`, `body:szene`.
+
+Die gültigen Feldnamen liest die Regel über
+`Object.keys(collectionSchemas[collection].shape)` aus dem Schema selbst.
+Eine zweite gepflegte Liste wäre nach dem ersten neuen Feld falsch gewesen.
+
+**3. `quelle.art` um `nachschlagewerk`, `museum` und `fachliteratur`
+erweitert.** Duden, DWDS und das Victoria and Albert Museum landeten bisher
+in derselben Kategorie wie ein beliebiger Blogeintrag: `sonstige`. Die
+Unterscheidung ist als Vorbereitung einer Gewichtung der Belegqualität
+gedacht, nicht als Kosmetik — etwa: belegpflichtige Felder eines
+veröffentlichten Eintrags brauchen mindestens einen Beleg oberhalb von
+`social`/`sonstige`. Dafür müssen die Kategorien schon jetzt in den Daten
+stehen; nachträglich lässt sich das über hunderte Einträge nicht
+rekonstruieren.
+
+**Verworfen:** `alle` beibehalten, aber nur akzeptieren, wenn ein Eintrag
+genau eine Quelle hat (die Empfehlung aus REVIEW.md). Das hätte die
+Sonderregel im Code gelassen und den Anreiz erhalten, Belege zu bündeln,
+statt sie zuzuordnen — und es hätte ausgerechnet den dünnsten Zustand
+privilegiert, den ein Eintrag haben kann: eine einzige Quelle für alles.
+Ebenfalls verworfen: `felder` auf ein `z.enum()` je Collection im Schema
+umzustellen. Das hätte die Prüfung in Zod gehoben und damit härter gemacht,
+aber die Abstufung Warnung/Fehler nach `status` gekostet, die im Entwurf
+gebraucht wird — und `body:<abschnitt>` ließe sich dort nicht offen halten.
+Ebenfalls verworfen: eine Kategorie `handel` für den spezialisierten
+Fachhandel. Die drei Shop-Quellen im Petticoat-Eintrag tragen deshalb
+weiterhin `sonstige`. Der Bedarf ist erkennbar, aber ein einzelner Eintrag
+ist zu wenig Evidenz für eine Vertragsänderung.
+
+**Fund mit Folgen, nebenbei:** Alle Änderungen dieser Sitzung — auch die an
+`_schemas.ts` — liefen über die Shell und haben deshalb keinen einzigen Hook
+ausgelöst. `settings.json` bindet `guard.mjs` mit `"matcher": "Write|Edit"`;
+ein `sed -i` erzeugt kein solches Tool-Input. Aufgefallen ist es bei
+Negativtest (c): `status: veroeffentlicht` ging per `sed` kommentarlos durch,
+obwohl genau dafür eine Sperre existiert. Das ist Lektion 15 aus der anderen
+Richtung — damals scheiterte der Hookstart, diesmal wird der Hook gar nicht
+erst aufgerufen. Als Befund M8 in `REVIEW.md`, samt Empfehlung. Bewusst
+nicht in dieser Sitzung behoben: `.claude/` ist für Agenten gesperrt, und
+eine Sperre gegen sich selbst zu reparieren ist die falsche Reihenfolge.
+
+**Negativtest (Lektion 7):** Vier Läufe von Hand am Petticoat-Eintrag.
+(a) `felder: [alle]` eingeschleust → `quellen-felder-gueltig` schlägt mit dem
+eigenen Hinweistext an. (b) Zusätzlich `herkunftsland: GB` gesetzt, also ein
+belegpflichtiges Feld ohne Deckung: `belegpflicht` meldet es jetzt — mit dem
+testweise wieder eingebauten Kurzschluss schwieg die Regel, der Unterschied
+ist damit belegt und nicht nur behauptet. (c) `status: veroeffentlicht` →
+aus Warnungen werden Fehler, Exitcode 1. (d) Ein erfundener `art`-Wert wird
+von Zod abgelehnt. Danach alles zurückgebaut. Auch diese Tests liefen von
+Hand — M00 (kein Testharnisch für `validate-content.ts`) bleibt offen und
+ist durch diese Sitzung teurer geworden, nicht billiger.
+
+---
+
 ## 2026-09-02 — Der erste Inhaltseintrag machte die CI rot
 
 **Fund:** Die Regel `interne-links` verlangt zwei verschiedene interne Links
