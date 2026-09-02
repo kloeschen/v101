@@ -397,8 +397,6 @@ export const lexikonSchema = basis
     /** Häufige Fehlannahme, die der Eintrag ausräumt. Starkes Zitationsformat. */
     abgrenzung: z.string().optional(),
 
-    testfeld: z.string().optional(),
-
     links: linksSchema.default({}),
   })
   .strict();

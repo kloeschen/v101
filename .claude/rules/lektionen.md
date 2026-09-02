@@ -144,3 +144,31 @@ drei andere Seiten.
 **Achtung:** Ein Versprechen im Schemakommentar ist keine Implementierung.
 Die Ableitung der Region aus der Location war dokumentiert, aber nicht
 gebaut — Events ohne explizites `region`-Feld waren regional unsichtbar.
+
+## 15. Hooks dürfen nicht vom Dateimodus abhängen
+
+Die drei Hooks lagen als `100644` im Git-Index — ohne Executable-Bit, und
+zwar bereits im Commit. `settings.json` rief sie direkt als Programm auf
+(`"command": ".../guard.sh"`). Auf einem frischen Klon endete das mit
+`Permission denied` und Exitcode 126.
+
+Ein Hook, dessen Start fehlschlägt, blockiert nichts. Er meldet sich auch
+nicht: Der Schreibzugriff läuft durch, als gäbe es die Sperre nicht. Damit
+waren gleichzeitig alle Sperren wirkungslos — `_schemas.ts`,
+`site.config.ts`, `.claude/`, `.github/` und die Statussperre gegen
+`status: veroeffentlicht`. Aufgefallen ist es nur, weil eine
+Schemaänderung, die hätte blockiert werden müssen, kommentarlos
+durchging und committet wurde.
+
+**Regel:** Hooks werden über ihren Interpreter aufgerufen, nie über den
+Dateimodus — `node ".../guard.mjs"`, `bash ".../validate-changed.sh"`.
+Dann trägt die Sperre über Klone, Übergabearchive und Dateisysteme ohne
+Modusbits hinweg. Das Executable-Bit im Index bleibt als zweite
+Sicherung, ist aber nicht die Grundlage.
+
+**Regel:** Der Negativtest gehört zur Einrichtung, nicht in die Zukunft.
+Wer einen Hook konfiguriert, weist in derselben Sitzung nach, dass er
+blockiert — mit einem echten Schreibversuch, der scheitern muss, und
+einem, der durchgehen muss. Ein Hook, der noch nie angeschlagen hat, ist
+eine Vermutung. Das ist Lektion 7, angewendet auf die Sperren selbst:
+Hier war sogar die Prüfung der Prüfung nie gelaufen.

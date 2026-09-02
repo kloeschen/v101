@@ -59,7 +59,7 @@ npm run archivieren   # vergangene Termine auf "stattgefunden" setzen
 npm run links:extern  # externe URLs prüfen
 ```
 
-## Die fünf Regeln, an denen dieses Projekt hängt
+## Die sechs Regeln, an denen dieses Projekt hängt
 
 Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 `.claude/rules/lektionen.md`. **Vor größeren Änderungen dort nachlesen.**
@@ -73,6 +73,8 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 4. **Jede neue Regel braucht einen Negativtest.** Eine Prüfung, die nie
    angeschlagen hat, ist unbewiesen.
 5. **Kein Fakt ohne Quelle.** Unbekannt heißt Feld weglassen, nicht schätzen.
+6. **Sperren müssen bewiesen sein.** Ein Hook, der noch nie blockiert hat,
+   ist wirkungslos, bis das Gegenteil gezeigt wurde — und er scheitert still.
 
 ## Orientierung
 
