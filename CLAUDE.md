@@ -50,6 +50,9 @@ npm run verify
 
 Prüft Typen, Zeitzonenkonvention, Inhalte, JSON-LD, alle Tests und den Build.
 
+Architekturentscheidungen, geänderte Regeln und Funde mit Folgen gehören
+als Eintrag in `ENTSCHEIDUNGEN.md` — neueste oben.
+
 ## Wichtige Befehle
 
 ```
@@ -83,6 +86,7 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 - Architektur, Verträge und Begründungen: `README.md`
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
 - Bekannte offene Punkte: `REVIEW.md`
+- Warum etwas so ist, samt verworfener Alternativen: `ENTSCHEIDUNGEN.md`
 - Lektionen aus dem Aufbau: `.claude/rules/lektionen.md`
 - Arbeitsteilung Cloud/Rechner/CI: `ARBEITSWEISE.md`
 

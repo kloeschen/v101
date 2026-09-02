@@ -18,11 +18,12 @@
     "archivieren": "tsx scripts/archive-events.ts",
     "stale": "tsx scripts/stale-report.ts",
     "links:extern": "tsx scripts/check-links.ts",
-    "test": "npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink",
+    "test": "npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink && npm run test:hooks",
     "test:links": "tsx scripts/test-links.ts",
     "test:facetten": "tsx scripts/test-facetten.ts",
     "test:feeds": "tsx scripts/test-feeds.ts",
     "test:autolink": "tsx scripts/test-sync-autolinks.ts",
+    "test:hooks": "tsx scripts/test-hooks.ts",
     "verify": "npm run check && npm run check:zeit && npm run validate && npm run jsonld && npm run test && npm run build"
   },
   "dependencies": {

@@ -17,5 +17,12 @@ esac
 
 [ -f "$DATEI" ] || exit 0
 
-npx tsx scripts/validate-content.ts --changed "$DATEI" || exit 2
-npx tsx scripts/check-jsonld.ts    --changed "$DATEI" || exit 2
+# Die Umleitung nach stderr steht hier und nicht in den Skripten: Claude Code
+# wertet bei einem blockierenden Hook (Exit 2) ausschliesslich stderr aus.
+# Ohne >&2 landet die Befundliste auf stdout, der Agent bekommt nur ein
+# nacktes "No stderr output" und weiss nicht, was er falsch gemacht hat --
+# damit ist der Zweck des Hooks verfehlt. In den Skripten selbst waere stdout
+# richtig: Sie laufen auch interaktiv und in der CI, wo Befunde auf stdout
+# gehoeren und stderr echten Fehlern vorbehalten bleibt.
+npx tsx scripts/validate-content.ts --changed "$DATEI" >&2 || exit 2
+npx tsx scripts/check-jsonld.ts    --changed "$DATEI" >&2 || exit 2
