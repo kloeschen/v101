@@ -13,6 +13,37 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-02 — Der erste Inhaltseintrag machte die CI rot
+
+**Fund:** Die Regel `interne-links` verlangt zwei verschiedene interne Links
+je Eintrag. Die CI ruft `validate-content.ts --strict`, dort zählt jede
+Warnung als Fehler. Der erste echte Eintrag im Register — „Petticoat" —
+konnte diese Zahl nicht erfüllen, weil es außer ihm nichts zu verlinken
+gab: Die Golden Examples sind über `!**/_*.md` ausgeschlossen. Rot war die
+CI schon vor dieser Sitzung, seit dem Commit, der den Eintrag anlegte. Das
+ist wörtlich Lektion 4: Ein roter Lauf muss einen echten Fehler bedeuten,
+und hier war nichts kaputt.
+
+**Entscheidung:** Die Mindestzahl gilt nur, soweit das Register überhaupt
+Ziele hergibt — `min(soll, verfügbare Ziele)`, der eigene Eintrag zählt
+nicht mit. Sinkt die Zahl, sagt ein einmaliger Hinweis auf stdout, warum.
+Dasselbe Muster nutzt `test-links.ts` bereits für den leeren Zustand.
+
+**Verworfen:** Zwei Füll-Links auf `/lexikon/` und `/daten/` in den Eintrag
+schreiben. Die hätten den Zähler bedient, ohne eine einzige semantische
+Verbindung herzustellen — genau das, wogegen die Regel existiert. Ebenfalls
+verworfen: die Warnung in der CI dulden. Eine Warnung, die im Normalzustand
+immer steht, wird nach zwei Wochen nicht mehr gelesen.
+
+**Negativtest (Lektion 7):** Mit einem zweiten Lexikoneintrag im Register
+sinkt die Mindestzahl auf 1, und die Regel schlägt für „Petticoat"
+weiterhin an („Nur 0 verschiedene interne Links (Ziel: 1)"). Danach
+zurückgebaut. Der Test lief von Hand — für `validate-content.ts` gibt es
+keinen Testharnisch, in dem er dauerhaft stehen könnte. Als Befund in
+`REVIEW.md`.
+
+---
+
 ## 2026-09-02 — `felder: [alle]` hebelt die Belegpflicht aus
 
 **Fund:** Der Lexikoneintrag „Petticoat" war im Lauf davor ohne einen

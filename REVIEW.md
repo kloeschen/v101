@@ -112,6 +112,17 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ## 3. Mittlere Befunde — offen, mit Empfehlung
 
+**M00 · `validate-content.ts` hat keinen Testharnisch.**
+`npm run test` deckt Links, Facetten, Feeds, Autolink und Hooks ab — die
+Regelsammlung des Inhaltsvalidators nicht, obwohl dort inzwischen über
+zwanzig Regeln stehen und sie die schärfsten des Projekts sind. Negativtests
+nach Lektion 7 laufen deshalb von Hand und hinterlassen keine Spur; die
+Prüfung der Prüfung existiert nicht. Zuletzt aufgefallen bei der Anpassung
+von `interne-links` an den leeren Registerzustand. Empfehlung:
+`scripts/test-validate.ts` nach dem Muster von `test-hooks.ts` — Regel,
+absichtlich kaputter Eintrag, erwarteter Befund — und in `npm run test`
+aufnehmen.
+
 **M0 · `felder: [alle]` schaltet die Belegpflicht komplett ab.**
 `belegpflicht` in `validate-content.ts` steigt bei `if (belegt.has("alle"))
 return []` sofort aus. Eine einzige Quelle mit `felder: [alle]` genügt also,
