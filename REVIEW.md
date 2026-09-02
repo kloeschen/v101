@@ -112,6 +112,19 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ## 3. Mittlere Befunde — offen, mit Empfehlung
 
+**M0 · `felder: [alle]` schaltet die Belegpflicht komplett ab.**
+`belegpflicht` in `validate-content.ts` steigt bei `if (belegt.has("alle"))
+return []` sofort aus. Eine einzige Quelle mit `felder: [alle]` genügt also,
+damit kein einziges belegpflichtiges Feld mehr geprüft wird — und `[alle]`
+ist die Angabe, die ein Recherche-Agent schreibt, wenn er die Zuordnung
+nicht leisten kann. Nachgewiesen am Lexikoneintrag „Petticoat", der mit
+`[alle]` durch alle Prüfungen lief und dessen Quellen die Behauptungen
+teilweise nicht deckten. Empfehlung: `[alle]` nur noch akzeptieren, wenn der
+Eintrag genau eine Quelle hat, oder ganz streichen und die Felder immer
+einzeln verlangen. Zusätzlich denkbar: `[alle]` bei `status:
+veroeffentlicht` als Fehler werten. Vor der Umsetzung Negativtest nach
+Lektion 7 — die Regel hat bisher nie angeschlagen.
+
 **M1 · `sync-autolinks` ersetzt den Body über einen fragilen Index.**
 `roh.indexOf(parsed.content, …)` funktioniert, kippt aber bei leerem Body
 (`indexOf("")` liefert die Suchposition) und theoretisch, wenn der

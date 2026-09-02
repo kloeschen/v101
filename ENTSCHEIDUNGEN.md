@@ -13,6 +13,42 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-02 — `felder: [alle]` hebelt die Belegpflicht aus
+
+**Fund:** Der Lexikoneintrag „Petticoat" war im Lauf davor ohne einen
+einzigen direkten Seitenabruf entstanden — die beiden Wikipedia-Quellen
+stammten aus Suchtreffern, nicht aus geöffneten Seiten. Beim Nachprüfen
+hielt der Kern stand, aber drei Materialangaben (Taft, Rosshaargewebe,
+Baumwolle/Seide) standen in keiner der genannten Quellen, und die
+Geschichtspassage beruhte auf einer Fehllesung der englischen Wikipedia:
+„bedgown" (Arbeitsjacke) war als „Nachtgewand" gelesen und der Petticoat
+damit zum Unterwäschestück des 16. Jahrhunderts erklärt worden. Belegt ist
+das Gegenteil — historisch war er sichtbarer Oberrock, und das *Wort* kam
+laut Pfeifer/DWDS erst im 20. Jahrhundert ins Deutsche.
+
+**Fund mit Folgen:** Beide Quellen trugen `felder: [alle]`. Die
+`belegpflicht`-Regel in `validate-content.ts` steigt bei `alle` sofort aus
+(`if (belegt.has("alle")) return []`). Ein Eintrag, dessen Quellen `[alle]`
+behaupten, ist damit ungeprüft — und `[alle]` ist genau das, was ein Modell
+schreibt, das die Zuordnung nicht leisten will oder kann. Die schärfste
+Regel des Projekts hat einen Generalschlüssel.
+
+**Entscheidung:** Für diesen Eintrag `felder` je Quelle einzeln geführt,
+inklusive der Textabschnitte (`aufbau`, `geschichte`, `gegenwart`). `[alle]`
+wird hier nicht mehr verwendet.
+
+**Offen, bewusst nicht mitgemacht:** Ob `[alle]` im Validator eingeschränkt
+oder abgeschafft wird, ist eine Vertragsfrage und keine Nebenwirkung einer
+Inhaltsprüfung. Steht als Befund in `REVIEW.md`.
+
+**Nebenbefund:** Die deutsche Wikipedia führt zu „Petticoat" *keinen einzigen
+Einzelnachweis*, nur einen Commons-Link. Sie taugt als Einstieg, nicht als
+Beleg. Tragende Fakten stehen jetzt zusätzlich auf Duden, DWDS (Pfeifer),
+einem Museumsobjekt (Freilichtmuseum Roscheider Hof über museum-digital) und
+dem V&A.
+
+---
+
 ## 2026-09-02 — Hook-Befunde erreichten das Modell nicht
 
 **Fund:** Der PostToolUse-Hook blockierte schemawidrige Inhalte korrekt mit
