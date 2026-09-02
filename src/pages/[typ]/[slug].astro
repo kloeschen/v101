@@ -39,19 +39,19 @@ const listen: { titel: string; eintraege: any[] }[] = [];
 
 if (typ === "bands") {
   const { kommend, vergangen } = auftritte(registry, eintrag.id);
-  if (kommend.length) listen.push({ titel: "Kommende Auftritte", eintraege: kommend.map((a) => a.event) });
-  if (vergangen.length) listen.push({ titel: "Frühere Auftritte", eintraege: vergangen.map((a) => a.event) });
+  if (kommend.length) listen.push({ titel: `Kommende Auftritte von ${daten.name}`, eintraege: kommend.map((a) => a.event) });
+  if (vergangen.length) listen.push({ titel: `Frühere Auftritte von ${daten.name}`, eintraege: vergangen.map((a) => a.event) });
 }
 
 if (typ === "regionen") {
   for (const [collection, eintraege] of inRegion(registry, eintrag.id)) {
-    listen.push({ titel: `${SAMMLUNGSNAME[collection]} in der Region`, eintraege });
+    listen.push({ titel: `${SAMMLUNGSNAME[collection]} in ${daten.name}`, eintraege });
   }
 }
 
 if (typ === "events") {
   const bands = aufloesenViele(registry, "bands", daten.lineupBands ?? []);
-  if (bands.length) listen.push({ titel: "Bands mit eigenem Profil", eintraege: bands });
+  if (bands.length) listen.push({ titel: `Bands im Line-up von ${daten.name}`, eintraege: bands });
 }
 ---
 <EntitaetsLayout collection={typ} slug={eintrag.id} daten={daten} registry={registry} listen={listen}>

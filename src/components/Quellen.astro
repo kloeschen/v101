@@ -17,7 +17,7 @@ const datum = new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeZone: si
 ---
 <footer class="belege">
   <p class="belege__stand">
-    Zuletzt geprüft am <time datetime={geprueftAm.toISOString().slice(0, 10)}>{datum.format(geprueftAm)}</time>
+    Zuletzt redaktionell geprüft am <time datetime={geprueftAm.toISOString().slice(0, 10)}>{datum.format(geprueftAm)}</time>
     {autor && <> von <span class="belege__autor">{autor}</span></>}
   </p>
   {quellen.length > 0 && (

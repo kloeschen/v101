@@ -266,7 +266,7 @@ export const regionBuilder: Builder = {
 export const lexikonBuilder: Builder = {
   verwendeteFelder: [
     "name", "definition", "kategorie", "bezeichnungDe", "bezeichnungEn",
-    "verwandt", "uebergeordnet", "links",
+    "verwandt", "uebergeordnet", "abgrenzung", "links",
   ],
 
   entitaet(d, slug) {
@@ -278,6 +278,9 @@ export const lexikonBuilder: Builder = {
         (x: string | undefined) => x && x !== d.name,
       ),
       description: d.definition,
+      // Die Abgrenzung ist der Baustein gegen Entitätsverwechslung;
+      // disambiguatingDescription ist genau dafür da.
+      disambiguatingDescription: d.abgrenzung,
       termCode: slug,
       url: seitenUrl("lexikon", slug),
       inDefinedTermSet: { "@id": siteIds.lexikonSet },

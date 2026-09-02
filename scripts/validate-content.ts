@@ -431,6 +431,98 @@ const REGELN: Regel[] = [
     },
   },
 
+  /* --- Lexikon: Grounding-Page-Bausteine ---------------------------
+   *
+   * Umgesetzt nach dem Grounding Page Standard v1.6 (groundingpage.com).
+   * Kein Normungsstandard, sondern ein Ordnungsrahmen — übernommen, weil
+   * die Substanz trägt und sich weitgehend mit dem deckt, was ohnehin gilt.
+   * Vier Bausteine gehen über unsere bisherigen Regeln hinaus.
+   */
+
+  {
+    code: "gp-lead",
+    collections: ["lexikon"],
+    auchOhneSchema: true,
+    pruefe(e) {
+      const lead = ersterAbsatz(e.body);
+      if (!lead) return [];
+      const b: Befund[] = [];
+      const saetze = nurText(lead).split(/(?<=[.!?])\s+/).filter((x) => x.trim().length > 15);
+      // Definition, Einordnung, Zuordnung — mindestens zwei davon sichtbar.
+      if (saetze.length < 2) {
+        b.push({
+          ebene: "warnung",
+          code: "",
+          nachricht: "Lead hat nur einen Satz. Der Standard sieht Definition, Einordnung und Abgrenzung vor — mindestens Definition plus Einordnung.",
+        });
+      }
+      return b;
+    },
+  },
+
+  {
+    code: "gp-erstsatz-nennt-begriff",
+    collections: ["lexikon"],
+    auchOhneSchema: true,
+    pruefe(e) {
+      const satz = ersterSatz(ersterAbsatz(e.body));
+      if (!satz) return [];
+      const namen = [String(e.roh.name ?? ""), ...alsArray(e.roh.aliases)].filter(Boolean);
+      const trifft = namen.some((n) => normalisiere(satz).includes(normalisiere(n)));
+      return trifft
+        ? []
+        : [{
+            ebene: "fehler",
+            code: "",
+            nachricht: `Der erste Satz nennt den Begriff nicht. Muster: "${e.roh.name} ist ein/e …" — isoliert extrahiert wäre der Satz sonst nicht zuzuordnen.`,
+          }];
+    },
+  },
+
+  {
+    code: "gp-h2-nennt-begriff",
+    collections: ["lexikon"],
+    auchOhneSchema: true,
+    pruefe(e) {
+      const namen = [String(e.roh.name ?? ""), ...alsArray(e.roh.aliases)]
+        .filter(Boolean)
+        .map(normalisiere);
+      const ohne: string[] = [];
+      let imCodeblock = false;
+      for (const z of e.body.split("\n")) {
+        if (/^\s{0,3}```/.test(z)) { imCodeblock = !imCodeblock; continue; }
+        if (imCodeblock) continue;
+        const m = z.match(/^\s{0,3}##\s+(.*)$/);
+        if (!m) continue;
+        const titel = m[1].trim();
+        if (!namen.some((n) => normalisiere(titel).includes(n))) ohne.push(titel);
+      }
+      if (ohne.length === 0) return [];
+      // Ein Abschnitt wird einzeln extrahiert; ohne den Begriff in der
+      // Überschrift verliert er seine Zuordnung.
+      return [{
+        ebene: e.roh.status === "veroeffentlicht" ? "fehler" : "warnung",
+        code: "",
+        nachricht: `H2 ohne Begriffsnamen: ${ohne.map((t) => `"${t}"`).join(", ")}. Isoliert extrahiert fehlt die Zuordnung — z. B. "Merkmale von ${e.roh.name}".`,
+      }];
+    },
+  },
+
+  {
+    code: "gp-abgrenzung",
+    collections: ["lexikon"],
+    pruefe(e) {
+      if (!e.daten) return [];
+      if (e.daten.abgrenzung) return [];
+      return [{
+        ebene: e.daten.status === "veroeffentlicht" ? "fehler" : "warnung",
+        code: "",
+        feld: "abgrenzung",
+        nachricht: "Keine Abgrenzung. Wovon wird der Begriff häufig verwechselt? Falsche Zuordnung ist die häufigste Fehlerquelle bei Entitäten, nicht fehlende Fakten.",
+      }];
+    },
+  },
+
   {
     code: "lexikon-definition",
     collections: ["lexikon"],

@@ -24,6 +24,24 @@ mit Frontmatter in `src/content/`, geprüft gegen `src/content/_schemas.ts`.
 - **Bands aus Line-ups nicht nebenbei anlegen.** Ohne eigene Seite gehören
   sie in `lineupWeitere`; ob eine Bandseite entsteht, entscheidet der Mensch.
 
+## Lexikoneinträge: Grounding-Page-Bausteine
+
+Lexikoneinträge folgen dem Grounding Page Standard v1.6
+(groundingpage.com/spec/de/). Vier Regeln werden vom Validator erzwungen:
+
+1. **Der erste Satz nennt den Begriff** — Muster: „Rockabilly ist ein/e …".
+   Isoliert extrahiert wäre er sonst nicht zuzuordnen.
+2. **Der Lead hat mindestens zwei Sätze**: Definition und Einordnung,
+   idealerweise plus Abgrenzung.
+3. **Jede H2 trägt den Begriffsnamen** — „Merkmale von Rockabilly", nicht
+   „Merkmale". Abschnitte werden einzeln extrahiert und verlieren sonst
+   ihre Zuordnung.
+4. **`abgrenzung` ist Pflicht vor Veröffentlichung** — wovon wird der
+   Begriff häufig verwechselt? Falsche Zuordnung ist die häufigste
+   Fehlerquelle bei Entitäten, nicht fehlende Fakten.
+
+Vorlage: `src/content/lexikon/_golden-example.md`.
+
 ## Vor jedem Commit
 
 ```
@@ -41,6 +59,21 @@ npm run archivieren   # vergangene Termine auf "stattgefunden" setzen
 npm run links:extern  # externe URLs prüfen
 ```
 
+## Die fünf Regeln, an denen dieses Projekt hängt
+
+Ausführlich mit den Fehlern, aus denen sie entstanden sind:
+`.claude/rules/lektionen.md`. **Vor größeren Änderungen dort nachlesen.**
+
+1. **Datumswerte nie ohne explizite Zeitzone** verarbeiten. Viermal
+   passiert. `npm run check:zeit` erzwingt es.
+2. **`import.meta` koppelt an Vite** und zerlegt jedes Node-Skript. Module,
+   die beide Laufzeiten bedienen, brauchen eine Zugriffshilfe.
+3. **Regeln, die zählen, gehören in Code.** Validator, Hook oder CI-Schritt —
+   nicht in Prosa.
+4. **Jede neue Regel braucht einen Negativtest.** Eine Prüfung, die nie
+   angeschlagen hat, ist unbewiesen.
+5. **Kein Fakt ohne Quelle.** Unbekannt heißt Feld weglassen, nicht schätzen.
+
 ## Orientierung
 
 - Golden Examples: `src/content/*/_golden-example.md` — daran orientieren,
@@ -48,6 +81,8 @@ npm run links:extern  # externe URLs prüfen
 - Architektur, Verträge und Begründungen: `README.md`
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
 - Bekannte offene Punkte: `REVIEW.md`
+- Lektionen aus dem Aufbau: `.claude/rules/lektionen.md`
+- Arbeitsteilung Cloud/Rechner/CI: `ARBEITSWEISE.md`
 
 ## Was hier nicht passiert
 

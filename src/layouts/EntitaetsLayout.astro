@@ -57,7 +57,10 @@ const entwurf = daten.status !== "veroeffentlicht";
 
     {listen.map((l) => <EintragsListe titel={l.titel} eintraege={l.eintraege} />)}
 
-    <EintragsListe titel="Verwandtes" eintraege={verwandt} />
+    {/* Der Entitätsname gehört auch in die vom Layout erzeugten
+        Überschriften: Ein Abschnitt kann isoliert extrahiert werden, und
+        "Verwandtes" allein trägt dann keine Zuordnung mehr. */}
+    <EintragsListe titel={`Verwandt mit ${daten.name}`} eintraege={verwandt} />
 
     <Quellen quellen={daten.quellen ?? []} geprueftAm={daten.geprueftAm} autor={daten.autor} />
   </article>
