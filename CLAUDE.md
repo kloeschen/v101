@@ -50,6 +50,9 @@ npm run verify
 
 Prüft Typen, Zeitzonenkonvention, Inhalte, JSON-LD, alle Tests und den Build.
 
+Architekturentscheidungen, geänderte Regeln und Funde mit Folgen gehören
+als Eintrag in `ENTSCHEIDUNGEN.md` — neueste oben.
+
 ## Wichtige Befehle
 
 ```
@@ -59,7 +62,7 @@ npm run archivieren   # vergangene Termine auf "stattgefunden" setzen
 npm run links:extern  # externe URLs prüfen
 ```
 
-## Die fünf Regeln, an denen dieses Projekt hängt
+## Die sechs Regeln, an denen dieses Projekt hängt
 
 Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 `.claude/rules/lektionen.md`. **Vor größeren Änderungen dort nachlesen.**
@@ -73,6 +76,8 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 4. **Jede neue Regel braucht einen Negativtest.** Eine Prüfung, die nie
    angeschlagen hat, ist unbewiesen.
 5. **Kein Fakt ohne Quelle.** Unbekannt heißt Feld weglassen, nicht schätzen.
+6. **Sperren müssen bewiesen sein.** Ein Hook, der noch nie blockiert hat,
+   ist wirkungslos, bis das Gegenteil gezeigt wurde — und er scheitert still.
 
 ## Orientierung
 
@@ -81,6 +86,7 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 - Architektur, Verträge und Begründungen: `README.md`
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
 - Bekannte offene Punkte: `REVIEW.md`
+- Warum etwas so ist, samt verworfener Alternativen: `ENTSCHEIDUNGEN.md`
 - Lektionen aus dem Aufbau: `.claude/rules/lektionen.md`
 - Arbeitsteilung Cloud/Rechner/CI: `ARBEITSWEISE.md`
 
