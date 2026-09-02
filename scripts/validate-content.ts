@@ -67,6 +67,27 @@ interface Regel {
 /* Hilfsfunktionen                                                     */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Lektion 4: Der leere Zustand bekommt einen sichtbaren Hinweis, keinen
+ * roten Lauf. Einmal pro Prozess — sonst steht die Zeile hinter jedem
+ * Eintrag und niemand liest sie noch.
+ */
+let linkzieleGemeldet = false;
+function meldeLinkzieleKnapp(verfuegbar: number, soll: number): void {
+  if (linkzieleGemeldet) return;
+  linkzieleGemeldet = true;
+  console.log(
+    `Hinweis: Das Register bietet ${verfuegbar} verlinkbare(s) Ziel(e). ` +
+      `Die Mindestzahl interner Links (${soll}) wird entsprechend gesenkt, ` +
+      `solange nicht genug Einträge existieren.`,
+  );
+}
+
+/** Nur für Tests: den Einmal-Hinweis zurücksetzen. */
+export function _resetLinkzielHinweis(): void {
+  linkzieleGemeldet = false;
+}
+
 /** Markdown grob entfernen, um Wörter zu zählen. */
 function nurText(md: string): string {
   return md
@@ -348,8 +369,21 @@ const REGELN: Regel[] = [
       // Eindeutige Ziele zählen, nicht Vorkommen: Dreimal derselbe Link ist
       // eine Verbindung, keine drei (Review-Befund M3).
       const eindeutig = new Set(pfade).size;
-      const minLinks = e.collection === "artikel" ? 5 : 2;
-      if (eindeutig < minLinks) {
+
+      // Lektion 4: Die Mindestzahl gilt nur, soweit es überhaupt etwas zu
+      // verlinken gibt. Auf einem frischen Register hat der erste Eintrag
+      // keine Ziele — er wäre unter --strict rot, ohne dass etwas kaputt
+      // ist. Der eigene Eintrag zählt nicht als Ziel; ein Selbstlink ist
+      // keine Verbindung.
+      let verfuegbar = 0;
+      for (const [coll, menge] of ctx.slugs) {
+        verfuegbar += coll === e.collection ? Math.max(0, menge.size - 1) : menge.size;
+      }
+      const soll = e.collection === "artikel" ? 5 : 2;
+      const minLinks = Math.min(soll, verfuegbar);
+
+      if (minLinks < soll) meldeLinkzieleKnapp(verfuegbar, soll);
+      if (minLinks > 0 && eindeutig < minLinks) {
         b.push({ ebene: "warnung", code: "", nachricht: `Nur ${eindeutig} verschiedene interne Links (Ziel: ${minLinks}). Semantische Verlinkung ist der Hauptzweck dieser Seite.` });
       }
       return b;

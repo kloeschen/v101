@@ -112,6 +112,30 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ## 3. Mittlere Befunde — offen, mit Empfehlung
 
+**M00 · `validate-content.ts` hat keinen Testharnisch.**
+`npm run test` deckt Links, Facetten, Feeds, Autolink und Hooks ab — die
+Regelsammlung des Inhaltsvalidators nicht, obwohl dort inzwischen über
+zwanzig Regeln stehen und sie die schärfsten des Projekts sind. Negativtests
+nach Lektion 7 laufen deshalb von Hand und hinterlassen keine Spur; die
+Prüfung der Prüfung existiert nicht. Zuletzt aufgefallen bei der Anpassung
+von `interne-links` an den leeren Registerzustand. Empfehlung:
+`scripts/test-validate.ts` nach dem Muster von `test-hooks.ts` — Regel,
+absichtlich kaputter Eintrag, erwarteter Befund — und in `npm run test`
+aufnehmen.
+
+**M0 · `felder: [alle]` schaltet die Belegpflicht komplett ab.**
+`belegpflicht` in `validate-content.ts` steigt bei `if (belegt.has("alle"))
+return []` sofort aus. Eine einzige Quelle mit `felder: [alle]` genügt also,
+damit kein einziges belegpflichtiges Feld mehr geprüft wird — und `[alle]`
+ist die Angabe, die ein Recherche-Agent schreibt, wenn er die Zuordnung
+nicht leisten kann. Nachgewiesen am Lexikoneintrag „Petticoat", der mit
+`[alle]` durch alle Prüfungen lief und dessen Quellen die Behauptungen
+teilweise nicht deckten. Empfehlung: `[alle]` nur noch akzeptieren, wenn der
+Eintrag genau eine Quelle hat, oder ganz streichen und die Felder immer
+einzeln verlangen. Zusätzlich denkbar: `[alle]` bei `status:
+veroeffentlicht` als Fehler werten. Vor der Umsetzung Negativtest nach
+Lektion 7 — die Regel hat bisher nie angeschlagen.
+
 **M1 · `sync-autolinks` ersetzt den Body über einen fragilen Index.**
 `roh.indexOf(parsed.content, …)` funktioniert, kippt aber bei leerem Body
 (`indexOf("")` liefert die Suchposition) und theoretisch, wenn der
