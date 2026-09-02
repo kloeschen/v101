@@ -110,7 +110,7 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ---
 
-## 3. Mittlere Befunde — offen, mit Empfehlung
+## 3. Mittlere Befunde — mit Empfehlung (M0 erledigt, Rest offen)
 
 **M00 · `validate-content.ts` hat keinen Testharnisch.**
 `npm run test` deckt Links, Facetten, Feeds, Autolink und Hooks ab — die
@@ -123,7 +123,17 @@ von `interne-links` an den leeren Registerzustand. Empfehlung:
 absichtlich kaputter Eintrag, erwarteter Befund — und in `npm run test`
 aufnehmen.
 
-**M0 · `felder: [alle]` schaltet die Belegpflicht komplett ab.**
+**M0 · `felder: [alle]` schaltet die Belegpflicht komplett ab.** — **erledigt
+am 2026-09-02.** `alle` ist ersatzlos gestrichen: Der Kurzschluss
+`if (belegt.has("alle")) return []` ist aus `belegpflicht` entfernt, und die
+neue Regel `quellen-felder-gueltig` erklärt den Wert für ungültig. Gültig ist
+in `quellen[].felder` nur noch ein Feldname der jeweiligen Collection (aus
+dem Schema gelesen, nicht als zweite Liste gepflegt) oder das Muster
+`body:<abschnitt>` für Aussagen im Fließtext. Fehler bei `status:
+veroeffentlicht`, sonst Warnung. Der Petticoat-Eintrag ist nachgezogen.
+Negativtest nach Lektion 7 durchgeführt und in `ENTSCHEIDUNGEN.md`
+protokolliert — inklusive des Nachweises, dass `belegpflicht` mit dem
+Kurzschluss schwieg und ohne ihn anschlägt. Der ursprüngliche Befund:
 `belegpflicht` in `validate-content.ts` steigt bei `if (belegt.has("alle"))
 return []` sofort aus. Eine einzige Quelle mit `felder: [alle]` genügt also,
 damit kein einziges belegpflichtiges Feld mehr geprüft wird — und `[alle]`
@@ -135,6 +145,33 @@ Eintrag genau eine Quelle hat, oder ganz streichen und die Felder immer
 einzeln verlangen. Zusätzlich denkbar: `[alle]` bei `status:
 veroeffentlicht` als Fehler werten. Vor der Umsetzung Negativtest nach
 Lektion 7 — die Regel hat bisher nie angeschlagen.
+
+**M8 · Die Hook-Sperren greifen nur bei `Write`/`Edit`, nicht bei Bash.**
+`settings.json` bindet `guard.mjs` mit `"matcher": "Write|Edit"`, und der
+Hook liest ausschließlich `tool_input.file_path` und `tool_input.content`.
+Ein Schreibzugriff über die Shell — `sed -i`, ein Python-Einzeiler, ein
+Heredoc — erzeugt kein solches Tool-Input und läuft an allen fünf Sperren
+vorbei: `_schemas.ts`, `site.config.ts`, `.claude/`, `.github/` und der
+Statussperre gegen `status: veroeffentlicht`. Auch der PostToolUse-Validator
+(`validate-changed.sh`) hat denselben Matcher und läuft dann nicht mit.
+**Nachweis:** In der Sitzung vom 2026-09-02 wurde `status: veroeffentlicht`
+per `sed -i` in `src/content/lexikon/petticoat.md` gesetzt (als Negativtest
+für die Belegregeln) — kein Hook meldete sich, der Schreibzugriff ging
+kommentarlos durch. Dieselbe Sitzung änderte `_schemas.ts` über Python,
+ebenfalls ohne Auslösen der Sperre; die menschliche Freigabe dafür lag zwar
+vor, der Hook hat sie aber nicht geprüft, weil er gar nicht lief.
+Das ist Lektion 15 ein zweites Mal, aus einer anderen Richtung: Damals
+scheiterte der Start der Hooks, diesmal werden sie schlicht nicht
+aufgerufen. Eine Sperre, die einen Schreibweg abdeckt und den zweiten offen
+lässt, ist keine Sperre, sondern eine Konvention — und Agenten, die
+angewiesen sind, bevorzugt über die Shell zu arbeiten, nehmen zwangsläufig
+den offenen Weg. Empfehlung: `Bash` in den Matcher aufnehmen und im Hook
+zusätzlich `tool_input.command` auswerten (Dateipfade und
+`status: veroeffentlicht` im Kommandotext erkennen), oder — robuster, weil
+unabhängig vom Kommandotext — die Sperren zusätzlich als
+`pre-commit`-Prüfung und als CI-Schritt führen, der die geschützten Pfade
+im Diff gegen die Basis prüft. Vorher der Negativtest nach Lektion 7 für
+beide Schreibwege, mit einem Versuch, der scheitern muss.
 
 **M1 · `sync-autolinks` ersetzt den Body über einen fragilen Index.**
 `roh.indexOf(parsed.content, …)` funktioniert, kippt aber bei leerem Body

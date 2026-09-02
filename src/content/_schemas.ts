@@ -32,8 +32,20 @@ export const isoDate = z.coerce.date();
 
 /**
  * Belegkette. Jeder recherchierte Fakt muss durch mindestens eine Quelle
- * gedeckt sein. `felder` listet die Frontmatter-Felder, die diese Quelle
- * belegt; `["alle"]` deckt den kompletten Eintrag ab.
+ * gedeckt sein.
+ *
+ * `felder` listet, was diese Quelle belegt. Gültig ist genau zweierlei:
+ * ein Feldname der jeweiligen Collection, oder `body:<abschnitt>` für eine
+ * Aussage im Fließtext (Kleinbuchstaben, keine Umlaute, z. B.
+ * `body:geschichte`). Geprüft wird das von der Regel
+ * `quellen-felder-gueltig` in `scripts/validate-content.ts`, die die
+ * gültigen Feldnamen aus dem Schema selbst liest.
+ *
+ * Einen Sammelwert gibt es bewusst nicht mehr. `["alle"]` galt früher als
+ * "deckt den kompletten Eintrag ab" und schaltete die Belegpflicht damit
+ * vollständig ab — der erste Inhaltseintrag des Registers hat genau das
+ * getan. Die Abkürzung erspart die Arbeit, um die es geht: Wer eine Quelle
+ * Feld für Feld zuordnet, prüft dabei Feld für Feld.
  */
 export const quelle = z
   .object({
@@ -41,8 +53,35 @@ export const quelle = z
     titel: z.string().min(3).optional(),
     abgerufenAm: isoDate,
     felder: z.array(z.string().min(1)).min(1),
+    /**
+     * Art der Quelle. Die Unterscheidung ist nicht Kosmetik, sondern die
+     * Vorbereitung einer Gewichtung der Belegqualität: Ein Wörterbuch- oder
+     * Museumsbeleg trägt anders als ein Blogeintrag, und der Validator soll
+     * das später auswerten können (etwa: belegpflichtige Felder eines
+     * veröffentlichten Eintrags brauchen mindestens eine Quelle oberhalb
+     * von `social`/`sonstige`). Dafür müssen die Kategorien schon jetzt in
+     * den Daten stehen — nachträglich lässt sich das nicht rekonstruieren.
+     *
+     *   offiziell       Veranstalter, Band, Location — die Entität selbst
+     *   presse          redaktionelle Berichterstattung
+     *   nachschlagewerk Wörterbücher, Lexika, Enzyklopädien
+     *   museum          Sammlungs- und Objektdatenbanken, Museumspublikationen
+     *   fachliteratur   Monografien, Fachzeitschriften, Ausstellungskataloge
+     *   aggregator      Portale, die Fremdangaben bündeln
+     *   social          Profile und Postings
+     *   sonstige        alles Übrige — als Beleg der schwächste Fall
+     */
     art: z
-      .enum(["offiziell", "presse", "aggregator", "social", "sonstige"])
+      .enum([
+        "offiziell",
+        "presse",
+        "nachschlagewerk",
+        "museum",
+        "fachliteratur",
+        "aggregator",
+        "social",
+        "sonstige",
+      ])
       .default("sonstige"),
   })
   .strict();
