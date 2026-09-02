@@ -71,12 +71,16 @@ interface Regel {
  * Lektion 4: Der leere Zustand bekommt einen sichtbaren Hinweis, keinen
  * roten Lauf. Einmal pro Prozess — sonst steht die Zeile hinter jedem
  * Eintrag und niemand liest sie noch.
+ *
+ * Der Hinweis geht auf stderr, nicht auf stdout: Unter `--json` ist stdout
+ * das Ergebnisdokument, und eine Prosazeile davor macht es unparsebar. Im
+ * Terminal bleibt die Zeile trotzdem sichtbar.
  */
 let linkzieleGemeldet = false;
 function meldeLinkzieleKnapp(verfuegbar: number, soll: number): void {
   if (linkzieleGemeldet) return;
   linkzieleGemeldet = true;
-  console.log(
+  console.error(
     `Hinweis: Das Register bietet ${verfuegbar} verlinkbare(s) Ziel(e). ` +
       `Die Mindestzahl interner Links (${soll}) wird entsprechend gesenkt, ` +
       `solange nicht genug Einträge existieren.`,
