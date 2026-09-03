@@ -110,7 +110,7 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ---
 
-## 3. Mittlere Befunde — mit Empfehlung (M0, M00, M8 und M10 erledigt, Rest offen)
+## 3. Mittlere Befunde — mit Empfehlung (M0, M00, M8, M9 und M10 erledigt, Rest offen)
 
 **M00 · `validate-content.ts` hat keinen Testharnisch.** — **erledigt am
 2026-09-02.** `scripts/test-validate.ts` steht, als `npm run test:validate`
@@ -285,30 +285,73 @@ unabhängig vom Kommandotext — die Sperren zusätzlich als
 im Diff gegen die Basis prüft. Vorher der Negativtest nach Lektion 7 für
 beide Schreibwege, mit einem Versuch, der scheitern muss.
 
-**M9 · `event-zeitraum` erklärt Termine am eigenen Tag für vorbei.**
-`const vorbei = new Date(ende ?? beginn) < ctx.heute` vergleicht einen
-Zeitpunkt mit „jetzt". Trägt ein Event nur ein Datum statt eines
-Zeitstempels — was das Schema erlaubt (`z.coerce.date()`) und was für
-`ganztaegig: true` die natürliche Schreibweise ist —, wird daraus Mitternacht
-UTC. Ab 00:01 UTC am Veranstaltungstag gilt der Termin als vergangen.
-**Nachweis:** Ein Event mit `beginn: <heute>` und `durchfuehrung: geplant`
-liefert `fehler` „Termin ist vorbei, Status steht noch auf ‚geplant'" — am
-Morgen des Tages, an dem es stattfindet. Für einen veröffentlichten Eintrag
-heißt das: rote CI am wichtigsten Tag des Eintrags, und der einzige Weg
-heraus ist eine Statusangabe, die noch nicht stimmt.
-`scripts/archive-events.ts` teilt die Vergleichslogik
-(`new Date(d.ende ?? d.beginn) >= jetzt`) und würde denselben Termin
-archivieren, während er läuft. Im Alltag fällt es nicht auf, weil das Golden
-Example volle Zeitstempel mit Offset schreibt (`2026-05-22T18:00:00+02:00`)
-— die Lücke trifft genau die Einträge, die den bequemen erlaubten Weg
-nehmen. Empfehlung: Für Werte ohne Tageszeit auf das **Tagesende** in
-`site.zeitzone` vergleichen statt auf den Zeitpunkt, in Validator und
-Archivierer gemeinsam; das ist Lektion 1 an einer Stelle, die
-`check-zeitzonen.ts` nicht sieht, weil hier keine verbotene Datums-API
-steht, sondern eine stillschweigende Annahme. Negativtest nach Lektion 7 vor
-der Umsetzung; der Harnisch aus M00 nimmt ihn jetzt auf. Bewusst nicht im
-Zuge des Testauftrags mitbehoben: Event-Semantik zu ändern ist eine eigene
-Entscheidung.
+**M9 · `event-zeitraum` erklärt Termine am eigenen Tag für vorbei.** —
+**behoben am 2026-09-03.** Der Fund stimmte und war breiter als gemeldet:
+Nicht zwei Stellen teilten den Vergleich `new Date(ende ?? beginn) < jetzt`,
+sondern **acht** — `validate-content.ts` gleich zweimal
+(`event-zeitraum` und `quellen-aktualitaet`), `archive-events.ts`,
+`stale-report.ts` zweimal (vergangene Termine, Reihen ohne Folgetermin),
+`links.ts` `auftritte()`, `facetten.ts` `nachDatum()` und
+`jsonld/builders.ts` für `offers.availability`. Drei davon standen nicht im
+Befund.
+
+Die Semantik steht in ENTSCHEIDUNGEN.md: Ein Event ist vorbei, wenn das
+Ende seines letzten Tages in `site.zeitzone` überschritten ist. Die Antwort
+liegt in `src/lib/datum.ts` (`endeDesTages`, `istVorbei`, `istKommend`,
+`eventVorbei`), gerechnet über `Intl` mit gesetzter Zone und ohne
+`import.meta`, damit Astro und die Skripte dasselbe Modul importieren.
+
+Dabei aufgefallen und mitbehoben: `nachDatum()` trennte kommende von
+vergangenen Terminen über `beginn`, die Bandseite über `ende ?? beginn` —
+ein dreitägiges Festival stand in der Jahresfacette ab dem zweiten Tag unter
+„vergangen" und auf der Bandseite gleichzeitig unter „kommend".
+
+**Belege.** `scripts/test-datum.ts` (neu, `npm run test:datum`, 33
+Behauptungen) prüft die Ränder: Mitternacht beidseitig, beide
+Zeitumstellungen, Schalttag, Jahreswechsel, mehrtägige Termine, unlesbare
+Werte — und startet sich unter `TZ=UTC`, `Europe/Berlin`,
+`Pacific/Kiritimati` und `Pacific/Niue` neu, weil ein Test unter einer
+einzigen Prozesszeitzone für Lektion 1 kein Beleg ist. Dazu vier Fixtures in
+`test-validate.ts` (Termin heute, Termin heute mit `stattgefunden`, Termin
+gestern, laufendes Festival), die exakte Sortierreihenfolge in
+`test-facetten.ts` und vier Verfügbarkeitsfälle in `test-feeds.ts`.
+
+Mutationsbeleg nach Lektion 7: `istVorbei` testweise auf den alten Vergleich
+zurückgedreht — **16 Prüfungen fallen** über vier Suiten (9 in `test-datum`,
+3 in `test-validate`, 1 in `test-facetten`, 3 in `test-feeds`); danach
+zurückgebaut, alles grün. Eine Prüfung war dabei zu schwach und hielt
+zufällig: In `test-facetten` stand zuerst `indexOf("heute") <
+indexOf("gestern")` — das gilt auch bei kaputter Trennung, weil vergangene
+Termine absteigend sortiert werden. Ersetzt durch die vollständige
+Reihenfolge als eine Behauptung.
+
+**Statischer Check erweitert — mit benannter Grenze.**
+`check-zeitzonen.ts` sah diese Fehlerklasse nicht: Es steht keine verbotene
+Datums-API im Code, sondern eine stillschweigende Annahme. Das neue Muster
+erkennt eine Ordnungsrelation, bei der genau ein Operand eine Jetzt-Quelle
+ist (`new Date()`, `Date.now()`, `jetzt`, `heute`) und der andere ein
+Datumswert; drei eingesetzte Mutationen ergaben drei Funde, die saubere
+Fassung null.
+
+Was es **nicht** erkennt, und das ist wichtiger als was es erkennt:
+dieselbe Frage über eine Zwischenvariable (`const grenze = new Date(); …
+if (d < grenze)`), in Millisekunden ausgerechnet (`d.getTime() <
+Date.now()`), über `Math.min`/`Math.max`, über eine Sortierfunktion, oder in
+einer Bibliothek. Datumsvergleiche über Tagesgrenzen bleiben eine eigene
+Fehlerklasse, die ein zeilenweises Muster nur an ihrer häufigsten Schreibweise
+fasst. Der Check ist eine Sperre gegen den bekannten Rückfall, kein Beweis
+der Abwesenheit — wer eine neue Vergleichsstelle baut, muss weiterhin selbst
+wissen, dass `src/lib/datum.ts` existiert. Dasselbe Verhältnis wie bei den
+Bash-Mustern in `guard.mjs` (M8): eine Sperre, deren Reichweite man
+überschätzt, ist gefährlicher als eine, deren Grenzen dokumentiert sind.
+
+Zwei Fehler beim Bauen des Musters, beide erst im Negativtest sichtbar: Die
+Prüfung schlug an ihrer eigenen Dokumentation an (der falsche Vergleich
+steht in den Kommentaren, die ihn erklären — reine Kommentarzeilen werden
+jetzt übersprungen), und die erste Normalisierung verklebte `new Date(` zu
+`newDate(`, sodass die halbe Regel stumm blieb. Drei eingesetzte Mutationen,
+nur eine gefunden — ohne Lektion 7 wäre das eine Prüfung gewesen, die
+aussieht, als griffe sie.
 
 **M1 · `sync-autolinks` ersetzt den Body über einen fragilen Index.**
 `roh.indexOf(parsed.content, …)` funktioniert, kippt aber bei leerem Body

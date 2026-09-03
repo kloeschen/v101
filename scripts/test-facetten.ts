@@ -22,6 +22,7 @@ import {
 import { buildRegistry, type RegistryEingabe } from "../src/lib/links";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { collectionNames } from "../src/content/_schemas";
+import { site } from "../src/site.config";
 
 let bestanden = 0;
 const fehler: string[] = [];
@@ -161,6 +162,46 @@ const kurz = "Wort ".repeat(20);
     "Facetten nur für Collections, die es gibt",
     FACETTEN.every((f) => collectionNames.includes(f.collection)),
   );
+}
+
+/* ------------------------------------------------------------------ */
+/* Tagesrand in der Sortierung (Befund M9)                             */
+/* ------------------------------------------------------------------ */
+
+{
+  // nachDatum trennt kommende von vergangenen Terminen. Vorher tat es das
+  // mit `beginn >= Date.now()` und beantwortete damit dieselbe Frage anders
+  // als die Bandseite: Ein Termin von heute rutschte ab 00:01 UTC zu den
+  // vergangenen, ein laufendes Festival ab dem zweiten Tag.
+  const tag = (versatz: number): Date => {
+    const heute = new Intl.DateTimeFormat("en-CA", {
+      timeZone: site.zeitzone, year: "numeric", month: "2-digit", day: "2-digit",
+    }).format(new Date());
+    const [j, m, t] = heute.split("-").map(Number);
+    return new Date(Date.UTC(j, m - 1, t + versatz));
+  };
+
+  const ev = (slug: string, beginn: Date, ende?: Date): RegistryEingabe => ({
+    collection: "events",
+    slug,
+    daten: { name: slug, kurzbeschreibung: `${slug} ist eine Veranstaltung.`, typ: "weekender", ort: "halle", beginn, ...(ende ? { ende } : {}) },
+  });
+
+  const reg = buildRegistry([
+    ev("gestern", tag(-1)),
+    ev("heute", tag(0)),
+    ev("morgen", tag(1)),
+    ev("laufend", tag(-2), tag(0)),
+  ]);
+  const alleTypen = sammleFacetten(reg).find((f) => f.segment === "typ")!;
+  const reihenfolge = alleTypen.eintraege.map((e) => e.slug);
+
+  // Kommende zuerst nach beginn aufsteigend, dann vergangene absteigend.
+  // "heute" und "laufend" gehören zu den kommenden — das ist der M9-Punkt.
+  // Die Reihenfolge steht als Ganzes da: Einzelvergleiche halten bei diesem
+  // Fehler zufällig noch, weil vergangene absteigend sortiert werden und
+  // "heute" dabei ebenfalls vor "gestern" landet.
+  gleich("Tagesrand trennt kommend von vergangen", reihenfolge, ["laufend", "heute", "morgen", "gestern"]);
 }
 
 /* ------------------------------------------------------------------ */

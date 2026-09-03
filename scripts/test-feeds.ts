@@ -12,7 +12,8 @@
  */
 
 import { readFileSync } from "node:fs";
-import { jsonldSicher } from "../src/lib/jsonld";
+import { jsonldSicher, buildGraph } from "../src/lib/jsonld";
+import { site } from "../src/site.config";
 import {
   icsKalender,
   eventFeed,
@@ -253,6 +254,38 @@ const ics = icsKalender(registry, [registry.eintraege.get("events/wochenende")!]
   pruefe("kein </script> im eingebetteten JSON-LD", !eingebettet.includes("</script>"), eingebettet);
   pruefe("kein rohes < im eingebetteten JSON-LD", !eingebettet.includes("<"), eingebettet);
   gleich("Maskierung ist verlustfrei", JSON.parse(eingebettet).text, 'böse: </script><img src=x onerror=alert(1)>');
+}
+
+/* ------------------------------------------------------------------ */
+/* Offer-Verfügbarkeit am Tagesrand (Befund M9)                        */
+/* ------------------------------------------------------------------ */
+
+{
+  // Dieselbe Frage wie im Validator, also dieselbe Antwort: Ein Konzert
+  // heute Abend ist am Vormittag InStock, nicht OutOfStock. Vorher hing das
+  // an `new Date(ende ?? beginn) < new Date()` und kippte um 00:01 UTC.
+  const tag = (versatz: number): Date => {
+    const heute = new Intl.DateTimeFormat("en-CA", {
+      timeZone: site.zeitzone, year: "numeric", month: "2-digit", day: "2-digit",
+    }).format(new Date());
+    const [j, m, t] = heute.split("-").map(Number);
+    return new Date(Date.UTC(j, m - 1, t + versatz));
+  };
+
+  const angebot = (beginn: Date, ende?: Date): string => {
+    const graph = buildGraph("events", "verfuegbarkeit", {
+      ...ev("verfuegbarkeit").daten, beginn, ende, durchfuehrung: "geplant",
+    });
+    // Nicht ueber "@type": weekender wird zu Festival. Der Eventknoten ist
+    // der einzige mit startDate.
+    const event = graph["@graph"].find((k: any) => k.startDate !== undefined) as any;
+    return event.offers?.[0]?.availability;
+  };
+
+  gleich("Termin heute ist InStock", angebot(tag(0)), "https://schema.org/InStock");
+  gleich("Termin morgen ist InStock", angebot(tag(1)), "https://schema.org/InStock");
+  gleich("laufendes Festival ist InStock", angebot(tag(-2), tag(0)), "https://schema.org/InStock");
+  gleich("Termin von gestern ist OutOfStock", angebot(tag(-1)), "https://schema.org/OutOfStock");
 }
 
 /* ------------------------------------------------------------------ */

@@ -32,6 +32,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync, symlinkSync } from "node
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
+import { site } from "../src/site.config";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -46,11 +47,31 @@ const gleich = (name: string, ist: unknown, soll: unknown) =>
 /* Datumshilfen — Regeln wie pruefkadenz rechnen gegen "heute"          */
 /* ------------------------------------------------------------------ */
 
-/** Datum vor n Tagen als ISO-Tag. zeitzone-ok: UTC-explizit, reine Rechnung. */
-const vorTagen = (n: number): string => new Date(Date.now() - n * 86_400_000).toISOString().slice(0, 10);
-const inTagen = (n: number): string => vorTagen(-n);
+/**
+ * Ein Tag relativ zu heute, gerechnet in der Zeitzone der Site.
+ *
+ * Nicht `Date.now() - n * 86_400_000`: Das ergäbe den Tag in UTC, und der
+ * ist zwischen Mitternacht und zwei Uhr Ortszeit der Vortag. Die Fixtures zu
+ * `event-zeitraum` hängen genau an dieser Unterscheidung — mit der
+ * UTC-Rechnung wäre der Test in diesen zwei Stunden jeder Nacht rot, ohne
+ * dass etwas kaputt wäre (Lektion 4: ein roter Lauf muss einen echten Fehler
+ * bedeuten).
+ */
+const tagVorOrt = (versatz: number): string => {
+  const heute = new Intl.DateTimeFormat("en-CA", {
+    timeZone: site.zeitzone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+  const [j, m, t] = heute.split("-").map(Number);
+  return new Date(Date.UTC(j, m - 1, t + versatz)).toISOString().slice(0, 10);
+};
 
-const HEUTE = vorTagen(0);
+const vorTagen = (n: number): string => tagVorOrt(-n);
+const inTagen = (n: number): string => tagVorOrt(n);
+
+const HEUTE = tagVorOrt(0);
 
 /* ------------------------------------------------------------------ */
 /* Fixtures                                                            */
@@ -495,6 +516,54 @@ fall({
   datei: "events/zeit-gut.md",
   inhalt: md(evFelder("Sauberer Weekender"), evKoerper("Sauberer Weekender")),
   verboten: ["event-zeitraum", "reihe-name", "event-preise", "referenzen"],
+});
+
+/* --- Befund M9: der Tagesrand ----------------------------------------
+ * Der alte Vergleich war `new Date(ende ?? beginn) < jetzt`. Weil
+ * `z.coerce.date()` aus einem Datum ohne Uhrzeit Mitternacht UTC macht, galt
+ * ein Termin von heute ab 00:01 UTC als vergangen — der Validator verlangte
+ * "stattgefunden" fuer einen Termin, der erst abends stattfand. Diese vier
+ * Faelle halten beide Richtungen der Regel am scharfen Rand fest.
+ */
+
+fall({
+  name: "event-zeitraum (M9): Termin heute ohne Uhrzeit ist NICHT vorbei",
+  datei: "events/zeit-heute.md",
+  inhalt: md(
+    evFelder("Heutiger Weekender", { beginn: HEUTE, durchfuehrung: "geplant" }),
+    evKoerper("Heutiger Weekender"),
+  ),
+  verboten: ["event-zeitraum"],
+});
+
+fall({
+  name: 'event-zeitraum (M9): Termin heute mit Status "stattgefunden" ist verfrueht',
+  datei: "events/zeit-heute-vorgegriffen.md",
+  inhalt: md(
+    evFelder("Vorgegriffener Heutiger", { beginn: HEUTE, durchfuehrung: "stattgefunden" }),
+    evKoerper("Vorgegriffener Heutiger"),
+  ),
+  erwartet: { "event-zeitraum": "fehler" },
+});
+
+fall({
+  name: "event-zeitraum (M9): Termin gestern ist vorbei",
+  datei: "events/zeit-gestern.md",
+  inhalt: md(
+    evFelder("Gestriger Weekender", { beginn: vorTagen(1), durchfuehrung: "geplant" }),
+    evKoerper("Gestriger Weekender"),
+  ),
+  erwartet: { "event-zeitraum": "fehler" },
+});
+
+fall({
+  name: "event-zeitraum (M9): laufendes Festival endet heute und ist nicht vorbei",
+  datei: "events/zeit-laufend.md",
+  inhalt: md(
+    evFelder("Laufender Weekender", { beginn: vorTagen(2), ende: HEUTE, durchfuehrung: "geplant" }),
+    evKoerper("Laufender Weekender"),
+  ),
+  verboten: ["event-zeitraum"],
 });
 
 fall({

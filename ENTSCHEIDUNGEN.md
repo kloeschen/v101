@@ -13,6 +13,86 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-03 — Ein Event ist vorbei, wenn sein Tag um ist (M9)
+
+**Fund:** Sechs Stellen beantworteten die Frage „ist dieser Termin vorbei?",
+und alle mit demselben Vergleich: `new Date(ende ?? beginn) < jetzt`. Das
+Schema erlaubt ein Datum ohne Uhrzeit, und `z.coerce.date()` macht daraus
+Mitternacht UTC. Ab 00:01 UTC am Veranstaltungstag — in Berlin ab 02:01
+Ortszeit derselben Nacht — galt der Termin als vergangen. Der Validator
+verlangte dann `stattgefunden` für einen Termin, der erst abends stattfand:
+rote CI am wichtigsten Tag des Eintrags, und der einzige Ausweg eine
+Statusangabe, die noch nicht stimmte. `archive-events.ts` hätte denselben
+Termin archiviert, während er lief.
+
+**Entscheidung — die Semantik:**
+
+> Ein Event ist vorbei, wenn das **Ende seines letzten Tages** in
+> `site.zeitzone` überschritten ist.
+
+Nicht „der Zeitstempel liegt in der Vergangenheit", sondern „der Tag ist
+um". Das ist auch für Einträge mit Uhrzeit richtig: Ein Konzert um 20 Uhr
+ist um 21 Uhr nicht vorbei, es läuft. Und die Regel braucht keine
+Fallunterscheidung zwischen Datum und Zeitstempel.
+
+**Verworfen: die Heuristik „Mitternacht bedeutet Datum ohne Uhrzeit".**
+Naheliegend, weil sie die Ursache direkt adressiert — steht die Uhrzeit auf
+00:00:00.000 UTC, war im Frontmatter vermutlich kein Zeitpunkt gemeint, also
+auf das Tagesende vergleichen, sonst auf den Zeitstempel. Drei Gründe
+dagegen:
+
+1. **Sie rät.** `beginn: 2026-05-22T00:00:00+00:00` ist ein zulässiger
+   Zeitstempel und meint Mitternacht. Die Heuristik behandelt ihn wie ein
+   Datum. Ein Silvesterball um 00:30 Ortszeit liegt nur eine halbe Stunde
+   daneben.
+2. **Die Unterscheidung ist bereits verloren.** Nach `z.coerce.date()` gibt
+   es nur noch einen Zeitpunkt. Die Heuristik rekonstruiert aus dem Ergebnis,
+   was in der Eingabe stand — das ist eine Vermutung, keine Information.
+3. **Sie hätte zwei Semantiken ergeben,** und damit zwei Klassen von
+   Einträgen, die sich am selben Tag verschieden verhalten. Genau das ist
+   die Sorte Unterschied, die niemand im Kopf behält.
+
+Der Preis der gewählten Semantik: Ein Konzert, das um 20 Uhr endete, gilt
+bis Mitternacht als nicht vorbei. Das ist die richtige Richtung — eine
+Veranstaltung zu früh archivieren ist der teurere Fehler.
+
+**Eine Funktion, acht Aufrufstellen.** `src/lib/datum.ts` hält
+`endeDesTages`, `istVorbei`, `istKommend` und `eventVorbei`; gerechnet wird
+über `Intl.DateTimeFormat` mit `timeZone` aus `site.zeitzone`, nie über
+lokale Getter (Lektion 1). Das Modul wird von Astro **und** von den Skripten
+importiert und verwendet deshalb kein `import.meta` (Lektion 2).
+
+Umgestellt wurden alle acht: `validate-content.ts` (`event-zeitraum` und
+`quellen-aktualitaet`), `archive-events.ts`, `stale-report.ts` (zweimal —
+vergangene Termine und Reihen ohne Folgetermin), `links.ts` `auftritte()`,
+`facetten.ts` `nachDatum()`, `jsonld/builders.ts` (`offers.availability`).
+Drei davon standen nicht im Befund; sie sind beim Durchgehen aufgefallen.
+
+**Nebenwirkung, absichtlich:** `nachDatum()` trennte kommende von vergangenen
+Terminen über `beginn`, während die Bandseite `ende ?? beginn` nahm — dieselbe
+Frage, zwei Antworten. Ein dreitägiges Festival stand in der Facette ab dem
+zweiten Tag unter „vergangen" und auf der Bandseite unter „kommend". Beide
+fragen jetzt `istVorbei(ende ?? beginn)`. Sortiert wird weiter nach `beginn`.
+
+**Der statische Check greift jetzt auch hier.** `check-zeitzonen.ts` sah
+diese Fehlerklasse nicht: Es steht keine verbotene Datums-API im Code,
+sondern eine stillschweigende Annahme. Neues Muster: eine Ordnungsrelation,
+bei der genau ein Operand eine Jetzt-Quelle ist (`new Date()`, `Date.now()`,
+`jetzt`, `heute`) und der andere ein Datumswert. Was es nicht sieht:
+dieselbe Frage über eine Zwischenvariable oder in Millisekunden
+ausgerechnet. Es ist eine Sperre gegen den bekannten Rückfall, kein Beweis —
+so steht es auch in REVIEW.md.
+
+Zwei Dinge sind beim Bauen des Musters aufgefallen und stecken jetzt im
+Skript: Die Prüfung schlug an ihrer **eigenen Dokumentation** an, weil der
+falsche Vergleich im Kommentar steht (reine Kommentarzeilen werden
+übersprungen — eine Regel, die an ihrer Erklärung anschlägt, wird
+abgeschaltet statt befolgt). Und die erste Fassung normalisierte
+`new Date(` zu `newDate(`, sodass die halbe Regel stumm blieb — sichtbar
+erst im Negativtest, der drei Mutationen einsetzte und nur eine fand.
+
+---
+
 ## 2026-09-03 — Eine Prüfkette statt zweier Listen (M10)
 
 **Fund:** Die CI zählte ihre Prüfschritte einzeln auf und rief `npm run

@@ -18,6 +18,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { ladeAlle } from "./_laden";
+import { eventVorbei } from "../src/lib/datum";
 
 function main() {
   const trocken = process.argv.includes("--dry-run");
@@ -28,7 +29,9 @@ function main() {
     const d = e.daten;
     if (!d) continue; // Schemafehler zuerst beheben
     if (d.durchfuehrung !== "geplant" && d.durchfuehrung !== "ausverkauft") continue;
-    if (new Date(d.ende ?? d.beginn) >= jetzt) continue;
+    // Tagesgenau in der Zeitzone der Site: Ein Termin von heute wird erst
+    // nach Mitternacht Ortszeit archiviert, nicht ab 00:01 UTC (M9).
+    if (!eventVorbei(d, jetzt)) continue;
 
     console.log(`${trocken ? "[dry] " : ""}${path.relative(process.cwd(), e.datei)} — ${d.name}: ${d.durchfuehrung} → stattgefunden`);
     geaendert++;

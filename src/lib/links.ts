@@ -19,6 +19,7 @@
 
 import { urlPrefix, referenzFelder, type CollectionName } from "../content/_schemas";
 import { site } from "../site.config";
+import { istVorbei } from "./datum";
 
 /* ------------------------------------------------------------------ */
 /* Registry                                                            */
@@ -190,8 +191,10 @@ export function auftritte(registry: Registry, bandSlug: string, jetzt = new Date
     .map((v) => ({ event: v.von, datum: new Date(v.von.daten.ende ?? v.von.daten.beginn) }))
     .filter((x) => !Number.isNaN(x.datum.getTime()));
 
-  const kommend = mitDatum.filter((x) => x.datum >= jetzt).sort((a, b) => +a.datum - +b.datum);
-  const vergangen = mitDatum.filter((x) => x.datum < jetzt).sort((a, b) => +b.datum - +a.datum);
+  // Nicht `datum >= jetzt`: Ein Termin heute Abend gehört unter "kommend",
+  // auch wenn sein Zeitstempel schon vorbei ist (M9, siehe lib/datum.ts).
+  const kommend = mitDatum.filter((x) => !istVorbei(x.datum, jetzt)).sort((a, b) => +a.datum - +b.datum);
+  const vergangen = mitDatum.filter((x) => istVorbei(x.datum, jetzt)).sort((a, b) => +b.datum - +a.datum);
   return { kommend, vergangen };
 }
 
