@@ -154,21 +154,41 @@ einzeln verlangen. Zusätzlich denkbar: `[alle]` bei `status:
 veroeffentlicht` als Fehler werten. Vor der Umsetzung Negativtest nach
 Lektion 7 — die Regel hat bisher nie angeschlagen.
 
-**M10 · Die CI klont flach, deshalb kann die Freigabeprüfung dort nicht
-greifen.** `scripts/check-freigabe.ts` (Schicht 3 gegen M8) vergleicht den
-Arbeitsstand mit einer Basis. `ci.yml` benutzt `actions/checkout@v4` in der
-Standardtiefe 1: Im CI-Klon existiert genau ein Commit, kein Vorgänger ist
-lesbar. **Nachgewiesen:** `git clone --depth 1` auf dieses Repository liefert
-`Commits verfuegbar: 1`, und `origin/main~1` ist „not a valid object name".
-Die Prüfung meldet das laut auf stderr und läuft durch — wirksam ist sie
-damit lokal, wo CLAUDE.md `npm run verify` vor jedem Commit verlangt, aber
-nicht im Pull Request. Empfehlung: `fetch-depth: 0` im Checkout-Schritt
-ergänzen und `npm run freigabe -- --basis-pflicht` als eigenen Schritt
-aufnehmen; die Flagge existiert bereits und macht die fehlende Basis zum
-Fehler. Nicht mitbehoben, weil `.github/` für Agenten gesperrt ist — und
-diese Sperre ist der Gegenstand desselben Befunds, an dem gerade gearbeitet
-wurde. Negativtest nach Lektion 7 liegt vor: `test-freigabe.ts` prüft beide
-Zweige (fehlende Basis ohne Flagge = Exit 0 mit Hinweis, mit Flagge = Exit 1).
+**M10 · Die Freigabeprüfung läuft in der CI überhaupt nicht — aus zwei
+unabhängigen Gründen.** `scripts/check-freigabe.ts` (Schicht 3 gegen M8) ist
+im Pull Request wirkungslos, und zwar doppelt:
+
+1. **Die CI ruft sie nicht auf.** `ci.yml` zählt seine Schritte einzeln auf
+   (`npm run check`, `check-zeitzonen`, `validate-content --strict`,
+   `check-jsonld --strict`, `npm test`, `sync-autolinks --check`,
+   `npm run build`) und führt gerade **nicht** `npm run verify` aus. Die
+   Prüfung hängt an `verify` und hat in der CI keinen Schritt.
+   **Nachgewiesen** am Lauf zu diesem PR: Im Job-Log kommt das Wort
+   „Freigabeprüfung" kein einziges Mal vor. `npm test` führt zwar
+   `test:freigabe` aus — das ist aber der Test *der* Prüfung, nicht die
+   Prüfung des Registers.
+2. **Selbst mit Schritt fehlte die Basis.** `actions/checkout@v4` klont in
+   der Standardtiefe 1. **Nachgewiesen:** `git clone --depth 1` auf dieses
+   Repository liefert genau einen Commit, `origin/main~1` ist „not a valid
+   object name".
+
+Wirksam ist die Prüfung damit nur lokal, wo CLAUDE.md `npm run verify` vor
+jedem Commit verlangt. Empfehlung, beides zusammen: `fetch-depth: 0` im
+Checkout-Schritt und ein eigener Schritt
+`npx tsx scripts/check-freigabe.ts --basis-pflicht`; die Flagge existiert
+bereits und macht die fehlende Basis zum Fehler statt zum Hinweis. Nicht
+mitbehoben, weil `.github/` für Agenten gesperrt ist — und diese Sperre ist
+Gegenstand desselben Befunds, an dem gerade gearbeitet wurde. Negativtest
+nach Lektion 7 liegt vor: `test-freigabe.ts` prüft beide Zweige (fehlende
+Basis ohne Flagge = Exit 0 mit Hinweis, mit Flagge = Exit 1).
+
+**Lehre daraus, über diesen Befund hinaus:** Dass `verify` und die CI
+dieselben Schritte *aufzählen*, statt dass die CI `verify` aufruft, heißt,
+dass jeder neue Prüfschritt an zwei Stellen eingetragen werden muss — und
+der zweite Ort liegt hinter einer Sperre. Ein Schritt, der nur in `verify`
+steht, sieht lokal grün aus und existiert in der CI nicht. Das ist die
+gleiche Klasse wie Lektion 15: eine Prüfung, die nicht aufgerufen wird,
+meldet ihr Schweigen nicht.
 
 **M8 · Die Hook-Sperren greifen nur bei `Write`/`Edit`, nicht bei Bash.** —
 **behoben am 2026-09-03, mit dokumentierter Restlücke.** Die Absicherung
