@@ -68,7 +68,7 @@ Creepers sind entweder geschnürt oder mit einer einzelnen Schnalle geschlossen.
 
 Die Sohle ist der eigentliche Unterschied zu allem anderen. Krepp ist Naturkautschuk und bleibt weich; er federt beim Auftreten, statt zu klacken. Genau daher kommt die deutsche Übersetzung, die die Wikipedia für den Namen angibt: Leisetreter.
 
-## Woher der Name kommt
+## Woher der Name Creepers kommt
 
 Die Herkunft des Namens ist nicht geklärt, und die Quellen bieten drei Erklärungen an, ohne sich festzulegen. Die deutsche Wikipedia übersetzt *creeper* schlicht als Leisetreter, was zur weichen Sohle passt. Die englischsprachige Wikipedia nennt zwei andere Spuren: die Vermutung des Smithsonian, das Wort komme vom *crêpe* der Sohle selbst, und einen Tanzschlager von 1953 mit dem Titel „The Creep". Der volle Name Brothel Creepers — wörtlich etwa „Bordellschleicher" — ist der ältere und derbere; im heutigen Handel steht meist nur noch Creepers.
 
