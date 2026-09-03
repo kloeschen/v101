@@ -172,3 +172,41 @@ blockiert — mit einem echten Schreibversuch, der scheitern muss, und
 einem, der durchgehen muss. Ein Hook, der noch nie angeschlagen hat, ist
 eine Vermutung. Das ist Lektion 7, angewendet auf die Sperren selbst:
 Hier war sogar die Prüfung der Prüfung nie gelaufen.
+
+
+## 16. Sperren lassen sich nicht per Auftrag aufheben
+
+`.claude/` und `.github/` sind für Agenten gesperrt, und die Sperre kennt
+keine Ausnahme im Auftragstext. Dreimal probiert, dreimal blockiert: bei M8
+sollte `.claude/` geändert werden, bei M10 `.github/`, und diese Lektion
+hier scheiterte am selben Riegel — der Versuch, sie zu schreiben, endete mit
+„File is in a directory that is denied by your permission settings".
+
+Der Grund ist Bauart, nicht Zufall. Die Erlaubnis steht im Auftrag, die
+Sperre in `permissions.deny` und `guard.mjs` — und beide liegen in
+`.claude/`, das ebenfalls gesperrt ist. Ein Agent kann sich die Erlaubnis
+also nicht selbst eintragen, ohne die Sperre zu umgehen, die er gerade
+respektieren soll. Genau so ist es gedacht.
+
+Eine dokumentierte Restlücke gibt es (siehe `guard.mjs`): Ein Interpreter,
+der die Datei selbst öffnet, kommt an beiden Schichten vorbei. Sie zu
+benutzen, um eine Sperre zu umgehen, macht sie zur Zierde — auch und gerade
+mit Erlaubnis im Rücken. Eine Sperre, die für den Berechtigten nicht gilt,
+ist keine.
+
+**Regel:** Änderungen in `.claude/` und `.github/` macht der Mensch. Ein
+Auftrag, der sie braucht, liefert den **fertigen Dateiinhalt** statt einer
+Anweisung — kopierfertig, nicht als Beschreibung.
+
+**Regel:** Der Rest des Auftrags wird trotzdem gebaut. Die zugehörige
+Prüfung ist dann bis zum Commit des Menschen rot, und das ist der richtige
+Zustand, kein Mangel: Bei M10 schlug `test-pruefkette` auf genau den drei
+Punkten an, die der Befund beschreibt, und wurde mit dem Commit grün. Ein
+Test, der den fehlenden Teil verschweigt, wäre schlechter als einer, der
+ihn anzeigt.
+
+**Regel:** Wer die Sperre baut, prüft, ob er selbst noch arbeiten kann.
+Nach dem Einbau von `permissions.deny` war die Korrektur eines einzigen
+Satzes in `guard.mjs` nicht mehr möglich — der Satz musste stattdessen wahr
+gemacht werden, indem das darin versprochene Skript entstand. Das war hier
+der bessere Ausgang, ist aber Glück gewesen, nicht Planung.
