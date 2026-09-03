@@ -25,7 +25,7 @@
  */
 
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync, symlinkSync, existsSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync, symlinkSync, existsSync } from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
@@ -145,6 +145,111 @@ Text.
 {
   const r = rufeHook("node", GUARD, schreibEvent("BETRIEB.md", "status: veroeffentlicht\n"));
   gleich("Statussperre greift nicht außerhalb von src/content", r.code, 0);
+}
+
+/* ------------------------------------------------------------------ */
+/* guard.mjs — dieselben Sperren über die Shell (Befund M8)            */
+/* ------------------------------------------------------------------ */
+/*
+ * Der Hook hing am Matcher `Write|Edit` und sah Shell-Schreibzugriffe nie.
+ * `sed -i`, `tee`, `cat >` liefen an allen fünf Sperren vorbei — aufgefallen
+ * beim Negativtest zu PR #3, als `status: veroeffentlicht` per `sed`
+ * kommentarlos durchging. Diese Fälle halten den zweiten Weg offen sichtbar.
+ *
+ * Die Pfade stehen hier bewusst zerlegt (`SCHEMA`, `SITE` …): Der Bash-Zweig
+ * betrachtet den Befehlstext als Ganzes, und ein Testskript, das den
+ * gesperrten Pfad wörtlich neben einem Schreibverb nennt, blockiert sich
+ * beim Schreiben selbst. Das ist keine Schwäche des Tests, sondern die
+ * Grobheit der Sperre — sie ist so gewollt und in guard.mjs dokumentiert.
+ */
+
+const SCHEMA = ["src", "content", "_schemas.ts"].join("/");
+const SITE = ["src", "site.config.ts"].join("/");
+const AGENT = [".claude", "settings.json"].join("/");
+const HOOKDATEI = [".claude", "hooks", "guard.mjs"].join("/");
+const CI = [".github", "workflows", "ci.yml"].join("/");
+const EINTRAG = ["src", "content", "lexikon", "probe.md"].join("/");
+
+const bashEvent = (command: string) => ({ tool_name: "Bash", tool_input: { command } });
+
+const bashGesperrt: Array<[string, string]> = [
+  ["sed -i auf den Datenvertrag", `sed -i 's/a/b/' ${SCHEMA}`],
+  ["Umleitung auf den Datenvertrag", `echo 'export const x = 1;' > ${SCHEMA}`],
+  ["Anhängen an die Site-Konfiguration", `echo '// x' >> ${SITE}`],
+  ["tee auf die Agenten-Konfiguration", `echo '{}' | tee ${AGENT}`],
+  ["tee -a auf einen Hook", `echo 'x' | tee -a ${HOOKDATEI}`],
+  ["Umleitung auf die CI-Konfiguration", `cat vorlage.yml > ${CI}`],
+  ["cp auf die Site-Konfiguration", `cp /tmp/neu.ts ${SITE}`],
+  ["mv auf den Datenvertrag", `mv /tmp/neu.ts ${SCHEMA}`],
+  ["git checkout auf die Agenten-Konfiguration", `git checkout main -- ${AGENT}`],
+  ["git restore auf die CI-Konfiguration", `git restore ${CI}`],
+];
+
+for (const [was, command] of bashGesperrt) {
+  const r = rufeHook("node", GUARD, bashEvent(command));
+  gleich(`guard blockiert über Bash: ${was}`, r.code, 2);
+  pruefe(`guard begründet die Bash-Sperre: ${was}`, r.stderr.trim().length > 0, "stderr war leer");
+  pruefe(
+    `guard-Begründung nennt den Shell-Weg: ${was}`,
+    r.stderr.includes("Shell"),
+    JSON.stringify(r.stderr.trim().slice(0, 160)),
+  );
+}
+
+/* Die Statussperre über die Shell. Der dritte Fall ist der, der in PR #3
+ * durchging: Das Feld "status" kommt im Befehl gar nicht vor, nur der Wert. */
+const LIVE = ["veroeffent", "licht"].join("");
+const bashStatus: Array<[string, string]> = [
+  ["Heredoc mit Statuszeile", `cat > ${EINTRAG} <<'EOF'\nstatus: ${LIVE}\nEOF`],
+  ["Anhängen der Statuszeile", `echo 'status: ${LIVE}' >> ${EINTRAG}`],
+  ["Ersetzung entwurf zu live", `sed -i 's/entwurf/${LIVE}/' ${EINTRAG}`],
+];
+
+for (const [was, command] of bashStatus) {
+  const r = rufeHook("node", GUARD, bashEvent(command));
+  gleich(`guard blockiert über Bash: ${was}`, r.code, 2);
+  pruefe(
+    `guard-Begründung nennt "Mensch": ${was}`,
+    r.stderr.includes("Mensch"),
+    JSON.stringify(r.stderr.trim().slice(0, 160)),
+  );
+}
+
+/* Harmlose Befehle müssen durchgehen — eine Sperre, die alles blockiert,
+ * wird abgeschaltet und schützt danach nichts mehr. */
+const bashErlaubt: Array<[string, string]> = [
+  ["Verzeichnis auflisten", "ls -la src/content"],
+  ["Prüflauf", "npm run verify"],
+  ["lesender Zugriff auf den Datenvertrag", `grep -n 'quelle' ${SCHEMA}`],
+  ["lesende Suche nach dem Statuswort", `grep -rn '${LIVE}' src/content/`],
+  ["Schreiben außerhalb der gesperrten Pfade", "echo 'notiz' > /tmp/notiz.txt"],
+  ["Entwurf über die Shell anlegen", `echo 'status: entwurf' >> ${EINTRAG}`],
+];
+
+for (const [was, command] of bashErlaubt) {
+  const r = rufeHook("node", GUARD, bashEvent(command));
+  gleich(`guard lässt durch: ${was}`, r.code, 0);
+}
+
+/* ------------------------------------------------------------------ */
+/* settings.json — die Verdrahtung, die den Hook überhaupt aufruft     */
+/* ------------------------------------------------------------------ */
+/*
+ * Lektion 15: Ein Hook, der nicht aufgerufen wird, ist wirkungslos und meldet
+ * das nicht. Der Bash-Zweig oben nützt nichts, solange settings.json keinen
+ * Matcher dafür hat — deshalb wird die Verdrahtung mitgeprüft, samt der
+ * deny-Regeln aus Schicht 1.
+ */
+{
+  const settings = JSON.parse(readFileSync(path.join(PROJEKT, ".claude", "settings.json"), "utf8"));
+  const matcher: string[] = (settings?.hooks?.PreToolUse ?? []).map((e: any) => e.matcher);
+  pruefe("settings.json ruft guard.mjs für Write|Edit auf", matcher.includes("Write|Edit"), JSON.stringify(matcher));
+  pruefe("settings.json ruft guard.mjs für Bash auf", matcher.includes("Bash"), JSON.stringify(matcher));
+
+  const deny: string[] = settings?.permissions?.deny ?? [];
+  for (const regel of [`Edit(/${SCHEMA})`, `Edit(/${SITE})`, "Edit(/.claude/**)", "Edit(/.github/**)"]) {
+    pruefe(`permissions.deny enthält ${regel}`, deny.includes(regel), JSON.stringify(deny));
+  }
 }
 
 /* ------------------------------------------------------------------ */

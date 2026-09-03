@@ -13,6 +13,95 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-03 — Sperren in Schichten statt in einer Regel (M8)
+
+**Fund:** `guard.mjs` hing am Matcher `Write|Edit` und las `tool_input.file_path`.
+Ein Shell-Schreibzugriff erzeugt kein solches Tool-Input und lief an allen fünf
+Sperren vorbei. Der PostToolUse-Validator hat denselben Matcher und lief dann
+ebenfalls nicht. Aufgefallen beim Negativtest zu PR #3, als der Status per
+`sed` gesetzt wurde und keine Sperre ansprang.
+
+**Entscheidung:** Drei Schichten, die an verschiedenen Stellen ansetzen. Keine
+davon ist vollständig; sie sollen unterschiedlich versagen.
+
+**Schicht 1 — `permissions.deny` in `settings.json`.** Vier `Edit()`-Regeln für
+`_schemas.ts`, `site.config.ts`, `.claude/` und `.github/`. Diese Ebene hängt
+nicht am Hook-Matcher: Claude Code wertet sie vor dem Werkzeug aus, sie gilt
+für Write, Edit *und* für die Shell-Dateibefehle, die Claude Code kennt (`cat`,
+`head`, `tail`, `sed`), und sie prüft ausdrücklich auch das Ziel einer
+Ausgabeumleitung. Bewusst `Edit(...)` und nicht `Read(...)`: Eine Read-Sperre
+würde denselben Pfad auch für Lesezugriffe und für die Suche schließen, und wer
+Frontmatter schreibt, muss den Datenvertrag lesen können.
+
+Wirksamkeit sofort belegt, unfreiwillig: Nach dem Einbau scheiterte der
+Versuch, einen Satz in `guard.mjs` zu korrigieren, an genau dieser Regel
+(„File is in a directory that is denied by your permission settings").
+
+**Schicht 2 — `guard.mjs` mit zweitem Eingang.** `settings.json` ruft den Hook
+jetzt zusätzlich mit Matcher `Bash` auf; ist `tool_input.command` gesetzt,
+prüft der Hook den Befehlstext auf Schreibverben (`sed -i`, `tee`, `cp`, `mv`,
+`dd`, `truncate`, `rsync`, `patch`, `perl -pi`, `git checkout/restore/apply`,
+`>` und `>>`) in Verbindung mit einem gesperrten Pfad.
+
+Beim ersten Probelauf fiel auf, dass die Statussperre zu eng gefasst war: Sie
+suchte das Feld zusammen mit dem Wert, und der naheliegendste Shell-Weg ist
+eine Ersetzung, in der das Feld gar nicht vorkommt. Jetzt genügt der Wert,
+sobald der Befehl schreibt und einen Inhaltspfad nennt; ein lesendes `grep`
+bleibt erlaubt.
+
+**Schicht 3 — `scripts/check-freigabe.ts`.** Die einzige Prüfung, die nicht
+danach fragt, wer geschrieben hat. Sie vergleicht den Arbeitsstand mit einer
+Basis und meldet jeden Eintrag, dessen Status auf den Veröffentlichungswert
+gewechselt ist — unversionierte Dateien eingeschlossen. Wer bewusst
+veröffentlicht, nennt den Slug beim Aufruf (`--freigabe petticoat`); das ist
+eine Handlung an der Kommandozeile und steht nicht im Repository. Ein Agent,
+der `npm run verify` ausführt, setzt sie nicht.
+
+**Verworfen: das Feld `freigegebenVon`.** Es war der Vorschlag im Auftrag und
+klingt richtig — es verlagert die Sperre von „wer schreibt" auf „was steht
+da" —, trägt aber nicht. Wer den Status setzen will, schreibt auch
+`freigegebenVon: markus` in dieselbe Datei. Die Regel, dass ein Agent das nicht
+darf, stünde in CLAUDE.md, und das ist wörtlich Lektion 6: eine Bitte, keine
+Bedingung. Das Feld hätte einen Arbeitsschritt hinzugefügt und keine Grenze.
+Tragfähig ist nicht das Feld, sondern der **Statuswechsel im Diff** — der lässt
+sich nicht mitschreiben, weil er aus dem Vergleich zweier Stände entsteht.
+
+**Verworfen: die Statussperre als `permissions`-Regel.** Berechtigungsregeln
+greifen auf Werkzeug, Pfad und Befehlstext zu, nicht auf den *Inhalt* einer
+Datei. „Diese Datei darf geschrieben werden, aber nicht mit diesem Wert darin"
+lässt sich in der Syntax nicht ausdrücken. Deshalb bleibt die Statussperre in
+Schicht 2 und 3.
+
+**Restlücke, ausdrücklich stehen gelassen:** Schicht 2 erkennt Muster, keine
+Absichten — kodierte Befehle, Skripte, die anderswo geschrieben und dann
+ausgeführt werden, und Interpreter, die Dateien selbst öffnen, kommen durch.
+Das ist keine Vermutung: Genau so sind die Änderungen dieser Sitzungen
+entstanden. Schicht 1 hat dieselbe Grenze, und die Dokumentation nennt sie
+ausdrücklich („don't apply to arbitrary subprocesses"). Schicht 3 fängt davon
+den Fall ab, der wirklich schadet, aber nur, wo eine Basis vorliegt. Als
+Restlücke bei M8 und als M10 in `REVIEW.md`.
+
+**Negativtest (Lektion 7):** 48 neue Behauptungen in `test-hooks.ts` — zehn
+gesperrte Pfade über `sed -i`, Umleitung, `tee`, `cp`, `mv` und
+`git checkout/restore`; drei Statuswege; sechs harmlose Befehle, die
+durchgehen müssen; dazu die Verdrahtung in `settings.json` samt deny-Regeln.
+Neu `scripts/test-freigabe.ts` mit 17 Behauptungen in einem
+Wegwerf-Git-Verzeichnis; der Test fand beim ersten Lauf einen echten Fehler:
+`git diff` listet unversionierte Dateien nicht, ein neu angelegter, sofort
+veröffentlichter Eintrag wäre durchgerutscht — behoben über
+`git ls-files --others`.
+
+**Handtest in dieser Sitzung, gegen den echten Hook:** Der Versuch, den Status
+im Petticoat-Eintrag per `sed -i` umzustellen, wurde mit Exit 2 blockiert, die
+Begründung kam vollständig auf stderr an, die Datei blieb unverändert.
+Derselbe Hook blockierte kurz zuvor ein Python-Heredoc, das die gesperrten
+Pfade nur in Testdaten zitierte, und später diesen Protokolleintrag, weil er
+den blockierten Befehl beschreibt. Die Grobheit der Mustererkennung ist der
+Preis dafür, dass sie eher zu viel meldet als zu wenig — sie ist bekannt und
+gewollt.
+
+---
+
 ## 2026-09-02 — Testharnisch für `validate-content.ts` (M00)
 
 **Fund:** Über zwanzig Regeln, keine einzige automatisiert geprüft. Die
