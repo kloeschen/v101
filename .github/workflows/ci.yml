@@ -1,6 +1,22 @@
 # CI: jeder Push und jeder PR läuft durch dieselben Tore wie die lokale
-# Arbeit — npm run verify, nur mit --strict, damit Warnungen hier auffallen
-# und nicht erst im Betrieb.
+# Arbeit — aber über EINE Kette, nicht über aufgezählte Schritte.
+#
+# Befund M10: Vorher zählte dieser Workflow seine Prüfschritte einzeln auf.
+# Damit gab es zwei Orte, an denen ein neuer Schritt eingetragen werden muss —
+# package.json und diese Datei —, und der zweite liegt hinter einer
+# Agentensperre. `scripts/check-freigabe.ts` stand deshalb in
+# `npm run verify` und lief in der CI nie. Ein grüner Lauf hatte das nicht
+# gezeigt; aufgefallen ist es erst beim Blick ins Job-Log.
+#
+# Jetzt ruft die CI `npm run verify:ci` auf. Wer einen Prüfschritt ergänzt,
+# trägt ihn in package.json ein und nirgends sonst.
+# `scripts/test-pruefkette.ts` hält diesen Zustand fest: Es prüft, dass hier
+# nichts einzeln aufgezählt wird, dass jedes Prüfskript aus der Kette
+# erreichbar ist, und dass der Checkout die Historie mitbringt.
+#
+# Preis dieser Bauart: GitHub zeigt einen Schritt statt sieben. Damit das Log
+# lesbar bleibt, gibt `verify:ci` vor jedem Teilschritt eine Zeile der Form
+# `::: [3/8 Inhalte (strict)] :::` aus.
 name: CI
 
 on:
@@ -14,34 +30,18 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Volle Historie, nicht der Standard-Klon der Tiefe 1:
+          # scripts/check-freigabe.ts vergleicht den Arbeitsstand gegen die
+          # Basis und braucht dafür einen Vorgänger. Ohne das schlägt
+          # --basis-pflicht fehl, und ohne --basis-pflicht liefe die Prüfung
+          # stillschweigend ins Leere — genau der Zustand von M10.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
       - run: npm ci
 
-      - name: Typen (astro check)
-        run: npm run check
-
-      - name: Zeitzonen-Konvention
-        run: npx tsx scripts/check-zeitzonen.ts
-
-      - name: Inhalte validieren (strict)
-        run: npx tsx scripts/validate-content.ts --strict
-
-      - name: JSON-LD-Graphen (strict)
-        run: npx tsx scripts/check-jsonld.ts --strict
-
-      - name: Tests
-        run: npm test
-
-      - name: Autolink-Drift erkennen
-        # Wenn der Lauf hier etwas ändern würde, wurde vor dem Commit
-        # vergessen, npm run autolink auszuführen. Die CI schreibt nicht
-        # selbst — sie meldet nur, dass Quelle und Lexikon auseinanderlaufen.
-        # --check liefert das Ergebnis als Exitcode; die frühere Variante las
-        # deutsche Prosa und scheiterte am leeren Register.
-        run: npx tsx scripts/sync-autolinks.ts --check
-
-      - name: Build
-        run: npm run build
+      - name: Prüfkette
+        run: npm run verify:ci
