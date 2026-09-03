@@ -110,7 +110,7 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ---
 
-## 3. Mittlere Befunde — mit Empfehlung (M0, M00 und M8 erledigt, Rest offen)
+## 3. Mittlere Befunde — mit Empfehlung (M0, M00, M8 und M10 erledigt, Rest offen)
 
 **M00 · `validate-content.ts` hat keinen Testharnisch.** — **erledigt am
 2026-09-02.** `scripts/test-validate.ts` steht, als `npm run test:validate`
@@ -155,8 +155,34 @@ veroeffentlicht` als Fehler werten. Vor der Umsetzung Negativtest nach
 Lektion 7 — die Regel hat bisher nie angeschlagen.
 
 **M10 · Die Freigabeprüfung läuft in der CI überhaupt nicht — aus zwei
-unabhängigen Gründen.** `scripts/check-freigabe.ts` (Schicht 3 gegen M8) ist
-im Pull Request wirkungslos, und zwar doppelt:
+unabhängigen Gründen.** — **behoben am 2026-09-03.** Die CI ruft jetzt eine
+Kette auf statt Schritte aufzuzählen: `npm run verify:ci`, mit
+`fetch-depth: 0` im Checkout. Damit gibt es genau eine Stelle, an der ein
+Prüfschritt registriert wird, und die liegt in `package.json` — nicht hinter
+einer Agentensperre. `verify` bleibt als lokale, nachsichtigere Variante
+daneben bestehen; der Unterschied ist in `package.json` kommentiert.
+
+Die eigentliche Sperre gegen einen Rückfall ist
+`scripts/test-pruefkette.ts`: Jede Datei `scripts/check-*.ts` und
+`scripts/test-*.ts` muss von `verify:ci` aus erreichbar sein — die Analyse
+folgt `npm run`-Aufrufen transitiv —, der Workflow darf nichts einzeln
+aufzählen, und er muss die Historie holen. Ausnahmen sind erlaubt, aber nur
+mit Begründung in einer Liste im Test, die in beide Richtungen geprüft wird:
+`check-links.ts` ruft das Netz und läuft wöchentlich über den
+Linkcheck-Workflow. Mutationsbeleg nach Lektion 7: `freigabe:ci` testweise
+aus der Kette entfernt, es fallen genau zwei zusätzliche Prüfungen; danach
+zurückgebaut. Protokoll in `ENTSCHEIDUNGEN.md`.
+
+**Zur Entstehung, weil sie zum Befund gehört:** Die Workflow-Datei hat ein
+Mensch eingetragen. Die ausdrückliche Freigabe für `.github/` erreichte die
+Mechanik nicht — `permissions.deny` und `guard.mjs` sperren den Pfad, und
+beide liegen in `.claude/`, das ebenfalls gesperrt ist. Die in `guard.mjs`
+dokumentierte Restlücke hätte den Weg freigemacht; sie dafür zu benutzen
+hätte die Sperre zur Zierde gemacht. `test-pruefkette.ts` erzwingt, dass der
+Eintrag vor dem Merge passiert: Ohne ihn ist die Suite rot.
+
+Der ursprüngliche Befund: `scripts/check-freigabe.ts` (Schicht 3 gegen M8)
+war im Pull Request wirkungslos, und zwar doppelt:
 
 1. **Die CI ruft sie nicht auf.** `ci.yml` zählt seine Schritte einzeln auf
    (`npm run check`, `check-zeitzonen`, `validate-content --strict`,

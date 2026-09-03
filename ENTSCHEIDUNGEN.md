@@ -13,6 +13,84 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-03 — Eine Prüfkette statt zweier Listen (M10)
+
+**Fund:** Die CI zählte ihre Prüfschritte einzeln auf und rief `npm run
+verify` nie auf. Damit gab es zwei Orte, an denen ein neuer Schritt
+eingetragen werden musste — `package.json` und der Workflow —, und der
+zweite liegt hinter einer Agentensperre. `scripts/check-freigabe.ts` stand
+deshalb in `verify` und lief in der CI nie. Ein grüner Lauf hatte das nicht
+gezeigt; aufgefallen ist es erst beim Blick ins Job-Log.
+
+**Entscheidung:** Die CI ruft eine Kette auf. `verify:ci` in `package.json`
+ist die einzige Stelle, an der ein Prüfschritt registriert wird.
+
+**Zwei Ketten, nicht eine.** `verify` bleibt daneben bestehen:
+
+| | `verify` | `verify:ci` |
+| --- | --- | --- |
+| Warnungen | bleiben Warnungen | `--strict` macht Fehler daraus |
+| fehlende Vergleichsbasis | Hinweis, Lauf geht weiter | `--basis-pflicht` bricht ab |
+| Autolink-Drift | nicht geprüft | `--check` |
+
+Der Grund für beide: Lokal soll eine Warnung die Arbeit nicht anhalten —
+wer mitten in einem Eintrag steckt, hat notwendigerweise Lücken. Im Pull
+Request ist dieselbe Warnung ein Grund, nicht zu mergen. Und die
+Freigabeprüfung braucht lokal Nachsicht (ein frischer Klon ohne
+`origin/main` soll nicht rot sein), in der CI dagegen Strenge, sonst prüft
+sie stillschweigend nichts. Die Erklärung steht als `// verify`- und
+`// verify:ci`-Schlüssel direkt daneben in `package.json`; JSON kennt keine
+Kommentare, und npm ruft Schlüssel nie auf, die kein Ziel haben.
+
+**Reihenfolge nach Laufzeit, gemessen statt geschätzt:** Zeitzonen 0,6 s ·
+Freigabe 0,6 s · Inhalte 0,8 s · JSON-LD 0,9 s · Autolink 1,1 s · Typen
+11,3 s · Build 3,3 s · Tests 25,6 s. Billig vor teuer, mit einer bewussten
+Ausnahme: Die Typprüfung steht vor dem Build, obwohl sie dreimal so lange
+braucht — ein Typfehler soll nicht erst danach auffallen.
+
+**Preis, den wir kennen:** GitHub zeigt einen Schritt statt sieben, und bei
+einem Fehlschlag ist die Stelle weniger offensichtlich. Deshalb gibt
+`verify:ci` vor jedem Teilschritt eine Zeile `::: [3/8 Inhalte (strict)] :::`
+aus. Das Log bleibt greppbar, ohne dass jedes Skript angefasst werden musste.
+
+**Die eigentliche Arbeit ist `scripts/test-pruefkette.ts`.** M10 war kein
+Fehler in einem Skript, sondern ein Skript, das nirgends aufgerufen wurde.
+Genau das prüft der Harnisch jetzt: Jede Datei `scripts/check-*.ts` und
+`scripts/test-*.ts` muss von `verify:ci` aus erreichbar sein — die Analyse
+folgt `npm run`-Aufrufen transitiv durch `package.json`. Dazu drei
+Zusicherungen über den Workflow: Er ruft die Kette auf, er zählt nichts
+einzeln auf, und er holt die Historie (`fetch-depth: 0`), ohne die
+`--basis-pflicht` dauerhaft rot wäre.
+
+**Ausnahmen ausdrücklich, nicht stillschweigend:** `check-links.ts` ruft das
+Netz und läuft wöchentlich über den Linkcheck-Workflow. Es steht mit
+Begründung in einer Liste im Test, und der Test prüft die Liste in beide
+Richtungen: Eine Ausnahme für eine gelöschte Datei ist ein Fehler, und eine
+Ausnahme für ein Skript, das doch in der Kette hängt, ebenfalls — sonst
+verschleiert die Liste beim Lesen den wahren Zustand.
+
+**Verworfen: einen Startbanner in jedes der elf Prüfskripte schreiben.**
+Wäre unabhängig vom Aufrufweg sichtbar gewesen, hätte aber elf Dateien
+angefasst, um ein Problem der Kette zu lösen. Die Marker stehen jetzt an der
+einen Stelle, an der die Kette definiert ist. Ebenfalls verworfen: die
+Reihenfolge streng nach Laufzeit — siehe die Ausnahme für die Typprüfung.
+
+**Mutationsbeleg (Lektion 7):** `npm run freigabe:ci` testweise aus
+`verify:ci` entfernt. Es fallen genau zwei zusätzliche Prüfungen — die
+Erreichbarkeit von `check-freigabe.ts` und die Anwesenheit von `freigabe:ci`
+in der Kette. Danach zurückgebaut.
+
+**Grenze dieser Sitzung, offen benannt:** Die Workflow-Datei selbst konnte
+ich nicht schreiben. Die ausdrückliche Freigabe erreicht die Mechanik nicht:
+`permissions.deny` und `guard.mjs` sperren den Pfad, und beide liegen in
+`.claude/`, das ebenfalls gesperrt ist. Die in `guard.mjs` dokumentierte
+Restlücke (ein Interpreter, der die Datei selbst öffnet) hätte funktioniert
+— sie zu benutzen, um die eigene Sperre zu umgehen, hätte sie zur Zierde
+gemacht. Der Workflow wurde deshalb vom Menschen eingetragen; der Test
+oben erzwingt, dass es passiert, bevor gemergt werden kann.
+
+---
+
 ## 2026-09-03 — Sperren in Schichten statt in einer Regel (M8)
 
 **Fund:** `guard.mjs` hing am Matcher `Write|Edit` und las `tool_input.file_path`.
