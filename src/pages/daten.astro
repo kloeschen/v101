@@ -8,12 +8,12 @@
  * Entitätsautorität wächst — mehr als aus jeder llms.txt.
  */
 import BasisLayout from "../layouts/BasisLayout.astro";
-import { holeRegistry } from "../lib/registry";
+import { holeFreigegebeneRegistry } from "../lib/registry";
 import { site } from "../site.config";
 import { collectionNames } from "../content/_schemas";
 import { SAMMLUNGSNAME } from "../lib/faktenblock";
 
-const registry = await holeRegistry();
+const registry = await holeFreigegebeneRegistry();
 const regionen = [...registry.eintraege.values()]
   .filter((e) => e.collection === "regionen")
   .sort((a, b) => a.name.localeCompare(b.name, "de"));

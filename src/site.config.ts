@@ -52,7 +52,7 @@ export const indexierbar = umgebung("PUBLIC_INDEXIERBAR") === "true";
  * beiden Quellen bricht jeweils die andere Seite (genau die Falle, die
  * schon einmal bei facetten.ts zugeschlagen hat).
  */
-function umgebung(name: string): string | undefined {
+export function umgebung(name: string): string | undefined {
   const vite = (import.meta as unknown as { env?: Record<string, string> }).env;
   if (vite && name in vite) return vite[name];
   return typeof process !== "undefined" ? process.env?.[name] : undefined;

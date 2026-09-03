@@ -6,7 +6,7 @@
  * ungleichmäßig — Events im Wochentakt, das Lexikon in Schüben.
  */
 import type { APIRoute } from "astro";
-import { holeRegistry } from "../lib/registry";
+import { holeFreigegebeneRegistry } from "../lib/registry";
 import { sitemapXml, sitemapFuerCollection } from "../lib/feeds";
 import { collectionNames, type CollectionName } from "../content/_schemas";
 
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ params }) => {
-  const registry = await holeRegistry();
+  const registry = await holeFreigegebeneRegistry();
   const eintraege = sitemapFuerCollection(registry, params.typ as CollectionName);
   return new Response(sitemapXml(eintraege), {
     headers: { "Content-Type": "application/xml; charset=utf-8" },

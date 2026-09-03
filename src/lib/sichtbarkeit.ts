@@ -25,36 +25,25 @@
  * indexierbar (`PUBLIC_INDEXIERBAR=false`, Lektion 9).
  */
 
-/**
- * Umgebungsvariable aus beiden Welten lesen.
- *
- * `import.meta.env` existiert nur unter Vite/Astro, `process.env` nur in
- * Node — und dieses Modul wird von beiden importiert. Ein direkter Zugriff
- * auf eine der beiden Quellen bricht jeweils die andere Seite (Lektion 2,
- * zweimal passiert: erst bei `facetten.ts`, dann bei `site.config.ts`).
- *
- * Dieselbe Hilfe steht in `site.config.ts` und wird von dort nicht
- * exportiert. Sie zu teilen hieße, `site.config.ts` zu ändern, und diese
- * Datei ist für Agenten gesperrt (Lektion 16). Die Dopplung ist damit
- * bewusst und nicht übersehen; wer die Sperre aufhebt, kann sie zu einem
- * Export zusammenziehen.
- */
-function umgebung(name: string): unknown {
-  const vite = (import.meta as unknown as { env?: Record<string, unknown> }).env;
-  if (vite && name in vite) return vite[name];
-  return typeof process !== "undefined" ? process.env?.[name] : undefined;
-}
+import { umgebung } from "../site.config";
 
 /**
  * Wahrheitswert einer Umgebungsvariablen.
  *
- * Beide Schreibweisen sind nötig: `import.meta.env.DEV` liefert einen
- * echten Boolean, `process.env.PUBLIC_ENTWUERFE` immer eine Zeichenkette.
- * Ein reiner `=== "true"`-Vergleich hätte den Entwicklungsmodus stumm
- * verschluckt.
+ * Gelesen wird über `umgebung()` aus `site.config.ts` — dieselbe
+ * Zugriffshilfe, die auch `PUBLIC_INDEXIERBAR` liest. Sie kennt beide
+ * Welten: `import.meta.env` gibt es nur unter Vite/Astro, `process.env` nur
+ * in Node, und dieses Modul wird von beiden importiert. Ein direkter
+ * Zugriff auf eine der Quellen bräche jeweils die andere Seite (Lektion 2,
+ * zweimal passiert: erst bei `facetten.ts`, dann bei `site.config.ts`).
+ *
+ * Der Cast auf `unknown` ist nötig und kein Schmutz: `umgebung()` ist als
+ * `string | undefined` deklariert, `import.meta.env.DEV` liefert aber einen
+ * echten Boolean. Beide Schreibweisen müssen durchkommen — ein reiner
+ * `=== "true"`-Vergleich hätte den Entwicklungsmodus stumm verschluckt.
  */
 function fahne(name: string): boolean {
-  const wert = umgebung(name);
+  const wert = umgebung(name) as unknown;
   return wert === true || wert === "true";
 }
 
@@ -77,6 +66,20 @@ export function istEntwicklung(): boolean {
 export function istSichtbar(daten: { status?: string }): boolean {
   if (istEntwicklung()) return true;
   if (entwuerfeSichtbar()) return true;
+  return daten.status === "veroeffentlicht";
+}
+
+/**
+ * Ist dieser Eintrag freigegeben?
+ *
+ * Die unbedingte Fassung von `istSichtbar`: Kein Schalter, keine
+ * Entwicklungsausnahme, nur der Status. Das ist die Frage, die die offene
+ * Schnittstelle stellt — die Feeds stehen unter CC BY 4.0 zur Nachnutzung
+ * frei, und was sie verlässt, verliert den Kontext, der es als Entwurf
+ * kennzeichnet. Eine Liste, die anderswo weiterverwendet wird, enthält nur,
+ * was gilt.
+ */
+export function istFreigegeben(daten: { status?: string }): boolean {
   return daten.status === "veroeffentlicht";
 }
 
