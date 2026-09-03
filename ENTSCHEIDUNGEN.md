@@ -13,6 +13,69 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-02 — Testharnisch für `validate-content.ts` (M00)
+
+**Fund:** Über zwanzig Regeln, keine einzige automatisiert geprüft. Die
+Negativtests der letzten beiden Sitzungen liefen von Hand und hinterließen
+nur Prosa in dieser Datei. Bei den schärfsten Prüfungen des Projekts war
+jede Regeländerung ein Blindflug.
+
+**Entscheidung:** `scripts/test-validate.ts` nach dem Muster von
+`test-hooks.ts` und `test-sync-autolinks.ts`. Ein Temp-Verzeichnis bekommt
+`scripts` und `node_modules` als Symlink und ein eigenes `src/content`; der
+Loader bildet seine Wurzel aus `process.cwd()`, das echte Register wird nie
+berührt. Die Modulauflösung folgt dem Symlink zurück ins Projekt, sodass
+gegen den echten Datenvertrag geprüft wird — nicht gegen eine Kopie, die
+altert.
+
+Geprüft wird über `--json --changed` gegen `befunde[].befunde[].code` und
+`.ebene`, nicht gegen die Textausgabe. Codes sind Vertrag, Formulierungen
+sind es nicht. Je Regel mindestens ein anschlagender und ein sauberer Fall;
+wo eine Regel je nach `status` Fehler oder Warnung meldet, werden beide
+Ebenen geprüft. Alle Fixtures laufen in **einem** Validator-Aufruf: 62
+Dateien, ein Prozessstart, 165 Behauptungen in gut zwei Sekunden.
+
+**Verworfen:** Ein Temp-Verzeichnis je Fall. Sauberer isoliert, aber
+sechzig `npx tsx`-Starts hätten die Suite auf über eine Minute gebracht —
+ein Test, der bremst, wird abgeschaltet. Die Isolation kommt stattdessen
+aus eindeutigen Namen und Slugs je Fixture; die einzige gewollte
+Wechselwirkung ist das Duplikat-Paar. Ebenfalls verworfen: die Regeln
+direkt zu importieren und ohne Kindprozess aufzurufen. Das hätte
+`REGELN` exportiert werden müssen und den Pfad übersprungen, der im Betrieb
+tatsächlich läuft — CLI, Argumentparsing, Exitcode.
+
+**Fund mit Folgen (1): `--json` war nicht maschinenlesbar.**
+`meldeLinkzieleKnapp` schrieb seinen Hinweis auf **stdout**, direkt vor das
+JSON-Dokument. `validate-content.ts --json | jq` scheiterte damit in genau
+dem Zustand, in dem das Register klein ist — also seit dem ersten Eintrag.
+Aufgefallen ist es erst, als etwas die Ausgabe wirklich parsen wollte. Der
+Hinweis geht jetzt auf stderr; im Terminal bleibt er sichtbar. Der Test
+prüft die Hygiene ausdrücklich mit, damit die Zeile nicht zurückwandert.
+
+**Fund mit Folgen (2): Reichweite von `auchOhneSchema`.** Scheitert das
+Zod-Schema, laufen nur die Regeln mit diesem Flag. Derselbe Eintrag, einmal
+mit und einmal ohne ein zusätzliches unbekanntes Feld, unterscheidet sich um
+fünf Befunde: `quellen-vorhanden`, `belegpflicht`, `referenzen`,
+`gp-abgrenzung` und `veroeffentlichungsreife` verstummen, obwohl die Mängel
+unverändert in der Datei stehen. Das ist Absicht — die Regeln lesen
+`e.daten` und liefen sonst auf null —, aber die Reichweite muss man kennen:
+Wer einen Tippfehler im Frontmatter behebt, bekommt danach fünf neue Fehler
+zu sehen. Zwei Fixtures halten die Grenze jetzt fest.
+
+**Fund mit Folgen (3): `event-zeitraum` erklärt Termine am eigenen Tag für
+vorbei.** Als offener Befund M9 in `REVIEW.md`, hier nicht mitbehoben —
+Event-Semantik zu ändern ist eine eigene Entscheidung, keine Nebenwirkung
+eines Testauftrags.
+
+**Mutationsbeleg (Lektion 7):** Drei Regeln einzeln deaktiviert, jeweils
+zurückgebaut. `belegpflicht` abgeschaltet → 3 Prüfungen fallen.
+`event-zeitraum`-Vergangenheitsprüfung entfernt → 1 Prüfung fällt.
+`gp-abgrenzung` auf immer-Warnung eingeebnet → 2 Prüfungen fallen, und zwar
+die **Ebenen**prüfungen: Der Code schlug weiter an, nur die Stufe stimmte
+nicht. Genau dafür stehen die Ebenen im Harnisch.
+
+---
+
 ## 2026-09-02 — Belegkette: `alle` gestrichen, `felder` geprüft, `art` erweitert
 
 Drei Änderungen am Datenvertrag, in einem Zug, weil sie dieselbe Schwachstelle

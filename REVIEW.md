@@ -110,9 +110,17 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ---
 
-## 3. Mittlere Befunde — mit Empfehlung (M0 erledigt, Rest offen)
+## 3. Mittlere Befunde — mit Empfehlung (M0 und M00 erledigt, Rest offen)
 
-**M00 · `validate-content.ts` hat keinen Testharnisch.**
+**M00 · `validate-content.ts` hat keinen Testharnisch.** — **erledigt am
+2026-09-02.** `scripts/test-validate.ts` steht, als `npm run test:validate`
+eingetragen und an `npm run test` gehängt: 62 Fixtures in einem
+Temp-Register mit symlinkten `scripts` und `node_modules`, ein einziger
+`--json --changed`-Lauf, 165 Behauptungen gegen `code` und `ebene`. Je Regel
+ein anschlagender und ein sauberer Fall; wo die Ebene am `status` hängt,
+werden beide geprüft. Mutationsbeleg nach Lektion 7: drei Regeln einzeln
+deaktiviert, jeweils fielen die zugehörigen Prüfungen (3 / 1 / 2), danach
+zurückgebaut. Protokoll in `ENTSCHEIDUNGEN.md`. Der ursprüngliche Befund:
 `npm run test` deckt Links, Facetten, Feeds, Autolink und Hooks ab — die
 Regelsammlung des Inhaltsvalidators nicht, obwohl dort inzwischen über
 zwanzig Regeln stehen und sie die schärfsten des Projekts sind. Negativtests
@@ -172,6 +180,31 @@ unabhängig vom Kommandotext — die Sperren zusätzlich als
 `pre-commit`-Prüfung und als CI-Schritt führen, der die geschützten Pfade
 im Diff gegen die Basis prüft. Vorher der Negativtest nach Lektion 7 für
 beide Schreibwege, mit einem Versuch, der scheitern muss.
+
+**M9 · `event-zeitraum` erklärt Termine am eigenen Tag für vorbei.**
+`const vorbei = new Date(ende ?? beginn) < ctx.heute` vergleicht einen
+Zeitpunkt mit „jetzt". Trägt ein Event nur ein Datum statt eines
+Zeitstempels — was das Schema erlaubt (`z.coerce.date()`) und was für
+`ganztaegig: true` die natürliche Schreibweise ist —, wird daraus Mitternacht
+UTC. Ab 00:01 UTC am Veranstaltungstag gilt der Termin als vergangen.
+**Nachweis:** Ein Event mit `beginn: <heute>` und `durchfuehrung: geplant`
+liefert `fehler` „Termin ist vorbei, Status steht noch auf ‚geplant'" — am
+Morgen des Tages, an dem es stattfindet. Für einen veröffentlichten Eintrag
+heißt das: rote CI am wichtigsten Tag des Eintrags, und der einzige Weg
+heraus ist eine Statusangabe, die noch nicht stimmt.
+`scripts/archive-events.ts` teilt die Vergleichslogik
+(`new Date(d.ende ?? d.beginn) >= jetzt`) und würde denselben Termin
+archivieren, während er läuft. Im Alltag fällt es nicht auf, weil das Golden
+Example volle Zeitstempel mit Offset schreibt (`2026-05-22T18:00:00+02:00`)
+— die Lücke trifft genau die Einträge, die den bequemen erlaubten Weg
+nehmen. Empfehlung: Für Werte ohne Tageszeit auf das **Tagesende** in
+`site.zeitzone` vergleichen statt auf den Zeitpunkt, in Validator und
+Archivierer gemeinsam; das ist Lektion 1 an einer Stelle, die
+`check-zeitzonen.ts` nicht sieht, weil hier keine verbotene Datums-API
+steht, sondern eine stillschweigende Annahme. Negativtest nach Lektion 7 vor
+der Umsetzung; der Harnisch aus M00 nimmt ihn jetzt auf. Bewusst nicht im
+Zuge des Testauftrags mitbehoben: Event-Semantik zu ändern ist eine eigene
+Entscheidung.
 
 **M1 · `sync-autolinks` ersetzt den Body über einen fragilen Index.**
 `roh.indexOf(parsed.content, …)` funktioniert, kippt aber bei leerem Body
