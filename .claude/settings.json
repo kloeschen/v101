@@ -1,9 +1,26 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "deny": [
+      "Edit(/src/content/_schemas.ts)",
+      "Edit(/src/site.config.ts)",
+      "Edit(/.claude/**)",
+      "Edit(/.github/**)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PROJECT_DIR}/.claude/hooks/guard.mjs\""
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
         "hooks": [
           {
             "type": "command",

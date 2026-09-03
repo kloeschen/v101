@@ -110,7 +110,7 @@ CreativeWork-Eigenschaft, auf `MusicVenue` fehl am Platz. **Fix:**
 
 ---
 
-## 3. Mittlere Befunde — mit Empfehlung (M0 und M00 erledigt, Rest offen)
+## 3. Mittlere Befunde — mit Empfehlung (M0, M00 und M8 erledigt, Rest offen)
 
 **M00 · `validate-content.ts` hat keinen Testharnisch.** — **erledigt am
 2026-09-02.** `scripts/test-validate.ts` steht, als `npm run test:validate`
@@ -154,7 +154,65 @@ einzeln verlangen. Zusätzlich denkbar: `[alle]` bei `status:
 veroeffentlicht` als Fehler werten. Vor der Umsetzung Negativtest nach
 Lektion 7 — die Regel hat bisher nie angeschlagen.
 
-**M8 · Die Hook-Sperren greifen nur bei `Write`/`Edit`, nicht bei Bash.**
+**M10 · Die CI klont flach, deshalb kann die Freigabeprüfung dort nicht
+greifen.** `scripts/check-freigabe.ts` (Schicht 3 gegen M8) vergleicht den
+Arbeitsstand mit einer Basis. `ci.yml` benutzt `actions/checkout@v4` in der
+Standardtiefe 1: Im CI-Klon existiert genau ein Commit, kein Vorgänger ist
+lesbar. **Nachgewiesen:** `git clone --depth 1` auf dieses Repository liefert
+`Commits verfuegbar: 1`, und `origin/main~1` ist „not a valid object name".
+Die Prüfung meldet das laut auf stderr und läuft durch — wirksam ist sie
+damit lokal, wo CLAUDE.md `npm run verify` vor jedem Commit verlangt, aber
+nicht im Pull Request. Empfehlung: `fetch-depth: 0` im Checkout-Schritt
+ergänzen und `npm run freigabe -- --basis-pflicht` als eigenen Schritt
+aufnehmen; die Flagge existiert bereits und macht die fehlende Basis zum
+Fehler. Nicht mitbehoben, weil `.github/` für Agenten gesperrt ist — und
+diese Sperre ist der Gegenstand desselben Befunds, an dem gerade gearbeitet
+wurde. Negativtest nach Lektion 7 liegt vor: `test-freigabe.ts` prüft beide
+Zweige (fehlende Basis ohne Flagge = Exit 0 mit Hinweis, mit Flagge = Exit 1).
+
+**M8 · Die Hook-Sperren greifen nur bei `Write`/`Edit`, nicht bei Bash.** —
+**behoben am 2026-09-03, mit dokumentierter Restlücke.** Die Absicherung
+liegt jetzt in drei Schichten, die unterschiedlich versagen:
+
+1. **`permissions.deny` in `settings.json`** — vier `Edit()`-Regeln für
+   `_schemas.ts`, `site.config.ts`, `.claude/` und `.github/`. Sie hängen
+   nicht am Hook-Matcher, gelten auch für die Shell-Dateibefehle, die Claude
+   Code kennt (`cat`, `head`, `tail`, `sed`), und prüfen das Ziel einer
+   Ausgabeumleitung mit. Bewusst `Edit(...)`, nicht `Read(...)`: Eine
+   Read-Sperre würde den Datenvertrag auch fürs Lesen und für die Suche
+   schließen.
+2. **`guard.mjs` mit Matcher `Bash`** — prüft `tool_input.command` auf
+   Schreibverben (`sed -i`, `tee`, `cp`, `mv`, `dd`, `truncate`, `rsync`,
+   `patch`, `perl -pi`, `git checkout/restore/apply`, `>`, `>>`) an
+   gesperrten Pfaden, und den Veröffentlichungsstatus zusammen mit einem
+   Pfad unter `src/content/`.
+3. **`scripts/check-freigabe.ts`** — fragt nicht, wer geschrieben hat,
+   sondern was dasteht: Statuswechsel gegen die Basis, unversionierte
+   Dateien eingeschlossen. Teil von `npm run verify`.
+
+**Restlücke — bitte nicht überschätzen:** Schicht 2 erkennt Muster, keine
+Absichten. Kodierte Befehle, Skripte, die anderswo geschrieben und dann
+ausgeführt werden, Interpreter, die Dateien selbst öffnen (`python3 - <<EOF`,
+`node schreib.mjs`), Pfade über Variablen oder Symlinks — all das kommt
+durch. Das ist kein hypothetischer Angreifer: Genau so sind die Änderungen
+der letzten drei Sitzungen entstanden. Schicht 1 hat dieselbe Grenze, und die
+Dokumentation von Claude Code benennt sie ausdrücklich („don't apply to
+arbitrary subprocesses"); für Durchsetzung auf Betriebssystemebene verweist
+sie auf die Sandbox. Schicht 3 fängt davon den Fall ab, der wirklich schadet
+— die unbeabsichtigte Veröffentlichung —, aber nur, wo eine Basis vorliegt,
+und das ist in der CI derzeit nicht der Fall (M10).
+
+**Zweitwirkung, die man kennen muss:** Die Mustererkennung ist grob und
+meldet lieber zu viel. In der Sitzung, die sie gebaut hat, blockierte sie
+dreimal legitime Arbeit: ein Testskript, das die gesperrten Pfade nur in
+Fixture-Strings zitiert, diesen Review-Eintrag und den Eintrag in
+`ENTSCHEIDUNGEN.md`, weil beide den blockierten Befehl beschreiben. Der
+Ausweg ist jeweils das dateibasierte Werkzeug (`Write`/`Edit`) statt der
+Shell; in `test-hooks.ts` sind die Pfade deshalb aus Fragmenten
+zusammengesetzt. Wer die Sperre lockert, verliert genau die Grobheit, die
+`sed -i s/entwurf/…/` gefangen hat.
+
+Der ursprüngliche Befund:
 `settings.json` bindet `guard.mjs` mit `"matcher": "Write|Edit"`, und der
 Hook liest ausschließlich `tool_input.file_path` und `tool_input.content`.
 Ein Schreibzugriff über die Shell — `sed -i`, ein Python-Einzeiler, ein

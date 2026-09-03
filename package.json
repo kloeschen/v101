@@ -18,14 +18,16 @@
     "archivieren": "tsx scripts/archive-events.ts",
     "stale": "tsx scripts/stale-report.ts",
     "links:extern": "tsx scripts/check-links.ts",
-    "test": "npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink && npm run test:hooks && npm run test:validate",
+    "freigabe": "tsx scripts/check-freigabe.ts",
+    "test": "npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink && npm run test:hooks && npm run test:validate && npm run test:freigabe",
     "test:links": "tsx scripts/test-links.ts",
     "test:facetten": "tsx scripts/test-facetten.ts",
     "test:feeds": "tsx scripts/test-feeds.ts",
     "test:autolink": "tsx scripts/test-sync-autolinks.ts",
     "test:hooks": "tsx scripts/test-hooks.ts",
     "test:validate": "tsx scripts/test-validate.ts",
-    "verify": "npm run check && npm run check:zeit && npm run validate && npm run jsonld && npm run test && npm run build"
+    "test:freigabe": "tsx scripts/test-freigabe.ts",
+    "verify": "npm run check && npm run check:zeit && npm run validate && npm run jsonld && npm run freigabe && npm run test && npm run build"
   },
   "dependencies": {
     "astro": "^7.2.10",
