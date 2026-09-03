@@ -44,6 +44,52 @@ const VERBOTEN: { muster: RegExp; grund: string }[] = [
 /** Intl-Aufrufe sind nur mit explizitem timeZone im Optionsobjekt erlaubt. */
 const INTL = /new\s+Intl\.DateTimeFormat\s*\(/g;
 
+/* ------------------------------------------------------------------ */
+/* Tagesgrenzen (Befund M9)                                            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Die zweite Fehlerklasse: nicht falsch formatiert, sondern falsch
+ * verglichen. `new Date(ende ?? beginn) < jetzt` liest sich richtig, ist es
+ * aber nicht — `z.coerce.date()` macht aus einem Datum ohne Uhrzeit
+ * Mitternacht UTC, und damit gilt ein Termin von heute ab 00:01 UTC als
+ * vergangen. Sechs Stellen hatten denselben Vergleich.
+ *
+ * Die Antwort steht in src/lib/datum.ts (`istVorbei`/`eventVorbei`, Ende des
+ * letzten Tages in site.zeitzone). Dieses Muster hält fest, dass niemand
+ * daran vorbei einen eigenen Vergleich baut.
+ *
+ * Was das Muster erkennt: eine Ordnungsrelation, bei der genau ein Operand
+ * eine Jetzt-Quelle ist (`new Date()`, `Date.now()`, `jetzt`, `heute`) und
+ * beide Operanden einfache Ausdrücke sind. Was es nicht erkennt: dieselbe
+ * Frage über eine Zwischenvariable oder in Millisekunden ausgerechnet. Es
+ * ist eine Sperre gegen den bekannten Rückfall, kein Beweis.
+ */
+
+/** Ein einfacher Operand: `new Date(x)`, `+new Date(x)`, `a.b.c`, `f()`. */
+const OPERAND = String.raw`\+?(?:new\s+Date\((?:[^()]|\([^()]*\))*\)|[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)*(?:\(\))?)`;
+const VERGLEICH = new RegExp(String.raw`(${OPERAND})\s*(<=|>=|<|>)\s*(${OPERAND})`, "g");
+
+/**
+ * Reine Kommentarzeilen. Anders als bei den Formatierungsmustern muss dieses
+ * hier sie überspringen: Die Regel wird an mehreren Stellen erklärt, und der
+ * falsche Vergleich steht dabei im Text. Eine Prüfung, die an ihrer eigenen
+ * Dokumentation anschlägt, wird abgeschaltet statt befolgt.
+ */
+const NUR_KOMMENTAR = /^\s*(\/\/|\*|\/\*)/;
+
+/**
+ * Schreibweisen angleichen, ohne `new Date` zu `newDate` zu verkleben:
+ * Leerraum um Punkte und Klammern fällt weg, der Rest wird zu einem Blank.
+ */
+const normalisiere = (s: string) => s.replace(/\s+/g, " ").replace(/\s*([.()])\s*/g, "$1").trim();
+
+/** Ist dieser Operand "jetzt"? */
+const JETZT = /^\+?(?:new Date\(\)|Date\.now\(\)|(?:[A-Za-z_$][\w$]*\.)?(?:jetzt|heute|now|JETZT|HEUTE))$/;
+
+/** Ist dieser Operand ein Datumswert und keine Zahl, Länge oder Schwelle? */
+const DATUMSWERT = /^\+?(?:new\s+Date\(.+\)|[A-Za-z_$][\w$.]*(?:datum|Datum|beginn|Beginn|ende|Ende|letzte|date|Date)[\w$.]*)$/;
+
 function pruefeDatei(datei: string): Befund[] {
   const inhalt = readFileSync(datei, "utf8");
   const zeilen = inhalt.split("\n");
@@ -55,6 +101,24 @@ function pruefeDatei(datei: string): Befund[] {
       if (muster.test(zeile)) {
         befunde.push({ datei, zeile: i + 1, text: zeile.trim().slice(0, 90), grund });
       }
+    }
+
+    // Datum gegen "jetzt" vergleichen, ohne istVorbei zu fragen.
+    if (NUR_KOMMENTAR.test(zeile)) return;
+    for (const t of zeile.matchAll(VERGLEICH)) {
+      const links = normalisiere(t[1]);
+      const rechts = normalisiere(t[3]);
+      const einSeitigJetzt = JETZT.test(links) !== JETZT.test(rechts);
+      const andereSeite = JETZT.test(links) ? rechts : links;
+      if (!einSeitigJetzt || !DATUMSWERT.test(andereSeite)) continue;
+      befunde.push({
+        datei,
+        zeile: i + 1,
+        text: zeile.trim().slice(0, 90),
+        grund:
+          "Datum direkt gegen \"jetzt\" verglichen — das trennt am Zeitstempel, nicht " +
+          "am Tagesende (M9). istVorbei/eventVorbei aus src/lib/datum.ts verwenden",
+      });
     }
   });
 

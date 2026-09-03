@@ -17,6 +17,7 @@
 import path from "node:path";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
+import { eventVorbei, istVorbei } from "../src/lib/datum";
 import { pruefKadenzTage } from "../src/content/_schemas";
 
 interface Posten {
@@ -41,6 +42,9 @@ function main() {
   const alle = ladeAlle();
   const registry = buildRegistry(alsRegistryEingaben(alle));
   const posten: Posten[] = [];
+  // Ein Zeitpunkt für den ganzen Lauf. Sonst kann ein Bericht, der über
+  // Mitternacht läuft, zwei verschiedene Antworten auf dieselbe Frage geben.
+  const jetzt = new Date();
 
   for (const e of alle) {
     const d = e.daten;
@@ -71,7 +75,7 @@ function main() {
     }
 
     if (e.collection === "events") {
-      const vorbei = new Date(d.ende ?? d.beginn) < new Date();
+      const vorbei = eventVorbei(d, jetzt);
       if (vorbei && d.durchfuehrung === "geplant") {
         posten.push({
           art: "vergangen",
@@ -101,7 +105,12 @@ function main() {
     }
   }
   for (const [slug, r] of reihen) {
-    if (r.letzte < new Date() && !alle.some((e) => e.daten?.reihe === slug && new Date(e.daten!.beginn) >= new Date())) {
+    // Dieselbe Frage wie in archive-events und im Validator, also dieselbe
+    // Antwort: tagesgenau in der Zeitzone der Site (M9).
+    const folgetermin = alle.some(
+      (e) => e.daten?.reihe === slug && !istVorbei(e.daten!.ende ?? e.daten!.beginn, jetzt),
+    );
+    if (istVorbei(r.letzte, jetzt) && !folgetermin) {
       posten.push({
         art: "reihe-ohne-folge",
         datei: r.datei,

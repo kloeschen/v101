@@ -28,6 +28,7 @@ import {
   autorId,
 } from "./shared";
 import { site, siteIds } from "../../site.config";
+import { eventVorbei } from "../datum";
 import type { CollectionName } from "../../content/_schemas";
 
 export interface Builder {
@@ -54,7 +55,9 @@ export const eventBuilder: Builder = {
 
   entitaet(d, slug) {
     const url = seitenUrl("events", slug);
-    const vorbei = new Date(d.ende ?? d.beginn) < new Date();
+    // Tagesgenau, nicht zeitstempelgenau: Ein Konzert heute Abend ist am
+    // Vormittag nicht OutOfStock (M9, siehe lib/datum.ts).
+    const vorbei = eventVorbei(d);
 
     const angebote = d.eintrittFrei
       ? undefined

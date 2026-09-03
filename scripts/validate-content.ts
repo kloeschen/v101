@@ -20,6 +20,7 @@ import path from "node:path";
 import { z } from "zod";
 import { ladeAlle, type GeladenerEintrag } from "./_laden";
 import { RESERVIERTE_SEGMENTE } from "../src/lib/facetten";
+import { istVorbei } from "../src/lib/datum";
 import {
   collectionSchemas,
   collectionNames,
@@ -371,7 +372,7 @@ const REGELN: Regel[] = [
       const b: Befund[] = [];
       for (const q of e.daten.quellen ?? []) {
         const alter = tageSeit(q.abgerufenAm, ctx.heute);
-        if (alter > 120 && new Date(e.daten.beginn) > ctx.heute) {
+        if (alter > 120 && !istVorbei(e.daten.ende ?? e.daten.beginn, ctx.heute)) {
           b.push({ ebene: "warnung", code: "", nachricht: `Quelle ${alter} Tage alt (${q.url}) für ein zukünftiges Event. Preise und Termine erneut prüfen.` });
         }
       }
@@ -454,7 +455,12 @@ const REGELN: Regel[] = [
       if (ende && new Date(ende) < new Date(beginn)) {
         b.push({ ebene: "fehler", code: "", feld: "ende", nachricht: "Ende liegt vor Beginn." });
       }
-      const vorbei = new Date(ende ?? beginn) < ctx.heute;
+      // Nicht `new Date(ende ?? beginn) < ctx.heute`. `z.coerce.date()`
+      // macht aus einem Datum ohne Uhrzeit Mitternacht UTC — der alte
+      // Vergleich erklärte einen Termin von heute ab 00:01 UTC für vorbei
+      // und verlangte "stattgefunden", während er noch bevorstand (M9).
+      // Maßgeblich ist das Ende seines letzten Tages in site.zeitzone.
+      const vorbei = istVorbei(ende ?? beginn, ctx.heute);
       if (vorbei && durchfuehrung === "geplant") {
         b.push({ ebene: "fehler", code: "", feld: "durchfuehrung", nachricht: 'Termin ist vorbei, Status steht noch auf "geplant". Auf "stattgefunden" setzen — nicht löschen.' });
       }

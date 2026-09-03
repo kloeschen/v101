@@ -28,6 +28,7 @@
 import type { Registry, EintragMeta } from "./links";
 import type { CollectionName } from "../content/_schemas";
 import { site } from "../site.config";
+import { istVorbei } from "./datum";
 
 export const MIN_EINTRAEGE = 5;
 export const MIN_EINLEITUNG_WORTE = 150;
@@ -67,13 +68,22 @@ function jahrVorOrt(d: Date): string {
   return new Intl.DateTimeFormat("en-US", { timeZone: site.zeitzone, year: "numeric" }).format(d);
 }
 
-/** Kommende zuerst, dann vergangene absteigend — wie auf der Bandseite. */
+/**
+ * Kommende zuerst, dann vergangene absteigend — wie auf der Bandseite.
+ *
+ * Die Trennung läuft über `istVorbei` und damit über `ende ?? beginn`, nicht
+ * über `beginn >= Date.now()`. Vorher beantwortete diese Funktion dieselbe
+ * Frage anders als die Bandseite: Ein dreitägiges Festival rutschte hier
+ * schon am zweiten Tag zu den vergangenen, und ein Termin heute Abend ab
+ * 02:01 Ortszeit derselben Nacht (M9). Sortiert wird weiter nach `beginn` —
+ * das ist die chronologische Ordnung, nach der ein Leser sucht.
+ */
 function nachDatum(a: EintragMeta, b: EintragMeta): number {
   const da = +new Date(a.daten.beginn);
   const db = +new Date(b.daten.beginn);
-  const jetzt = Date.now();
-  const aKommt = da >= jetzt;
-  const bKommt = db >= jetzt;
+  const jetzt = new Date();
+  const aKommt = !istVorbei(a.daten.ende ?? a.daten.beginn, jetzt);
+  const bKommt = !istVorbei(b.daten.ende ?? b.daten.beginn, jetzt);
   if (aKommt !== bKommt) return aKommt ? -1 : 1;
   return aKommt ? da - db : db - da;
 }
