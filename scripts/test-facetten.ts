@@ -23,6 +23,7 @@ import { buildRegistry, type RegistryEingabe } from "../src/lib/links";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { collectionNames } from "../src/content/_schemas";
 import { site } from "../src/site.config";
+import { istSichtbar, istEntwurf, entwuerfeSichtbar } from "../src/lib/sichtbarkeit";
 
 let bestanden = 0;
 const fehler: string[] = [];
@@ -202,6 +203,72 @@ const kurz = "Wort ".repeat(20);
   // Fehler zufällig noch, weil vergangene absteigend sortiert werden und
   // "heute" dabei ebenfalls vor "gestern" landet.
   gleich("Tagesrand trennt kommend von vergangen", reihenfolge, ["laufend", "heute", "morgen", "gestern"]);
+}
+
+/* ------------------------------------------------------------------ */
+/* Sichtbarkeit von Entwürfen (PUBLIC_ENTWUERFE)                       */
+/* ------------------------------------------------------------------ */
+
+{
+  // Entwürfe sollen in Deploy Previews und Branch-Deploys sichtbar sein, in
+  // der freigegebenen Produktion nicht. Beide Richtungen werden hier
+  // festgehalten — eine Prüfung, die nur den erlaubten Fall zeigt, beweist
+  // nichts (Lektion 7).
+  //
+  // Der Schalter wird bei jedem Aufruf gelesen, nicht beim Laden des Moduls.
+  // Genau das macht diesen Test möglich; wäre er ein Modul-Konstante, ließe
+  // er sich hier nicht umstellen, und die Regel bliebe ungeprüft.
+  const vorher = process.env.PUBLIC_ENTWUERFE;
+  const setze = (wert: string | undefined) => {
+    if (wert === undefined) delete process.env.PUBLIC_ENTWUERFE;
+    else process.env.PUBLIC_ENTWUERFE = wert;
+  };
+
+  const eintrag = (slug: string, status: string): RegistryEingabe => ({
+    collection: "lexikon",
+    slug,
+    daten: { name: slug, kurzbeschreibung: `${slug} ist ein Begriff.`, status, kategorie: "mode" },
+  });
+  const alle = [eintrag("fertig", "veroeffentlicht"), eintrag("roh", "entwurf"), eintrag("geprueft-nicht-frei", "geprueft")];
+
+  /** Baut das Register so, wie holeRegistry() es baut: gefiltert. */
+  const slugsImRegister = () =>
+    [...buildRegistry(alle.filter((e) => istSichtbar(e.daten))).eintraege.values()].map((e) => e.slug).sort();
+
+  try {
+    setze("false");
+    gleich("PUBLIC_ENTWUERFE=false: nur Veröffentlichtes im Register", slugsImRegister(), ["fertig"]);
+    gleich("PUBLIC_ENTWUERFE=false: Schalter meldet aus", entwuerfeSichtbar(), false);
+
+    setze(undefined);
+    gleich("ohne PUBLIC_ENTWUERFE: nur Veröffentlichtes im Register", slugsImRegister(), ["fertig"]);
+
+    setze("true");
+    gleich(
+      "PUBLIC_ENTWUERFE=true: Entwürfe im Register",
+      slugsImRegister(),
+      ["fertig", "geprueft-nicht-frei", "roh"],
+    );
+    gleich("PUBLIC_ENTWUERFE=true: Schalter meldet an", entwuerfeSichtbar(), true);
+
+    // Kein Wahrheitswert außer "true" schaltet frei. Sonst wäre ein
+    // versehentliches PUBLIC_ENTWUERFE=1 in der Produktion eine offene Tür.
+    for (const wert of ["1", "yes", "TRUE", "ja", ""]) {
+      setze(wert);
+      gleich(`PUBLIC_ENTWUERFE=${JSON.stringify(wert)} schaltet nicht frei`, slugsImRegister(), ["fertig"]);
+    }
+  } finally {
+    setze(vorher);
+  }
+
+  // Sichtbar heißt nicht ununterscheidbar: Was sichtbar wird, muss als
+  // Entwurf erkennbar bleiben. Diese Behauptung trägt den Hinweis in
+  // EintragsListe.astro.
+  gleich("Entwurf ist als Entwurf erkennbar", istEntwurf({ status: "entwurf" }), true);
+  gleich("geprueft ist noch nicht freigegeben", istEntwurf({ status: "geprueft" }), true);
+  gleich("Veröffentlichtes ist kein Entwurf", istEntwurf({ status: "veroeffentlicht" }), false);
+  gleich("fehlender Status gilt als Entwurf", istEntwurf({}), true);
+  gleich("kein Eintrag gilt als Entwurf", istEntwurf(undefined), true);
 }
 
 /* ------------------------------------------------------------------ */

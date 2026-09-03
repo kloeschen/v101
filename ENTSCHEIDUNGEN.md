@@ -13,6 +13,66 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-03 — Entwürfe in der Vorschau, nicht in der Produktion
+
+**Fund:** Entwürfe waren nur unter `astro dev` sichtbar. Wer einen Eintrag
+begutachten wollte, musste ihn lokal bauen — die Deploy Preview, die genau
+dafür da ist, zeigte ihn nicht. Gleichzeitig darf ein Entwurf nicht in die
+freigegebene Produktion, weil `status: veroeffentlicht` ausschließlich ein
+Mensch setzt.
+
+**Entscheidung:** Ein dritter Schalter neben `PUBLIC_INDEXIERBAR`.
+`PUBLIC_ENTWUERFE=true` nimmt Entwürfe ins Register auf; gesetzt wird er je
+Netlify-Kontext, nicht global — dieselbe Bauart und derselbe Grund wie bei
+Lektion 9. Beide Schalter zusammen ergeben den gewollten Zustand: In der
+Vorschau ist der Entwurf **sichtbar und trotzdem nicht indexierbar**.
+
+Nur der exakte Wert `"true"` schaltet frei. `"1"`, `"yes"`, `"TRUE"` und
+`"ja"` tun es nicht und sind einzeln als Negativtest festgehalten — ein
+versehentliches `PUBLIC_ENTWUERFE=1` in der Produktion wäre sonst eine
+offene Tür, und zwar eine stille.
+
+**Die Regel liegt nicht in `registry.ts`.** Sie steht in
+`src/lib/sichtbarkeit.ts`, und `registry.ts` reicht sie nur weiter. Grund ist
+die Testbarkeit: `registry.ts` importiert `astro:content` und ist aus Node
+heraus nicht ladbar. Läge die Regel dort, gäbe es keinen Weg, sie zu prüfen —
+und eine ungeprüfte Sperre ist eine Vermutung (Lektion 7). Das ist derselbe
+Schnitt wie bei `src/lib/datum.ts` in M9: die Antwort dort, wo beide
+Laufzeiten sie erreichen.
+
+**Verworfen: den Schalter beim Laden des Moduls einmal auswerten.** Das wäre
+die übliche Form (`export const entwuerfe = …`) und einen Hauch schneller.
+Sie hätte den Test unmöglich gemacht — eine Konstante lässt sich im laufenden
+Prozess nicht umstellen, und beide Richtungen der Regel wären damit
+unbelegt geblieben. Die Funktion liest die Umgebung bei jedem Aufruf. Der
+Preis ist ein Objektzugriff pro Eintrag, der Gewinn ist ein Beweis.
+
+**Doppelte Zugriffshilfe, bewusst.** `umgebung()` steht schon in
+`site.config.ts`, wird von dort aber nicht exportiert. Sie zu teilen hieße,
+`site.config.ts` zu ändern — für Agenten gesperrt (Lektion 16). Die Dopplung
+ist deshalb dokumentiert statt umgangen; wer die Sperre öffnet, kann sie in
+einen Export zusammenziehen. Der Regressionstest aus Lektion 2 gilt jetzt für
+beide Dateien.
+
+**Sichtbar heißt nicht ununterscheidbar.** Ein Entwurf, der aussieht wie ein
+fertiger Eintrag, ist genau die Falle, die dieser Schalter sonst aufstellt.
+Das Entitätslayout hatte seinen Hinweis bereits; in Listen und Facetten
+fehlte er. Ergänzt wurde er in `EintragsListe.astro` — der einzigen Stelle,
+an der ein Eintrag in einer Liste gerendert wird. Damit deckt eine Änderung
+Übersichten, Facetten, Auftrittslisten, Regionsseiten und den
+Verwandt-Block ab, und ein künftiger Listentyp erbt den Hinweis, statt ihn
+zu vergessen.
+
+**Offen und bewusst nicht mitgemacht:** Bei `PUBLIC_ENTWUERFE=true` laufen
+Entwürfe auch in Sitemap, RSS, ICS und `/api/events.json`. In einer
+Vorschau ist das folgenlos, weil sie ohnehin `noindex` trägt und niemand
+ihre Feeds abonniert. Sauber ist es trotzdem nicht: Die Feeds tragen kein
+`status`-Feld und könnten einen Entwurf nicht als solchen ausweisen. Das ist
+eine eigene Entscheidung über den Datenvertrag der offenen Schnittstelle und
+gehört nicht in diesen Commit.
+
+---
+
 ## 2026-09-03 — Ein Event ist vorbei, wenn sein Tag um ist (M9)
 
 **Fund:** Sechs Stellen beantworteten die Frage „ist dieser Termin vorbei?",

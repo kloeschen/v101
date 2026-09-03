@@ -1,12 +1,21 @@
 ---
 /**
  * Liste von Registry-Einträgen. Wird für Rückverweise verwendet: Auftritte
- * einer Band, Inhalte einer Region, Verwandtes im Fußbereich.
+ * einer Band, Inhalte einer Region, Verwandtes im Fußbereich — und über das
+ * ListenLayout für sämtliche Übersichts- und Facettenseiten.
  *
  * Diese Listen werden abgeleitet, nicht gepflegt — deshalb sind sie
  * automatisch vollständig und laufen nie auseinander.
+ *
+ * Der Entwurfshinweis steht hier und nicht in den Aufrufern: Diese
+ * Komponente ist die einzige Stelle, an der ein Eintrag in einer Liste
+ * gerendert wird. Solange das so bleibt, kann kein Entwurf irgendwo
+ * unmarkiert auftauchen. Das Entitätslayout hat seinen eigenen, größeren
+ * Hinweis — dort steht der Entwurf allein, hier zwischen fertigen Einträgen,
+ * und genau da ist die Verwechslungsgefahr am größten.
  */
 import type { EintragMeta } from "../lib/links";
+import { istEntwurf } from "../lib/sichtbarkeit";
 
 interface Props { titel: string; eintraege: EintragMeta[]; ebene?: 2 | 3 }
 const { titel, eintraege, ebene = 2 } = Astro.props;
@@ -19,6 +28,9 @@ const Ueberschrift = `h${ebene}` as "h2" | "h3";
       {eintraege.map((e) => (
         <li>
           <a href={e.pfad}>{e.name}</a>
+          {istEntwurf(e.daten) && (
+            <span class="liste__entwurf" title="Noch nicht redaktionell freigegeben"> [Entwurf]</span>
+          )}
           {e.kurzbeschreibung && <span class="liste__beschreibung"> — {e.kurzbeschreibung}</span>}
         </li>
       ))}
