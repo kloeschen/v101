@@ -233,13 +233,36 @@ const ics = icsKalender(registry, [registry.eintraege.get("events/wochenende")!]
   // Node-Seite komplett — dieselbe Falle wie einst bei facetten.ts. Dass
   // diese Datei hier überhaupt läuft, beweist die Node-Hälfte; robotsTxt()
   // beweist, dass der Schalter dabei ausgewertet wird.
-  const roh = readFileSync(new URL("../src/site.config.ts", import.meta.url), "utf8");
+  //
+  // Geprüft wird der Code, nicht die Kommentare: Beide Dateien erklären die
+  // Falle, und dabei steht der verbotene Ausdruck zwangsläufig im Text. Eine
+  // Prüfung, die an der Dokumentation ihrer eigenen Regel anschlägt, wird
+  // abgeschaltet statt befolgt — derselbe Fund wie bei check-zeitzonen.ts.
+  const ohneKommentare = (quelltext: string) =>
+    quelltext
+      .split("\n")
+      .filter((z) => !/^\s*(\/\/|\*|\/\*)/.test(z))
+      .join("\n")
+      .replace(/\/\*[\s\S]*?\*\//g, "");
+
+  const roh = ohneKommentare(readFileSync(new URL("../src/site.config.ts", import.meta.url), "utf8"));
   pruefe(
     "site.config greift nicht ungeschützt auf import.meta.env zu",
     !/import\.meta\.env\./.test(roh),
     "direkter import.meta.env-Zugriff bricht alle Node-Skripte",
   );
   pruefe("robots.txt reagiert auf den Indexierungsschalter", typeof robotsTxt() === "string");
+
+  // Dieselbe Falle, dieselbe Prüfung: src/lib/sichtbarkeit.ts wird von
+  // registry.ts (Vite) UND von scripts/test-facetten.ts (Node) importiert.
+  // Ein direkter import.meta.env-Zugriff bräche die Node-Seite — und damit
+  // ausgerechnet den Test, der die Regel beweist.
+  const sicht = ohneKommentare(readFileSync(new URL("../src/lib/sichtbarkeit.ts", import.meta.url), "utf8"));
+  pruefe(
+    "sichtbarkeit.ts greift nicht ungeschützt auf import.meta.env zu",
+    !/import\.meta\.env\./.test(sicht),
+    "direkter import.meta.env-Zugriff bricht alle Node-Skripte",
+  );
 }
 
 /* ------------------------------------------------------------------ */
