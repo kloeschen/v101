@@ -13,6 +13,65 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-03 — Eine offene Schnittstelle enthält nur, was gilt
+
+**Fund:** Mit `PUBLIC_ENTWUERFE=true` liefen Entwürfe nicht nur auf die
+Seiten, sondern auch in `/api/events.json`, die Kalenderabos, `/rss.xml`,
+die Sitemaps und `llms.txt`. Auf der Seite trägt ein Entwurf seinen Hinweis.
+In einer Ausgabe trägt er nichts.
+
+**Entscheidung:** Entwürfe verlassen den Registerbestand nicht, auch nicht
+bei aktivem Schalter.
+
+Die Feeds stehen unter CC BY 4.0 zur Nachnutzung frei. Was sie verlässt,
+verliert den Kontext, der es als Entwurf kennzeichnet — ein Termin, der aus
+`/api/events.json` in einen fremden Kalender wandert, kommt dort ohne
+Herkunft an, und eine Sitemap ist eine Einladung an Suchmaschinen, keine
+Vorschau. Eine offene Schnittstelle enthält nur, was gilt.
+
+**Verworfen: ein `status`-Feld in den Feeds.** Es wäre die technisch
+sparsamste Lösung und hätte die Unterscheidung auf Nachnutzer verlagert, die
+sie nicht treffen wollen. Wer einen Kalender abonniert, filtert nicht nach
+Redaktionsstatus; wer eine Terminliste einbindet, prüft kein Feld. Ein
+Datenfeld, das nur dann schützt, wenn jeder Konsument es auswertet, schützt
+nicht. Dazu kommt: Sitemap und ICS haben gar kein Feld dafür — die Lösung
+hätte nur für zwei der sechs Ausgaben überhaupt funktioniert.
+
+**Zwei Register statt eines Filters je Ausgabe.**
+`holeFreigegebeneRegistry()` steht neben `holeRegistry()`; die Ausgaben
+holen das eine, die Seiten das andere. Der Grund gegen einen Filter an
+jeder Ausgabe ist derselbe wie bei M9 und M10: Sechs Stellen, die dieselbe
+Frage beantworten, beantworten sie irgendwann verschieden. Nebeneffekt und
+eigentlicher Gewinn: Auch die Rückverweise sind in sich stimmig, weil das
+freigegebene Register aus freigegebenen Einträgen aufgebaut wird — ein
+veröffentlichtes Event, dessen Location noch Entwurf ist, verweist im Feed
+nicht auf etwas Halbes.
+
+**`/daten/` gehört dazu, obwohl es eine HTML-Seite ist.** Die Seite
+beschreibt die Ausgaben, zählt den Bestand und verlinkt die Kalender je
+Region. Zählte sie anders als die Feeds, würde sie über die Schnittstelle
+falsch Auskunft geben — und sie verlinkte `.ics`-Dateien, die es nicht gibt,
+weil die Kalenderrouten nur für freigegebene Regionen entstehen. Das ist
+kein Nebenschauplatz, sondern derselbe Fehler eine Ebene höher.
+
+**Nicht umgestellt:** `404.astro` und die Startseite zählen ebenfalls den
+Bestand, bleiben aber am sichtbaren Register. Beides sind Seiten, keine
+Ausgaben; die 404 ist ohnehin `noindex`, und in einer Vorschau soll die
+Startseite zeigen, was die Vorschau zeigt.
+
+**Der Beleg ist ein echter Build, keine Unit-Fixtures.** Die Frage lautet
+nicht „filtert die Funktion richtig", sondern „ruft jede Ausgabe das
+richtige Register auf" — eine Frage der Verdrahtung, und die lässt sich nur
+am Ergebnis prüfen. Genau diese Sorte Fehler war M10: ein Skript, das
+existierte, richtig war und nirgends aufgerufen wurde. `test-ausgaben.ts`
+baut deshalb mit `PUBLIC_ENTWUERFE=true` in ein Temp-Verzeichnis und prüft
+je Ausgabeart beide Hälften: Der Entwurf ist als Seite da, und sein Pfad
+steht in keiner der sechs Ausgaben. Dazu eine Quellensperre mit begründeter
+Liste, damit keine Ausgabe zurückfällt, während das Register gerade keinen
+Entwurf enthält und der Build-Teil nichts zu zeigen hätte.
+
+---
+
 ## 2026-09-03 — Entwürfe in der Vorschau, nicht in der Produktion
 
 **Fund:** Entwürfe waren nur unter `astro dev` sichtbar. Wer einen Eintrag

@@ -5,12 +5,12 @@
  * mit den Entitätsseiten überschneidet.
  */
 import type { APIRoute } from "astro";
-import { holeRegistry } from "../../lib/registry";
+import { holeFreigegebeneRegistry } from "../../lib/registry";
 import { icsKalender } from "../../lib/feeds";
 import { site } from "../../site.config";
 
 export async function getStaticPaths() {
-  const registry = await holeRegistry();
+  const registry = await holeFreigegebeneRegistry();
   const regionen = [...registry.eintraege.values()].filter((e) => e.collection === "regionen");
   return [
     { params: { bereich: "alle" }, props: { region: null } },
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const registry = await holeRegistry();
+  const registry = await holeFreigegebeneRegistry();
   const region = (props as any).region;
 
   const events = [...registry.eintraege.values()]

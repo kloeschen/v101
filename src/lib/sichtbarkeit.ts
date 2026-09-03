@@ -81,6 +81,20 @@ export function istSichtbar(daten: { status?: string }): boolean {
 }
 
 /**
+ * Ist dieser Eintrag freigegeben?
+ *
+ * Die unbedingte Fassung von `istSichtbar`: Kein Schalter, keine
+ * Entwicklungsausnahme, nur der Status. Das ist die Frage, die die offene
+ * Schnittstelle stellt — die Feeds stehen unter CC BY 4.0 zur Nachnutzung
+ * frei, und was sie verlässt, verliert den Kontext, der es als Entwurf
+ * kennzeichnet. Eine Liste, die anderswo weiterverwendet wird, enthält nur,
+ * was gilt.
+ */
+export function istFreigegeben(daten: { status?: string }): boolean {
+  return daten.status === "veroeffentlicht";
+}
+
+/**
  * Ist dieser Eintrag ein Entwurf — also etwas, das als solches gekennzeichnet
  * werden muss?
  *
