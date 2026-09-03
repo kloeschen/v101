@@ -10,7 +10,7 @@ kategorie: frisur
 bezeichnungDe: Pomade
 bezeichnungEn: Pomade
 definition: Pomade ist eine fetthaltige, salbenähnliche Substanz zur Haarpflege, die das Haar glänzend und formbar festigt, ohne auszuhärten.
-verwandt: [creepers]
+verwandt: [creepers, pork-pie]
 abgrenzung: >-
   Pomade und Haargel werden im Drogeriemarkt nebeneinander verkauft und
   leisten Gegensätzliches. Gel arbeitet mit Gelbildnern und Polymeren, die
@@ -46,6 +46,11 @@ redaktionsnotiz: >-
   im Widerspruch zur belegten Renaissance steht und dieser Widerspruch
   interessanter ist als eine geglättete Fassung.
 quellen:
+  - url: https://de.wikipedia.org/wiki/Teddyboy
+    titel: Teddyboy (Wikipedia)
+    abgerufenAm: 2026-09-03
+    felder: [body:szene]
+    art: nachschlagewerk
   - url: https://de.wikipedia.org/wiki/Pomade
     titel: Pomade (Wikipedia)
     abgerufenAm: 2026-09-03
@@ -92,7 +97,9 @@ Zwischen den 1960er und den 2000er Jahren geriet Pomade in Deutschland weitgehen
 
 ## Pomade in der Szene
 
-Der Satz, der diesen Eintrag von den übrigen dieser Reihe unterscheidet, steht in der Wikipedia selbst: Zwischen den 1960er und 2000er Jahren war Pomade in Deutschland vergessen — mit Ausnahme der Rockabilly-Szene. Sie ist damit kein Gegenstand, den die Szene sich später angeeignet hat, sondern einer, den sie über vier Jahrzehnte am Leben gehalten hat, während der Rest des Marktes zu Gel überging.
+Pomade ist im Register dieser Begriffe der Sonderfall: [Petticoat](/lexikon/petticoat/), [Korsett](/lexikon/korsett/) und Creepers sind Gegenstände, die man aufbewahrt, weitergibt und im Museum wiederfindet — Pomade ist ein Verbrauchsgut. Eine Szene hält sie nicht am Leben, indem sie sie sammelt, sondern indem sie sie nachkauft, und genau das lässt sich belegen. Der Satz, der diesen Eintrag von den übrigen dieser Reihe unterscheidet, steht in der Wikipedia selbst: Zwischen den 1960er und 2000er Jahren war Pomade in Deutschland vergessen — mit Ausnahme der Rockabilly-Szene. Sie ist damit kein Gegenstand, den die Szene sich später angeeignet hat, sondern einer, den sie über vier Jahrzehnte am Leben gehalten hat, während der Rest des Marktes zu Gel überging.
+
+Sichtbar wird das an der britischen Seite derselben Jahre. Die Teddy Boys trugen zu ihren Drapes und Röhrenhosen die Elvis-Tolle und [Creepers](/lexikon/creepers/) — die Frisur war Teil der Uniform, nicht ihr Zubehör, und ohne ein Produkt, das formbar bleibt, ist sie nicht zu bauen.
 
 Die Renaissance seit 2010 läuft über die Barbershops, und damit über dieselben Betriebe, die auch Pompadour und Ducktail wieder anbieten. Für den Aufbau einer Frisur heißt das praktisch: Die Wahl zwischen ölbasiert und wasserbasiert entscheidet über Halt, Glanz und Waschbarkeit — und wer eine Tolle möchte, die einen Weekender übersteht, wählt anders als jemand, der abends duschen will.
 

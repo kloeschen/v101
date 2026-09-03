@@ -74,7 +74,7 @@ quellen:
     art: museum
 ---
 
-Ein Reifrock ist ein Unterrock, dessen Weite nicht aus dem Stoff kommt, sondern aus einem Gestell: Reifen aus Holz, Fischbein oder Federstahl spreizen ihn in die Form, die die Oberbekleidung tragen soll. Über vier Jahrhunderte war er das Mittel, mit dem die europäische Damenmode Volumen erzeugte — in wechselnden Bauformen, die jeweils eigene Namen tragen. Von allen Kleidungsstücken, mit denen der Petticoat verwechselt wird, ist er das mit dem gegensätzlichsten Prinzip.
+Ein Reifrock ist ein [Unterrock](/lexikon/unterrock/), dessen Weite nicht aus dem Stoff kommt, sondern aus einem Gestell: Reifen aus Holz, Fischbein oder Federstahl spreizen ihn in die Form, die die Oberbekleidung tragen soll. Über vier Jahrhunderte war er das Mittel, mit dem die europäische Damenmode Volumen erzeugte — in wechselnden Bauformen, die jeweils eigene Namen tragen. Von allen Kleidungsstücken, mit denen der [Petticoat](/lexikon/petticoat/) verwechselt wird, ist er das mit dem gegensätzlichsten Prinzip.
 
 ## Aufbau eines Reifrocks
 

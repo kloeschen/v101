@@ -65,7 +65,7 @@ quellen:
     art: museum
 ---
 
-Ein Unterrock ist ein Wäschestück, das in der Form einem Trägerkleid oder einem Rock ähnelt und unmittelbar unter der Oberbekleidung getragen wird. Er ist damit der Oberbegriff zu einer ganzen Familie von Kleidungsstücken, zu der auch der Petticoat gehört — und zugleich dessen Gegenstück, weil er im Unterschied zu diesem keine Silhouette erzeugen soll. Das Wort deckt zwei Schnitte ab: den Trägerunterrock, der von der Schulter hängt, und den Halbrock ohne Oberteil, der in der Taille ansetzt.
+Ein Unterrock ist ein Wäschestück, das in der Form einem Trägerkleid oder einem Rock ähnelt und unmittelbar unter der Oberbekleidung getragen wird. Er ist damit der Oberbegriff zu einer ganzen Familie von Kleidungsstücken, zu der auch der [Petticoat](/lexikon/petticoat/) gehört — und zugleich dessen Gegenstück, weil er im Unterschied zu diesem keine Silhouette erzeugen soll. Das Wort deckt zwei Schnitte ab: den Trägerunterrock, der von der Schulter hängt, und den Halbrock ohne Oberteil, der in der Taille ansetzt.
 
 ## Aufgabe eines Unterrocks
 
@@ -77,7 +77,7 @@ Wie einfach die Machart dabei sein kann, zeigen erhaltene Stücke. Ein Unterrock
 
 In der Antike und im Mittelalter war der Unterrock wenig gebräuchlich; verbreitet ist er erst ab dem 16. Jahrhundert. Vom 16. bis ins 18. Jahrhundert trug er die Bezeichnung Cotillon, und Frauen der Oberschicht trugen mehrere übereinander — die Zahl war Statusanzeige. Im Winter des 17. Jahrhunderts sollen es bis zu zwölf gleichzeitig gewesen sein; Wikipedia nennt diese Zahl ohne Einzelbeleg.
 
-Im Rokoko wurden seidene Unterröcke dekorativ ausgeführt, weil sie sichtbar wurden, sobald der Reifrock angehoben war — Unterwäsche mit Publikum. Ab 1820 setzte man Unterröcke an Mieder an, woraus einteilige Unterkleider entstanden; in derselben Zeit kam die Krinoline auf. Im Jugendstil kamen Rüschen und Stickereien dazu, für den Winter gesteppte Wollvarianten.
+Im Rokoko wurden seidene Unterröcke dekorativ ausgeführt, weil sie sichtbar wurden, sobald der [Reifrock](/lexikon/reifrock/) angehoben war — Unterwäsche mit Publikum. Ab 1820 setzte man Unterröcke an Mieder an, woraus einteilige Unterkleider entstanden; in derselben Zeit kam die Krinoline auf. Im Jugendstil kamen Rüschen und Stickereien dazu, für den Winter gesteppte Wollvarianten.
 
 Der Weg ins 20. Jahrhundert lässt sich an der Sprache ablesen. Der Duden führt „zweites Kleid" als veraltet und „Jupe" als früheren Ausdruck. Wie selbstverständlich das Kleidungsstück in der Mitte des Jahrhunderts noch war, zeigt ein Beleg von 1956, den das DWDS zitiert: „Glockig geschnittenen Röcken gibt erst der entsprechend geschnittene Unterrock den richtigen Schwung." Das ist genau die Funktion, die in derselben Zeit der Petticoat übernahm — nur dass dieser sie zum Selbstzweck machte. Wie präsent der Unterrock war, zeigt auch die übertragene Verwendung: „er läuft jedem Unterrock nach" setzt das Kleidungsstück für die Frau, und das DWDS verzeichnet die Wendung bis heute als abwertend.
 

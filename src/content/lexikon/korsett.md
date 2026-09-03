@@ -10,7 +10,7 @@ kategorie: mode
 bezeichnungDe: Schnürleib
 bezeichnungEn: Corset
 definition: Ein Korsett ist ein durch Stäbchen und Schnürung versteiftes Kleidungsstück, das den Oberkörper eng umschließt und seine Form verändert.
-verwandt: [petticoat]
+verwandt: [petticoat, taillenmieder, unterrock]
 herkunftsland: FR
 abgrenzung: >-
   Korsett, Korsage und Mieder werden im Handel synonym geführt — der Duden
@@ -43,6 +43,11 @@ redaktionsnotiz: >-
   ein schöner Beleg dafür, dass die Begriffsunschärfe der Abgrenzung nicht
   konstruiert ist.
 quellen:
+  - url: https://en.wikipedia.org/wiki/Waist_cincher
+    titel: Waist cincher (Wikipedia, englisch)
+    abgerufenAm: 2026-09-03
+    felder: [body:abgrenzung]
+    art: nachschlagewerk
   - url: https://de.wikipedia.org/wiki/Korsett
     titel: Korsett (Wikipedia)
     abgerufenAm: 2026-09-03
@@ -80,7 +85,7 @@ quellen:
     art: museum
 ---
 
-Ein Korsett ist ein steifes, zur Unterkleidung gehöriges Kleidungsstück, das eng am Oberkörper anliegt und ihn durch eingearbeitete Stäbchen und eine Schnürung in eine gewünschte Form bringt. Es ist damit das Gegenstück zum Petticoat: Beide bauen die Fünfziger-Silhouette, aber das Korsett verengt, wo der Petticoat weitet. Das Wort ist im 18. Jahrhundert aus dem Französischen entlehnt — *corset*, Verkleinerungsform zu altfranzösisch *cors*, „Körper, Leib" — und verdrängte das einheimische Mieder.
+Ein Korsett ist ein steifes, zur Unterkleidung gehöriges Kleidungsstück, das eng am Oberkörper anliegt und ihn durch eingearbeitete Stäbchen und eine Schnürung in eine gewünschte Form bringt. Es ist damit das Gegenstück zum [Petticoat](/lexikon/petticoat/): Beide bauen die Fünfziger-Silhouette, aber das Korsett verengt, wo der Petticoat weitet. Das Wort ist im 18. Jahrhundert aus dem Französischen entlehnt — *corset*, Verkleinerungsform zu altfranzösisch *cors*, „Körper, Leib" — und verdrängte das einheimische Mieder.
 
 ## Aufbau eines Korsetts
 
@@ -111,5 +116,7 @@ Heute erscheint das Korsett vor allem im Bühnenkostüm, in der historischen Dar
 Die folgenreichste Verwechslung ist die mit der Korsage, und sie wird von den Nachschlagewerken selbst begünstigt: Der Duden führt Korsage als Synonym von Korsett. In der Sache trennt er die beiden aber sauber. Ein Korsett ist ein Mieder mit festen Stäbchen, das den Körper durch Gummieinsätze oder Schnürung in eine bestimmte Form bringt — Unterwäsche also, deren Zweck die Formveränderung ist. Eine Korsage ist dagegen das „trägerlose, sehr eng auf Figur gearbeitete Oberteil eines Kleides, das durch Stäbchen oder Schnürung hält": Oberbekleidung, die sich am Körper hält, ihn aber nicht umbaut. Wer für einen Pin-up-Look eine Korsage kauft und die Wespentaille erwartet, hat das falsche Kleidungsstück gekauft.
 
 Das Mieder wiederum ist kein Konkurrent, sondern der Oberbegriff: ein den Oberkörper eng umschließendes Kleidungsstück, je nach Zusammenhang das Oberteil eines Kleides, ein versteiftes Oberteil oder eben ein Korsett. Der historische Weg erklärt die Unschärfe — das französische *corset* verdrängte im 18. Jahrhundert das deutsche Wort, ohne es zu ersetzen. Wie wenig scharf die Grenze bis heute ist, zeigt ausgerechnet ein Museum: Das Altmärkische Museum Stendal katalogisiert sein Stück aus den 1740er Jahren unter „Mieder / Korsett". Im heutigen Sprachgebrauch meint Mieder meist weiche Formwäsche mit mehr Bewegungsfreiheit als die historischen Vorbilder.
+
+Enger verwandt, aber nicht dasselbe ist das [Taillenmieder](/lexikon/taillenmieder/). Es arbeitet mit demselben Prinzip aus Stäbchen und Zug, greift aber nur an der Taille an und lässt Brustkorb und Hüfte frei; die englischsprachige Wikipedia beschreibt es folgerichtig als leichtere Alternative zum Korsett für den täglichen Gebrauch. Wer den Rumpf als Ganzes formen will, braucht ein Korsett; wer nur die Taille verschmälern will, kommt mit weniger aus.
 
 Schließlich teilt sich das Wort mit der Medizin: Ein Korsett ist dort ein Verband oder eine Stützkonstruktion für den Rumpf. Gemeinsam ist beiden nur die Bauform — das eine soll stabilisieren, das andere formen.

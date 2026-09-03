@@ -10,7 +10,7 @@ kategorie: mode
 bezeichnungDe: Bleistiftrock
 bezeichnungEn: Pencil skirt
 definition: Ein Bleistiftrock ist ein eng anliegender Rock mit geradem Schnitt, dessen schmale, längliche Form ihm den Namen gab.
-verwandt: [petticoat, korsett]
+verwandt: [petticoat, korsett, taillenmieder]
 abgrenzung: >-
   Der Bleistiftrock wird regelmäßig dem New Look zugeschlagen, ist aber
   dessen Gegenstück: Er teilt mit ihm das anliegende Oberteil und die
@@ -66,7 +66,7 @@ quellen:
     art: museum
 ---
 
-Ein Bleistiftrock ist ein körpernaher Rock mit geradem Schnitt, der knapp unter dem Knie endet. Der Name kommt von den Proportionen: lang und dünn wie ein Bleistift. In der Vintage-Mode steht er für die zweite, seltener erzählte Hälfte der fünfziger Jahre — die schmale Silhouette neben der weiten, die der Petticoat trägt.
+Ein Bleistiftrock ist ein körpernaher Rock mit geradem Schnitt, der knapp unter dem Knie endet. Der Name kommt von den Proportionen: lang und dünn wie ein Bleistift. In der Vintage-Mode steht er für die zweite, seltener erzählte Hälfte der fünfziger Jahre — die schmale Silhouette neben der weiten, die der [Petticoat](/lexikon/petticoat/) trägt.
 
 ## Schnitt eines Bleistiftrocks
 
@@ -85,5 +85,7 @@ Verschwunden ist der Bleistiftrock danach nicht. Wie selbstverständlich er als 
 ## Abgrenzung des Bleistiftrocks
 
 Die häufigste Verwechslung ist die mit dem New Look, und sie ist verständlich, weil beide dieselbe Zeit und dieselbe Oberkörperlinie teilen. Der New Look von 1947 wird beim Victoria and Albert Museum beschrieben als abfallende Schultern, volle Brust und eingeschnürte Taille über weiten, langen Röcken. Genau im letzten Punkt trennen sich die beiden: Der Bleistiftrock übernimmt Oberteil und Taille und ersetzt den weiten Rock durch einen schmalen. Für die Praxis heißt das, dass sich die beiden Looks ausschließen. Ein Petticoat gehört unter den weiten Rock; unter einem Bleistiftrock hat er nichts zu suchen und zerstört die Linie, die den Rock ausmacht.
+
+Was dagegen sehr wohl zum Bleistiftrock gehört, ist das [Taillenmieder](/lexikon/taillenmieder/): Es verschmälert die Taille, ohne unter dem engen Rock aufzutragen, und ist damit das Wäschestück, das die Wikipedia meint, wenn sie zur Bleistiftlinie eine „mit einem korsettartigen Kleidungsstück verengte Taille" beschreibt.
 
 Die zweite Verwechslung betrifft das Etuikleid. Der Duden definiert es als „modisches, sehr eng geschnittenes Kleid" — es ist einteilig. Der Bleistiftrock ist ein Rock und braucht ein eigenes Oberteil; die Silhouette ähnelt sich, die Kleidungsstücke tun es nicht. Wer im Vintage-Handel nach dem einen sucht und das andere findet, kauft ein anderes Teil, nicht eine andere Länge.

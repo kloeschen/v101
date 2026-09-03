@@ -10,7 +10,7 @@ kategorie: mode
 bezeichnungDe: Leisetreter
 bezeichnungEn: Brothel creeper
 definition: Creepers sind flache Lederschuhe mit besonders dicker, weicher Kreppsohle, die in den 1950er Jahren zum Erkennungszeichen der Teddy Boys wurden.
-verwandt: [pork-pie]
+verwandt: [pork-pie, pomade]
 herkunftsland: GB
 aeraVon: 1949
 abgrenzung: >-
@@ -43,6 +43,16 @@ redaktionsnotiz: >-
   zuordnen; welche Schuhe die amerikanische Szene trug, ist hier bewusst
   nicht behauptet, weil dafür kein geöffneter Beleg vorliegt.
 quellen:
+  - url: https://de.wikipedia.org/wiki/Pomade
+    titel: Pomade (Wikipedia)
+    abgerufenAm: 2026-09-03
+    felder: [body:szene]
+    art: nachschlagewerk
+  - url: https://de.wikipedia.org/wiki/Porkpie_(Hut)
+    titel: Porkpie (Hut) (Wikipedia)
+    abgerufenAm: 2026-09-03
+    felder: [body:szene]
+    art: nachschlagewerk
   - url: https://de.wikipedia.org/wiki/Creepers_(Schuhe)
     titel: Creepers (Schuhe) (Wikipedia)
     abgerufenAm: 2026-09-03
@@ -82,7 +92,9 @@ In den 1970er Jahren wurden Creepers in London im Laden „Let it Rock" von Malc
 
 ## Creepers in der Szene
 
-Ihren Höhepunkt hatten Creepers bei den Teds der 1950er und frühen 1960er Jahre; in den fünfziger Jahren waren sie laut Wikipedia auch bei Rockabilly-Kids beliebt. Die Teddy Boys entstanden im England der frühen 1950er als Jugendprotest, der sich ausgerechnet über vornehme Kleidung abgrenzte: fast knielange Anzugjacketts mit breitem Revers und farbig abgesetzten Applikationen — die Drapes —, dazu enge Röhrenhosen, die Elvis-Tolle und eben Schuhe mit hohen Kreppsohlen. Der Name geht auf die Zeit Eduards VII. zurück, als ähnlich lange Jacketts in Mode waren.
+Ihren Höhepunkt hatten Creepers bei den Teds der 1950er und frühen 1960er Jahre; in den fünfziger Jahren waren sie laut Wikipedia auch bei Rockabilly-Kids beliebt. Die Teddy Boys entstanden im England der frühen 1950er als Jugendprotest, der sich ausgerechnet über vornehme Kleidung abgrenzte: fast knielange Anzugjacketts mit breitem Revers und farbig abgesetzten Applikationen — die Drapes —, dazu enge Röhrenhosen, die Elvis-Tolle — ohne [Pomade](/lexikon/pomade/) nicht zu bauen — und eben Schuhe mit hohen Kreppsohlen. Der Name geht auf die Zeit Eduards VII. zurück, als ähnlich lange Jacketts in Mode waren.
+
+Über dieselbe britische Linie kam ein zweites Stück in die Szene, das oft danebensteht und doch anders zu verorten ist: der [Porkpie](/lexikon/pork-pie/). Er gehört nicht zu den Teds, sondern zu den jamaikanischen Rude Boys und zum Ska — zwei Wege nach Großbritannien, die im heutigen Weekender-Publikum nebeneinander sichtbar sind.
 
 Rock 'n' Roll war für die Teds identitätsstiftend, und die Bewegung lebte Mitte der 1970er Jahre wieder auf — die Wikipedia nennt unter anderem die Stray Cats. Damit sind Creepers für die heutige Szene doppelt anschlussfähig: über die Teds selbst und über das Psychobilly-Revival, das dieselbe Silhouette weiterführte.
 

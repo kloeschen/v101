@@ -68,13 +68,13 @@ quellen:
     art: nachschlagewerk
 ---
 
-Ein Taillenmieder ist ein breiter, versteifter Gürtel, der um die Taille getragen wird, um sie schmaler zu machen oder schmaler wirken zu lassen. Es ist damit das Kleidungsstück, das die Fünfziger-Silhouette an ihrer engsten Stelle herstellt — die Gegenrichtung zum Petticoat, der sie an ihrer weitesten Stelle herstellt.
+Ein Taillenmieder ist ein breiter, versteifter Gürtel, der um die Taille getragen wird, um sie schmaler zu machen oder schmaler wirken zu lassen. Es ist damit das Kleidungsstück, das die Fünfziger-Silhouette an ihrer engsten Stelle herstellt — die Gegenrichtung zum [Petticoat](/lexikon/petticoat/), der sie an ihrer weitesten Stelle herstellt.
 
 ## Aufbau eines Taillenmieders
 
 Traditionelle Ausführungen sind mit Stäbchen versteift und hinten geschnürt. Entscheidend ist die Höhe: Die englischsprachige Wikipedia gibt sechs bis sieben Zoll an, umgerechnet rund 15 bis 18 Zentimeter. Das Stück sitzt also auf der Taille und endet dort — es reicht weder bis unter die Brust noch über die Hüfte.
 
-Moderne Ausführungen, so die Quelle, sind seit den 1980er Jahren breite, geschnürte Gürtel aus elastischem Stoff mit weichen Kunststoffstäbchen. Zeitgenössische Modelle setzen häufig auf elastisches Rückenteil und einen Verschluss vorn. Die Modepresse hob an ihnen genau das hervor, was sie vom Korsett trennt: sehr leichtes Gewicht und Federstäbchen statt schwerer Verstärkung, also Alltagstauglichkeit.
+Moderne Ausführungen, so die Quelle, sind seit den 1980er Jahren breite, geschnürte Gürtel aus elastischem Stoff mit weichen Kunststoffstäbchen. Zeitgenössische Modelle setzen häufig auf elastisches Rückenteil und einen Verschluss vorn. Die Modepresse hob an ihnen genau das hervor, was sie vom [Korsett](/lexikon/korsett/) trennt: sehr leichtes Gewicht und Federstäbchen statt schwerer Verstärkung, also Alltagstauglichkeit.
 
 ## Der Name Taillenmieder
 
@@ -90,6 +90,6 @@ Für die letzte dieser Wellen ist das Taillenmieder das Kleidungsstück der Wahl
 
 Der Unterschied zum Korsett ist einer der Ausdehnung, nicht des Prinzips, und genau deshalb ist er so leicht zu übersehen. Beide arbeiten mit Stäbchen und Zug. Aber ein Korsett umfasst den Rumpf und formt Brustkorb, Taille und Hüfte in einem; das Taillenmieder greift nur an der Taille an. Die englischsprachige Quelle beschreibt es folgerichtig als leichtere Alternative, die ohne die starke Kompression des viktorianischen Korsetts auskommt und deshalb für den täglichen Gebrauch taugt.
 
-Davon zu trennen ist der Hüfthalter, im Englischen *girdle*: Er formt den unteren Rumpf, arbeitet also unterhalb der Zone des Taillenmieders. Wer eine glatte Linie unter einem Bleistiftrock sucht, braucht diesen; wer die Taille verschmälern will, jenes. Das Kleidungsstück, das beides zugleich versucht, ist das Korselett.
+Davon zu trennen ist der Hüfthalter, im Englischen *girdle*: Er formt den unteren Rumpf, arbeitet also unterhalb der Zone des Taillenmieders. Wer eine glatte Linie unter einem [Bleistiftrock](/lexikon/bleistiftrock/) sucht, braucht diesen; wer die Taille verschmälern will, jenes. Das Kleidungsstück, das beides zugleich versucht, ist das Korselett.
 
 Und schließlich ist ein Taillenmieder kein bloßer Gürtel, auch wenn die Quelle es als Gürtel definiert. Ein Gürtel liegt auf; ein Taillenmieder zieht zusammen, und die Versteifung ist es, die den Unterschied macht. Der Oberbegriff für beide Richtungen bleibt das Mieder — laut deutscher Wikipedia jedes den Oberkörper eng umschließende Kleidungsstück, vom Oberteil eines Kleides bis zum Korsett.
