@@ -559,31 +559,35 @@ die dokumentierten niedrigen Befunde (Abschnitt 4) — alle bewusst vertagt.
 
 ---
 
-## Offen — wartet auf einen Menschen
+## Nachtrag — der Fehlalarm auf dem Preiszustand
 
-- **Lektion 17 (`.claude/rules/lektionen.md`).** „Ein Ergebnis mit zwei
-  möglichen Ursachen belegt keine von beiden" — entstanden aus zwei Fehlern
-  beim Mutationsbeleg für die drei Preiszustände: eine Fixture, die aus dem
-  falschen Grund hielt, und eine Mutation, die wegen wortgleicher Zeilen die
-  falsche Regel traf. Der Text liegt fertig im Pull Request zu den
-  Preiszuständen. `.claude/` ist für Agenten gesperrt (Lektion 16). Der
-  Verweis in `CLAUDE.md`, Regel 4, steht bereits.
-- **Fehlalarm im Bash-Zweig von `guard.mjs`.** Die Prüfung auf den
-  Statusnamen greift als Teilstring und schlägt deshalb auf dem Enum-Wert
-  für den dritten Preiszustand an, der ihn als Teilwort enthält: Jeder
-  Shell-Schreibzugriff auf eine Eventdatei mit diesem Wert wird als
-  Statusänderung abgelehnt. Der **fertige Ersatzblock** liegt im Pull
-  Request — zwei Muster mit Wortgrenze statt eines Teilstrings. Ein Muster,
-  das den Feldnamen *verlangt*, kommt nicht in Frage: Es würde den Befehl
-  wieder durchlassen, der beim ersten Probelauf des Hooks durchging
-  (`sed -i 's/entwurf/…/'`, ohne Feldnamen). Ebenfalls `.claude/`.
-- **Lektion 18 (`.claude/rules/lektionen.md`).** „Sperren dürfen nicht auf
-  Wortbestandteilen prüfen" — die Lektion zum Punkt darüber. Text im Pull
-  Request.
+**Befund.** Der Bash-Zweig von `guard.mjs` prüfte den Befehlstext auf den
+Statusnamen als bloßen Teilstring. Der dritte Preiszustand enthält ihn als
+Teilwort — jeder Shell-Schreibzugriff auf eine Eventdatei mit diesem Wert
+wurde als Statusänderung abgelehnt, zweimal in der Sitzung passiert, in der
+der Zustand entstand.
 
-Bis zu diesen Commits ist `npm run test:hooks` **rot**, und zwar an genau
-den fünf Stellen, die den Fehlalarm beschreiben („guard lässt den
-Preiszustand durch"). Das ist der richtige Zustand: Ein Test, der den
-fehlenden Teil verschweigt, wäre schlechter als einer, der ihn anzeigt
-(Lektion 16). Die zehn Gegenfälle — Schreibweisen des Statuswechsels, die
-weiterhin blockieren müssen — sind schon jetzt grün.
+**Behoben** durch zwei Muster mit Wortgrenze statt eines Teilstrings: der
+Feldname davor **oder** das Wort als Ziel einer Ersetzung. Die zweite Form
+musste bleiben — ein Muster, das den Feldnamen *verlangt*, hätte den Befehl
+wieder durchgelassen, der beim allerersten Probelauf dieses Hooks durchging
+(`sed -i 's/entwurf/…/'`, ohne Feldnamen). `verify:ci` grün, `test:hooks`
+mit 91 Prüfungen. Lektionen 17 und 18 sind committet.
+
+**Mutationsbeleg**, vier Mutationen, jede kippt genau die erwarteten Fälle:
+Rückfall auf Teilstring-Prüfung kippt exakt die fünf Preiszustands-Fälle;
+Form 2 entfernt kippt die vier Ersetzungen ohne Feldnamen; Form 1 entfernt
+kippt die vier Schreibweisen mit Feldnamen. Mutiert wurde eine Kopie
+außerhalb von `.claude/` — gelesen wird das Original, geschrieben nichts
+Gesperrtes.
+
+**Fund am Rande, gemessen statt vermutet:** Was den Fehlalarm behebt, sind
+die zwei Formen, nicht die Wortgrenzen. Ein Differenztest über 252
+Varianten zeigt, dass `\b…\b` und das nackte Wort sich nur bei Ketten der
+Gestalt `status: veroeffentlicht<suffix>` unterscheiden — keine davon ist
+ein heutiger Befehl. Die Wortgrenze ist Vorsorge gegen das nächste
+Vokabular, und genau deshalb steht in `test-hooks.ts` kein Test, der sie
+einfordert: Ein solcher Test müsste behaupten, ein künftiger Statuswert wie
+`veroeffentlicht_intern` dürfe durchgehen, und das wäre falsch. Die
+Begründung steht im Kommentar am betreffenden Abschnitt, damit sie nicht
+verlorengeht.

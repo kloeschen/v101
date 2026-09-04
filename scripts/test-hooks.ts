@@ -246,6 +246,19 @@ for (const [was, command] of bashStatus) {
  *
  * `PREIS` wird aus Fragmenten gebaut wie `LIVE` — sonst blockiert der Hook
  * das Schreiben dieser Datei selbst.
+ *
+ * WAS DEN FEHLALARM TATSÄCHLICH BEHEBT — nachgemessen, nicht vermutet:
+ * Es sind die zwei Formen des Musters, nicht die Wortgrenzen. Ein
+ * Differenztest über 252 Varianten des Wortes mit allen direkt
+ * anliegenden Zeichen zeigt, dass sich `\b…\b` und das nackte Wort nur bei
+ * Ketten der Gestalt `status: veroeffentlicht<suffix>` unterscheiden
+ * (`…Am`, `…ung`, `…er`) — keine davon ist ein heutiger Befehl. Die
+ * Wortgrenze ist also Vorsorge gegen das nächste Vokabular, nicht die
+ * Ursache der Reparatur; genau deshalb steht hier kein Test, der sie
+ * einfordert. Ein solcher Test müsste behaupten, ein künftiger Statuswert
+ * wie `veroeffentlicht_intern` dürfe durchgehen — und das wäre falsch.
+ * Dasselbe gilt für die optionalen Anführungszeichen in Form 1: Form 2
+ * fängt den Fall `status: "…"` ohnehin ab.
  */
 const PREIS = "un" + LIVE;
 const bashPreiszustand: Array<[string, string]> = [
