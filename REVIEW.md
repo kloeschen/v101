@@ -570,6 +570,20 @@ die dokumentierten niedrigen Befunde (Abschnitt 4) — alle bewusst vertagt.
   Verweis in `CLAUDE.md`, Regel 4, steht bereits.
 - **Fehlalarm im Bash-Zweig von `guard.mjs`.** Die Prüfung auf den
   Statusnamen greift als Teilstring und schlägt deshalb auf dem Enum-Wert
-  `unveroeffentlicht` an: Jeder Shell-Schreibzugriff auf eine Eventdatei mit
-  diesem Wert wird als Statusänderung abgelehnt. Abhilfe wäre eine
-  Wortgrenze oder ein Muster mit `status:` davor. Ebenfalls `.claude/`.
+  für den dritten Preiszustand an, der ihn als Teilwort enthält: Jeder
+  Shell-Schreibzugriff auf eine Eventdatei mit diesem Wert wird als
+  Statusänderung abgelehnt. Der **fertige Ersatzblock** liegt im Pull
+  Request — zwei Muster mit Wortgrenze statt eines Teilstrings. Ein Muster,
+  das den Feldnamen *verlangt*, kommt nicht in Frage: Es würde den Befehl
+  wieder durchlassen, der beim ersten Probelauf des Hooks durchging
+  (`sed -i 's/entwurf/…/'`, ohne Feldnamen). Ebenfalls `.claude/`.
+- **Lektion 18 (`.claude/rules/lektionen.md`).** „Sperren dürfen nicht auf
+  Wortbestandteilen prüfen" — die Lektion zum Punkt darüber. Text im Pull
+  Request.
+
+Bis zu diesen Commits ist `npm run test:hooks` **rot**, und zwar an genau
+den fünf Stellen, die den Fehlalarm beschreiben („guard lässt den
+Preiszustand durch"). Das ist der richtige Zustand: Ein Test, der den
+fehlenden Teil verschweigt, wäre schlechter als einer, der ihn anzeigt
+(Lektion 16). Die zehn Gegenfälle — Schreibweisen des Statuswechsels, die
+weiterhin blockieren müssen — sind schon jetzt grün.
