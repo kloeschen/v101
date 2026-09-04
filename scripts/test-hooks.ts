@@ -437,8 +437,70 @@ try {
     const r = rufeHook("bash", VALIDATE, schreibEvent(fehlt), temp);
     gleich("Validator ignoriert nicht existierende Datei", r.code, 0);
   }
+
+  /*
+   * Der Fall, an dem dieser ganze Abschnitt eine Sitzung lang vorbeiging.
+   *
+   * `process.cwd()` liefert den symlinkaufgelösten Pfad, ein übergebener
+   * Dateipfad nicht. Zeigen beide auf dasselbe Verzeichnis, aber anders
+   * geschrieben, verwarf der Loader die Datei — lautlos, mit Exitcode 0 und
+   * der Meldung "Nichts zu prüfen". Auf macOS ist genau das der Normalfall,
+   * weil `os.tmpdir()` dort `/var/folders/…` liefert und `/var` auf
+   * `/private/var` zeigt: Der Hook meldete Erfolg, ohne je etwas gesehen zu
+   * haben. Auf Linux fiel es nicht auf — dort gibt es den Symlink nicht.
+   *
+   * Deshalb wird er hier selbst gebaut. Diese Prüfung ist plattformunabhängig
+   * und schlägt an, sobald die Auflösung wieder aus dem Loader verschwindet.
+   */
+  {
+    const linkHeim = mkdtempSync(path.join(os.tmpdir(), "v101-hooklink-"));
+    const ueberLink = path.join(linkHeim, "zeigt-auf");
+    symlinkSync(temp, ueberLink, "dir");
+    try {
+      const kaputtUeberLink = path.join(ueberLink, "src", "content", "lexikon", "kaputt.md");
+      const r = rufeHook("bash", VALIDATE, schreibEvent(kaputtUeberLink), ueberLink);
+      // Der Exitcode allein trennt hier nichts: Seit der Validator einen
+      // ins Leere gegangenen Aufruf ebenfalls mit 2 beendet, blockiert der
+      // Hook auch dann, wenn er die Datei nie gesehen hat. Zwei Ursachen,
+      // ein Ergebnis (Lektion 17). Die Zeile bleibt als Zusicherung stehen,
+      // aber der Nachweis hängt an der nächsten:
+      gleich("Validator blockiert auch, wenn das Projekt über einen Symlink erreicht wird", r.code, 2);
+      pruefe(
+        "Validator hat die Datei dabei wirklich gesehen",
+        r.stderr.includes("kurzbeschreibung"),
+        JSON.stringify(r.stderr.trim().slice(0, 200)),
+      );
+    } finally {
+      rmSync(linkHeim, { recursive: true, force: true });
+    }
+  }
 } finally {
   rmSync(temp, { recursive: true, force: true });
+}
+
+/*
+ * Und die Gegenrichtung: Ein Aufruf, der ins Leere geht, darf nicht mehr wie
+ * ein leerer Zustand aussehen. "Nichts zu prüfen" bei Exitcode 0 war die
+ * Meldung, die den Fehler oben verdeckt hat.
+ */
+{
+  const fremd = mkdtempSync(path.join(os.tmpdir(), "v101-fremd-"));
+  const datei = path.join(fremd, "irgendwas.md");
+  writeFileSync(datei, SAUBER);
+  try {
+    const r = spawnSync("npx", ["tsx", "scripts/validate-content.ts", "--changed", datei], {
+      encoding: "utf8",
+      cwd: PROJEKT,
+    });
+    gleich("Validator meldet einen Aufruf, der ins Leere ging", r.status, 2);
+    pruefe(
+      "und sagt, welche Datei außerhalb des Registers lag",
+      (r.stdout ?? "").includes(datei),
+      JSON.stringify((r.stdout ?? "").trim().slice(0, 200)),
+    );
+  } finally {
+    rmSync(fremd, { recursive: true, force: true });
+  }
 }
 
 /* ------------------------------------------------------------------ */

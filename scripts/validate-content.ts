@@ -18,7 +18,8 @@
 
 import path from "node:path";
 import { z } from "zod";
-import { ladeAlle, type GeladenerEintrag } from "./_laden";
+import { existsSync } from "node:fs";
+import { ladeAlle, WURZEL, type GeladenerEintrag } from "./_laden";
 import { RESERVIERTE_SEGMENTE } from "../src/lib/facetten";
 import { istVorbei } from "../src/lib/datum";
 import {
@@ -860,6 +861,27 @@ function main() {
 
   const zuPruefen = ladeEintraege(collection, changed);
   if (zuPruefen.length === 0) {
+    // Zwei Zustände, die gleich aussehen und nicht dasselbe bedeuten. Ein
+    // leeres Register ist normal. Aber wer `--changed` mit existierenden
+    // Dateien aufruft und nichts geprüft bekommt, hat kein "nichts zu tun",
+    // sondern ein Problem: Die Pfade liegen außerhalb des Registers.
+    //
+    // Das lautlos als Erfolg zu melden ist genau der Zustand, der den
+    // PostToolUse-Zweig seit seiner Entstehung nichts prüfen ließ — bei
+    // Exitcode 0 und der Meldung "Nichts zu prüfen".
+    const uebergeben = (changed ?? []).filter((d) => existsSync(d));
+    if (uebergeben.length > 0) {
+      console.log(
+        `Nichts zu prüfen — aber ${uebergeben.length} übergebene Datei(en) ` +
+          `existieren und liegen außerhalb des Registers (${WURZEL}):`,
+      );
+      for (const d of uebergeben) console.log(`  ${d}`);
+      console.log(
+        "\nDas ist kein leerer Zustand, sondern ein Aufruf, der ins Leere ging. " +
+          "Häufigste Ursache: ein Symlink im Pfad, den nur eine der beiden Seiten auflöst.",
+      );
+      process.exit(2);
+    }
     console.log("Nichts zu prüfen.");
     return;
   }

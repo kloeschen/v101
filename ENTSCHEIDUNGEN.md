@@ -13,6 +13,55 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-04 — Der PostToolUse-Hook hat seit seiner Entstehung nichts geprüft
+
+**Fund:** Zwei Prüfungen in `scripts/test-hooks.ts` waren auf dem Rechner des
+Menschen rot, in der Cloud-Sitzung grün — und zwar nachweislich schon vor den
+Änderungen, mit denen sie auffielen. Die Meldung lautete „Nichts zu prüfen"
+bei Exitcode 0.
+
+**Ursache**, reproduziert statt vermutet: `scripts/_laden.ts` verwarf jede
+übergebene Datei, deren Pfad relativ zur Wurzel mit `..` beginnt. Die Wurzel
+kommt aus `process.cwd()`, und das liefert Node **symlinkaufgelöst**; ein von
+außen übergebener Dateipfad nicht. Der Hooktest baut sein Prüfprojekt unter
+`os.tmpdir()` — auf macOS `/var/folders/…`, wobei `/var` auf `/private/var`
+zeigt. Damit zeigten Ereignispfad und Wurzel auf dasselbe Verzeichnis in zwei
+Schreibweisen, `path.relative()` ergab `..`, und die Datei fiel lautlos aus
+der Liste. Auf Linux gibt es diesen Symlink nicht, deshalb lief dieselbe
+Prüfung dort grün.
+
+**Nicht die naheliegende Ursache.** Der Verdacht lag auf einem nicht
+gesetzten Arbeitsverzeichnis im Test. Der Test setzt beides korrekt, `cwd`
+und `CLAUDE_PROJECT_DIR`. Der Bruch lag eine Ebene tiefer, zwischen der
+*Schreibweise* des Pfads und der *aufgelösten* Wurzel.
+
+**Entscheidung:** Der Loader löst beide Seiten des Vergleichs auf. Das ist
+kein reines Testproblem — wer sein Repo über einen Symlink erreicht, bekam
+denselben stillen Durchlauf.
+
+**Zweite Entscheidung, wichtiger als die erste:** „Nichts zu prüfen" bekommt
+zwei getrennte Ausgänge. Ein leeres Register ist in Ordnung. Ein
+`--changed`-Aufruf, dessen Dateien existieren und sämtlich außerhalb des
+Registers liegen, ist ein Aufruf, der ins Leere ging — Exitcode 2, mit
+Nennung der Pfade. Ohne diese Trennung hätte die Reparatur des Loaders den
+nächsten Fall derselben Art wieder verschwiegen.
+
+**Folge:** Lektion 19 — die gefährlichste Prüfung ist die, die nie etwas
+gesehen hat, mit den drei Erkennungsfragen. Vierte Kernregel in `CLAUDE.md`
+um das positive Lebenszeichen erweitert. Regressionstest in
+`scripts/test-hooks.ts`: Der Hook fährt einmal über einen selbst gebauten
+Symlink, und verlangt wird nicht der Exitcode, sondern dass der konkrete
+Befund in der Begründung steht.
+
+**Fund beim Mutationsbeleg:** Der Exitcode taugt hier nicht als Nachweis.
+Seit der Validator den verfehlten Aufruf selbst mit 2 beendet, blockiert der
+Hook auch dann, wenn er die Datei nie gesehen hat — zwei Ursachen, ein
+Ergebnis (Lektion 17). Die Zusicherung, die tatsächlich misst, ist die auf
+den Inhalt der Begründung. Die erste Fassung des Belegs erwartete beide und
+war damit falsch.
+
+---
+
 ## 2026-09-04 — Die Lektionen ziehen aus `.claude/` nach `docs/`
 
 **Fund:** Die Lektionensammlung lag in `.claude/rules/lektionen.md` und war
