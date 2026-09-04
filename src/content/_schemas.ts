@@ -255,8 +255,33 @@ export const eventSchema = basis
     lineupWeitere: z.array(z.string().min(2)).default([]),
     djs: z.array(z.string().min(2)).default([]),
 
-    eintrittFrei: z.boolean().default(false),
+        /**
+     * Drei Zustände, nicht zwei:
+     *   frei              — Eintritt kostenlos, `preise` bleibt leer.
+     *   beziffert         — mindestens ein Eintrag in `preise`.
+     *   unveroeffentlicht — der Veranstalter nennt keinen Preis.
+     *
+     * Der dritte Wert ist eine Aussage über die Quelle, nicht über die
+     * eigene Rechercheanstrengung. `event-preise` verlangt dafür einen
+     * `quellen[]`-Eintrag, dessen `felder` `eintritt` oder `preise` deckt.
+     *
+     * Ohne Standardwert: Die meistgestellte Frage zu einem Termin soll
+     * nicht unbeantwortet durchrutschen.
+     */
+    eintritt: z.enum(["frei", "beziffert", "unveroeffentlicht"]),
+    /**
+     * Bewusst flach — eine Liste aus Bezeichnung und Betrag, keine Matrix
+     * aus Kategorie × Zeitraum.
+     *
+     * Ein zweidimensionales Preismodell wäre sauberer, aber achtwertige
+     * Staffeln sind in dieser Szene die Ausnahme. Der Preis dafür wäre,
+     * dass jeder einfache Fall — ein Ticket, ein Preis — dieselbe Struktur
+     * mitschleppt. Wer die Staffel im JSON-Feed maschinell auswerten will,
+     * kommt hier nicht weiter und muss die Veranstalterseite lesen. Das ist
+     * eine bewusste Grenze der Schnittstelle, kein Versehen.
+     */
     preise: z.array(preis).default([]),
+    
     ticketUrl: httpsUrl.optional(),
 
     kapazitaet: z.number().int().positive().optional(),
