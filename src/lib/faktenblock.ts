@@ -42,7 +42,7 @@ const LABEL: Record<string, string> = {
   lineupWeitere: "Weitere Acts",
   djs: "DJs",
   preise: "Eintritt",
-  eintrittFrei: "Eintritt",
+  eintritt: "Eintritt",
   ticketUrl: "Tickets",
   kapazitaet: "Kapazität",
   camping: "Camping",
@@ -163,9 +163,14 @@ export function faktZeilen(
     if (Array.isArray(wert) && wert.length === 0) continue;
     if (typeof wert === "string" && LEER.has(wert)) continue;
 
-    // Eintritt: entweder frei oder Preise, nie beides.
-    if (feld === "eintrittFrei" && !wert) continue;
-    if (feld === "preise" && daten.eintrittFrei) continue;
+    // Eintritt: entweder frei, beziffert oder unveroeffentlicht. Bei
+    // "beziffert" traegt die Preisliste die Information, die Zeile
+    // "Eintritt" waere dann eine leere Wiederholung. In den beiden anderen
+    // Faellen ist umgekehrt die Zeile die Information -- besonders bei
+    // "unveroeffentlicht": Dass der Veranstalter keinen Preis nennt, ist
+    // eine Auskunft fuer den Leser und keine Leerstelle.
+    if (feld === "eintritt" && wert === "beziffert") continue;
+    if (feld === "preise" && daten.eintritt !== "beziffert") continue;
     // Der Anzeigename der Reihe ersetzt den Slug.
     if (feld === "reihe" && daten.reiheName) continue;
 
@@ -207,8 +212,8 @@ function formatiere(
       return wert.map((p: any) => ({
         text: `${p.bezeichnung}: ${ZAHL.format(p.betrag)} ${p.waehrung}${p.hinweis ? ` (${p.hinweis})` : ""}`,
       }));
-    case "eintrittFrei":
-      return text("Frei");
+    case "eintritt":
+      return text(wert === "frei" ? "Frei" : "Preis nicht veröffentlicht");
     case "letzteAusgabe":
       return text("Ja — diese Ausgabe war die letzte");
     case "aktiv":

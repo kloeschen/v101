@@ -61,7 +61,7 @@ const ev = (slug: string, extra: Record<string, any> = {}): RegistryEingabe => (
     ende: new Date("2027-07-04T23:00:00+02:00"),
     ort: "halle",
     durchfuehrung: "geplant",
-    eintrittFrei: false,
+    eintritt: "beziffert",
     preise: [{ bezeichnung: "Tageskasse", betrag: 25, waehrung: "EUR" }],
     lineupBands: [],
     lineupWeitere: ["Band Eins"],

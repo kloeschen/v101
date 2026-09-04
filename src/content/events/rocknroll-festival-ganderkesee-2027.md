@@ -14,6 +14,7 @@ ende: 2027-08-22
 ganztaegig: true
 ort: flugplatz-ganderkesee
 region: niedersachsen
+eintritt: beziffert
 veranstalterUrl: https://rocknroll-festival.de
 preise:
   - bezeichnung: 3-Tage-Festivalticket, Online
@@ -87,7 +88,7 @@ quellen:
   - url: https://rocknroll-festival.de/
     titel: Rock'n'Roll Festival Ganderkesee
     abgerufenAm: 2026-09-04
-    felder: [beginn, ende, ort, preise, camping, veranstalterUrl, name, kurzbeschreibung, durchfuehrung, body:termin, body:gelaende, body:eintritt, body:anreise]
+    felder: [beginn, ende, ort, eintritt, preise, camping, veranstalterUrl, name, kurzbeschreibung, durchfuehrung, body:termin, body:gelaende, body:eintritt, body:anreise]
     art: offiziell
 ---
 

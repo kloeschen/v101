@@ -11,6 +11,7 @@ beginn: 2026-09-25T21:00:00+02:00
 ende: 2026-09-26
 ort: alte-feuerwache-friedrichshain
 region: berlin
+eintritt: unveroeffentlicht
 djs: [Sweet Sue, Chrille, Raockin' Vagabond, Chill Bill]
 durchfuehrung: geplant
 links:
@@ -37,8 +38,11 @@ redaktionsnotiz: >-
   Der Wert steht bei allen achtzehn Terminen dieser Quelle auf 0, auch bei
   Gastspielen internationaler Bands in grossen Haeusern. Er ist damit
   erkennbar ein Vorgabewert des Redaktionssystems und keine Aussage ueber
-  freien Eintritt. `eintrittFrei` bleibt deshalb auf false und `preise`
-  leer -- lieber keine Angabe als eine falsche Null.
+  freien Eintritt. Der Eintrag steht deshalb auf `eintritt: unveroeffentlicht`
+  mit leerem `preise` -- lieber keine Angabe als eine falsche Null.
+  Der dritte Preiszustand ist genau fuer diesen Fall gebaut, und die
+  Quelle deckt ihn: Der Eintrag `felder` der ersten Quelle nennt
+  `eintritt`, weil ich diese Seite auf die Preisfrage hin gelesen habe.
   `ende` steht als reines Datum ohne Uhrzeit, so wie es die Quelle
   liefert (endDate 2026-09-26). Gemeint ist vermutlich das Ende in der
   Nacht; die Quelle sagt keine Uhrzeit, also erfinde ich keine.
@@ -52,7 +56,7 @@ quellen:
   - url: https://www.rockin-wildcat.com/rwc/events/record-hop-60
     titel: Record Hop, 25. September 2026 (Rockin' Wildcat)
     abgerufenAm: 2026-09-04
-    felder: [beginn, ende, ort, djs, name, kurzbeschreibung, durchfuehrung, body:abend, body:musik]
+    felder: [beginn, ende, ort, djs, eintritt, name, kurzbeschreibung, durchfuehrung, body:abend, body:musik]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/guide
     titel: Berlin Gig Guide (Rockin' Wildcat)

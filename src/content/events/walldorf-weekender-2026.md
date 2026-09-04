@@ -15,6 +15,7 @@ ende: 2026-05-25
 ganztaegig: true
 ort: astoria-halle
 region: rhein-neckar
+eintritt: beziffert
 lineupWeitere: [Carlos & Bandidos, Alan Powers & The Aftershocks, Booze Bombs]
 preise:
   - bezeichnung: Tageskarte Freitag
@@ -82,7 +83,7 @@ quellen:
   - url: https://www.walldorf-weekender.net/deutsch/tickets/
     titel: Walldorf Weekender 2026 — Tickets
     abgerufenAm: 2026-09-04
-    felder: [preise, ticketUrl, body:tickets]
+    felder: [eintritt, preise, ticketUrl, body:tickets]
     art: offiziell
   - url: https://www.walldorf-weekender.net/deutsch/bands-2026/
     titel: Walldorf Weekender 2026 — Bands

@@ -10,6 +10,7 @@ typ: tanzabend
 beginn: 2026-09-11T18:30:00+02:00
 ort: burg-perchtoldsdorf
 region: niederoesterreich
+eintritt: unveroeffentlicht
 veranstalter: BWC Rock Dock Teddys
 durchfuehrung: geplant
 redaktionsnotiz: >-
@@ -43,7 +44,7 @@ quellen:
   - url: https://boogie.at/
     titel: BOOGIE.at — Terminliste
     abgerufenAm: 2026-09-04
-    felder: [beginn, ort, region, veranstalter, name, kurzbeschreibung, durchfuehrung, body:abend, body:quelle]
+    felder: [beginn, ort, region, veranstalter, eintritt, name, kurzbeschreibung, durchfuehrung, body:abend, body:quelle]
     art: offiziell
 ---
 

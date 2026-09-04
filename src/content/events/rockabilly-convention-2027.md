@@ -14,6 +14,7 @@ ende: 2027-06-05
 ganztaegig: true
 ort: pullman-city
 region: bayern
+eintritt: beziffert
 veranstalter: Pullman City Westernstadt
 veranstalterUrl: https://pullmancity.de
 preise:
@@ -65,7 +66,7 @@ quellen:
   - url: https://www.pullmancity.de/events-shows-musik/events/rockabilly-convention
     titel: Rockabilly Convention meets Rock'n'Roll & Boogie Woogie (Pullman City)
     abgerufenAm: 2026-09-04
-    felder: [beginn, ende, ort, preise, veranstalter, veranstalterUrl, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
+    felder: [beginn, ende, ort, eintritt, preise, veranstalter, veranstalterUrl, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
     art: offiziell
 ---
 

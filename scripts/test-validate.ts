@@ -464,7 +464,7 @@ const evFelder = (name: string, ueber: Record<string, string | undefined> = {}) 
   beginn: inTagen(60),
   ort: "testhalle",
   region: "testregion",
-  eintrittFrei: "true",
+  eintritt: "frei",
   quellen: quelle("beginn, ort"),
   ...ueber,
 });
@@ -566,13 +566,29 @@ fall({
   verboten: ["event-zeitraum"],
 });
 
+/* --- Die drei Preiszustaende --------------------------------------------
+ * `eintritt` unterscheidet frei, beziffert und unveroeffentlicht. Jeder
+ * Zustand bekommt einen sauberen Fall und seinen Widerspruch; der dritte
+ * zusaetzlich den Fall ohne Quellenbeleg, der anschlagen MUSS -- sonst
+ * waere "die Quelle schweigt" eine Behauptung, die niemand pruefen kann.
+ */
+
+const PREIS = "\n  - bezeichnung: Tageskasse\n    betrag: 20\n    waehrung: EUR";
+
 fall({
-  name: "event-preise: eintrittFrei zusammen mit Preisen",
+  name: "event-preise: eintritt frei ist sauber",
+  datei: "events/preis-frei.md",
+  inhalt: md(evFelder("Freier Weekender"), evKoerper("Freier Weekender")),
+  verboten: ["event-preise"],
+});
+
+fall({
+  name: "event-preise: eintritt frei zusammen mit Preisen",
   datei: "events/preis-widerspruch.md",
   inhalt: md(
     evFelder("Widerspruechlicher Weekender", {
-      eintrittFrei: "true",
-      preise: "\n  - bezeichnung: Tageskasse\n    betrag: 20\n    waehrung: EUR",
+      eintritt: "frei",
+      preise: PREIS,
       quellen: quelle("beginn, ort, preise"),
     }),
     evKoerper("Widerspruechlicher Weekender"),
@@ -581,10 +597,94 @@ fall({
 });
 
 fall({
-  name: "event-preise: weder Preis noch Ticket-URL warnt",
-  datei: "events/preis-leer.md",
-  inhalt: md(evFelder("Preisloser Weekender", { eintrittFrei: "false" }), evKoerper("Preisloser Weekender")),
+  name: "event-preise: eintritt beziffert mit Preisen ist sauber",
+  datei: "events/preis-beziffert.md",
+  inhalt: md(
+    evFelder("Bezifferter Weekender", {
+      eintritt: "beziffert",
+      preise: PREIS,
+      quellen: quelle("beginn, ort, preise"),
+    }),
+    evKoerper("Bezifferter Weekender"),
+  ),
+  verboten: ["event-preise"],
+});
+
+fall({
+  name: "event-preise: eintritt beziffert ohne Preise",
+  datei: "events/preis-beziffert-leer.md",
+  inhalt: md(
+    evFelder("Leerer Bezifferter", { eintritt: "beziffert", quellen: quelle("beginn, ort, preise") }),
+    evKoerper("Leerer Bezifferter"),
+  ),
+  erwartet: { "event-preise": "fehler" },
+});
+
+fall({
+  name: "event-preise: unveroeffentlicht mit Quellenbeleg auf eintritt ist sauber",
+  datei: "events/preis-unbekannt-belegt.md",
+  inhalt: md(
+    evFelder("Belegter Schweiger", {
+      eintritt: "unveroeffentlicht",
+      quellen: quelle("beginn, ort, eintritt"),
+    }),
+    evKoerper("Belegter Schweiger"),
+  ),
+  verboten: ["event-preise"],
+});
+
+fall({
+  name: "event-preise: unveroeffentlicht mit Quellenbeleg auf preise ist ebenfalls sauber",
+  datei: "events/preis-unbekannt-belegt-preise.md",
+  inhalt: md(
+    evFelder("Zweiter Belegter Schweiger", {
+      eintritt: "unveroeffentlicht",
+      quellen: quelle("beginn, ort, preise"),
+    }),
+    evKoerper("Zweiter Belegter Schweiger"),
+  ),
+  verboten: ["event-preise"],
+});
+
+fall({
+  name: "event-preise: unveroeffentlicht OHNE Quellenbeleg schlaegt an (Entwurf)",
+  datei: "events/preis-unbekannt-unbelegt.md",
+  inhalt: md(
+    evFelder("Unbelegter Schweiger", {
+      eintritt: "unveroeffentlicht",
+      quellen: quelle("beginn, ort"),
+    }),
+    evKoerper("Unbelegter Schweiger"),
+  ),
   erwartet: { "event-preise": "warnung" },
+});
+
+fall({
+  name: "event-preise: unveroeffentlicht OHNE Quellenbeleg ist bei veroeffentlicht ein Fehler",
+  datei: "events/preis-unbekannt-unbelegt-live.md",
+  inhalt: md(
+    evFelder("Unbelegter Schweiger Live", {
+      status: ["veroeffent", "licht"].join(""),
+      eintritt: "unveroeffentlicht",
+      quellen: quelle("beginn, ort"),
+    }),
+    evKoerper("Unbelegter Schweiger Live"),
+  ),
+  erwartet: { "event-preise": "fehler" },
+});
+
+fall({
+  name: "event-preise: unveroeffentlicht zusammen mit Preisen",
+  datei: "events/preis-unbekannt-widerspruch.md",
+  inhalt: md(
+    evFelder("Widerspruechlicher Schweiger", {
+      eintritt: "unveroeffentlicht",
+      preise: PREIS,
+      quellen: quelle("beginn, ort, preise"),
+    }),
+    evKoerper("Widerspruechlicher Schweiger"),
+  ),
+  erwartet: { "event-preise": "fehler" },
 });
 
 fall({

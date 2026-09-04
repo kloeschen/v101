@@ -13,6 +13,126 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-04 — Der Eintritt hat drei Zustände, nicht zwei
+
+**Fund:** Bei der Erprobung an fünf Events konnten zwei nicht eingetragen
+werden. Weder der Record Hop in Berlin noch der Tanzabend auf der Burg
+Perchtoldsdorf nennen einen Preis — und das Schema kannte nur
+`eintrittFrei: true` oder eine bezifferte Preisliste. Der tatsächliche
+Zustand, „der Veranstalter veröffentlicht keinen Preis", war nicht
+ausdrückbar, und unter `--strict` wurde er zum Merge-Blocker.
+
+**Entscheidung:** `eintrittFrei: boolean` wird ersetzt durch
+`eintritt: "frei" | "beziffert" | "unveroeffentlicht"`, ohne Standardwert.
+
+**Warum ein Enum und nicht ein zweites Boolean.** Ein Boolean trägt zwei
+Zustände; die Sache hat drei. Ein zusätzliches `preisUnbekannt: boolean`
+hätte vier Kombinationen erzeugt, von denen eine — frei **und**
+unveröffentlicht — nichts bedeutet und die ein Validator hätte verbieten
+müssen. Eine Darstellung, die Unsinn zulässt und ihn nachträglich
+ausschließt, ist dieselbe Fehlerklasse wie `felder: ["alle"]`: Sie
+verlagert die Bedeutung aus dem Datentyp in eine Regel, die man vergessen
+kann.
+
+**Warum ohne Standardwert.** Der Preis ist die meistgestellte Frage zu
+einem Termin. Ein Standardwert würde sie unbeantwortet durchrutschen
+lassen, und ein Standard von `unveroeffentlicht` wäre genau die bequeme
+Ausrede, die es zu vermeiden gilt. Wer ein Event anlegt, entscheidet
+bewusst.
+
+**Der dritte Zustand braucht einen Beleg.** `unveroeffentlicht` ist eine
+Aussage über die Quelle, nicht über die eigene Mühe. Deshalb verlangt
+`event-preise` einen `quellen[]`-Eintrag, dessen `felder` `eintritt` oder
+`preise` deckt — das heißt: „Diese Seite habe ich auf die Preisfrage hin
+gelesen." Aussagen über Abwesenheit sind die am schwersten nachprüfbaren
+überhaupt; ohne diese Bedingung wäre der Wert wertlos.
+
+Die Ebene folgt der Hausregel: Warnung im Entwurf, Fehler bei
+`status: veroeffentlicht`. In der CI ist beides blockierend, weil
+`--strict` Warnungen zu Fehlern macht.
+
+**Im JSON-LD entsteht kein `offers`-Knoten.** Ein Offer ohne Preis
+behauptet ein Angebot, über das nichts bekannt ist, und ist damit
+irreführender als gar keines. `isAccessibleForFree` steht auf `true` bei
+frei, auf `false` bei beziffert und fehlt bei `unveroeffentlicht` — schema.org
+kennt keinen Wert für „unbekannt", und ein `false` wäre dort eine
+Behauptung. `check-jsonld` warnt deshalb nicht mehr über fehlende
+Preisangaben, sondern meldet nur noch den Widerspruch: `false` ohne
+`offers`.
+
+**Im Faktenblock steht „Preis nicht veröffentlicht".** Das ist eine
+Auskunft für den Leser, keine Leerstelle — und der Unterschied zwischen
+„wir wissen es nicht" und „der Veranstalter sagt es nicht" ist genau der,
+den ein Register liefern kann.
+
+**Nebenbefund, nicht behoben:** Der Bash-Zweig von `guard.mjs` prüft auf
+das Wort `veroeffentlicht` und schlägt deshalb auf dem neuen Wert
+`unveroeffentlicht` an — jeder Shell-Schreibzugriff auf eine Eventdatei mit
+diesem Wert wird als Statusänderung abgelehnt. Ein Fehlalarm, der bleibt,
+bis jemand das Muster auf `status:\s*veroeffentlicht` oder eine
+Wortgrenze verengt. `.claude/` ist für Agenten gesperrt (Lektion 16).
+
+---
+
+## 2026-09-04 — `preise` bleibt flach
+
+**Fund:** Das Rock'n'Roll Festival Ganderkesee staffelt seine acht Preise
+über zwei Achsen — Gültigkeitstag (3 Tage, Freitag, Samstag, Sonntag) mal
+Kaufweg (Online, Tageskasse). Das Schema kennt je Preis nur
+`bezeichnung`, `betrag`, `waehrung`, `gueltigBis` und `hinweis`. Beide
+Achsen mussten in die `bezeichnung` gefaltet werden: „Tageskarte Samstag,
+Online".
+
+**Entscheidung: Das wird nicht ausgebaut.**
+
+Ein zweidimensionales Preismodell wäre sauberer. Aber achtwertige Staffeln
+sind in dieser Szene die Ausnahme — von fünf erprobten Events hatte eines
+sie, drei hatten null bis drei Preise, eines gar keinen. Der Preis eines
+Ausbaus wäre, dass jeder einfache Fall — ein Ticket, ein Preis — dieselbe
+Struktur mitschleppt.
+
+**Was das für die Schnittstelle heißt, und zwar ausdrücklich:** Wer die
+Staffel im JSON-Feed maschinell auswerten will, kommt hier nicht weiter
+und muss die Veranstalterseite lesen. Die `bezeichnung` ist Text für
+Menschen, kein Schlüssel. Das ist eine bewusste Grenze der offenen
+Schnittstelle, kein Versehen — und sie steht als Kommentar an `preise` im
+Datenvertrag, damit sie beim Lesen des Schemas auffällt und nicht erst
+beim Auswerten des Feeds.
+
+---
+
+## 2026-09-04 — Der Aktualitätsbeleg bekommt noch kein Feld
+
+**Fund:** Die Erprobung an fünf Events hat gezeigt, dass sich die Frage
+„gilt diese Angabe der kommenden Ausgabe?" beantworten lässt — zweimal hat
+sie einen Fehler verhindert. Aber die tragfähigen Belege waren durchweg
+**Nebenprodukte der Technik**, nicht Aussagen des Veranstalters:
+
+| Event | Woran der Beleg hing |
+| --- | --- |
+| Record Hop Berlin | Uploadpfad `/2026/08/`, Datum im Dateinamen, hochgezählter Slug `record-hop-60` |
+| Rockabilly Convention | `dateModified: 2026-08-23` im JSON-LD |
+| Bella Italia | Sortierverhalten der Liste — Vergangenes wird entfernt |
+| Walldorf Weekender | Jahreszahl im URL-Pfad, Vorverkaufsschluss |
+| Ganderkesee | zwei unabhängige Textstellen, getrennt geführte Rückschau-Rubrik |
+
+Fünf Events, fünf verschiedene Belegarten, keine zweimal. Kein einziger
+Veranstalter schreibt hin, für welche Ausgabe seine Angaben gelten.
+
+**Entscheidung: kein Feld, vorerst.** Ein Pflichtfeld würde eine
+Systematik behaupten, die es nicht gibt — und eine Aufzählung möglicher
+Belegarten wäre nach fünf Beispielen geraten, nicht beobachtet. Die Regel
+bleibt Auftragsregel und wandert in die `redaktionsnotiz`, so wie bei
+diesen fünf.
+
+**Bedingung für eine spätere Entscheidung:** Wenn sich nach etwa dreißig
+Events wiederkehrende Belegarten zeigen — wenn also dieselbe Art Beleg
+mehrfach trägt und sich benennen lässt —, wird daraus ein Feld. Vorher
+nicht. Wer die Entscheidung dann trifft, hat mit den Redaktionsnotizen
+das Material dafür beisammen; das ist der Zweck dieser Zwischenlösung.
+
+---
+
 ## 2026-09-03 — Eine offene Schnittstelle enthält nur, was gilt
 
 **Fund:** Mit `PUBLIC_ENTWUERFE=true` liefen Entwürfe nicht nur auf die

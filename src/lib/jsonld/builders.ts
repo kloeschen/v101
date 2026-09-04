@@ -49,7 +49,7 @@ export const eventBuilder: Builder = {
   verwendeteFelder: [
     "name", "kurzbeschreibung", "typ", "beginn", "ende", "ort", "region",
     "veranstalter", "veranstalterUrl", "lineupBands", "lineupWeitere",
-    "preise", "ticketUrl", "eintrittFrei", "kapazitaet", "genres",
+    "preise", "ticketUrl", "eintritt", "kapazitaet", "genres",
     "durchfuehrung", "reihe", "reiheName", "links",
   ],
 
@@ -59,7 +59,11 @@ export const eventBuilder: Builder = {
     // Vormittag nicht OutOfStock (M9, siehe lib/datum.ts).
     const vorbei = eventVorbei(d);
 
-    const angebote = d.eintrittFrei
+    // Drei Zustaende, drei Ausgaben. Bei `unveroeffentlicht` entsteht
+    // bewusst kein Offer-Knoten: Ein Offer ohne Preis behauptet ein
+    // Angebot, ueber das wir nichts wissen, und ist damit irrefuehrender
+    // als gar keines.
+    const angebote = d.eintritt !== "beziffert"
       ? undefined
       : (d.preise ?? []).map((p: any) =>
           saeubern({
@@ -101,7 +105,10 @@ export const eventBuilder: Builder = {
       organizer: d.veranstalter
         ? saeubern({ "@type": "Organization", name: d.veranstalter, url: d.veranstalterUrl })
         : undefined,
-      isAccessibleForFree: d.eintrittFrei,
+      // true bei frei, false bei beziffert, gar nicht bei unveroeffentlicht:
+      // schema.org kennt keinen Wert fuer "unbekannt", und ein false waere
+      // hier eine Behauptung.
+      isAccessibleForFree: d.eintritt === "unveroeffentlicht" ? undefined : d.eintritt === "frei",
       offers: angebote,
       maximumAttendeeCapacity: d.kapazitaet,
       about: refs("lexikon", d.genres),
