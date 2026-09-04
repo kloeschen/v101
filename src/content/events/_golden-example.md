@@ -25,6 +25,7 @@ preise:
     betrag: 150
     waehrung: EUR
     hinweis: inklusive Pre-Party und Pool Party
+eintritt: beziffert
 ticketUrl: https://www.walldorf-weekender.net/
 camping: nein
 barrierefrei: ja
@@ -33,7 +34,7 @@ durchfuehrung: stattgefunden
 quellen:
   - url: https://www.walldorf-weekender.net/
     abgerufenAm: 2026-08-20
-    felder: [beginn, ende, preise, ticketUrl, ort, lineupBands]
+    felder: [beginn, ende, eintritt, preise, ticketUrl, ort, lineupBands]
     art: offiziell
 links:
   website: https://www.walldorf-weekender.net/

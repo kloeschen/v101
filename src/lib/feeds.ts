@@ -34,7 +34,7 @@ export interface EventFeedEintrag {
   ort: { name: string; ort?: string; land?: string; url?: string } | null;
   region: { name: string; url: string } | null;
   lineup: string[];
-  eintrittFrei: boolean;
+  eintritt: string;
   preise: { bezeichnung: string; betrag: number; waehrung: string }[];
   ticketUrl?: string;
   website?: string;
@@ -77,7 +77,7 @@ export function eventFeed(registry: Registry): {
           ...(e.daten.lineupBands ?? []).map((s: string) => registry.eintraege.get(`bands/${s}`)?.name ?? s),
           ...(e.daten.lineupWeitere ?? []),
         ],
-        eintrittFrei: e.daten.eintrittFrei ?? false,
+        eintritt: e.daten.eintritt ?? "unveroeffentlicht",
         preise: (e.daten.preise ?? []).map((p: any) => ({
           bezeichnung: p.bezeichnung,
           betrag: p.betrag,

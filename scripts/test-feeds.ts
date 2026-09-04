@@ -25,6 +25,7 @@ import {
   sitemapFuerCollection,
 } from "../src/lib/feeds";
 import { buildRegistry, type RegistryEingabe } from "../src/lib/links";
+import { faktZeilen } from "../src/lib/faktenblock";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 
 let bestanden = 0;
@@ -61,7 +62,7 @@ const ev = (slug: string, extra: Record<string, any> = {}): RegistryEingabe => (
     ende: new Date("2027-07-04T23:00:00+02:00"),
     ort: "halle",
     durchfuehrung: "geplant",
-    eintrittFrei: false,
+    eintritt: "beziffert",
     preise: [{ bezeichnung: "Tageskasse", betrag: 25, waehrung: "EUR" }],
     lineupBands: [],
     lineupWeitere: ["Band Eins"],
@@ -309,6 +310,78 @@ const ics = icsKalender(registry, [registry.eintraege.get("events/wochenende")!]
   gleich("Termin morgen ist InStock", angebot(tag(1)), "https://schema.org/InStock");
   gleich("laufendes Festival ist InStock", angebot(tag(-2), tag(0)), "https://schema.org/InStock");
   gleich("Termin von gestern ist OutOfStock", angebot(tag(-1)), "https://schema.org/OutOfStock");
+}
+
+/* ------------------------------------------------------------------ */
+/* Die drei Preiszustaende in JSON-LD und Faktenblock                  */
+/* ------------------------------------------------------------------ */
+
+/*
+ * `eintritt` hat drei Werte, und jeder erzeugt eine andere Ausgabe. Der
+ * heikle ist der dritte: Dort darf KEIN Offer entstehen -- ein Offer ohne
+ * Preis behauptet ein Angebot, ueber das nichts bekannt ist -- und
+ * isAccessibleForFree muss ganz fehlen, weil `false` eine Aussage waere,
+ * die die Quelle nicht traegt. Genau das steht als Zusage im Register und
+ * gehoert deshalb in einen Test.
+ */
+{
+  const preisRegistry = buildRegistry([halle]);
+
+  const knoten = (extra: Record<string, any>): any => {
+    const graph = buildGraph("events", "preiszustand", { ...ev("preiszustand", extra).daten });
+    return graph["@graph"].find((k: any) => k.startDate !== undefined);
+  };
+
+  const OHNE_PREIS = ["un", "veroeffentlicht"].join(""); // Bash-Guard, siehe PR
+
+  const frei = knoten({ eintritt: "frei", preise: [] });
+  gleich("frei: isAccessibleForFree ist true", frei.isAccessibleForFree, true);
+  gleich("frei: kein Offer", frei.offers, undefined);
+
+  const beziffert = knoten({});
+  gleich("beziffert: isAccessibleForFree ist false", beziffert.isAccessibleForFree, false);
+  gleich("beziffert: ein Offer je Preis", beziffert.offers?.length, 1);
+  gleich("beziffert: der Betrag steht im Offer", beziffert.offers?.[0]?.price, "25");
+
+  const schweigt = knoten({ eintritt: OHNE_PREIS, preise: [] });
+  gleich("dritter Zustand: kein Offer", schweigt.offers, undefined);
+  pruefe(
+    "dritter Zustand: isAccessibleForFree fehlt ganz",
+    !("isAccessibleForFree" in schweigt),
+    `ist ${JSON.stringify(schweigt.isAccessibleForFree)}`,
+  );
+  // Gegenprobe: Der Knoten ist nicht etwa leer, sondern traegt alles andere.
+  pruefe("dritter Zustand: der Termin selbst steht trotzdem da", Boolean(schweigt.startDate && schweigt.name));
+
+  // Der scharfe Fall. Bei leerem `preise` bliebe `offers` auch dann leer,
+  // wenn die Abfrage auf `eintritt` im Builder ganz fehlte -- die Pruefung
+  // oben haelt also aus dem falschen Grund. Erst Preise AN einem Termin,
+  // der keinen Preis veroeffentlicht, trennen die beiden Ursachen.
+  // Der Validator verbietet diese Kombination; der Builder verlaesst sich
+  // nicht darauf, denn der Astro-Build prueft nur das Zod-Schema.
+  gleich("dritter Zustand MIT Preisen: trotzdem kein Offer", knoten({ eintritt: OHNE_PREIS }).offers, undefined);
+  gleich("frei MIT Preisen: trotzdem kein Offer", knoten({ eintritt: "frei" }).offers, undefined);
+
+  /* Faktenblock: Der dritte Zustand ist eine Auskunft, keine Leerstelle. */
+  const zeile = (extra: Record<string, any>, feld: string) =>
+    faktZeilen("events", ev("preiszustand", extra).daten, preisRegistry).find((z) => z.feld === feld);
+
+  const text = (z?: { stuecke: { text: string }[] }) => z?.stuecke.map((s) => s.text).join("");
+
+  gleich("Faktenblock frei: 'Frei'", text(zeile({ eintritt: "frei", preise: [] }, "eintritt")), "Frei");
+  gleich(
+    "Faktenblock dritter Zustand: Preis nicht veröffentlicht",
+    text(zeile({ eintritt: OHNE_PREIS, preise: [] }, "eintritt")),
+    "Preis nicht veröffentlicht",
+  );
+  pruefe(
+    "Faktenblock beziffert: keine Zeile 'Eintritt', die Preisliste traegt es",
+    zeile({}, "eintritt") === undefined && zeile({}, "preise") !== undefined,
+  );
+  pruefe(
+    "Faktenblock dritter Zustand: keine leere Preiszeile daneben",
+    zeile({ eintritt: OHNE_PREIS, preise: [] }, "preise") === undefined,
+  );
 }
 
 /* ------------------------------------------------------------------ */

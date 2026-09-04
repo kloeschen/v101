@@ -490,17 +490,49 @@ const REGELN: Regel[] = [
   },
 
   {
+    /**
+     * Der Eintritt hat drei Zustaende, und `eintritt` benennt sie. Diese
+     * Regel haelt Feld und Preisliste zusammen — sonst behauptet das eine,
+     * was das andere widerlegt.
+     *
+     * Der dritte Zustand `unveroeffentlicht` braucht einen Beleg. Er ist
+     * eine Aussage ueber die Quelle ("dort steht kein Preis"), nicht ueber
+     * die eigene Muehe, und Aussagen ueber Abwesenheit sind die am
+     * schwersten nachpruefbaren ueberhaupt. Ohne Quellenpflicht waere er
+     * die bequeme Ausrede, die `felder: ["alle"]` einmal war: ein Wert,
+     * der die Arbeit ersetzt, um die es geht.
+     */
     code: "event-preise",
     collections: ["events"],
     pruefe(e) {
       if (!e.daten) return [];
       const b: Befund[] = [];
-      const { eintrittFrei, preise, ticketUrl } = e.daten;
-      if (eintrittFrei && preise.length > 0) {
-        b.push({ ebene: "fehler", code: "", nachricht: "eintrittFrei: true, aber Preise hinterlegt." });
+      const { eintritt, preise } = e.daten;
+      const hatPreise = (preise ?? []).length > 0;
+
+      if (eintritt === "frei" && hatPreise) {
+        b.push({ ebene: "fehler", code: "", feld: "eintritt", nachricht: 'eintritt: frei, aber Preise hinterlegt.' });
       }
-      if (!eintrittFrei && preise.length === 0 && !ticketUrl) {
-        b.push({ ebene: "warnung", code: "", nachricht: "Weder Preise noch Ticket-URL. Preis ist die meistgestellte Frage zu einem Event." });
+      if (eintritt === "beziffert" && !hatPreise) {
+        b.push({ ebene: "fehler", code: "", feld: "preise", nachricht: 'eintritt: beziffert, aber keine Preise hinterlegt.' });
+      }
+      if (eintritt === "unveroeffentlicht" && hatPreise) {
+        b.push({ ebene: "fehler", code: "", feld: "eintritt", nachricht: 'eintritt: unveroeffentlicht, aber Preise hinterlegt.' });
+      }
+      if (eintritt === "unveroeffentlicht") {
+        // Der Beleg darf `eintritt` oder `preise` decken: Beides heisst
+        // "diese Quelle wurde auf die Preisfrage hin gelesen".
+        const belegt = belegteFelder(e.daten);
+        if (!belegt.has("eintritt") && !belegt.has("preise")) {
+          b.push({
+            ebene: e.daten.status === "veroeffentlicht" ? "fehler" : "warnung",
+            code: "",
+            feld: "eintritt",
+            nachricht:
+              'eintritt: unveroeffentlicht ohne Quellenbeleg. Keine Quelle deckt "eintritt" oder "preise" — ' +
+              "dass eine Quelle schweigt, muss an der Quelle gezeigt werden.",
+          });
+        }
       }
       return b;
     },

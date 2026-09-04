@@ -264,8 +264,12 @@ function pruefeGraph(
     if (ev.endDate && ev.startDate && new Date(ev.endDate) < new Date(ev.startDate)) {
       push("fehler", "event", "endDate liegt vor startDate.");
     }
-    if (!ev.offers && ev.isAccessibleForFree !== true) {
-      push("warnung", "event", "Weder offers noch isAccessibleForFree — der Preis ist die meistgestellte Frage.");
+    // Kein Befund mehr, wenn beide Angaben fehlen: Das ist der Fall
+    // `eintritt: unveroeffentlicht`, und dort ist die Abwesenheit gewollt
+    // (ein Offer ohne Preis waere irrefuehrender). Angeschlagen wird nur
+    // noch der Widerspruch -- "nicht kostenlos" ohne jedes Angebot.
+    if (ev.isAccessibleForFree === false && !ev.offers) {
+      push("fehler", "event", "isAccessibleForFree: false, aber keine offers — entweder Preise hinterlegen oder eintritt: unveroeffentlicht setzen.");
     }
     for (const o of [ev.offers ?? []].flat()) {
       if (o.price !== undefined && !/^\d+(\.\d+)?$/.test(String(o.price))) {

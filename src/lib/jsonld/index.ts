@@ -153,7 +153,7 @@ export const faktenblockFelder: Record<CollectionName, string[]> = {
   events: [
     "name", "kurzbeschreibung", "typ", "beginn", "ende", "ort", "region",
     "veranstalter", "veranstalterUrl", "lineupBands", "lineupWeitere", "djs",
-    "preise", "ticketUrl", "eintrittFrei", "kapazitaet", "camping",
+    "preise", "ticketUrl", "eintritt", "kapazitaet", "camping",
     "barrierefrei", "kinder", "drinnenDraussen", "genres", "durchfuehrung",
     "durchfuehrungHinweis", "reihe", "reiheName", "ausgabe", "letzteAusgabe", "links",
   ],
