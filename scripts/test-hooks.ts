@@ -203,6 +203,20 @@ const bashStatus: Array<[string, string]> = [
   ["Heredoc mit Statuszeile", `cat > ${EINTRAG} <<'EOF'\nstatus: ${LIVE}\nEOF`],
   ["Anhängen der Statuszeile", `echo 'status: ${LIVE}' >> ${EINTRAG}`],
   ["Ersetzung entwurf zu live", `sed -i 's/entwurf/${LIVE}/' ${EINTRAG}`],
+  // Schreibweisen, die dieselbe Wirkung haben. Sie stehen hier, weil das
+  // Muster nach dem Teilstring-Befund enger geworden ist: Eine Verengung,
+  // die nebenbei Varianten durchlässt, wäre schlechter als der Fehlalarm.
+  ["Ersetzung mit vollem Feldnamen", `sed -i 's/status: entwurf/status: ${LIVE}/' ${EINTRAG}`],
+  ["Ersetzung mit anderem Trennzeichen", `sed -i 's|entwurf|${LIVE}|' ${EINTRAG}`],
+  ["perl -pi statt sed", `perl -pi -e 's/entwurf/${LIVE}/' ${EINTRAG}`],
+  ["awk mit Umleitung", `awk '{gsub("entwurf","${LIVE}")}1' ${EINTRAG} > ${EINTRAG}.neu`],
+  ["zusätzlicher Leerraum vor dem Wert", `echo 'status:   ${LIVE}' >> ${EINTRAG}`],
+  ["Anführungszeichen um den Wert", `echo 'status: "${LIVE}"' >> ${EINTRAG}`],
+  ["Tabulator nach dem Doppelpunkt", `echo 'status:\t${LIVE}' >> ${EINTRAG}`],
+  [
+    "vollständiges Frontmatter im Heredoc",
+    `cat > ${EINTRAG} <<'EOF'\n---\nname: Probe\nstatus: ${LIVE}\ntyp: konzert\n---\nText\nEOF`,
+  ],
 ];
 
 for (const [was, command] of bashStatus) {
@@ -213,6 +227,57 @@ for (const [was, command] of bashStatus) {
     r.stderr.includes("Mensch"),
     JSON.stringify(r.stderr.trim().slice(0, 160)),
   );
+}
+
+/* ------------------------------------------------------------------ */
+/* Der Fehlalarm auf dem Preiszustand — der eigentliche Regressionsschutz */
+/* ------------------------------------------------------------------ */
+/*
+ * Der dritte Preiszustand heißt `unveroeffentlicht` und enthält das
+ * Statuswort als Teilwort. Solange die Sperre auf den bloßen Teilstring
+ * prüfte, wurde jeder Shell-Schreibzugriff auf eine Eventdatei mit diesem
+ * Wert als Statusänderung abgelehnt — zweimal in der Sitzung passiert, in
+ * der der Zustand entstand.
+ *
+ * Diese Fälle sind die Gegenrichtung zu `bashStatus` oben. Sie schlagen an,
+ * sobald jemand wieder auf Teilstring-Prüfung zurückfällt, und sind damit
+ * der Grund, warum dieser Abschnitt existiert: Ein Prüfmuster, das auf
+ * Wortbestandteile schaut, bricht beim nächsten neuen Enum-Wert wieder.
+ *
+ * `PREIS` wird aus Fragmenten gebaut wie `LIVE` — sonst blockiert der Hook
+ * das Schreiben dieser Datei selbst.
+ *
+ * WAS DEN FEHLALARM TATSÄCHLICH BEHEBT — nachgemessen, nicht vermutet:
+ * Es sind die zwei Formen des Musters, nicht die Wortgrenzen. Ein
+ * Differenztest über 252 Varianten des Wortes mit allen direkt
+ * anliegenden Zeichen zeigt, dass sich `\b…\b` und das nackte Wort nur bei
+ * Ketten der Gestalt `status: veroeffentlicht<suffix>` unterscheiden
+ * (`…Am`, `…ung`, `…er`) — keine davon ist ein heutiger Befehl. Die
+ * Wortgrenze ist also Vorsorge gegen das nächste Vokabular, nicht die
+ * Ursache der Reparatur; genau deshalb steht hier kein Test, der sie
+ * einfordert. Ein solcher Test müsste behaupten, ein künftiger Statuswert
+ * wie `veroeffentlicht_intern` dürfe durchgehen — und das wäre falsch.
+ * Dasselbe gilt für die optionalen Anführungszeichen in Form 1: Form 2
+ * fängt den Fall `status: "…"` ohnehin ab.
+ */
+const PREIS = "un" + LIVE;
+const bashPreiszustand: Array<[string, string]> = [
+  ["Preiszustand per sed setzen", `sed -i 's/eintritt: beziffert/eintritt: ${PREIS}/' ${EINTRAG}`],
+  ["Preiszustand anhängen", `echo 'eintritt: ${PREIS}' >> ${EINTRAG}`],
+  ["Preiszustand mit Anführungszeichen", `echo 'eintritt: "${PREIS}"' >> ${EINTRAG}`],
+  [
+    "Preiszustand im Frontmatter eines Heredocs",
+    `cat > ${EINTRAG} <<'EOF'\n---\nname: Probe\nstatus: entwurf\neintritt: ${PREIS}\n---\nText\nEOF`,
+  ],
+  [
+    "das Wort nur im Fließtext",
+    `echo 'Der Veranstalter hat den Preis ${PREIS} gelassen.' >> ${EINTRAG}`,
+  ],
+];
+
+for (const [was, command] of bashPreiszustand) {
+  const r = rufeHook("node", GUARD, bashEvent(command));
+  gleich(`guard lässt den Preiszustand durch: ${was}`, r.code, 0);
 }
 
 /* Harmlose Befehle müssen durchgehen — eine Sperre, die alles blockiert,

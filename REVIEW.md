@@ -556,3 +556,38 @@ Endstand: sieben Suiten bzw. Checks grün (validate, jsonld, zeitzonen, vier
 Testharnische mit 121 Behauptungen), `astro check` 0 Fehler, Build mit 19
 Seiten und 13 Feed-Dateien fehlerfrei. Aus dem Review offen bleiben nur noch
 die dokumentierten niedrigen Befunde (Abschnitt 4) — alle bewusst vertagt.
+
+---
+
+## Nachtrag — der Fehlalarm auf dem Preiszustand
+
+**Befund.** Der Bash-Zweig von `guard.mjs` prüfte den Befehlstext auf den
+Statusnamen als bloßen Teilstring. Der dritte Preiszustand enthält ihn als
+Teilwort — jeder Shell-Schreibzugriff auf eine Eventdatei mit diesem Wert
+wurde als Statusänderung abgelehnt, zweimal in der Sitzung passiert, in der
+der Zustand entstand.
+
+**Behoben** durch zwei Muster mit Wortgrenze statt eines Teilstrings: der
+Feldname davor **oder** das Wort als Ziel einer Ersetzung. Die zweite Form
+musste bleiben — ein Muster, das den Feldnamen *verlangt*, hätte den Befehl
+wieder durchgelassen, der beim allerersten Probelauf dieses Hooks durchging
+(`sed -i 's/entwurf/…/'`, ohne Feldnamen). `verify:ci` grün, `test:hooks`
+mit 91 Prüfungen. Lektionen 17 und 18 sind committet.
+
+**Mutationsbeleg**, vier Mutationen, jede kippt genau die erwarteten Fälle:
+Rückfall auf Teilstring-Prüfung kippt exakt die fünf Preiszustands-Fälle;
+Form 2 entfernt kippt die vier Ersetzungen ohne Feldnamen; Form 1 entfernt
+kippt die vier Schreibweisen mit Feldnamen. Mutiert wurde eine Kopie
+außerhalb von `.claude/` — gelesen wird das Original, geschrieben nichts
+Gesperrtes.
+
+**Fund am Rande, gemessen statt vermutet:** Was den Fehlalarm behebt, sind
+die zwei Formen, nicht die Wortgrenzen. Ein Differenztest über 252
+Varianten zeigt, dass `\b…\b` und das nackte Wort sich nur bei Ketten der
+Gestalt `status: veroeffentlicht<suffix>` unterscheiden — keine davon ist
+ein heutiger Befehl. Die Wortgrenze ist Vorsorge gegen das nächste
+Vokabular, und genau deshalb steht in `test-hooks.ts` kein Test, der sie
+einfordert: Ein solcher Test müsste behaupten, ein künftiger Statuswert wie
+`veroeffentlicht_intern` dürfe durchgehen, und das wäre falsch. Die
+Begründung steht im Kommentar am betreffenden Abschnitt, damit sie nicht
+verlorengeht.

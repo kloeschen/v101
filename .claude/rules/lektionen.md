@@ -210,3 +210,92 @@ Nach dem Einbau von `permissions.deny` war die Korrektur eines einzigen
 Satzes in `guard.mjs` nicht mehr möglich — der Satz musste stattdessen wahr
 gemacht werden, indem das darin versprochene Skript entstand. Das war hier
 der bessere Ausgang, ist aber Glück gewesen, nicht Planung.
+
+## 17. Ein Ergebnis mit zwei möglichen Ursachen belegt keine von beiden
+
+**Zweimal in einer Sitzung passiert**, beide Male beim Mutationsbeleg für
+die drei Preiszustände — einmal in einer Fixture, einmal im Beleg selbst.
+
+**Erst die Fixture.** Die Prüfung „dritter Zustand: kein Offer" lief mit
+einem Termin ohne Preisangaben. Sie blieb grün, als die Abfrage auf
+`eintritt` im Builder ganz entfernt wurde: `preise: []` ergibt eine leere
+Offer-Liste, die ohnehin herausfällt. Fehlende Abfrage und leere Preisliste
+führen zum selben `offers: undefined` — also belegt dieses Ergebnis keine
+von beiden Ursachen. Trennen lassen sie sich nur durch den Fall, in dem sie
+auseinandergehen: Preise **an** einem Termin, der keinen Preis
+veröffentlicht. Das ist genau die Kombination, die der Validator verbietet
+— und deshalb war sie nicht in den Testdaten. Sie muss es trotzdem sein,
+denn der Astro-Build prüft nur das Zod-Schema und keine Regeln; die
+Verteidigung im Builder darf sich auf den Validator nicht verlassen.
+
+Dasselbe Muster wie bei M9: Dort hielt `indexOf("heute") < indexOf("gestern")`
+unter Mutation zufällig, weil vergangene Termine ohnehin absteigend
+sortieren.
+
+**Dann der Beleg.** Die Zeile mit der Statuseskalation
+(`ebene: … ? "fehler" : "warnung"`) steht wortgleich in mehreren Regeln, in
+`belegpflicht` sogar früher in der Datei. Ein `replace()` über den ganzen
+Dateiinhalt traf deshalb die falsche Regel. Der Lauf wurde rot, die
+Mutation galt als belegt — aber rot wurde er wegen einer Regel, die gar
+nicht geprüft werden sollte. Ein Beleg, der nichts belegt, ist schlimmer
+als keiner: Er schließt die Frage.
+
+**Regel:** Eine Fixture, deren erwartetes Ergebnis auch aus einem anderen
+Grund eintreten kann, prüft nichts. Vor jeder Behauptung „das hält, weil X"
+die Gegenfrage stellen: Was noch könnte dasselbe Ergebnis erzeugen? Wenn es
+etwas gibt, braucht es zusätzlich den Fall, in dem sich die Ursachen
+unterscheiden — auch und gerade den, den eine andere Schicht verbietet.
+
+**Regel:** Ein Mutationsbeleg grenzt die Mutation auf den Block der
+geprüften Regel ein, nie über die ganze Datei. Und er prüft nicht bloß, ob
+der Lauf rot wird, sondern ob **genau die erwarteten Behauptungen fallen**.
+Ein roter Lauf ohne diese Zuordnung ist ein Gefühl, kein Nachweis.
+
+**Erzwungen durch:** die Struktur des Belegskripts selbst — jede Mutation
+trägt die Liste der Fixtures, die fallen müssen, und der Beleg gilt nur als
+erbracht, wenn sie vollständig in der Ausgabe stehen. Das ist Lektion 7,
+eine Ebene höher angewendet: Auch der Negativtest braucht einen Negativtest.
+
+## 18. Sperren dürfen nicht auf Wortbestandteilen prüfen
+
+**Zweimal in einer Sitzung passiert**, und zwar in der Sitzung, die das
+auslösende Vokabular selbst eingeführt hat. Der Bash-Zweig von `guard.mjs`
+prüfte den Befehlstext auf `/veroeffentlicht/` — den bloßen Teilstring. Der
+neue dritte Preiszustand heißt `unveroeffentlicht` und enthält das Wort.
+Jeder Shell-Schreibzugriff auf eine Eventdatei mit diesem Wert wurde
+deshalb als Statusänderung abgelehnt, mit einer Begründung, die zur Lage
+nicht passte: „status: veroeffentlicht darf nur ein Mensch setzen."
+
+Der Fehlalarm ist die harmlose Hälfte. Die andere ist, was er mit dem
+Arbeiten macht: Der Mutationsbeleg für dieselben Preiszustände musste über
+ein Node-Skript laufen statt über Shell-Befehle, und Werte wurden in
+Testdateien aus Fragmenten zusammengesetzt (`["veroeffent", "licht"].join("")`),
+nur um an der Sperre vorbeizukommen. Eine Sperre, die zum Ausweichen
+zwingt, erzieht zum Ausweichen.
+
+**Warum es nicht mit „Feldnamen verlangen" getan ist.** Die naheliegende
+Korrektur — `status:` davor fordern — hätte eine bestehende Abdeckung
+fallen lassen. Der Befehl, der beim allerersten Probelauf dieses Hooks
+durchging, nennt das Feld gar nicht: `sed -i 's/entwurf/veroeffentlicht/'`.
+`scripts/test-hooks.ts` hält diesen Fall seit damals fest. Geprüft werden
+deshalb zwei Formen, beide mit Wortgrenze: der Feldname davor **oder** das
+Wort als Ziel einer Ersetzung.
+
+**Regel:** Prüfmuster in Sperren werden gegen Feldnamen und Wortgrenzen
+formuliert, nie gegen Wortbestandteile. `\bwort\b` statt `wort`.
+
+**Regel:** Wer neues Fachvokabular einführt — einen Enum-Wert, einen
+Feldnamen, einen Statuswert —, prüft, ob es ein bestehendes Prüfmuster
+streift. Ein Wert, der einen anderen als Teilwort enthält, ist der
+Regelfall, nicht die Ausnahme: `unveroeffentlicht` enthält `veroeffentlicht`,
+`entwurfsfassung` enthielte `entwurf`.
+
+**Regel:** Eine Verengung braucht beide Richtungen als Test. Der Fall „darf
+durchgehen" ist hier der eigentliche Regressionsschutz — er schlägt an,
+sobald jemand wieder auf Teilstring-Prüfung zurückfällt. Der Fall „muss
+weiterhin blockieren" verhindert, dass die Verengung nebenbei ein Loch
+reißt.
+
+**Erzwungen durch:** `scripts/test-hooks.ts`, Abschnitt „Der Fehlalarm auf
+dem Preiszustand" — fünf Befehle mit dem Preiszustand, die durchgehen
+müssen, gegen zehn Schreibweisen des Statuswechsels, die blockieren müssen.

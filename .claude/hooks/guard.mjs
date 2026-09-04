@@ -133,12 +133,32 @@ if (befehl) {
   // Der naheliegendste Shell-Weg ist eine Ersetzung — `sed -i
   // s/entwurf/veroeffentlicht/ …` —, in der das Feld gar nicht vorkommt.
   // Beim ersten Probelauf dieses Hooks ging genau dieser Befehl durch.
-  // Deshalb reicht das Wort allein, sobald der Befehl schreibt und einen
-  // Inhaltspfad nennt. Ein reines `grep veroeffentlicht src/content/` bleibt
-  // erlaubt, weil dort kein Schreibverb steht.
+  //
+  // Das Wort allein taugt aber nicht als Muster: Der dritte Preiszustand
+  // heißt `unveroeffentlicht` und enthält es als Teilwort. Jeder
+  // Shell-Schreibzugriff auf eine Eventdatei mit diesem Wert wurde deshalb
+  // als Statusänderung abgelehnt — mit einer Begründung, die zur Lage nicht
+  // passte. Geprüft werden jetzt zwei Formen, beide mit Wortgrenze:
+  //
+  //   1. der Feldname davor — `status: veroeffentlicht`, auch mit
+  //      Anführungszeichen oder zusätzlichem Leerraum;
+  //   2. das Wort als Ziel einer Ersetzung — `s/entwurf/veroeffentlicht/`,
+  //      `s|…|…|`, `gsub("…","…")`.
+  //
+  // Form 2 muss bleiben. Ein Muster, das den Feldnamen VERLANGT, ließe genau
+  // den Befehl wieder durch, der beim ersten Probelauf durchging;
+  // `scripts/test-hooks.ts` hält diesen Fall seit damals fest.
+  //
+  // Ein reines `grep veroeffentlicht src/content/` bleibt erlaubt, weil dort
+  // kein Schreibverb steht.
   const heredoc = /<<-?\s*['"]?\w+/.test(befehl);
+  const WORT = String.raw`\bveroeffentlicht\b`;
+  const freigabeMuster = [
+    new RegExp(String.raw`status:\s*["']?\s*` + WORT),
+    new RegExp(String.raw`["'/|,#]\s*` + WORT + String.raw`\s*["'/|,#]`),
+  ];
   if (
-    /veroeffentlicht/.test(befehl) &&
+    freigabeMuster.some((r) => r.test(befehl)) &&
     /src\/content\//.test(befehl) &&
     (schreibt || heredoc)
   ) {
