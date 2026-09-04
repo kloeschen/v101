@@ -556,3 +556,20 @@ Endstand: sieben Suiten bzw. Checks grün (validate, jsonld, zeitzonen, vier
 Testharnische mit 121 Behauptungen), `astro check` 0 Fehler, Build mit 19
 Seiten und 13 Feed-Dateien fehlerfrei. Aus dem Review offen bleiben nur noch
 die dokumentierten niedrigen Befunde (Abschnitt 4) — alle bewusst vertagt.
+
+---
+
+## Offen — wartet auf einen Menschen
+
+- **Lektion 17 (`.claude/rules/lektionen.md`).** „Ein Ergebnis mit zwei
+  möglichen Ursachen belegt keine von beiden" — entstanden aus zwei Fehlern
+  beim Mutationsbeleg für die drei Preiszustände: eine Fixture, die aus dem
+  falschen Grund hielt, und eine Mutation, die wegen wortgleicher Zeilen die
+  falsche Regel traf. Der Text liegt fertig im Pull Request zu den
+  Preiszuständen. `.claude/` ist für Agenten gesperrt (Lektion 16). Der
+  Verweis in `CLAUDE.md`, Regel 4, steht bereits.
+- **Fehlalarm im Bash-Zweig von `guard.mjs`.** Die Prüfung auf den
+  Statusnamen greift als Teilstring und schlägt deshalb auf dem Enum-Wert
+  `unveroeffentlicht` an: Jeder Shell-Schreibzugriff auf eine Eventdatei mit
+  diesem Wert wird als Statusänderung abgelehnt. Abhilfe wäre eine
+  Wortgrenze oder ein Muster mit `status:` davor. Ebenfalls `.claude/`.

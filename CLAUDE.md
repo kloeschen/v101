@@ -74,7 +74,8 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 3. **Regeln, die zählen, gehören in Code.** Validator, Hook oder CI-Schritt —
    nicht in Prosa.
 4. **Jede neue Regel braucht einen Negativtest.** Eine Prüfung, die nie
-   angeschlagen hat, ist unbewiesen.
+   angeschlagen hat, ist unbewiesen — und ein Ergebnis, das auch aus einem
+   zweiten Grund eintreten könnte, belegt keinen von beiden.
 5. **Kein Fakt ohne Quelle.** Unbekannt heißt Feld weglassen, nicht schätzen.
 6. **Sperren müssen bewiesen sein.** Ein Hook, der noch nie blockiert hat,
    ist wirkungslos, bis das Gegenteil gezeigt wurde — und er scheitert still.
