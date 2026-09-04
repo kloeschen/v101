@@ -65,6 +65,20 @@ Auskunft für den Leser, keine Leerstelle — und der Unterschied zwischen
 „wir wissen es nicht" und „der Veranstalter sagt es nicht" ist genau der,
 den ein Register liefern kann.
 
+**Fund beim Mutationsbeleg: eine Fixture hielt aus dem falschen Grund.**
+Die Prüfung „dritter Zustand: kein Offer" lief mit einem Termin ohne
+Preisangaben. Sie blieb deshalb auch dann grün, als die Abfrage auf
+`eintritt` im Builder ganz entfernt wurde — `preise: []` ergibt eine leere
+Offer-Liste, die ohnehin herausfällt. Beide Ursachen führen zum selben
+Ergebnis, also belegt das Ergebnis keine von beiden. Trennen lassen sie
+sich erst durch den widersprüchlichen Fall: Preise **an** einem Termin,
+der keinen Preis veröffentlicht. Der Validator verbietet diese Kombination
+— aber der Astro-Build prüft nur das Zod-Schema, nicht die Regeln, und die
+Verteidigung im Builder verlässt sich deshalb nicht auf den Validator.
+Dieselbe Fehlerklasse wie die Sortierprüfung aus M9, die unter Mutation
+zufällig hielt: Eine Prüfung, deren beide möglichen Ursachen dasselbe
+Ergebnis liefern, prüft nichts.
+
 **Nebenbefund, nicht behoben:** Der Bash-Zweig von `guard.mjs` prüft auf
 das Wort `veroeffentlicht` und schlägt deshalb auf dem neuen Wert
 `unveroeffentlicht` an — jeder Shell-Schreibzugriff auf eine Eventdatei mit
