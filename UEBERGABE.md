@@ -92,7 +92,7 @@ kaputte Daten einschleusen, Meldung zeigen, zurückbauen. Berichte das
 Ergebnis.
 ```
 
-Die neuen Dokumentationsdateien (`.claude/rules/lektionen.md`,
+Die neuen Dokumentationsdateien (`docs/lektionen.md`,
 `PROJEKTANWEISUNGEN.md`, das aktualisierte `CLAUDE.md` und das
 Lexikon-Golden-Example) lassen sich nicht sinnvoll als Auftrag beschreiben —
 sie sind Prosa. Die kommen über Weg A oder du lädst sie in der Session als

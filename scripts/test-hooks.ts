@@ -318,6 +318,40 @@ for (const [was, command] of bashErlaubt) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Die Grenze: Mechanik gesperrt, Text über Mechanik nicht             */
+/* ------------------------------------------------------------------ */
+/*
+ * `.claude/` enthält die Mechanik der Absicherung — Hooks, Berechtigungen,
+ * Agentendefinitionen. Was sich selbst absichert, darf sich nicht selbst
+ * ändern, deshalb die Sperre.
+ *
+ * Die Kehrseite: Wer eine Datei dort ablegt, sperrt sie für alle künftige
+ * Pflege mit. Genau das war mit den Lektionen passiert — eine Sammlung von
+ * Erfahrungssätzen, also Dokumentation, lag hinter der Sperre für Mechanik
+ * und konnte von der Instanz, die sie schreiben sollte, nie gepflegt
+ * werden. Sie liegt jetzt in `docs/`.
+ *
+ * Diese Prüfung hält das fest, statt es der Erinnerung zu überlassen:
+ * `.claude/rules/` darf nicht wieder entstehen, und die Lektionen müssen
+ * in `docs/` liegen. Ohne sie wäre die Entscheidung eine Bitte (Lektion 6).
+ */
+{
+  const alterOrt = path.join(PROJEKT, ".claude", "rules");
+  const neuerOrt = path.join(PROJEKT, "docs", "lektionen.md");
+
+  pruefe(
+    "Lektionen liegen in docs/, nicht hinter der Agentensperre",
+    existsSync(neuerOrt),
+    `${neuerOrt} fehlt`,
+  );
+  pruefe(
+    ".claude/rules/ existiert nicht mehr — dort gehört keine Dokumentation hin",
+    !existsSync(alterOrt),
+    `${alterOrt} ist wieder da`,
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* validate-changed.sh — die Rückmeldung                               */
 /* ------------------------------------------------------------------ */
 

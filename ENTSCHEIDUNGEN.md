@@ -13,6 +13,48 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-04 — Die Lektionen ziehen aus `.claude/` nach `docs/`
+
+**Fund:** Die Lektionensammlung lag in `.claude/rules/lektionen.md` und war
+damit für Agenten gesperrt. Dreimal in einer Sitzung hat sich gezeigt, was
+das heißt: Zwei Lektionen mussten als fertiger Text im Pull Request
+übergeben werden, weil die Instanz, die sie aus ihren eigenen Fehlern
+schreibt, sie nicht selbst ablegen konnte. Eine Sammlung von
+Erfahrungssätzen, die nur ein Mensch fortschreiben kann, wächst so schnell
+wie seine Zeit — nicht so schnell wie die Fehler.
+
+**Entscheidung:** `.claude/rules/lektionen.md` wird zu `docs/lektionen.md`.
+Das Verzeichnis `.claude/rules/` entfällt, es enthielt sonst nichts.
+
+**Warum die Grenze dort liegt.** `.claude/` und `.github/` enthalten die
+**Mechanik** der Absicherung: Hooks, Berechtigungen, Agentendefinitionen,
+CI-Schritte. Was sich selbst absichert, darf sich nicht selbst ändern —
+sonst ist die Sperre eine Bitte. **Text über** diese Mechanik ist etwas
+anderes: Er beschreibt sie, führt sie nicht aus, und kann gepflegt werden,
+ohne die Absicherung anzurühren. Er gehört nach `docs/`.
+
+**Verworfen:** eine Ausnahme in `permissions.deny` für diese eine Datei.
+Sie hätte die Sperre von einer Bedingung zu einer Liste gemacht, die man
+pflegen muss, und die nächste Datei hätte dieselbe Diskussion ausgelöst.
+Die Grenze zwischen Mechanik und Beschreibung ist die haltbarere Trennung
+als eine Ausnahmeliste.
+
+**Folge:** Lektion 18 bekommt den zweiten Teil — wer eine Datei in einen
+gesperrten Bereich legt, sperrt sie für alle künftige Pflege mit. Vor dem
+Ablegen ist deshalb zu fragen: Mechanik oder Text über Mechanik?
+`CLAUDE.md` nennt jetzt den Grund für die Sperre, nicht nur die Sperre.
+Zwei Prüfungen in `scripts/test-hooks.ts` halten den Zustand fest, statt
+ihn der Erinnerung zu überlassen (Lektion 6).
+
+**Nicht gebaut:** eine allgemeine Prüfung „jeder Pfad in Backticks
+existiert". Der Prototyp meldete 60 von 108 Pfadangaben als tot — fast alle
+zu Recht ungenannt, weil die Dokumentation bloße Dateinamen (`facetten.ts`)
+und URL-Pfade (`/rss.xml`) in derselben Auszeichnung führt. Eine brauchbare
+Fassung bräuchte Basisnamen-Auflösung und eine Ausnahmeliste für URLs; das
+ist ein eigenes Vorhaben und nicht die Nebenwirkung eines Umzugs.
+
+---
+
 ## 2026-09-04 — Der Eintritt hat drei Zustände, nicht zwei
 
 **Fund:** Bei der Erprobung an fünf Events konnten zwei nicht eingetragen
@@ -768,6 +810,6 @@ Dateisysteme nicht, der Interpreteraufruf schon.
 Abhängigkeit. Das Bit bleibt zusätzlich im Index gesetzt, aber als zweite
 Sicherung, nicht als Grundlage.
 
-**Folge:** Lektion 15 in `.claude/rules/lektionen.md`, sechste Kernregel in
+**Folge:** Lektion 15 in `docs/lektionen.md`, sechste Kernregel in
 `CLAUDE.md`, automatisierter Negativtest in `scripts/test-hooks.ts`. Der
 Wrapper `guard.sh` entfiel, weil `settings.json` `guard.mjs` direkt aufruft.

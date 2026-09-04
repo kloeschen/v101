@@ -62,11 +62,14 @@ nicht trägt.
 
 ## Warum zwei Ebenen
 
-`CLAUDE.md` und `.claude/rules/` liegen im Repo und wirken überall, wo eine
-Session das Repo sieht: Claude Code lokal, Cloud-Sessions, Cowork mit
-Repo-Zugriff. Die Projektanweisungen wirken in Browser- und App-Chats ohne
-Repo. Beide Ebenen sagen dasselbe — die eine ausführlich am Code, die andere
-knapp für das Gespräch.
+`CLAUDE.md` und `docs/` liegen im Repo und wirken überall, wo eine Session
+das Repo sieht: Claude Code lokal, Cloud-Sessions, Cowork mit Repo-Zugriff.
+Die Projektanweisungen wirken in Browser- und App-Chats ohne Repo. Beide
+Ebenen sagen dasselbe — die eine ausführlich am Code, die andere knapp für
+das Gespräch.
+
+Nicht dazu gehört `.claude/`: Dort liegt die Mechanik der Absicherung, nicht
+ihre Beschreibung. Sie ist für Agenten gesperrt und bleibt es.
 
 Wenn sich eine Regel ändert, ändert sie sich an beiden Stellen. Die Quelle
 der Wahrheit ist das Repo.
