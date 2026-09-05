@@ -225,7 +225,7 @@ Branch-Deploys laufen laut `netlify.toml` mit `PUBLIC_ENTWUERFE = "true"` —
 dort sind also auch Entwürfe zu sehen, jeder mit dem Kennzeichen
 `[Entwurf]` in Listen und Facetten.
 
-    https://vorschau--<netlify-site-name>.netlify.app
+    https://vorschau--v101.netlify.app
 
 Die Adresse ist stabil, anders als die wechselnden Deploy-Preview-Links
 eines Pull Requests. `PUBLIC_INDEXIERBAR` steht dort auf `"false"`: Die
