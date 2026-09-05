@@ -299,3 +299,89 @@ reißt.
 **Erzwungen durch:** `scripts/test-hooks.ts`, Abschnitt „Der Fehlalarm auf
 dem Preiszustand" — fünf Befehle mit dem Preiszustand, die durchgehen
 müssen, gegen zehn Schreibweisen des Statuswechsels, die blockieren müssen.
+
+**Die Sperre gilt dem Verzeichnis, nicht der Datei.** Beim Versuch, diese
+Lektion abzulegen, kam der Nebenbefund heraus: `.claude/` ist als Ganzes
+gesperrt. Auch `lektionen.md` lag darin — eine Sammlung von
+Erfahrungssätzen hinter einer Sperre, die für Mechanik gedacht ist. Die
+Instanz, die diese Sätze aus ihren eigenen Fehlern schreibt, konnte sie
+nicht selbst ablegen; zweimal in derselben Sitzung mussten sie als fertiger
+Text im Pull Request übergeben werden. Die Datei liegt deshalb jetzt hier,
+in `docs/`.
+
+**Regel:** Wer eine Datei in einen gesperrten Bereich legt, sperrt sie für
+alle künftige Pflege mit — nicht nur für sich, sondern dauerhaft. Vor dem
+Ablegen deshalb die Frage: Ist das **Mechanik** (Hook, Berechtigung,
+Agentendefinition, CI-Schritt) oder **Text über Mechanik**? Mechanik gehört
+nach `.claude/` oder `.github/` und darf sich nicht selbst ändern. Text
+darüber gehört nach `docs/` und muss sich ändern lassen, sonst veraltet er
+genau dort, wo er am meisten wehtut.
+
+**Erzwungen durch:** zwei Prüfungen in `scripts/test-hooks.ts`, Abschnitt
+„Die Grenze" — `docs/lektionen.md` muss existieren, `.claude/rules/` darf
+nicht wieder entstehen.
+
+---
+
+## 19. Die gefährlichste Prüfung ist die, die nie etwas gesehen hat
+
+**Dreimal in einer Sitzung passiert**, in drei verschiedenen Gestalten.
+Erst als der dritte Fall auftauchte, wurde das Muster sichtbar.
+
+**Der Sortiervergleich (M9).** `indexOf("heute") < indexOf("gestern")`
+sollte belegen, dass kommende Termine vor vergangenen stehen. Der Vergleich
+hielt unter Mutation — aber weil vergangene Termine ohnehin absteigend
+sortieren, wäre er auch ohne die geprüfte Logik wahr gewesen.
+
+**Die Offer-Fixture.** „Dritter Preiszustand: kein Offer" lief mit einem
+Termin ohne Preisangaben. `preise: []` ergibt eine leere Offer-Liste, die
+ohnehin herausfällt — die Prüfung blieb grün, als die geprüfte Abfrage ganz
+entfernt wurde.
+
+**Der PostToolUse-Zweig.** Der Hooktest baute sein Prüfprojekt unter
+`os.tmpdir()`. Auf macOS ist das `/var/folders/…`, und `/var` zeigt auf
+`/private/var`; `process.cwd()` löst das auf, der übergebene Dateipfad
+nicht. Der Loader verwarf die Datei mit `path.relative(…).startsWith("..")`
+und meldete „Nichts zu prüfen" bei Exitcode 0. Der Hook hat seit seiner
+Entstehung nichts geprüft und dabei Erfolg gemeldet. Auf Linux fiel es nie
+auf — dort gibt es den Symlink nicht.
+
+**Was die drei gemeinsam haben.** In allen drei Fällen war das beobachtete
+Ergebnis mit *zwei* Zuständen der Welt verträglich: „die Regel greift" und
+„die Regel wurde nie erreicht". Der Unterschied zu Lektion 17 ist der Ort:
+Dort lag die Zweideutigkeit in den Daten, hier im Aufbau — die Prüfung kam
+gar nicht bis zur Sache.
+
+**Woran man sie erkennt.** Drei Fragen, die alle drei Fälle gefunden hätten:
+
+1. **Woher weiß ich, dass die Prüfung ihren Gegenstand erreicht hat?** Nicht
+   „ist der Lauf grün", sondern: Steht in der Ausgabe etwas, das nur
+   entstehen kann, wenn die Sache tatsächlich angefasst wurde? Ein Exitcode
+   ist dafür der schwächste Zeuge, weil ihn viele Wege erzeugen.
+2. **Was wäre die Ausgabe, wenn der Gegenstand fehlte?** Sieht sie genauso
+   aus wie jetzt, prüft nichts. „Nichts zu prüfen", „0 Dateien", „keine
+   Treffer", eine leere Liste — jede dieser Meldungen bei Exitcode 0 ist
+   verdächtig, solange nicht klar ist, dass sie den leeren Zustand meint und
+   nicht den verfehlten.
+3. **Hängt das Ergebnis an etwas, das die Prüfung nicht kontrolliert?** Ein
+   Symlink im temporären Verzeichnis, eine Umgebungsvariable, die
+   Sortierreihenfolge echter Daten, die Zeitzone des Rechners. Wenn ja,
+   misst sie woanders etwas anderes — und genau dort schweigt sie.
+
+**Regel:** Jede Prüfung braucht ein **positives Lebenszeichen** ihres
+Gegenstands: eine Behauptung, die nur wahr sein kann, wenn die Sache
+wirklich angefasst wurde. Die Abwesenheit eines Fehlers ist kein
+Lebenszeichen.
+
+**Regel:** Meldungen der Form „nichts gefunden" bekommen zwei getrennte
+Ausgänge — leerer Zustand (in Ordnung) und verfehlter Aufruf (Fehler). Wer
+mit einer Dateiliste aufgerufen wird und nichts davon sieht, hat nichts zu
+melden außer diesem Umstand. Das ist Lektion 4 in ihrer schärferen Form:
+Ein *grüner* Lauf muss ebenso etwas bedeuten wie ein roter.
+
+**Erzwungen durch:** `scripts/_laden.ts` löst beide Seiten des
+Pfadvergleichs symlinkfrei auf; `scripts/validate-content.ts` beendet einen
+`--changed`-Aufruf, dessen Dateien sämtlich außerhalb des Registers liegen,
+mit Exitcode 2 und nennt sie; `scripts/test-hooks.ts` fährt den Hook einmal
+über einen selbst gebauten Symlink und verlangt, dass der konkrete Befund in
+der Begründung steht — nicht bloß, dass blockiert wurde.

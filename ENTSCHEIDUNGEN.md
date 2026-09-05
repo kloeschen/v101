@@ -13,6 +13,142 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-05 — Die Freigabe prüft den Zustand nach der Änderung
+
+**Entscheidung:** `scripts/freigeben.ts` schreibt `status` und `geprueftAm`
+zuerst, prüft dann, und rollt bei Befunden zurück. Es prüft nicht den
+Entwurf und gibt ihn bei sauberem Ergebnis frei.
+
+**Warum.** Die Regel `veroeffentlichungsreife` in `validate-content.ts`
+beginnt mit `if (status !== "veroeffentlicht") return []`. Für einen Entwurf
+meldet sie nichts — nicht „in Ordnung", sondern überhaupt nichts. Ein
+Eintrag ohne `autor` hätte jede Vorabprüfung bestanden und wäre nach der
+Freigabe fehlerhaft gewesen. Beim ersten Trockenlauf gegen den echten
+Bestand hat die Regel prompt zugeschlagen: `petticoat` wurde abgelehnt, weil
+`aliases` fehlt. Das ist kein Sonderfall, sondern die Regelklasse
+„gilt erst ab Veröffentlichung", und sie ist genau die, die eine Freigabe
+prüfen muss.
+
+**Verworfen:** den Entwurf prüfen und danach schreiben. Bequemer, kein
+Zurückrollen nötig — und blind für die einzige Regelklasse, die hier zählt.
+
+**Zweite Entscheidung:** Ein bereits freigegebener Eintrag wird
+übersprungen, nicht erneut angefasst. Sonst wanderte `geprueftAm` bei jedem
+Lauf weiter, und die Prüfkadenz wäre eine Zahl, die sich selbst erneuert.
+
+**Fund beim Mutationsbeleg.** Die Prüfung „zweiter Lauf lässt die Datei
+zeichengenau unverändert" hielt zunächst auch ohne die Sprungmarke: Der
+Eintrag war im selben Lauf freigegeben worden, `geprueftAm` stand also schon
+auf heute, und ein erneutes Schreiben desselben Werts ändert nichts. Zwei
+Ursachen, ein Ergebnis (Lektion 17/19). Die Fixture trägt jetzt ein altes
+`geprueftAm` und einen bereits freigegebenen Status, damit die beiden Fälle
+auseinandergehen.
+
+**Offen gelassen, weil es eine Entscheidung ist und keine Nebensache:**
+`check-freigabe.ts` (Befund M8) meldet jeden Statuswechsel, den niemand beim
+Aufruf bestätigt hat — und wird deshalb in der CI **jedes** Freigabe-Pull-
+Requests anschlagen. Die bequeme Abhilfe wäre, die Bestätigung als Trailer
+in die Commit-Nachricht zu schreiben und `check-freigabe.ts` sie dort lesen
+zu lassen. Das würde die dritte Schicht aus M8 schwächen: Ihre Stärke ist
+gerade, dass die Bestätigung eine Handlung an der Kommandozeile ist und
+nicht im Repository steht, wo sie jeder schreiben kann, der schreiben kann.
+`freigeben.ts` gibt deshalb die passende `--freigabe`-Zeile aus, und
+`BETRIEB.md` erklärt den roten Haken. Ob er auf Dauer bleibt, entscheidet
+ein Mensch.
+
+---
+
+## 2026-09-04 — Der PostToolUse-Hook hat seit seiner Entstehung nichts geprüft
+
+**Fund:** Zwei Prüfungen in `scripts/test-hooks.ts` waren auf dem Rechner des
+Menschen rot, in der Cloud-Sitzung grün — und zwar nachweislich schon vor den
+Änderungen, mit denen sie auffielen. Die Meldung lautete „Nichts zu prüfen"
+bei Exitcode 0.
+
+**Ursache**, reproduziert statt vermutet: `scripts/_laden.ts` verwarf jede
+übergebene Datei, deren Pfad relativ zur Wurzel mit `..` beginnt. Die Wurzel
+kommt aus `process.cwd()`, und das liefert Node **symlinkaufgelöst**; ein von
+außen übergebener Dateipfad nicht. Der Hooktest baut sein Prüfprojekt unter
+`os.tmpdir()` — auf macOS `/var/folders/…`, wobei `/var` auf `/private/var`
+zeigt. Damit zeigten Ereignispfad und Wurzel auf dasselbe Verzeichnis in zwei
+Schreibweisen, `path.relative()` ergab `..`, und die Datei fiel lautlos aus
+der Liste. Auf Linux gibt es diesen Symlink nicht, deshalb lief dieselbe
+Prüfung dort grün.
+
+**Nicht die naheliegende Ursache.** Der Verdacht lag auf einem nicht
+gesetzten Arbeitsverzeichnis im Test. Der Test setzt beides korrekt, `cwd`
+und `CLAUDE_PROJECT_DIR`. Der Bruch lag eine Ebene tiefer, zwischen der
+*Schreibweise* des Pfads und der *aufgelösten* Wurzel.
+
+**Entscheidung:** Der Loader löst beide Seiten des Vergleichs auf. Das ist
+kein reines Testproblem — wer sein Repo über einen Symlink erreicht, bekam
+denselben stillen Durchlauf.
+
+**Zweite Entscheidung, wichtiger als die erste:** „Nichts zu prüfen" bekommt
+zwei getrennte Ausgänge. Ein leeres Register ist in Ordnung. Ein
+`--changed`-Aufruf, dessen Dateien existieren und sämtlich außerhalb des
+Registers liegen, ist ein Aufruf, der ins Leere ging — Exitcode 2, mit
+Nennung der Pfade. Ohne diese Trennung hätte die Reparatur des Loaders den
+nächsten Fall derselben Art wieder verschwiegen.
+
+**Folge:** Lektion 19 — die gefährlichste Prüfung ist die, die nie etwas
+gesehen hat, mit den drei Erkennungsfragen. Vierte Kernregel in `CLAUDE.md`
+um das positive Lebenszeichen erweitert. Regressionstest in
+`scripts/test-hooks.ts`: Der Hook fährt einmal über einen selbst gebauten
+Symlink, und verlangt wird nicht der Exitcode, sondern dass der konkrete
+Befund in der Begründung steht.
+
+**Fund beim Mutationsbeleg:** Der Exitcode taugt hier nicht als Nachweis.
+Seit der Validator den verfehlten Aufruf selbst mit 2 beendet, blockiert der
+Hook auch dann, wenn er die Datei nie gesehen hat — zwei Ursachen, ein
+Ergebnis (Lektion 17). Die Zusicherung, die tatsächlich misst, ist die auf
+den Inhalt der Begründung. Die erste Fassung des Belegs erwartete beide und
+war damit falsch.
+
+---
+
+## 2026-09-04 — Die Lektionen ziehen aus `.claude/` nach `docs/`
+
+**Fund:** Die Lektionensammlung lag in `.claude/rules/lektionen.md` und war
+damit für Agenten gesperrt. Dreimal in einer Sitzung hat sich gezeigt, was
+das heißt: Zwei Lektionen mussten als fertiger Text im Pull Request
+übergeben werden, weil die Instanz, die sie aus ihren eigenen Fehlern
+schreibt, sie nicht selbst ablegen konnte. Eine Sammlung von
+Erfahrungssätzen, die nur ein Mensch fortschreiben kann, wächst so schnell
+wie seine Zeit — nicht so schnell wie die Fehler.
+
+**Entscheidung:** `.claude/rules/lektionen.md` wird zu `docs/lektionen.md`.
+Das Verzeichnis `.claude/rules/` entfällt, es enthielt sonst nichts.
+
+**Warum die Grenze dort liegt.** `.claude/` und `.github/` enthalten die
+**Mechanik** der Absicherung: Hooks, Berechtigungen, Agentendefinitionen,
+CI-Schritte. Was sich selbst absichert, darf sich nicht selbst ändern —
+sonst ist die Sperre eine Bitte. **Text über** diese Mechanik ist etwas
+anderes: Er beschreibt sie, führt sie nicht aus, und kann gepflegt werden,
+ohne die Absicherung anzurühren. Er gehört nach `docs/`.
+
+**Verworfen:** eine Ausnahme in `permissions.deny` für diese eine Datei.
+Sie hätte die Sperre von einer Bedingung zu einer Liste gemacht, die man
+pflegen muss, und die nächste Datei hätte dieselbe Diskussion ausgelöst.
+Die Grenze zwischen Mechanik und Beschreibung ist die haltbarere Trennung
+als eine Ausnahmeliste.
+
+**Folge:** Lektion 18 bekommt den zweiten Teil — wer eine Datei in einen
+gesperrten Bereich legt, sperrt sie für alle künftige Pflege mit. Vor dem
+Ablegen ist deshalb zu fragen: Mechanik oder Text über Mechanik?
+`CLAUDE.md` nennt jetzt den Grund für die Sperre, nicht nur die Sperre.
+Zwei Prüfungen in `scripts/test-hooks.ts` halten den Zustand fest, statt
+ihn der Erinnerung zu überlassen (Lektion 6).
+
+**Nicht gebaut:** eine allgemeine Prüfung „jeder Pfad in Backticks
+existiert". Der Prototyp meldete 60 von 108 Pfadangaben als tot — fast alle
+zu Recht ungenannt, weil die Dokumentation bloße Dateinamen (`facetten.ts`)
+und URL-Pfade (`/rss.xml`) in derselben Auszeichnung führt. Eine brauchbare
+Fassung bräuchte Basisnamen-Auflösung und eine Ausnahmeliste für URLs; das
+ist ein eigenes Vorhaben und nicht die Nebenwirkung eines Umzugs.
+
+---
+
 ## 2026-09-04 — Der Eintritt hat drei Zustände, nicht zwei
 
 **Fund:** Bei der Erprobung an fünf Events konnten zwei nicht eingetragen
@@ -768,6 +904,6 @@ Dateisysteme nicht, der Interpreteraufruf schon.
 Abhängigkeit. Das Bit bleibt zusätzlich im Index gesetzt, aber als zweite
 Sicherung, nicht als Grundlage.
 
-**Folge:** Lektion 15 in `.claude/rules/lektionen.md`, sechste Kernregel in
+**Folge:** Lektion 15 in `docs/lektionen.md`, sechste Kernregel in
 `CLAUDE.md`, automatisierter Negativtest in `scripts/test-hooks.ts`. Der
 Wrapper `guard.sh` entfiel, weil `settings.json` `guard.mjs` direkt aufruft.

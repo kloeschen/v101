@@ -65,7 +65,7 @@ npm run links:extern  # externe URLs prüfen
 ## Die sechs Regeln, an denen dieses Projekt hängt
 
 Ausführlich mit den Fehlern, aus denen sie entstanden sind:
-`.claude/rules/lektionen.md`. **Vor größeren Änderungen dort nachlesen.**
+`docs/lektionen.md`. **Vor größeren Änderungen dort nachlesen.**
 
 1. **Datumswerte nie ohne explizite Zeitzone** verarbeiten. Viermal
    passiert. `npm run check:zeit` erzwingt es.
@@ -75,7 +75,9 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
    nicht in Prosa.
 4. **Jede neue Regel braucht einen Negativtest.** Eine Prüfung, die nie
    angeschlagen hat, ist unbewiesen — und ein Ergebnis, das auch aus einem
-   zweiten Grund eintreten könnte, belegt keinen von beiden.
+   zweiten Grund eintreten könnte, belegt keinen von beiden. Jede Prüfung
+   braucht ein positives Lebenszeichen ihres Gegenstands; „kein Fehler" ist
+   keines.
 5. **Kein Fakt ohne Quelle.** Unbekannt heißt Feld weglassen, nicht schätzen.
 6. **Sperren müssen bewiesen sein.** Ein Hook, der noch nie blockiert hat,
    ist wirkungslos, bis das Gegenteil gezeigt wurde — und er scheitert still.
@@ -88,10 +90,23 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
 - Bekannte offene Punkte: `REVIEW.md`
 - Warum etwas so ist, samt verworfener Alternativen: `ENTSCHEIDUNGEN.md`
-- Lektionen aus dem Aufbau: `.claude/rules/lektionen.md`
+- Lektionen aus dem Aufbau: `docs/lektionen.md`
 - Arbeitsteilung Cloud/Rechner/CI: `ARBEITSWEISE.md`
 
 ## Was hier nicht passiert
 
 Keine Änderungen an `site.config.ts` (die Domain steckt in jeder `@id` des
 Wissensgraphen), an `.claude/` oder an `.github/`.
+
+**Warum diese beiden Verzeichnisse.** Dort liegt die Mechanik der
+Absicherung: Hooks, Berechtigungen, Agentendefinitionen, CI-Schritte. Was
+sich selbst absichert, darf sich nicht selbst ändern — sonst ist die Sperre
+eine Bitte. Die Erlaubnis stünde im Auftrag, die Sperre steht in
+`permissions.deny` und `guard.mjs`, und beide liegen hinter derselben
+Sperre. Genau so ist es gedacht (Lektion 16).
+
+**Dokumentation über diese Mechanik ist etwas anderes** und liegt in
+`docs/`. Sie beschreibt die Absicherung, sie führt sie nicht aus — und sie
+lässt sich pflegen, ohne die Sperre anzurühren. Wer eine Datei anlegt,
+entscheidet vorher: Mechanik oder Text über Mechanik? Was in `.claude/`
+landet, ist damit für alle künftige Pflege mitgesperrt (Lektion 18).

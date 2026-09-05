@@ -1,0 +1,25 @@
+# Der Branch `vorschau` läuft `main` hinterher.
+#
+# Netlify baut ihn als Branch-Deploy, und Branch-Deploys laufen laut
+# netlify.toml mit PUBLIC_ENTWUERFE = "true". Damit gibt es eine stabile
+# Adresse, unter der Entwürfe aussehen wie fertige Seiten — anders als die
+# wechselnden Deploy-Preview-Links einzelner Pull Requests.
+name: Vorschau
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  spiegeln:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      # `--force`: Der Branch hat keine eigene Geschichte, er ist ein Zeiger
+      # auf main. Wer dort committet, verliert die Änderung beim nächsten Push
+      # — das ist Absicht.
+      - run: git push --force origin HEAD:vorschau
