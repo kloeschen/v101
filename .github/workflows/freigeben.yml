@@ -1,0 +1,147 @@
+# Freigabe auf Knopfdruck — die Handarbeit, nicht die Entscheidung.
+#
+# Der Lauf setzt `status` und `geprueftAm`, prüft jeden Eintrag im
+# freigegebenen Zustand gegen validate-content --strict und
+# check-jsonld --strict, und öffnet einen Pull Request. Er pusht NICHT auf
+# main: Die Freigabe ist eine menschliche Entscheidung, und ein Pull Request
+# ist der Ort, an dem sie sichtbar wird.
+#
+# Der Bericht des Skripts wird zur Beschreibung des Pull Requests. Er nennt
+# jeden abgelehnten Eintrag mit Grund — das ist die Information, die man
+# braucht, und sie geht sonst im Aktionslog verloren.
+name: Freigeben
+
+on:
+  workflow_dispatch:
+    inputs:
+      slugs:
+        description: "Slugs, kommagetrennt (z. B. petticoat,korsett). Leer lassen, um eine ganze Collection freizugeben."
+        required: false
+        type: string
+      collection:
+        description: "Collection — begrenzt die Auswahl, oder gibt sie mit leerem Slug-Feld vollständig frei."
+        required: false
+        type: choice
+        default: ""
+        options:
+          - ""
+          - events
+          - bands
+          - locations
+          - regionen
+          - lexikon
+          - artikel
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  freigeben:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Volle Historie wie in ci.yml: check-freigabe.ts braucht eine
+          # Vergleichsbasis, und der Freigabe-Branch wird gegen main gestellt.
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Auswahl prüfen
+        run: |
+          if [ -z "${{ inputs.slugs }}" ] && [ -z "${{ inputs.collection }}" ]; then
+            echo "Weder Slugs noch Collection angegeben — es gäbe nichts zu tun." >&2
+            exit 1
+          fi
+
+      - name: Freigabelauf
+        id: lauf
+        run: |
+          set -o pipefail
+          ARGS=""
+          if [ -n "${{ inputs.slugs }}" ]; then
+            ARGS="$ARGS --slugs ${{ inputs.slugs }}"
+          fi
+          if [ -n "${{ inputs.collection }}" ]; then
+            ARGS="$ARGS --collection ${{ inputs.collection }}"
+          fi
+          if [ -z "${{ inputs.slugs }}" ]; then
+            ARGS="$ARGS --alle"
+          fi
+          # Der Bericht geht ins Log UND in eine Datei: aus der Datei wird
+          # die Beschreibung des Pull Requests.
+          npx tsx scripts/freigeben.ts $ARGS 2>&1 | tee bericht.txt
+
+      - name: Änderungen feststellen
+        id: diff
+        if: always() && steps.lauf.outcome == 'success'
+        run: |
+          if git diff --quiet -- src/content; then
+            echo "geaendert=nein" >> "$GITHUB_OUTPUT"
+            echo "Kein Eintrag wurde freigegeben — kein Pull Request nötig."
+          else
+            echo "geaendert=ja" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pull Request öffnen
+        if: steps.diff.outputs.geaendert == 'ja'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BRANCH="freigabe/${{ github.run_id }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add src/content
+
+          # Das auslösende Konto steht in der Commit-Nachricht: Der Lauf ist
+          # eine Handlung eines Menschen, und wer sie war, gehört in die
+          # Historie und nicht nur ins Aktionslog.
+          {
+            echo "Freigabe: ${{ inputs.slugs }}${{ inputs.collection }}"
+            echo
+            echo "Ausgeloest von @${{ github.actor }} ueber Actions -> Freigeben."
+            echo "Lauf: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo
+            echo "Jeder Eintrag wurde im freigegebenen Zustand gegen"
+            echo "validate-content --strict und check-jsonld --strict geprueft."
+            echo "Der vollstaendige Bericht steht in der Beschreibung des Pull Requests."
+          } > commit.txt
+
+          git commit -F commit.txt
+          git push -u origin "$BRANCH"
+
+          {
+            echo "Freigabelauf, ausgelöst von @${{ github.actor }}."
+            echo
+            echo '```'
+            cat bericht.txt
+            echo '```'
+            echo
+            echo "**Die Prüfung ist die Bedingung, der Klick war die Entscheidung.**"
+            echo "Das Skript hat nur verhindert, dass etwas Fehlerhaftes freigegeben wird."
+            echo "Ob die Einträge inhaltlich richtig sind, sieht keine Regel."
+            echo
+            echo "Die Freigabeprüfung \`check-freigabe.ts\` wird diesen PR als unbestätigt"
+            echo "melden — das ist ihr Zweck und kein Fehler. Siehe BETRIEB.md,"
+            echo "Abschnitt \"Vorschau und Freigabe\"."
+          } > pr.md
+
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Freigabe: ${{ inputs.slugs }}${{ inputs.collection }}" \
+            --body-file pr.md
+
+      - name: Bericht als Artefakt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: freigabebericht
+          path: bericht.txt
+          if-no-files-found: ignore
