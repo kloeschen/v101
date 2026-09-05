@@ -211,6 +211,80 @@ Recherche mit Subagenten ist der teuerste Teil. Was hilft:
 
 ---
 
+## Vorschau und Freigabe
+
+Zwei Dinge, die zusammen die Redaktionsarbeit erst möglich machen: ein Ort,
+an dem Entwürfe aussehen wie fertige Seiten, und ein Weg, sie freizugeben,
+ohne in Dateien zu greifen.
+
+### Die Vorschau
+
+Der Branch `vorschau` wird bei jedem Push auf `main` mitgezogen
+(`.github/workflows/vorschau.yml`). Netlify baut ihn als Branch-Deploy, und
+Branch-Deploys laufen laut `netlify.toml` mit `PUBLIC_ENTWUERFE = "true"` —
+dort sind also auch Entwürfe zu sehen, jeder mit dem Kennzeichen
+`[Entwurf]` in Listen und Facetten.
+
+    https://vorschau--<netlify-site-name>.netlify.app
+
+Die Adresse ist stabil, anders als die wechselnden Deploy-Preview-Links
+eines Pull Requests. `PUBLIC_INDEXIERBAR` steht dort auf `"false"`: Die
+Vorschau ist für Menschen mit dem Link, nicht für Suchmaschinen.
+
+Was dort **nicht** auftaucht, auch nicht mit aktiven Entwürfen: die Feeds,
+der Kalender, die Sitemaps. Was den Registerbestand verlässt, enthält nur,
+was gilt — siehe `ENTSCHEIDUNGEN.md`.
+
+### Die Freigabe
+
+Über **Actions → Freigeben → Run workflow**. Zwei Felder: die Slugs
+(kommagetrennt) und optional die Collection. Der Lauf ruft
+
+    npm run freigeben -- --slugs <slugs>
+
+setzt bei jedem Eintrag `status` auf den freigegebenen Wert und `geprueftAm`
+auf heute, und öffnet einen Pull Request mit dem Bericht als Beschreibung.
+
+Ein Eintrag wird nur freigegeben, wenn er im **freigegebenen Zustand**
+`validate-content --strict` und `check-jsonld --strict` besteht. Geprüft
+wird also nicht der Entwurf, sondern das, was entstehen soll: Die Regel
+`veroeffentlichungsreife` meldet für einen Entwurf überhaupt nichts, ein
+Eintrag ohne `autor` käme sonst durch. Fällt ein Eintrag durch, wird er
+zurückgerollt, im Bericht mit Grund genannt — und der Lauf macht mit den
+übrigen weiter.
+
+Bereits freigegebene Einträge werden übersprungen, nicht erneut angefasst.
+Sonst wanderte `geprueftAm` bei jedem Lauf weiter und behauptete eine
+Prüfung, die niemand vorgenommen hat.
+
+**Die Prüfung ist die Bedingung, der Klick ist die Entscheidung.** Das
+Skript kann nur verhindern, dass etwas Fehlerhaftes freigegeben wird. Ob
+ein fehlerfreier Eintrag *richtig* ist — ob der Termin stattfindet, ob der
+Preis stimmt, ob die Quelle trägt —, sieht keine Regel. Das bleibt beim
+Menschen, und deshalb steht am Ende ein Pull Request und kein Push auf
+`main`.
+
+### Was dabei rot wird, und warum das so gehört
+
+Die Freigabeprüfung `check-freigabe.ts` (Befund M8) meldet jeden Wechsel
+auf den freigegebenen Status, den niemand **beim Aufruf** bestätigt hat.
+Sie wird deshalb in der CI jedes Freigabe-Pull-Requests anschlagen. Das ist
+kein Fehler im Werkzeug, sondern ihr Zweck: Die Bestätigung ist eine
+Handlung an der Kommandozeile und steht bewusst nicht im Repository —
+sonst könnte sie jeder schreiben, der schreiben kann.
+
+`freigeben.ts` gibt am Ende die passende Zeile aus:
+
+    npx tsx scripts/check-freigabe.ts --freigabe petticoat --freigabe korsett
+
+Wer den Pull Request prüft, führt sie aus oder merged in dem Wissen, dass
+genau diese Slugs freigegeben werden. Wenn dieser rote Haken auf Dauer
+stört, ist die Alternative, die Bestätigung in den Commit zu schreiben und
+`check-freigabe.ts` sie dort lesen zu lassen — das wäre bequemer und
+schwächer, und es ist eine Entscheidung, keine Nebensache.
+
+---
+
 ## Reihenfolge
 
 1. Domain, Netlify, `site.config.ts` — dann steht die Site (unindexiert).

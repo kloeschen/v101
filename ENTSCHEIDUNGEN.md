@@ -13,6 +13,51 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-05 — Die Freigabe prüft den Zustand nach der Änderung
+
+**Entscheidung:** `scripts/freigeben.ts` schreibt `status` und `geprueftAm`
+zuerst, prüft dann, und rollt bei Befunden zurück. Es prüft nicht den
+Entwurf und gibt ihn bei sauberem Ergebnis frei.
+
+**Warum.** Die Regel `veroeffentlichungsreife` in `validate-content.ts`
+beginnt mit `if (status !== "veroeffentlicht") return []`. Für einen Entwurf
+meldet sie nichts — nicht „in Ordnung", sondern überhaupt nichts. Ein
+Eintrag ohne `autor` hätte jede Vorabprüfung bestanden und wäre nach der
+Freigabe fehlerhaft gewesen. Beim ersten Trockenlauf gegen den echten
+Bestand hat die Regel prompt zugeschlagen: `petticoat` wurde abgelehnt, weil
+`aliases` fehlt. Das ist kein Sonderfall, sondern die Regelklasse
+„gilt erst ab Veröffentlichung", und sie ist genau die, die eine Freigabe
+prüfen muss.
+
+**Verworfen:** den Entwurf prüfen und danach schreiben. Bequemer, kein
+Zurückrollen nötig — und blind für die einzige Regelklasse, die hier zählt.
+
+**Zweite Entscheidung:** Ein bereits freigegebener Eintrag wird
+übersprungen, nicht erneut angefasst. Sonst wanderte `geprueftAm` bei jedem
+Lauf weiter, und die Prüfkadenz wäre eine Zahl, die sich selbst erneuert.
+
+**Fund beim Mutationsbeleg.** Die Prüfung „zweiter Lauf lässt die Datei
+zeichengenau unverändert" hielt zunächst auch ohne die Sprungmarke: Der
+Eintrag war im selben Lauf freigegeben worden, `geprueftAm` stand also schon
+auf heute, und ein erneutes Schreiben desselben Werts ändert nichts. Zwei
+Ursachen, ein Ergebnis (Lektion 17/19). Die Fixture trägt jetzt ein altes
+`geprueftAm` und einen bereits freigegebenen Status, damit die beiden Fälle
+auseinandergehen.
+
+**Offen gelassen, weil es eine Entscheidung ist und keine Nebensache:**
+`check-freigabe.ts` (Befund M8) meldet jeden Statuswechsel, den niemand beim
+Aufruf bestätigt hat — und wird deshalb in der CI **jedes** Freigabe-Pull-
+Requests anschlagen. Die bequeme Abhilfe wäre, die Bestätigung als Trailer
+in die Commit-Nachricht zu schreiben und `check-freigabe.ts` sie dort lesen
+zu lassen. Das würde die dritte Schicht aus M8 schwächen: Ihre Stärke ist
+gerade, dass die Bestätigung eine Handlung an der Kommandozeile ist und
+nicht im Repository steht, wo sie jeder schreiben kann, der schreiben kann.
+`freigeben.ts` gibt deshalb die passende `--freigabe`-Zeile aus, und
+`BETRIEB.md` erklärt den roten Haken. Ob er auf Dauer bleibt, entscheidet
+ein Mensch.
+
+---
+
 ## 2026-09-04 — Der PostToolUse-Hook hat seit seiner Entstehung nichts geprüft
 
 **Fund:** Zwei Prüfungen in `scripts/test-hooks.ts` waren auf dem Rechner des
