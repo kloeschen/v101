@@ -4,6 +4,7 @@
  * Vertrauenssignal ist, das ein Register von einer Meinungsseite trennt.
  */
 import { site } from "../site.config";
+import { entwuerfeSichtbar } from "../lib/sichtbarkeit";
 
 interface Props {
   quellen: { url: string; titel?: string; abgerufenAm: Date; art: string }[];
@@ -14,6 +15,12 @@ const { quellen, geprueftAm, autor } = Astro.props;
 // Vierte Instanz derselben Fehlerklasse, gefunden vom Zeitzonen-Check:
 // ohne timeZone verschiebt ein UTC-Server Mitternachtsdaten um einen Tag.
 const datum = new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeZone: site.zeitzone });
+
+// In der Vorschau aufgeklappt: Wer freigibt, prüft genau diese Liste — und
+// tut es nicht, wenn er dafür klicken muss. In der Produktion bleibt der
+// Block zu, dort ist er Beleg und nicht Arbeitsmaterial. `entwuerfeSichtbar`
+// liest PUBLIC_ENTWUERFE über die gemeinsame Zugriffshilfe (Lektion 2).
+const offen = entwuerfeSichtbar();
 ---
 <footer class="belege">
   <p class="belege__stand">
@@ -21,7 +28,7 @@ const datum = new Intl.DateTimeFormat("de-DE", { dateStyle: "long", timeZone: si
     {autor && <> von <span class="belege__autor">{autor}</span></>}
   </p>
   {quellen.length > 0 && (
-    <details class="belege__quellen">
+    <details class="belege__quellen" open={offen}>
       <summary>Quellen ({quellen.length})</summary>
       <ul>
         {quellen.map((q) => (

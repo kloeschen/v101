@@ -503,6 +503,28 @@ try {
   }
 }
 
+/*
+ * Die Gegenrichtung, und sie ist die schärfere: Eine Datei mit `_`-Präfix
+ * LIEGT im Register und wird trotzdem nicht geladen — Golden Examples sind
+ * Vorlagen, keine Einträge. Die erste Fassung der Meldung oben hat beides
+ * verwechselt und den PostToolUse-Hook auf `_golden-example.md` blockieren
+ * lassen; aufgefallen ist es, als der Hook eine Bearbeitung genau dieser
+ * Datei abgelehnt hat.
+ */
+{
+  const golden = path.join(PROJEKT, "src", "content", "lexikon", "_golden-example.md");
+  const r = spawnSync("npx", ["tsx", "scripts/validate-content.ts", "--changed", golden], {
+    encoding: "utf8",
+    cwd: PROJEKT,
+  });
+  gleich("bewusst übersprungene Vorlage gilt nicht als verfehlter Aufruf", r.status, 0);
+  pruefe(
+    "und wird als leerer Zustand gemeldet, nicht als Fehler",
+    (r.stdout ?? "").includes("Nichts zu prüfen.") && !(r.stdout ?? "").includes("außerhalb des Registers"),
+    JSON.stringify((r.stdout ?? "").trim().slice(0, 200)),
+  );
+}
+
 /* ------------------------------------------------------------------ */
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);

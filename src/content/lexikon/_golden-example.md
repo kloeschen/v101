@@ -14,10 +14,23 @@ aeraBis: 1959
 herkunftsland: US
 verwandt: []
 abgrenzung: Rockabilly bezeichnet enger die country-geprägte Spielart mit Gitarre, Kontrabass und Schlagzeug. Rock'n'Roll ist der breitere Oberbegriff, der auch klaviergetriebene und stärker vom Rhythm and Blues geprägte Musik einschließt. Rockabilly ist kein Synonym für die Szene, die sich auf ihn beruft, und keine Modestilrichtung.
+redaktionsnotiz: >-
+  ERWARTUNG, NICHT STILFRAGE: Wo Quellen sich widersprechen oder eine
+  Zuschreibung nur an einer Quelle hängt, steht das im Fließtext — benannt,
+  zugeordnet, und mit dem, was stattdessen gesichert ist. Siehe den
+  Abschnitt "Entstehung von Rockabilly": Die Zuschreibung des Begriffs an
+  eine einzelne Aufnahme von 1956 trägt nur eine Quelle und ist als solche
+  gekennzeichnet; die Jahresspanne 1954–1959 dagegen ist gesichert und
+  trägt die Einordnung auch ohne sie.
+  Wer die schwächere Quelle stillschweigend weglässt, trifft eine
+  Entscheidung, die der Leser nicht sehen kann. Ein Feld, dessen einziges
+  Argument eine unbestätigte Zuschreibung wäre, bleibt leer — mit
+  Begründung hier in der Redaktionsnotiz, sonst trägt es die nächste
+  Sitzung nach. Ausführlich: Lektion 20 in docs/lektionen.md.
 quellen:
   - url: https://de.wikipedia.org/wiki/Rockabilly
     abgerufenAm: 2026-06-01
-    felder: [aeraVon, aeraBis, herkunftsland]
+    felder: [aeraVon, aeraBis, herkunftsland, body:entstehung]
     art: sonstige
 ---
 
@@ -30,6 +43,8 @@ Die typische Besetzung besteht aus Gitarre, Kontrabass und Schlagzeug, meist ohn
 ## Entstehung von Rockabilly
 
 Der Stil entstand aus der Begegnung zweier Musiktraditionen: Weiße Country-Musiker im ländlichen Süden der USA hörten den Rhythm and Blues schwarzer Künstler über lokale Radiosender und übernahmen dessen Rhythmusgefühl in ihre eigene Spielweise. Die kommerzielle Blütezeit war kurz und umfasste im Wesentlichen die Jahre 1954 bis 1959.
+
+So sieht der Umgang mit einer Zuschreibung aus, die nur eine Quelle trägt: Die Wikipedia führt die Prägung des Begriffs auf eine einzelne Aufnahme von 1956 zurück. Diese Zuschreibung ließ sich an weiteren geöffneten Quellen nicht bestätigen und steht hier deshalb als Angabe der Wikipedia, nicht als gesicherter Befund. Gesichert ist dagegen die Jahresspanne 1954 bis 1959 — sie trägt die zeitliche Einordnung auch ohne die Zuschreibung. Der Widerspruch wird benannt, nicht weggelassen; wer die schwächere Quelle stillschweigend striche, träfe eine Entscheidung, die der Leser nicht sehen kann.
 
 ## Abgrenzung von Rockabilly
 

@@ -17,12 +17,22 @@
 import type { EintragMeta } from "../lib/links";
 import { istEntwurf } from "../lib/sichtbarkeit";
 
-interface Props { titel: string; eintraege: EintragMeta[]; ebene?: 2 | 3 }
-const { titel, eintraege, ebene = 2 } = Astro.props;
+/**
+ * `knapp` schaltet die Kurzbeschreibungen ab.
+ *
+ * Auf Übersichts- und Facettenseiten sind sie der Inhalt: Dort sucht jemand
+ * und entscheidet anhand des Satzes, ob er klickt. Im Fußbereich einer
+ * Entitätsseite sind sie es nicht — dort steht das Verwandte neben einem
+ * Text, der dieselben Begriffe oft schon erklärt hat, und aus zwölf
+ * Einträgen wird eine zweite Seite. Ein Parameter statt einer zweiten
+ * Komponente, damit die Entwurfsmarke an genau einer Stelle bleibt.
+ */
+interface Props { titel: string; eintraege: EintragMeta[]; ebene?: 2 | 3; knapp?: boolean }
+const { titel, eintraege, ebene = 2, knapp = false } = Astro.props;
 const Ueberschrift = `h${ebene}` as "h2" | "h3";
 ---
 {eintraege.length > 0 && (
-  <section class="liste">
+  <section class={knapp ? "liste liste--knapp" : "liste"}>
     <Ueberschrift>{titel}</Ueberschrift>
     <ul>
       {eintraege.map((e) => (
@@ -31,7 +41,7 @@ const Ueberschrift = `h${ebene}` as "h2" | "h3";
           {istEntwurf(e.daten) && (
             <span class="liste__entwurf" title="Noch nicht redaktionell freigegeben"> [Entwurf]</span>
           )}
-          {e.kurzbeschreibung && <span class="liste__beschreibung"> — {e.kurzbeschreibung}</span>}
+          {!knapp && e.kurzbeschreibung && <span class="liste__beschreibung"> — {e.kurzbeschreibung}</span>}
         </li>
       ))}
     </ul>

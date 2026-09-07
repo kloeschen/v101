@@ -39,6 +39,18 @@ function echterPfad(p: string): string {
 
 const WURZEL_ECHT = echterPfad(WURZEL);
 
+/**
+ * Liegt dieser Pfad im Register?
+ *
+ * Zu unterscheiden von „wird geladen": Eine Datei mit `_`-Präfix liegt im
+ * Register und wird trotzdem übersprungen — Golden Examples sind Vorlagen,
+ * keine Einträge. Wer beides verwechselt, meldet einen Aufruf als verfehlt,
+ * der genau richtig war.
+ */
+export function liegtImRegister(datei: string): boolean {
+  return !path.relative(WURZEL_ECHT, echterPfad(datei)).startsWith("..");
+}
+
 export interface GeladenerEintrag {
   datei: string;
   collection: CollectionName;

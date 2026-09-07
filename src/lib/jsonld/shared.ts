@@ -311,3 +311,27 @@ export function geoKnoten(lat?: number, lng?: number): Knoten | undefined {
   if (lat === undefined || lng === undefined) return undefined;
   return { "@type": "GeoCoordinates", latitude: lat, longitude: lng };
 }
+
+/**
+ * Ist diese Bezeichnung nur der Name in anderer Schreibweise?
+ *
+ * Bei einem deutschen Begriff steht in `bezeichnungDe` meist derselbe Wert
+ * wie in `name` — im Faktenblock ergäbe das die Zeile „Deutsch:
+ * Bleistiftrock" unter der Überschrift „Bleistiftrock", eine Zeile ohne
+ * Information.
+ *
+ * Die Funktion steht hier und nicht im Faktenblock, weil beide Seiten des
+ * Paritätsvertrags dieselbe Entscheidung treffen müssen. Ein `alternateName`
+ * im JSON-LD, der im Faktenblock unterdrückt wird, wäre genau die Lücke, die
+ * `check-jsonld --strict` abfangen soll: Der Graph behauptete dann eine
+ * Angabe, die auf der Seite nicht steht. Deshalb filtert der Lexikon-Builder
+ * mit derselben Funktion.
+ *
+ * Normalisiert wird über Groß-/Kleinschreibung und Randleerraum hinaus
+ * nicht: „Pencil skirt" und „Pencil Skirt" sind dasselbe Wort, „Reifrock"
+ * und „Reifröcke" sind es nicht.
+ */
+export function istNurDerName(wert: unknown, name: unknown): boolean {
+  if (typeof wert !== "string" || typeof name !== "string") return false;
+  return wert.trim().toLocaleLowerCase("de-DE") === name.trim().toLocaleLowerCase("de-DE");
+}

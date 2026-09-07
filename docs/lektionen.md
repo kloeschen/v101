@@ -385,3 +385,56 @@ Pfadvergleichs symlinkfrei auf; `scripts/validate-content.ts` beendet einen
 mit Exitcode 2 und nennt sie; `scripts/test-hooks.ts` fährt den Hook einmal
 über einen selbst gebauten Symlink und verlangt, dass der konkrete Befund in
 der Begründung steht — nicht bloß, dass blockiert wurde.
+
+---
+
+## 20. Widersprüche zwischen Quellen gehören in den Text, nicht in die Auswahl
+
+**Fund aus der ersten redaktionellen Durchsicht.** Der Bleistiftrock-Eintrag
+trägt einen Widerspruch aus, statt ihn zu glätten. Die deutsche Wikipedia
+führt die Form auf Christian Dior zurück (Bleistiftlinie, 1948); die übrigen
+geöffneten Quellen bestätigen das nicht. Der Eintrag schreibt genau das hin:
+
+> Diese Zuschreibung ließ sich an weiteren geöffneten Quellen nicht
+> bestätigen und steht hier deshalb als Angabe der Wikipedia, nicht als
+> gesicherter Befund.
+
+Und er sagt, was stattdessen trägt: den DWDS-Erstbeleg von 1950, mit dem die
+zeitliche Einordnung auch ohne die Dior-Zuschreibung steht. `herkunftsland`
+bleibt leer, weil das einzige Argument dafür die unbestätigte Zuschreibung
+wäre.
+
+**Warum das keine Stilfrage ist.** Es gäbe drei bequemere Wege, und alle drei
+sind schlechter:
+
+1. **Die Zuschreibung übernehmen.** Der Eintrag behauptete dann etwas, das
+   eine Quelle sagt und keine zweite stützt — formal belegt, inhaltlich
+   ungedeckt. Das ist der bedgown-Fehler aus PR #3 in anderer Gestalt.
+2. **Die schwächere Quelle stillschweigend weglassen.** Der Eintrag sähe
+   sauber aus, und der Leser sähe nicht, dass eine Entscheidung getroffen
+   wurde. Genau das ist der Schaden: Eine unsichtbare Auswahl ist eine
+   Behauptung ohne Beleg — die Behauptung, es gebe nichts abzuwägen.
+3. **Beides nebeneinanderstellen, ohne zu gewichten.** Dann trägt der Leser
+   die Arbeit, die der Eintrag ihm abnehmen soll.
+
+Der Wert eines Registers liegt nicht darin, mehr zu wissen als die Quellen,
+sondern darin, ihre Belastbarkeit zu beurteilen und die Beurteilung
+mitzuliefern. Wer die Abwägung wegkürzt, gibt genau das auf, was der Eintrag
+gegenüber der Suchmaschine voraushat.
+
+**Regel:** Widersprüche zwischen Quellen und Zuschreibungen, die nur eine
+Quelle trägt, gehören in den Fließtext — benannt, zugeordnet („steht in X"),
+und mit dem, was stattdessen gesichert ist. Nicht in die Auswahl.
+
+**Regel:** Ein Feld, dessen einziges Argument eine unbestätigte Zuschreibung
+ist, bleibt leer. Die Begründung dafür gehört in die Redaktionsnotiz — sonst
+trägt die nächste Session es nach.
+
+**Nicht erzwungen durch eine Regel im Validator.** Quellenkritik lässt sich
+nicht messen: Ob ein Widerspruch besteht und ob er benannt wurde, steht in
+Sätzen, nicht in Feldern. Eine Prüfung, die es vorgäbe — etwa „enthält der
+Text das Wort 'unbestätigt'" —, würde eine Formulierung erzwingen und keine
+Haltung, und sie wäre schlimmer als keine: Sie ließe glauben, die Frage sei
+abgeräumt (Lektion 19 aus der anderen Richtung — eine Prüfung, die ihren
+Gegenstand gar nicht erreichen kann). Diese Erwartung steht deshalb in
+`CLAUDE.md` und im Golden Example, wo Menschen und Modelle sie lesen.

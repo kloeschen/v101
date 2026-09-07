@@ -26,6 +26,7 @@ import {
   locationTypMap,
   regionEbeneMap,
   autorId,
+  istNurDerName,
 } from "./shared";
 import { site, siteIds } from "../../site.config";
 import { eventVorbei } from "../datum";
@@ -284,8 +285,12 @@ export const lexikonBuilder: Builder = {
       "@type": "DefinedTerm",
       "@id": entitaetsId("lexikon", slug),
       name: d.name,
+      // `istNurDerName` statt `x !== d.name`: Der Vergleich muss derselbe
+      // sein wie im Faktenblock, sonst zeigt der Graph eine Bezeichnung,
+      // die auf der Seite unterdrückt wird — die Lücke, die Content Parity
+      // abfangen soll.
       alternateName: [...(d.aliases ?? []), d.bezeichnungDe, d.bezeichnungEn].filter(
-        (x: string | undefined) => x && x !== d.name,
+        (x: string | undefined) => x && !istNurDerName(x, d.name),
       ),
       description: d.definition,
       // Die Abgrenzung ist der Baustein gegen Entitätsverwechslung;
