@@ -91,7 +91,7 @@ Nach dem Zweiten Weltkrieg geht die Verbreitung zurück, der Hut lebt aber in Ja
 
 ## Porkpie in der Szene
 
-Der Porkpie ist kein Rockabilly-Hut, und das ist keine Lücke, sondern seine Geschichte. Er gehört zu den Nachbarszenen: Bei den jamaikanischen Rude Boys der 1960er Jahre, bei den Ska-Musikern der 1970er und im britischen Two-Tone-Revival stand er für sozialen Status und Gruppenzugehörigkeit, und in den späten 1980er Jahren trugen ihn auch die antirassistischen Skinhead-Bewegungen in Deutschland. Wer ihn auf einem Weekender sieht, sieht in aller Regel diese Linie und nicht die des amerikanischen Fünfziger-Jahre-Rock-'n'-Roll.
+Der Porkpie ist kein [Rockabilly](/lexikon/rockabilly/)-Hut, und das ist keine Lücke, sondern seine Geschichte. Er gehört zu den Nachbarszenen: Bei den jamaikanischen Rude Boys der 1960er Jahre, bei den Ska-Musikern der 1970er und im britischen Two-Tone-Revival stand er für sozialen Status und Gruppenzugehörigkeit, und in den späten 1980er Jahren trugen ihn auch die antirassistischen Skinhead-Bewegungen in Deutschland. Wer ihn auf einem Weekender sieht, sieht in aller Regel diese Linie und nicht die des amerikanischen Fünfziger-Jahre-Rock-'n'-Roll.
 
 Die Gegenprobe sind die [Creepers](/lexikon/creepers/) und die [Pomade](/lexikon/pomade/): Beide kamen über den Rock 'n' Roll in die Szene — die Schuhe über die britischen Teddy Boys, das Haarfett über den amerikanischen Rockabilly, in dem es sich laut Wikipedia vier Jahrzehnte lang als einziges hielt. Der Porkpie nahm den Weg über Jamaika und den Ska. Diese Linien treffen sich heute auf denselben Veranstaltungen und sind trotzdem auseinanderzuhalten.
 

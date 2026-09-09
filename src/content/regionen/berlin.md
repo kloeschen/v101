@@ -35,7 +35,7 @@ quellen:
     art: offiziell
 ---
 
-Berlin ist Stadtstaat und Bundesland zugleich und für die Vintage- und Rockabilly-Szene der Ort mit der dichtesten laufenden Konzertreihe im deutschsprachigen Raum. Anders als bei Weekendern, die einmal im Jahr stattfinden, verteilt sich das Programm hier über das ganze Jahr auf ein Dutzend Spielstätten.
+Berlin ist Stadtstaat und Bundesland zugleich und für die Vintage- und [Rockabilly](/lexikon/rockabilly/)-Szene der Ort mit der dichtesten laufenden Konzertreihe im deutschsprachigen Raum. Anders als bei Weekendern, die einmal im Jahr stattfinden, verteilt sich das Programm hier über das ganze Jahr auf ein Dutzend Spielstätten.
 
 ## Lage und Einordnung von Berlin
 

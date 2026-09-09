@@ -32,7 +32,7 @@ quellen:
     art: offiziell
 ---
 
-Die Metropolregion Rhein-Neckar ist ein Verdichtungsraum und eine Planungsregion rund um das Dreiländereck von Baden-Württemberg, Rheinland-Pfalz und Hessen. Für die Rockabilly-Szene war sie über 27 Jahre die Adresse eines der ältesten Weekender Europas — und verliert diesen Fixpunkt 2026.
+Die Metropolregion Rhein-Neckar ist ein Verdichtungsraum und eine Planungsregion rund um das Dreiländereck von Baden-Württemberg, Rheinland-Pfalz und Hessen. Für die [Rockabilly](/lexikon/rockabilly/)-Szene war sie über 27 Jahre die Adresse eines der ältesten Weekender Europas — und verliert diesen Fixpunkt 2026.
 
 ## Eckdaten zu Rhein-Neckar
 

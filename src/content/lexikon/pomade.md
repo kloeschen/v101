@@ -73,7 +73,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Pomade ist eine fetthaltige, salbenähnliche Substanz zur Haarpflege, die besonders zur Festigung des Haars verwendet wird. Für die Vintage- und Rockabilly-Szene ist sie das Werkzeug, ohne das die Tolle nicht funktioniert — und zugleich das einzige Produkt dieser Reihe, dessen Nachschlagewerke die Szene selbst als Grund für sein Überleben nennen.
+Pomade ist eine fetthaltige, salbenähnliche Substanz zur Haarpflege, die besonders zur Festigung des Haars verwendet wird. Für die Vintage- und [Rockabilly](/lexikon/rockabilly/)-Szene ist sie das Werkzeug, ohne das die Tolle nicht funktioniert — und zugleich das einzige Produkt dieser Reihe, dessen Nachschlagewerke die Szene selbst als Grund für sein Überleben nennen.
 
 ## Der Name Pomade
 

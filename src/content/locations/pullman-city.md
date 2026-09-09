@@ -34,7 +34,7 @@ quellen:
     art: offiziell
 ---
 
-Pullman City in Eging am See ist eine Westernstadt in Niederbayern — ein ganzjährig betriebenes Gelände mit eigenen Gebäuden, das seine Veranstaltungen selbst ausrichtet. Für die Rockabilly-Szene ist es der Ort der [Rockabilly Convention](/events/rockabilly-convention-2027/).
+Pullman City in Eging am See ist eine Westernstadt in Niederbayern — ein ganzjährig betriebenes Gelände mit eigenen Gebäuden, das seine Veranstaltungen selbst ausrichtet. Für die [Rockabilly](/lexikon/rockabilly/)-Szene ist es der Ort der [Rockabilly Convention](/events/rockabilly-convention-2027/).
 
 ## Das Gelände
 

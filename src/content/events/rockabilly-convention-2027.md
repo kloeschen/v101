@@ -70,7 +70,7 @@ quellen:
     art: offiziell
 ---
 
-Die Rockabilly Convention 2027 ist eine zweitägige Veranstaltung am 4. und 5. Juni 2027 in der Westernstadt Pullman City in Eging am See. Der Betreiber richtet sie selbst aus und beschreibt sie als Fest aus Cadillacs, Pomadenfrisuren und Rock'n'Roll, ergänzt um Boogie Woogie und Verkaufsstände.
+Die [Rockabilly](/lexikon/rockabilly/) Convention 2027 ist eine zweitägige Veranstaltung am 4. und 5. Juni 2027 in der Westernstadt Pullman City in Eging am See. Der Betreiber richtet sie selbst aus und beschreibt sie als Fest aus Cadillacs, Pomadenfrisuren und Rock'n'Roll, ergänzt um [Boogie Woogie](/lexikon/boogie-woogie/) und Verkaufsstände.
 
 ## Der Termin
 
