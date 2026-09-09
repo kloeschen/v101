@@ -15,6 +15,7 @@
 import { site, indexierbar } from "../site.config";
 import type { EintragMeta, Registry } from "./links";
 import { urlPrefix, type CollectionName } from "../content/_schemas";
+import { istDuenneRegion } from "./regionen";
 
 const absolut = (pfad: string) => `${site.url}${pfad}`;
 
@@ -285,12 +286,19 @@ ${eintraege}
 `;
 }
 
-/** Entitätsseiten einer Collection, nach Sammlung getrennt ausgeliefert. */
+/**
+ * Entitätsseiten einer Collection, nach Sammlung getrennt ausgeliefert.
+ *
+ * Draußen bleibt, was nicht in den Index soll: das manuelle `noindex` aus dem
+ * Frontmatter und die Region unter der Bestandsschwelle. Eine Sitemap, die
+ * eine noindex-Seite nennt, sendet zwei widersprüchliche Signale — die Search
+ * Console meldet das als Fehler, nicht als Feinheit.
+ */
 export function sitemapFuerCollection(registry: Registry, collection: CollectionName): SitemapEintrag[] {
   return [
     { pfad: `${urlPrefix[collection]}/` },
     ...[...registry.eintraege.values()]
-      .filter((e) => e.collection === collection && !e.daten.noindex)
+      .filter((e) => e.collection === collection && !e.daten.noindex && !istDuenneRegion(registry, e))
       .map((e) => ({
         pfad: e.pfad,
         lastmod: new Date(e.daten.geaendertAm ?? e.daten.geprueftAm).toISOString().slice(0, 10),

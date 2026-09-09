@@ -13,6 +13,7 @@ import { holeRegistry, istSichtbar } from "../../lib/registry";
 import { auftritte, inRegion, aufloesenViele } from "../../lib/links";
 import { collectionNames, type CollectionName } from "../../content/_schemas";
 import { SAMMLUNGSNAME } from "../../lib/faktenblock";
+import { regionsIndexierbarkeit } from "../../lib/regionen";
 
 export async function getStaticPaths() {
   const pfade = [];
@@ -53,7 +54,31 @@ if (typ === "events") {
   const bands = aufloesenViele(registry, "bands", daten.lineupBands ?? []);
   if (bands.length) listen.push({ titel: `Bands im Line-up von ${daten.name}`, eintraege: bands });
 }
+
+/**
+ * Die Regionsschwelle. Sie steht hier und nicht im Layout, weil sie den
+ * Bestand der Region braucht — dieselbe Registry, aus der oben die Listen
+ * fallen. Das Layout bekommt das Urteil, nicht die Rechnung.
+ *
+ * Der Rumpf geht mit, obwohl er das Urteil nicht ändert: Er macht aus „0 von
+ * 3" die Auskunft, dass der Seite Bestand fehlt und nicht Text.
+ *
+ * Für alle anderen Collections bleibt es beim bisherigen Verhalten: Entwurf
+ * oder manuelles `noindex`, sonst indexierbar.
+ */
+const schwelle =
+  typ === "regionen"
+    ? regionsIndexierbarkeit(registry, eintrag.id, eintrag.body ?? "")
+    : { indexierbar: true, grund: undefined };
 ---
-<EntitaetsLayout collection={typ} slug={eintrag.id} daten={daten} registry={registry} listen={listen}>
+<EntitaetsLayout
+  collection={typ}
+  slug={eintrag.id}
+  daten={daten}
+  registry={registry}
+  listen={listen}
+  noindex={!schwelle.indexierbar}
+  indexGrund={schwelle.grund}
+>
   <Content />
 </EntitaetsLayout>

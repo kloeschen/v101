@@ -13,14 +13,15 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
-## 2026-09-09 — Regionsschwelle: nicht gebaut, und warum
+## 2026-09-09 — Regionsschwelle: über den Bestand, nicht über den Text
 
 **Auftrag war:** Dünne Regionsseiten aus dem Index nehmen. Schwelle: drei
 Einträge ODER eigener Fließtext über der Mindestlänge, der mehr sagt als die
 Kurzbeschreibung. Sonst `noindex, follow`, raus aus der Sitemap, erreichbar
 und verlinkt bleiben, und als Posten in den Stale-Report.
 
-**Nicht gebaut.** Der zweite Arm kann in diesem Repo nicht falsch werden:
+**Gebaut ist der erste Arm. Der zweite ist verworfen**, weil er in diesem Repo
+nicht falsch werden kann:
 
 - `mindestlaenge` in `validate-content.ts` verlangt für Regionen **250 Wörter**
   Fließtext — als *Fehler*, für jeden Status, in jeder Sammlung. Belegt: eine
@@ -35,57 +36,60 @@ Ein ODER mit einem immer wahren Arm ergibt nie ein `noindex`. Die Regel wäre
 eine Prüfung, die ihren Gegenstand nie zu sehen bekommt — die Bauart aus
 Lektion 19, an der dieses Projekt schon zweimal hängengeblieben ist.
 
-**Und der erste Arm allein trägt es nicht.** Gemessen statt vermutet: Die fünf
-Regionen tragen 239 bis 259 eigene Wörter, das Golden Example 229 — und alle
-fünf haben genau zwei Verweise (ihr Event und dessen Location), lägen also
-unter der Drei. Der erste Arm allein nähme heute **den gesamten Regionsbestand**
-aus dem Index, und zwar genau die Seiten mit dem meisten eigenen, belegten
-Regionaltext im Register. Das ist die Umkehrung dessen, was die Schwelle
-bewirken sollte.
+**Eine höhere Textgrenze hilft nicht.** Gemessen statt vermutet: Die fünf
+Regionen tragen 239 bis 259 eigene Wörter, das Golden Example 229. Zwischen dem
+erzwungenen Mindestmaß und der gelebten Praxis liegt kein Zahlenwert, der
+Dünnes von Gutem trennt — jede Textgrenze, die anschlägt, verurteilt das Golden
+Example mit.
 
-Zwischen dem erzwungenen Mindestmaß und der gelebten Praxis liegt kein
-Zahlenwert, der Dünnes von Gutem trennt: Jede Textgrenze, die anschlägt,
-verurteilt das Golden Example mit. Deshalb hier die Begründung statt einer
-halbgaren Fassung im Repo.
+**Der Bestandsarm allein war deshalb eine Entscheidung, keine Ableitung**, und
+sie liegt beim Menschen. Sie ist so gefallen: Ja, mit dem Bestandsarm gehen
+heute alle fünf Regionen auf `noindex` — und das kostet nichts, weil das
+Register ohnehin vollständig auf `noindex` steht (`PUBLIC_INDEXIERBAR=false`)
+und der dünne Bestand die Recherchelage abbildet, nicht ein Urteil über den
+Text. Was die Regionsseiten heute sind, ist der Umweg zu je einem Termin. Die
+kanonische Adresse der Sache ist die Eventseite.
 
-**Die Annahme hinter dem Auftrag stimmt nicht.** Diese Seiten sind nicht dünn
-an Text. Was ihnen fehlt, ist Bestand: eine Region, die auf einen einzigen
-Termin zeigt, ist der Umweg zu diesem Termin. Das ist ein
-Rechercheproblem, kein Indexproblem — und `noindex` ist dafür das falsche
-Werkzeug.
+**Gebaut:**
 
-**Gebaut ist deshalb dieselbe Zählung als redaktioneller Posten.**
-`src/lib/regionen.ts` mit `regionsBestand()` und `bestandsLuecke()`, angebunden
-an `npm run stale`. Eine freigegebene Region unter drei freigegebenen Einträgen
-erscheint dort mit der Auskunft, was ihr fehlt — samt ihrer eigenen Wortzahl,
-damit sichtbar bleibt, dass ihr Bestand fehlt und nicht Text.
+- `src/lib/regionen.ts` — `regionsBestand()`, `regionsIndexierbarkeit()`,
+  `istDuenneRegion()`. Drei freigegebene Einträge, die auf die Region zeigen.
+- `[typ]/[slug].astro` rechnet, `EntitaetsLayout.astro` bekommt `noindex` und
+  `indexGrund` als Requisiten — dieselben zwei, die `ListenLayout.astro` schon
+  von den Facetten kennt. Das Layout bekommt das Urteil, nicht die Rechnung.
+- `sitemapFuerCollection()` lässt dünne Regionen fallen. Eine Sitemap, die eine
+  noindex-Seite nennt, sendet zwei widersprüchliche Signale.
+- `stale-report.ts` führt „Regionen unter der Indexschwelle" als Posten — die
+  Gegenbuchung, ohne die das noindex eine stille Entscheidung wäre, die niemand
+  zurücknimmt. Nur für freigegebene Regionen: Ein Entwurf steht ohnehin in der
+  Warteschlange.
 
 **Zwei Entscheidungen in der Zählung**, beide mit Gegenfall in
 `scripts/test-regionen.ts` belegt:
 
-- *Entwürfe zählen nicht mit.* Der Bestand ist das, was ein Leser vorfindet,
-  und in der Produktion existieren Entwürfe nicht. Zählte die Vorschau anders,
+- *Entwürfe zählen nicht mit.* Die Schwelle ist eine Aussage über den Index,
+  und in den Index kommt nur, was freigegeben ist. Zählte die Vorschau anders,
   gäbe dieselbe Region je nach Umgebung zwei Antworten (Lektion 9). Der Grund
   nennt die Entwürfe trotzdem — „0 von 3 (2 als Entwurf vorhanden)" ist die
   Auskunft, die ein Redakteur braucht.
 - *Die Region zählt sich nicht selbst.* Sie ist nicht *in* der Region, sie
   *ist* die Region; ein Selbstzähler wäre nur ein verschobener Schwellenwert.
 
-**Die Begründung steht als Bedingung, nicht nur als Kommentar.**
+**Die verworfene Alternative steht als Bedingung, nicht nur als Kommentar.**
 `test-regionen.ts` liest `minWorte.regionen` und den Kapseldeckel aus ihren
 Quellen und prüft, dass die Differenz über 150 bleibt. Sinkt eines von beiden,
-wird der Lauf rot und sagt, dass die Entscheidung neu zu treffen ist. Ohne das
-verfiele die Begründung still, sobald jemand eine der beiden Zahlen ändert.
+wird der Lauf rot und sagt, dass ein Textarm wieder baubar und die Entscheidung
+neu zu treffen ist. Ohne das verfiele die Begründung still, sobald jemand eine
+der beiden Zahlen ändert.
 
-**Offen und beim Menschen:** ob die Schwelle allein über den Bestand doch
-kommen soll — mit der Folge, dass heute alle fünf Regionen auf `noindex`
-gingen. Steht so in `OFFENE-PUNKTE.md`.
-
-**Beleg:** 11 Mutationen, 0 offen. Mutiert wurde die Regel, nicht der Inhalt —
-die Daten stecken als Fixtures im Test, in beide Richtungen. Der letzte Beleg
-ist ein anderer: Er zeigt, dass `stale-report.ts` die Funktion tatsächlich
-aufruft und ihr Urteil druckt. Eine Regel, die getestet und nie aufgerufen
-wird, ist Befund M10.
+**Beleg:** 13 Mutationen, 0 offen. Mutiert wurde die Regel, nicht der Inhalt —
+die Daten stecken als Fixtures im Test, in beide Richtungen. Dazu zwei Belege
+anderer Art: `stale-report.ts` druckt das Urteil tatsächlich (Befund M10), und
+am gebauten Ergebnis trägt `dist/regionen/bayern/index.html` `noindex, follow`,
+während Location und Event desselben Builds es nicht tun. Damit der Beitrag der
+Schwelle sichtbar wird, nimmt dieser Beleg kurzzeitig die Entwurfsregel aus dem
+Layout — sonst wäre jede Region ohnehin schon als Entwurf noindex, und das
+Ergebnis hätte zwei mögliche Ursachen (Lektion 17).
 
 ---
 

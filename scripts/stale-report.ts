@@ -19,7 +19,8 @@ import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
 import { eventVorbei, istVorbei } from "../src/lib/datum";
 import { pruefKadenzTage } from "../src/content/_schemas";
-import { bestandsLuecke } from "../src/lib/regionen";
+import { istFreigegeben } from "../src/lib/sichtbarkeit";
+import { regionsIndexierbarkeit } from "../src/lib/regionen";
 
 interface Posten {
   art:
@@ -29,7 +30,7 @@ interface Posten {
     | "reihe-ohne-folge"
     | "verwaiste-band"
     | "ohne-quelle"
-    | "region-ohne-bestand";
+    | "region-noindex";
   datei: string;
   titel: string;
   detail: string;
@@ -98,22 +99,28 @@ function main() {
       }
     }
 
-    // Freigegebene Regionen mit zu dünnem Bestand. Eine Region entsteht in
-    // diesem Register als Nebenprodukt eines Termins (Schemakette Event → Ort
-    // → Region) und bleibt dann leicht bei diesem einen Termin stehen. Der
-    // Posten sagt, wo Recherche fehlt — er sagt ausdrücklich nichts über den
-    // Index; warum nicht, steht in src/lib/regionen.ts und ENTSCHEIDUNGEN.md.
-    const { luecke, grund } = bestandsLuecke(e, registry);
-    if (luecke) {
-      posten.push({
-        art: "region-ohne-bestand",
-        datei: e.datei,
-        titel: d.name,
-        detail: grund!,
-        // Über einem frischen Entwurf, unter einem Event ohne Belegkette: Die
-        // Seite ist da und trägt sich, ihr fehlt nur, worauf sie zeigen kann.
-        gewicht: 140,
-      });
+    // Die Gegenbuchung zur Regionsschwelle. Das noindex setzt der Build von
+    // selbst — und genau deshalb muss es hier stehen: Eine Entscheidung, die
+    // niemandem auffällt, nimmt auch niemand zurück. Der Posten sagt, was der
+    // Seite zum Index fehlt, und das ist bei einer Region immer Bestand, also
+    // Recherche.
+    //
+    // Nur für freigegebene Regionen: Solange die Region selbst Entwurf ist,
+    // steht sie ohnehin in der Warteschlange, und zwei Posten für denselben
+    // Zustand machen den Bericht nur länger.
+    if (e.collection === "regionen" && istFreigegeben(d)) {
+      const { indexierbar, grund } = regionsIndexierbarkeit(registry, e.slug, e.body);
+      if (!indexierbar) {
+        posten.push({
+          art: "region-noindex",
+          datei: e.datei,
+          titel: d.name,
+          detail: `nicht im Index — ${grund}`,
+          // Über einem frischen Entwurf, unter einem Event ohne Belegkette:
+          // Die Seite ist da und liest sich, ihr fehlt nur, worauf sie zeigt.
+          gewicht: 140,
+        });
+      }
     }
   }
 
@@ -205,11 +212,11 @@ function main() {
     ueberfaellig: "Überfällige Prüfungen",
     "ohne-quelle": "Ohne Belegkette",
     "verwaiste-band": "Bands ohne Profil",
-    "region-ohne-bestand": "Regionen ohne Bestand",
+    "region-noindex": "Regionen unter der Indexschwelle",
     entwurf: "Entwürfe in der Warteschlange",
   };
 
-  for (const art of ["vergangen", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "region-ohne-bestand", "verwaiste-band", "entwurf"] as const) {
+  for (const art of ["vergangen", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "region-noindex", "verwaiste-band", "entwurf"] as const) {
     const gruppe = posten.filter((p) => p.art === art).slice(0, limit);
     if (gruppe.length === 0) continue;
     console.log(`\n## ${ueberschrift[art]} (${posten.filter((p) => p.art === art).length})`);
