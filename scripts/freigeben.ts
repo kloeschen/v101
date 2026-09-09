@@ -115,7 +115,7 @@ function pruefe(datei: string): Pruefergebnis {
     // Fehler ins Auge fallen. Die Auslese muss beide Formen kennen.
     for (const zeile of ausgabe.split("\n")) {
       const t = zeile.trim();
-      if (/^(FEHLER|warnung)\b/.test(t)) meldungen.push(t);
+      if (/^(FEHLER|warnung|hinweis)\b/.test(t)) meldungen.push(t);
     }
     // Ein Fehlschlag ohne verwertbare Zeile darf nicht als leerer Grund im
     // Bericht landen — dann wüsste niemand, woran es lag (Lektion 19).
