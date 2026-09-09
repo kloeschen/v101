@@ -5,7 +5,7 @@ kurzbeschreibung: Ein Petticoat ist ein versteifter, in der Taille ansetzender U
 status: entwurf
 erstelltAm: 2026-09-02
 geprueftAm: 2026-09-02
-geaendertAm: 2026-09-03
+geaendertAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungEn: Petticoat
@@ -30,7 +30,23 @@ redaktionsnotiz: >-
   Kleidungsstücks ist nicht belegt — belegt ist nur die Wortentlehnung aus
   dem Englischen im 20. Jahrhundert. Die früheren aliases
   "Petticoat-Unterrock" und "Tüllunterrock" sind in Duden, DWDS und
-  Wikipedia nicht nachweisbar und wurden entfernt. Der Szene-Abschnitt wurde
+  Wikipedia nicht nachweisbar und wurden entfernt.
+  ALIASES BLEIBEN LEER, am 2026-09-09 erneut geprüft und diesmal mit
+  Ergebnis. Der Duden führt als Synonyme "Unterrock, Halbrock, Unterkleid;
+  (veraltet) zweites Kleid". Alle drei gebräuchlichen davon bezeichnen das
+  Kleidungsstück, von dem dieser Eintrag den Petticoat ausdrücklich
+  abgrenzt — "Halbrock" und "Unterkleid" stehen bereits als aliases am
+  Eintrag `unterrock`. Sie hier zu übernehmen hieße, die eigene Abgrenzung
+  im Namensindex wieder einzureißen und den Autolink zweideutig zu machen.
+  "Halbunterrock", das die Abgrenzung als Wörterbuchform nennt, ist im DWDS
+  kein Stichwort ("nicht in unseren gegenwartssprachlichen lexikalischen
+  Quellen vorhanden") und kommt dort nur im Fließtext der Etymologie vor;
+  als gebräuchlicher Zweitname ist es damit nicht belegt. Die deutsche
+  Wikipedia nennt für den Petticoat selbst keine alternative Bezeichnung.
+  "Tüllrock" ist im DWDS zwar ein Stichwort, meint aber einen Rock aus
+  Tüll, also ein Oberbekleidungsstück.
+  Ergebnis: Es gibt keinen belegbaren Zweitnamen. Das Feld bleibt leer —
+  ein erfundener Alias wäre schlechter als keiner. Der Szene-Abschnitt wurde
   am 2026-09-02 neu recherchiert; die drei Fachhandels-Quellen dazu tragen
   art "sonstige", weil der Vertrag für den spezialisierten Handel bisher
   keine eigene Kategorie kennt — sie sind für Trage- und Pflegepraxis die

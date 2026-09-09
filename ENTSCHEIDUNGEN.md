@@ -13,6 +13,97 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-09 — Eine dritte Befundebene: Hinweis
+
+**Fund aus dem Betrieb.** Neun von zehn Lexikoneinträgen ließen sich
+freigeben, der zehnte hing an „Keine aliases" — ausgerechnet `petticoat`,
+aus dem zwei unbelegbare Aliases **entfernt** worden waren. Die sorgfältige
+Entscheidung wurde von der Regel bestraft.
+
+**Die Diagnose war eine andere als die Vermutung.** Die Regel war bereits
+eine Warnung. Blockierend wurde sie durch `--strict`, das `freigeben.ts` und
+die CI benutzen. „Auf Warnung zurückstufen" wäre also ein Nulleingriff
+gewesen — der Hebel liegt bei der Eskalation, nicht bei der Ebene.
+
+**Entscheidung:** eine dritte Ebene. `fehler` blockiert immer, `warnung`
+blockiert unter `--strict`, `hinweis` blockiert nie und ist trotzdem immer
+sichtbar. Der Unterschied zwischen Warnung und Hinweis ist nicht die
+Dringlichkeit, sondern die **Erfüllbarkeit**: Eine Warnung benennt etwas,
+das ein sorgfältiger Eintrag beheben kann. Ein Hinweis benennt etwas, das er
+womöglich nur beheben kann, indem er etwas erfindet.
+
+**Verworfen:** den `aliases`-Befund ganz entfernen. Er ist eine nützliche
+Auskunft — bei den meisten Begriffen gibt es eine Szene-Kurzform, und ihr
+Fehlen ist ein Signal. Nur eben keines, das eine Freigabe aufhalten darf.
+
+**Zwei Regeln fallen in diese Klasse**, nicht eine. Neben `aliases` auch
+`artikel-faq` („Nur N FAQ-Einträge, Ziel M. Echte Fragen aus der
+Prompt-Map nehmen."): Wenn es keine vier echten Fragen gibt, ist die
+einzige Art, das Ziel zu erreichen, sich welche auszudenken — die Meldung
+verlangt in derselben Zeile beides.
+
+**Geprüft und behalten:** `autor` bleibt ein Fehler (einen Autor hat jeder
+Eintrag, den ein Mensch freigibt). `interne-links` bleibt eine Warnung — sie
+senkt ihr Ziel bereits, solange das Register klein ist, und ein Eintrag, der
+sie nicht erfüllen kann, ist tatsächlich isoliert. `event-zeitraum` verlangt
+bei „abgesagt" einen `durchfuehrungHinweis`; auch wenn die Quelle keinen
+Grund nennt, lässt sich das wahrheitsgemäß hinschreiben. Alle übrigen
+Warnungen sind durch Umschreiben erfüllbar.
+
+**Folge:** `freigeben.ts` liest Hinweise weiter aus und zeigt sie im
+Bericht, ohne sie als Ablehnungsgrund zu werten. Die Bilanzzeile des
+Validators zählt Hinweise getrennt und sagt unter `--strict` ausdrücklich,
+dass sie dort nicht blockieren.
+
+---
+
+## 2026-09-09 — Beendete Reihen sind kein offener Posten
+
+**Fund:** Der Stale-Report führte den Walldorf Weekender seit 110 Tagen als
+„Reihe ohne Folgetermin". Der Eintrag trägt `letzteAusgabe: true` — die
+Reihe ist ausdrücklich beendet.
+
+**Entscheidung:** Trägt die jüngste Ausgabe einer Reihe `letzteAusgabe`,
+entfällt der Posten. Maßgeblich ist die jüngste Ausgabe: Die Reihe ist
+beendet, wenn ihr letzter Termin sich als letzter ausweist.
+
+**Warum das mehr ist als Kosmetik.** Ein Bericht ist so viel wert wie das
+Vertrauen, dass jede Zeile darin eine Aufgabe ist. Führt er dauerhaft
+Posten, die niemand erledigen kann, gewöhnt man sich daran, ihn zu
+überlesen — und übersieht die Zeile, die zählt. Das ist Lektion 4 in der
+Berichtsform: Ein voller Bericht muss etwas bedeuten.
+
+**Belegt** durch `scripts/test-stale.ts` (neu): zwei Läufe über dieselbe
+Datei, einzig `letzteAusgabe` wechselt. Das Paar ist das Lebenszeichen —
+„nicht gemeldet" allein wäre auch wahr, wenn der Bericht die Reihe nie
+gesehen hätte. Eine Zählung „Bericht nicht leer" taugt hier nicht: Bei
+beendeter Reihe ist er tatsächlich leer, und genau das ist der gewünschte
+Zustand.
+
+---
+
+## 2026-09-09 — Petticoat bleibt ohne aliases, jetzt mit Begründung
+
+**Recherchiert**, nicht angenommen. Der Duden führt als Synonyme
+„Unterrock, Halbrock, Unterkleid; (veraltet) zweites Kleid". Alle
+gebräuchlichen davon bezeichnen das Kleidungsstück, von dem dieser Eintrag
+den Petticoat ausdrücklich abgrenzt — „Halbrock" und „Unterkleid" stehen
+bereits als `aliases` am Eintrag `unterrock`. Sie zu übernehmen hieße, die
+eigene Abgrenzung im Namensindex wieder einzureißen und den Autolink
+zweideutig zu machen.
+
+„Halbunterrock", das die `abgrenzung` als Wörterbuchform nennt, ist im DWDS
+kein Stichwort („nicht in unseren gegenwartssprachlichen lexikalischen
+Quellen vorhanden") und steht dort nur im Fließtext der Etymologie. Die
+deutsche Wikipedia nennt für den Petticoat selbst keine alternative
+Bezeichnung. „Tüllrock" ist ein DWDS-Stichwort, meint aber Oberbekleidung.
+
+**Ergebnis:** kein belegbarer Zweitname. Das Feld bleibt leer, die
+Quellenlage steht in der Redaktionsnotiz. Nach der Ebenenkorrektur oben
+geht der Eintrag trotzdem durch — im Trockenlauf bestätigt.
+
+---
+
 ## 2026-09-07 — Drei Anzeigeentscheidungen aus der ersten Durchsicht
 
 **1. Sprachzeilen, die nur den Namen wiederholen, verschwinden.** Bei einem

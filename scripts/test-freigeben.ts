@@ -43,12 +43,13 @@ const FREI = ["veroeffent", "licht"].join("");
 /* ------------------------------------------------------------------ */
 
 /**
- * Sauber und vollständig — inklusive `aliases`, denn die Regel
- * `veroeffentlichungsreife` verlangt sie und meldet für Entwürfe nichts.
+ * Sauber und vollständig — inklusive `autor`, denn die Regel
+ * `veroeffentlichungsreife` verlangt ihn und meldet für Entwürfe nichts.
  * Genau darum prüft freigeben.ts den Zustand NACH der Änderung.
+ * Ein Feld mit `undefined` in `extra` wird weggelassen.
  */
-const eintrag = (name: string, verweise: string[], extra: Record<string, string> = {}) => {
-  const felder: Record<string, string> = {
+const eintrag = (name: string, verweise: string[], extra: Record<string, string | undefined> = {}) => {
+  const felder: Record<string, string | undefined> = {
     name,
     aliases: `[${name}-Kurzform]`,
     kurzbeschreibung: `${name} ist eine Spieltechnik auf dem Kontrabass, bei der die Saiten hörbar auf das Griffbrett schlagen und ein perkussives Klacken erzeugen.`,
@@ -61,7 +62,10 @@ const eintrag = (name: string, verweise: string[], extra: Record<string, string>
     abgrenzung: `${name} am Kontrabass wird häufig mit der gleichnamigen Technik am E-Bass verwechselt, bei der der Daumen die Saite anschlägt.`,
     ...extra,
   };
+  // `undefined` heisst: Feld weglassen. So laesst sich ein Pflichtfeld
+  // gezielt entfernen, statt es mit einem Leerwert zu fuellen.
   const kopf = Object.entries(felder)
+    .filter(([, v]) => v !== undefined)
     .map(([k, v]) => `${k}: ${v}`)
     .join("\n");
 
@@ -132,16 +136,23 @@ try {
   /* 1. Der Fall, der zählt: Regelverstoß wird NICHT freigegeben       */
   /* ---------------------------------------------------------------- */
   /*
-   * `aliases: []` lässt die Regel `veroeffentlichungsreife` eine Warnung
-   * melden, die unter --strict zum Fehler wird. Für den Entwurf meldet sie
-   * NICHTS — der Verstoß existiert erst im freigegebenen Zustand. Damit
-   * prüft dieser Fall zugleich, dass freigeben.ts gegen den Zustand nach
-   * der Änderung prüft und nicht gegen den davor.
+   * Ein fehlender `autor` lässt die Regel `veroeffentlichungsreife` einen
+   * FEHLER melden. Für den Entwurf meldet sie NICHTS — der Verstoß existiert
+   * erst im freigegebenen Zustand. Damit prüft dieser Fall zugleich, dass
+   * freigeben.ts gegen den Zustand nach der Änderung prüft und nicht gegen
+   * den davor.
+   *
+   * Vorher stand hier `aliases: []`. Das war ebenfalls ein Befund dieser
+   * Regel, aber nur eine Warnung, die erst `--strict` zum Blocker machte —
+   * und genau die ist inzwischen ein Hinweis, weil nicht jeder Begriff eine
+   * gebräuchliche Zweitbezeichnung hat. Der fehlende Autor ist der
+   * belastbarere Fall: Einen Autor hat jeder Eintrag, den ein Mensch
+   * freigibt, das ist immer erfüllbar.
    */
   // Alle drei zuerst anlegen: Die internen Links zeigen aufeinander, und ein
   // Link auf einen noch nicht existierenden Eintrag waere ein Verstoss, der
   // mit der Freigabelogik nichts zu tun hat.
-  writeFileSync(datei("kaputt"), eintrag("Kaputtprobe", ["sauber", "trocken"], { aliases: "[]" }));
+  writeFileSync(datei("kaputt"), eintrag("Kaputtprobe", ["sauber", "trocken"], { autor: undefined }));
   writeFileSync(datei("sauber"), eintrag("Sauberprobe", ["kaputt", "trocken"]));
   writeFileSync(datei("trocken"), eintrag("Trockenprobe", ["kaputt", "sauber"]));
 

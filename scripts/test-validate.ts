@@ -84,7 +84,7 @@ interface Fall {
   datei: string;
   inhalt: string;
   /** Codes, die im Ergebnis stehen MÜSSEN — optional mit erwarteter Ebene. */
-  erwartet?: Record<string, "fehler" | "warnung">;
+  erwartet?: Record<string, "fehler" | "warnung" | "hinweis">;
   /** Codes, die NICHT vorkommen dürfen. */
   verboten?: string[];
 }
@@ -887,14 +887,45 @@ fall({
   erwartet: { veroeffentlichungsreife: "fehler" },
 });
 
+/*
+ * HINWEIS, nicht Warnung -- und das ist die Aussage, an der die Freigabe
+ * haengt. Als Warnung war der Befund unter `--strict` ein Blocker; neun von
+ * zehn Lexikoneintraegen gingen durch, der zehnte hing daran, weil aus ihm
+ * zwei unbelegbare Aliases ENTFERNT worden waren. Nicht jeder Begriff hat
+ * eine gebraeuchliche Zweitbezeichnung, und eine Pflicht, die sich nicht
+ * erfuellen laesst, erzeugt erfundene Aliases.
+ *
+ * Der Befund bleibt: Er ist eine nuetzliche Auskunft. Nur blockiert er nicht
+ * mehr. Dass `--strict` ihn wirklich durchlaesst, prueft der eigene Lauf am
+ * Ende dieser Datei -- die Ebene hier allein sagt darueber nichts.
+ */
 fall({
-  name: "veroeffentlichungsreife: veroeffentlicht ohne aliases warnt",
+  name: "veroeffentlichungsreife: veroeffentlicht ohne aliases ist nur ein Hinweis",
   datei: "lexikon/reife-ohne-aliases.md",
   inhalt: md(
     lexFelder("Aliaslosrock", { status: "veroeffentlicht", aliases: "[]" }),
     lexKoerper("Aliaslosrock"),
   ),
-  erwartet: { veroeffentlichungsreife: "warnung" },
+  erwartet: { veroeffentlichungsreife: "hinweis" },
+});
+
+/*
+ * Fuer den `--strict`-Lauf am Ende der Datei: ausser dem aliases-Hinweis
+ * vollstaendig sauber, inklusive der zwei internen Links, die
+ * `interne-links` verlangt. Ohne sie truebe eine zweite, echte Warnung den
+ * Exitcode, und der Lauf misst nicht mehr, was er messen soll.
+ */
+fall({
+  name: "veroeffentlichungsreife: sonst sauberer Eintrag, nur ohne aliases",
+  datei: "lexikon/reife-nur-hinweis.md",
+  inhalt: md(
+    lexFelder("Nurhinweisrock", { status: "veroeffentlicht", aliases: "[]" }),
+    `Ein Nurhinweisrock ist ein Kleidungsstueck aus der Mode der fuenfziger Jahre, das in der Taille eng anliegt und nach unten weit ausschwingt. ` +
+      `In der Vintage- und Rockabilly-Szene gilt der Nurhinweisrock bis heute als feste Groesse, weil er die Silhouette der Zeit ohne Hilfsmittel traegt.\n\n` +
+      `## Schnitt von Nurhinweisrock\n\nVerwandt sind der [Tellerrock](/lexikon/tellerrock/) und der [Bolero](/lexikon/bolero/). ${fueller(80)}`,
+  ),
+  erwartet: { veroeffentlichungsreife: "hinweis" },
+  verboten: ["interne-links", "pruefkadenz", "quellen-vorhanden", "gp-abgrenzung"],
 });
 
 fall({
@@ -954,7 +985,7 @@ fall({
     belegpflicht: "fehler",
     referenzen: "fehler",
     "gp-abgrenzung": "fehler",
-    veroeffentlichungsreife: "warnung",
+    veroeffentlichungsreife: "hinweis",
     "gp-h2-nennt-begriff": "fehler",
   },
   verboten: ["schema"],
@@ -986,11 +1017,12 @@ for (const f of faelle) {
   pfade.push(ziel);
 }
 
-interface JsonBefund { ebene: "fehler" | "warnung"; code: string; nachricht: string; feld?: string }
+interface JsonBefund { ebene: "fehler" | "warnung" | "hinweis"; code: string; nachricht: string; feld?: string }
 interface JsonBericht {
   geprueft: number;
   fehler: number;
   warnungen: number;
+  hinweise: number;
   befunde: { datei: string; befunde: JsonBefund[] }[];
 }
 
@@ -1067,6 +1099,7 @@ try {
     gleich("Exitcode 1, weil Fixtures mit Fehlern dabei sind", ergebnis.code, 1);
     pruefe("Bericht zaehlt Fehler", bericht.fehler > 0, String(bericht.fehler));
     pruefe("Bericht zaehlt Warnungen", bericht.warnungen > 0, String(bericht.warnungen));
+    pruefe("Bericht zaehlt Hinweise getrennt", bericht.hinweise > 0, String(bericht.hinweise));
   }
 
   /* --- Gegenprobe: nur der saubere Eintrag, Exitcode 0 -------------- */
@@ -1078,6 +1111,55 @@ try {
       "sauberer Einzeleintrag meldet keinen Fehler",
       r.bericht !== null && r.bericht.fehler === 0,
       JSON.stringify(r.bericht?.befunde ?? r.roh.slice(0, 200)),
+    );
+  }
+
+  /* --- Die eigentliche Frage: eskaliert --strict den Hinweis? ------- */
+  /*
+   * Der Fixture-Lauf oben belegt die EBENE. Ob `--strict` sie durchlaesst,
+   * ist eine andere Aussage -- und genau die, an der die Freigabe haengt.
+   * Sie braucht einen eigenen Lauf ueber einen Eintrag, der ausser dem
+   * Hinweis sauber ist.
+   */
+  {
+    const strikt = (rel: string) => {
+      const r = spawnSync("npx", ["tsx", skript, "--json", "--strict", "--changed", path.join(wurzel, "src/content", rel)], {
+        cwd: wurzel,
+        encoding: "utf8",
+        maxBuffer: 64 * 1024 * 1024,
+      });
+      let bericht: JsonBericht | null = null;
+      try {
+        bericht = JSON.parse(r.stdout) as JsonBericht;
+      } catch {
+        bericht = null;
+      }
+      return { code: r.status ?? -1, bericht, roh: r.stdout };
+    };
+
+    const h = strikt("lexikon/reife-nur-hinweis.md");
+    gleich("--strict laesst den aliases-Hinweis durch (Exitcode 0)", h.code, 0);
+    // Positives Lebenszeichen: Der Hinweis MUSS im Bericht stehen. Ein
+    // Exitcode 0 waere auch dann wahr, wenn die Regel gar nichts meldete --
+    // und dann haette der Umbau die Auskunft verloren statt die Blockade.
+    pruefe(
+      "und meldet ihn trotzdem, als Hinweis",
+      (h.bericht?.hinweise ?? 0) > 0 &&
+        (h.bericht?.befunde ?? []).some((d) =>
+          d.befunde.some((b) => b.code === "veroeffentlichungsreife" && b.ebene === "hinweis"),
+        ),
+      JSON.stringify(h.bericht?.befunde ?? h.roh.slice(0, 300)),
+    );
+
+    // Gegenprobe: Eine echte WARNUNG blockiert unter --strict weiterhin.
+    // Ohne sie waere "Exitcode 0" auch mit einem --strict vereinbar, das
+    // ueberhaupt nichts mehr eskaliert.
+    const w = strikt("lexikon/kapsel-unklar.md");
+    gleich("--strict eskaliert eine echte Warnung weiterhin (Exitcode 1)", w.code, 1);
+    pruefe(
+      "und die Warnung steht als solche im Bericht",
+      (w.bericht?.warnungen ?? 0) > 0,
+      JSON.stringify(w.bericht?.befunde ?? w.roh.slice(0, 300)),
     );
   }
 } finally {

@@ -37,7 +37,27 @@ import {
 /* Typen                                                               */
 /* ------------------------------------------------------------------ */
 
-type Ebene = "fehler" | "warnung";
+/**
+ * Drei Ebenen, nicht zwei.
+ *
+ *   fehler   — blockiert immer.
+ *   warnung  — blockiert unter `--strict`, also in der CI und bei der Freigabe.
+ *   hinweis  — blockiert nie, ist aber immer sichtbar.
+ *
+ * Die dritte Ebene ist aus einem Betriebsfall entstanden: `aliases` war als
+ * Warnung formuliert und damit unter `--strict` ein Freigabeblocker. Neun von
+ * zehn Lexikoneinträgen gingen durch, der zehnte hing daran -- ausgerechnet
+ * der, aus dem zwei unbelegbare Aliases ENTFERNT worden waren. Die sorgfältige
+ * Entscheidung wurde von der Regel bestraft.
+ *
+ * Der Unterschied zwischen Warnung und Hinweis ist nicht die Dringlichkeit,
+ * sondern die Erfüllbarkeit: Eine Warnung benennt etwas, das ein sorgfältiger
+ * Eintrag beheben KANN. Ein Hinweis benennt etwas, das er womöglich nur
+ * beheben kann, indem er etwas erfindet. Eine Pflicht, die sich nicht
+ * erfüllen lässt, erzeugt genau das -- und erfundene Aliases sind schlechter
+ * als keine.
+ */
+type Ebene = "fehler" | "warnung" | "hinweis";
 
 interface Befund {
   ebene: Ebene;
@@ -670,8 +690,12 @@ const REGELN: Regel[] = [
     pruefe(e) {
       if (!e.daten) return [];
       const noetig = ["pillar", "vergleich", "howto"].includes(e.daten.typ) ? 4 : 3;
+      // HINWEIS aus demselben Grund wie bei `aliases`: Wenn es keine vier
+      // echten Fragen gibt, ist die einzige Art, das Ziel zu erreichen, sich
+      // welche auszudenken. Die Meldung sagt schon "Echte Fragen" -- eine
+      // Regel, die das verlangt und zugleich blockiert, verlangt zweierlei.
       return (e.daten.faq ?? []).length < noetig
-        ? [{ ebene: "warnung", code: "", nachricht: `Nur ${(e.daten.faq ?? []).length} FAQ-Einträge (Ziel für typ "${e.daten.typ}": ${noetig}). Echte Fragen aus der Prompt-Map nehmen.` }]
+        ? [{ ebene: "hinweis", code: "", nachricht: `Nur ${(e.daten.faq ?? []).length} FAQ-Einträge (Ziel für typ "${e.daten.typ}": ${noetig}). Echte Fragen aus der Prompt-Map nehmen.` }]
         : [];
     },
   },
@@ -719,9 +743,21 @@ const REGELN: Regel[] = [
     pruefe(e) {
       if (!e.daten || e.daten.status !== "veroeffentlicht") return [];
       const b: Befund[] = [];
+      // FEHLER: Einen Autor hat jeder Eintrag, den ein Mensch freigibt — das
+      // ist immer erfüllbar, und ohne Namen fehlt das E-E-A-T-Signal.
       if (!e.daten.autor) b.push({ ebene: "fehler", code: "", nachricht: "Veröffentlicht ohne Autor. E-E-A-T braucht einen Namen." });
+      // HINWEIS, nicht Warnung: Nicht jeder Begriff hat eine gebräuchliche
+      // Zweitbezeichnung. "Pomade" heißt Pomade. Wer die Regel blockierend
+      // macht, bekommt erfundene Aliases -- und die sind schlechter als
+      // keine, weil sie den Namensindex und den Autolink vergiften.
       if ((e.daten.aliases ?? []).length === 0) {
-        b.push({ ebene: "warnung", code: "", nachricht: "Keine aliases. Ohne Szene-Kurzformen fehlt die halbe Suchnachfrage." });
+        b.push({
+          ebene: "hinweis",
+          code: "",
+          nachricht:
+            "Keine aliases. Ohne Szene-Kurzformen fehlt die halbe Suchnachfrage — " +
+            "aber nur eintragen, was belegbar gebräuchlich ist.",
+        });
       }
       return b;
     },
@@ -924,24 +960,27 @@ function main() {
 
   const fehler = [...bericht.values()].flat().filter((b) => b.ebene === "fehler").length;
   const warnungen = [...bericht.values()].flat().filter((b) => b.ebene === "warnung").length;
+  const hinweise = [...bericht.values()].flat().filter((b) => b.ebene === "hinweis").length;
 
   if (alsJson) {
     console.log(JSON.stringify({
       geprueft: zuPruefen.length,
       fehler,
       warnungen,
+      hinweise,
       befunde: [...bericht].map(([datei, b]) => ({ datei: path.relative(process.cwd(), datei), befunde: b })),
     }, null, 2));
   } else {
     for (const [datei, befunde] of [...bericht].sort()) {
       console.log(`\n${path.relative(process.cwd(), datei)}`);
       for (const b of befunde.sort((a, z) => a.ebene.localeCompare(z.ebene))) {
-        const marke = b.ebene === "fehler" ? "FEHLER " : "warnung";
+        const marke = b.ebene === "fehler" ? "FEHLER " : b.ebene === "warnung" ? "warnung" : "hinweis";
         console.log(`  ${marke}  [${b.code}] ${b.nachricht}`);
       }
     }
     console.log(
-      `\n${zuPruefen.length} Datei(en) geprüft — ${fehler} Fehler, ${warnungen} Warnungen${strikt ? " (strict)" : ""}`,
+      `\n${zuPruefen.length} Datei(en) geprüft — ${fehler} Fehler, ${warnungen} Warnungen, ` +
+        `${hinweise} Hinweis(e)${strikt ? " (strict — Hinweise blockieren auch dort nicht)" : ""}`,
     );
   }
 

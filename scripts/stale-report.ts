@@ -93,7 +93,7 @@ function main() {
 
   // Reihen ohne kommende Ausgabe: der häufigste stille Verfall eines
   // Eventregisters — die Reihe existiert weiter, der Eintrag altert.
-  const reihen = new Map<string, { name: string; letzte: Date; datei: string }>();
+  const reihen = new Map<string, { name: string; letzte: Date; datei: string; beendet: boolean }>();
   for (const e of alle) {
     if (e.collection !== "events" || !e.daten?.reihe) continue;
     const datum = new Date(e.daten.beginn);
@@ -101,10 +101,23 @@ function main() {
     if (!bisher || datum > bisher.letzte) {
       // Die Datei der jüngsten Ausgabe, nicht der URL-Pfad: Der Bericht soll
       // sagen, wo man nachschlagen muss, nicht wo die Seite liegt.
-      reihen.set(e.daten.reihe, { name: e.daten.reiheName ?? e.daten.reihe, letzte: datum, datei: e.datei });
+      reihen.set(e.daten.reihe, {
+        name: e.daten.reiheName ?? e.daten.reihe,
+        letzte: datum,
+        datei: e.datei,
+        // `letzteAusgabe` der JÜNGSTEN Ausgabe zählt: Die Reihe ist beendet,
+        // wenn ihr letzter Termin sich als letzter ausweist.
+        beendet: e.daten.letzteAusgabe === true,
+      });
     }
   }
   for (const [slug, r] of reihen) {
+    // Eine ausdrücklich beendete Reihe hat keinen Folgetermin, und das ist
+    // kein offener Posten, sondern die Auskunft. Ohne diese Zeile stünde der
+    // Walldorf Weekender dauerhaft im Bericht — und ein Bericht, der Posten
+    // führt, die niemand erledigen kann, gewöhnt einen daran, ihn zu
+    // überlesen (Lektion 4: ein roter Lauf muss etwas bedeuten).
+    if (r.beendet) continue;
     // Dieselbe Frage wie in archive-events und im Validator, also dieselbe
     // Antwort: tagesgenau in der Zeitzone der Site (M9).
     const folgetermin = alle.some(
