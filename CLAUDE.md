@@ -54,6 +54,43 @@ Eine fünfte Regel wird **nicht** vom Validator erzwungen, gilt aber genauso:
 
 Vorlage: `src/content/lexikon/_golden-example.md`.
 
+## Wie hier gearbeitet wird
+
+**Ein Auftrag nennt vier Dinge:** das Ziel (nicht die Handgriffe), einen
+konkreten Verweis zur Orientierung (das Golden Example schlägt jede
+Beschreibung), die Grenzen, und wie das Ergebnis zu belegen ist. Der
+letzte Punkt wird am ehesten weggelassen und am meisten gebraucht.
+
+**Belege sind Mutationsbelege.** Eine Prüfung, die nie angeschlagen hat,
+ist unbewiesen. Nach jeder neuen Regel absichtlich kaputte Daten
+einschleusen, zeigen dass genau die erwarteten Behauptungen fallen, und
+zurückbauen. Die Mutation auf den betroffenen Block begrenzen — wortgleiche
+Zeilen anderswo erzeugen sonst einen Beleg, der nichts belegt.
+
+**Widersprich, statt auszuführen.** Ein Auftrag, der auf einer falschen
+Annahme beruht, soll zurückkommen — nicht umgesetzt werden. Das ist
+mehrfach vorgekommen und war jedes Mal der bessere Ausgang: `aliases` war
+bereits eine Warnung, `registry.ts` ist aus Node nicht ladbar, die
+Vorabprüfung bei der Freigabe wäre blind gewesen.
+
+**Frag bei Ermessensfragen.** Zahlen, Semantik, Abwägungen zwischen
+vertretbaren Wegen gehören zum Menschen. Leg die Alternativen mit
+Begründung daneben und bau erst danach.
+
+**Erst messen, dann entscheiden.** Vor einer Regeländerung, die auf einer
+Vermutung über die Wirklichkeit beruht: erheben. Die Erhebung über die
+Veranstalter-Websites hat drei von drei Vermutungen widerlegt und ein
+Problem gefunden, das niemand auf dem Schirm hatte.
+
+**Nicht bauen ist eine Option.** Eine Prüfung mit hoher Fehlalarmquote
+wird nach zwei Wochen ignoriert. Wenn etwas nicht tragfähig gebaut werden
+kann, gehört die Begründung nach ENTSCHEIDUNGEN.md statt einer halbgaren
+Fassung ins Repo.
+
+**Offene Punkte gehören nach OFFENE-PUNKTE.md**, Entscheidungen nach
+ENTSCHEIDUNGEN.md, Gelerntes nach docs/lektionen.md. Was in keiner der
+drei steht, existiert nach der Sitzung nicht mehr.
+
 ## Vor jedem Commit
 
 ```
@@ -100,7 +137,8 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
   nicht an Beschreibungen.
 - Architektur, Verträge und Begründungen: `README.md`
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
-- Bekannte offene Punkte: `REVIEW.md`
+- Was als Nächstes ansteht: `OFFENE-PUNKTE.md`
+- Befunde aus dem Review, auch die vertagten: `REVIEW.md`
 - Warum etwas so ist, samt verworfener Alternativen: `ENTSCHEIDUNGEN.md`
 - Lektionen aus dem Aufbau: `docs/lektionen.md`
 - Arbeitsteilung Cloud/Rechner/CI: `ARBEITSWEISE.md`
