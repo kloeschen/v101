@@ -10,7 +10,7 @@
  * Eine leere Zeile ist keine Information, sondern Rauschen.
  */
 
-import { faktenblockFelder } from "./jsonld";
+import { faktenblockFelder, istNurDerName } from "./jsonld";
 import { referenzFelder, urlPrefix, type CollectionName } from "../content/_schemas";
 import { aufloesen, type Registry } from "./links";
 import { site } from "../site.config";
@@ -171,6 +171,13 @@ export function faktZeilen(
     // eine Auskunft fuer den Leser und keine Leerstelle.
     if (feld === "eintritt" && wert === "beziffert") continue;
     if (feld === "preise" && daten.eintritt !== "beziffert") continue;
+    // Bei einem deutschen Begriff steht in `bezeichnungDe` derselbe Wert wie
+    // in `name`: "Deutsch: Bleistiftrock" unter der Überschrift
+    // "Bleistiftrock" ist eine Zeile ohne Information. Eine ABWEICHENDE
+    // Bezeichnung bleibt stehen — sie ist der Grund, warum es das Feld gibt.
+    // Der Lexikon-Builder filtert `alternateName` mit derselben Funktion,
+    // damit Graph und Seite dieselbe Entscheidung treffen.
+    if ((feld === "bezeichnungDe" || feld === "bezeichnungEn") && istNurDerName(wert, daten.name)) continue;
     // Der Anzeigename der Reihe ersetzt den Slug.
     if (feld === "reihe" && daten.reiheName) continue;
 

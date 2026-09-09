@@ -19,7 +19,7 @@
 import path from "node:path";
 import { z } from "zod";
 import { existsSync } from "node:fs";
-import { ladeAlle, WURZEL, type GeladenerEintrag } from "./_laden";
+import { ladeAlle, WURZEL, liegtImRegister, type GeladenerEintrag } from "./_laden";
 import { RESERVIERTE_SEGMENTE } from "../src/lib/facetten";
 import { istVorbei } from "../src/lib/datum";
 import {
@@ -869,7 +869,12 @@ function main() {
     // Das lautlos als Erfolg zu melden ist genau der Zustand, der den
     // PostToolUse-Zweig seit seiner Entstehung nichts prüfen ließ — bei
     // Exitcode 0 und der Meldung "Nichts zu prüfen".
-    const uebergeben = (changed ?? []).filter((d) => existsSync(d));
+    // Nur Pfade AUSSERHALB des Registers sind der Fehlerfall. Eine Datei mit
+    // `_`-Präfix liegt darin und wird trotzdem übersprungen — Golden Examples
+    // sind Vorlagen, keine Einträge. Die erste Fassung dieser Meldung hat
+    // genau das verwechselt und den PostToolUse-Hook auf
+    // `_golden-example.md` blockieren lassen.
+    const uebergeben = (changed ?? []).filter((d) => existsSync(d) && !liegtImRegister(d));
     if (uebergeben.length > 0) {
       console.log(
         `Nichts zu prüfen — aber ${uebergeben.length} übergebene Datei(en) ` +

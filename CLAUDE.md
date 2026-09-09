@@ -40,6 +40,18 @@ Lexikoneinträge folgen dem Grounding Page Standard v1.6
    Begriff häufig verwechselt? Falsche Zuordnung ist die häufigste
    Fehlerquelle bei Entitäten, nicht fehlende Fakten.
 
+Eine fünfte Regel wird **nicht** vom Validator erzwungen, gilt aber genauso:
+
+5. **Widersprüche zwischen Quellen gehören in den Text, nicht in die
+   Auswahl.** Eine Zuschreibung, die nur eine Quelle trägt, wird benannt und
+   zugeordnet („steht in X, an weiteren Quellen nicht bestätigt") — samt
+   dem, was stattdessen gesichert ist. Wer die schwächere Quelle
+   stillschweigend weglässt, trifft eine Entscheidung, die der Leser nicht
+   sehen kann. Ein Feld, dessen einziges Argument eine unbestätigte
+   Zuschreibung wäre, bleibt leer, mit Begründung in der Redaktionsnotiz.
+   Beispiel: `src/content/lexikon/bleistiftrock.md` (Dior 1948 gegen den
+   DWDS-Erstbeleg 1950). Ausführlich: Lektion 20.
+
 Vorlage: `src/content/lexikon/_golden-example.md`.
 
 ## Vor jedem Commit

@@ -13,6 +13,77 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-07 — Drei Anzeigeentscheidungen aus der ersten Durchsicht
+
+**1. Sprachzeilen, die nur den Namen wiederholen, verschwinden.** Bei einem
+deutschen Begriff steht in `bezeichnungDe` derselbe Wert wie in `name` —
+„Deutsch: Bleistiftrock" unter der Überschrift „Bleistiftrock" ist eine Zeile
+ohne Information. Verglichen wird normalisiert (Groß-/Kleinschreibung,
+Randleerraum), sonst nicht: „Pencil skirt" und „Pencil Skirt" sind dasselbe
+Wort, „Reifrock" und „Reifröcke" sind es nicht.
+
+**Und warum das die Content Parity nicht lockert.** Die Prüfung vergleicht
+statische Listen — `verwendeteFelder` gegen `faktenblockFelder` —, eine
+bedingte Zeile bricht sie formal also gar nicht. Die *Zusage* dahinter aber
+schon: Ein `alternateName` im Graphen, der auf der Seite unterdrückt wird,
+ist genau die Lücke, die sie meint. Statt die Prüfung anzufassen, trifft
+jetzt **derselbe Vergleich beide Seiten**: `istNurDerName` in
+`src/lib/jsonld/shared.ts`, benutzt vom Faktenblock und vom
+Lexikon-Builder. Der Builder filterte vorher zeichengenau (`x !== d.name`)
+und hätte bei abweichender Schreibweise auseinanderlaufen können.
+
+**2. Die Verwandt-Liste am Fuß zeigt nur Namen.** Auf Übersichts- und
+Facettenseiten sind Kurzbeschreibungen der Inhalt — dort entscheidet jemand
+anhand des Satzes, ob er klickt. Im Fußbereich einer Entitätsseite stehen
+sie neben einem Text, der dieselben Begriffe oft schon erklärt hat, und aus
+zwölf Einträgen wird eine zweite Seite. Umgesetzt als Parameter `knapp` an
+`EintragsListe.astro`, nicht als zweite Komponente: Die Entwurfsmarke bleibt
+damit an genau einer Stelle, und kein Entwurf kann irgendwo unmarkiert
+auftauchen.
+
+**3. Der Quellenblock ist bei aktiven Entwürfen aufgeklappt.** Wer freigibt,
+prüft genau diese Liste — und tut es nicht, wenn er dafür klicken muss. In
+der Produktion bleibt er zu; dort ist er Beleg und nicht Arbeitsmaterial.
+
+**Belegt am echten HTML, nicht an Einheitsprüfungen.**
+`scripts/test-anzeige.ts` baut die Site zweimal wirklich und liest das
+erzeugte Dokument. Für den Produktionsbuild wird ein Eintrag kurzzeitig
+freigegeben und zeichengenau zurückgebaut — ohne das enthält er keine
+einzige Entitätsseite, weil im Register (Stand heute) kein freigegebener
+Eintrag steht, und eine Gegenprobe an einer Seite, die es nicht gibt, wäre
+keine.
+
+**Fund beim Bauen, gefunden vom eigenen Hook:** Die in der vorigen Runde
+eingeführte Meldung „Aufruf ging ins Leere" hat auf
+`_golden-example.md` angeschlagen. Die Datei liegt im Register und wird
+trotzdem übersprungen — Golden Examples sind Vorlagen, keine Einträge. Die
+Meldung verwechselte „außerhalb des Registers" mit „nicht geladen". Behoben
+über `liegtImRegister()` in `_laden.ts`, mit Prüfung in beide Richtungen.
+
+---
+
+## 2026-09-07 — Quellenkritik bekommt keine Validator-Regel
+
+**Entscheidung:** Die Erwartung, Widersprüche zwischen Quellen im Text zu
+benennen statt sie durch Auswahl zu glätten, steht in `docs/lektionen.md`
+(Lektion 20), in `CLAUDE.md` als fünfte Lexikonregel und im
+Lexikon-Golden-Example. **Nicht** im Validator.
+
+**Warum nicht.** Ob ein Widerspruch besteht und ob er benannt wurde, steht
+in Sätzen, nicht in Feldern. Jede messbare Näherung — etwa „enthält der Text
+das Wort 'unbestätigt'" — erzwänge eine Formulierung und keine Haltung, und
+sie wäre schlimmer als keine Prüfung: Sie ließe glauben, die Frage sei
+abgeräumt. Das ist Lektion 19 aus der anderen Richtung — eine Prüfung, die
+ihren Gegenstand grundsätzlich nicht erreichen kann.
+
+**Vorbild ist der Bleistiftrock-Eintrag:** Die deutsche Wikipedia führt die
+Form auf Dior (1948) zurück, die übrigen geöffneten Quellen bestätigen das
+nicht, und der Eintrag schreibt genau das hin — samt dem, was stattdessen
+trägt (DWDS-Erstbeleg 1950). `herkunftsland` bleibt leer, weil das einzige
+Argument dafür die unbestätigte Zuschreibung wäre.
+
+---
+
 ## 2026-09-05 — Die Freigabe prüft den Zustand nach der Änderung
 
 **Entscheidung:** `scripts/freigeben.ts` schreibt `status` und `geprueftAm`
