@@ -19,9 +19,17 @@ import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
 import { eventVorbei, istVorbei } from "../src/lib/datum";
 import { pruefKadenzTage } from "../src/content/_schemas";
+import { bestandsLuecke } from "../src/lib/regionen";
 
 interface Posten {
-  art: "entwurf" | "ueberfaellig" | "vergangen" | "reihe-ohne-folge" | "verwaiste-band" | "ohne-quelle";
+  art:
+    | "entwurf"
+    | "ueberfaellig"
+    | "vergangen"
+    | "reihe-ohne-folge"
+    | "verwaiste-band"
+    | "ohne-quelle"
+    | "region-ohne-bestand";
   datei: string;
   titel: string;
   detail: string;
@@ -88,6 +96,24 @@ function main() {
       if (!d.quellen?.length) {
         posten.push({ art: "ohne-quelle", datei: e.datei, titel: d.name, detail: "keine Belegkette", gewicht: 150 });
       }
+    }
+
+    // Freigegebene Regionen mit zu dünnem Bestand. Eine Region entsteht in
+    // diesem Register als Nebenprodukt eines Termins (Schemakette Event → Ort
+    // → Region) und bleibt dann leicht bei diesem einen Termin stehen. Der
+    // Posten sagt, wo Recherche fehlt — er sagt ausdrücklich nichts über den
+    // Index; warum nicht, steht in src/lib/regionen.ts und ENTSCHEIDUNGEN.md.
+    const { luecke, grund } = bestandsLuecke(e, registry);
+    if (luecke) {
+      posten.push({
+        art: "region-ohne-bestand",
+        datei: e.datei,
+        titel: d.name,
+        detail: grund!,
+        // Über einem frischen Entwurf, unter einem Event ohne Belegkette: Die
+        // Seite ist da und trägt sich, ihr fehlt nur, worauf sie zeigen kann.
+        gewicht: 140,
+      });
     }
   }
 
@@ -179,10 +205,11 @@ function main() {
     ueberfaellig: "Überfällige Prüfungen",
     "ohne-quelle": "Ohne Belegkette",
     "verwaiste-band": "Bands ohne Profil",
+    "region-ohne-bestand": "Regionen ohne Bestand",
     entwurf: "Entwürfe in der Warteschlange",
   };
 
-  for (const art of ["vergangen", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "verwaiste-band", "entwurf"] as const) {
+  for (const art of ["vergangen", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "region-ohne-bestand", "verwaiste-band", "entwurf"] as const) {
     const gruppe = posten.filter((p) => p.art === art).slice(0, limit);
     if (gruppe.length === 0) continue;
     console.log(`\n## ${ueberschrift[art]} (${posten.filter((p) => p.art === art).length})`);

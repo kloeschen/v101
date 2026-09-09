@@ -13,19 +13,27 @@ für „nicht jetzt" gibt.
 
 ## Als Nächstes
 
-**Regionsschwelle bauen.** Entschieden, noch nicht gebaut: drei Einträge
-ODER eigener Fließtext über der Mindestlänge, der mehr sagt als die
-Kurzbeschreibung. Gezählt wird der gesamte Registerbestand einer Region,
-nicht nur Events. Dünne Regionen bekommen `noindex, follow`, fallen aus der
-Sitemap, bleiben aber erreichbar und verlinkt. Und sie erscheinen als Posten
-im Stale-Report — sonst ist das noindex eine stille Entscheidung, die
-niemand zurücknimmt.
+**Regionsschwelle: `noindex` ja oder nein — die Frage ist zurück beim
+Menschen.** Der Textarm der beschlossenen Schwelle lässt sich nicht bauen: Er
+kann nie falsch werden, weil `mindestlaenge` für Regionen bereits 250 Wörter
+als Fehler erzwingt und die Antwortkapsel bei 90 gedeckelt ist — jede Region,
+die die Prüfkette besteht, trägt also mindestens 160 eigene Wörter und erfüllt
+damit den Arm, der nach 150 fragt. Der Bestandsarm allein nähme heute alle
+fünf Regionen aus dem Index, obwohl jede 239 bis 259 eigene, belegte Wörter
+trägt. Vollständig in ENTSCHEIDUNGEN.md, 2026-09-09.
 
-Zwei Fragen sind beim Bau noch zu klären und gehören zum Menschen: ob
-Entwürfe beim Zählen mitzählen (in der Produktion existieren sie nicht, in
-der Vorschau schon), und ob die Region sich selbst mitzählt oder nur, was
-auf sie verweist. Das Gerüst steht: `ListenLayout.astro` kennt `noindex`
-und `indexGrund` bereits von den Facetten.
+Gebaut ist stattdessen dieselbe Zählung als redaktioneller Posten:
+`src/lib/regionen.ts`, angebunden an `npm run stale`. Eine freigegebene Region
+unter drei freigegebenen Einträgen erscheint dort mit der Auskunft, was ihr
+fehlt — samt eigener Wortzahl, damit sichtbar bleibt, dass ihr Bestand fehlt
+und nicht Text.
+
+Zu entscheiden bleibt: Soll die Schwelle **allein über den Bestand** kommen,
+mit der Folge, dass heute alle fünf Regionen auf `noindex, follow` gingen und
+aus der Sitemap fielen? Dann sind es wenige Zeilen — die Zählung liegt fertig
+in `src/lib/regionen.ts`, `ListenLayout.astro` kennt `noindex` und `indexGrund`
+schon von den Facetten, und `EntitaetsLayout.astro` bräuchte dieselben zwei
+Requisiten. Die Gegenrede steht in ENTSCHEIDUNGEN.md.
 
 **Genres als nächste Lexikongruppe.** Rockabilly, Psychobilly,
 Neo-Rockabilly, Western Swing, Jump Blues, Doo Wop, Boogie Woogie, Lindy
