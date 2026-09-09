@@ -2,9 +2,9 @@
 name: Pomade
 aliases: [Haarpomade, Pomaden]
 kurzbeschreibung: Pomade ist eine fetthaltige, salbenähnliche Substanz zur Haarpflege und Frisurfestigung, die im Unterschied zu Haargel nicht aushärtet und die Frisur formbar hält.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: frisur
 bezeichnungDe: Pomade

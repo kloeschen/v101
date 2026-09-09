@@ -2,9 +2,9 @@
 name: Reifrock
 aliases: [Krinoline, Panier, Verdugado]
 kurzbeschreibung: Ein Reifrock ist ein durch Reifen aus Holz, Fischbein oder Federstahl gespreizter Unterrock, der weiten Röcken vom 15. bis zum späten 19. Jahrhundert ihre Form gab.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Reifrock

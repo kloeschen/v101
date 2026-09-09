@@ -2,9 +2,9 @@
 name: Strapsgürtel
 aliases: [Strumpfhaltergürtel, Hüftgürtel, Strapse, Straps]
 kurzbeschreibung: Ein Strapsgürtel ist ein in der Taille oder auf der Hüfte sitzender Gürtel mit herabhängenden elastischen Bändern, deren einziger Zweck es ist, Strümpfe am Herunterrutschen zu hindern.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Strumpfhaltergürtel

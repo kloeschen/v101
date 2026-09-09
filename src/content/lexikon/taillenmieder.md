@@ -2,9 +2,9 @@
 name: Taillenmieder
 aliases: [Waspie, Waist Cincher, Taillenformer, Wespentaillengürtel]
 kurzbeschreibung: Ein Taillenmieder ist ein breiter, versteifter Gürtel, der allein die Taille zusammenzieht und im Unterschied zum Korsett weder Brustkorb noch Hüfte umfasst.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Taillenmieder

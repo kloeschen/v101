@@ -2,9 +2,9 @@
 name: Bleistiftrock
 aliases: [Pencil Skirt, Bleistiftlinie]
 kurzbeschreibung: Ein Bleistiftrock ist ein körpernaher, gerade geschnittener Damenrock, der knapp unter dem Knie endet und wegen der eingeschränkten Schrittweite meist einen Gehschlitz hat.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Bleistiftrock

@@ -2,9 +2,9 @@
 name: Porkpie
 aliases: [Porkpie-Hut, Pork Pie, Pork Pie Hat]
 kurzbeschreibung: Ein Porkpie ist ein runder Hut mit flachem Kopf, dessen kreisrunde Einbuchtung an eine englische Schweinefleischpastete erinnert, mit schmaler, leicht aufgebogener Krempe.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Porkpie-Hut

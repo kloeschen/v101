@@ -2,9 +2,9 @@
 name: Korsett
 aliases: [Schnürleib, Schnürbrust, Corset]
 kurzbeschreibung: Ein Korsett ist ein steifes, eng am Oberkörper anliegendes Wäschestück, das durch eingearbeitete Stäbchen und eine Schnürung Taille und Brustkorb in eine bestimmte Form zwingt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Schnürleib

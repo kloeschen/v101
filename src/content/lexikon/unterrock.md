@@ -2,9 +2,9 @@
 name: Unterrock
 aliases: [Halbrock, Unterkleid, Jupe, Cotillon]
 kurzbeschreibung: Ein Unterrock ist ein Wäschestück in Form eines Trägerkleids oder eines Rocks, das unter Kleid oder Rock getragen wird und dort für Wärme, Sitz und Blickdichte sorgt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Unterrock

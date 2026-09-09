@@ -2,9 +2,9 @@
 name: Creepers
 aliases: [Brothel Creepers, Creeper, Leisetreter]
 kurzbeschreibung: Creepers sind flache Lederschuhe mit einer bis zu fünf Zentimeter dicken, weichen Kreppsohle mit senkrechten Riefen, meist aus Rauleder und mit Schnürung oder einer einzelnen Schnalle.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-03
-geprueftAm: 2026-09-03
+geprueftAm: 2026-09-09
 autor: markus
 kategorie: mode
 bezeichnungDe: Leisetreter
