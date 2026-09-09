@@ -13,6 +13,61 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-09 — Drei Dateien, drei Zuständigkeiten
+
+**Fund beim Zusammenziehen der beiden Sitzungen.** `ENTSCHEIDUNGEN.md` hält
+fest, was entschieden wurde, `docs/lektionen.md` was gelernt wurde — aber
+was noch **offen** ist, stand nirgends im Repo. Es lebte im Strategie-Chat
+und war damit an eine Sitzung gebunden.
+
+**Entscheidung:** `OFFENE-PUNKTE.md` im Wurzelverzeichnis, mit drei Gruppen
+(Als Nächstes, Vor dem Go-Live, Später mit Bedingung). Erledigtes wird
+gestrichen, nicht abgehakt — wo etwas gelandet ist, steht in
+`ENTSCHEIDUNGEN.md`.
+
+Die Abgrenzung zu `REVIEW.md`: Dort stehen **Befunde aus dem Audit**, auch
+die bewusst vertagten (Abschnitt 4). Hier steht **vorwärts gerichtete
+Arbeit**. `OFFENE-PUNKTE.md` verweist einmal auf Abschnitt 4, damit es
+nicht zwei Orte für „nicht jetzt" gibt.
+
+**Zweitens: die Arbeitsweise steht jetzt im Repo.** Der Abschnitt „Wie hier
+gearbeitet wird" in `CLAUDE.md` hält fest, was sich über die Sitzungen
+eingespielt hat — unter anderem, dass ein Auftrag mit falscher Annahme
+zurückkommen soll statt umgesetzt zu werden. Das ist mehrfach vorgekommen
+und war jedes Mal der bessere Ausgang.
+
+**Drittens: eine Prüfung für die Wegweiser.** Verlangt war „OFFENE-PUNKTE.md
+muss existieren und darf nicht leer sein". Gebaut wurde das
+Verallgemeinerte: **jedes** Dokument, das die Orientierungsliste in
+`CLAUDE.md` nennt, muss existieren und Inhalt haben. Grund: Eine Prüfung
+nur für die neue Datei hätte den Fall nicht gefangen, der tatsächlich
+eingetreten ist — den Umzug von `lektionen.md` nach `docs/`, bei dem fünf
+Verweise von Hand nachgezogen werden mussten.
+
+Die Prüfung trägt ihr Lebenszeichen mit (Lektion 19): Sie verlangt, dass
+die Liste **gefunden** wurde und die vier tragenden Dokumente nennt. Ohne
+das wäre „alle Ziele existieren" auch dann wahr, wenn gar keine gefunden
+wurden.
+
+**Was nicht geprüft wird:** ob ein Punkt in `OFFENE-PUNKTE.md` noch aktuell
+ist. Das weiß kein Skript, und eine Prüfung, die es vorgäbe, wäre schlimmer
+als keine.
+
+**Zwei Korrekturen an der Vorlage aus dem Strategie-Chat**, beide gegen den
+Stand geprüft statt übernommen: Die Kapsel der Übersichtsseiten sitzt nicht
+im Listenbauteil, sondern in `src/pages/[typ]/index.astro` — die Überschrift
+„Einträge" dagegen in `ListenLayout.astro`, es sind zwei Stellen. Und der
+`aeraVon`-Punkt bekommt die Bands-Schwelle `min(1930)` dazu, die aus
+derselben Anfangszeit stammt.
+
+**Nicht übernommen:** die Zahl „sechzehn Veranstalter-Websites" in der
+Beschreibung der Erhebung. Sie ließ sich nicht belegen — die Erhebung ging
+ausdrücklich nicht ins Register und existiert nur im Chatverlauf. Die
+Aussage trägt auch ohne Zahl. Was dauerhaft im Repo steht, soll belegbar
+sein.
+
+---
+
 ## 2026-09-09 — Eine dritte Befundebene: Hinweis
 
 **Fund aus dem Betrieb.** Neun von zehn Lexikoneinträgen ließen sich
