@@ -24,8 +24,15 @@ interface Props {
   registry: Registry;
   /** Zusätzliche abgeleitete Listen, je nach Entitätstyp. */
   listen?: { titel: string; eintraege: any[] }[];
+  /**
+   * Vom Aufrufer errechnetes `noindex` — zusätzlich zu Entwurfsstatus und
+   * manuellem Override, nie an deren Stelle. Die Regionsschwelle setzt es.
+   */
+  noindex?: boolean;
+  /** Wird nur in der Entwicklung angezeigt — wie im Listenlayout. */
+  indexGrund?: string;
 }
-const { collection, slug, daten, registry, listen = [] } = Astro.props;
+const { collection, slug, daten, registry, listen = [], noindex = false, indexGrund } = Astro.props;
 
 const graph = buildGraph(collection, slug, daten);
 const pfad = `${sammlungsPfad(collection)}${slug}/`;
@@ -36,7 +43,7 @@ const entwurf = daten.status !== "veroeffentlicht";
   titel={daten.name}
   beschreibung={daten.kurzbeschreibung}
   kanonisch={pfad}
-  noindex={entwurf || daten.noindex}
+  noindex={entwurf || daten.noindex || noindex}
   jsonld={graph}
 >
   <nav aria-label="Brotkrumen">
@@ -48,6 +55,9 @@ const entwurf = daten.status !== "veroeffentlicht";
   <article>
     <h1>{daten.name}</h1>
     {entwurf && <p class="hinweis"><strong>Entwurf</strong> — noch nicht redaktionell freigegeben.</p>}
+    {indexGrund && import.meta.env.DEV && (
+      <p class="hinweis"><strong>noindex</strong> — {indexGrund}</p>
+    )}
 
     <Faktenblock collection={collection} daten={daten} registry={registry} />
 

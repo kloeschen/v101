@@ -13,20 +13,6 @@ für „nicht jetzt" gibt.
 
 ## Als Nächstes
 
-**Regionsschwelle bauen.** Entschieden, noch nicht gebaut: drei Einträge
-ODER eigener Fließtext über der Mindestlänge, der mehr sagt als die
-Kurzbeschreibung. Gezählt wird der gesamte Registerbestand einer Region,
-nicht nur Events. Dünne Regionen bekommen `noindex, follow`, fallen aus der
-Sitemap, bleiben aber erreichbar und verlinkt. Und sie erscheinen als Posten
-im Stale-Report — sonst ist das noindex eine stille Entscheidung, die
-niemand zurücknimmt.
-
-Zwei Fragen sind beim Bau noch zu klären und gehören zum Menschen: ob
-Entwürfe beim Zählen mitzählen (in der Produktion existieren sie nicht, in
-der Vorschau schon), und ob die Region sich selbst mitzählt oder nur, was
-auf sie verweist. Das Gerüst steht: `ListenLayout.astro` kennt `noindex`
-und `indexGrund` bereits von den Facetten.
-
 **Genres als nächste Lexikongruppe.** Rockabilly, Psychobilly,
 Neo-Rockabilly, Western Swing, Jump Blues, Doo Wop, Boogie Woogie, Lindy
 Hop. Grund: Der Autolink greift in Eventtexten kein einziges Mal — in

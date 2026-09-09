@@ -17,6 +17,7 @@ src/lib/registry.ts                    Gecachte Registry für den Build.
 src/lib/faktenblock.ts                 Feldbeschriftung und -formatierung.
 src/lib/facetten.ts                    Facettenbildung, Indexierungsschwelle.
 src/lib/facetten-einleitungen.ts       Liest src/facetten/**/*.md (nur Vite).
+src/lib/regionen.ts                    Bestandsschwelle der Regionsseiten.
 src/lib/feeds.ts                       ICS, JSON, RSS, Sitemaps, robots, llms.
 src/layouts/BasisLayout.astro          HTML-Rahmen, Meta, JSON-LD, Styles.
 src/styles/tokens.css                  Der Design-Vertrag: nur Variablen.
@@ -53,7 +54,8 @@ scripts/check-links.ts                 Prüft externe Links, mit Cache und
 scripts/check-zeitzonen.ts             Statischer Check gegen zonenlose
                                        Datumsverarbeitung.
 scripts/stale-report.ts                Was ansteht: Entwürfe, Überfälliges,
-                                       Reihen ohne Folgetermin.
+                                       Reihen ohne Folgetermin, Regionen
+                                       unter der Indexschwelle.
 scripts/archive-events.ts              Vergangene Termine auf stattgefunden.
 .claude/settings.json + hooks/         Guardrails für agentische Zugriffe.
 .github/workflows/pflege.yml           Wöchentliche Pflege als Pull Request.

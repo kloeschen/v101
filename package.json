@@ -24,7 +24,7 @@
     "links:extern": "tsx scripts/check-links.ts",
     "freigabe": "tsx scripts/check-freigabe.ts",
     "freigabe:ci": "tsx scripts/check-freigabe.ts --basis-pflicht",
-    "test": "npm run test:datum && npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink && npm run test:hooks && npm run test:validate && npm run test:freigabe && npm run test:freigeben && npm run test:pruefkette && npm run test:ausgaben && npm run test:anzeige && npm run test:stale && npm run test:orientierung",
+    "test": "npm run test:datum && npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink && npm run test:hooks && npm run test:validate && npm run test:freigabe && npm run test:freigeben && npm run test:pruefkette && npm run test:ausgaben && npm run test:anzeige && npm run test:stale && npm run test:orientierung && npm run test:regionen",
     "test:links": "tsx scripts/test-links.ts",
     "test:datum": "tsx scripts/test-datum.ts",
     "test:facetten": "tsx scripts/test-facetten.ts",
@@ -42,6 +42,7 @@
     "test:anzeige": "tsx scripts/test-anzeige.ts",
     "test:stale": "tsx scripts/test-stale.ts",
     "test:orientierung": "tsx scripts/test-orientierung.ts",
+    "test:regionen": "tsx scripts/test-regionen.ts",
     "verify:ci": "echo '::: [1/8 Zeitzonen-Konvention] :::' && npm run check:zeit && echo '::: [2/8 Freigabepruefung (Basis erforderlich)] :::' && npm run freigabe:ci && echo '::: [3/8 Inhalte (strict)] :::' && npm run validate:strict && echo '::: [4/8 JSON-LD-Graphen (strict)] :::' && npm run jsonld:strict && echo '::: [5/8 Autolink-Drift] :::' && npm run autolink:check && echo '::: [6/8 Typen (astro check)] :::' && npm run check && echo '::: [7/8 Build] :::' && npm run build && echo '::: [8/8 Tests] :::' && npm run test"
   },
   "dependencies": {
