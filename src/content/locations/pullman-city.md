@@ -2,9 +2,9 @@
 name: Pullman City Westernstadt
 aliases: [Pullman City, Westernstadt Eging]
 kurzbeschreibung: Pullman City in Eging am See ist eine ganzjaehrig geoeffnete Westernstadt in Niederbayern, die eigene Veranstaltungen mit Eintritt, Parkplatz und Uebernachtung auf dem Gelaende ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 typ: freigelaende
 adresse:

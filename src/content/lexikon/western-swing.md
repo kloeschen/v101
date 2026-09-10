@@ -2,9 +2,9 @@
 name: Western Swing
 aliases: []
 kurzbeschreibung: Western Swing ist eine Tanzmusik, die in den 1930er Jahren in Texas und Oklahoma entstand und die Besetzung ländlicher Fiddle-Kapellen mit dem Repertoire und Rhythmusgefühl des Jazz zusammenbrachte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-09
-geprueftAm: 2026-09-09
+geprueftAm: 2026-09-10
 autor: markus
 kategorie: genre
 bezeichnungEn: Western swing

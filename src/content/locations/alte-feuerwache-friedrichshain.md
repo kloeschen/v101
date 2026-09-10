@@ -2,9 +2,9 @@
 name: Alte Feuerwache Friedrichshain
 aliases: [Alte Feuerwache, Kulturhaus Alte Feuerwache]
 kurzbeschreibung: Die Alte Feuerwache in Berlin-Friedrichshain ist ein Kulturhaus mit breitem Programm, in dem regelmaessig Record Hops der Berliner Rock-'n'-Roll-Szene stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 typ: gemeindehaus
 adresse:

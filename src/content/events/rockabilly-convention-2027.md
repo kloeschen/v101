@@ -2,7 +2,7 @@
 name: Rockabilly Convention 2027
 aliases: [Rockabilly Convention Pullman City, Rockabilly Convention Eging]
 kurzbeschreibung: Die Rockabilly Convention am 4. und 5. Juni 2027 in der Westernstadt Pullman City in Eging am See verbindet Rock'n'Roll und Boogie Woogie mit Oldtimern und Verkaufsstaenden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
 geprueftAm: 2026-09-10
 geaendertAm: 2026-09-10

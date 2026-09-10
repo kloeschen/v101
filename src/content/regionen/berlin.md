@@ -2,9 +2,9 @@
 name: Berlin
 aliases: [Berlin-Kreuzberg, Berlin-Friedrichshain]
 kurzbeschreibung: Berlin ist Stadtstaat und Bundesland zugleich und traegt die dichteste laufende Rockabilly- und Psychobilly-Konzertreihe im deutschsprachigen Raum.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 ebene: bundesland
 land: DE

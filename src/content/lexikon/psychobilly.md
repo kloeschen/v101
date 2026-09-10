@@ -2,9 +2,9 @@
 name: Psychobilly
 aliases: []
 kurzbeschreibung: Psychobilly ist eine Musikrichtung, die Rockabilly mit der Härte des Punk verbindet und ihre Bildwelt aus Horror- und B-Filmen bezieht; ihre Szene formierte sich ab 1980 in London.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-09
-geprueftAm: 2026-09-09
+geprueftAm: 2026-09-10
 autor: markus
 kategorie: genre
 bezeichnungDe: Psychobilly

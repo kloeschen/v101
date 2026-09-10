@@ -2,9 +2,9 @@
 name: Boogie-Woogie
 aliases: [Boogie Woogie]
 kurzbeschreibung: Boogie-Woogie ist ein perkussiver Klavierstil des Blues mit rollender Bassfigur der linken Hand; in der deutschsprachigen Szene meint das Wort meist den gleichnamigen Paartanz.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-09
-geprueftAm: 2026-09-09
+geprueftAm: 2026-09-10
 autor: markus
 kategorie: genre
 bezeichnungEn: Boogie-woogie

@@ -2,7 +2,7 @@
 name: Record Hop in der Alten Feuerwache
 aliases: [Record Hop Friedrichshain]
 kurzbeschreibung: Tanzabend mit vier DJs in der Alten Feuerwache Berlin-Friedrichshain am 25. September 2026, mit 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
 geprueftAm: 2026-09-10
 geaendertAm: 2026-09-10

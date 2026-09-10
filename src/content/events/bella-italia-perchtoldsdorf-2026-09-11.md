@@ -2,9 +2,9 @@
 name: Finest Boogie & Swing — Bella Italia
 aliases: [Bella Italia Perchtoldsdorf, Finest Boogie und Swing Perchtoldsdorf]
 kurzbeschreibung: Tanzabend unter dem Motto Bella Italia am 11. September 2026 auf der Burg Perchtoldsdorf, ausgerichtet vom Boogie-Woogie-Club Rock Dock Teddys.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 typ: tanzabend
 beginn: 2026-09-11T18:30:00+02:00

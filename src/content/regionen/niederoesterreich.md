@@ -2,9 +2,9 @@
 name: Niederösterreich
 aliases: [NÖ, Nieder-Oesterreich]
 kurzbeschreibung: Niederoesterreich ist das flaechengroesste Bundesland Oesterreichs und traegt einen dichten, vereinsgetragenen Kalender an Boogie- und Rock-'n'-Roll-Tanzabenden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 ebene: bundesland
 land: AT

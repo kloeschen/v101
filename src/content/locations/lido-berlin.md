@@ -2,7 +2,7 @@
 name: Lido
 aliases: [Lido Berlin, Lido Kreuzberg]
 kurzbeschreibung: Das Lido in der Cuvrystraße in Berlin-Kreuzberg ist ein Konzertclub mit breitem Programm, in dem die Rock-'n'-Roll- und Garage-Szene regelmäßig Gastspiele bekommt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-10
 geprueftAm: 2026-09-10
 autor: markus

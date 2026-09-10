@@ -2,9 +2,9 @@
 name: Walldorf Rock'n'Roll Weekender 2026
 aliases: [Walldorf Weekender 2026, Walldorf Weekender]
 kurzbeschreibung: Der Walldorf Rock'n'Roll Weekender 2026 war nach Angaben der Veranstalter die letzte Ausgabe eines viertaegigen Weekenders in der Astoria-Halle Walldorf.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 typ: weekender
 reihe: walldorf-weekender

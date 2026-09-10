@@ -2,9 +2,9 @@
 name: Doo Wop
 aliases: [Doowop, Doo-Wop]
 kurzbeschreibung: Doo Wop ist ein mehrstimmiger Vokalstil des Rhythm and Blues, der Ende der 1940er Jahre in afroamerikanischen Stadtvierteln der USA entstand und in den 1950er Jahren die Charts prägte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-09
-geprueftAm: 2026-09-09
+geprueftAm: 2026-09-10
 autor: markus
 kategorie: genre
 bezeichnungEn: Doo-wop

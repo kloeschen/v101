@@ -2,7 +2,7 @@
 name: Boogie-Party am Sonntagnachmittag, September 2026
 aliases: [Boogie Party Kammgarnsaal September 2026]
 kurzbeschreibung: Tanznachmittag des Union Tanzsportvereins Möllersdorf am 20. September 2026 im Kammgarnsaal Traiskirchen, mit Einlass ab 16:30 Uhr und Musik von zwei DJs.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-10
 geprueftAm: 2026-09-10
 autor: markus

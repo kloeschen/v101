@@ -2,9 +2,9 @@
 name: Petticoat
 aliases: []
 kurzbeschreibung: Ein Petticoat ist ein versteifter, in der Taille ansetzender Unterrock aus mehreren Lagen Tüll oder Netzgewebe, der weiten Röcken und Kleidern der 1950er Jahre ihr Volumen gibt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-02
-geprueftAm: 2026-09-02
+geprueftAm: 2026-09-10
 geaendertAm: 2026-09-09
 autor: markus
 kategorie: mode

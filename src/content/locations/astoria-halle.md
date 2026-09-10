@@ -2,9 +2,9 @@
 name: Astoria-Halle Walldorf
 aliases: [Astoria-Halle, Astoria Halle Walldorf]
 kurzbeschreibung: Die Astoria-Halle in Walldorf ist eine Mehrzweckhalle, in der der Walldorf Rock'n'Roll Weekender siebenundzwanzig Ausgaben lang stattfand.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 typ: halle
 adresse:

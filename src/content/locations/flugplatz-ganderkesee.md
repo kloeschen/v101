@@ -2,9 +2,9 @@
 name: Flugplatz Ganderkesee
 aliases: [Flugplatz Ganderkesee bei Bremen, Festivalgelände Ganderkesee]
 kurzbeschreibung: Der Flugplatz Ganderkesee westlich von Bremen dient als Festivalgelaende mit Hangar, Campground und Shuttleanbindung fuer das Rock-'n'-Roll-Festival.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 typ: freigelaende
 adresse:

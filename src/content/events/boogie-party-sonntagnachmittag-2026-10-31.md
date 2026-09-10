@@ -2,7 +2,7 @@
 name: Boogie-Party am Sonntagnachmittag, Oktober 2026
 aliases: [Boogie Party Kammgarnsaal Oktober 2026]
 kurzbeschreibung: Tanznachmittag des Union Tanzsportvereins Möllersdorf am 31. Oktober 2026 im Kammgarnsaal Traiskirchen — trotz des Reihennamens ein Samstag, mit Einlass ab 16:30 Uhr.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-10
 geprueftAm: 2026-09-10
 autor: markus

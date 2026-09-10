@@ -2,7 +2,7 @@
 name: Rock'n'Roll & Boogie Woogie Weekend 2027
 aliases: [Rock'n'Roll Boogie Woogie Weekend Pullman City]
 kurzbeschreibung: Zweitägiges Tanzwochenende am 15. und 16. Januar 2027 in der Westernstadt Pullman City in Eging am See, mit Kursen, einem Livekonzert des Scotty Bullock Trios und DJ-Programm.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-10
 geprueftAm: 2026-09-10
 autor: markus

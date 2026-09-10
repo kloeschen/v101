@@ -2,9 +2,9 @@
 name: Burg Perchtoldsdorf
 aliases: [Burg Perchtoldsdorf Festsaal]
 kurzbeschreibung: Die Burg Perchtoldsdorf suedlich von Wien ist ein historisches Gebaeude, in dem Vereine der oesterreichischen Boogie- und Swingszene Tanzabende ausrichten.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 typ: sonstiges
 adresse:

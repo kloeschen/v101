@@ -2,9 +2,9 @@
 name: Lindy Hop
 aliases: [Lindy]
 kurzbeschreibung: Lindy Hop ist ein Paartanz, der 1928 in Harlem zur Musik der Swing-Big-Bands entstand und als Ursprungstanz der Swing-Tänze gilt, aus dem Jive, Boogie-Woogie und der akrobatische Rock'n'Roll hervorgingen.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-09
-geprueftAm: 2026-09-09
+geprueftAm: 2026-09-10
 autor: markus
 kategorie: tanz
 bezeichnungEn: Lindy Hop

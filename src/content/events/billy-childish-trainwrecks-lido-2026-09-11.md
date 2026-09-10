@@ -2,7 +2,7 @@
 name: Billy Childish / Trainwrecks im Lido
 aliases: [Billy Childish Berlin 2026]
 kurzbeschreibung: Konzert von Billy Childish und Trainwrecks am 11. September 2026 im Lido in Berlin-Kreuzberg, angekündigt mit den Stilrichtungen Blues, Garage und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-10
 geprueftAm: 2026-09-10
 autor: markus

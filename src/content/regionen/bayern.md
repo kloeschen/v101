@@ -2,9 +2,9 @@
 name: Bayern
 aliases: [Freistaat Bayern]
 kurzbeschreibung: Bayern ist das flaechengroesste Bundesland Deutschlands; fuer die Vintage-Szene zaehlen hier vor allem mehrtaegige Veranstaltungen abseits der grossen Staedte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 ebene: bundesland
 land: DE

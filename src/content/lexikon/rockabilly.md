@@ -2,9 +2,9 @@
 name: Rockabilly
 aliases: []
 kurzbeschreibung: Rockabilly ist eine Spielart des Rock'n'Roll, die Mitte der 1950er Jahre im Süden der USA aus Hillbilly-Country und Rhythm and Blues entstand und ihr Zentrum in Memphis hatte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-09
-geprueftAm: 2026-09-09
+geprueftAm: 2026-09-10
 autor: markus
 kategorie: genre
 bezeichnungDe: Rockabilly

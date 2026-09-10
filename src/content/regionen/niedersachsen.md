@@ -2,9 +2,9 @@
 name: Niedersachsen
 aliases: [Land Niedersachsen]
 kurzbeschreibung: Niedersachsen ist das zweitgroesste Bundesland Deutschlands; die Rock-'n'-Roll-Szene tritt hier vor allem in Form grosser Freigelaende-Festivals in Erscheinung.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 ebene: bundesland
 land: DE

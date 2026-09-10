@@ -2,7 +2,7 @@
 name: Kammgarnsaal Traiskirchen
 aliases: [Kammgarnsaal, Kammgarnsaal Möllersdorf]
 kurzbeschreibung: Der Kammgarnsaal in Traiskirchen südlich von Wien ist ein Veranstaltungssaal, in dem der Union Tanzsportverein Möllersdorf seine Boogie-Nachmittage ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-10
 geprueftAm: 2026-09-10
 autor: markus

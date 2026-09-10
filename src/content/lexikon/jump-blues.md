@@ -2,9 +2,9 @@
 name: Jump Blues
 aliases: []
 kurzbeschreibung: Jump Blues ist eine schnelle, bläsergetriebene Spielart des Blues, die ab den späten 1930er Jahren aus der Verkleinerung der Big Bands entstand und als Vorläufer von Rhythm and Blues und Rock'n'Roll gilt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-09
-geprueftAm: 2026-09-09
+geprueftAm: 2026-09-10
 autor: markus
 kategorie: genre
 bezeichnungEn: Jump blues

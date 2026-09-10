@@ -2,9 +2,9 @@
 name: Rhein-Neckar
 aliases: [Metropolregion Rhein-Neckar, Kurpfalz]
 kurzbeschreibung: Die Metropolregion Rhein-Neckar ist ein Verdichtungsraum im Dreilaendereck von Baden-Wuerttemberg, Rheinland-Pfalz und Hessen mit rund 2,4 Millionen Einwohnern.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
 autor: markus
 ebene: metropolregion
 land: DE
