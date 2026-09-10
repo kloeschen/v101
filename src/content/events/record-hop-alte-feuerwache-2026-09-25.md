@@ -65,7 +65,7 @@ quellen:
     art: offiziell
 ---
 
-Der Record Hop ist ein Tanzabend am 25. September 2026 ab 21 Uhr in der Alten Feuerwache in Berlin-Friedrichshain. Aufgelegt wird von vier DJs; gespielt werden nach Angabe der Veranstalter 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und Rockabilly.
+Der Record Hop ist ein Tanzabend am 25. September 2026 ab 21 Uhr in der Alten Feuerwache in Berlin-Friedrichshain. Aufgelegt wird von vier DJs; gespielt werden nach Angabe der Veranstalter 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und [Rockabilly](/lexikon/rockabilly/).
 
 ## Der Abend
 

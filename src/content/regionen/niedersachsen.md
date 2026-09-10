@@ -31,7 +31,7 @@ quellen:
     art: offiziell
 ---
 
-Niedersachsen ist nach Fläche das zweitgrößte Bundesland Deutschlands. Für die Vintage- und Rockabilly-Szene tritt es weniger über Clubkonzerte in Erscheinung als über große Festivals auf Freigelände, die ein überregionales Publikum für ein Wochenende zusammenziehen.
+Niedersachsen ist nach Fläche das zweitgrößte Bundesland Deutschlands. Für die Vintage- und [Rockabilly](/lexikon/rockabilly/)-Szene tritt es weniger über Clubkonzerte in Erscheinung als über große Festivals auf Freigelände, die ein überregionales Publikum für ein Wochenende zusammenziehen.
 
 ## Eckdaten zu Niedersachsen
 

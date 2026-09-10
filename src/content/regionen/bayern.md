@@ -31,7 +31,7 @@ quellen:
     art: offiziell
 ---
 
-Bayern ist das flächengrößte Bundesland Deutschlands und für die Vintage- und Rockabilly-Szene vor allem über mehrtägige Veranstaltungen präsent, die nicht in den großen Städten stattfinden, sondern auf Geländen im ländlichen Raum.
+Bayern ist das flächengrößte Bundesland Deutschlands und für die Vintage- und [Rockabilly](/lexikon/rockabilly/)-Szene vor allem über mehrtägige Veranstaltungen präsent, die nicht in den großen Städten stattfinden, sondern auf Geländen im ländlichen Raum.
 
 ## Eckdaten zu Bayern
 

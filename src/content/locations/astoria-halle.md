@@ -37,7 +37,7 @@ quellen:
     art: offiziell
 ---
 
-Die Astoria-Halle in Walldorf ist eine Mehrzweckhalle in der Metropolregion Rhein-Neckar. Für die Rockabilly-Szene ist sie vor allem als Spielstätte des [Walldorf Rock'n'Roll Weekenders](/events/walldorf-weekender-2026/) bekannt, der dort nach Angaben der Veranstalter siebenundzwanzig Ausgaben lang stattfand.
+Die Astoria-Halle in Walldorf ist eine Mehrzweckhalle in der Metropolregion Rhein-Neckar. Für die [Rockabilly](/lexikon/rockabilly/)-Szene ist sie vor allem als Spielstätte des [Walldorf Rock'n'Roll Weekenders](/events/walldorf-weekender-2026/) bekannt, der dort nach Angaben der Veranstalter siebenundzwanzig Ausgaben lang stattfand.
 
 ## Das Haus
 

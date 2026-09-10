@@ -13,6 +13,79 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-09 — Sieben Genres, und warum nicht acht
+
+**Auftrag war:** Genres als nächste Lexikongruppe — Rockabilly, Psychobilly,
+Neo-Rockabilly, Western Swing, Jump Blues, Doo Wop, Boogie Woogie, Lindy Hop.
+Grund: Der Autolink griff in Eventtexten kein einziges Mal, weil zehn
+Modebegriffe dort nicht vorkommen.
+
+**Gebaut sind sieben.** `neo-rockabilly` fehlt, weil keine der geöffneten
+Quellen den Begriff definiert. Die englische Wikipedia führt einen Stub, der
+ihn auf „ab 1990" datiert und Kings of Leon und The Black Keys nennt; die
+deutsche datiert Neo-Rockabilly im Rockabilly-Artikel auf die 1980er und die
+Stray Cats; der Artikel zu Restless nennt die Band „pioneers of
+neo-rockabilly", ohne zu sagen, was das ist. Zwei einander widersprechende
+Datierungen und keine Definition tragen keinen Eintrag — die Unterscheidung
+steht stattdessen in der `abgrenzung` von Rockabilly und Psychobilly, und der
+Begriff steht als offener Punkt mit der Angabe, was ihm fehlt.
+
+**Der Autolink greift jetzt.** Das war der eigentliche Zweck, und er ist
+gemessen statt behauptet:
+
+| Sammlung | `/lexikon/`-Links vorher | nachher |
+|---|---|---|
+| events | 0 | 4 |
+| locations | 0 | 3 |
+| regionen | 0 | 4 |
+
+Dazu 12 neue Querverweise innerhalb des Lexikons. Insgesamt 36 gesetzte Links
+in 20 Dateien, alle von `npm run autolink` erzeugt und nicht von Hand.
+
+**Widersprüche stehen im Text, nicht in der Auswahl** (Regel 5 der
+Lexikonregeln, Lektion 20). Vier der sieben Einträge tragen einen benannten
+Quellenkonflikt:
+
+- *Doo Wop:* Die deutsche Wikipedia führt die Verbreitung des Namens auf den
+  Discjockey Gus Gossert ab 1969 zurück; die englische nennt einen älteren
+  gedruckten Beleg (1961, Chicago Defender) und hält fest, dass die
+  Zuschreibung an Gossert bestritten wurde. Gesichert ist beiden nur das
+  Gefälle: Die Musik ist rund ein Jahrzehnt älter als ihr Name.
+- *Western Swing:* Die englische Wikipedia führt ihn schlicht als
+  Country-Untergenre, die deutsche nennt genau diese Einordnung umstritten
+  und zitiert Musiker, die ihre Musik als jazznäher beschrieben. Beides steht
+  da, samt der praktischen Folge für ein Register.
+- *Rockabilly:* Erstbeleg (Billboard, 23. Juni 1956) und Durchsetzung des
+  Wortes (Revival der frühen 1980er) fallen 25 Jahre auseinander. Kein
+  Widerspruch, aber zwei verschiedene Fragen — im Text getrennt.
+- *Psychobilly:* Vorgeschichte in New York gegen Gründung in London; beide
+  Quellen einig nur bei The Meteors, 1980.
+
+**Zwei Einordnungen, die nicht selbstverständlich sind.** `lindy-hop` bekommt
+`kategorie: tanz` statt `genre` — er ist der einzige der Gruppe, der keine
+Musikrichtung bezeichnet. Und `boogie-woogie` ist der Klavierstil, obwohl das
+Wort in der deutschsprachigen Szene fast immer den Paartanz meint; die
+Verwechslung ist so verbreitet, dass sie den ganzen Abgrenzungsabschnitt
+trägt, samt der entscheidenden Auskunft: Zum Boogie-Woogie-Tanz läuft
+Rock'n'Roll, Rockabilly, Jump Blues und Swing, gerade nicht die gleichnamige
+Musik. Ob der Tanz einen eigenen Eintrag bekommt, entscheidet ein Mensch.
+
+**Ein Prüfergebnis, das kein Fehler ist.** `npm run links:extern` meldet
+`britannica.com/art/boogie-woogie` als tot (HTTP 403, auch nach dem
+GET-Nachfassen), obwohl die Seite abrufbar ist und gelesen wurde — Britannica
+weist automatisierte Abrufe ab. Der Beleg bleibt stehen: Eine gute Quelle zu
+streichen, weil ein Prüfskript sie nicht sehen darf, ist der falsche Weg
+herum. Damit meldet der wöchentliche Linkcheck aber dauerhaft einen
+Fehlalarm, und Fehlalarme sind der Anfang vom Überlesen. Der Vorschlag — eine
+benannte Hostliste in `check-links.ts`, deren 403 als „auffällig" statt „tot"
+gilt, herabgestuft und nicht übersprungen — steht in OFFENE-PUNKTE.md und ist
+nicht gebaut, weil er eine Regeländerung wäre.
+
+**Alle sieben stehen auf `status: entwurf`.** Die Freigabe ist eine
+menschliche Entscheidung; `npm run stale` führt sie in der Warteschlange.
+
+---
+
 ## 2026-09-09 — Regionsschwelle: über den Bestand, nicht über den Text
 
 **Auftrag war:** Dünne Regionsseiten aus dem Index nehmen. Schwelle: drei

@@ -13,14 +13,44 @@ für „nicht jetzt" gibt.
 
 ## Als Nächstes
 
-**Genres als nächste Lexikongruppe.** Rockabilly, Psychobilly,
-Neo-Rockabilly, Western Swing, Jump Blues, Doo Wop, Boogie Woogie, Lindy
-Hop. Grund: Der Autolink greift in Eventtexten kein einziges Mal — in
-Events, Locations und Regionen steht bis heute kein einziger
-`/lexikon/`-Link, weil zehn Mode-Begriffe dort nicht vorkommen. `genres`
-bleibt bei allen fünf Events leer, und das Register hat außerhalb des
-Golden Example keinen einzigen Eintrag der Kategorie `genre`. Erst mit den
-Genres verzahnen sich Lexikon, Bands und Events.
+**`genres` an den Events nachziehen.** Die sieben Genre-Einträge stehen, das
+Feld `genres` ist bei allen fünf Events weiterhin leer. Es nachzutragen ist
+kein Formalakt: Jede Zuordnung ist eine Behauptung über die Veranstaltung und
+braucht einen Beleg in deren eigener Quellenlage — der Veranstalter muss das
+Genre nennen, nicht der Lexikoneintrag. Wo die Quelle schweigt, bleibt das
+Feld leer.
+
+**Neo-Rockabilly: erst eine Quelle, dann ein Eintrag.** Der Begriff war als
+achter der Gruppe vorgesehen und ist nicht angelegt, weil ihn keine der
+geöffneten Quellen definiert. Die englische Wikipedia führt einen Stub, der
+das Genre auf „ab 1990" datiert und Kings of Leon und The Black Keys nennt;
+die deutsche Wikipedia datiert Neo-Rockabilly im Rockabilly-Artikel auf die
+1980er Jahre und die Stray Cats. Der Artikel zu Restless nennt die Band
+„pioneers of neo-rockabilly", ohne zu sagen, was das ist. Zwei einander
+widersprechende Datierungen und keine Definition tragen keinen Eintrag.
+Nötig wäre eine Quelle, die den Begriff bestimmt — Fachliteratur oder ein
+Szenemagazin. Bis dahin steht die Unterscheidung in der `abgrenzung` von
+Rockabilly und Psychobilly.
+
+**Boogie-Woogie als Tanz: eigener Eintrag oder nicht?** Im deutschsprachigen
+Raum meint das Wort fast immer den Paartanz und nicht den Klavierstil, und
+getanzt wird dazu Rock'n'Roll, Rockabilly, Jump Blues und Swing — gerade
+nicht die gleichnamige Musik. Derzeit trägt der Musikeintrag die
+Unterscheidung in `abgrenzung` und einem eigenen Abschnitt. Ob daraus ein
+zweiter Eintrag `boogie-woogie-tanz` wird, ist eine Ermessensfrage: Zwei
+Einträge sind sauberer, ein Slug mit Klammerzusatz ist hässlich, und der
+Autolink kann zwei gleichnamige Begriffe nicht auseinanderhalten.
+
+**Britannica und der wöchentliche Linkcheck.** `npm run links:extern` meldet
+`britannica.com/art/boogie-woogie` als tot (HTTP 403, auch nach dem
+GET-Nachfassen), obwohl die Seite abrufbar ist — Britannica weist
+automatisierte Abrufe ab. Die Quelle bleibt stehen; eine gute Quelle zu
+streichen, weil ein Prüfskript sie nicht sehen darf, wäre der falsche Weg
+herum. Damit meldet `linkcheck.yml` wöchentlich einen Fehlalarm, und genau
+davon lebt die Gewöhnung ans Überlesen. Vorschlag zur Entscheidung: eine
+benannte, begründete Liste von Hosts in `check-links.ts`, deren 403 als
+`auffällig` statt als `tot` gilt — nicht überspringen, nur herabstufen, damit
+der Fall sichtbar bleibt.
 
 **Kapsel und Überschrift auf Übersichtsseiten.** „Das Register enthält 10
 Einträge in der Kategorie Lexikon" ist eine Zählung, keine Auskunft. Die

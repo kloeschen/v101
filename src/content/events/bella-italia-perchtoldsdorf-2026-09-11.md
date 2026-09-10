@@ -48,7 +48,7 @@ quellen:
     art: offiziell
 ---
 
-Bella Italia ist ein Tanzabend der Reihe Finest Boogie & Swing am Freitag, dem 11. September 2026, ab 18.30 Uhr auf der Burg Perchtoldsdorf südlich von Wien. Ausgerichtet wird er vom Boogie-Woogie-Club Rock Dock Teddys.
+Bella Italia ist ein Tanzabend der Reihe Finest Boogie & Swing am Freitag, dem 11. September 2026, ab 18.30 Uhr auf der Burg Perchtoldsdorf südlich von Wien. Ausgerichtet wird er vom [Boogie-Woogie](/lexikon/boogie-woogie/)-Club Rock Dock Teddys.
 
 ## Der Abend
 
