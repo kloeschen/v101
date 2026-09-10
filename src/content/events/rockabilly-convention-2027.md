@@ -4,7 +4,8 @@ aliases: [Rockabilly Convention Pullman City, Rockabilly Convention Eging]
 kurzbeschreibung: Die Rockabilly Convention am 4. und 5. Juni 2027 in der Westernstadt Pullman City in Eging am See verbindet Rock'n'Roll und Boogie Woogie mit Oldtimern und Verkaufsstaenden.
 status: entwurf
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
+geaendertAm: 2026-09-10
 autor: markus
 typ: convention
 reihe: rockabilly-convention-pullman-city
@@ -15,8 +16,9 @@ ganztaegig: true
 ort: pullman-city
 region: bayern
 eintritt: beziffert
+genres: [rockabilly, boogie-woogie]
 veranstalter: Pullman City Westernstadt
-veranstalterUrl: https://pullmancity.de
+veranstalterUrl: https://www.pullmancity.de
 preise:
   - bezeichnung: Tageskarte Erwachsener (ab 15 Jahre)
     betrag: 33.5
@@ -60,13 +62,19 @@ redaktionsnotiz: >-
   Nicht gefuellt: lineupBands und lineupWeitere. Die Seite nennt im
   Fliesstext einen Musiker namentlich, aber kein Line-up der Ausgabe
   2027 -- die genannte Person gehoert zur Beschreibung des Formats.
-  genres leer, weil das Register keine Lexikoneintraege der Kategorie
-  `genre` hat.
+  veranstalterUrl am 2026-09-10 auf die www-Form gesetzt: Die
+  Nicht-www-Form leitet dorthin weiter, und der Betreiber liefert seine
+  eigenen Adressen mit www aus. `npm run links:extern` hatte die
+  Weiterleitung als "umgezogen" gemeldet.
+  GENRES NACHGETRAGEN am 2026-09-10: Der Titel der Veranstaltung lautet
+  bei der Quelle "Rockabilly Convention meets Rock'n'Roll & Boogie
+  Woogie", und der Fliesstext nennt beide Stilrichtungen. Beide haben
+  seit dem 2026-09-09 einen Lexikoneintrag.
 quellen:
   - url: https://www.pullmancity.de/events-shows-musik/events/rockabilly-convention
     titel: Rockabilly Convention meets Rock'n'Roll & Boogie Woogie (Pullman City)
     abgerufenAm: 2026-09-04
-    felder: [beginn, ende, ort, eintritt, preise, veranstalter, veranstalterUrl, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
+    felder: [beginn, ende, ort, eintritt, preise, veranstalter, veranstalterUrl, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
     art: offiziell
 ---
 
