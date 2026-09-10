@@ -4,14 +4,16 @@ aliases: [Record Hop Friedrichshain]
 kurzbeschreibung: Tanzabend mit vier DJs in der Alten Feuerwache Berlin-Friedrichshain am 25. September 2026, mit 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und Rockabilly.
 status: entwurf
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-04
+geprueftAm: 2026-09-10
+geaendertAm: 2026-09-10
 autor: markus
 typ: tanzabend
-beginn: 2026-09-25T21:00:00+02:00
-ende: 2026-09-26
+beginn: 2026-09-25T19:00:00+02:00
+ende: 2026-09-26T05:00:00+02:00
 ort: alte-feuerwache-friedrichshain
 region: berlin
 eintritt: unveroeffentlicht
+genres: [rockabilly]
 djs: [Sweet Sue, Chrille, Raockin' Vagabond, Chill Bill]
 durchfuehrung: geplant
 links:
@@ -48,15 +50,30 @@ redaktionsnotiz: >-
   Nacht; die Quelle sagt keine Uhrzeit, also erfinde ich keine.
   Nicht gefuellt: veranstalter (organizer im JSON-LD ist ein leeres
   Person-Objekt), kapazitaet, barrierefrei, genres.
-  GENRES LEER, obwohl die Seite "50s Rock'n'Roll, Jump & Jive,
-  Rhythm'n'Blues, Rockabilly" nennt: Das Feld verweist auf
-  Lexikoneintraege, und das Register hat bisher keinen einzigen Eintrag
-  der Kategorie `genre`. Die Angabe steht deshalb nur im Fliesstext.
+  GENRES NACHGETRAGEN am 2026-09-10: Die Seite nennt "50s Rock'n'Roll,
+  Jump & Jive, Rhythm'n'Blues, Rockabilly". Von diesen vier hat nur
+  Rockabilly einen Lexikoneintrag; die uebrigen drei stehen weiter nur im
+  Fliesstext. "Jump & Jive" ist bewusst NICHT auf `jump-blues`
+  abgebildet -- Jive ist ein Tanz, und die Zusammenziehung im
+  Ankuendigungstext sagt nicht, dass Jump Blues gemeint ist.
+  KORREKTUR DER ANFANGSZEIT am 2026-09-10. Der Eintrag stand auf
+  21:00 Uhr. Beim erneuten Abruf nennt die Quelle an zwei Stellen
+  uebereinstimmend 19:00 Uhr: das sichtbare Feld "Uhrzeit" und der
+  Kalenderlink mit startDate 20260925T170000Z, was 19:00 MESZ entspricht;
+  dessen endDate 20260926T030000Z ergibt 05:00 MESZ am Folgetag, weshalb
+  `ende` jetzt eine Uhrzeit traegt statt nur ein Datum.
+  Ob die Seite sich seit dem Abruf am 2026-09-04 geaendert hat oder die
+  erste Lesung falsch war, laesst sich von hier aus nicht entscheiden.
+  Beide Lesarten stehen deshalb hier mit ihrem Datum. Was die Korrektur
+  ausgeloest hat, ist bemerkenswert: Der Termin wurde nur deshalb erneut
+  geoeffnet, weil auf derselben Seite nach Nachbarterminen gesucht wurde.
+  Ohne diesen Zufall haette die Pruefkadenz von 30 Tagen den Fehler erst
+  Anfang Oktober gefunden -- nach dem Termin.
 quellen:
   - url: https://www.rockin-wildcat.com/rwc/events/record-hop-60
     titel: Record Hop, 25. September 2026 (Rockin' Wildcat)
     abgerufenAm: 2026-09-04
-    felder: [beginn, ende, ort, djs, eintritt, name, kurzbeschreibung, durchfuehrung, body:abend, body:musik]
+    felder: [beginn, ende, ort, djs, eintritt, genres, name, kurzbeschreibung, durchfuehrung, body:abend, body:musik]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/guide
     titel: Berlin Gig Guide (Rockin' Wildcat)
@@ -65,7 +82,7 @@ quellen:
     art: offiziell
 ---
 
-Der Record Hop ist ein Tanzabend am 25. September 2026 ab 21 Uhr in der Alten Feuerwache in Berlin-Friedrichshain. Aufgelegt wird von vier DJs; gespielt werden nach Angabe der Veranstalter 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und [Rockabilly](/lexikon/rockabilly/).
+Der Record Hop ist ein Tanzabend am 25. September 2026 ab 19 Uhr in der Alten Feuerwache in Berlin-Friedrichshain. Aufgelegt wird von vier DJs; gespielt werden nach Angabe der Veranstalter 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und [Rockabilly](/lexikon/rockabilly/).
 
 ## Der Abend
 

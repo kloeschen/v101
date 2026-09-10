@@ -13,12 +13,43 @@ für „nicht jetzt" gibt.
 
 ## Als Nächstes
 
-**`genres` an den Events nachziehen.** Die sieben Genre-Einträge stehen, das
-Feld `genres` ist bei allen fünf Events weiterhin leer. Es nachzutragen ist
-kein Formalakt: Jede Zuordnung ist eine Behauptung über die Veranstaltung und
-braucht einen Beleg in deren eigener Quellenlage — der Veranstalter muss das
-Genre nennen, nicht der Lexikoneintrag. Wo die Quelle schweigt, bleibt das
-Feld leer.
+**Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
+fünf Regionen haben jetzt drei bis fünf Verweise und kommen mit der Freigabe
+über die Bestandsschwelle. Diese beiden stehen weiter bei zwei. Für
+Niedersachsen führt jede Spur auf das Festival in Ganderkesee zurück, das
+schon erfasst ist. Für Rhein-Neckar war der Walldorf Weekender 2026
+ausdrücklich die letzte Ausgabe, und es wurde kein Ersatz gefunden; die
+naheliegenden Verzeichnisse (livegigs.de) antworten automatisierten Abrufen
+mit HTTP 403. Beides braucht entweder eine andere Quelle oder eine Recherche
+von Hand.
+
+**Der Skill `events-recherche` passt nicht auf dieses Repo.** Er verweist auf
+ein anderes Projektverzeichnis und auf ein Frontmatter mit `title`, `datum`,
+`stadt`, `tags`, `wiederkehrend` — keines dieser Felder existiert hier, und
+das Schema ist `.strict()`. Vor allem fehlt ihm die Belegpflicht: keine
+Quellen, keine Felderdeckung, kein Entwurfsstatus. Er wurde deshalb nicht
+ausgeführt. Er liegt im Skill-Verzeichnis des Benutzers und damit außerhalb
+dieses Repos; anpassen oder auf das alte Projekt beschränken kann ihn nur
+ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
+gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
+geprüft ist bisher nur dieser eine.
+
+**`genres` an den restlichen Events.** Nachgetragen sind Rockabilly
+Convention, Record Hop und die beiden neuen Termine. Offen bleiben Bella
+Italia und das Ganderkesee-Festival. Es ist kein Formalakt: Jede Zuordnung
+ist eine Behauptung über die Veranstaltung und braucht einen Beleg in deren
+eigener Quellenlage. Wo die Quelle schweigt, bleibt das Feld leer — und bei
+Boogie-Tanzabenden bleibt es leer, auch wenn die Quelle „Boogie" sagt, weil
+der Lexikoneintrag den Klavierstil bezeichnet und nicht den Tanz.
+
+**Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
+Events steht auf 30 Tagen und hätte die falsche Anfangszeit des Record Hop
+beinahe bis nach den Termin getragen; gefunden wurde sie nur, weil die Seite
+aus einem anderen Grund erneut geöffnet wurde. Zu entscheiden: ob
+`stale-report.ts` einen Posten „Termin steht bevor, letzte Prüfung liegt
+zurück" bekommt. Vorher messen, wie oft sich Angaben in den letzten Tagen vor
+einem Termin tatsächlich ändern — bei sieben Events ist das noch nicht
+beantwortbar.
 
 **Neo-Rockabilly: erst eine Quelle, dann ein Eintrag.** Der Begriff war als
 achter der Gruppe vorgesehen und ist nicht angelegt, weil ihn keine der

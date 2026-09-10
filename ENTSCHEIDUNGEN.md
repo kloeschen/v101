@@ -13,6 +13,88 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-10 — Drei Regionen über die Schwelle, und eine Korrektur
+
+**Auftrag war:** ein zweites Event je Region, damit jede Region die
+Bestandsschwelle von drei freigegebenen Einträgen erreicht.
+
+**Erreicht bei drei von fünf.** Gezählt wird, was auf die Region zeigt:
+
+| Region | vorher | jetzt | neu |
+|---|---|---|---|
+| Niederösterreich | 2 | 5 | zwei Ausgaben der Boogie-Party, Kammgarnsaal Traiskirchen |
+| Berlin | 2 | 4 | Billy Childish / Trainwrecks, Lido |
+| Bayern | 2 | 3 | Rock'n'Roll & Boogie Woogie Weekend, Pullman City |
+| Niedersachsen | 2 | 2 | — |
+| Rhein-Neckar | 2 | 2 | — |
+
+Alle Einträge stehen auf `status: entwurf`; die Zahlen greifen erst mit der
+Freigabe.
+
+**Warum zwei Regionen offen blieben.** Für Niedersachsen liefert die einzige
+belastbare Spur denselben Termin, der schon im Register steht — das Festival
+in Ganderkesee, dessen Datum 2027-08-20 bis 2027-08-22 die Suche bestätigt
+hat. Für Rhein-Neckar hat die Suche in Mannheim, Heidelberg und Ludwigshafen
+nichts Belegbares in der Zukunft ergeben; die naheliegenden Verzeichnisse
+(livegigs.de) antworten automatisierten Abrufen mit HTTP 403. Der Walldorf
+Weekender, bislang der einzige Termin der Region, war 2026 ausdrücklich der
+letzte. Kein Ersatz gefunden heißt hier: kein Eintrag, nicht ein schwacher.
+
+**FUND: Die Anfangszeit des Record Hop war falsch.** Der Eintrag stand auf
+21:00 Uhr. Beim erneuten Abruf am 2026-09-10 nennt die Quelle an zwei
+unabhängigen Stellen 19:00 Uhr — das sichtbare Feld „Uhrzeit" und den
+Kalenderlink mit `startDate 20260925T170000Z`, also 19:00 MESZ. Dessen
+`endDate 20260926T030000Z` ergibt 05:00 MESZ am Folgetag, weshalb `ende`
+jetzt eine Uhrzeit trägt statt nur ein Datum.
+
+Ob sich die Seite seit dem 2026-09-04 geändert hat oder die erste Lesung
+falsch war, lässt sich von hier aus nicht entscheiden; beide Lesarten stehen
+mit ihrem Datum in der Redaktionsnotiz. Bemerkenswert ist, **wie** der Fehler
+gefunden wurde: Die Seite wurde nur deshalb erneut geöffnet, weil auf ihr nach
+Nachbarterminen gesucht wurde. Ohne diesen Zufall hätte die Prüfkadenz von
+30 Tagen ihn erst Anfang Oktober gefunden — nach dem Termin. Das ist ein
+Argument dafür, Termine kurz vor ihrem Datum noch einmal anzufassen, und
+nicht nur nach Kadenz.
+
+**`genres` nachgetragen, aber nicht überall.** Drei Entscheidungen, und die
+mittlere ist die interessante:
+
+- *Rockabilly Convention* → `[rockabilly, boogie-woogie]`. Beide stehen im
+  Titel der Veranstaltung bei der Quelle.
+- *Boogie-Party am Sonntagnachmittag* → **leer**, obwohl es eine Boogie-Party
+  ist. `genres` verweist auf Lexikoneinträge, und `boogie-woogie` bezeichnet
+  dort den Klavierstil. Getanzt wird auf solchen Nachmittagen aber gerade
+  nicht dieser Stil, sondern Rock'n'Roll, Rockabilly, Jump Blues und Swing —
+  das steht so in der Quelle zum Tanz. Ein `genres: [boogie-woogie]` würde
+  genau die Verwechslung ins Register schreiben, vor der der Lexikoneintrag
+  warnt. Der Eintrag, der letzte Woche geschrieben wurde, hat diese Woche eine
+  Falschzuordnung verhindert.
+- *Record Hop* → `[rockabilly]`. Die Quelle nennt vier Stilrichtungen, drei
+  davon haben keinen Lexikoneintrag. „Jump & Jive" ist bewusst **nicht** auf
+  `jump-blues` abgebildet: Jive ist ein Tanz, und die Zusammenziehung im
+  Ankündigungstext sagt nicht, dass Jump Blues gemeint ist.
+
+**Der Skill `events-recherche` passt nicht auf dieses Repo.** Er verweist auf
+`/Users/…/vintage-rockabilly-guide/MEMORY.md` und auf ein Frontmatter mit
+`title`, `datum`, `stadt`, `tags`, `wiederkehrend`. Keines dieser Felder
+existiert in `src/content/_schemas.ts`, und das Schema ist `.strict()` — so
+erzeugte Dateien würden nicht geparst. Vor allem fehlt ihm die Belegpflicht:
+kein `quellen[]`, kein `felder`, kein `status: entwurf`. Er wurde deshalb
+nicht ausgeführt; übernommen wurden nur Recherche-Regionen, Duplikatprüfung,
+Zukunftsprüfung und Ton. Der Skill gehört angepasst oder auf das alte Projekt
+beschränkt — er liegt unter `~/.claude/skills/`, also außerhalb dieses Repos
+und außerhalb dessen, was ein Agent hier ändern darf.
+
+**Nebenbefund:** `veranstalterUrl` bei beiden Pullman-City-Terminen auf die
+www-Form gesetzt. Die Nicht-www-Form leitet dorthin weiter, und
+`links:extern` meldete das als „umgezogen".
+
+**Belege:** `npm run verify` grün, unter `--strict` null Warnungen. Von den
+sechs neuen Quell-URLs sind alle erreichbar; `links:extern` meldet weiterhin
+nur die bekannte Britannica-403.
+
+---
+
 ## 2026-09-09 — Sieben Genres, und warum nicht acht
 
 **Auftrag war:** Genres als nächste Lexikongruppe — Rockabilly, Psychobilly,
