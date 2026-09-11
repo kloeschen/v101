@@ -21,7 +21,7 @@ import { z } from "zod";
 import { existsSync } from "node:fs";
 import { ladeAlle, WURZEL, liegtImRegister, type GeladenerEintrag } from "./_laden";
 import { RESERVIERTE_SEGMENTE } from "../src/lib/facetten";
-import { istVorbei } from "../src/lib/datum";
+import { istVorbei, jahrIn } from "../src/lib/datum";
 import {
   collectionSchemas,
   collectionNames,
@@ -559,18 +559,92 @@ const REGELN: Regel[] = [
     },
   },
 
+  /*
+   * band-jahre — Widersprüche zwischen Jahreszahlen einer Band.
+   *
+   * Die Untergrenze im Schema steht seit dem 2026-09-11 auf 1900 (vorher
+   * 1930, das schloss Pinetop Smiths Aufnahme von 1928 aus). Sie fängt
+   * einen Wert ab, der zu FRÜH ist. Die drei Fälle hier fängt sie nicht:
+   *
+   *   1. Auflösung vor Gründung
+   *   2. ein Jahr, das zu weit in der ZUKUNFT liegt
+   *   3. eine Veröffentlichung vor der Gründung der Band
+   *
+   * Fall 2 ist der, den die Schemagrenze strukturell nicht sehen kann:
+   * `max(2100)` lässt eine Gründung im Jahr 2062 durch, und der Zahlendreher
+   * aus 1962 ist genau der Fehler, der beim Abtippen passiert. Eine
+   * mitlaufende Obergrenze gehört nicht ins Schema — Zod hat dort keine
+   * Zeitzone, und ein Schema, dessen Ergebnis von der Uhr des Servers
+   * abhängt, wäre die nächste Fassung von Lektion 1. Hier ist die Zeitzone
+   * da: `jahrIn(ctx.heute)` rechnet in site.zeitzone.
+   *
+   * Die Grenze ist das FOLGEJAHR, nicht das laufende: Eine Band, die für
+   * nächstes Jahr angekündigt ist, und ein Album mit Vorbestellung sind
+   * beides normale Einträge.
+   *
+   * BEWUSST NICHT GEPRÜFT: eine Veröffentlichung NACH der Auflösung.
+   * Compilations und Live-Mitschnitte erscheinen regelmäßig Jahrzehnte
+   * danach, und auch ein Studioalbum kommt oft erst nach der Trennung
+   * heraus. Die Regel hätte eine hohe Fehlalarmquote und würde nach zwei
+   * Wochen überlesen — dann ist die ganze Rubrik entwertet, nicht nur
+   * diese Zeile.
+   */
   {
     code: "band-jahre",
     collections: ["bands"],
-    pruefe(e) {
+    pruefe(e, ctx) {
       if (!e.daten) return [];
       const b: Befund[] = [];
-      const { gegruendet, aufgeloest, aktiv } = e.daten;
+      const { gegruendet, aufgeloest, aktiv, veroeffentlichungen } = e.daten;
       if (gegruendet && aufgeloest && aufgeloest < gegruendet) {
         b.push({ ebene: "fehler", code: "", nachricht: "Auflösung liegt vor Gründung." });
       }
       if (aufgeloest && aktiv) {
         b.push({ ebene: "fehler", code: "", nachricht: "aufgeloest gesetzt, aber aktiv: true." });
+      }
+
+      const ausgaben: { titel: string; jahr: number }[] = Array.isArray(veroeffentlichungen)
+        ? veroeffentlichungen
+        : [];
+
+      // 2. Zu weit in der Zukunft.
+      const grenze = jahrIn(ctx.heute) + 1;
+      for (const [feld, jahr] of [
+        ["gegruendet", gegruendet],
+        ["aufgeloest", aufgeloest],
+      ] as const) {
+        if (typeof jahr === "number" && jahr > grenze) {
+          b.push({
+            ebene: "fehler",
+            code: "",
+            feld,
+            nachricht: `${feld}: ${jahr} liegt hinter dem Folgejahr (${grenze}). Zahlendreher?`,
+          });
+        }
+      }
+      for (const v of ausgaben) {
+        if (v.jahr > grenze) {
+          b.push({
+            ebene: "fehler",
+            code: "",
+            feld: "veroeffentlichungen",
+            nachricht: `Veröffentlichung „${v.titel}": ${v.jahr} liegt hinter dem Folgejahr (${grenze}). Zahlendreher?`,
+          });
+        }
+      }
+
+      // 3. Veröffentlichung vor der Gründung.
+      if (typeof gegruendet === "number") {
+        for (const v of ausgaben) {
+          if (v.jahr < gegruendet) {
+            b.push({
+              ebene: "fehler",
+              code: "",
+              feld: "veroeffentlichungen",
+              nachricht: `Veröffentlichung „${v.titel}" von ${v.jahr} liegt vor der Gründung ${gegruendet}. Aus einer Compilation-Tracklist abgeschrieben?`,
+            });
+          }
+        }
       }
       return b;
     },

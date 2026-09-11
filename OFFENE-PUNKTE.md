@@ -13,6 +13,18 @@ für „nicht jetzt" gibt.
 
 ## Als Nächstes
 
+**`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
+Bash-Zweig blockiert jeden Befehl, der die gesperrte Schemadatei nennt und
+irgendwo ein `>` enthält. Das trifft `2>&1` genauso wie eine Pfeilfunktion
+`i => i.path[0]` — also auch reine **Lesezugriffe**. Belegt am 2026-09-11:
+derselbe `npx tsx -e`-Befehl lief erst, nachdem die Pfeilfunktion durch
+`function` ersetzt war. Zu breit ist besser als zu schmal, aber eine Sperre,
+um die man täglich herumformuliert, wird irgendwann umgangen statt beachtet.
+Naheliegend: den Schreibverben ein Wortgrenzen-Muster geben, statt auf das
+bloße Zeichen `>` zu prüfen — dieselbe Korrektur wie damals beim
+Statuswort (Lektion 18). `.claude/` ist für Agenten gesperrt, auch für diese
+Änderung.
+
 **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
@@ -83,15 +95,6 @@ Unterscheidung in `abgrenzung` und einem eigenen Abschnitt. Ob daraus ein
 zweiter Eintrag `boogie-woogie-tanz` wird, ist eine Ermessensfrage: Zwei
 Einträge sind sauberer, ein Slug mit Klammerzusatz ist hässlich, und der
 Autolink kann zwei gleichnamige Begriffe nicht auseinanderhalten.
-
-**Schwellenwerte aus der Anfangszeit: die Bands-Jahre.** Mit `aeraVon` auf
-1400 ist die Lexikon-Untergrenze entschieden. Offen bleiben die drei
-Bands-Werte auf `min(1930)`: `gegruendet`, `aufgeloest` und das Jahr einer
-Veröffentlichung. Western Swing ab 1934 passt knapp, ein Jazzorchester der
-zwanziger Jahre nicht, und die Register-Genres reichen bis 1900 zurück
-(Boogie-Woogie). Vorschlag: `min(1900)`, passend zur Untergrenze, die für
-Genres ohnehin gilt. Es ist eine Schemaänderung und gehört damit zum
-Menschen; dieselbe Zeile kann mit der `aeraVon`-Änderung zusammen gehen.
 
 ## Vor dem Go-Live
 

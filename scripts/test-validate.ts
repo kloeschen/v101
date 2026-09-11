@@ -72,6 +72,8 @@ const vorTagen = (n: number): string => tagVorOrt(-n);
 const inTagen = (n: number): string => tagVorOrt(n);
 
 const HEUTE = tagVorOrt(0);
+/** Das laufende Jahr in site.zeitzone -- HEUTE ist dort schon formatiert. */
+const JAHR = Number(HEUTE.slice(0, 4));
 
 /* ------------------------------------------------------------------ */
 /* Fixtures                                                            */
@@ -752,6 +754,135 @@ fall({
   datei: "bands/jahre-gut.md",
   inhalt: md(bandFelder("Die Plausiblen", { gegruendet: "1985", aufgeloest: "1990", aktiv: "false" }), bandKoerper("Die Plausiblen")),
   verboten: ["band-jahre", "referenzen"],
+});
+
+/* --- Die Schema-Untergrenze festnageln ---------------------------------
+ *
+ * Am 2026-09-11 von 1930 auf 1900 gesenkt. Es gibt null Bandeintraege, also
+ * kann kein Lauf gegen echte Daten zeigen, ob die Zahl stimmt -- `npm run
+ * verify` bliebe gruen, egal was dort steht. Diese vier Faelle sind das
+ * einzige, was die Grenze haelt: Ohne sie dreht sie jemand in einem Jahr
+ * stillschweigend zurueck.
+ *
+ * Anlass war ein konkreter Fall aus dem eigenen Bestand: Der
+ * Boogie-Woogie-Eintrag nennt Pinetop Smith, dessen "Pinetop's Boogie
+ * Woogie" von 1928 stammt. Unter min(1930) liess sich dieses Jahr nicht
+ * eintragen.
+ */
+
+fall({
+  name: "Schema-Untergrenze: gegruendet 1900 geht durch",
+  datei: "bands/grenze-gegruendet-gut.md",
+  inhalt: md(bandFelder("Die Jahrhundertwende", { gegruendet: "1900" }), bandKoerper("Die Jahrhundertwende")),
+  verboten: ["schema"],
+});
+
+fall({
+  name: "Schema-Untergrenze: gegruendet 1899 faellt",
+  datei: "bands/grenze-gegruendet-schlecht.md",
+  inhalt: md(bandFelder("Die Zufruehen", { gegruendet: "1899" }), bandKoerper("Die Zufruehen")),
+  erwartet: { schema: "fehler" },
+});
+
+/*
+ * `aufgeloest` ohne `gegruendet` und mit `aktiv: false` -- sonst traefe
+ * zusaetzlich "Aufloesung liegt vor Gruendung" oder "aufgeloest trotz
+ * aktiv", und ein Ergebnis mit zwei moeglichen Ursachen belegt keine von
+ * beiden (Lektion 17).
+ */
+fall({
+  name: "Schema-Untergrenze: aufgeloest 1899 faellt",
+  datei: "bands/grenze-aufgeloest-schlecht.md",
+  inhalt: md(bandFelder("Die Frueh Getrennten", { aufgeloest: "1899", aktiv: "false" }), bandKoerper("Die Frueh Getrennten")),
+  erwartet: { schema: "fehler" },
+});
+
+fall({
+  name: "Schema-Untergrenze: Veroeffentlichung 1899 faellt",
+  datei: "bands/grenze-jahr-schlecht.md",
+  inhalt: md(
+    bandFelder("Die Fruehpresser", {
+      gegruendet: "1900",
+      quellen: quelle("gegruendet, veroeffentlichungen"),
+      veroeffentlichungen: "\n  - titel: Zu frueh gepresst\n    jahr: 1899\n    art: single",
+    }),
+    bandKoerper("Die Fruehpresser"),
+  ),
+  erwartet: { schema: "fehler" },
+});
+
+/* --- band-jahre: Zukunft und Veroeffentlichung vor der Gruendung ------- */
+
+fall({
+  name: "band-jahre: Veroeffentlichung liegt vor der Gruendung",
+  datei: "bands/jahre-platte-zu-frueh.md",
+  inhalt: md(
+    bandFelder("Die Vorgreifer", {
+      gegruendet: "1980",
+      quellen: quelle("gegruendet, veroeffentlichungen"),
+      veroeffentlichungen: "\n  - titel: Aus der Tracklist abgeschrieben\n    jahr: 1955\n    art: album",
+    }),
+    bandKoerper("Die Vorgreifer"),
+  ),
+  erwartet: { "band-jahre": "fehler" },
+});
+
+fall({
+  name: "band-jahre: Gruendung liegt hinter dem Folgejahr",
+  datei: "bands/jahre-gruendung-zukunft.md",
+  inhalt: md(bandFelder("Die Uebermorgigen", { gegruendet: String(JAHR + 2) }), bandKoerper("Die Uebermorgigen")),
+  erwartet: { "band-jahre": "fehler" },
+});
+
+fall({
+  name: "band-jahre: Veroeffentlichung liegt hinter dem Folgejahr",
+  datei: "bands/jahre-platte-zukunft.md",
+  inhalt: md(
+    bandFelder("Die Vorbesteller", {
+      gegruendet: "1980",
+      quellen: quelle("gegruendet, veroeffentlichungen"),
+      veroeffentlichungen: `\n  - titel: Angekuendigt fuers Uebermorgen\n    jahr: ${JAHR + 2}\n    art: album`,
+    }),
+    bandKoerper("Die Vorbesteller"),
+  ),
+  erwartet: { "band-jahre": "fehler" },
+});
+
+/*
+ * Die Gegenrichtung, und sie ist hier die eigentliche Aussage: Das
+ * FOLGEJAHR ist erlaubt. Ohne diesen Fall waere "Zukunft wird gemeldet"
+ * auch mit einer Regel vereinbar, die jedes kommende Jahr verwirft -- und
+ * eine angekuendigte Band oder ein vorbestellbares Album waere nicht
+ * eintragbar.
+ */
+fall({
+  name: "band-jahre: Gruendung im Folgejahr ist erlaubt",
+  datei: "bands/jahre-gruendung-folgejahr.md",
+  inhalt: md(bandFelder("Die Angekuendigten", { gegruendet: String(JAHR + 1) }), bandKoerper("Die Angekuendigten")),
+  verboten: ["band-jahre"],
+});
+
+/*
+ * Die bewusst NICHT gebaute Regel, als Fall festgehalten: Eine
+ * Veroeffentlichung nach der Aufloesung ist kein Fehler. Compilations und
+ * Live-Mitschnitte erscheinen regelmaessig danach. Faellt dieser Fall
+ * eines Tages, hat jemand die Regel doch gebaut -- und soll die Begruendung
+ * in ENTSCHEIDUNGEN.md dagegen halten muessen.
+ */
+fall({
+  name: "band-jahre: Veroeffentlichung nach der Aufloesung ist kein Fehler",
+  datei: "bands/jahre-platte-posthum.md",
+  inhalt: md(
+    bandFelder("Die Nachgelassenen", {
+      gegruendet: "1980",
+      aufgeloest: "1990",
+      aktiv: "false",
+      quellen: quelle("gegruendet, aufgeloest, veroeffentlichungen"),
+      veroeffentlichungen: "\n  - titel: Das Beste, lange danach\n    jahr: 2005\n    art: compilation",
+    }),
+    bandKoerper("Die Nachgelassenen"),
+  ),
+  verboten: ["band-jahre"],
 });
 
 /* ------------------------------------------------------------------ */
