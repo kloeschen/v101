@@ -13,6 +13,68 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-11 — `aeraVon` auf 1400, vier Datierungen nachgetragen
+
+**Entscheidung des Menschen:** `aeraVon`/`aeraBis` im Lexikonschema von
+`min(1900)` auf `min(1400)`. Die Zeile ist vom Menschen committet, das Schema
+bleibt für Agenten gesperrt.
+
+**Nachgetragen sind vier Datierungen**, die bisher nur im Fließtext standen:
+
+| Eintrag | `aeraVon` | worauf sich die Zahl bezieht |
+|---|---|---|
+| Reifrock | 1470 (+ `aeraBis` 1888) | konkrete Jahreszahlen der Quelle |
+| Korsett | 1550 | Mitte des 16. Jahrhunderts — die **Vorläufer** |
+| Unterrock | 1500 | Beginn des 16. Jahrhunderts — die **Verbreitung** |
+| Pomade | 1700 | Beginn des 18. Jahrhunderts — die **Dokumentation** |
+
+**Die Regel dahinter, einheitlich für alle vier:** `aeraVon` trägt das
+früheste Jahr, das die Quelle nennt — bei einer Jahrhundertangabe gerundet
+auf den Beginn oder die genannte Hälfte —, und die Redaktionsnotiz sagt,
+worauf sich die Zahl bezieht. Die Quellen wurden dafür nicht erneut geöffnet;
+`geprueftAm` blieb deshalb stehen, gesetzt ist nur `geaendertAm`. Eine
+Prüfung zu behaupten, die nicht stattgefunden hat, wäre genau die Art Zahl,
+die sich selbst erneuert.
+
+**Zwei der vier Zahlen sind unschärfer, als die alte Redaktionsnotiz
+annahm** — sichtbar erst beim Lesen des Fließtexts:
+
+- *Korsett:* Die Quelle datiert auf die Jahrhundertmitte die Vorläufer,
+  „anliegende, geschnürte Kleidungsstücke noch ohne innere Versteifung". Die
+  Definition dieses Eintrags verlangt aber Stäbchen. Das älteste erhaltene
+  versteifte Stück stammt aus dem Grab einer 1598 Verstorbenen — ein
+  Fundjahr, kein Entstehungsjahr. 1550 datiert den Beginn der Ära, nicht den
+  ersten Beleg der Bauform.
+- *Pomade:* „im 18. Jahrhundert dokumentiert" ist ein Dokumentationsjahr. Das
+  Wort führt über Salben aus Äpfeln weiter zurück.
+
+Beides steht in der jeweiligen Redaktionsnotiz. Wer die Zahl im Faktenblock
+liest, soll sie im Eintrag nachprüfen können.
+
+**FUND, UND ER KORRIGIERT EINE ZUSAGE VON MIR:** Die Datierungen erscheinen
+im Faktenblock — **im JSON-LD stehen sie nicht**, und das war noch nie so.
+Auch `rockabilly` trägt seit dem 9. September `aeraVon: 1954`, und im Graph
+steht die Zahl nirgends. Ich hatte im Chat angekündigt, die Werte stünden
+danach „im Faktenblock und im JSON-LD"; die zweite Hälfte war falsch.
+
+Die Auslassung ist inhaltlich richtig: `DefinedTerm` kennt keine Eigenschaft
+für eine Zeitspanne, und `temporalCoverage` gehört zu `CreativeWork` — ein
+Begriff ist kein Werk. Eine erfundene Zuordnung stünde maschinenlesbar da und
+wäre falsch. Die Content-Parity-Prüfung schlägt zu Recht nicht an: Sie
+verlangt Builder-Felder ⊆ Faktenblock-Felder, nicht umgekehrt. Ein Graph, der
+mehr behauptet als die Seite zeigt, ist der Schaden; eine Seite, die mehr
+zeigt, als sich auszeichnen lässt, ist es nicht.
+
+**Was fehlte, war die Begründung.** Sie steht jetzt als Kommentar am
+`lexikonBuilder` — samt `herkunftsland`, für das dasselbe gilt. Eine
+Auslassung ohne Begründung ist von einer Vergesslichkeit nicht zu
+unterscheiden, und die nächste Sitzung hätte wieder danach gesucht.
+
+**Offen geblieben:** die drei Bands-Werte auf `min(1930)`. Vorschlag
+`min(1900)` steht in OFFENE-PUNKTE.md.
+
+---
+
 ## 2026-09-11 — Bot-Abwehr im Linkcheck: herabgestuft, nicht übersprungen
 
 **Entscheidung des Menschen:** Britannica kommt in eine Hostliste.

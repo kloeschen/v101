@@ -275,6 +275,27 @@ export const regionBuilder: Builder = {
 /* ------------------------------------------------------------------ */
 
 export const lexikonBuilder: Builder = {
+  /**
+   * NICHT DABEI, UND DAS MIT ABSICHT: `aeraVon`, `aeraBis` und
+   * `herkunftsland`. Der Faktenblock zeigt sie, der Graph nicht.
+   *
+   * Der Grund ist die Vokabelfrage, nicht Vergesslichkeit: `DefinedTerm`
+   * kennt keine Eigenschaft für eine Zeitspanne oder eine Herkunft. Was
+   * naheläge — `temporalCoverage` — gehört zu `CreativeWork`, und ein
+   * Begriff ist kein Werk. Eine erfundene Zuordnung wäre schlechter als
+   * keine: Sie stünde maschinenlesbar da und wäre falsch.
+   *
+   * Die Content-Parity-Prüfung schlägt deshalb hier nicht an. Sie verlangt
+   * Builder-Felder ⊆ Faktenblock-Felder, nicht umgekehrt — der Faktenblock
+   * darf mehr zeigen als der Graph trägt. Das ist die richtige Richtung:
+   * Ein Graph, der etwas behauptet, was auf der Seite nicht steht, wäre der
+   * Schaden; eine Seite, die mehr zeigt, als sich auszeichnen lässt, ist es
+   * nicht.
+   *
+   * Aufgefallen beim Nachtragen der vier Datierungen am 2026-09-11: Die
+   * Zahlen erschienen im Faktenblock und nirgends sonst, und es stand
+   * nirgends, dass das so gewollt ist.
+   */
   verwendeteFelder: [
     "name", "definition", "kategorie", "bezeichnungDe", "bezeichnungEn",
     "verwandt", "uebergeordnet", "abgrenzung", "links",

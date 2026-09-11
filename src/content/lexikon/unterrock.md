@@ -5,12 +5,14 @@ kurzbeschreibung: Ein Unterrock ist ein Wäschestück in Form eines Trägerkleid
 status: veroeffentlicht
 erstelltAm: 2026-09-03
 geprueftAm: 2026-09-09
+geaendertAm: 2026-09-11
 autor: markus
 kategorie: mode
 bezeichnungDe: Unterrock
 bezeichnungEn: Petticoat
 definition: Ein Unterrock ist ein einem Trägerkleid oder Rock ähnliches Wäschestück, das unmittelbar unter der Oberbekleidung getragen wird.
 verwandt: [petticoat, reifrock]
+aeraVon: 1500
 abgrenzung: >-
   Der Unterrock wird in der Vintage-Szene häufig mit dem Petticoat
   gleichgesetzt, hat aber die entgegengesetzte Aufgabe: Er soll nicht
@@ -24,10 +26,19 @@ abgrenzung: >-
   Halbrock nur den zweiten meint.
 redaktionsnotiz: >-
   Quellen am 2026-09-03 einzeln geöffnet und gegen die Behauptungen
-  geprüft. aeraVon, aeraBis und herkunftsland bleiben ungesetzt: Der
-  Unterrock ist weder erloschen noch einem Herkunftsland zuzuordnen, und
-  seine Verbreitung ab dem 16. Jahrhundert läge unterhalb der vom Schema
-  zugelassenen 1900 — dieselbe Schemagrenze wie beim Reifrock. bezeichnungEn
+  ÄRA NACHGETRAGEN am 2026-09-11, nachdem die Schemauntergrenze von 1900
+  auf 1400 gesenkt wurde. Die Zahl folgt einer Regel, die für alle vier
+  nachgetragenen Einträge gleich gilt: `aeraVon` trägt das früheste Jahr,
+  das die Quelle nennt -- bei einer Jahrhundertangabe auf den Beginn oder
+  die genannte Hälfte gerundet --, und diese Notiz sagt, worauf sich die
+  Zahl bezieht. Die Quellen wurden dafür NICHT erneut geöffnet; `geprueftAm`
+  bleibt deshalb stehen, nur `geaendertAm` ist gesetzt.
+  1500 ist der Beginn des 16. Jahrhunderts. Auch hier eine Einschränkung:
+  Die Quelle sagt, der Unterrock sei "in der Antike und im Mittelalter wenig
+  gebräuchlich" und "erst ab dem 16. Jahrhundert verbreitet". 1500 datiert
+  damit die VERBREITUNG, nicht die Entstehung -- den Gegenstand gab es
+  vorher. aeraBis und herkunftsland bleiben ungesetzt: Der Unterrock ist
+  weder erloschen noch einem Herkunftsland zuzuordnen. bezeichnungEn
   ist bewusst mit "Petticoat" belegt, obwohl der Petticoat im Deutschen ein
   eigener Begriff mit eigenem Eintrag ist: Genau diese Kreuzung ist die
   häufigste Übersetzungsfalle und steht deshalb auch in der Abgrenzung. Die
@@ -41,7 +52,7 @@ quellen:
   - url: https://de.wikipedia.org/wiki/Unterrock
     titel: Unterrock (Wikipedia)
     abgerufenAm: 2026-09-03
-    felder: [definition, kurzbeschreibung, abgrenzung, body:aufgabe, body:geschichte]
+    felder: [definition, kurzbeschreibung, aeraVon, abgrenzung, body:aufgabe, body:geschichte]
     art: nachschlagewerk
   - url: https://www.duden.de/rechtschreibung/Unterrock
     titel: Unterrock (Duden online)

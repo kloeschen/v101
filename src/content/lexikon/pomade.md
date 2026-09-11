@@ -5,12 +5,14 @@ kurzbeschreibung: Pomade ist eine fetthaltige, salbenähnliche Substanz zur Haar
 status: veroeffentlicht
 erstelltAm: 2026-09-03
 geprueftAm: 2026-09-09
+geaendertAm: 2026-09-11
 autor: markus
 kategorie: frisur
 bezeichnungDe: Pomade
 bezeichnungEn: Pomade
 definition: Pomade ist eine fetthaltige, salbenähnliche Substanz zur Haarpflege, die das Haar glänzend und formbar festigt, ohne auszuhärten.
 verwandt: [creepers, pork-pie]
+aeraVon: 1700
 abgrenzung: >-
   Pomade und Haargel werden im Drogeriemarkt nebeneinander verkauft und
   leisten Gegensätzliches. Gel arbeitet mit Gelbildnern und Polymeren, die
@@ -31,9 +33,22 @@ redaktionsnotiz: >-
   Pomade in Deutschland zwischen den 1960er und 2000er Jahren gehalten
   hat, und die Barbershop-Kultur als Träger der Renaissance seit 2010.
   Deshalb hat dieser Eintrag einen Szene-Abschnitt und die
-  Kleidungsstücke-Einträge keinen. aeraVon/aeraBis ungesetzt: Pomade ist
-  im 18. Jahrhundert belegt und heute im Handel, beide Ränder liegen
-  außerhalb dessen, was das Schema abbilden kann oder was sinnvoll wäre.
+  Kleidungsstücke-Einträge keinen.
+  ÄRA NACHGETRAGEN am 2026-09-11, nachdem die Schemauntergrenze von 1900
+  auf 1400 gesenkt wurde. Die Zahl folgt einer Regel, die für alle vier
+  nachgetragenen Einträge gleich gilt: `aeraVon` trägt das früheste Jahr,
+  das die Quelle nennt -- bei einer Jahrhundertangabe auf den Beginn oder
+  die genannte Hälfte gerundet --, und diese Notiz sagt, worauf sich die
+  Zahl bezieht. Die Quellen wurden dafür NICHT erneut geöffnet;
+  `geprueftAm` bleibt deshalb stehen, nur `geaendertAm` ist gesetzt.
+  1700 ist der Beginn des 18. Jahrhunderts, und die Einschränkung ist hier
+  die deutlichste der vier: Die Quelle sagt, Pomade sei "als aristokratisches
+  Kosmetikprodukt im 18. Jahrhundert dokumentiert". Das ist ein
+  Dokumentationsjahr, kein Entstehungsjahr -- das Wort selbst fuehrt über
+  Salben aus Äpfeln weiter zurück, wie der Abschnitt zum Namen zeigt.
+  aeraBis bleibt ungesetzt, weil Pomade im Handel ist; die Kombination
+  "aeraVon ohne aeraBis" ist die richtige Form für etwas Fortbestehendes,
+  so wie beim Psychobilly.
   herkunftsland ungesetzt — die Wortherkunft führt über Italien nach
   Frankreich, das Produkt selbst wird keinem Land zugeordnet. Die drei von
   der Wikipedia genannten deutschen Hersteller sind bewusst nicht
@@ -54,7 +69,7 @@ quellen:
   - url: https://de.wikipedia.org/wiki/Pomade
     titel: Pomade (Wikipedia)
     abgerufenAm: 2026-09-03
-    felder: [definition, kurzbeschreibung, abgrenzung, body:zusammensetzung, body:geschichte, body:szene]
+    felder: [definition, kurzbeschreibung, aeraVon, abgrenzung, body:zusammensetzung, body:geschichte, body:szene]
     art: nachschlagewerk
   - url: https://www.dwds.de/wb/Pomade
     titel: Pomade (DWDS, mit Etymologischem Wörterbuch nach Pfeifer)
