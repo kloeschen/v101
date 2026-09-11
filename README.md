@@ -49,8 +49,10 @@ scripts/test-sync-autolinks.ts         Testet den Autolink-Sync in einer
 .github/workflows/ci.yml               verify mit --strict, Autolink-Drift.
 .github/workflows/linkcheck.yml        Wöchentlicher Linkcheck, Issue bei Fund.
 package.json / tsconfig.json           Abhängigkeiten und Compiler-Basis.
-scripts/check-links.ts                 Prüft externe Links, mit Cache und
-                                       Warteschlange je Host.
+scripts/check-links.ts                 Prüft externe Links, mit Cache,
+                                       Warteschlange je Host und begründeter
+                                       Liste bot-abwehrender Hosts.
+scripts/test-checklinks.ts             Testet deren Bewertung ohne Netz.
 scripts/check-zeitzonen.ts             Statischer Check gegen zonenlose
                                        Datumsverarbeitung.
 scripts/stale-report.ts                Was ansteht: Entwürfe, Überfälliges,

@@ -454,8 +454,8 @@ export const lexikonSchema = basis
     uebergeordnet: slug.optional(),
     verwandt: z.array(slug).default([]),
 
-    aeraVon: z.number().int().min(1900).max(2100).optional(),
-    aeraBis: z.number().int().min(1900).max(2100).optional(),
+    aeraVon: z.number().int().min(1400).max(2100).optional(),
+    aeraBis: z.number().int().min(1400).max(2100).optional(),
     herkunftsland: adresse.shape.land.optional(),
 
     /** Häufige Fehlannahme, die der Eintrag ausräumt. Starkes Zitationsformat. */
