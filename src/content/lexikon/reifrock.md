@@ -5,12 +5,15 @@ kurzbeschreibung: Ein Reifrock ist ein durch Reifen aus Holz, Fischbein oder Fed
 status: veroeffentlicht
 erstelltAm: 2026-09-03
 geprueftAm: 2026-09-09
+geaendertAm: 2026-09-11
 autor: markus
 kategorie: mode
 bezeichnungDe: Reifrock
 bezeichnungEn: Hoop skirt
 definition: Ein Reifrock ist ein Unterrock, dessen Weite von einem Gestell aus Reifen aus Holz, Fischbein oder Federstahl erzwungen wird.
 verwandt: [petticoat]
+aeraVon: 1470
+aeraBis: 1888
 herkunftsland: ES
 abgrenzung: >-
   Reifrock und Petticoat werden im Vintage-Handel oft synonym verwendet,
@@ -26,11 +29,19 @@ abgrenzung: >-
   der Duden dagegen als Damenrock mit versteiftem Unterrock.
 redaktionsnotiz: >-
   Quellen am 2026-09-03 einzeln geöffnet und gegen die Behauptungen
-  geprüft. aeraVon und aeraBis bleiben ungesetzt, obwohl die Datierung
-  belegt ist: Das Schema lässt erst 1900 zu, der Reifrock beginnt aber um
-  1470 und verschwindet um 1888. Die Jahreszahlen stehen deshalb im
-  Fließtext. Der Vertrag wurde dafür nicht angefasst — das ist eine
-  Entscheidung für einen Menschen, nicht für einen Eintrag. herkunftsland
+  ÄRA NACHGETRAGEN am 2026-09-11, nachdem die Schemauntergrenze von 1900
+  auf 1400 gesenkt wurde. Die Zahl folgt einer Regel, die für alle vier
+  nachgetragenen Einträge gleich gilt: `aeraVon` trägt das früheste Jahr,
+  das die Quelle nennt -- bei einer Jahrhundertangabe auf den Beginn oder
+  die genannte Hälfte gerundet --, und diese Notiz sagt, worauf sich die
+  Zahl bezieht. Die Quellen wurden dafür NICHT erneut geöffnet; `geprueftAm`
+  bleibt deshalb stehen, nur `geaendertAm` ist gesetzt.
+  Hier ist die Lage am klarsten: Die Quelle nennt zwei konkrete Jahre.
+  "Erscheint erstmals um 1470 in Spanien" und "um 1888 verschwindet der
+  Reifrock endgültig aus der Mode" -- beide stehen so im Fließtext.
+  EINSCHRAENKUNG ZU aeraBis: Erloschen ist der Reifrock damit nicht; der
+  Text sagt selbst, dass er sich in der Brautmode gehalten hat. 1888
+  datiert das Ende als Modeerscheinung, nicht das Ende des Gegenstands. herkunftsland
   ES ist bewusst gesetzt und meint die erste belegte Bauform (Verdugado,
   Spanien um 1470), nicht das Wort. Die de.wikipedia-Weiterleitung
   "Krinoline" ist eine Begriffsklärungsseite; die Sachangaben zur
@@ -45,7 +56,7 @@ quellen:
   - url: https://de.wikipedia.org/wiki/Reifrock
     titel: Reifrock (Wikipedia)
     abgerufenAm: 2026-09-03
-    felder: [definition, kurzbeschreibung, herkunftsland, abgrenzung, body:aufbau, body:geschichte]
+    felder: [definition, kurzbeschreibung, herkunftsland, aeraVon, aeraBis, abgrenzung, body:aufbau, body:geschichte]
     art: nachschlagewerk
   - url: https://www.duden.de/rechtschreibung/Reifrock
     titel: Reifrock (Duden online)

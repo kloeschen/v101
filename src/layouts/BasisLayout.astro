@@ -11,6 +11,9 @@ import { site, indexierbar } from "../site.config";
 import "../styles/tokens.css";
 import "../styles/basis.css";
 import { jsonldSicher } from "../lib/jsonld";
+import { holeRegistry } from "../lib/registry";
+import { collectionNames, type CollectionName } from "../content/_schemas";
+import { SAMMLUNGSNAME, sammlungsPfad } from "../lib/faktenblock";
 
 interface Props {
   titel: string;
@@ -24,6 +27,23 @@ const { titel, beschreibung, kanonisch, noindex = false, jsonld } = Astro.props;
 // Der globale Schalter sticht jede Einzelentscheidung: Solange die Site
 // nicht freigegeben ist, wird nichts indexiert.
 const nichtIndexieren = noindex || !indexierbar;
+
+/**
+ * Die Navigation führt nur auf Sammlungen, die etwas enthalten.
+ *
+ * Vorher war sie eine feste Liste — und zeigte auf `/bands/`, wo „Das
+ * Register enthält 0 Einträge" stand, während `/locations/` mit sieben
+ * echten Einträgen gar nicht auftauchte. Abgeleitet statt gepflegt heißt:
+ * Die Navigation kann nicht mehr auseinanderlaufen, weder in die eine noch
+ * in die andere Richtung.
+ *
+ * Gezählt wird aus `holeRegistry`, also aus dem, was der Besucher auf dieser
+ * Seite sieht — in der Vorschau mit Entwürfen, in der Produktion ohne.
+ */
+const registry = await holeRegistry();
+const sammlungen = collectionNames.filter((typ: CollectionName) =>
+  [...registry.eintraege.values()].some((e) => e.collection === typ),
+);
 ---
 <!doctype html>
 <html lang="de">
@@ -46,10 +66,7 @@ const nichtIndexieren = noindex || !indexierbar;
     <main><slot /></main>
     <nav aria-label="Hauptnavigation">
       <a href="/">Start</a>
-      <a href="/events/">Events</a>
-      <a href="/bands/">Bands</a>
-      <a href="/regionen/">Regionen</a>
-      <a href="/lexikon/">Lexikon</a>
+      {sammlungen.map((typ) => <a href={sammlungsPfad(typ)}>{SAMMLUNGSNAME[typ]}</a>)}
     </nav>
   </body>
 </html>

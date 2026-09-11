@@ -16,6 +16,14 @@
  */
 import type { EintragMeta } from "../lib/links";
 import { istEntwurf } from "../lib/sichtbarkeit";
+import { site } from "../site.config";
+
+/**
+ * Datumsformat der Terminliste. Immer mit ausdrücklicher Zeitzone — ein
+ * Termin am 1. Januar 00:30 Ortszeit gehört sonst je nach Build-Server in
+ * den 31. Dezember (Lektion 1).
+ */
+const DATUM = new Intl.DateTimeFormat("de-DE", { dateStyle: "medium", timeZone: site.zeitzone });
 
 /**
  * `knapp` schaltet die Kurzbeschreibungen ab.
@@ -27,16 +35,39 @@ import { istEntwurf } from "../lib/sichtbarkeit";
  * Einträgen wird eine zweite Seite. Ein Parameter statt einer zweiten
  * Komponente, damit die Entwurfsmarke an genau einer Stelle bleibt.
  */
-interface Props { titel: string; eintraege: EintragMeta[]; ebene?: 2 | 3; knapp?: boolean }
-const { titel, eintraege, ebene = 2, knapp = false } = Astro.props;
+/**
+ * `titel` ist optional. Auf einer Entitätsseite trägt die Überschrift die
+ * Zuordnung ("Bands im Line-up von X") und ist damit der Grund, warum ein
+ * isoliert extrahierter Abschnitt noch verständlich ist. Auf einer
+ * Übersichtsseite steht darüber schon die H1 der Sammlung, und ein zweites
+ * "Einträge" sagt nichts — die Liste ist offensichtlich die Liste.
+ */
+/**
+ * `datum` stellt jedem Eintrag sein Datum voran. Nur für Terminlisten
+ * gedacht, und wieder ein Parameter statt einer zweiten Komponente: Diese
+ * Datei ist die einzige Stelle, an der ein Eintrag in einer Liste gerendert
+ * wird, und genau deshalb kann kein Entwurf irgendwo unmarkiert auftauchen.
+ * Eine zweite Terminliste anderswo hieße, diese Zusage aufzugeben.
+ */
+interface Props {
+  titel?: string;
+  eintraege: EintragMeta[];
+  ebene?: 2 | 3;
+  knapp?: boolean;
+  datum?: boolean;
+}
+const { titel, eintraege, ebene = 2, knapp = false, datum = false } = Astro.props;
 const Ueberschrift = `h${ebene}` as "h2" | "h3";
 ---
 {eintraege.length > 0 && (
   <section class={knapp ? "liste liste--knapp" : "liste"}>
-    <Ueberschrift>{titel}</Ueberschrift>
+    {titel && <Ueberschrift>{titel}</Ueberschrift>}
     <ul>
       {eintraege.map((e) => (
         <li>
+          {datum && e.daten.beginn && (
+            <span class="liste__datum">{DATUM.format(new Date(e.daten.beginn))} — </span>
+          )}
           <a href={e.pfad}>{e.name}</a>
           {istEntwurf(e.daten) && (
             <span class="liste__entwurf" title="Noch nicht redaktionell freigegeben"> [Entwurf]</span>

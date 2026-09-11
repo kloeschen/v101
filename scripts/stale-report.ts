@@ -21,6 +21,9 @@ import { eventVorbei, istVorbei } from "../src/lib/datum";
 import { pruefKadenzTage } from "../src/content/_schemas";
 import { istFreigegeben } from "../src/lib/sichtbarkeit";
 import { regionsIndexierbarkeit } from "../src/lib/regionen";
+import { uebersichtIndexierbar } from "../src/lib/facetten";
+import { collectionNames } from "../src/content/_schemas";
+import { SAMMLUNGSNAME, sammlungsPfad } from "../src/lib/faktenblock";
 
 interface Posten {
   art:
@@ -30,7 +33,8 @@ interface Posten {
     | "reihe-ohne-folge"
     | "verwaiste-band"
     | "ohne-quelle"
-    | "region-noindex";
+    | "region-noindex"
+    | "sammlung-leer";
   datei: string;
   titel: string;
   detail: string;
@@ -167,6 +171,24 @@ function main() {
     }
   }
 
+  // Sammlungen ohne einen einzigen freigegebenen Eintrag. Ihre
+  // Uebersichtsseite ist erreichbar, aber nicht indexierbar -- und das soll
+  // sichtbar bleiben, so wie bei den Regionen. Gezaehlt wird mit
+  // `istFreigegeben`, weil nur Freigegebenes in der Produktion existiert;
+  // die Regel steht in sichtbarkeit.ts und nicht noch einmal hier.
+  for (const c of collectionNames) {
+    const anzahl = alle.filter((e) => e.collection === c && istFreigegeben(e.daten ?? {})).length;
+    const { indexierbar, grund } = uebersichtIndexierbar(anzahl);
+    if (indexierbar) continue;
+    posten.push({
+      art: "sammlung-leer",
+      datei: "\u2014",
+      titel: `${SAMMLUNGSNAME[c]} (${sammlungsPfad(c)})`,
+      detail: `nicht im Index \u2014 ${grund}`,
+      gewicht: 130,
+    });
+  }
+
   // Bands, die wiederholt im Line-up stehen, aber kein Profil haben.
   const offen = new Map<string, number>();
   for (const e of registry.eintraege.values()) {
@@ -213,10 +235,11 @@ function main() {
     "ohne-quelle": "Ohne Belegkette",
     "verwaiste-band": "Bands ohne Profil",
     "region-noindex": "Regionen unter der Indexschwelle",
+    "sammlung-leer": "Sammlungen ohne Eintrag",
     entwurf: "Entwürfe in der Warteschlange",
   };
 
-  for (const art of ["vergangen", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "region-noindex", "verwaiste-band", "entwurf"] as const) {
+  for (const art of ["vergangen", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "region-noindex", "sammlung-leer", "verwaiste-band", "entwurf"] as const) {
     const gruppe = posten.filter((p) => p.art === art).slice(0, limit);
     if (gruppe.length === 0) continue;
     console.log(`\n## ${ueberschrift[art]} (${posten.filter((p) => p.art === art).length})`);

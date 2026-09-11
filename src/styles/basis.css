@@ -54,6 +54,16 @@ a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
 .liste ul { margin: 0; padding: 0; list-style: none; }
 .liste li { padding: var(--raum-2) 0; border-bottom: var(--linie); }
 .liste__beschreibung { color: var(--farbe-text-leise); font-size: var(--groesse-klein); }
+/* Das Datum der Terminliste: eine Angabe, kein Titel -- deshalb leise und
+   in der Oberflaechenschrift, wie die Kurzbeschreibung daneben. */
+.liste__datum { color: var(--farbe-text-leise); font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
+
+/* Die Sammlungen auf der Startseite. Gleiche Abstufung wie in den Listen:
+   der Name traegt, Zahl und Satz ordnen ein. */
+.sammlungen ul { margin: 0; padding: 0; list-style: none; }
+.sammlungen li { padding: var(--raum-2) 0; border-bottom: var(--linie); }
+.sammlungen__anzahl,
+.sammlungen__beschreibung { color: var(--farbe-text-leise); font-size: var(--groesse-klein); }
 
 .faq__eintrag { margin: var(--raum-3) 0; }
 

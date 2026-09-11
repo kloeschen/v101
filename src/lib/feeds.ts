@@ -14,8 +14,9 @@
 
 import { site, indexierbar } from "../site.config";
 import type { EintragMeta, Registry } from "./links";
-import { urlPrefix, type CollectionName } from "../content/_schemas";
+import { urlPrefix, collectionNames, type CollectionName } from "../content/_schemas";
 import { istDuenneRegion } from "./regionen";
+import { uebersichtIndexierbar } from "./facetten";
 
 const absolut = (pfad: string) => `${site.url}${pfad}`;
 
@@ -295,14 +296,41 @@ ${eintraege}
  * Console meldet das als Fehler, nicht als Feinheit.
  */
 export function sitemapFuerCollection(registry: Registry, collection: CollectionName): SitemapEintrag[] {
+  const eintraege = [...registry.eintraege.values()].filter((e) => e.collection === collection);
   return [
-    { pfad: `${urlPrefix[collection]}/` },
+    // Die Übersicht nur, wenn sie etwas zu zeigen hat. Eine leere Sammlung
+    // steht sonst indexierbar in der Sitemap und ist doch eine Sackgasse.
+    ...(uebersichtIndexierbar(eintraege.length).indexierbar ? [{ pfad: `${urlPrefix[collection]}/` }] : []),
     ...[...registry.eintraege.values()]
       .filter((e) => e.collection === collection && !e.daten.noindex && !istDuenneRegion(registry, e))
       .map((e) => ({
         pfad: e.pfad,
         lastmod: new Date(e.daten.geaendertAm ?? e.daten.geprueftAm).toISOString().slice(0, 10),
       })),
+  ];
+}
+
+/**
+ * Welche Sitemaps der Index nennt: nur die, die etwas enthalten.
+ *
+ * Eine leere Sitemap im Index ist kein Fehler, aber eine Zeile in der Search
+ * Console, die dauerhaft "0 URLs" meldet -- und ein Bericht, dessen Zeilen
+ * nichts bedeuten, wird nach zwei Wochen ueberlesen. Dieselbe Ueberlegung
+ * wie bei `uebersichtIndexierbar`, eine Ebene hoeher.
+ *
+ * Die Datei selbst bleibt erreichbar und wird weiter gebaut. Ihre Adresse
+ * soll stabil sein, damit sie nicht verschwindet und wiederkommt, sobald die
+ * Sammlung sich fuellt -- genannt wird sie nur, wenn sie etwas zeigt.
+ *
+ * `/sitemap-seiten.xml` steht ohne Bedingung drin: Startseite, Datenseite
+ * und die uebrigen festen Seiten gibt es immer.
+ */
+export function sitemapDateien(registry: Registry): string[] {
+  return [
+    ...collectionNames
+      .filter((t) => sitemapFuerCollection(registry, t).length > 0)
+      .map((t) => `/sitemap-${t}.xml`),
+    "/sitemap-seiten.xml",
   ];
 }
 

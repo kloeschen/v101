@@ -5,12 +5,14 @@ kurzbeschreibung: Ein Korsett ist ein steifes, eng am Oberkörper anliegendes W�
 status: veroeffentlicht
 erstelltAm: 2026-09-03
 geprueftAm: 2026-09-09
+geaendertAm: 2026-09-11
 autor: markus
 kategorie: mode
 bezeichnungDe: Schnürleib
 bezeichnungEn: Corset
 definition: Ein Korsett ist ein durch Stäbchen und Schnürung versteiftes Kleidungsstück, das den Oberkörper eng umschließt und seine Form verändert.
 verwandt: [petticoat, taillenmieder, unterrock]
+aeraVon: 1550
 herkunftsland: FR
 abgrenzung: >-
   Korsett, Korsage und Mieder werden im Handel synonym geführt — der Duden
@@ -26,10 +28,23 @@ abgrenzung: >-
   stabilisieren statt formen soll.
 redaktionsnotiz: >-
   Quellen am 2026-09-03 einzeln geöffnet und gegen die Behauptungen
-  geprüft. aeraVon und aeraBis bleiben ungesetzt: Das Korsett ist weder
-  erloschen noch beginnt es nach 1900 — die Schemagrenze von 1900 lässt die
-  belegte Datierung ab Mitte des 16. Jahrhunderts nicht zu, die Zahlen
-  stehen deshalb im Fließtext. herkunftsland FR ist auf die Wortherkunft
+  ÄRA NACHGETRAGEN am 2026-09-11, nachdem die Schemauntergrenze von 1900
+  auf 1400 gesenkt wurde. Die Zahl folgt einer Regel, die für alle vier
+  nachgetragenen Einträge gleich gilt: `aeraVon` trägt das früheste Jahr,
+  das die Quelle nennt -- bei einer Jahrhundertangabe auf den Beginn oder
+  die genannte Hälfte gerundet --, und diese Notiz sagt, worauf sich die
+  Zahl bezieht. Die Quellen wurden dafür NICHT erneut geöffnet; `geprueftAm`
+  bleibt deshalb stehen, nur `geaendertAm` ist gesetzt.
+  1550 ist die Mitte des 16. Jahrhunderts, und die Angabe braucht eine
+  Einschränkung, die die frueher hier stehende Notiz noch nicht hatte: Die
+  Quelle datiert auf die Jahrhundertmitte die VORLÄUFER -- "anliegende,
+  geschnürte Kleidungsstücke noch ohne innere Versteifung". Die Definition
+  dieses Eintrags verlangt aber Stäbchen. Das älteste erhaltene Stueck mit
+  eingearbeiteter Verstärkung stammt aus dem Grab einer 1598 Verstorbenen,
+  und das ist ein Fundjahr, kein Entstehungsjahr. 1550 datiert also den
+  Beginn der Ära, nicht den ersten Beleg der Bauform. aeraBis ungesetzt:
+  Das Korsett ist nicht erloschen -- das Ende als Alltagskleidungsstück
+  (Erster Weltkrieg) steht im Fließtext. herkunftsland FR ist auf die Wortherkunft
   gestützt (frz. corset, im 18. Jahrhundert entlehnt), nicht auf das
   Kleidungsstück; das steht so auch im Text, weil die Sache älter ist als
   das Wort. Bewusst nicht geschrieben: ein Abschnitt zur Vintage- und
@@ -51,7 +66,7 @@ quellen:
   - url: https://de.wikipedia.org/wiki/Korsett
     titel: Korsett (Wikipedia)
     abgerufenAm: 2026-09-03
-    felder: [definition, kurzbeschreibung, body:aufbau, body:geschichte, body:gesundheit]
+    felder: [definition, kurzbeschreibung, aeraVon, body:aufbau, body:geschichte, body:gesundheit]
     art: nachschlagewerk
   - url: https://www.dwds.de/wb/Korsett
     titel: Korsett (DWDS, mit Etymologischem Wörterbuch nach Pfeifer)

@@ -18,7 +18,10 @@ import {
   MIN_EINTRAEGE,
   MIN_EINLEITUNG_WORTE,
   zaehleWorte,
+  uebersichtIndexierbar,
 } from "../src/lib/facetten";
+import { sitemapFuerCollection, sitemapDateien } from "../src/lib/feeds";
+import { uebersichtsKapsel, sammlungsPfad } from "../src/lib/faktenblock";
 import { buildRegistry, type RegistryEingabe } from "../src/lib/links";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { collectionNames } from "../src/content/_schemas";
@@ -45,6 +48,7 @@ const event = (slug: string, jahr: number, typ = "weekender", reihe?: string): R
     typ,
     beginn: new Date(`${jahr}-07-01T18:00:00+02:00`),
     ort: "halle",
+    geprueftAm: "2026-09-01",
     ...(reihe ? { reihe, reiheName: "Die Reihe" } : {}),
   },
 });
@@ -270,6 +274,97 @@ const kurz = "Wort ".repeat(20);
   gleich("fehlender Status gilt als Entwurf", istEntwurf({}), true);
   gleich("kein Eintrag gilt als Entwurf", istEntwurf(undefined), true);
 }
+
+/* ------------------------------------------------------------------ */
+/* Übersichtsseiten: leer heißt nicht in den Index                      */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Anlass: Beim ersten Build mit freigegebenen Inhalten standen `/bands/` und
+ * `/artikel/` mit null Einträgen indexierbar in der Sitemap, während die
+ * Regionsschwelle eine Seite mit 258 belegten Wörtern herausnahm. Derselbe
+ * Grundsatz, zwei verschiedene Antworten.
+ */
+gleich("eine Sammlung ohne Eintrag ist nicht indexierbar", uebersichtIndexierbar(0).indexierbar, false);
+pruefe("und sie sagt, warum", !!uebersichtIndexierbar(0).grund, String(uebersichtIndexierbar(0).grund));
+// Der Gegenfall: Ein einziger Eintrag genügt. Die Übersicht ist die
+// kanonische Adresse ihrer Sammlung, keine Auswahl aus einem Bestand --
+// sie braucht keine Mindestmenge wie eine Facette.
+gleich("ein einziger Eintrag genügt", uebersichtIndexierbar(1).indexierbar, true);
+gleich("wer indexierbar ist, braucht keinen Grund", uebersichtIndexierbar(1).grund, undefined);
+gleich("viele Einträge sind erst recht indexierbar", uebersichtIndexierbar(99).indexierbar, true);
+
+{
+  // Zwei Registries, die sich nur in einem Punkt unterscheiden: ob die
+  // Sammlung etwas enthält.
+  const begriff = (slug: string): RegistryEingabe => ({
+    collection: "lexikon",
+    slug,
+    daten: { name: slug, kategorie: "genre", geprueftAm: "2026-09-01" },
+  });
+  const leer = buildRegistry([event("x", 2027)]);
+  const voll = buildRegistry([event("x", 2027), begriff("rockabilly")]);
+
+  gleich(
+    "die Sitemap lässt die leere Übersicht weg",
+    sitemapFuerCollection(leer, "lexikon").map((e) => e.pfad),
+    [],
+  );
+  gleich(
+    "die Sitemap führt die gefüllte Übersicht",
+    sitemapFuerCollection(voll, "lexikon").map((e) => e.pfad)[0],
+    sammlungsPfad("lexikon"),
+  );
+  // Und die Gegenprobe, dass die Regel nichts anderes verschoben hat.
+  gleich(
+    "eine gefüllte Sammlung behält Übersicht und Einträge",
+    sitemapFuerCollection(voll, "lexikon").length,
+    2,
+  );
+
+  // Eine Ebene hoeher: Der Index soll die leere Datei gar nicht erst nennen.
+  gleich(
+    "der Sitemap-Index nennt die leere Sammlung nicht",
+    sitemapDateien(leer).includes("/sitemap-lexikon.xml"),
+    false,
+  );
+  gleich(
+    "die gefüllte nennt er",
+    sitemapDateien(voll).includes("/sitemap-lexikon.xml"),
+    true,
+  );
+  // Lebenszeichen: Der Index laeuft ueberhaupt und traegt die festen Seiten.
+  gleich(
+    "die Sitemap der festen Seiten steht immer darin",
+    sitemapDateien(leer).includes("/sitemap-seiten.xml"),
+    true,
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Die Kapsel der Übersichtsseite                                       */
+/* ------------------------------------------------------------------ */
+
+// Vorher stand dort eine Zählung: "Das Register enthält 10 Einträge in der
+// Kategorie Lexikon". Das ist keine Auskunft, und als meta description sagt
+// es einer Suchmaschine nichts über die Seite.
+pruefe(
+  "die Kapsel sagt zuerst, was die Sammlung ist",
+  !uebersichtsKapsel("lexikon", 10).startsWith("Das Register enthält"),
+  uebersichtsKapsel("lexikon", 10),
+);
+pruefe("die Kapsel nennt die Zahl trotzdem", uebersichtsKapsel("lexikon", 10).includes("10"), uebersichtsKapsel("lexikon", 10));
+pruefe(
+  "bei null Einträgen steht kein \"0 Einträge\"",
+  !uebersichtsKapsel("bands", 0).includes("0 Einträge") && uebersichtsKapsel("bands", 0).includes("Noch kein Eintrag"),
+  uebersichtsKapsel("bands", 0),
+);
+pruefe("ein einzelner Eintrag steht im Singular", uebersichtsKapsel("bands", 1).includes("1 Eintrag."), uebersichtsKapsel("bands", 1));
+gleich(
+  "jede Sammlung hat einen eigenen Kapseltext",
+  new Set(collectionNames.map((c) => uebersichtsKapsel(c, 1))).size,
+  collectionNames.length,
+);
 
 /* ------------------------------------------------------------------ */
 

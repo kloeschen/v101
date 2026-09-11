@@ -13,6 +13,18 @@ für „nicht jetzt" gibt.
 
 ## Als Nächstes
 
+**Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
+geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
+Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
+Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
+Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
+
+**Bands und Artikel sind leer, und der Bericht sagt es jetzt.** `npm run
+stale` führt beide unter „Sammlungen ohne Eintrag"; ihre Übersichten sind
+erreichbar, aber nicht im Index, und der Sitemap-Index nennt sie nicht. Das
+ist kein Fehler, sondern der Stand — erledigt ist der Posten, sobald je ein
+belegter Eintrag steht. Für Bands hängt daran die Schemafrage unten.
+
 **Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
 fünf Regionen haben jetzt drei bis fünf Verweise und kommen mit der Freigabe
 über die Bestandsschwelle. Diese beiden stehen weiter bei zwei. Für
@@ -80,24 +92,6 @@ zwanziger Jahre nicht, und die Register-Genres reichen bis 1900 zurück
 (Boogie-Woogie). Vorschlag: `min(1900)`, passend zur Untergrenze, die für
 Genres ohnehin gilt. Es ist eine Schemaänderung und gehört damit zum
 Menschen; dieselbe Zeile kann mit der `aeraVon`-Änderung zusammen gehen.
-
-**Kapsel und Überschrift auf Übersichtsseiten.** „Das Register enthält 10
-Einträge in der Kategorie Lexikon" ist eine Zählung, keine Auskunft. Die
-Überschrift „Einträge" darüber trägt nichts bei — die Liste ist
-offensichtlich die Liste. Betrifft alle sechs Übersichten, sitzt aber an
-**zwei** Stellen: die Kapsel in `src/pages/[typ]/index.astro`, die
-Überschrift in `src/layouts/ListenLayout.astro`.
-
-**`aeraVon` auf 1400 senken.** Untergrenze steht bei 1900, war für
-Veranstaltungen gedacht. Genau vier Lexikoneinträge nennen diese Grenze als
-Grund dafür, dass ihre belegte Datierung nur im Fließtext steht und nicht
-im Faktenblock oder JSON-LD: Reifrock (ab 1470), Korsett (16. Jahrhundert),
-Unterrock (16. Jahrhundert), Pomade (18. Jahrhundert).
-
-Bei der Gelegenheit die übrigen Schwellenwerte aus der Anfangszeit prüfen.
-Aufgefallen ist bereits: `gegruendet`, `aufgeloest` und das Jahr einer
-Veröffentlichung stehen bei Bands auf `min(1930)` — Western Swing ab 1934
-passt knapp, ein Jazzorchester der zwanziger Jahre nicht.
 
 ## Vor dem Go-Live
 

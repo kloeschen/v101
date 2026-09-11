@@ -21,7 +21,7 @@
  */
 
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, writeFileSync, rmSync, existsSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, existsSync } from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
@@ -51,31 +51,25 @@ function baue(entwuerfe: boolean): string {
 }
 
 /*
- * Der Produktionsbuild enthält keine einzige Entitätsseite: Im Register
- * steht (Stand dieser Datei) kein freigegebener Eintrag, und ohne
- * PUBLIC_ENTWUERFE rendert das Layout nichts. Eine Gegenprobe an einer
- * Seite, die es nicht gibt, wäre keine — sie fiele in dieselbe Klasse wie
- * "Nichts zu prüfen" bei Exitcode 0 (Lektion 19).
+ * FRÜHER STAND HIER EIN BEHELF, und er ist am 2026-09-11 entfallen.
  *
- * Deshalb wird für diesen einen Build ein Eintrag kurzzeitig freigegeben
- * und danach zeichengenau zurückgebaut. Dasselbe Vorgehen wie in den
- * Mutationsbelegen: schreiben, messen, wiederherstellen — mit `finally`,
- * damit auch ein Absturz nichts liegen lässt, und mit einer Schlussprobe,
- * die das belegt.
+ * Solange im Register kein einziger Eintrag freigegeben war, enthielt der
+ * Produktionsbuild keine Entitätsseite — eine Gegenprobe an einer Seite, die
+ * es nicht gibt, wäre keine gewesen (Lektion 19). Diese Datei hat deshalb
+ * für den einen Build einen Eintrag kurzzeitig freigegeben und danach
+ * zeichengenau zurückgebaut.
+ *
+ * Seit der Freigabe vom 2026-09-10 ist das Register vollständig
+ * freigegeben. Der Behelf ist damit überflüssig — und mit ihm die einzige
+ * Stelle im Repo, die den Statusschutz umging, wenn auch nur für die Dauer
+ * eines Builds. Was ohne Umweg geht, geht ohne Umweg.
+ *
+ * Das Lebenszeichen bleibt: Unten wird geprüft, dass der Produktionsbuild
+ * die Probeseite tatsächlich enthält. Wäre das Register wieder leer, fiele
+ * diese Behauptung — und nicht stillschweigend die Gegenprobe.
  */
-const PROBE = path.join(PROJEKT, "src", "content", "lexikon", "bleistiftrock.md");
-const PROBE_ORIGINAL = readFileSync(PROBE, "utf8");
-const FREI = ["veroeffent", "licht"].join(""); // guard.mjs prüft auf das Wort
-
 const mitEntwuerfen = baue(true);
-
-let ohneEntwuerfe: string;
-try {
-  writeFileSync(PROBE, PROBE_ORIGINAL.replace(/^status:[ \t]*\S+[ \t]*$/m, `status: ${FREI}`), "utf8");
-  ohneEntwuerfe = baue(false);
-} finally {
-  writeFileSync(PROBE, PROBE_ORIGINAL, "utf8");
-}
+const ohneEntwuerfe = baue(false);
 
 const seite = (wurzel: string, pfad: string): string => {
   const datei = path.join(wurzel, pfad, "index.html");
@@ -192,13 +186,77 @@ try {
       `mit: ${zaehleQuellen(mit)}, ohne: ${zaehleQuellen(ohne)}`);
   }
   /* ---------------------------------------------------------------- */
-  /* 4. Der Rückbau der Probe ist vollständig                          */
+  /* 4. Startseite, Navigation und leere Übersichten                   */
   /* ---------------------------------------------------------------- */
-  pruefe(
-    "die kurzzeitig freigegebene Probe steht wieder zeichengenau im Entwurf",
-    readFileSync(PROBE, "utf8") === PROBE_ORIGINAL,
-    "die Inhaltsdatei wurde verändert zurückgelassen",
-  );
+  /*
+   * Die Startseite war bis zum 2026-09-11 ein Satz und eine Zahl, ohne
+   * einen einzigen Link außer der Navigation — die schwächste Seite der
+   * Site und zugleich die, auf der die meisten landen.
+   */
+  {
+    const html = seite(ohneEntwuerfe, "");
+    const t = text(html);
+    const linkZiele = [...html.matchAll(/<a [^>]*href="([^"]+)"/g)].map((m) => m[1]);
+
+    // Lebenszeichen zuerst: Ohne diese Zeile wären die folgenden
+    // Behauptungen auch für eine kaputte oder leere Seite wahr.
+    pruefe("die Startseite führt die Rubrik der kommenden Termine", /Als Nächstes/.test(t), t.slice(0, 200));
+    pruefe(
+      "die Startseite verlinkt einzelne Termine",
+      linkZiele.filter((z) => /^\/events\/[a-z0-9-]+\/$/.test(z)).length >= 1,
+      linkZiele.join(" "),
+    );
+    pruefe(
+      "die Termine tragen ihr Datum",
+      /\d{2}\.\d{2}\.\d{4}/.test(t),
+      t.slice(0, 400),
+    );
+    // Die Gegenprobe zur alten Fassung: die reine Zählung ist weg.
+    pruefe("die Startseite ist keine bloße Zählung mehr", !/Aktuell \d+ Einträge im Register/.test(t), t.slice(0, 300));
+    pruefe(
+      "die Startseite verlinkt die Sammlungen mit Inhalt",
+      linkZiele.includes("/events/") && linkZiele.includes("/lexikon/"),
+      linkZiele.join(" "),
+    );
+    // Und die entscheidende Abwesenheit, mit dem Lebenszeichen daneben:
+    // Locations hat Einträge und steht drin, Bands hat keine.
+    pruefe("eine Sammlung ohne Eintrag steht nicht in der Navigation", !linkZiele.includes("/bands/"), linkZiele.join(" "));
+    pruefe("eine Sammlung mit Einträgen schon", linkZiele.includes("/locations/"), linkZiele.join(" "));
+  }
+
+  {
+    // Die leere Übersicht bleibt erreichbar und sagt, was sie ist --
+    // statt "Das Register enthält 0 Einträge in der Kategorie Bands".
+    const t = text(seite(ohneEntwuerfe, "bands"));
+    pruefe("die leere Übersicht existiert weiterhin", /Bands/.test(t), t.slice(0, 200));
+    pruefe("sie sagt, was die Sammlung ist", /Bands und Solokünstler/.test(t), t.slice(0, 300));
+    pruefe("sie zählt nicht null", !/0 Einträge/.test(t) && /Noch kein Eintrag/.test(t), t.slice(0, 300));
+    // Gegenprobe an einer gefüllten Übersicht im selben Build.
+    const tl = text(seite(ohneEntwuerfe, "lexikon"));
+    pruefe("die gefüllte Übersicht nennt ihre Zahl", /Derzeit \d+ Einträge/.test(tl), tl.slice(0, 300));
+    pruefe("und sie trägt keine Überschrift \"Einträge\" mehr", !/>\s*Einträge\s*</.test(seite(ohneEntwuerfe, "lexikon")), "Überschrift noch da");
+  }
+
+  {
+    // Und eine Ebene hoeher: Der Sitemap-Index nennt keine leere Datei.
+    // Ohne diese Regel stand `/sitemap-bands.xml` mit null URLs darin -- die
+    // Search Console meldet das dauerhaft als "0 entdeckte URLs".
+    const index = readFileSync(path.join(ohneEntwuerfe, "sitemap-index.xml"), "utf8");
+    const genannt = [...index.matchAll(/<loc>[^<]*\/(sitemap-[a-z]+\.xml)<\/loc>/g)].map((m) => m[1]);
+
+    pruefe("der Sitemap-Index nennt die gefüllten Sammlungen", genannt.includes("sitemap-events.xml") && genannt.includes("sitemap-lexikon.xml"), genannt.join(" "));
+    pruefe("und die leeren nicht", !genannt.includes("sitemap-bands.xml") && !genannt.includes("sitemap-artikel.xml"), genannt.join(" "));
+    pruefe("die festen Seiten stehen weiterhin darin", genannt.includes("sitemap-seiten.xml"), genannt.join(" "));
+    // Lebenszeichen fuer die weggelassene Datei: Es gibt sie, sie ist nur
+    // nicht genannt. Sonst waere "nicht im Index" auch wahr, wenn der Build
+    // sie gar nicht erst erzeugt haette.
+    pruefe(
+      "die leere Sitemap wird trotzdem gebaut und ist leer",
+      existsSync(path.join(ohneEntwuerfe, "sitemap-bands.xml")) &&
+        !/<loc>/.test(readFileSync(path.join(ohneEntwuerfe, "sitemap-bands.xml"), "utf8")),
+      "Datei fehlt oder enthält URLs",
+    );
+  }
 } finally {
   rmSync(mitEntwuerfen, { recursive: true, force: true });
   rmSync(ohneEntwuerfe, { recursive: true, force: true });
