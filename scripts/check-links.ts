@@ -24,6 +24,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { ladeAlle, type GeladenerEintrag } from "./_laden";
 import { collectionNames, type CollectionName } from "../src/content/_schemas";
 
@@ -159,8 +160,71 @@ async function parallelJeHost(
 }
 
 /* ------------------------------------------------------------------ */
+/* Hosts, die Prüfskripten grundsätzlich 403 antworten                 */
+/* ------------------------------------------------------------------ */
 
-function bewerte(url: string, e: CacheEintrag): Befund | null {
+/**
+ * Manche Anbieter weisen automatisierte Abrufe ab, unabhängig davon, ob die
+ * Seite existiert. Britannica tut das auch nach dem GET-Nachfassen. Der Link
+ * ist dann nicht tot, er ist nur für dieses Skript nicht sichtbar.
+ *
+ * WAS HIER PASSIERT UND WAS NICHT: Ein 403 von einem dieser Hosts wird zur
+ * WARNUNG herabgestuft, nicht übersprungen. Die URL bleibt im Bericht, mit
+ * eigenem Code und der Begründung aus dieser Liste. Wer `--strict` fährt,
+ * bekommt sie weiterhin als Blocker. Ein Übergehen wäre der falsche Weg:
+ * Dann verschwände auch der Fall, in dem die Seite tatsächlich weg ist.
+ *
+ * NUR 403. Ein 404 von einem dieser Hosts bleibt ein Fehler — die Liste sagt
+ * "dieser Anbieter sperrt Roboter aus", nicht "diesem Anbieter glauben wir
+ * alles". Genau diese Unterscheidung ist der Grund, warum hier ein Status
+ * und nicht ein Host allein steht.
+ *
+ * WARUM ÜBERHAUPT: Eine gute Quelle zu streichen, weil ein Prüfskript sie
+ * nicht sehen darf, wäre der falsche Weg herum. Ein wöchentlicher Bericht,
+ * der immer denselben Fehlalarm meldet, ist aber auch einer — er erzieht
+ * zum Überlesen (Lektion 4: ein roter Lauf muss etwas bedeuten).
+ *
+ * Jeder Eintrag braucht eine Begründung. `scripts/test-checklinks.ts` prüft
+ * das; eine Liste ohne Begründungen wäre die stille Ausnahme, die sie
+ * verhindern soll.
+ */
+export const BOT_ABWEHR: { host: string; grund: string }[] = [
+  {
+    host: "britannica.com",
+    grund:
+      "Antwortet Prüfskripten mit HTTP 403, auch nach dem GET-Nachfassen. " +
+      "Die Seite /art/boogie-woogie war am 2026-09-09 im Browser abrufbar und ist gelesen.",
+  },
+];
+
+/**
+ * Gehört der Host der URL zu einem Eintrag der Liste?
+ *
+ * Verglichen wird auf den eingetragenen Host selbst oder eine Subdomain
+ * davon — `www.britannica.com` zählt, `notbritannica.com` nicht. Ein
+ * schlichtes `includes()` würde den zweiten Fall durchlassen; genau daran
+ * ist der Bash-Zweig von guard.mjs schon einmal gescheitert (Lektion 18).
+ */
+export function botAbwehrGrund(url: string): string | null {
+  let host: string;
+  try {
+    host = new URL(url).hostname.toLowerCase();
+  } catch {
+    return null;
+  }
+  for (const { host: h, grund } of BOT_ABWEHR) {
+    if (host !== h && !host.endsWith(`.${h}`)) continue;
+    // Ein Eintrag ohne Begründung wirkt nicht. Das war vorher ein Zufall
+    // der Falsy-Prüfung weiter unten und steht jetzt als Regel hier: Wer
+    // einen Host einträgt, ohne zu sagen warum, hebt die Prüfung nicht auf.
+    return grund.trim().length > 0 ? grund : null;
+  }
+  return null;
+}
+
+/* ------------------------------------------------------------------ */
+
+export function bewerte(url: string, e: CacheEintrag): Befund | null {
   if (e.status === null) {
     // Netzfehler sind Warnungen, keine Fehler: Ein einzelner Timeout darf
     // keinen Build brechen. Wiederholt sich das, fällt es im Bericht auf.
@@ -171,6 +235,17 @@ function bewerte(url: string, e: CacheEintrag): Befund | null {
   }
   if (e.status === 429) {
     return { ebene: "warnung", code: "gedrosselt", url, nachricht: "HTTP 429 — Prüfung gedrosselt" };
+  }
+  if (e.status === 403) {
+    const grund = botAbwehrGrund(url);
+    if (grund) {
+      return {
+        ebene: "warnung",
+        code: "bot-abwehr",
+        url,
+        nachricht: `HTTP 403 — bekannte Bot-Abwehr, von Hand prüfen. ${grund}`,
+      };
+    }
   }
   if (e.status >= 400) {
     return { ebene: "fehler", code: "tot", url, nachricht: `HTTP ${e.status}` };
@@ -291,4 +366,11 @@ async function main() {
   process.exit(fehler > 0 || (strikt && warnungen > 0) ? 1 : 0);
 }
 
-main();
+/*
+ * Nur beim direkten Aufruf laufen lassen. Ohne diese Zeile startete der
+ * Import in scripts/test-checklinks.ts einen vollständigen Netzlauf --
+ * ein Test, der das Netz braucht, ist keiner.
+ */
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main();
+}

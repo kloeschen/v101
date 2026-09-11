@@ -72,16 +72,14 @@ zweiter Eintrag `boogie-woogie-tanz` wird, ist eine Ermessensfrage: Zwei
 Einträge sind sauberer, ein Slug mit Klammerzusatz ist hässlich, und der
 Autolink kann zwei gleichnamige Begriffe nicht auseinanderhalten.
 
-**Britannica und der wöchentliche Linkcheck.** `npm run links:extern` meldet
-`britannica.com/art/boogie-woogie` als tot (HTTP 403, auch nach dem
-GET-Nachfassen), obwohl die Seite abrufbar ist — Britannica weist
-automatisierte Abrufe ab. Die Quelle bleibt stehen; eine gute Quelle zu
-streichen, weil ein Prüfskript sie nicht sehen darf, wäre der falsche Weg
-herum. Damit meldet `linkcheck.yml` wöchentlich einen Fehlalarm, und genau
-davon lebt die Gewöhnung ans Überlesen. Vorschlag zur Entscheidung: eine
-benannte, begründete Liste von Hosts in `check-links.ts`, deren 403 als
-`auffällig` statt als `tot` gilt — nicht überspringen, nur herabstufen, damit
-der Fall sichtbar bleibt.
+**Schwellenwerte aus der Anfangszeit: die Bands-Jahre.** Mit `aeraVon` auf
+1400 ist die Lexikon-Untergrenze entschieden. Offen bleiben die drei
+Bands-Werte auf `min(1930)`: `gegruendet`, `aufgeloest` und das Jahr einer
+Veröffentlichung. Western Swing ab 1934 passt knapp, ein Jazzorchester der
+zwanziger Jahre nicht, und die Register-Genres reichen bis 1900 zurück
+(Boogie-Woogie). Vorschlag: `min(1900)`, passend zur Untergrenze, die für
+Genres ohnehin gilt. Es ist eine Schemaänderung und gehört damit zum
+Menschen; dieselbe Zeile kann mit der `aeraVon`-Änderung zusammen gehen.
 
 **Kapsel und Überschrift auf Übersichtsseiten.** „Das Register enthält 10
 Einträge in der Kategorie Lexikon" ist eine Zählung, keine Auskunft. Die

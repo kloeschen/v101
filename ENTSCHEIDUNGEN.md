@@ -13,6 +13,71 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-11 — Bot-Abwehr im Linkcheck: herabgestuft, nicht übersprungen
+
+**Entscheidung des Menschen:** Britannica kommt in eine Hostliste.
+
+**Das Problem:** `britannica.com` antwortet Prüfskripten mit HTTP 403, auch
+nach dem GET-Nachfassen. Die Seite ist abrufbar und wurde gelesen; der Link
+ist nicht tot, er ist für das Skript nur nicht sichtbar. Damit meldete
+`linkcheck.yml` wöchentlich denselben Fehlalarm — und ein Bericht, der immer
+dasselbe falsch meldet, erzieht zum Überlesen (Lektion 4). Die Quelle zu
+streichen war keine Option: eine gute Quelle wegzuwerfen, weil ein Skript sie
+nicht sehen darf, ist der falsche Weg herum.
+
+**Gebaut:** `BOT_ABWEHR` in `scripts/check-links.ts`, eine Liste aus Host und
+Begründung. Ein 403 von einem dieser Hosts wird zur **Warnung** mit eigenem
+Code `bot-abwehr` — die URL bleibt im Bericht, mit der Begründung aus der
+Liste, und unter `--strict` blockiert sie weiterhin. Übersprungen wird
+nichts.
+
+**Drei Schranken, weil eine Ausnahmeliste die Stelle ist, an der still Dinge
+landen** — alle drei mit Gegenfall im Test belegt:
+
+- *Nur 403.* Ein 404 desselben Hosts bleibt ein Fehler. Die Liste sagt „dieser
+  Anbieter sperrt Roboter aus", nicht „diesem Anbieter glauben wir alles".
+- *Host mit Wortgrenze.* Getroffen wird der Eintrag selbst und seine
+  Subdomains; `notbritannica.com` fällt nicht darunter. Ein schlichtes
+  `includes()` hätte den Fall durchgelassen — genau daran ist der Bash-Zweig
+  von `guard.mjs` schon einmal gescheitert (Lektion 18).
+- *Ohne Begründung keine Wirkung.* Ein Eintrag mit leerem `grund` hebt die
+  Prüfung nicht auf. Das war zunächst ein Zufall der Falsy-Prüfung und steht
+  jetzt als Regel in `botAbwehrGrund()`.
+
+**`bewerte()` ist jetzt exportiert und getestet.** `check-links.ts` läuft
+bewusst nicht in jedem Durchlauf — es ruft das Netz, und ein fremder Server,
+der gerade hustet, ist kein Grund, einen Merge zu blockieren. Seine
+Bewertungsfunktion ist aber rein und damit prüfbar: `scripts/test-checklinks.ts`
+deckt sie vollständig ab, 27 Behauptungen, ohne Netz. Damit fällt eine der
+Lücken weg, die der Review unter „Testabdeckung, ehrlich eingeordnet"
+genannt hat. Nebenbei nötig: `main()` läuft nur noch beim direkten Aufruf,
+sonst hätte der Import im Test einen Netzlauf gestartet.
+
+**DER MUTATIONSBELEG HAT DREI DINGE GEFUNDEN, und zwei davon waren meine.**
+
+1. *Der Test stürzte ab, statt fehlzuschlagen.* Ein `find(...)!` auf die Liste
+   warf einen TypeError, sobald der Eintrag fehlte — und ein Lauf, der mit
+   einem TypeError endet, hat keine Behauptung fallen lassen, sondern gar
+   keine geprüft. Der Mutationsbeleg bekam nichts zu sehen. Behoben mit `?.`
+   und einem Ersatzwert.
+2. *Eine Behauptung war trivial erfüllbar.* `nachricht.includes(grund)` ist
+   für eine leere Begründung immer wahr. Jetzt wird zusätzlich verlangt, dass
+   die Begründung überhaupt Inhalt hat (Lektion 17).
+3. *Eine meiner Mutationen mutierte nichts.* Sie ersetzte `"Antwortet…"` durch
+   `"" + "Antwortet…"` — dieselbe Zeichenkette. Der Lauf blieb grün, und das
+   war richtig so.
+
+Dazu kam eine Formalie mit Folgen: Ein Behauptungsname enthielt einen
+Gedankenstrich, und genau daran trennt der Mutationsbeleg Name von Detail.
+Die Erwartung verglich sich mit einem abgeschnittenen Namen. Behauptungsnamen
+tragen deshalb keinen Gedankenstrich mehr.
+
+**Beleg:** 8 Mutationen, 0 offen. `npm run verify` grün.
+`npm run links:extern` meldet jetzt **0 tot, 1 auffällig** — mit der
+Begründung im Klartext neben der URL.
+
+---
+
 ## 2026-09-10 — Drei Regionen über die Schwelle, und eine Korrektur
 
 **Auftrag war:** ein zweites Event je Region, damit jede Region die
