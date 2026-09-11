@@ -311,8 +311,8 @@ export const bandSchema = basis
   .extend({
     typ: z.enum(["band", "solo", "dj", "orchester"]).default("band"),
 
-    gegruendet: z.number().int().min(1930).max(2100).optional(),
-    aufgeloest: z.number().int().min(1930).max(2100).optional(),
+    gegruendet: z.number().int().min(1900).max(2100).optional(),
+    aufgeloest: z.number().int().min(1900).max(2100).optional(),
     aktiv: z.boolean().default(true),
 
     herkunftOrt: z.string().min(2).optional(),
@@ -340,7 +340,7 @@ export const bandSchema = basis
         z
           .object({
             titel: z.string().min(1),
-            jahr: z.number().int().min(1930).max(2100),
+            jahr: z.number().int().min(1900).max(2100),
             art: z.enum(["album", "ep", "single", "compilation", "live"]).default("album"),
             label: z.string().optional(),
           })
