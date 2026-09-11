@@ -7,10 +7,10 @@
  */
 import ListenLayout from "../../layouts/ListenLayout.astro";
 import { holeRegistry } from "../../lib/registry";
-import { sammleFacetten, indexierbarkeit } from "../../lib/facetten";
+import { sammleFacetten, indexierbarkeit, uebersichtIndexierbar } from "../../lib/facetten";
 import { einleitungFuer } from "../../lib/facetten-einleitungen";
 import { collectionNames, type CollectionName } from "../../content/_schemas";
-import { SAMMLUNGSNAME, sammlungsPfad } from "../../lib/faktenblock";
+import { SAMMLUNGSNAME, sammlungsPfad, uebersichtsKapsel } from "../../lib/faktenblock";
 
 export async function getStaticPaths() {
   return collectionNames.map((typ) => ({ params: { typ }, props: { typ } }));
@@ -29,9 +29,10 @@ const facetten = sammleFacetten(registry)
   .filter((f) => f.collection === typ && indexierbarkeit(f, einleitungFuer(f)).indexierbar)
   .sort((a, b) => a.label.localeCompare(b.label, "de"));
 
-const kapsel = `Das Register enthält ${eintraege.length} ${
-  eintraege.length === 1 ? "Eintrag" : "Einträge"
-} in der Kategorie ${SAMMLUNGSNAME[typ]}.`;
+const kapsel = uebersichtsKapsel(typ, eintraege.length);
+// Eine Sammlung ohne Eintrag ist erreichbar, aber nicht indexierbar --
+// dieselbe Haltung wie bei den Facetten und den Regionen.
+const schwelle = uebersichtIndexierbar(eintraege.length);
 ---
 <ListenLayout
   titel={SAMMLUNGSNAME[typ]}
@@ -39,6 +40,8 @@ const kapsel = `Das Register enthält ${eintraege.length} ${
   pfad={sammlungsPfad(typ)}
   eintraege={eintraege}
   breadcrumb={[{ name: SAMMLUNGSNAME[typ], url: sammlungsPfad(typ) }]}
+  noindex={!schwelle.indexierbar}
+  indexGrund={schwelle.grund}
 >
   {facetten.length > 0 && (
     <section class="facetten">

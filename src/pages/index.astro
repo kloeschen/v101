@@ -1,11 +1,77 @@
 ---
+/**
+ * Die Startseite.
+ *
+ * Sie beantwortet die eine Frage, mit der jemand auf ein Terminregister
+ * kommt: Was ist als Nächstes? Darunter die Sammlungen als Einstiege.
+ *
+ * Vorher stand hier ein Satz und eine Zahl — „Aktuell 38 Einträge im
+ * Register" — und kein einziger Link außer der Navigation. Das war die
+ * schwächste Seite der Site und zugleich die, auf der die meisten landen.
+ *
+ * Die Terminliste rendert `EintragsListe` und nicht eigenes Markup. Diese
+ * Komponente ist die einzige Stelle, an der ein Eintrag in einer Liste
+ * gezeigt wird, und nur solange das stimmt, kann kein Entwurf irgendwo
+ * unmarkiert auftauchen.
+ */
 import BasisLayout from "../layouts/BasisLayout.astro";
+import EintragsListe from "../components/EintragsListe.astro";
 import { holeRegistry } from "../lib/registry";
 import { site } from "../site.config";
+import { istVorbei } from "../lib/datum";
+import { collectionNames, type CollectionName } from "../content/_schemas";
+import { SAMMLUNGSNAME, SAMMLUNGSKAPSEL, sammlungsPfad } from "../lib/faktenblock";
+
 const registry = await holeRegistry();
-const anzahl = [...registry.eintraege.values()].length;
+const alle = [...registry.eintraege.values()];
+
+/**
+ * Kommende Termine, chronologisch. `istVorbei` statt `beginn >= jetzt`:
+ * Ein Termin heute Abend gehört unter „kommend", auch wenn seine Uhrzeit
+ * schon vorbei ist, und ein dreitägiges Festival bleibt bis zum letzten Tag
+ * aktuell (M9, siehe lib/datum.ts).
+ */
+const jetzt = new Date();
+const kommend = alle
+  .filter((e) => e.collection === "events" && !istVorbei(e.daten.ende ?? e.daten.beginn, jetzt))
+  .sort((a, b) => +new Date(a.daten.beginn) - +new Date(b.daten.beginn))
+  .slice(0, 6);
+
+/**
+ * Nur Sammlungen mit Inhalt. Ein Einstieg, der auf eine leere Seite führt,
+ * ist kein Einstieg — dieselbe Überlegung wie bei `uebersichtIndexierbar`,
+ * nur für den Leser statt für den Crawler.
+ */
+const sammlungen = collectionNames
+  .map((typ: CollectionName) => ({
+    typ,
+    anzahl: alle.filter((e) => e.collection === typ).length,
+  }))
+  .filter((s) => s.anzahl > 0);
 ---
 <BasisLayout titel="Start" beschreibung={site.kurzbeschreibung} kanonisch="/">
   <h1>{site.name}</h1>
-  <p>{site.kurzbeschreibung} Aktuell {anzahl} Einträge im Register.</p>
+  <p class="kapsel">{site.kurzbeschreibung}</p>
+
+  {kommend.length > 0 ? (
+    <EintragsListe titel="Als Nächstes" eintraege={kommend} datum knapp />
+  ) : (
+    <section class="liste">
+      <h2>Als Nächstes</h2>
+      <p>Zurzeit ist kein kommender Termin erfasst.</p>
+    </section>
+  )}
+
+  <section class="sammlungen">
+    <h2>Im Register</h2>
+    <ul>
+      {sammlungen.map((s) => (
+        <li>
+          <a href={sammlungsPfad(s.typ)}>{SAMMLUNGSNAME[s.typ]}</a>
+          <span class="sammlungen__anzahl"> ({s.anzahl})</span>
+          <span class="sammlungen__beschreibung"> — {SAMMLUNGSKAPSEL[s.typ]}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
 </BasisLayout>

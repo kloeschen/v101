@@ -204,6 +204,27 @@ export function sammleFacetten(registry: Registry): Facettenseite[] {
 /* Schwellenwert                                                       */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Gehört die Übersichtsseite einer Sammlung in den Index?
+ *
+ * Anders als bei Facetten und Regionen gibt es hier keine Schwelle mit einer
+ * Zahl, sondern nur die Frage, ob überhaupt etwas draufsteht. Die Übersicht
+ * ist die kanonische Adresse ihrer Sammlung und der Ankerpunkt, von dem aus
+ * ein Crawler alle Entitäten erreicht — sie verdient ihren Platz, sobald sie
+ * irgendetwas listet. Eine leere Übersicht dagegen ist nicht dünn, sie ist
+ * leer: "Das Register enthält 0 Einträge in der Kategorie Bands" ist keine
+ * Auskunft, sondern eine Sackgasse.
+ *
+ * ANLASS: Beim ersten Build mit freigegebenen Inhalten standen `/bands/` und
+ * `/artikel/` mit null Einträgen indexierbar in der Sitemap — während die
+ * Regionsschwelle eine Seite mit 258 belegten Wörtern herausnahm, weil ihr
+ * der dritte Eintrag fehlte. Derselbe Grundsatz, zwei verschiedene Antworten.
+ */
+export function uebersichtIndexierbar(anzahl: number): { indexierbar: boolean; grund?: string } {
+  if (anzahl > 0) return { indexierbar: true };
+  return { indexierbar: false, grund: "die Sammlung enthält keinen Eintrag" };
+}
+
 export function zaehleWorte(text = ""): number {
   const t = text
     .replace(/```[\s\S]*?```/g, " ")

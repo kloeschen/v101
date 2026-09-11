@@ -226,6 +226,39 @@ try {
     gleich("die laufende Reihe steht weiterhin im Bericht", arten, ["Andere Reihe"]);
     rmSync(zweite, { force: true });
   }
+
+  /* ---------------------------------------------------------------- */
+  /* 4. Sammlungen ohne einen einzigen Eintrag                         */
+  /* ---------------------------------------------------------------- */
+  /*
+   * Das Pruefprojekt legt nur events, locations und regionen an. Bands,
+   * Lexikon und Artikel sind darin leer -- und damit ist dieselbe Lage da,
+   * die im echten Register beim ersten Build mit freigegebenen Inhalten
+   * auffiel: `/bands/` und `/artikel/` standen indexierbar in der Sitemap,
+   * obwohl sie nichts zeigten.
+   *
+   * Das Paar steht wieder in einem Lauf: Die drei leeren Sammlungen muessen
+   * gemeldet werden, die drei gefuellten nicht. Eine Rubrik, die gar nicht
+   * laeuft, faellt an der ersten Haelfte; eine, die wahllos meldet, an der
+   * zweiten.
+   */
+  {
+    writeFileSync(evDatei, event("testreihe", "Testreihe Weekender", true));
+    const b = bericht(temp);
+    const leer = b.posten.filter((p) => p.art === "sammlung-leer").map((p) => p.titel.replace(/ \(.*\)$/, ""));
+
+    gleich("die leeren Sammlungen werden gemeldet", [...leer].sort(), ["Artikel", "Bands", "Lexikon"]);
+    pruefe(
+      "und der Posten sagt, was ihnen fehlt",
+      b.posten.some((p) => p.art === "sammlung-leer" && /keinen Eintrag/.test(p.detail)),
+      JSON.stringify(b.posten.filter((p) => p.art === "sammlung-leer")[0] ?? null),
+    );
+    pruefe(
+      "der Posten nennt den Pfad der Uebersicht",
+      b.posten.every((p) => p.art !== "sammlung-leer" || /\(\/[a-z]+\/\)$/.test(p.titel)),
+      JSON.stringify(leer),
+    );
+  }
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }

@@ -311,3 +311,32 @@ export const SAMMLUNGSNAME: Record<CollectionName, string> = {
   lexikon: "Lexikon",
   artikel: "Artikel",
 };
+
+/**
+ * Ein Satz je Sammlung: Was steht hier, und wofür?
+ *
+ * Bisher trug die Übersichtsseite als Kapsel eine Zählung — "Das Register
+ * enthält 10 Einträge in der Kategorie Lexikon". Eine Zählung ist keine
+ * Auskunft: Sie beantwortet keine Frage, die jemand mitbringt, und als
+ * `meta description` sagt sie einer Suchmaschine nichts über die Seite.
+ * Die Zahl bleibt, aber als Zusatz und nicht als ganzer Satz.
+ */
+export const SAMMLUNGSKAPSEL: Record<CollectionName, string> = {
+  events:
+    "Konzerte, Weekender, Tanzabende und Treffen der Vintage- und Rockabilly-Szene im deutschsprachigen Raum — jeder Termin mit Quelle.",
+  bands: "Bands und Solokünstler der Szene, mit Besetzung, Veröffentlichungen und Auftritten.",
+  locations: "Hallen, Clubs, Säle und Freigelände, in denen die Szene spielt und tanzt.",
+  regionen: "Was wo stattfindet: Regionen mit ihren Terminen, Orten und Bands.",
+  lexikon:
+    "Die Begriffe der Szene, definiert und gegeneinander abgegrenzt — von Rockabilly bis Petticoat.",
+  artikel: "Längere Texte zu Musik, Mode, Tanz und Geschichte der Szene.",
+};
+
+/** Die Kapsel einer Übersichtsseite: Auskunft zuerst, Zahl danach. */
+export function uebersichtsKapsel(collection: CollectionName, anzahl: number): string {
+  const zahl =
+    anzahl === 0
+      ? "Noch kein Eintrag."
+      : `Derzeit ${anzahl} ${anzahl === 1 ? "Eintrag" : "Einträge"}.`;
+  return `${SAMMLUNGSKAPSEL[collection]} ${zahl}`;
+}

@@ -13,6 +13,117 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-11 — Die Eingangstür: Startseite, leere Sammlungen, Sitemap-Index
+
+**Anlass, und er kam aus dem Build selbst.** Nach der Freigabe baute die Site
+zum ersten Mal 62 Seiten statt 20. Dabei fielen drei Dinge auf, die vorher
+nicht sichtbar sein konnten, weil es nichts anzuzeigen gab:
+
+1. `/bands/` und `/artikel/` standen **indexierbar in der Sitemap**, mit null
+   Einträgen — während die Regionsschwelle aus PR #17 eine Seite mit 258
+   belegten Wörtern herausnahm, weil ihr der dritte Eintrag fehlte. Derselbe
+   Grundsatz, zwei entgegengesetzte Antworten.
+2. Die **Startseite** war ein Satz und eine Zahl („Aktuell 38 Einträge im
+   Register") und enthielt außer der Navigation keinen einzigen Link. Die
+   schwächste Seite der Site war zugleich die, auf der die meisten landen.
+3. Die Kapsel jeder Übersichtsseite war eine **Zählung**: „Das Register
+   enthält 10 Einträge in der Kategorie Lexikon". Als `meta description`
+   sagt das einer Suchmaschine nichts über die Seite.
+
+**Entschieden — leer heißt nicht in den Index.** `uebersichtIndexierbar(n)`
+in `src/lib/facetten.ts`: ab einem Eintrag indexierbar, bei null nicht, mit
+Grund. **Bewusst keine Mindestmenge wie bei Facetten (5) oder Regionen (3).**
+Eine Übersichtsseite ist die kanonische Adresse ihrer Sammlung, keine Auswahl
+aus einem Bestand — `/lexikon/` mit einem Begriff ist die richtige Adresse für
+diesen Begriff, `/events/typ/festival/` mit einem Termin ist eine dünne Kopie
+der Terminseite. Die Schwelle trennt „gibt es" von „gibt es nicht", nicht
+„viel" von „wenig".
+
+Die Seite bleibt erreichbar und `follow` — sie vererbt Linkkraft weiter,
+verwässert aber den Index nicht. Dasselbe Muster wie bei den Facetten.
+
+**Angeschlossen an vier Stellen** statt an einer, und jede ist eine eigene
+Entscheidung:
+
+| Stelle | Verhalten bei einer leeren Sammlung |
+|---|---|
+| `src/pages/[typ]/index.astro` | `noindex, follow`, Grund in der Entwicklungsansicht |
+| `sitemapFuerCollection` | die Übersicht fehlt in der Sitemap |
+| `sitemapDateien` (neu) | der **Sitemap-Index nennt die leere Datei nicht** |
+| `stale-report.ts` | Posten „Sammlungen ohne Eintrag", Gewicht 130 |
+
+**Der Sitemap-Index ist die Folgewirkung, und sie war zuerst übersehen.**
+Nachdem die Übersicht aus `sitemap-bands.xml` verschwand, enthielt die Datei
+null URLs — und stand weiter im Index. Das ist kein Fehler, aber eine Zeile
+in der Search Console, die dauerhaft „0 entdeckte URLs" meldet; ein Bericht,
+dessen Zeilen nichts bedeuten, wird nach zwei Wochen überlesen (Lektion 4 in
+Berichtsform). Der Index nennt jetzt nur, was etwas enthält.
+
+**Die Datei selbst wird weiter gebaut.** Ihre Adresse soll stabil sein, damit
+sie nicht verschwindet und wiederkommt, sobald die Sammlung sich füllt.
+Verworfen wurde deshalb, sie aus `getStaticPaths` zu nehmen: Das hätte einen
+404 auf eine URL erzeugt, die jederzeit wieder existieren kann.
+
+**Die Startseite beantwortet jetzt die Frage, mit der jemand kommt.** „Als
+Nächstes": bis zu sechs kommende Termine mit Datum, chronologisch. Darunter
+„Im Register": die Sammlungen mit Inhalt, mit Zahl und einem Satz, was darin
+steht. 15 Links statt 5.
+
+Kommend heißt `!istVorbei(ende ?? beginn)`, nicht `beginn >= jetzt` — ein
+Termin heute Abend gehört unter „kommend", auch wenn seine Uhrzeit schon
+vorbei ist, und ein dreitägiges Festival bleibt bis zum letzten Tag aktuell.
+Die Regel steht seit M9 in `lib/datum.ts` und wird hier nur benutzt.
+
+**Die Terminliste rendert `EintragsListe` und nicht eigenes Markup.** Diese
+Komponente ist die einzige Stelle im Repo, an der ein Eintrag in einer Liste
+gezeigt wird, und **nur solange das stimmt, kann kein Entwurf irgendwo
+unmarkiert auftauchen**. Eine zweite Terminliste für die Startseite wäre
+bequemer gewesen und hätte diese Zusage aufgegeben. Stattdessen zwei
+Parameter: `datum` (Datum voranstellen) und `titel` optional.
+
+**Die Navigation wird aus der Registry abgeleitet.** Ein Menüpunkt, der auf
+eine leere Seite führt, ist kein Einstieg. Gezählt wird aus `holeRegistry` —
+in der Vorschau also mit Entwürfen, in der Produktion ohne.
+
+**Die Kapsel sagt zuerst, was die Sammlung ist, und nennt die Zahl danach.**
+`SAMMLUNGSKAPSEL` in `faktenblock.ts` trägt je Sammlung einen Satz; bei null
+Einträgen steht „Noch kein Eintrag." statt „0 Einträge". Die Überschrift
+„Einträge" über der Liste ist ersatzlos entfallen — die Liste ist
+offensichtlich die Liste.
+
+**Ein Behelf ist entfallen.** `test-anzeige.ts` hat bisher für die Dauer
+eines Builds einen Lexikoneintrag freigegeben und zeichengenau zurückgebaut,
+weil der Produktionsbuild sonst keine einzige Entitätsseite enthielt und eine
+Gegenprobe an einer nicht existierenden Seite keine ist (Lektion 19). Seit
+der Freigabe vom 10. September ist das überflüssig — und damit die einzige
+Stelle im Repo, die den Statusschutz umging. Das Lebenszeichen bleibt: Der
+Test prüft, dass der Produktionsbuild die Probeseite tatsächlich enthält.
+
+**Nebenbefund an der Prüfvorrichtung.** Die Event-Vorrichtung in
+`test-facetten.ts` trug kein `geprueftAm`, obwohl das Schema es verlangt.
+Aufgefallen ist es erst, als `sitemapDateien` über alle Sammlungen läuft und
+das Feld liest — davor hat kein Test es je angefasst. Eine Vorrichtung, die
+den Datenvertrag nicht erfüllt, prüft einen Fall, den es nicht gibt.
+
+**Mutationsbeleg: 11 Mutationen, alle belegt** — je Regel eine, auf den
+betroffenen Block begrenzt (Lektion 17), mit Prüfung auf zeichengenauen
+Rückbau. Zwei davon sind Paare an derselben Zeile (Bericht meldet nie /
+Bericht meldet immer), damit „nicht gemeldet" nicht auch aus einer
+abgeschalteten Rubrik folgen kann.
+
+Zwei Mutationen fällten **mehr** Behauptungen als erwartet: M1
+(`uebersichtIndexierbar` sagt immer ja) und M2 (die Sitemap fragt die
+Schwelle nicht) rissen zusätzlich die Index-Behauptung mit. Das ist kein
+Nebeneffekt, sondern die Kette: Der Index fragt die Sitemap, die Sitemap
+fragt die Schwelle. Die Erwartung war falsch, nicht der Code — festgehalten,
+weil die naheliegende Reaktion gewesen wäre, die Mutation umzubauen, bis sie
+zur Erwartung passt.
+
+**Offen geblieben:** Die Seitenzahl der Startseite steht bei sechs Terminen
+und ist geraten. Gemessen werden kann das erst, wenn es Zahlen gibt.
+
+---
+
 ## 2026-09-11 — `aeraVon` auf 1400, vier Datierungen nachgetragen
 
 **Entscheidung des Menschen:** `aeraVon`/`aeraBis` im Lexikonschema von
