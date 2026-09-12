@@ -82,6 +82,19 @@ function wanduhr(d: Date, zone: string): Wanduhr {
 }
 
 /**
+ * Das Jahr, das die Wanduhr in `zone` zum Zeitpunkt `d` zeigt.
+ *
+ * Das Jahr unmittelbar aus dem Date zu lesen, gäbe das Jahr in der Zeitzone
+ * des Prozesses. Auf einem UTC-Runner ist der 1. Januar um 00:30 Berliner
+ * Zeit dort noch der 31. Dezember des Vorjahrs — und eine Regel, die „liegt in der Zukunft"
+ * beantwortet, hinge in der Neujahrsnacht am Standort des Servers
+ * (Lektion 1). Deshalb auch hier über die Wanduhr.
+ */
+export function jahrIn(d: Date = new Date(), zone: string = site.zeitzone): number {
+  return wanduhr(d, zone).year;
+}
+
+/**
  * Verschiebung der Zone gegen UTC in Millisekunden, gültig zum Zeitpunkt
  * `d`. Berlin liefert +3600000 im Winter, +7200000 im Sommer.
  */

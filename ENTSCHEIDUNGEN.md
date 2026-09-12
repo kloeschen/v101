@@ -13,6 +13,91 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-11 — Bands-Jahre: Untergrenze gesenkt, zwei Regeln dazugebaut
+
+**Entscheidung des Menschen:** `gegruendet`, `aufgeloest` und das Jahr einer
+Veröffentlichung im Bandschema von `min(1930)` auf `min(1900)`. Die Zeilen
+sind vom Menschen committet, das Schema bleibt für Agenten gesperrt.
+
+**1900 ist nicht gewählt, sondern abgelesen.** Es ist genau der früheste
+Wert, den das Register selbst datiert: `boogie-woogie.md` trägt `aeraVon:
+1900`. Eine Untergrenze für Bands, die später ansetzt als der früheste
+Begriff im Lexikon, schließt etwas aus, das hier ausdrücklich dazugehört.
+
+**Der Anlass war konkret, nicht theoretisch.** Der Boogie-Woogie-Eintrag
+nennt Pinetop Smith, dem Britannica die Prägung des Begriffs zuschreibt.
+Seine Aufnahme „Pinetop's Boogie Woogie" stammt von 1928 — unter `min(1930)`
+ließ sich dieses Jahr in `veroeffentlichungen[].jahr` nicht eintragen. Der
+Lindy Hop (`aeraVon: 1928`) hat dasselbe Problem.
+
+**Die Untergrenze war aber die harmlose Hälfte.** Sie fängt einen Wert ab,
+der zu FRÜH ist. Drei Fälle fängt sie strukturell nicht, und zwei davon
+fing bisher auch sonst niemand:
+
+| Fall | vorher | jetzt |
+|---|---|---|
+| Auflösung vor Gründung | `band-jahre` | unverändert |
+| Jahr zu weit in der **Zukunft** | nichts | `band-jahre`, Fehler |
+| Veröffentlichung **vor der Gründung** | nichts | `band-jahre`, Fehler |
+
+**Die Zukunft ist der Fall, den das Schema nicht sehen kann.** `max(2100)`
+lässt eine Gründung im Jahr 2062 durch, und der Zahlendreher aus 1962 ist
+genau der Fehler, der beim Abtippen entsteht. Eine mitlaufende Obergrenze
+gehört trotzdem nicht ins Schema: Zod hat dort keine Zeitzone, und ein
+Schema, dessen Ergebnis von der Uhr des Servers abhängt, wäre die nächste
+Fassung von Lektion 1. Im Validator ist die Zeitzone da.
+
+**Die Grenze ist das Folgejahr, nicht das laufende.** Eine für nächstes Jahr
+angekündigte Band und ein vorbestellbares Album sind beides normale
+Einträge. Der Test hält beide Seiten: Folgejahr erlaubt, Jahr danach Fehler.
+
+**Neu in `datum.ts`: `jahrIn(d, zone)`.** Das Jahr unmittelbar aus dem `Date`
+zu lesen, gäbe das Jahr in der Zeitzone des Prozesses — auf einem UTC-Runner
+ist der 1. Januar um 00:30 Berliner Zeit dort noch das Vorjahr. Die Funktion
+geht denselben Weg wie der Rest des Moduls, über die Wanduhr.
+
+**NICHT gebaut: Veröffentlichung nach der Auflösung.** Compilations und
+Live-Mitschnitte erscheinen regelmäßig Jahrzehnte danach, und auch ein
+Studioalbum kommt oft erst nach der Trennung heraus. Die Regel hätte eine
+hohe Fehlalarmquote, und eine Rubrik, die dauerhaft Unerledigbares führt,
+wird überlesen — dann ist sie ganz entwertet, nicht nur diese Zeile. Die
+Entscheidung steht als Prüffall im Repo (`jahre-platte-posthum.md`,
+`verboten: ["band-jahre"]`): Wer die Regel eines Tages doch baut, bringt
+diesen Fall zu Fall und muss gegen die Begründung hier argumentieren.
+
+**Die Untergrenze ist durch ein Grenzpaar belegt, nicht durch eine
+Mutation — und das ist Absicht.** Es gibt null Bandeinträge; ein Lauf gegen
+echte Daten kann über die Zahl nichts zeigen, `npm run verify` bliebe grün,
+egal was dort steht. Vier Prüffälle halten sie stattdessen gegen das echte
+Schema: `gegruendet: 1900` geht durch, `1899` fällt, `aufgeloest: 1899`
+fällt, `veroeffentlichungen[].jahr: 1899` fällt. Dreht jemand auf 1930
+zurück, fällt der erste Fall.
+
+**Die Schemadatei wurde dafür bewusst nicht mutiert.** Der Guard-Hook sperrt
+sie; ein Skript, das über Node daran vorbeischreibt, hätte vorgeführt, dass
+die Sperre eine Bitte ist (Lektion 16). Gegenprobe stattdessen direkt an Zod
+gelesen: `1899` meldet „Too small: expected number to be >=1900", `1928`
+meldet zu diesem Feld nichts.
+
+**Mutationsbeleg für die beiden neuen Regeln: 5 Mutationen, alle belegt**,
+je genau eine Behauptung gefallen. Darunter zwei, die nicht die Regel
+abschalten, sondern sie verschieben: die Grenze auf das laufende Jahr (der
+Folgejahr-Fall fällt) und die nicht gebaute Nachher-Regel eingebaut (der
+Posthum-Fall fällt). Eine abgeschaltete Regel und eine falsch gezogene
+Grenze sind verschiedene Fehler und brauchen verschiedene Belege.
+
+**NEBENBEFUND, und er betrifft die Absicherung selbst:** Der Bash-Zweig von
+`guard.mjs` blockiert jeden Befehl, der den gesperrten Pfad nennt **und
+irgendwo ein `>` enthält** — auch in einer Pfeilfunktion. Damit war ein
+reiner **Lesezugriff** gesperrt (`npx tsx -e` mit `i => i.path[0]`). Erst
+ohne Pfeilfunktion lief derselbe Befehl. Die Sperre ist dadurch nicht zu
+schwach, sondern zu breit — aber eine Sperre, um die man täglich
+herumformuliert, wird irgendwann umgangen statt beachtet. `.claude/` ist für
+Agenten gesperrt; die Korrektur gehört zum Menschen und steht in
+OFFENE-PUNKTE.md.
+
+---
+
 ## 2026-09-11 — Die Eingangstür: Startseite, leere Sammlungen, Sitemap-Index
 
 **Anlass, und er kam aus dem Build selbst.** Nach der Freigabe baute die Site
