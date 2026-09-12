@@ -13,7 +13,7 @@ region: berlin
 eintritt: unveroeffentlicht
 lineupWeitere: [Billy Childish, Trainwrecks]
 genres: [rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/billy-childish-trainwrecks
 redaktionsnotiz: >-

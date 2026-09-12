@@ -12,7 +12,7 @@ ort: burg-perchtoldsdorf
 region: niederoesterreich
 eintritt: unveroeffentlicht
 veranstalter: BWC Rock Dock Teddys
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 redaktionsnotiz: >-
   AKTUALITAETSBELEG: Der schwaechste der vier angelegten Faelle mit
   Zukunftstermin, und der einzige ohne strukturierte Daten. Er stuetzt
