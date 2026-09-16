@@ -2,10 +2,28 @@
 /**
  * Das universelle Seitengerüst für alle sechs Entitätstypen.
  *
- * Die Reihenfolge ist nicht Geschmackssache, sondern die Extraktionsfläche:
- * H1 → Antwortkapsel (erster Absatz des Fließtexts) → Faktenblock → Inhalt →
- * FAQ → Rückverweise → Belege. Wer sie ändert, ändert, was ein Modell aus
- * den ersten Tokens der Seite mitnimmt.
+ * Die Reihenfolge ist nicht Geschmackssache, sondern die Extraktionsfläche.
+ * Wer sie ändert, ändert, was ein Modell aus den ersten Tokens der Seite
+ * mitnimmt:
+ *
+ *   H1 → Faktenblock → Inhalt → FAQ → Rückverweise → Belege
+ *
+ * DIE ANTWORTKAPSEL HAT KEIN EIGENES ELEMENT. Sie ist der erste Absatz des
+ * Fließtexts, also `.inhalt > p:first-child` — genau das prüft die Regel
+ * `kapsel-vorhanden` (25–90 Wörter). Gestalterisch ist sie nur über diesen
+ * Selektor erreichbar; die Klasse `.kapsel` gibt es ausschließlich auf
+ * Übersichts-, Facetten- und Startseite.
+ *
+ * Bis zum 2026-09-16 behauptete dieser Kommentar die Reihenfolge „H1 →
+ * Antwortkapsel → Faktenblock → Inhalt". Das hat der Code nie getan, und
+ * DESIGN-BRIEF.md hat den Fehler jahrelang weitergetragen. Die Entscheidung
+ * vom 16.09.2026 lautet: Der Code bleibt, der Kommentar wird richtig.
+ *
+ * Der Grund, warum der Faktenblock vorn steht und dort auch hingehört: Er
+ * ist der dichteste strukturierte Inhalt der Seite. Wer wissen will, wann
+ * das Festival ist, findet es ohne Scrollen — und ein extrahierendes Modell
+ * bekommt zuerst dt/dd-Paare statt Prosa. Die Alternativen sind in
+ * ENTSCHEIDUNGEN.md samt ihrer gemessenen Kosten festgehalten.
  */
 import BasisLayout from "./BasisLayout.astro";
 import Faktenblock from "../components/Faktenblock.astro";

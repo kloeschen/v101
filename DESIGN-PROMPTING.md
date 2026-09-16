@@ -96,17 +96,32 @@ Bevor du dich festlegst, lass dieselbe Gestaltung auf den Grenzfällen laufen.
 Hier scheitern Entwürfe, nicht auf der Vorzeigeseite:
 
 ```
-Wende Richtung A unverändert auf drei weitere Fälle an:
+Wende Richtung A unverändert auf drei weitere Fälle an. Die Kennzahlen
+zu jedem stehen in DESIGN-BRIEF.md, Abschnitt "Die sechs Bildschirme,
+die gebraucht werden" — nimm sie von dort, nicht aus meiner
+Beschreibung:
 
-1. Ein Lexikoneintrag: Definition, drei Faktenzeilen, 120 Wörter Text,
-   keine FAQ, keine Bilder. Soll vollständig wirken, nicht wie eine
-   halb ausgefüllte Vorlage.
-2. Eine Regionsseite: sechs gestapelte Listen mit 2 bis 40 Einträgen.
-3. Eine abgesagte Veranstaltung: Hinweisbox über dem Faktenblock,
-   Vergangenheitsform, Preise ausgegraut.
+1. Der dünne Lexikoneintrag (Bildschirm 3). Soll vollständig wirken,
+   nicht wie eine halb ausgefüllte Vorlage.
+2. Die Regionsseite (Bildschirm 4): gestapelte Listen sehr
+   unterschiedlicher Länge.
+3. Ein Eintrag im Entwurfszustand: Hinweiskasten über dem Faktenblock,
+   Marker in jeder Liste, Quellenblock aufgeklappt. Siehe "Was ein
+   Entwurf gestalterisch braucht".
 
 Wenn eine davon bricht, will ich das lieber jetzt sehen.
 ```
+
+Die Zahlen stehen bewusst **nicht** hier: Sie ändern sich mit dem Bestand,
+und zwei Orte für denselben Wert laufen auseinander — genau das war der
+Grund, warum diese Vorlage bis zum 16.09.2026 einen Lexikoneintrag mit
+„120 Wörtern" beschrieb, den es nie gab.
+
+Der dritte Fall hieß früher „eine abgesagte Veranstaltung: Hinweisbox über
+dem Faktenblock". Den Fall gibt es so nicht — eine Absage ist eine
+Faktenzeile (`data-feld="durchfuehrung"`), keine Box. Der Entwurfszustand
+ist der Fall, der wirklich eine Box erzeugt, und er ist der härtere: Er
+betrifft nicht eine Seite, sondern jede Liste, in der der Eintrag vorkommt.
 
 ## Prompt 4 — Verfeinern
 
