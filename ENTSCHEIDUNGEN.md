@@ -13,6 +13,152 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-16 — Zwei Entscheidungen zur Design-Dokumentation
+
+Beides Folgeentscheidungen aus dem Nachziehen von `DESIGN-BRIEF.md`, beide
+vom Menschen getroffen.
+
+### 1. Die Reihenfolge bleibt, der Kommentar wird richtig
+
+**Entschieden:** `EntitaetsLayout.astro` behält `H1 → Faktenblock → Inhalt`.
+Der Kopfkommentar, der seit jeher `H1 → Antwortkapsel → Faktenblock →
+Inhalt` behauptete, ist an den Code angeglichen worden — samt der
+Begründung, warum der Faktenblock vorn gehört.
+
+**Die Begründung:** Der Faktenblock ist der dichteste strukturierte Inhalt
+der Seite. Wer wissen will, wann das Festival ist, findet es ohne Scrollen,
+und ein extrahierendes Modell bekommt zuerst dt/dd-Paare statt Prosa. Die
+Implementierung war hier besser als die dokumentierte Absicht — der Fehler
+lag im Kommentar, nicht im Code.
+
+**Zwei Alternativen verworfen, beide mit gemessenen Kosten:**
+
+- *Faktenblock hinter den Fließtext* — das hätte der dokumentierten Absicht
+  entsprochen. Auf `/lexikon/petticoat/` stünden damit **1177 Wörter vor den
+  Fakten**. Der Vierzig-Sekunden-Besuch, für den dieses Register gebaut ist,
+  scrollt dann an allem vorbei.
+- *`kurzbeschreibung` zusätzlich als `.kapsel` über den Faktenblock rendern*,
+  wie es die Übersichtsseiten tun. Dagegen spricht eine Messung: Die
+  Überlappung zwischen `kurzbeschreibung` und dem ersten Absatz des
+  Fließtexts liegt im Median bei 54 %, **bei Events und Locations aber bei
+  80–91 %**. Dort stünde sichtbar zweimal fast dasselbe. Wörtlich identisch
+  ist kein einziges Paar der 38 — es wäre also nicht einmal eine ehrliche
+  Dopplung, sondern eine, die den Leser zum Vergleichen zwingt. Bei Lexikon
+  und Regionen (18–36 %) wäre es unproblematisch gewesen; eine Regel, die
+  nur für vier von sechs Collections trägt, ist keine.
+
+**Was daraus für die Kapsel folgt und jetzt an drei Stellen steht:** Sie hat
+kein eigenes Element. Sie ist `.inhalt > p:first-child`, und genau das prüft
+`kapsel-vorhanden`. Der Kommentar sagt es, der Brief sagt es, und die
+verworfenen Alternativen stehen hier.
+
+### 2. Kennzahlen stehen nur noch an einer Stelle
+
+**Entschieden:** Prompt 3 in `DESIGN-PROMPTING.md` nennt keine Zahlen mehr,
+sondern verweist auf `DESIGN-BRIEF.md`, Abschnitt „Die sechs Bildschirme".
+Der Brief wird ohnehin mit hochgeladen, die Vorlage bleibt also benutzbar.
+
+**Der Grund ist derselbe wie bei Regel 3 des Projekts, nur für Dokumente:**
+Zwei Orte für denselben Wert laufen auseinander. Genau das ist passiert —
+die Vorlage beschrieb bis heute einen Lexikoneintrag mit „120 Wörtern", den
+es nie gab, und eine Regionsseite mit sechs Listen, die drei hat.
+
+**Dabei ein sachlicher Fehler mitkorrigiert, der keine veraltete Zahl war:**
+Der dritte Härtetest-Fall hieß „eine abgesagte Veranstaltung: Hinweisbox
+über dem Faktenblock". Den Fall gibt es nicht — eine Absage ist eine
+Faktenzeile (`data-feld="durchfuehrung"`), keine Box. Ersetzt durch den
+Entwurfszustand, der wirklich eine Box erzeugt und der härtere Test ist: Er
+betrifft nicht eine Seite, sondern jede Liste, in der der Eintrag vorkommt.
+
+Die Ausnahme des Auftrags („`DESIGN-PROMPTING.md` unverändert lassen — das
+sind Prompt-Muster, keine Projektfakten") war richtig gedacht und traf hier
+nur nicht zu: In den Vorlagen standen Projektfakten. Dass sie dort nicht
+mehr stehen, macht die Ausnahme künftig wieder zutreffend.
+
+---
+
+## 2026-09-16 — DESIGN-BRIEF.md nachgezogen: gemessen statt geraten
+
+**Anlass:** Der Brief entstand, als das Register leer war. Seine Zahlen
+waren Schätzungen aus den Komponenten, und fast jede lag daneben, sobald
+38 freigegebene Einträge dastanden.
+
+**Methode, und sie ist der eigentliche Inhalt dieses Eintrags:** Alles neu
+Aufgeschriebene stammt aus dem **erzeugten HTML**, nicht aus den
+`.astro`-Dateien — zwei Builds, einmal `PUBLIC_ENTWUERFE=false`, einmal
+`true`, dann ausgezählt. Ein Brief, der Komponenten paraphrasiert, behauptet
+die Absicht; ein Brief, der das Ergebnis auszählt, beschreibt, was ein
+Gestalter vor sich hat.
+
+**Die Korrekturen, von der folgenreichsten abwärts:**
+
+| Behauptung im alten Brief | gemessen |
+|---|---|
+| „H1 → Antwortkapsel → Faktenblock → Fließtext" | H1 → **Faktenblock** → Fließtext |
+| `.kapsel` trägt die Antwortkapsel | auf Entitätsseiten **gibt es keine `.kapsel`** |
+| `.inhalt` führt h2/h3, ul, table, blockquote | 126× H2, **0× alles andere** |
+| Eventseite: 17 Faktenzeilen, Line-up, FAQ, mehrere Listen | max. 14 Zeilen, **eine** Liste, keine FAQ |
+| Lexikon: „der ärmste Fall", 3 Zeilen, 120 Wörter | 6–10 Zeilen, 383–1177 Wörter |
+| Regionsseite: vier bis sechs Listen | **drei** |
+| Übersicht: Kapsel, Filterlinks, Liste | Kapsel, Liste, **dann** Filterlinks — und nur auf `/events/` |
+| `/daten/`: Codepfade | **kein einziges `<code>`** |
+| `.hinweis` trägt Entwurf, abgesagt, letzte Ausgabe | nur Entwurf und `noindex`; die anderen sind Faktenzeilen |
+
+**Die Antwortkapsel ist der Kern der Verwirrung, und sie ist kein Fehler.**
+Sie ist der erste Absatz des Fließtexts — genau das prüft die Regel
+`kapsel-vorhanden` (25–90 Wörter). Ein eigenes Element hat sie nie gehabt.
+Gestalterisch erreichbar nur über `.inhalt > p:first-child`. Wer das nicht
+weiß, gestaltet eine Klasse, die auf 38 von 62 Seiten nicht vorkommt.
+
+**Neun Selektoren waren nicht im Brief**, darunter die vom Auftrag genannten:
+`.liste--knapp`, `.liste__entwurf`, `.trenner`, `.liste__datum`,
+`.sammlungen*`, `.belege__stand`, `.belege__autor`, `.belege__quellen`,
+`.belege__abgerufen`.
+
+**Sieben davon haben bis heute keine einzige CSS-Regel** — sie stehen im
+HTML und rendern als nackter Fließtext. Das steht jetzt in der
+Selektorentabelle als eigene Spalte, weil es der Unterschied ist zwischen
+„gestalte das um" und „gestalte das überhaupt erst".
+
+**Der Token-Vertrag ist der einzige Teil, der unverändert galt:** 32 zu 32
+gegen `tokens.css`, keine Abweichung. Drei Anmerkungen ergänzt:
+`--farbe-flaeche`, `--farbe-akzent-text` und `--schatten` werden nirgends
+per `var()` gelesen — sie zu setzen ändert heute nichts —, und
+`--farbe-akzent-text` hat keine Dunkelmodus-Fassung (Weiß bliebe auf
+`#e0705f` stehen). Solange der Token ungenutzt ist, fällt das nicht auf.
+
+**Neu: ein Abschnitt, was ein Entwurf gestalterisch braucht.** Dafür gab es
+bisher keine Vorgabe, obwohl der Zustand die gesamte Redaktionsarbeit trägt.
+Gemessen wurde er, indem ein Eintrag kurzzeitig auf Entwurf gesetzt, die
+Vorschau gebaut und die Datei zeichengenau zurückgebaut wurde — dieselbe
+Disziplin wie ein Mutationsbeleg, per Hash belegt.
+
+Drei Befunde daraus:
+
+- Das Markup steht jetzt zeichengenau im Brief statt umschrieben.
+- **Ein** Entwurf erzeugt den Listenmarker auf **sechs** Seiten. Er ist kein
+  Sonderfall einer Seite, sondern läuft quer durch die Vorschau.
+- **Der „offene Quellenblock" ist keine eigene Klasse.** Es ist derselbe
+  `details.belege__quellen` mit dem Attribut `open` — gesetzt, wenn
+  `PUBLIC_ENTWUERFE` gilt. Damit gehört er in dieselbe Familie wie Marker
+  und Hinweiskasten: ein Vorschauzustand, kein neues Element. Gestalterisch
+  folgt daraus, dass der aufgeklappte Zustand in der Vorschau der Normalfall
+  ist und dort ordentlich aussehen muss.
+
+**Verworfen: die Annahme des Auftrags, Bleistiftrock sei der reichste
+Lexikonfall.** Gemessen ist er Mittelfeld (550 Wörter, 3 H2, 5 Quellen).
+Der reichste ist **Petticoat** (1177 Wörter, 10 Quellen), der dünnste
+**Boogie-Woogie** (383 Wörter, 8 Zeilen). Bleistiftrocks Reiz ist
+redaktionell — er trägt den belegten Quellenwiderspruch aus Lektion 20 —,
+nicht gestalterisch. Beide Fälle stehen jetzt als getrennte Bildschirme im
+Brief, weil reich und arm verschiedene Dinge auf die Probe stellen.
+
+**`DESIGN-PROMPTING.md` blieb unverändert**, wie beauftragt. Es enthält
+allerdings dieselben veralteten Zahlen innerhalb seiner Prompt-Vorlagen —
+festgehalten in OFFENE-PUNKTE.md statt stillschweigend mitgeändert.
+
+---
+
 ## 2026-09-11 — Bands-Jahre: Untergrenze gesenkt, zwei Regeln dazugebaut
 
 **Entscheidung des Menschen:** `gegruendet`, `aufgeloest` und das Jahr einer
