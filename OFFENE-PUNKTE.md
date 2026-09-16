@@ -25,6 +25,25 @@ bloße Zeichen `>` zu prüfen — dieselbe Korrektur wie damals beim
 Statuswort (Lektion 18). `.claude/` ist für Agenten gesperrt, auch für diese
 Änderung.
 
+**Zwei Stellen tragen noch die alten Design-Zahlen.** Beim Nachziehen von
+`DESIGN-BRIEF.md` am 2026-09-16 gefunden, aber bewusst nicht mitgeändert:
+
+- `DESIGN-PROMPTING.md`, Prompt 3 („Der Härtetest"), nennt innerhalb der
+  Prompt-Vorlage „drei Faktenzeilen, 120 Wörter", „sechs gestapelte Listen"
+  und eine „Hinweisbox" für abgesagte Veranstaltungen. Gemessen sind es
+  6–10 Zeilen, 383–1177 Wörter, drei Listen — und eine Absage erzeugt
+  **keine** Hinweisbox, sie ist eine Faktenzeile (`data-feld="durchfuehrung"`).
+  Die Datei ist als Prompt-Muster ausgenommen worden; ob diese Zahlen darin
+  Projektfakten oder Beispielwerte sind, entscheidet der Mensch.
+- Der Kopfkommentar von `src/layouts/EntitaetsLayout.astro` behauptet die
+  Reihenfolge „H1 → Antwortkapsel → Faktenblock → Inhalt". Die Datei
+  darunter rendert H1 → Faktenblock → Inhalt. Der Kommentar steht ausgerechnet
+  dort, wo die Reihenfolge entschieden wird, und ist damit die Stelle, an der
+  sich der nächste Leser dieselbe Fehlannahme holt. Zu entscheiden: Kommentar
+  an den Code angleichen, oder den Code an die dokumentierte Absicht — das
+  Zweite verschiebt, was ein Modell aus den ersten Tokens der Seite mitnimmt,
+  und ist keine Formsache.
+
 **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der

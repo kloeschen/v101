@@ -13,6 +13,88 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-16 — DESIGN-BRIEF.md nachgezogen: gemessen statt geraten
+
+**Anlass:** Der Brief entstand, als das Register leer war. Seine Zahlen
+waren Schätzungen aus den Komponenten, und fast jede lag daneben, sobald
+38 freigegebene Einträge dastanden.
+
+**Methode, und sie ist der eigentliche Inhalt dieses Eintrags:** Alles neu
+Aufgeschriebene stammt aus dem **erzeugten HTML**, nicht aus den
+`.astro`-Dateien — zwei Builds, einmal `PUBLIC_ENTWUERFE=false`, einmal
+`true`, dann ausgezählt. Ein Brief, der Komponenten paraphrasiert, behauptet
+die Absicht; ein Brief, der das Ergebnis auszählt, beschreibt, was ein
+Gestalter vor sich hat.
+
+**Die Korrekturen, von der folgenreichsten abwärts:**
+
+| Behauptung im alten Brief | gemessen |
+|---|---|
+| „H1 → Antwortkapsel → Faktenblock → Fließtext" | H1 → **Faktenblock** → Fließtext |
+| `.kapsel` trägt die Antwortkapsel | auf Entitätsseiten **gibt es keine `.kapsel`** |
+| `.inhalt` führt h2/h3, ul, table, blockquote | 126× H2, **0× alles andere** |
+| Eventseite: 17 Faktenzeilen, Line-up, FAQ, mehrere Listen | max. 14 Zeilen, **eine** Liste, keine FAQ |
+| Lexikon: „der ärmste Fall", 3 Zeilen, 120 Wörter | 6–10 Zeilen, 383–1177 Wörter |
+| Regionsseite: vier bis sechs Listen | **drei** |
+| Übersicht: Kapsel, Filterlinks, Liste | Kapsel, Liste, **dann** Filterlinks — und nur auf `/events/` |
+| `/daten/`: Codepfade | **kein einziges `<code>`** |
+| `.hinweis` trägt Entwurf, abgesagt, letzte Ausgabe | nur Entwurf und `noindex`; die anderen sind Faktenzeilen |
+
+**Die Antwortkapsel ist der Kern der Verwirrung, und sie ist kein Fehler.**
+Sie ist der erste Absatz des Fließtexts — genau das prüft die Regel
+`kapsel-vorhanden` (25–90 Wörter). Ein eigenes Element hat sie nie gehabt.
+Gestalterisch erreichbar nur über `.inhalt > p:first-child`. Wer das nicht
+weiß, gestaltet eine Klasse, die auf 38 von 62 Seiten nicht vorkommt.
+
+**Neun Selektoren waren nicht im Brief**, darunter die vom Auftrag genannten:
+`.liste--knapp`, `.liste__entwurf`, `.trenner`, `.liste__datum`,
+`.sammlungen*`, `.belege__stand`, `.belege__autor`, `.belege__quellen`,
+`.belege__abgerufen`.
+
+**Sieben davon haben bis heute keine einzige CSS-Regel** — sie stehen im
+HTML und rendern als nackter Fließtext. Das steht jetzt in der
+Selektorentabelle als eigene Spalte, weil es der Unterschied ist zwischen
+„gestalte das um" und „gestalte das überhaupt erst".
+
+**Der Token-Vertrag ist der einzige Teil, der unverändert galt:** 32 zu 32
+gegen `tokens.css`, keine Abweichung. Drei Anmerkungen ergänzt:
+`--farbe-flaeche`, `--farbe-akzent-text` und `--schatten` werden nirgends
+per `var()` gelesen — sie zu setzen ändert heute nichts —, und
+`--farbe-akzent-text` hat keine Dunkelmodus-Fassung (Weiß bliebe auf
+`#e0705f` stehen). Solange der Token ungenutzt ist, fällt das nicht auf.
+
+**Neu: ein Abschnitt, was ein Entwurf gestalterisch braucht.** Dafür gab es
+bisher keine Vorgabe, obwohl der Zustand die gesamte Redaktionsarbeit trägt.
+Gemessen wurde er, indem ein Eintrag kurzzeitig auf Entwurf gesetzt, die
+Vorschau gebaut und die Datei zeichengenau zurückgebaut wurde — dieselbe
+Disziplin wie ein Mutationsbeleg, per Hash belegt.
+
+Drei Befunde daraus:
+
+- Das Markup steht jetzt zeichengenau im Brief statt umschrieben.
+- **Ein** Entwurf erzeugt den Listenmarker auf **sechs** Seiten. Er ist kein
+  Sonderfall einer Seite, sondern läuft quer durch die Vorschau.
+- **Der „offene Quellenblock" ist keine eigene Klasse.** Es ist derselbe
+  `details.belege__quellen` mit dem Attribut `open` — gesetzt, wenn
+  `PUBLIC_ENTWUERFE` gilt. Damit gehört er in dieselbe Familie wie Marker
+  und Hinweiskasten: ein Vorschauzustand, kein neues Element. Gestalterisch
+  folgt daraus, dass der aufgeklappte Zustand in der Vorschau der Normalfall
+  ist und dort ordentlich aussehen muss.
+
+**Verworfen: die Annahme des Auftrags, Bleistiftrock sei der reichste
+Lexikonfall.** Gemessen ist er Mittelfeld (550 Wörter, 3 H2, 5 Quellen).
+Der reichste ist **Petticoat** (1177 Wörter, 10 Quellen), der dünnste
+**Boogie-Woogie** (383 Wörter, 8 Zeilen). Bleistiftrocks Reiz ist
+redaktionell — er trägt den belegten Quellenwiderspruch aus Lektion 20 —,
+nicht gestalterisch. Beide Fälle stehen jetzt als getrennte Bildschirme im
+Brief, weil reich und arm verschiedene Dinge auf die Probe stellen.
+
+**`DESIGN-PROMPTING.md` blieb unverändert**, wie beauftragt. Es enthält
+allerdings dieselben veralteten Zahlen innerhalb seiner Prompt-Vorlagen —
+festgehalten in OFFENE-PUNKTE.md statt stillschweigend mitgeändert.
+
+---
+
 ## 2026-09-11 — Bands-Jahre: Untergrenze gesenkt, zwei Regeln dazugebaut
 
 **Entscheidung des Menschen:** `gegruendet`, `aufgeloest` und das Jahr einer
