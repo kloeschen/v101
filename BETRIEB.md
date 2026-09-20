@@ -181,7 +181,22 @@ Stale-Report liefert die Warteschlange.
 
 ### 2.5 Der tägliche unbeaufsichtigte Lauf
 
-Seit dem 2026-09-20. Entstanden aus einer Messung, nicht aus einem Wunsch.
+Eingerichtet am 2026-09-20. Entstanden aus einer Messung, nicht aus einem
+Wunsch.
+
+> **STAND 2026-09-20: Die Routine ist angelegt und aktiviert, sie läuft aber
+> noch nicht.** Zwei Probeläufe von Hand scheiterten identisch nach drei
+> bzw. vier Sekunden mit `error_kind: init_script`, „Setup script failed",
+> `recoverable: false` — die Sitzung startet, das Setup-Skript der Umgebung
+> „Recherche Session" bricht ab, bevor der Auftrag beginnt. Deterministisch,
+> nicht flüchtig.
+>
+> `npm ci` ist nicht die Ursache: auf einem frischen Klon von `main` läuft es
+> durch (302 Pakete, Exitcode 0, am 2026-09-20 nachgestellt). Die Ursache
+> liegt in der Umgebungs-Konfiguration auf claude.ai und kann nur dort
+> behoben werden — kein Agent kann sie lesen oder ändern.
+>
+> Alles Übrige dieses Abschnitts ist gebaut, geprüft und wartet nur darauf.
 
 **Der Befund:** Über 24 Pull Requests lag die mittlere Zeit bis zum Merge
 bei **27 Minuten**, 17 davon gingen in unter einer Stunde durch. Die Lücken

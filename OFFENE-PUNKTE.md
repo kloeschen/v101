@@ -32,6 +32,19 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Das Setup-Skript der Umgebung „Recherche Session" scheitert.**
+Die tägliche Routine ist angelegt und aktiviert, startet aber nicht: Zwei
+Probeläufe am 2026-09-20 brachen identisch nach drei bzw. vier Sekunden ab,
+`error_kind: init_script`, „Setup script failed", `recoverable: false`.
+Deterministisch. `npm ci` ist ausgeschlossen — auf einem frischen Klon von
+`main` läuft es durch (302 Pakete, Exitcode 0). Die Konfiguration liegt in
+den Umgebungseinstellungen auf claude.ai; kein Agent kann sie lesen oder
+ändern. **Verdacht, ausdrücklich unbelegt:** Die Umgebung wird für mehrere
+Projekte benutzt, und das Skript könnte auf ein anderes zielen — dieselbe
+Klasse wie bei den Recherche-Skills, die auf ein fremdes Projektverzeichnis
+verweisen. Bis zur Behebung feuert die Routine jeden Morgen und scheitert;
+bestätigen lässt sich die Behebung, indem der Lauf von Hand ausgelöst wird.
+
 `mensch` **`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
 Bash-Zweig blockiert jeden Befehl, der die gesperrte Schemadatei nennt und
 irgendwo ein `>` enthält. Das trifft `2>&1` genauso wie eine Pfeilfunktion
