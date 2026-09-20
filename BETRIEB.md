@@ -179,7 +179,79 @@ Stale-Report liefert die Warteschlange.
 | monatlich | Bot-Log-Auswertung aus den Netlify-Logs | noch zu bauen |
 | laufend | Recherche neuer Entitäten | Cowork, aus dem Stale-Report gesteuert |
 
-### 2.5 Was für den agentischen Teil noch fehlt
+### 2.5 Der tägliche unbeaufsichtigte Lauf
+
+Seit dem 2026-09-20. Entstanden aus einer Messung, nicht aus einem Wunsch.
+
+**Der Befund:** Über 24 Pull Requests lag die mittlere Zeit bis zum Merge
+bei **27 Minuten**, 17 davon gingen in unter einer Stunde durch. Die Lücken
+im Verlauf sind keine Genehmigungslücken, sondern **ganze Tage ohne
+Sitzung** — 109 Stunden vor PR #24, 103 vor #14. Der Engpass war nie, dass
+Markus langsam entscheidet. Er war, dass ohne ihn nichts anfängt.
+
+**Warum das ohne eine einzige gelockerte Sperre geht:** `guard.mjs`
+blockiert das Setzen des freigegebenen Status — nicht das Anlegen. Ein Lauf
+kann also recherchieren, schreiben, validieren, belegen und einen Pull
+Request öffnen. Nur der letzte Schritt wartet auf einen Menschen. Das ist
+Abschnitt 2.1 unverändert, nur häufiger ausgeführt.
+
+#### Was der Lauf tut
+
+1. Nimmt den **obersten freien Posten** aus `OFFENE-PUNKTE.md`
+   (`npm run warteschlange --naechster`). Genau einen.
+2. Ist keiner frei: den dringendsten Posten aus `npm run stale`.
+3. Baut ihn vollständig nach den Regeln aus `CLAUDE.md` — `npm run verify`
+   grün, Mutationsbeleg für jede neue Regel, Eintrag in `ENTSCHEIDUNGEN.md`.
+4. Öffnet einen Pull Request. **Nie direkt auf `main`.**
+5. Merged selbst, wenn `npm run automerge:erlaubt` es erlaubt und die CI
+   grün ist. Sonst bleibt der PR liegen.
+6. Stößt er auf eine Ermessensfrage, **baut er nicht**: Er markiert den
+   Posten als `mensch`, schreibt hin, was zu entscheiden ist, und meldet.
+
+#### Die zwei Regeln, die das tragen
+
+**Die Warteschlange** (`scripts/warteschlange.ts`). Jeder Posten unter
+„Als Nächstes" trägt `frei` oder `mensch`. Ein Posten ohne Marke ist ein
+Fehler in der Prüfkette — nicht stillschweigend das eine oder andere.
+Beide naheliegenden Voreinstellungen wären falsch, und die Begründung steht
+im Kopf der Datei.
+
+**Die Auto-Merge-Grenze** (`scripts/automerge-erlaubt.ts`). Reine Code-PRs
+dürfen bei grüner CI selbst mergen; alles unter `src/content/` wartet auf
+einen Menschen.
+
+Der Grund für genau diese Grenze: **Die Prüfkette beweist Struktur, nicht
+Wahrheit.** Ein Tippfehler in einem Validator fällt in `npm run verify` auf,
+eine falsch recherchierte Anfangszeit nicht. Beim Record Hop ist genau das
+passiert — die Zeit war falsch, alle Prüfungen grün, gefunden wurde sie nur
+durch Zufall. Code kann sich selbst beweisen, ein recherchierter Fakt nicht.
+
+Beide Regeln stehen in Code und nicht im Prompt der Routine. Im Prompt wären
+sie eine Bitte an ein Modell; als Skript sind sie ein Exitcode, und
+`scripts/test-warteschlange.ts` belegt beide Richtungen (34 Prüfungen,
+8 Mutationen).
+
+#### Was der Lauf nicht darf
+
+Unverändert und ausdrücklich: den freigegebenen Status setzen, eine der
+vier gesperrten Dateien anfassen, auf `main` pushen, einen Inhalts-PR
+mergen, oder einen `mensch`-Posten bauen. Die ersten beiden blockiert der
+Hook, die übrigen sind Regeln mit Prüfung.
+
+#### Was das kostet, und was es nicht löst
+
+**Autonomie verschiebt den Engpass, sie beseitigt ihn nicht.** Erzeugt der
+Lauf schneller Entwürfe, als jemand sie freigeben kann, ist die
+Warteschlange vor der Freigabe der neue Engpass. Ein Posten pro Tag ist
+bewusst niedrig angesetzt: Es soll höchstens ein Pull Request pro Morgen
+dastehen.
+
+**Unbeaufsichtigte Recherche liegt gelegentlich plausibel daneben.** Die
+Belegpflicht erzwingt eine Quelle, nicht deren Richtigkeit. Mehr Durchsatz
+heißt mehr davon — das ist der Preis, und er ist der Grund, warum Inhalt
+nicht selbst merged.
+
+### 2.6 Was für den agentischen Teil noch fehlt
 
 1. **Das Plugin.** Deine Recherche-Skills, die Subagent-Definitionen und die
    Hooks als versioniertes Bündel unter `.claude/skills/` im Repo — dann
@@ -198,7 +270,7 @@ Stale-Report liefert die Warteschlange.
    Sollte die Guardrails spiegeln, damit ein Agent gar nicht erst versucht,
    was der Hook ohnehin blockiert.
 
-### 2.6 Kostendisziplin
+### 2.7 Kostendisziplin
 
 Recherche mit Subagenten ist der teuerste Teil. Was hilft:
 
