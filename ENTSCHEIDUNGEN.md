@@ -13,6 +13,57 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-20 — Der unbeaufsichtigte Lauf steht, nach fünf Fehlstarts
+
+Nachtrag zum Eintrag unten. Die Routine war angelegt, lief aber nicht: Jede
+Sitzung brach nach drei bis vier Sekunden ab mit `error_kind: init_script`,
+„Setup script failed", `recoverable: false` — ohne jede weitere Auskunft.
+
+**Die Lösung brauchte zweierlei gleichzeitig:**
+
+1. Ein **triviales Setup-Skript** (`echo setup ok`).
+2. Ein **zugeordnetes Repository** in der Routine.
+
+Fehlt eins von beiden, bricht der Start ab. Das erklärt, warum jeder Versuch,
+nur eins zu ändern, wirkungslos blieb.
+
+**`npm ci` gehört nicht ins Setup-Skript.** Im Container läuft es
+einwandfrei — 302 Pakete in sechs Sekunden, nachgewiesen im Lauf selbst.
+Dort verhinderte es jeden Start. Es spart eine Minute und kostete den
+gesamten Lauf; jetzt steht es als Schritt 0 im Auftrag.
+
+**Belegt ist der Lauf durch einen Handstart am 2026-09-20:** Repository da,
+`npm ci` grün, `git push --dry-run` Exitcode 0, GitHub-Werkzeuge als
+`kloeschen` authentifiziert. Recherchieren, bauen, pushen, PR öffnen —
+alles möglich.
+
+### Zwei Fehler in der Diagnose, beide meine
+
+**Erstens: Ich habe geraten statt zu messen.** Vier Runden lang habe ich
+Hypothesen zum Setup-Skript geschickt, und drei meiner Vorschläge trugen je
+eine eigene neue Fehlerquelle (`[ -d v101 ] && cd v101` scheitert selbst;
+`exec > /tmp/...` vermutlich ebenso). Der entscheidende Befund —
+`echo setup ok` läuft, `npm ci` im Setup nicht — lag nach der zweiten Runde
+vor. Statt ihn zu nutzen, habe ich weiter am Setup-Skript gebaut, obwohl es
+dort gar nichts zu tun braucht.
+
+**Zweitens: Ich habe eine Metadatenzeile falsch gelesen.** Das Feld
+`turn_handoff.tools` listet nur die eingebauten Werkzeuge, nicht die aus
+MCP-Servern. Daraus habe ich geschlossen, dem Lauf fehlten die
+GitHub-Werkzeuge, und einen ganzen Ausweichpfad in den Auftrag gebaut
+(„falls du keinen Pull Request öffnen kannst"). Tatsächlich sind sie da und
+authentifiziert. Der Ausweichpfad bleibt als Fangnetz stehen, ist aber
+unnötig.
+
+**Was beide Fehler gemeinsam haben:** eine Behauptung aus einem Indiz
+abgeleitet, statt sie zu prüfen. Genau das, wogegen dieses Projekt seine
+Mutationsbelege hat. Bei einer fremden Infrastruktur ist die Versuchung
+größer, weil das Messen teurer ist — es kostet eine Runde mit einem
+Menschen. Genau dann lohnt es sich am meisten: Der Lauf, der die drei Fragen
+endgültig beantwortet hat, kostete 0,29 $ und eine Minute.
+
+---
+
 ## 2026-09-20 — Der Engpass war nicht die Freigabe, sondern der Sitzungsstart
 
 **Anlass:** Markus' Eindruck, die Entwicklung sei schleppend und er selbst

@@ -184,31 +184,22 @@ Stale-Report liefert die Warteschlange.
 Eingerichtet am 2026-09-20. Entstanden aus einer Messung, nicht aus einem
 Wunsch.
 
-> **STAND 2026-09-20: Die Routine ist angelegt und aktiviert, sie läuft aber
-> noch nicht.** Zwei Probeläufe von Hand scheiterten identisch nach drei
-> bzw. vier Sekunden mit `error_kind: init_script`, „Setup script failed",
-> `recoverable: false` — die Sitzung startet, das Setup-Skript der Umgebung
-> „Recherche Session" bricht ab, bevor der Auftrag beginnt. Deterministisch,
-> nicht flüchtig.
+> **STAND 2026-09-20: Die Routine läuft.** Belegt durch einen Lauf von Hand
+> am selben Tag: Sitzung startet, Repository ist da, `npm ci` zieht 302
+> Pakete in sechs Sekunden, `git push --dry-run` liefert Exitcode 0, und die
+> GitHub-Werkzeuge sind als `kloeschen` authentifiziert. Recherchieren,
+> bauen, pushen und einen Pull Request öffnen ist damit alles möglich.
 >
-> `npm ci` ist nicht die Ursache: auf einem frischen Klon von `main` läuft es
-> durch (302 Pakete, Exitcode 0, am 2026-09-20 nachgestellt). Die Ursache
-> liegt in der Umgebungs-Konfiguration auf claude.ai und kann nur dort
-> behoben werden — kein Agent kann sie lesen oder ändern.
+> **Der Weg dahin ging über fünf gescheiterte Läufe, und die Lehre daraus
+> steht in ENTSCHEIDUNGEN.md:** Es brauchte zweierlei gleichzeitig — ein
+> **triviales Setup-Skript** (`echo setup ok`) und ein **zugeordnetes
+> Repository**. Fehlt eins von beidem, bricht die Sitzung nach drei bis vier
+> Sekunden mit `error_kind: init_script`, „Setup script failed" ab, ohne
+> jede weitere Auskunft.
 >
-> Alles Übrige dieses Abschnitts ist gebaut, geprüft und wartet nur darauf.
-
-**Der Befund:** Über 24 Pull Requests lag die mittlere Zeit bis zum Merge
-bei **27 Minuten**, 17 davon gingen in unter einer Stunde durch. Die Lücken
-im Verlauf sind keine Genehmigungslücken, sondern **ganze Tage ohne
-Sitzung** — 109 Stunden vor PR #24, 103 vor #14. Der Engpass war nie, dass
-Markus langsam entscheidet. Er war, dass ohne ihn nichts anfängt.
-
-**Warum das ohne eine einzige gelockerte Sperre geht:** `guard.mjs`
-blockiert das Setzen des freigegebenen Status — nicht das Anlegen. Ein Lauf
-kann also recherchieren, schreiben, validieren, belegen und einen Pull
-Request öffnen. Nur der letzte Schritt wartet auf einen Menschen. Das ist
-Abschnitt 2.1 unverändert, nur häufiger ausgeführt.
+> **`npm ci` gehört deshalb nicht ins Setup-Skript, sondern in den Auftrag.**
+> Im Container läuft es einwandfrei; im Setup-Skript ließ es die Sitzung
+> jedes Mal abbrechen. Es spart dort eine Minute und kostet den ganzen Lauf.
 
 #### Was der Lauf tut
 
