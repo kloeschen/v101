@@ -13,6 +13,159 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-20 — Der unbeaufsichtigte Lauf steht, nach fünf Fehlstarts
+
+Nachtrag zum Eintrag unten. Die Routine war angelegt, lief aber nicht: Jede
+Sitzung brach nach drei bis vier Sekunden ab mit `error_kind: init_script`,
+„Setup script failed", `recoverable: false` — ohne jede weitere Auskunft.
+
+**Die Lösung brauchte zweierlei gleichzeitig:**
+
+1. Ein **triviales Setup-Skript** (`echo setup ok`).
+2. Ein **zugeordnetes Repository** in der Routine.
+
+Fehlt eins von beiden, bricht der Start ab. Das erklärt, warum jeder Versuch,
+nur eins zu ändern, wirkungslos blieb.
+
+**`npm ci` gehört nicht ins Setup-Skript.** Im Container läuft es
+einwandfrei — 302 Pakete in sechs Sekunden, nachgewiesen im Lauf selbst.
+Dort verhinderte es jeden Start. Es spart eine Minute und kostete den
+gesamten Lauf; jetzt steht es als Schritt 0 im Auftrag.
+
+**Belegt ist der Lauf durch einen Handstart am 2026-09-20:** Repository da,
+`npm ci` grün, `git push --dry-run` Exitcode 0, GitHub-Werkzeuge als
+`kloeschen` authentifiziert. Recherchieren, bauen, pushen, PR öffnen —
+alles möglich.
+
+### Zwei Fehler in der Diagnose, beide meine
+
+**Erstens: Ich habe geraten statt zu messen.** Vier Runden lang habe ich
+Hypothesen zum Setup-Skript geschickt, und drei meiner Vorschläge trugen je
+eine eigene neue Fehlerquelle (`[ -d v101 ] && cd v101` scheitert selbst;
+`exec > /tmp/...` vermutlich ebenso). Der entscheidende Befund —
+`echo setup ok` läuft, `npm ci` im Setup nicht — lag nach der zweiten Runde
+vor. Statt ihn zu nutzen, habe ich weiter am Setup-Skript gebaut, obwohl es
+dort gar nichts zu tun braucht.
+
+**Zweitens: Ich habe eine Metadatenzeile falsch gelesen.** Das Feld
+`turn_handoff.tools` listet nur die eingebauten Werkzeuge, nicht die aus
+MCP-Servern. Daraus habe ich geschlossen, dem Lauf fehlten die
+GitHub-Werkzeuge, und einen ganzen Ausweichpfad in den Auftrag gebaut
+(„falls du keinen Pull Request öffnen kannst"). Tatsächlich sind sie da und
+authentifiziert. Der Ausweichpfad bleibt als Fangnetz stehen, ist aber
+unnötig.
+
+**Was beide Fehler gemeinsam haben:** eine Behauptung aus einem Indiz
+abgeleitet, statt sie zu prüfen. Genau das, wogegen dieses Projekt seine
+Mutationsbelege hat. Bei einer fremden Infrastruktur ist die Versuchung
+größer, weil das Messen teurer ist — es kostet eine Runde mit einem
+Menschen. Genau dann lohnt es sich am meisten: Der Lauf, der die drei Fragen
+endgültig beantwortet hat, kostete 0,29 $ und eine Minute.
+
+---
+
+## 2026-09-20 — Der Engpass war nicht die Freigabe, sondern der Sitzungsstart
+
+**Anlass:** Markus' Eindruck, die Entwicklung sei schleppend und er selbst
+der Engpass. Vor dem Umbau erhoben — und die Zahlen widersprechen der
+Selbstdiagnose:
+
+| Gemessen über 24 Pull Requests | |
+|---|---|
+| Median bis zum Merge | **27 Minuten** |
+| unter einer Stunde gemerged | 17 von 24 |
+| Median zwischen Merge und nächstem PR-Start | 24 Minuten |
+| längste Lücken | **109 h** vor #24, **103 h** vor #14, 39 h vor #20 |
+
+Die langen Lücken sind keine Genehmigungslücken. Es sind ganze Tage ohne
+Sitzung: 32 Commits am 3. September, null am 6., null am 8., null vom 13.
+bis 15., null vom 18. bis 20. **Wenn eine Sitzung läuft, hält niemand
+jemanden auf. Ohne Sitzung fängt nichts an.**
+
+Das ist ein Terminproblem, kein Freigabeproblem — und deshalb ändert die
+Lösung keine einzige Sperre.
+
+**Der Hebel steckte schon in Abschnitt 2.1 von BETRIEB.md:** `guard.mjs`
+blockiert das Setzen des freigegebenen Status, nicht das Anlegen. Ein
+unbeaufsichtigter Lauf kann also recherchieren, schreiben, validieren,
+belegen und einen Pull Request öffnen; nur der letzte Schritt wartet. Für
+ein anderes Projekt läuft dasselbe Muster seit Wochen wöchentlich.
+
+**Entscheidungen des Menschen:** täglich ein Posten; Umfang Code, Recherche,
+Doku und Pflege; Auto-Merge nur für reine Code-PRs.
+
+### Zwei Regeln, und beide stehen in Code
+
+**1. Die Warteschlange** (`scripts/warteschlange.ts`). `OFFENE-PUNKTE.md`
+ist ab jetzt nicht mehr nur Prosa, sondern die Eingabe eines Automaten.
+Jeder Posten unter „Als Nächstes" trägt `frei` oder `mensch`.
+
+**Ein Posten ohne Marke ist ein Fehler**, keine Voreinstellung — und das ist
+die eigentliche Entscheidung. Beide naheliegenden Voreinstellungen sind
+falsch:
+
+- *Ohne Marke = frei* lässt einen unmarkierten Ermessensposten in den
+  Automaten laufen.
+- *Ohne Marke = mensch* lässt ihn **stumm** aus der Warteschlange fallen.
+  Der Lauf meldet „nichts zu tun", obwohl etwas dasteht, und niemand merkt
+  es.
+
+Die zweite ist die gefährlichere, weil sie niemandem auffällt (Lektion 19).
+Also scheitert die Prüfkette laut. Aktueller Stand: 9 Posten, 4 frei.
+
+**2. Die Auto-Merge-Grenze** (`scripts/automerge-erlaubt.ts`). Reine
+Code-PRs dürfen bei grüner CI selbst mergen, alles unter `src/content/`
+wartet auf einen Menschen.
+
+**Der Grund für genau diese Grenze: Die Prüfkette beweist Struktur, nicht
+Wahrheit.** Ein Tippfehler in einem Validator fällt in `npm run verify` auf,
+eine falsch recherchierte Anfangszeit nicht. Beim Record Hop ist genau das
+passiert — die Zeit war falsch, alle Prüfungen grün, gefunden wurde sie nur,
+weil die Quelle aus einem anderen Grund noch einmal geöffnet wurde. Code
+kann sich selbst beweisen, ein recherchierter Fakt nicht.
+
+Die Liste führt außerdem die vier gesperrten Pfade, obwohl der Hook sie
+ohnehin blockiert: Eine Sperre, die sich auf eine andere verlässt, ist eine
+halbe.
+
+**Beide Regeln liegen bewusst nicht im Prompt der Routine.** Im Prompt wären
+sie eine Bitte an ein Modell; als Skript sind sie ein Exitcode. Das ist
+Regel 3 des Projekts, angewendet auf den Automaten, der sie befolgen soll.
+
+### Der Beleg fand einen Fehler im Beleg
+
+**Der erste Mutationslauf scheiterte am Test selbst, nicht am Code.**
+`u.gruende[0].grund` warf eine TypeError, sobald die mutierte Regel eine
+leere Liste lieferte: Der Test **stürzte ab**, statt **fehlzuschlagen**, und
+der Beleg sah null gefallene Behauptungen. Dieselbe Fehlerklasse wie in
+`test-checklinks.ts` — zum zweiten Mal, jetzt mit Begründung im Dateikopf.
+
+**Und er deckte eine schwache Vorrichtung auf.** Die Behauptung „der
+Rückstau wird nicht mitgelesen" hielt auch dann, wenn die Abschnittsgrenze
+mutiert war — weil der Rückstau im Harnisch nur einen *unmarkierten* Posten
+enthielt, der in der Mängelliste landete statt in der Postenzahl. Behoben,
+indem der Rückstau jetzt einen **markierten** Posten trägt. Erst damit misst
+die Behauptung, was ihr Name sagt.
+
+**8 Mutationen, alle belegt.** Drei davon schalten keine Regel ab, sondern
+verschieben sie: die Abschnittsgrenze, die Sortierung der Pfadtreffer
+(längster Treffer gewinnt, sonst trüge `_schemas.ts` den allgemeinen
+Inhaltsgrund) und ein Präfix-Vergleich, der zum Teilstring wird. Eine
+abgeschaltete Regel und eine falsch gezogene Grenze sind verschiedene Fehler.
+
+### Was ausdrücklich nicht passiert ist
+
+Die vier gesperrten Pfade und das Freigabetor bleiben, wie sie sind. Sie
+waren nie der Engpass, und Lektion 16 gilt unverändert: Eine Sperre, die
+sich per Auftrag lösen lässt, ist eine Bitte.
+
+**Offen und bewusst so benannt:** Autonomie verschiebt den Engpass, sie
+beseitigt ihn nicht. Erzeugt der Lauf schneller Entwürfe, als jemand sie
+freigeben kann, ist die Freigabe der neue Engpass. Ein Posten pro Tag ist
+deshalb niedrig angesetzt — höchstens ein Pull Request pro Morgen.
+
+---
+
 ## 2026-09-16 — Zwei Entscheidungen zur Design-Dokumentation
 
 Beides Folgeentscheidungen aus dem Nachziehen von `DESIGN-BRIEF.md`, beide

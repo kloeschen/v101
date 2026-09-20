@@ -11,9 +11,28 @@ Bewusst vertagte Befunde aus dem Review stehen weiterhin in `REVIEW.md`,
 Abschnitt 4 — sie werden hier nicht wiederholt, damit es nicht zwei Orte
 für „nicht jetzt" gibt.
 
+## Die Marken unter „Als Nächstes"
+
+Seit dem 2026-09-20 nimmt sich ein täglicher unbeaufsichtigter Lauf seine
+Aufgabe aus diesem Abschnitt. Damit ist er nicht mehr nur Prosa, sondern die
+Eingabe eines Automaten, und jeder Posten dort trägt eine Marke:
+
+- **`frei`** — ein Lauf darf das ohne Rückfrage bauen. Das Ergebnis ist
+  immer ein Pull Request, Inhalte immer `status: entwurf`.
+- **`mensch`** — gehört Markus: Ermessen, Zahlen, Semantik, oder der Posten
+  liegt hinter einer Sperre (`.claude/`, `.github/`, Schema, `site.config`).
+
+`npm run warteschlange` zeigt die Liste, `--check` scheitert bei einem
+Posten ohne Marke. Es gibt bewusst **keine Voreinstellung**: Ohne Marke wäre
+ein Ermessensposten entweder im Automaten oder stumm aus der Warteschlange
+gefallen. Die Begründung steht im Kopf von `scripts/warteschlange.ts`.
+
+Nur dieser Abschnitt trägt Marken. „Vor dem Go-Live" und „Später, mit
+Bedingung" sind Rückstau, keine Warteschlange.
+
 ## Als Nächstes
 
-**`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
+`mensch` **`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
 Bash-Zweig blockiert jeden Befehl, der die gesperrte Schemadatei nennt und
 irgendwo ein `>` enthält. Das trifft `2>&1` genauso wie eine Pfeilfunktion
 `i => i.path[0]` — also auch reine **Lesezugriffe**. Belegt am 2026-09-11:
@@ -25,19 +44,19 @@ bloße Zeichen `>` zu prüfen — dieselbe Korrektur wie damals beim
 Statuswort (Lektion 18). `.claude/` ist für Agenten gesperrt, auch für diese
 Änderung.
 
-**Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
+`mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
-**Bands und Artikel sind leer, und der Bericht sagt es jetzt.** `npm run
+`frei` **Bands und Artikel sind leer, und der Bericht sagt es jetzt.** `npm run
 stale` führt beide unter „Sammlungen ohne Eintrag"; ihre Übersichten sind
 erreichbar, aber nicht im Index, und der Sitemap-Index nennt sie nicht. Das
 ist kein Fehler, sondern der Stand — erledigt ist der Posten, sobald je ein
 belegter Eintrag steht. Für Bands hängt daran die Schemafrage unten.
 
-**Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
+`frei` **Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
 fünf Regionen haben jetzt drei bis fünf Verweise und kommen mit der Freigabe
 über die Bestandsschwelle. Diese beiden stehen weiter bei zwei. Für
 Niedersachsen führt jede Spur auf das Festival in Ganderkesee zurück, das
@@ -47,7 +66,7 @@ naheliegenden Verzeichnisse (livegigs.de) antworten automatisierten Abrufen
 mit HTTP 403. Beides braucht entweder eine andere Quelle oder eine Recherche
 von Hand.
 
-**Der Skill `events-recherche` passt nicht auf dieses Repo.** Er verweist auf
+`mensch` **Der Skill `events-recherche` passt nicht auf dieses Repo.** Er verweist auf
 ein anderes Projektverzeichnis und auf ein Frontmatter mit `title`, `datum`,
 `stadt`, `tags`, `wiederkehrend` — keines dieser Felder existiert hier, und
 das Schema ist `.strict()`. Vor allem fehlt ihm die Belegpflicht: keine
@@ -58,7 +77,7 @@ ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
 gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
 geprüft ist bisher nur dieser eine.
 
-**`genres` an den restlichen Events.** Nachgetragen sind Rockabilly
+`frei` **`genres` an den restlichen Events.** Nachgetragen sind Rockabilly
 Convention, Record Hop und die beiden neuen Termine. Offen bleiben Bella
 Italia und das Ganderkesee-Festival. Es ist kein Formalakt: Jede Zuordnung
 ist eine Behauptung über die Veranstaltung und braucht einen Beleg in deren
@@ -66,7 +85,7 @@ eigener Quellenlage. Wo die Quelle schweigt, bleibt das Feld leer — und bei
 Boogie-Tanzabenden bleibt es leer, auch wenn die Quelle „Boogie" sagt, weil
 der Lexikoneintrag den Klavierstil bezeichnet und nicht den Tanz.
 
-**Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
+`mensch` **Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
 Events steht auf 30 Tagen und hätte die falsche Anfangszeit des Record Hop
 beinahe bis nach den Termin getragen; gefunden wurde sie nur, weil die Seite
 aus einem anderen Grund erneut geöffnet wurde. Zu entscheiden: ob
@@ -75,7 +94,7 @@ zurück" bekommt. Vorher messen, wie oft sich Angaben in den letzten Tagen vor
 einem Termin tatsächlich ändern — bei sieben Events ist das noch nicht
 beantwortbar.
 
-**Neo-Rockabilly: erst eine Quelle, dann ein Eintrag.** Der Begriff war als
+`frei` **Neo-Rockabilly: erst eine Quelle, dann ein Eintrag.** Der Begriff war als
 achter der Gruppe vorgesehen und ist nicht angelegt, weil ihn keine der
 geöffneten Quellen definiert. Die englische Wikipedia führt einen Stub, der
 das Genre auf „ab 1990" datiert und Kings of Leon und The Black Keys nennt;
@@ -87,7 +106,7 @@ Nötig wäre eine Quelle, die den Begriff bestimmt — Fachliteratur oder ein
 Szenemagazin. Bis dahin steht die Unterscheidung in der `abgrenzung` von
 Rockabilly und Psychobilly.
 
-**Boogie-Woogie als Tanz: eigener Eintrag oder nicht?** Im deutschsprachigen
+`mensch` **Boogie-Woogie als Tanz: eigener Eintrag oder nicht?** Im deutschsprachigen
 Raum meint das Wort fast immer den Paartanz und nicht den Klavierstil, und
 getanzt wird dazu Rock'n'Roll, Rockabilly, Jump Blues und Swing — gerade
 nicht die gleichnamige Musik. Derzeit trägt der Musikeintrag die
