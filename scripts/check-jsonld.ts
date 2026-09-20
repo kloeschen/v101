@@ -18,6 +18,7 @@
 
 import path from "node:path";
 import { ladeAlle as ladeContent } from "./_laden";
+import { datumsBefunde } from "./_jsonld-datum";
 import { collectionNames, type CollectionName } from "../src/content/_schemas";
 import { buildGraph, faktenblockFelder, builders, entitaetsId, seitenUrl } from "../src/lib/jsonld";
 import { site } from "../src/site.config";
@@ -242,13 +243,14 @@ function pruefeGraph(
     gesehen.add(u);
   }
 
-  // Datumsfelder ISO 8601.
-  for (const feld of ["startDate", "endDate", "datePublished", "dateModified", "validThrough"]) {
-    for (const w of sammleWerte(knoten, feld)) {
-      if (!/^\d{4}-\d{2}-\d{2}(T[\d:.+\-Z]+)?$/.test(w)) {
-        push("fehler", "datum", `${feld} ist kein ISO-8601-Wert: ${w}`);
-      }
-    }
+  // Datumsfelder ISO 8601. Die Regel und ihre eine Ausnahme (das
+  // Erscheinungsjahr einer Platte) stehen in scripts/_jsonld-datum.ts —
+  // dort sind sie testbar, ohne dass der Import diesen Check auslöst.
+  //
+  // Gefunden hat die Lücke der erste Bandeintrag mit Diskografie: Solange
+  // die Collection leer war, hat die Regel nie an einem Album angeschlagen.
+  for (const { feld, wert } of datumsBefunde(knoten)) {
+    push("fehler", "datum", `${feld} ist kein ISO-8601-Wert: ${wert}`);
   }
 
   // URLs absolut.

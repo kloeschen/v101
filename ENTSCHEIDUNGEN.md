@@ -13,6 +13,92 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-20 — Die ersten Band- und Artikeleinträge, und drei Regeln, die ihren Gegenstand nie gesehen hatten
+
+Erster Lauf der täglichen Routine. Gebaut wurde der oberste freie Posten,
+„Bands und Artikel sind leer": je ein belegter Eintrag. Das Ergebnis ist zur
+Hälfte Inhalt und zur Hälfte ein Befund über die Prüfkette.
+
+**Inhalt.** `bands/mad-sin.md` (Berlin, 1987, Psychobilly, fünf Quellen) und
+`artikel/hot-rod-und-kustom-kulture.md` (Säule `kustom-kulture`, fünf
+Quellen). Beide `status: entwurf` — den freigegebenen Status setzt ein
+Mensch, und erst die Freigabe nimmt die beiden Sammlungen aus „Sammlungen
+ohne Eintrag". Der Posten bleibt deshalb offen und trägt jetzt die Marke
+`mensch`.
+
+**Warum Mad Sin und nicht The Firebirds.** Die naheliegende Wahl wäre die
+Band aus dem Golden Example gewesen. Sie scheitert an `genres`: Das Feld
+verlangt mindestens einen Lexikonslug, die Quellen nennen The Firebirds
+durchweg „Rock'n'Roll" — und einen Lexikoneintrag dazu gibt es nicht. Die
+einzige Art, das Feld zu füllen, wäre eine Zuordnung ohne Beleg gewesen. Bei
+Mad Sin steht „Psychobilly" im ersten Satz von drei unabhängigen Quellen.
+**Der Fund dahinter:** Das Genrevokabular des Registers hat kein
+Rock'n'Roll. Jede Band, deren Quellen genau das sagen, ist derzeit nicht
+eintragbar.
+
+**Warum die Säule `kustom-kulture`.** Sie ist die einzige, zu der das
+Lexikon keinen einzigen Eintrag hat. Ein Artikel zu Mode oder Musik hätte
+einen vorhandenen Lexikoneintrag in längerer Form wiederholt — die
+bestehenden tragen 700 bis 770 Wörter und decken ihre Abgrenzung bereits ab.
+
+### Drei Prüfungen, die erst mit dem ersten Eintrag ihren Gegenstand bekamen
+
+Das ist der eigentliche Ertrag des Laufs, und es ist dreimal dasselbe Muster
+(Lektion 19): Eine Regel, die nie angeschlagen hat, ist unbewiesen — und
+eine Regel, die nie etwas zu prüfen hatte, ist es erst recht.
+
+**1. `datePublished` am MusicAlbum.** Der Bandbuilder schreibt das
+Erscheinungsjahr einer Platte als `"1988"`; `check-jsonld.ts` verlangte ein
+volles Kalenderdatum und meldete zwölf Fehler. Beide Seiten hatten recht:
+`veroeffentlichungen[].jahr` ist eine Zahl, weil die Quellen eine Zahl
+nennen, und ISO 8601 lässt die verkürzte Form ausdrücklich zu. **Verworfen:**
+im Builder einen 1. Januar ergänzen. Das wäre eine Genauigkeit, die keine
+Quelle deckt — genau das, was hier nirgends passieren soll. Die Ausnahme
+steht jetzt in `scripts/_jsonld-datum.ts` und ist eng geführt: nur
+`datePublished`, nur am `MusicAlbum`. Ein `startDate` ohne Tag bleibt ein
+Fehler.
+
+**2. Die Urheberschaft am Article.** `PFLICHT` verlangt `author` an jedem
+Article, `veroeffentlichungsreife` verlangt einen Autor erst bei der
+Freigabe. Ein Entwurf ohne Autor erfüllte die eine Regel und brach die
+andere. Der Artikel dieses Laufs hat keinen — er stammt nicht aus der Hand
+eines Menschen, und `autor: markus` wäre eine erfundene Zuschreibung
+gewesen. **Verworfen:** `author` aus `PFLICHT` streichen (schwächt eine
+richtige Anforderung) und einen Namen eintragen (siehe oben). Gewählt: Ohne
+benannten Autor fällt die Urheberschaft an die Organisation. Sie hat den
+Text verantwortet.
+
+**3. Die Gegenprobe in `test-ausgaben.ts` lief überhaupt nicht.** Der ganze
+Build-Abschnitt überspringt sich, solange kein Entwurf im Register steht —
+und bis heute stand keiner. Mit dem ersten Entwurf lief er und fiel sofort:
+Niedersachsen und Rhein-Neckar sind freigegeben, stehen aber unter der
+Bestandsschwelle und damit nicht in der Sitemap. Das ist beabsichtigt
+(„Regionsschwelle über den Bestand", unten); die Gegenprobe wusste nur
+nichts davon. Sie überspringt diese Regionen jetzt nicht, sondern prüft
+andersherum — eine Ausnahme ohne Gegenbuchung wäre eine Lücke, durch die
+auch ein kaputter Filter passt.
+
+**Belege:** `npm run verify` grün. Acht Mutationen, je auf den betroffenen
+Block begrenzt, mit zeichengenauem Rückbau: Typbedingung entfernt,
+Feldbedingung entfernt, Ausnahme ganz entfernt, Builder schreibt einen
+unzulässigen Wert, Autorenrückfall entfernt, Rückfall gilt immer,
+Regionsschwelle in der Sitemap abgeschaltet, Sitemap wirft einen
+freigegebenen Eintrag weg. Jede fiel mit genau den erwarteten Behauptungen.
+Neu: `scripts/test-jsonld.ts` (23 Prüfungen), eingehängt in `npm test`.
+
+### Was nicht gebaut wurde
+
+Die Recherche zu Mad Sin hat zwei Angaben nicht hergegeben, und beide stehen
+als solche im Eintrag statt als Schätzung: die aktuelle Besetzung (MusicBrainz
+führt Gründungsgitarrist Stein als aktiv, laut.de nennt für das Album von 2020
+zwei andere Gitarristen — `besetzung` führt ihn deshalb gar nicht) und die
+offizielle Website (madsin.de liefert am 2026-09-20 ein abgelaufenes
+Zertifikat, das Schema lässt nur https zu). Auch `aktiv: true` trägt nur
+MusicBrainz; Songkick und Reservix meldeten am selben Tag keine Termine.
+Eine Websuche hatte zwei kommende Konzerte angekündigt — beide
+Anbieterseiten widerlegten das beim direkten Abruf. Erst messen, dann
+eintragen, gilt auch für Suchergebnisse.
+
 ## 2026-09-20 — Der unbeaufsichtigte Lauf steht, nach fünf Fehlstarts
 
 Nachtrag zum Eintrag unten. Die Routine war angelegt, lief aber nicht: Jede

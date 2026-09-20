@@ -29,7 +29,9 @@ import { mkdtempSync, rmSync, readFileSync, existsSync, readdirSync } from "node
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
-import { ladeAlle } from "./_laden";
+import { ladeAlle, alsRegistryEingaben } from "./_laden";
+import { buildRegistry } from "../src/lib/links";
+import { regionsIndexierbarkeit } from "../src/lib/regionen";
 import { urlPrefix } from "../src/content/_schemas";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -159,11 +161,27 @@ if (entwuerfe.length === 0) {
     // Gegenprobe: Was freigegeben ist, muss in der Sitemap seines Typs
     // ankommen. Ohne sie wuerde ein Filter, der alles wegwirft, hier
     // durchgehen.
+    //
+    // MIT EINER AUSNAHME, und die ist selbst eine Behauptung: Eine Region
+    // unter der Bestandsschwelle ist noindex und gehoert deshalb NICHT in die
+    // Sitemap (ENTSCHEIDUNGEN.md, "Regionsschwelle ueber den Bestand"). Sie
+    // wird hier nicht uebersprungen, sondern andersherum geprueft — sonst
+    // waere die Ausnahme eine Luecke, durch die auch ein kaputter Filter
+    // passt.
+    //
+    // Aufgefallen ist das erst, als das Register ueberhaupt einen Entwurf
+    // bekam: Ohne Entwurf ueberspringt dieser ganze Abschnitt sich selbst,
+    // und die Gegenprobe hatte ihren Gegenstand nie gesehen (Lektion 19).
+    const registryFrei = buildRegistry(alsRegistryEingaben(frei));
     for (const e of frei) {
       const pfad = `${urlPrefix[e.collection]}/${e.slug}/`;
+      const duenn =
+        e.collection === "regionen" && !regionsIndexierbarkeit(registryFrei, e.slug).indexierbar;
       pruefe(
-        `Freigegeben ${e.collection}/${e.slug} steht in sitemap-${e.collection}.xml`,
-        lies(`sitemap-${e.collection}.xml`).includes(pfad),
+        duenn
+          ? `Freigegeben ${e.collection}/${e.slug} steht unter der Regionsschwelle und damit NICHT in sitemap-${e.collection}.xml`
+          : `Freigegeben ${e.collection}/${e.slug} steht in sitemap-${e.collection}.xml`,
+        lies(`sitemap-${e.collection}.xml`).includes(pfad) !== duenn,
       );
     }
     if (frei.length === 0) {

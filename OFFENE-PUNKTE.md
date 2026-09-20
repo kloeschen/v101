@@ -50,11 +50,49 @@ Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
-`frei` **Bands und Artikel sind leer, und der Bericht sagt es jetzt.** `npm run
-stale` führt beide unter „Sammlungen ohne Eintrag"; ihre Übersichten sind
-erreichbar, aber nicht im Index, und der Sitemap-Index nennt sie nicht. Das
-ist kein Fehler, sondern der Stand — erledigt ist der Posten, sobald je ein
-belegter Eintrag steht. Für Bands hängt daran die Schemafrage unten.
+`mensch` **Bands und Artikel: je ein Entwurf steht, die Freigabe fehlt.** Am
+2026-09-20 angelegt: `bands/mad-sin.md` und
+`artikel/hot-rod-und-kustom-kulture.md`, beide `status: entwurf`, beide mit
+fünf Quellen. `npm run stale` führt die Sammlungen weiter unter „Sammlungen
+ohne Eintrag", und das ist richtig: Die Schwelle zählt Freigegebenes, nicht
+Entwürfe. Erledigt ist der Posten mit der Prüfung durch einen Menschen.
+**Was dabei besonders hinzusehen ist**, beides in der Redaktionsnotiz
+begründet: Bei Mad Sin trägt `aktiv: true` nur MusicBrainz — Songkick und
+Reservix meldeten am 2026-09-20 keine Termine, das letzte Album ist von
+2020. Und `besetzung` führt Gründungsgitarrist Stein nicht, weil zwei
+Quellen sich über seinen Status widersprechen. Die Schemafrage zu den
+Bands-Jahren, an der dieser Posten früher hing, ist seit `min(1900)`
+erledigt.
+
+`frei` **Die Autoseite hat einen Artikel, aber keine Entitäten.** Der neue
+Artikel `hot-rod-und-kustom-kulture` trägt keine `hauptentitaet`, weil es
+keine gibt: Die Lexikonkategorie `auto` ist leer. Es fehlen Hot Rod, Custom
+Car, Kustom Kulture und Rat Rod — vier Begriffe, die der Artikel erklärt,
+ohne dass die Entität dahinter existiert. Quellenlage ist gut (deutsche
+Wikipedia zu allen drei Hauptbegriffen, am 2026-09-20 geöffnet). Sobald sie
+stehen, bekommt der Artikel seine `hauptentitaet` und `erwaehnteBegriffe`
+wachsen über Rockabilly und Psychobilly hinaus. Dabei ebenfalls zu prüfen,
+weil derselbe Fund: Dem Register fehlt ein Lexikoneintrag zu **Rock'n'Roll**.
+Bands, deren Quellen genau dieses Wort nennen — The Firebirds etwa —, sind
+derzeit nicht eintragbar, weil `genres` mindestens einen Lexikonslug
+verlangt.
+
+`frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
+Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
+Registereintrag nicht steht: Fahrerinnen und Fahrer von Fahrzeugen der 50er
+und 60er Jahre haben freien Eintritt und dürfen in der Westernstadt parken
+und durchfahren, Einfahrt Freitag und Samstag ab 10 Uhr. Das ist genau die
+Art Angabe, für die jemand ein Register aufsucht. Gefunden beim Beleg für
+den Kustom-Kulture-Artikel, nicht nebenbei mitgebaut.
+
+`mensch` **Das Golden Example der Bands nennt für The Firebirds 1985.** Die
+deutsche Wikipedia datiert die Bandgründung auf Mai 1992; 1985 war das erste
+musikalische Zusammentreffen zweier späterer Mitglieder. Die Datei ist eine
+Vorlage und wird vom Loader übersprungen, richtet also keinen Schaden im
+Register an — aber sie ist das, woran sich jeder neue Eintrag orientiert,
+und sie behauptet über eine reale Band eine falsche Jahreszahl. Ob die
+Vorlage auf eine erfundene Band umgestellt oder die Zahl korrigiert wird,
+ist eine Entscheidung über die Vorlage selbst.
 
 `frei` **Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
 fünf Regionen haben jetzt drei bis fünf Verweise und kommen mit der Freigabe
