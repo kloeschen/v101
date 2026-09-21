@@ -367,7 +367,20 @@ export const artikelBuilder: Builder = {
       mainEntityOfPage: { "@id": `${url}#webpage` },
       datePublished: isoDatum(d.veroeffentlichtAm),
       dateModified: isoDatum(d.geaendertAm ?? d.veroeffentlichtAm),
-      author: d.autor ? { "@id": autorId(d.autor) } : undefined,
+      // Ohne benannten Autor fällt die Urheberschaft an das Register selbst.
+      //
+      // Der Entwurf ohne Autor ist ein zulässiger Zustand: Erst die Freigabe
+      // durch einen Menschen verlangt einen Namen, und `veroeffentlichungsreife`
+      // erzwingt ihn dort. Der Graph dagegen wird für jeden Eintrag gebaut,
+      // auch für den Entwurf — und ein Article ohne `author` ist für
+      // Konsumenten unbrauchbar (`PFLICHT` in check-jsonld.ts sagt das).
+      //
+      // Beides war nie zugleich wahr, solange die Collection leer stand. Die
+      // Organisation ist die ehrliche Auflösung: Sie hat den Text
+      // verantwortet. Ein Personenname, den niemand getragen hat, wäre die
+      // Alternative gewesen — und damit genau die erfundene Zuschreibung, die
+      // dieses Projekt nirgends zulässt.
+      author: d.autor ? { "@id": autorId(d.autor) } : { "@id": siteIds.organization },
       publisher: { "@id": siteIds.organization },
       inLanguage: site.sprache,
       articleSection: d.saeule,

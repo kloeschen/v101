@@ -24,6 +24,63 @@ besetzung:
     instrument: Gitarre
   - name: KO Ristolainen
     instrument: Schlagzeug
+veroeffentlichungen:
+  - titel: Chills & Thrills in a Drama of Mad Sin & Mystery
+    jahr: 1988
+    art: album
+    label: Maybe Crazy Records
+  - titel: Distorted Dimensions
+    jahr: 1990
+    art: album
+    label: Maybe Crazy Records
+  - titel: Amphigory
+    jahr: 1991
+    art: album
+    label: Fury Records
+  - titel: Break the Rules
+    jahr: 1992
+    art: album
+    label: Maybe Crazy Records
+  - titel: A Ticket into Underworld
+    jahr: 1993
+    art: album
+    label: Maybe Crazy Records
+  - titel: God Save the Sin
+    jahr: 1996
+    art: album
+    label: Count Orlok Records
+  - titel: "...Sweet and Innocent? ...Loud and Dirty!"
+    jahr: 1998
+    art: album
+    label: Polydor
+  - titel: Survival of the Sickest
+    jahr: 2002
+    art: album
+    label: People Like You Records
+  - titel: Dead Moon's Calling
+    jahr: 2005
+    art: album
+    label: People Like You Records
+  - titel: Young, Dumb & Snotty
+    jahr: 2005
+    art: compilation
+    label: People Like You Records
+  - titel: 20 Years in Sin Sin
+    jahr: 2007
+    art: compilation
+    label: People Like You Records
+  - titel: Burn and Rise
+    jahr: 2010
+    art: album
+    label: People Like You Records
+  - titel: 25 Years - Still Mad
+    jahr: 2012
+    art: live
+    label: People Like You Records
+  - titel: Unbreakable
+    jahr: 2020
+    art: album
+    label: Century Media Records
 einstieg:
   titel: God Save the Sin
   art: album
@@ -36,6 +93,9 @@ einstieg:
 links:
   wikidata: Q836686
   wikipedia: https://de.wikipedia.org/wiki/Mad_Sin
+  musicbrainz: https://musicbrainz.org/artist/f78c479b-6ec2-4c09-abec-d2b09d5ad467
+  discogs: https://www.discogs.com/artist/258198
+  facebook: https://www.facebook.com/madsinofficial
 redaktionsnotiz: >-
   ERSTER BANDEINTRAG DES REGISTERS, angelegt im unbeaufsichtigten Lauf am
   2026-09-21 für den Posten "Bands und Artikel sind leer". Die Auswahl
@@ -44,15 +104,27 @@ redaktionsnotiz: >-
   Lexikoneintrag Psychobilly) und zu der unabhängig voneinander zwei
   Quellen existieren. Ob Mad Sin die richtige erste Band ist, entscheidet
   ohnehin der Mensch bei der Freigabe.
+  ZWEI LÄUFE, EIN EINTRAG. Am 2026-09-20 und am 2026-09-21 hat je ein
+  unbeaufsichtigter Lauf denselben Posten genommen (Ursache und Abhilfe
+  stehen als eigener Posten in OFFENE-PUNKTE.md). Beide legten eine Fassung
+  dieses Eintrags an. Übernommen wurde hier ausschließlich, was der Lauf
+  vom 2026-09-20 mit eigenen, von ihm geöffneten Quellen belegt hatte:
+  MusicBrainz, Songkick und Reservix samt der daraus folgenden
+  Werkliste, Linkliste und Aktivitätslage. Bewusst NICHT zusammengeführt
+  wurden `besetzung`, `aliases`, `einstieg`, `kurzbeschreibung` und `autor`
+  — dort haben beide Läufe aus derselben Beleglage unterschiedlich
+  entschieden, und eine Mischung aus zwei Ermessensentscheidungen wäre von
+  keiner der beiden gedeckt. Es gilt die Fassung vom 2026-09-21.
   OFFIZIELLE WEBSITE NICHT ERREICHBAR. madsin.de liefert am 2026-09-21 über
   https ein abgelaufenes Zertifikat und über den Proxy HTTP 503. Die Seite
   wurde deshalb nicht geöffnet und steht folgerichtig weder in `quellen`
   noch in `links.website` — ein Beleg, den man nicht lesen konnte, ist
-  keiner. Vor der Freigabe erneut versuchen; bis dahin trägt der Eintrag
-  nur Wikipedia und laut.de.
+  keiner. Am Vortag war das Ergebnis dasselbe; laut.de vermerkt zu
+  derselben Adresse "Sieht so n bisschen tot aus". Vor der Freigabe erneut
+  versuchen.
   LABEL UNGESETZT. Die Alben tragen ihre Labels einzeln in
   `veroeffentlichungen`. Ein aktuelles Label der Band steht in keiner der
-  beiden Quellen; aus "Unbreakable erschien 2020 bei Century Media" folgt
+  Quellen; aus "Unbreakable erschien 2020 bei Century Media" folgt
   nicht, dass die Band dort heute unter Vertrag steht. Feld bleibt leer.
   WIDERSPRUCH ZWISCHEN DEN QUELLEN, nicht stillschweigend aufgelöst:
   laut.de behandelt "Babylon Reloaded" als Album, auf das die Band 2005
@@ -60,21 +132,29 @@ redaktionsnotiz: >-
   nicht. Er steht deshalb nicht in `veroeffentlichungen`, sondern im Text
   unter "Was die Quellen nicht hergeben" — samt dem, was für 2005
   gesichert ist.
-  AKTIV: true ist der Vorgabewert und keine Recherche. Belegt ist nur, dass
-  keine der beiden Quellen eine Auflösung nennt und die Wikipedia für
-  Februar 2026 noch eine Neuerscheinung aus dem Umfeld der Band führt. Ein
-  aktueller Auftrittsnachweis fehlt.
-  VEROEFFENTLICHUNGEN BEWUSST LEER, obwohl die Diskografie recherchiert und
-  belegt ist — sie steht vollständig im Abschnitt "Geschichte". Grund ist
-  ein Befund, der erst mit diesem Eintrag sichtbar wurde: Der Bandbuilder
-  schreibt `datePublished: "1988"`, die Datumsprüfung in
-  `scripts/check-jsonld.ts` verlangt aber `YYYY-MM-TT`, und
-  `MusicAlbum` führt `datePublished` als Pflichtfeld. Jede gefüllte
-  Werkliste macht `npm run jsonld` damit rot. Die Reparatur ist eine
-  Vertragsfrage (ISO 8601 erlaubt die verkürzte Form, Googles
-  Article-Vorgaben nicht) und gehört deshalb zum Menschen; sie steht als
-  eigener Posten in OFFENE-PUNKTE.md. Sobald sie entschieden ist, wandert
-  die Diskografie aus dem Fließtext ins Feld.
+  ZWEITER WIDERSPRUCH, ebenfalls im Text statt im Feld: MusicBrainz führt
+  die Mitgliedschaft von Gründungsgitarrist Stein als nicht beendet
+  (Beginn 1987, kein Enddatum), die deutsche Wikipedia nennt 2016 als
+  Ende. Die Besetzungsliste folgt der Wikipedia, weil sie die spezifischere
+  Angabe macht und laut.de sie der Sache nach stützt (für "Unbreakable"
+  nennt laut.de zwei andere Gitarristen). Der Dissens wird benannt, nicht
+  weggelassen.
+  AKTIV: true ist der Vorgabewert und keine Recherche. Belegt ist, dass
+  keine Quelle eine Auflösung nennt, MusicBrainz die Lebensspanne der Band
+  als nicht beendet führt und die Wikipedia für Februar 2026 noch eine
+  Neuerscheinung aus dem Umfeld der Band kennt. Dagegen steht: Songkick
+  wies die Band am 2026-09-20 als "off tour" ohne Termine für 2026 aus,
+  Reservix meldete am selben Tag keine verfügbaren Termine, und das letzte
+  Studioalbum liegt sechs Jahre zurück. Ein aktueller Auftrittsnachweis
+  fehlt damit ausdrücklich; vor einer Freigabe gehört das Feld erneut
+  geprüft.
+  VEROEFFENTLICHUNGEN JETZT GEFÜLLT. Sie fehlten in der Fassung vom
+  2026-09-21 nur aus einem technischen Grund: Der Bandbuilder schreibt je
+  Album `datePublished: "1988"`, und die Datumsprüfung verlangte durchgängig
+  `YYYY-MM-TT`. Diese Prüfung fächert jetzt je Knotentyp auf
+  (`scripts/_jsonld-datum.ts`, belegt in `scripts/test-jsonld.ts`), womit
+  die verkürzte Form allein an `MusicAlbum.datePublished` zulässig ist. Ein
+  Datum zu erfinden war nie eine Möglichkeit.
   AUTOR: markus, wie bei allen übrigen 44 Einträgen. Der Text ist
   recherchiert, nicht redigiert — die Zuschreibung ist die des
   verantwortlichen Herausgebers, nicht die des Schreibenden, und der
@@ -84,13 +164,28 @@ quellen:
   - url: https://de.wikipedia.org/wiki/Mad_Sin
     titel: Mad Sin (Wikipedia)
     abgerufenAm: 2026-09-21
-    felder: [name, kurzbeschreibung, gegruendet, herkunftOrt, herkunftLand, region, genres, besetzung, einstieg, links, body:sound, body:geschichte, body:besetzung, body:quellenlage]
+    felder: [name, kurzbeschreibung, gegruendet, herkunftOrt, herkunftLand, region, genres, besetzung, veroeffentlichungen, einstieg, links, body:sound, body:geschichte, body:besetzung, body:quellenlage]
     art: nachschlagewerk
   - url: https://laut.de/Mad-Sin
     titel: Mad Sin (laut.de, Künstlerbiografie)
     abgerufenAm: 2026-09-21
-    felder: [kurzbeschreibung, gegruendet, herkunftOrt, besetzung, einstieg, body:sound, body:geschichte, body:quellenlage]
+    felder: [kurzbeschreibung, gegruendet, herkunftOrt, besetzung, veroeffentlichungen, einstieg, body:sound, body:geschichte, body:quellenlage]
     art: presse
+  - url: https://musicbrainz.org/artist/f78c479b-6ec2-4c09-abec-d2b09d5ad467
+    titel: Mad Sin (MusicBrainz)
+    abgerufenAm: 2026-09-20
+    felder: [gegruendet, herkunftOrt, veroeffentlichungen, links, body:besetzung, body:quellenlage, body:aktivitaet]
+    art: aggregator
+  - url: https://www.songkick.com/artists/549305-mad-sin/calendar
+    titel: Mad Sin Tourdaten (Songkick)
+    abgerufenAm: 2026-09-20
+    felder: [body:aktivitaet]
+    art: aggregator
+  - url: https://www.reservix.de/tickets-mad-sin/t7969
+    titel: Mad Sin — Tickets (Reservix)
+    abgerufenAm: 2026-09-20
+    felder: [body:aktivitaet]
+    art: aggregator
 ---
 
 Mad Sin ist eine 1987 in Berlin gegründete Psychobilly-Band. Sie entstand als Straßen- und Kneipenband um Sänger Köfte de Ville, unterschrieb schon ein Jahr später ihren ersten Plattenvertrag und hat seitdem elf Studioalben veröffentlicht. Ihr Klang blieb dabei nicht beim Genre stehen.
@@ -111,10 +206,18 @@ Der zweite Abschnitt beginnt mit einer Hollandtour: Dort unterschrieb die Band b
 
 Konstant ist über die gesamte Bandgeschichte nur der Sänger. Bassist Valle spielt seit 2002, die übrige heutige Besetzung — die Gitarristen Andy Kandil und Manny Anzaldo sowie Schlagzeuger KO Ristolainen — kam zwischen 2016 und 2017 dazu und nahm gemeinsam *Unbreakable* auf. Besonders die zweite Gitarre wechselte häufig: Zwischen 2002 und 2017 sind vier Besetzungen dieser Position belegt. Gründungsgitarrist Stein, mit bürgerlichem Namen Thorsten Hunaeus, gehörte der Band von 1987 bis 2016 an.
 
+## Aktivität
+
+Ob die Band derzeit auftritt, lässt sich aus den geöffneten Quellen nicht belegen — und das ist kein Nebensatz, sondern die schwächste Stelle dieses Eintrags. Für ein Weiterbestehen spricht, dass MusicBrainz die Band als nicht aufgelöst führt und keine Quelle ein Ende nennt. Dagegen steht der Befund vom 20. September 2026: Songkick wies Mad Sin an diesem Tag als „off tour" ohne einen einzigen Termin für 2026 aus, und der Ticketanbieter Reservix meldete zur selben Zeit „Derzeit sind leider keine Termine verfügbar". Das letzte Studioalbum liegt sechs Jahre zurück.
+
+Das Feld `aktiv` steht deshalb auf seinem Vorgabewert und nicht auf einer Recherche. Wer den Eintrag freigibt, prüft diese eine Angabe besser noch einmal.
+
 ## Was die Quellen nicht hergeben
 
-Zwei Dinge bleiben offen, und sie werden hier genannt statt geglättet.
+Drei Dinge bleiben offen, und sie werden hier genannt statt geglättet.
 
 Erstens ein Widerspruch in der Diskografie. Die Biografie bei laut.de schreibt, die Band habe 2005 auf ein Album mit dem Titel *Babylon Reloaded* hingearbeitet; in der Diskografie der deutschen Wikipedia taucht dieser Titel an keiner Stelle auf. Gesichert ist für 2005 anderes: das Studioalbum *Dead Moon's Calling* und die Best-of *Young, Dumb & Snotty* mit Aufnahmen der Jahre 1988 bis 1993. Solange nur eine Quelle den Titel trägt, steht er nicht in der Werkliste dieses Eintrags.
 
-Zweitens fehlt die Band selbst als Quelle. Ihre Website war am Tag der Recherche nicht abrufbar, und damit stützt sich dieser Eintrag ausschließlich auf Fremdbeschreibungen. Für eine Band aus [Berlin](/regionen/berlin/), die seit bald vier Jahrzehnten spielt, ist das eine dünne Grundlage — belastbar für die Eckdaten, nicht für alles Weitere.
+Zweitens ein Widerspruch in der Besetzung. MusicBrainz führt die Mitgliedschaft von Gründungsgitarrist Stein als nicht beendet — Beginn 1987, kein Enddatum —, während die deutsche Wikipedia 2016 als Austrittsjahr nennt. Die Besetzungsliste oben folgt der Wikipedia: Sie macht die spezifischere Angabe, und laut.de stützt sie der Sache nach, weil dort für die Aufnahmen zu *Unbreakable* zwei andere Gitarristen genannt werden. Ein fehlendes Enddatum in einer Datenbank ist schwächer als ein genanntes Jahr, aber es ist auch kein Nichts, und deshalb steht es hier.
+
+Drittens fehlt die Band selbst als Quelle. Ihre Website war an beiden Recherchetagen nicht abrufbar, und damit stützt sich dieser Eintrag ausschließlich auf Fremdbeschreibungen. Für eine Band aus [Berlin](/regionen/berlin/), die seit bald vier Jahrzehnten spielt, ist das eine dünne Grundlage — belastbar für die Eckdaten, nicht für alles Weitere.

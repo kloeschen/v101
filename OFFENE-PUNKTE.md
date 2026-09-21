@@ -76,34 +76,67 @@ billig und im Code nachvollziehbar, verlagert die Buchführung aber in den
 PR-Zweig, wo der nächste Lauf sie nicht sieht, solange er von `main`
 startet. Keine der drei ist offensichtlich richtig.
 
-`mensch` **Bands und Artikel: je ein Entwurf steht, die Freigabe fehlt.** Rest des
-am 2026-09-21 abgearbeiteten Postens, und er gehört von vornherein zum
-Menschen. `bands/mad-sin.md` und `artikel/petticoat-reifrock-unterrock.md`
-sind belegt und geprüft, aber `entwurf` — ein Lauf darf den freigegebenen
-Status nicht setzen. Solange das so ist, führt `npm run stale` beide
-Sammlungen weiter unter „Sammlungen ohne Eintrag": Der Bericht zählt
-freigegebene Einträge, und das ist richtig so, denn im Index steht nichts.
-Mit der Freigabe erledigt sich dieser Posten und die Meldung gleich mit.
-Beim Prüfen lohnt der Blick in beide Redaktionsnotizen: Sie nennen, was
-bewusst leer blieb und warum (`label`, `veroeffentlichungen`,
-`naechstePruefung`) und wo die Quellen sich widersprechen.
+`mensch` **Bands und Artikel: drei Entwürfe stehen, die Freigabe fehlt.** Rest des
+an zwei aufeinanderfolgenden Tagen abgearbeiteten Postens, und er gehört von
+vornherein zum Menschen. `bands/mad-sin.md`,
+`artikel/petticoat-reifrock-unterrock.md` und
+`artikel/hot-rod-und-kustom-kulture.md` sind belegt und geprüft, aber
+`entwurf` — ein Lauf darf den freigegebenen Status nicht setzen. Solange das
+so ist, führt `npm run stale` beide Sammlungen weiter unter „Sammlungen ohne
+Eintrag": Der Bericht zählt freigegebene Einträge, und das ist richtig so,
+denn im Index steht nichts. Mit der Freigabe erledigt sich dieser Posten und
+die Meldung gleich mit.
+**Was beim Prüfen besonders hinzusehen ist**, jeweils in der
+Redaktionsnotiz begründet: Bei Mad Sin steht `aktiv: true` auf seinem
+Vorgabewert — Songkick führte die Band am 2026-09-20 als „off tour", Reservix
+meldete keine Termine, das letzte Album ist von 2020. Zwei Widersprüche
+zwischen Quellen stehen bewusst im Text statt im Feld (das Album „Babylon
+Reloaded", der Austritt von Gitarrist Stein). Und die offizielle Website war
+an beiden Recherchetagen nicht abrufbar, der Eintrag stützt sich also
+ausschließlich auf Fremdbeschreibungen.
 
-`mensch` **`datePublished` als Jahreszahl macht jede Werkliste rot.** Gefunden am 2026-09-21 beim ersten Bandeintrag, vorher unsichtbar.
-`bandBuilder` schreibt je Album `datePublished: "1988"`, die Datumsprüfung in
-`scripts/check-jsonld.ts` verlangt `YYYY-MM-TT`, und `MusicAlbum` führt
-`datePublished` als Pflichtfeld. Jede gefüllte `veroeffentlichungen`-Liste
-macht `npm run jsonld` damit rot — nachgestellt und belegt, siehe
-ENTSCHEIDUNGEN.md vom 2026-09-21. `mad-sin.md` trägt deshalb vorerst keine
-Werkliste; die Diskografie steht im Fließtext.
-Zu entscheiden ist eines von zweien. **(a) Die Prüfung je Knotentyp
-auffächern:** `MusicAlbum.datePublished` darf `YYYY` sein — ISO 8601 erlaubt
-die verkürzte Form, und `foundingDate` gibt im selben Builder längst bare
-Jahreszahlen aus —, `Article.datePublished` bleibt taggenau, weil Googles
-Vorgaben das verlangen. Kosten: eine Strukturänderung an
-`check-jsonld.ts`, für das es bisher **keinen eigenen Test in der Prüfkette
-gibt**; der müsste mitkommen, sonst ist die neue Regel unbewiesen.
-**(b) Pauschal lockern.** Billiger, erlaubt dann aber auch bei Artikeln ein
-Datum ohne Tag. Ein Datum zu erfinden ist keine dritte Möglichkeit.
+`mensch` **Trägt ein Eintrag aus dem Lauf einen Autorennamen oder nicht?** Zwei
+unbeaufsichtigte Läufe haben das an einem Tag gegensätzlich entschieden, und
+der Zustand ist jetzt uneinheitlich: `bands/mad-sin.md` trägt `autor: markus`
+wie die übrigen 44 Einträge, `artikel/hot-rod-und-kustom-kulture.md` trägt
+keinen. Dafür spricht jeweils etwas. **Für den Namen:** Die Zuschreibung ist
+die des verantwortlichen Herausgebers, nicht die des Schreibenden, und jeder
+Eintrag des Registers hält es so. **Gegen den Namen:** Der Text stammt nicht
+aus der Hand dieses Menschen, und eine Zuschreibung, die niemand getragen
+hat, ist genau die Sorte Behauptung, die hier nirgends vorkommen soll. Der
+Rückfall im `artikelBuilder` (ohne `autor` verantwortet die Organisation)
+bleibt in jedem Fall richtig — er fängt einen zulässigen Zustand ab und ist
+in `test-jsonld.ts` belegt. Zu entscheiden ist nur, welcher der beiden
+Zustände der Normalfall ist; danach wird der andere Eintrag angeglichen.
+
+`frei` **Die Autoseite hat einen Artikel, aber keine Entitäten.** Der Artikel
+`hot-rod-und-kustom-kulture` trägt keine `hauptentitaet`, weil es keine gibt:
+Die Lexikonkategorie `auto` ist leer. Es fehlen Hot Rod, Custom Car, Kustom
+Kulture und Rat Rod — vier Begriffe, die der Artikel erklärt, ohne dass die
+Entität dahinter existiert. Quellenlage ist gut (deutsche Wikipedia zu allen
+drei Hauptbegriffen, am 2026-09-20 geöffnet). Sobald sie stehen, bekommt der
+Artikel seine `hauptentitaet`, und `erwaehnteBegriffe` wächst über Rockabilly
+und Psychobilly hinaus. Dabei ebenfalls zu prüfen, weil derselbe Fund: Dem
+Register fehlt ein Lexikoneintrag zu **Rock'n'Roll**. Bands, deren Quellen
+genau dieses Wort nennen — The Firebirds etwa —, sind derzeit nicht
+eintragbar, weil `genres` mindestens einen Lexikonslug verlangt.
+
+`frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
+Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
+Registereintrag nicht steht: Fahrerinnen und Fahrer von Fahrzeugen der 50er
+und 60er Jahre haben freien Eintritt und dürfen in der Westernstadt parken
+und durchfahren, Einfahrt Freitag und Samstag ab 10 Uhr. Das ist genau die
+Art Angabe, für die jemand ein Register aufsucht. Gefunden beim Beleg für den
+Kustom-Kulture-Artikel, nicht nebenbei mitgebaut.
+
+`mensch` **Das Golden Example der Bands nennt für The Firebirds 1985.** Die
+deutsche Wikipedia datiert die Bandgründung auf Mai 1992; 1985 war das erste
+musikalische Zusammentreffen zweier späterer Mitglieder. Die Datei ist eine
+Vorlage und wird vom Loader übersprungen, richtet also keinen Schaden im
+Register an — aber sie ist das, woran sich jeder neue Eintrag orientiert, und
+sie behauptet über eine reale Band eine falsche Jahreszahl. Ob die Vorlage
+auf eine erfundene Band umgestellt oder die Zahl korrigiert wird, ist eine
+Entscheidung über die Vorlage selbst.
 
 `mensch` **Die Prüfkette wird durch bloßen Zeitablauf rot.** Am 2026-09-21 war
 `npm run verify` auf `main` rot, ohne dass jemand etwas geändert hatte: Die
