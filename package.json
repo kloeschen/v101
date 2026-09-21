@@ -49,6 +49,9 @@
     "// warteschlange": "Welcher offene Punkt darf ohne Menschen gebaut werden? --check scheitert bei einem Posten ohne Marke und haengt deshalb in der Kette.",
     "warteschlange": "tsx scripts/warteschlange.ts",
     "warteschlange:check": "tsx scripts/warteschlange.ts --check",
+    "// warteschlange:naechster": "Der oberste freie Posten, den kein offener Zweig schon bearbeitet. Ein eigener Eintrag, damit der Lauf keine Flags durch npm durchreichen muss.",
+    "warteschlange:naechster": "tsx scripts/warteschlange.ts --naechster",
+    "warteschlange:belegt": "tsx scripts/warteschlange.ts --belegt",
     "// automerge": "Darf dieser Zweig ohne menschliche Pruefung mergen? Exitcode 0 = ja. Wird von der taeglichen Routine aufgerufen, nicht von der Kette.",
     "automerge:erlaubt": "tsx scripts/automerge-erlaubt.ts",
     "verify:ci": "echo '::: [1/9 Zeitzonen-Konvention] :::' && npm run check:zeit && echo '::: [2/9 Warteschlange markiert] :::' && npm run warteschlange:check && echo '::: [3/9 Freigabepruefung (Basis erforderlich)] :::' && npm run freigabe:ci && echo '::: [4/9 Inhalte (strict)] :::' && npm run validate:strict && echo '::: [5/9 JSON-LD-Graphen (strict)] :::' && npm run jsonld:strict && echo '::: [6/9 Autolink-Drift] :::' && npm run autolink:check && echo '::: [7/9 Typen (astro check)] :::' && npm run check && echo '::: [8/9 Build] :::' && npm run build && echo '::: [9/9 Tests] :::' && npm run test"

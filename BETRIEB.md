@@ -210,8 +210,10 @@ Wunsch.
    nichts zu tun hat. Am 2026-09-21 genau so passiert. Ergibt sich eine
    Änderung, gehört sie in denselben Pull Request.
 1. Nimmt den **obersten freien Posten** aus `OFFENE-PUNKTE.md`
-   (`npm run warteschlange --naechster`). Genau einen. Posten, die ein noch
-   offener Zweig bereits bearbeitet, überspringt das Skript von selbst.
+   (`npm run warteschlange:naechster`). Genau einen. Posten, die ein noch
+   offener Zweig bereits bearbeitet, überspringt das Skript von selbst —
+   Voraussetzung ist ein `git fetch origin` davor, denn gelesen werden die
+   vorhandenen Refs und nicht das Netz.
 2. Ist keiner frei: den dringendsten Posten aus `npm run stale`.
 3. Baut ihn vollständig nach den Regeln aus `CLAUDE.md` — `npm run verify`
    grün, Mutationsbeleg für jede neue Regel, Eintrag in `ENTSCHEIDUNGEN.md`.
@@ -236,7 +238,7 @@ im Kopf der Datei.
 
 Seit dem 2026-09-21 überspringt `--naechster` zusätzlich jeden Posten, den
 ein **noch nicht gemergter Zweig** bereits bearbeitet (`npm run
-warteschlange -- --belegt` zeigt, welche das sind). Gefragt wird nach
+warteschlange:belegt` zeigt, welche das sind). Gefragt wird nach
 Git-Refs, nicht nach Pull Requests: Das braucht kein Token und keinen
 Netzaufruf, die Prüfkette bleibt offline, und ein Zweig zählt auch dann
 schon, wenn noch gar kein Pull Request offen ist — genau das Fenster, in
