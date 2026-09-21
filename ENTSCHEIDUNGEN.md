@@ -13,6 +13,107 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-21 — Vier Entscheidungen nach zwei Tagen unbeaufsichtigtem Lauf
+
+Erst gemessen, dann entschieden. Die Messung hat die Reihenfolge der
+Dringlichkeit umgedreht.
+
+**Der Befund, der alles andere überlagert.** Die Warteschlange wuchs in zwei
+Läufen von 9 auf 16 Posten, die `mensch`-Posten von 5 auf 10. Ein Posten
+abgearbeitet, acht erzeugt. Der Rückstau an **Entscheidungen** hat sich
+verdoppelt, während der Rückstau an **Arbeit** um einen sank. Die Drosselung
+auf einen Posten pro Tag wirkt auf die falsche Größe: Sie begrenzt den
+Ausstoß, nicht den Rückstau. Ausführlich als Lektion 21.
+
+### Die vier Entscheidungen
+
+**1. Dublettenschutz: nicht gemergte Git-Refs statt offener Pull Requests.**
+Beschlossen war, `--naechster` solle die GitHub-API befragen. Gebaut ist
+etwas Äquivalentes, und der Unterschied ist eine Verbesserung, keine
+Abkürzung: Gefragt wird nach Refs unter `refs/remotes/`, die nicht in der
+Basis enthalten sind. **Verworfen** damit der Einwand, der gegen diese
+Variante sprach — es braucht kein Token und keinen Netzaufruf im Skript, die
+ganze Datei bleibt offline lauffähig, nicht nur `--check`. Zusätzlich zählt
+ein Zweig schon, bevor ein Pull Request existiert; genau dieses Fenster war
+der Zustand am 2026-09-20 abends. **Verworfen** außerdem Variante (c) aus dem
+Posten (Marke im PR-Zweig umstellen): Sie legt die Buchführung dorthin, wo
+der nächste Lauf sie nicht sieht, und löst den Fall gerade nicht.
+
+**2. Die Eskalationsregel ist zu grob und wird verengt.** Bisher: „Ermessens­
+frage → `mensch`". Ab jetzt darf ein Lauf eine **eng geführte Ausnahme**
+selbst bauen — begrenzt auf ein Feld an einem Typ, mit Negativtest und
+Mutationsbeleg. Zum Menschen geht erst das **Lockern der allgemeinen Regel**.
+Der Unterschied ist prüfbar und nicht selbst wieder Ermessen: Die enge
+Ausnahme belegt ihre eigenen Grenzen, die allgemeine Lockerung kann das
+nicht.
+
+Anlass ist der Doppellauf als unfreiwilliges Experiment — zwei Agenten,
+derselbe Auftrag, dreimal direkt vergleichbar, **zweimal war die mutigere
+Fassung die bessere**. Entscheidend der eine Fall, in dem die Vorsicht
+griff: Ein Lauf entschied die `datePublished`-Frage selbst und lag richtig,
+der andere eskalierte. Kosten: ein Tag und ein Bandeintrag ohne Werkliste.
+Geschützt hat das Zögern nichts.
+
+**3. `npm run archivieren` wird Schritt 0 des Laufs.** Am Morgen des
+2026-09-21 war `npm run verify` auf `main` rot, ohne dass jemand etwas
+geändert hatte. **Verworfen:** den Befund zur Warnung herabstufen — ein
+Termin, der seit Wochen auf `geplant` steht, ist ein echter Fehler und soll
+laut sein. **Verworfen:** der wöchentlichen Pflege überlassen — dann ist bis
+zu sechs Tage lang jeder Zweig rot, auch einer, der mit Terminen nichts zu
+tun hat. Schritt 0 braucht keine Änderung an `.github/` (gesperrt) und keine
+Regeländerung.
+
+**4. Einträge aus dem Lauf tragen `autor: markus`.** Die Zuschreibung meint
+den verantwortlichen Herausgeber, nicht den Schreibenden, und spätestens mit
+der Freigabe trifft sie zu; `veroeffentlichungsreife` verlangt sie dort
+ohnehin. Der Rückfall auf die Organisation im `artikelBuilder` bleibt
+trotzdem — er fängt den Entwurf ohne Autor ab, der ein zulässiger Zustand
+ist, und `test-jsonld.ts` belegt ihn. `hot-rod-und-kustom-kulture.md` ist
+angeglichen.
+
+### Zwei Funde beim Bauen, beide teurer als der Auftrag
+
+**Der erste Entwurf der Belegungsprüfung meldete drei Fehlalarme**, beim
+allerersten Lauf gegen das echte Repository. Er prüfte nur „auf der Basis
+`frei`, auf dem Zweig nicht mehr" — und `pflege/woechentlich` zweigte von
+einem älteren Stand ab, auf dem es drei der Posten schlicht noch nicht gab.
+„Steht da nicht" und „wurde dort abgearbeitet" sind verschiedene Dinge. Seit
+der Korrektur zählt ein Posten nur, wenn er am **Abzweigpunkt** frei war und
+an der **Spitze** nicht mehr. Lektion 22.
+
+**Der oberste freie Posten war die Grundlage des Auftrags selbst** und wurde
+deshalb mitgebaut: Ein Titel, der über zwei Zeilen umbricht, fiel stumm aus
+der Warteschlange. Die neue Belegungsprüfung vergleicht Posten über ihren
+Titel — auf einem Parser, der Titel verschluckt, wäre sie wertlos gewesen.
+Bitter daran: Der Kopf der Datei begründete ausführlich, warum ein fehlender
+Marker laut scheitern muss. Die Begründung war richtig und half nichts, weil
+der Parser eine Zeile davor aufgab. Lektion 23.
+
+### Belege
+
+`npm run verify` grün. `test-warteschlange.ts` von 34 auf 58 Prüfungen.
+Sechs Mutationen, je auf den betroffenen Block begrenzt:
+
+| Mutation | gefallene Behauptungen |
+|---|---|
+| Abzweigbedingung entfernt | 5, darunter der Fehlalarm-Fall |
+| Spitzenbedingung immer wahr | 6 |
+| `mensch`-Posten nicht mehr übersprungen | 4 |
+| gemergte Zweige nicht mehr übersprungen | live: 1 → 5 offene Zweige |
+| Zusammenzug umgebrochener Titel abgeschaltet | 5 — exakt der Zustand vor der Reparatur |
+| Leerzeile stoppt den Zusammenzug nicht mehr | 1 |
+
+**Die dritte Mutation fiel beim ersten Versuch nicht** — die zugehörige
+Prüfung bestand auch aus einem zweiten Grund und belegte damit keinen von
+beiden (Regel 4). Die Vorrichtung wurde umgebaut, nicht die Behauptung
+gestrichen; die Begründung steht im Test.
+
+**Nebenbefund beim Mutationsbeleg:** Ein erwarteter, abgefangener
+`git show`-Fehler schrieb sein `fatal:` trotzdem in die Ausgabe des Laufs,
+weil `execFileSync` stderr durchreicht. Behoben — dieselbe stdout-Hygiene,
+die `--json` schon verlangt.
+
+
 ## 2026-09-21 — Die ersten Einträge in bands/ und artikel/ — und was sie freilegten
 
 Erster Posten des unbeaufsichtigten Laufs. Gebaut wurde, was der Posten

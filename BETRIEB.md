@@ -203,16 +203,28 @@ Wunsch.
 
 #### Was der Lauf tut
 
+0. `npm run archivieren`. **Steht vor allem anderen**, weil die Prüfkette
+   sonst durch bloßen Zeitablauf rot wird: Ein Termin, der gestern vorbei
+   ging und noch auf `geplant` steht, ist für `validate-content.ts` zu Recht
+   ein Fehler — und färbt dann jeden Zweig rot, auch einen, der mit Terminen
+   nichts zu tun hat. Am 2026-09-21 genau so passiert. Ergibt sich eine
+   Änderung, gehört sie in denselben Pull Request.
 1. Nimmt den **obersten freien Posten** aus `OFFENE-PUNKTE.md`
-   (`npm run warteschlange --naechster`). Genau einen.
+   (`npm run warteschlange --naechster`). Genau einen. Posten, die ein noch
+   offener Zweig bereits bearbeitet, überspringt das Skript von selbst.
 2. Ist keiner frei: den dringendsten Posten aus `npm run stale`.
 3. Baut ihn vollständig nach den Regeln aus `CLAUDE.md` — `npm run verify`
    grün, Mutationsbeleg für jede neue Regel, Eintrag in `ENTSCHEIDUNGEN.md`.
 4. Öffnet einen Pull Request. **Nie direkt auf `main`.**
 5. Merged selbst, wenn `npm run automerge:erlaubt` es erlaubt und die CI
    grün ist. Sonst bleibt der PR liegen.
-6. Stößt er auf eine Ermessensfrage, **baut er nicht**: Er markiert den
+6. Stößt er auf eine **Ermessensfrage**, baut er nicht: Er markiert den
    Posten als `mensch`, schreibt hin, was zu entscheiden ist, und meldet.
+   **Was keine Ermessensfrage ist** (Entscheidung vom 2026-09-21): eine eng
+   geführte Ausnahme von einer bestehenden Regel — begrenzt auf ein Feld an
+   einem Typ, mit Negativtest und Mutationsbeleg. Die baut der Lauf selbst.
+   Zum Menschen geht erst das Lockern der allgemeinen Regel. Der Anlass
+   steht unten unter „Was der Doppellauf gezeigt hat".
 
 #### Die zwei Regeln, die das tragen
 
@@ -221,6 +233,18 @@ Wunsch.
 Fehler in der Prüfkette — nicht stillschweigend das eine oder andere.
 Beide naheliegenden Voreinstellungen wären falsch, und die Begründung steht
 im Kopf der Datei.
+
+Seit dem 2026-09-21 überspringt `--naechster` zusätzlich jeden Posten, den
+ein **noch nicht gemergter Zweig** bereits bearbeitet (`npm run
+warteschlange -- --belegt` zeigt, welche das sind). Gefragt wird nach
+Git-Refs, nicht nach Pull Requests: Das braucht kein Token und keinen
+Netzaufruf, die Prüfkette bleibt offline, und ein Zweig zählt auch dann
+schon, wenn noch gar kein Pull Request offen ist — genau das Fenster, in
+dem der Doppellauf entstand. Als bearbeitet gilt ein Posten nur, wenn er am
+**Abzweigpunkt** des Zweigs frei war und an dessen Spitze nicht mehr. Ohne
+diese zweite Bedingung meldet ein Zweig, der bloß hinterherhinkt, alles als
+bearbeitet, was nach seinem Abzweig dazukam — beim ersten Lauf gegen das
+echte Repository prompt passiert.
 
 **Die Auto-Merge-Grenze** (`scripts/automerge-erlaubt.ts`). Reine Code-PRs
 dürfen bei grüner CI selbst mergen; alles unter `src/content/` wartet auf
@@ -234,8 +258,8 @@ durch Zufall. Code kann sich selbst beweisen, ein recherchierter Fakt nicht.
 
 Beide Regeln stehen in Code und nicht im Prompt der Routine. Im Prompt wären
 sie eine Bitte an ein Modell; als Skript sind sie ein Exitcode, und
-`scripts/test-warteschlange.ts` belegt beide Richtungen (34 Prüfungen,
-8 Mutationen).
+`scripts/test-warteschlange.ts` belegt beide Richtungen (58 Prüfungen,
+14 Mutationen).
 
 #### Was der Lauf nicht darf
 
@@ -256,6 +280,36 @@ dastehen.
 Belegpflicht erzwingt eine Quelle, nicht deren Richtigkeit. Mehr Durchsatz
 heißt mehr davon — das ist der Preis, und er ist der Grund, warum Inhalt
 nicht selbst merged.
+
+**Und gemessen nach zwei Tagen:** Die Warteschlange wuchs von 9 auf 16
+Posten, die `mensch`-Posten von 5 auf 10. Zwei Läufe haben einen Posten
+abgearbeitet und acht erzeugt. Das ist kein Argument gegen die Läufe — die
+Funde waren gut —, sondern dagegen, jede Unsicherheit zum Menschen zu
+schicken. Die Verengung der Eskalationsregel in Schritt 6 ist die Antwort
+darauf; ob sie reicht, zeigt die nächste Messung.
+
+#### Was der Doppellauf gezeigt hat
+
+Am 2026-09-20/21 nahmen zwei Läufe denselben Posten — ein Unfall, aber
+nebenbei der bisher beste Vergleich zweier Arbeitsweisen unter identischem
+Auftrag. Dreimal direkt vergleichbar, und **zweimal war die mutigere
+Fassung die bessere**:
+
+| | Ergebnis |
+|---|---|
+| `datePublished` | Lauf A entschied selbst und lag richtig; Lauf B eskalierte — Kosten: ein Tag und eine Werkliste, die der Eintrag deshalb nicht trug |
+| Sitemap-Gegenprobe | Lauf B reparierte besser (beide Hälften des Filters statt einer) |
+| Bandeintrag | Lauf A öffnete fünf Quellen statt zwei — und die drei zusätzlichen schwächten eine Angabe, fanden also ein echtes Problem |
+
+Daraus folgt nicht „immer selbst entscheiden". Es folgt, dass „im Zweifel
+eskalieren" zu grob war: Der eine Fall, in dem die Vorsicht griff, war
+entscheidbar, und das Zögern hat nichts geschützt.
+
+**Beide Läufe fanden unabhängig voneinander dieselbe blinde Prüfung** — die
+Sitemap-Gegenprobe, die ihren Gegenstand nie gesehen hatte. Lektion 19 ist
+damit nicht nur eine Warnung, sondern eine Suchheuristik: Wenn eine Sammlung
+ihren ersten Eintrag bekommt, laufen Prüfungen zum ersten Mal. Dort ist mit
+Funden zu rechnen.
 
 ### 2.6 Was für den agentischen Teil noch fehlt
 

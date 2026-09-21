@@ -438,3 +438,133 @@ Haltung, und sie wäre schlimmer als keine: Sie ließe glauben, die Frage sei
 abgeräumt (Lektion 19 aus der anderen Richtung — eine Prüfung, die ihren
 Gegenstand gar nicht erreichen kann). Diese Erwartung steht deshalb in
 `CLAUDE.md` und im Golden Example, wo Menschen und Modelle sie lesen.
+
+---
+
+## 21. Eine Warteschlange, die nur ein Mensch leeren darf, füllt sich schneller als sie sich leert
+
+**Der Fehler:** Der tägliche unbeaufsichtigte Lauf bekam am 2026-09-20 die
+Regel „stößt du auf eine Ermessensfrage, baue nicht — markiere den Posten
+als `mensch` und melde". Die Regel ist richtig gemeint und war zwei Tage
+später der Engpass.
+
+**Gemessen nach zwei Läufen:**
+
+| | vorher | nachher |
+|---|---|---|
+| Posten unter „Als Nächstes" | 9 | 16 |
+| davon `frei` | 4 | 6 |
+| davon `mensch` | 5 | **10** |
+
+Zwei Läufe haben **einen** Posten abgearbeitet und **acht** erzeugt. Der
+Rückstau an Entscheidungen hat sich verdoppelt, während der Rückstau an
+Arbeit um einen Posten sank.
+
+**Warum das kein Zufall ist:** Ein Lauf, der gut arbeitet, findet unterwegs
+mehr, als er abarbeitet — das ist der Ertrag, nicht der Defekt. Funde sind
+billig zu erzeugen und teuer zu entscheiden. Solange jede Unsicherheit zum
+Menschen wandert, wächst die Warteschlange proportional zur Qualität der
+Arbeit. Die Drosselung auf einen Posten pro Tag begrenzt den Ausstoß, nicht
+den Rückstau; sie wirkt auf die falsche Größe.
+
+**Was der Doppellauf dazu zeigte.** Am 2026-09-20/21 nahmen zwei Läufe
+versehentlich denselben Posten — und lieferten damit den Vergleich, den
+niemand geplant hatte. Dreimal direkt vergleichbar, zweimal war die
+mutigere Fassung die bessere. Entscheidend ist der eine Fall, in dem die
+Vorsicht griff: Ein Lauf entschied eine Vertragsfrage selbst und lag
+richtig, der andere eskalierte sie. Kosten der Eskalation: ein Tag und ein
+Bandeintrag, der seine Diskografie deshalb nicht trug. Geschützt hat das
+Zögern nichts — die Frage war entscheidbar, und die Begründung des
+entscheidenden Laufs stand fertig im Code.
+
+**Regel:** Eine **eng geführte Ausnahme** von einer bestehenden Regel —
+begrenzt auf ein Feld an einem Typ, mit Negativtest und Mutationsbeleg —
+darf ein unbeaufsichtigter Lauf selbst bauen. Zum Menschen geht erst das
+**Lockern der allgemeinen Regel**. Der Unterschied ist prüfbar und nicht
+Ermessen: Die enge Ausnahme belegt ihre eigenen Grenzen, die allgemeine
+Lockerung kann das nicht.
+
+**Regel:** Wer einem Automaten eine Eskalationsregel gibt, misst nach zwei
+Wochen, wie viele Eskalationen sie erzeugt hat und wie viele davon der
+Mensch anders entschieden hat als der Automat vorgeschlagen hätte. Eine
+Eskalationsquote ohne Widerspruchsquote sagt nichts.
+
+---
+
+## 22. Zwei Automaten, die sich nicht sehen, sind kein Automat, sondern ein Konflikt
+
+**Der Fehler:** Die Warteschlange (`OFFENE-PUNKTE.md`) wird aus dem
+Arbeitsbaum gelesen. Ein Lauf, der einen Posten abarbeitet, markiert ihn auf
+**seinem Zweig** um — auf `main` steht er unverändert auf `frei`. Der
+nächste Lauf startet von `main`, sieht ihn als frei und nimmt ihn erneut.
+Ergebnis am 2026-09-21: zwei Pull Requests, dieselbe Band, zwei
+Artikelentwürfe zu verschiedenen Themen, zwei Fassungen derselben Funde und
+ein garantierter Konflikt in drei Dateien.
+
+**Und es waren nicht zwei, sondern drei.** Derselbe Tag brachte einen
+dritten Pull Request, vom wöchentlichen Pflege-Workflow, mit genau der einen
+Zeile, die einer der Tagesläufe vier Stunden später ebenfalls änderte.
+`pflege.yml`, der Tageslauf und die interaktive Sitzung öffnen alle Pull
+Requests, ohne voneinander zu wissen. Wer nur die zwei zählt, die kollidiert
+sind, repariert die Hälfte.
+
+**Was daran allgemein ist:** Zustand, der die Arbeitsteilung steuert, darf
+nicht in derselben Datei liegen wie die Arbeit selbst — sonst wandert er mit
+dem Zweig mit und ist genau dort unsichtbar, wo er gebraucht wird. Das ist
+dieselbe Form wie Lektion 2 (`import.meta` koppelt an eine Laufzeit): eine
+Abhängigkeit, die im Normalfall nicht auffällt und im Grenzfall alles
+zerlegt.
+
+**Die Reparatur, und warum sie anders aussieht als geplant.** Beschlossen
+war, `--naechster` solle die offenen Pull Requests abfragen. Gebaut ist
+etwas Äquivalentes, das weniger kostet: Gefragt wird nach **nicht gemergten
+Git-Refs**, nicht nach Pull Requests. Kein Token, kein Netzaufruf im Skript,
+die Prüfkette bleibt offline — der Einwand, der gegen diese Variante sprach,
+entfällt damit ganz. Und ein Zweig zählt schon, bevor ein Pull Request
+existiert: genau das Fenster, in dem der Doppellauf entstand.
+
+**Regel:** Als „wird schon bearbeitet" gilt ein Posten nur, wenn er am
+**Abzweigpunkt** des Zweigs frei war und an dessen **Spitze** nicht mehr.
+Die erste Fassung prüfte nur die zweite Hälfte und meldete beim ersten Lauf
+gegen das echte Repository prompt drei Fehlalarme: Ein Zweig, der von einem
+älteren Stand abzweigte, „bearbeitete" alles, was nach seinem Abzweig
+dazugekommen war. **„Steht da nicht" und „wurde dort abgearbeitet" sind
+verschiedene Dinge** — und ein Zweig, der hinterherhinkt, sieht ohne diese
+Unterscheidung aus wie einer, der arbeitet.
+
+---
+
+## 23. Ein stumm verschluckter Posten ist schlimmer als ein falsch gelesener
+
+**Der Fehler:** `MIT_MARKE` in `scripts/warteschlange.ts` war zeilenweise
+verankert und verlangte die schließenden `**` in derselben Zeile wie die
+Marke. Bricht ein fetter Titel über zwei Zeilen um — bei 79 Zeichen
+Zeilenlänge der Normalfall für einen langen Titel —, greift weder `MIT_MARKE`
+noch `OHNE_MARKE`, denn die Folgezeile beginnt nicht mit `**`.
+
+Der Posten fiel damit **stumm** aus der Liste. `--check` schlug nicht an —
+nicht weil es ihn durchwinkte, sondern weil es ihn nie sah. Minimalbeleg:
+`lies()` auf einem umgebrochenen Titel ergibt `posten=0 ohneMarke=0`, auf
+demselben Titel einzeilig `posten=1`.
+
+**Die Folgen liefen in beide Richtungen.** Ein `frei`-Posten, den niemand
+sieht, wird nie gebaut. Ein `mensch`-Posten, den niemand sieht, gilt als
+erledigt. Und seit der Belegungsprüfung aus Lektion 22 kommt eine dritte
+hinzu: Posten werden über ihren Titel verglichen, ein verschluckter Titel
+hieße also „nicht belegt", obwohl ein Zweig ihn schon bearbeitet.
+
+**Das Bittere:** Genau dieser Zustand war im Kopf der Datei ausdrücklich
+ausgeschlossen worden. Dort stand, warum ein fehlender Marker laut
+scheitern muss und nicht stillschweigend als `mensch` gelten darf — „eine
+Voreinstellung, die man nicht sieht, ist die schlechtere von beiden". Die
+Begründung war richtig und vollständig. Sie half nichts, weil der Parser
+eine Zeile davor aufgab.
+
+**Regel:** Wer begründet, warum ein Fall laut scheitern muss, prüft im
+selben Zug, ob der Fall überhaupt bis zur Prüfung kommt. Eine Fehlermeldung
+schützt nur, was der Parser gesehen hat — und was er nicht sieht, meldet
+keine Regel, sondern fällt in die Lücke zwischen zweien.
+
+**Regel:** Ein Negativtest für „wird gemeldet" braucht den Zwilling „wird
+überhaupt gefunden". Beide zusammen schließen die Lücke; einer allein lässt
+sie offen (dieselbe Form wie Lektion 19, eine Ebene tiefer).
