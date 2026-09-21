@@ -31,7 +31,7 @@ import os from "node:os";
 import { fileURLToPath } from "node:url";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
-import { regionsIndexierbarkeit } from "../src/lib/regionen";
+import { istDuenneRegion } from "../src/lib/regionen";
 import { urlPrefix } from "../src/content/_schemas";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -162,27 +162,39 @@ if (entwuerfe.length === 0) {
     // ankommen. Ohne sie wuerde ein Filter, der alles wegwirft, hier
     // durchgehen.
     //
-    // MIT EINER AUSNAHME, und die ist selbst eine Behauptung: Eine Region
-    // unter der Bestandsschwelle ist noindex und gehoert deshalb NICHT in die
-    // Sitemap (ENTSCHEIDUNGEN.md, "Regionsschwelle ueber den Bestand"). Sie
-    // wird hier nicht uebersprungen, sondern andersherum geprueft — sonst
-    // waere die Ausnahme eine Luecke, durch die auch ein kaputter Filter
-    // passt.
+    // Zwei Faelle sind davon ausgenommen, und zwar nach genau der Regel,
+    // die auch der Build anwendet (`sitemapFuerCollection` in
+    // src/lib/feeds.ts): `noindex` am Eintrag und eine Region unter der
+    // Bestandsschwelle (`istDuenneRegion`). Beides ist gewollt und in
+    // test-regionen.ts Teil 1d einzeln belegt.
     //
-    // Aufgefallen ist das erst, als das Register ueberhaupt einen Entwurf
-    // bekam: Ohne Entwurf ueberspringt dieser ganze Abschnitt sich selbst,
-    // und die Gegenprobe hatte ihren Gegenstand nie gesehen (Lektion 19).
-    const registryFrei = buildRegistry(alsRegistryEingaben(frei));
+    // Die Gegenprobe kannte die Ausnahme trotzdem nicht -- sie ist nur nie
+    // angeschlagen, weil dieser ganze Block einen Entwurf im Register
+    // braucht und es bis zum ersten Bands- und Artikeleintrag keinen gab.
+    // Genau der Fall aus Lektion 4: eine Pruefung, die nie gelaufen ist,
+    // ist unbewiesen. Damit die Ausnahme jetzt nicht ihrerseits etwas
+    // verdeckt, wird sie in beide Richtungen geprueft -- zurueckgehalten
+    // heisst nachweislich nicht in der Sitemap, nicht bloss "wird nicht
+    // gefragt".
+    const registry = buildRegistry(alsRegistryEingaben(alle));
+    const zurueckgehalten = (e: (typeof frei)[number]): boolean => {
+      if (e.daten!.noindex === true) return true;
+      const meta = registry.eintraege.get(`${e.collection}/${e.slug}`);
+      return meta ? istDuenneRegion(registry, meta) : false;
+    };
+
     for (const e of frei) {
       const pfad = `${urlPrefix[e.collection]}/${e.slug}/`;
-      const duenn =
-        e.collection === "regionen" && !regionsIndexierbarkeit(registryFrei, e.slug).indexierbar;
-      pruefe(
-        duenn
-          ? `Freigegeben ${e.collection}/${e.slug} steht unter der Regionsschwelle und damit NICHT in sitemap-${e.collection}.xml`
-          : `Freigegeben ${e.collection}/${e.slug} steht in sitemap-${e.collection}.xml`,
-        lies(`sitemap-${e.collection}.xml`).includes(pfad) !== duenn,
-      );
+      const drin = lies(`sitemap-${e.collection}.xml`).includes(pfad);
+      if (zurueckgehalten(e)) {
+        pruefe(
+          `Zurueckgehalten ${e.collection}/${e.slug} steht nicht in sitemap-${e.collection}.xml`,
+          !drin,
+          "noindex oder Region unter der Bestandsschwelle -- gewollt ausgeschlossen",
+        );
+      } else {
+        pruefe(`Freigegeben ${e.collection}/${e.slug} steht in sitemap-${e.collection}.xml`, drin);
+      }
     }
     if (frei.length === 0) {
       console.log("Hinweis: kein freigegebener Eintrag im Register — Gegenprobe uebersprungen.");

@@ -32,6 +32,124 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **Die Warteschlange verschluckt Posten mit umgebrochenem Titel.** Am
+2026-09-21 an zwei eigenen Posten dieses Laufs aufgefallen, beide erst nach
+dem Zählen. `MIT_MARKE` in `scripts/warteschlange.ts` ist zeilenweise
+verankert und verlangt die schließenden `**` in derselben Zeile wie die
+Marke. Läuft der fette Titel über zwei Zeilen um — bei 79 Zeichen Zeilenlänge
+der Normalfall für einen langen Titel —, greift weder `MIT_MARKE` noch
+`OHNE_MARKE` (die Folgezeile beginnt nicht mit `**`). Der Posten fällt
+**stumm** aus der Liste: Minimalbeleg `lies()` auf einem umgebrochenen Titel
+ergibt `posten=0 ohneMarke=0`, auf demselben Titel einzeilig `posten=1`.
+Das ist genau der Zustand, den der Kopf dieser Datei ausschließen wollte
+(„stumm aus der Warteschlange gefallen") — und `--check` schlägt nicht an,
+weil der Posten gar nicht erst gesehen wird. Ein `frei`-Posten, den niemand
+sieht, wird nie gebaut; ein `mensch`-Posten, den niemand sieht, gilt als
+erledigt.
+Kein Ermessen dabei: Der Titel muss bis zu den schließenden `**` gelesen
+werden, auch über den Zeilenumbruch hinweg. Zwei Negativtests gehören dazu —
+umgebrochener Titel wird gefunden, und eine Fettschrift ohne Marke landet
+weiterhin in `ohneMarke` statt unbemerkt durchzugehen.
+
+`mensch` **Der Lauf baut denselben Posten zweimal.** Am 2026-09-21 passiert und der teuerste Befund
+dieses Laufs: PR #26 vom Vorabend hatte den Posten „Bands und Artikel sind
+leer" bereits abgearbeitet, war aber noch nicht gemerged. `npm run
+warteschlange` liest OFFENE-PUNKTE.md aus dem Arbeitsbaum, und dort stand
+der Posten unverändert auf `frei` — also nahm ihn der nächste Lauf erneut.
+Ergebnis: zwei Pull Requests, dieselbe Band (Mad Sin), zwei verschiedene
+Artikel, zwei Fassungen derselben Funde, und ein garantierter Konflikt in
+OFFENE-PUNKTE.md und ENTSCHEIDUNGEN.md.
+Das wiederholt sich jeden Tag, an dem der Vortags-PR nicht gemerged ist —
+und genau dieser Fall ist der Regelfall, weil Inhalts-PRs absichtlich auf
+einen Menschen warten (`automerge:erlaubt`). Die Kosten wachsen mit dem
+Rückstau, nicht mit der Zeit.
+Zu entscheiden ist, woran der Lauf den Rückstau erkennen soll. **(a)
+`warteschlange.ts` fragt die offenen PRs ab** und überspringt Posten, für
+die schon einer offen ist — genau, aber das Skript bräuchte Netzzugriff und
+ein Token und wäre damit in der Prüfkette nicht mehr offline lauffähig.
+**(b) Der Lauf prüft vor Schritt 1 selbst, ob ein offener PR aus einer
+früheren Runde existiert** — kostet keine Änderung am Skript, steht aber im
+Prompt und ist damit eine Bitte an ein Modell statt ein Exitcode (genau das,
+was bei Warteschlange und Auto-Merge-Grenze bewusst vermieden wurde).
+**(c) Der Posten wird beim Öffnen des PR umgehend auf `mensch` gesetzt** —
+billig und im Code nachvollziehbar, verlagert die Buchführung aber in den
+PR-Zweig, wo der nächste Lauf sie nicht sieht, solange er von `main`
+startet. Keine der drei ist offensichtlich richtig.
+
+`mensch` **Bands und Artikel: drei Entwürfe stehen, die Freigabe fehlt.** Rest des
+an zwei aufeinanderfolgenden Tagen abgearbeiteten Postens, und er gehört von
+vornherein zum Menschen. `bands/mad-sin.md`,
+`artikel/petticoat-reifrock-unterrock.md` und
+`artikel/hot-rod-und-kustom-kulture.md` sind belegt und geprüft, aber
+`entwurf` — ein Lauf darf den freigegebenen Status nicht setzen. Solange das
+so ist, führt `npm run stale` beide Sammlungen weiter unter „Sammlungen ohne
+Eintrag": Der Bericht zählt freigegebene Einträge, und das ist richtig so,
+denn im Index steht nichts. Mit der Freigabe erledigt sich dieser Posten und
+die Meldung gleich mit.
+**Was beim Prüfen besonders hinzusehen ist**, jeweils in der
+Redaktionsnotiz begründet: Bei Mad Sin steht `aktiv: true` auf seinem
+Vorgabewert — Songkick führte die Band am 2026-09-20 als „off tour", Reservix
+meldete keine Termine, das letzte Album ist von 2020. Zwei Widersprüche
+zwischen Quellen stehen bewusst im Text statt im Feld (das Album „Babylon
+Reloaded", der Austritt von Gitarrist Stein). Und die offizielle Website war
+an beiden Recherchetagen nicht abrufbar, der Eintrag stützt sich also
+ausschließlich auf Fremdbeschreibungen.
+
+`mensch` **Trägt ein Eintrag aus dem Lauf einen Autorennamen oder nicht?** Zwei
+unbeaufsichtigte Läufe haben das an einem Tag gegensätzlich entschieden, und
+der Zustand ist jetzt uneinheitlich: `bands/mad-sin.md` trägt `autor: markus`
+wie die übrigen 44 Einträge, `artikel/hot-rod-und-kustom-kulture.md` trägt
+keinen. Dafür spricht jeweils etwas. **Für den Namen:** Die Zuschreibung ist
+die des verantwortlichen Herausgebers, nicht die des Schreibenden, und jeder
+Eintrag des Registers hält es so. **Gegen den Namen:** Der Text stammt nicht
+aus der Hand dieses Menschen, und eine Zuschreibung, die niemand getragen
+hat, ist genau die Sorte Behauptung, die hier nirgends vorkommen soll. Der
+Rückfall im `artikelBuilder` (ohne `autor` verantwortet die Organisation)
+bleibt in jedem Fall richtig — er fängt einen zulässigen Zustand ab und ist
+in `test-jsonld.ts` belegt. Zu entscheiden ist nur, welcher der beiden
+Zustände der Normalfall ist; danach wird der andere Eintrag angeglichen.
+
+`frei` **Die Autoseite hat einen Artikel, aber keine Entitäten.** Der Artikel
+`hot-rod-und-kustom-kulture` trägt keine `hauptentitaet`, weil es keine gibt:
+Die Lexikonkategorie `auto` ist leer. Es fehlen Hot Rod, Custom Car, Kustom
+Kulture und Rat Rod — vier Begriffe, die der Artikel erklärt, ohne dass die
+Entität dahinter existiert. Quellenlage ist gut (deutsche Wikipedia zu allen
+drei Hauptbegriffen, am 2026-09-20 geöffnet). Sobald sie stehen, bekommt der
+Artikel seine `hauptentitaet`, und `erwaehnteBegriffe` wächst über Rockabilly
+und Psychobilly hinaus. Dabei ebenfalls zu prüfen, weil derselbe Fund: Dem
+Register fehlt ein Lexikoneintrag zu **Rock'n'Roll**. Bands, deren Quellen
+genau dieses Wort nennen — The Firebirds etwa —, sind derzeit nicht
+eintragbar, weil `genres` mindestens einen Lexikonslug verlangt.
+
+`frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
+Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
+Registereintrag nicht steht: Fahrerinnen und Fahrer von Fahrzeugen der 50er
+und 60er Jahre haben freien Eintritt und dürfen in der Westernstadt parken
+und durchfahren, Einfahrt Freitag und Samstag ab 10 Uhr. Das ist genau die
+Art Angabe, für die jemand ein Register aufsucht. Gefunden beim Beleg für den
+Kustom-Kulture-Artikel, nicht nebenbei mitgebaut.
+
+`mensch` **Das Golden Example der Bands nennt für The Firebirds 1985.** Die
+deutsche Wikipedia datiert die Bandgründung auf Mai 1992; 1985 war das erste
+musikalische Zusammentreffen zweier späterer Mitglieder. Die Datei ist eine
+Vorlage und wird vom Loader übersprungen, richtet also keinen Schaden im
+Register an — aber sie ist das, woran sich jeder neue Eintrag orientiert, und
+sie behauptet über eine reale Band eine falsche Jahreszahl. Ob die Vorlage
+auf eine erfundene Band umgestellt oder die Zahl korrigiert wird, ist eine
+Entscheidung über die Vorlage selbst.
+
+`mensch` **Die Prüfkette wird durch bloßen Zeitablauf rot.** Am 2026-09-21 war
+`npm run verify` auf `main` rot, ohne dass jemand etwas geändert hatte: Die
+Boogie-Party vom 2026-09-20 stand noch auf `durchfuehrung: geplant`, und
+`validate-content.ts` macht daraus zu Recht einen Fehler. `npm run
+archivieren` stellt es in einem Befehl um — aber bis das jemand aufruft, ist
+jeder Zweig rot, auch einer, der mit Terminen nichts zu tun hat. Zu
+entscheiden: ob die wöchentliche Pflege (`.github/workflows/pflege.yml`)
+dafür reicht, ob `archivieren` in die Kette gehört, oder ob der Befund für
+noch nicht archivierte Termine eine Warnung statt eines Fehlers sein sollte.
+Alle drei sind vertretbar und haben unterschiedliche Nebenwirkungen; die
+Datei liegt zudem hinter der `.github/`-Sperre.
+
 `mensch` **`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
 Bash-Zweig blockiert jeden Befehl, der die gesperrte Schemadatei nennt und
 irgendwo ein `>` enthält. Das trifft `2>&1` genauso wie eine Pfeilfunktion
@@ -49,50 +167,6 @@ geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
-
-`mensch` **Bands und Artikel: je ein Entwurf steht, die Freigabe fehlt.** Am
-2026-09-20 angelegt: `bands/mad-sin.md` und
-`artikel/hot-rod-und-kustom-kulture.md`, beide `status: entwurf`, beide mit
-fünf Quellen. `npm run stale` führt die Sammlungen weiter unter „Sammlungen
-ohne Eintrag", und das ist richtig: Die Schwelle zählt Freigegebenes, nicht
-Entwürfe. Erledigt ist der Posten mit der Prüfung durch einen Menschen.
-**Was dabei besonders hinzusehen ist**, beides in der Redaktionsnotiz
-begründet: Bei Mad Sin trägt `aktiv: true` nur MusicBrainz — Songkick und
-Reservix meldeten am 2026-09-20 keine Termine, das letzte Album ist von
-2020. Und `besetzung` führt Gründungsgitarrist Stein nicht, weil zwei
-Quellen sich über seinen Status widersprechen. Die Schemafrage zu den
-Bands-Jahren, an der dieser Posten früher hing, ist seit `min(1900)`
-erledigt.
-
-`frei` **Die Autoseite hat einen Artikel, aber keine Entitäten.** Der neue
-Artikel `hot-rod-und-kustom-kulture` trägt keine `hauptentitaet`, weil es
-keine gibt: Die Lexikonkategorie `auto` ist leer. Es fehlen Hot Rod, Custom
-Car, Kustom Kulture und Rat Rod — vier Begriffe, die der Artikel erklärt,
-ohne dass die Entität dahinter existiert. Quellenlage ist gut (deutsche
-Wikipedia zu allen drei Hauptbegriffen, am 2026-09-20 geöffnet). Sobald sie
-stehen, bekommt der Artikel seine `hauptentitaet` und `erwaehnteBegriffe`
-wachsen über Rockabilly und Psychobilly hinaus. Dabei ebenfalls zu prüfen,
-weil derselbe Fund: Dem Register fehlt ein Lexikoneintrag zu **Rock'n'Roll**.
-Bands, deren Quellen genau dieses Wort nennen — The Firebirds etwa —, sind
-derzeit nicht eintragbar, weil `genres` mindestens einen Lexikonslug
-verlangt.
-
-`frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
-Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
-Registereintrag nicht steht: Fahrerinnen und Fahrer von Fahrzeugen der 50er
-und 60er Jahre haben freien Eintritt und dürfen in der Westernstadt parken
-und durchfahren, Einfahrt Freitag und Samstag ab 10 Uhr. Das ist genau die
-Art Angabe, für die jemand ein Register aufsucht. Gefunden beim Beleg für
-den Kustom-Kulture-Artikel, nicht nebenbei mitgebaut.
-
-`mensch` **Das Golden Example der Bands nennt für The Firebirds 1985.** Die
-deutsche Wikipedia datiert die Bandgründung auf Mai 1992; 1985 war das erste
-musikalische Zusammentreffen zweier späterer Mitglieder. Die Datei ist eine
-Vorlage und wird vom Loader übersprungen, richtet also keinen Schaden im
-Register an — aber sie ist das, woran sich jeder neue Eintrag orientiert,
-und sie behauptet über eine reale Band eine falsche Jahreszahl. Ob die
-Vorlage auf eine erfundene Band umgestellt oder die Zahl korrigiert wird,
-ist eine Entscheidung über die Vorlage selbst.
 
 `frei` **Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
 fünf Regionen haben jetzt drei bis fünf Verweise und kommen mit der Freigabe

@@ -22,7 +22,7 @@ preise:
   - bezeichnung: Vorreservierung
     betrag: 5
     waehrung: EUR
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
 redaktionsnotiz: >-
