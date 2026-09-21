@@ -32,6 +32,50 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **Die Warteschlange verschluckt Posten mit umgebrochenem Titel.** Am
+2026-09-21 an zwei eigenen Posten dieses Laufs aufgefallen, beide erst nach
+dem Zählen. `MIT_MARKE` in `scripts/warteschlange.ts` ist zeilenweise
+verankert und verlangt die schließenden `**` in derselben Zeile wie die
+Marke. Läuft der fette Titel über zwei Zeilen um — bei 79 Zeichen Zeilenlänge
+der Normalfall für einen langen Titel —, greift weder `MIT_MARKE` noch
+`OHNE_MARKE` (die Folgezeile beginnt nicht mit `**`). Der Posten fällt
+**stumm** aus der Liste: Minimalbeleg `lies()` auf einem umgebrochenen Titel
+ergibt `posten=0 ohneMarke=0`, auf demselben Titel einzeilig `posten=1`.
+Das ist genau der Zustand, den der Kopf dieser Datei ausschließen wollte
+(„stumm aus der Warteschlange gefallen") — und `--check` schlägt nicht an,
+weil der Posten gar nicht erst gesehen wird. Ein `frei`-Posten, den niemand
+sieht, wird nie gebaut; ein `mensch`-Posten, den niemand sieht, gilt als
+erledigt.
+Kein Ermessen dabei: Der Titel muss bis zu den schließenden `**` gelesen
+werden, auch über den Zeilenumbruch hinweg. Zwei Negativtests gehören dazu —
+umgebrochener Titel wird gefunden, und eine Fettschrift ohne Marke landet
+weiterhin in `ohneMarke` statt unbemerkt durchzugehen.
+
+`mensch` **Der Lauf baut denselben Posten zweimal.** Am 2026-09-21 passiert und der teuerste Befund
+dieses Laufs: PR #26 vom Vorabend hatte den Posten „Bands und Artikel sind
+leer" bereits abgearbeitet, war aber noch nicht gemerged. `npm run
+warteschlange` liest OFFENE-PUNKTE.md aus dem Arbeitsbaum, und dort stand
+der Posten unverändert auf `frei` — also nahm ihn der nächste Lauf erneut.
+Ergebnis: zwei Pull Requests, dieselbe Band (Mad Sin), zwei verschiedene
+Artikel, zwei Fassungen derselben Funde, und ein garantierter Konflikt in
+OFFENE-PUNKTE.md und ENTSCHEIDUNGEN.md.
+Das wiederholt sich jeden Tag, an dem der Vortags-PR nicht gemerged ist —
+und genau dieser Fall ist der Regelfall, weil Inhalts-PRs absichtlich auf
+einen Menschen warten (`automerge:erlaubt`). Die Kosten wachsen mit dem
+Rückstau, nicht mit der Zeit.
+Zu entscheiden ist, woran der Lauf den Rückstau erkennen soll. **(a)
+`warteschlange.ts` fragt die offenen PRs ab** und überspringt Posten, für
+die schon einer offen ist — genau, aber das Skript bräuchte Netzzugriff und
+ein Token und wäre damit in der Prüfkette nicht mehr offline lauffähig.
+**(b) Der Lauf prüft vor Schritt 1 selbst, ob ein offener PR aus einer
+früheren Runde existiert** — kostet keine Änderung am Skript, steht aber im
+Prompt und ist damit eine Bitte an ein Modell statt ein Exitcode (genau das,
+was bei Warteschlange und Auto-Merge-Grenze bewusst vermieden wurde).
+**(c) Der Posten wird beim Öffnen des PR umgehend auf `mensch` gesetzt** —
+billig und im Code nachvollziehbar, verlagert die Buchführung aber in den
+PR-Zweig, wo der nächste Lauf sie nicht sieht, solange er von `main`
+startet. Keine der drei ist offensichtlich richtig.
+
 `mensch` **Bands und Artikel: je ein Entwurf steht, die Freigabe fehlt.** Rest des
 am 2026-09-21 abgearbeiteten Postens, und er gehört von vornherein zum
 Menschen. `bands/mad-sin.md` und `artikel/petticoat-reifrock-unterrock.md`
@@ -44,8 +88,7 @@ Beim Prüfen lohnt der Blick in beide Redaktionsnotizen: Sie nennen, was
 bewusst leer blieb und warum (`label`, `veroeffentlichungen`,
 `naechstePruefung`) und wo die Quellen sich widersprechen.
 
-`mensch` **`datePublished` als Jahreszahl: Prüfung lockern oder Feld anders
-füllen?** Gefunden am 2026-09-21 beim ersten Bandeintrag, vorher unsichtbar.
+`mensch` **`datePublished` als Jahreszahl macht jede Werkliste rot.** Gefunden am 2026-09-21 beim ersten Bandeintrag, vorher unsichtbar.
 `bandBuilder` schreibt je Album `datePublished: "1988"`, die Datumsprüfung in
 `scripts/check-jsonld.ts` verlangt `YYYY-MM-TT`, und `MusicAlbum` führt
 `datePublished` als Pflichtfeld. Jede gefüllte `veroeffentlichungen`-Liste

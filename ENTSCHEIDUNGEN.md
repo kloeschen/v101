@@ -88,6 +88,33 @@ nicht grün wird. Die Sache hat einen Haken, der einen eigenen Posten wert
 wäre: Diese Prüfung wird durch bloßen Zeitablauf rot, ohne dass jemand
 etwas committet.
 
+**Zwei Befunde über den Lauf selbst, beide erst beim Abliefern aufgefallen
+und beide teurer als der Posten:**
+
+**Der Lauf hat denselben Posten zweimal gebaut.** PR #26 vom Vorabend hatte
+„Bands und Artikel sind leer" bereits abgearbeitet — dieselbe Band, ein
+anderer Artikel, dieselben zwei Funde, dort sogar mit fertiger Reparatur der
+`datePublished`-Frage. Er war nur nicht gemerged, und `npm run
+warteschlange` liest OFFENE-PUNKTE.md aus dem Arbeitsbaum: Dort stand der
+Posten unverändert auf `frei`. Das ist kein Ausrutscher, sondern der
+Regelfall — Inhalts-PRs warten absichtlich auf einen Menschen, also ist der
+Vortags-PR beim nächsten Lauf fast immer noch offen. Drei mögliche Wege mit
+ihren Kosten stehen als `mensch`-Posten in OFFENE-PUNKTE.md; keiner ist
+offensichtlich richtig, deshalb hier nicht entschieden.
+
+**Die Warteschlange verschluckt Posten mit umgebrochenem Titel.** Beim
+Eintragen der neuen Posten fiel auf, dass zwei davon nicht mitgezählt
+wurden. `MIT_MARKE` ist zeilenweise verankert und verlangt die schließenden
+`**` in derselben Zeile wie die Marke; läuft der Titel um, greift auch
+`OHNE_MARKE` nicht, weil die Folgezeile nicht mit `**` beginnt. Der Posten
+fällt **stumm** heraus, und `--check` schweigt, weil er gar nicht gesehen
+wird — genau der Zustand, den der Kopf von OFFENE-PUNKTE.md ausschließen
+wollte. Minimalbeleg: `lies()` auf einem umgebrochenen Titel ergibt
+`posten=0 ohneMarke=0`, derselbe Titel einzeilig `posten=1`. Eigene Titel
+einzeilig gemacht, damit nichts verdeckt bleibt; der Fehler selbst steht als
+`frei`-Posten drin, weil er kein Ermessen enthält und in einen eigenen Lauf
+mit eigenem Negativtest gehört (ein Posten pro Lauf).
+
 **Mutationsbelege** (jeweils auf den betroffenen Block begrenzt,
 zeichengenau zurückgebaut):
 
