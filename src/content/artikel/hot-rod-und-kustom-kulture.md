@@ -5,6 +5,7 @@ kurzbeschreibung: Hot Rod, Custom Car und Kustom Kulture sind drei verschiedene 
 status: entwurf
 erstelltAm: 2026-09-20
 geprueftAm: 2026-09-20
+autor: markus
 typ: pillar
 saeule: kustom-kulture
 erwaehnteBegriffe: [rockabilly, psychobilly]
@@ -68,8 +69,15 @@ redaktionsnotiz: >-
   deshalb bei dem, was dort wirklich steht, und behauptet keine Hot-Rod-
   Szene, die nicht belegt ist.
 
-  KEIN `autor` GESETZT: Der Eintrag stammt aus dem unbeaufsichtigten Lauf
-  und nicht aus der Hand eines der im Register geführten Autoren.
+  AUTOR: markus, wie an allen übrigen Einträgen. Der erste Entwurf dieses
+  Eintrags trug bewusst keinen — der Text stammt aus dem unbeaufsichtigten
+  Lauf und nicht aus der Hand eines Menschen. Am 2026-09-21 wurde die Frage
+  entschieden: Die Zuschreibung meint den verantwortlichen Herausgeber und
+  nicht den Schreibenden, und spätestens mit der Freigabe durch einen
+  Menschen trifft sie zu. `veroeffentlichungsreife` verlangt sie dort
+  ohnehin. Der Rückfall auf die Organisation im `artikelBuilder` bleibt
+  davon unberührt: Er fängt den Entwurf ohne Autor ab, der ein zulässiger
+  Zustand ist, und ist in `test-jsonld.ts` belegt.
 quellen:
   - url: https://de.wikipedia.org/wiki/Hot_Rod
     titel: Hot Rod (Wikipedia)
