@@ -29,7 +29,9 @@ import { mkdtempSync, rmSync, readFileSync, existsSync, readdirSync } from "node
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
-import { ladeAlle } from "./_laden";
+import { ladeAlle, alsRegistryEingaben } from "./_laden";
+import { buildRegistry } from "../src/lib/links";
+import { istDuenneRegion } from "../src/lib/regionen";
 import { urlPrefix } from "../src/content/_schemas";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -159,12 +161,40 @@ if (entwuerfe.length === 0) {
     // Gegenprobe: Was freigegeben ist, muss in der Sitemap seines Typs
     // ankommen. Ohne sie wuerde ein Filter, der alles wegwirft, hier
     // durchgehen.
+    //
+    // Zwei Faelle sind davon ausgenommen, und zwar nach genau der Regel,
+    // die auch der Build anwendet (`sitemapFuerCollection` in
+    // src/lib/feeds.ts): `noindex` am Eintrag und eine Region unter der
+    // Bestandsschwelle (`istDuenneRegion`). Beides ist gewollt und in
+    // test-regionen.ts Teil 1d einzeln belegt.
+    //
+    // Die Gegenprobe kannte die Ausnahme trotzdem nicht -- sie ist nur nie
+    // angeschlagen, weil dieser ganze Block einen Entwurf im Register
+    // braucht und es bis zum ersten Bands- und Artikeleintrag keinen gab.
+    // Genau der Fall aus Lektion 4: eine Pruefung, die nie gelaufen ist,
+    // ist unbewiesen. Damit die Ausnahme jetzt nicht ihrerseits etwas
+    // verdeckt, wird sie in beide Richtungen geprueft -- zurueckgehalten
+    // heisst nachweislich nicht in der Sitemap, nicht bloss "wird nicht
+    // gefragt".
+    const registry = buildRegistry(alsRegistryEingaben(alle));
+    const zurueckgehalten = (e: (typeof frei)[number]): boolean => {
+      if (e.daten!.noindex === true) return true;
+      const meta = registry.eintraege.get(`${e.collection}/${e.slug}`);
+      return meta ? istDuenneRegion(registry, meta) : false;
+    };
+
     for (const e of frei) {
       const pfad = `${urlPrefix[e.collection]}/${e.slug}/`;
-      pruefe(
-        `Freigegeben ${e.collection}/${e.slug} steht in sitemap-${e.collection}.xml`,
-        lies(`sitemap-${e.collection}.xml`).includes(pfad),
-      );
+      const drin = lies(`sitemap-${e.collection}.xml`).includes(pfad);
+      if (zurueckgehalten(e)) {
+        pruefe(
+          `Zurueckgehalten ${e.collection}/${e.slug} steht nicht in sitemap-${e.collection}.xml`,
+          !drin,
+          "noindex oder Region unter der Bestandsschwelle -- gewollt ausgeschlossen",
+        );
+      } else {
+        pruefe(`Freigegeben ${e.collection}/${e.slug} steht in sitemap-${e.collection}.xml`, drin);
+      }
     }
     if (frei.length === 0) {
       console.log("Hinweis: kein freigegebener Eintrag im Register — Gegenprobe uebersprungen.");

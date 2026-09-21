@@ -13,6 +13,92 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-21 — Die ersten Einträge in bands/ und artikel/ — und was sie freilegten
+
+Erster Posten des unbeaufsichtigten Laufs. Gebaut wurde, was der Posten
+verlangte: je ein belegter Eintrag in den beiden leeren Sammlungen
+(`bands/mad-sin.md`, `artikel/petticoat-reifrock-unterrock.md`, beide
+`entwurf`). Was der Lauf nicht kann, ist die Freigabe — deshalb bleibt ein
+Restposten (`mensch`) stehen, und `npm run stale` führt beide Sammlungen
+bis dahin zu Recht weiter unter „ohne Eintrag". Interessant ist ohnehin
+nicht der Inhalt, sondern was beim Bauen herausfiel.
+
+**Die Schemafrage, an der der Posten hing, war längst erledigt.**
+OFFENE-PUNKTE.md schrieb: „Für Bands hängt daran die Schemafrage unten."
+Gemeint waren die drei Bands-Werte auf `min(1930)`. Die stehen seit dem
+2026-09-11 auf `min(1900)` — der Verweis zeigte ins Leere und hätte den
+Posten auf unbestimmte Zeit blockiert, wenn ihn jemand ernst genommen
+hätte. Zeile ersatzlos gestrichen.
+
+**Zwei Fehler wurden erst sichtbar, weil die Sammlungen nicht mehr leer
+waren.** Beide sind Lektion 4 in Reinform — eine Prüfung, die nie gelaufen
+ist, ist unbewiesen:
+
+1. **Die Gegenprobe in `test-ausgaben.ts` war falsch.** Sie verlangt, dass
+   jeder freigegebene Eintrag in der Sitemap seines Typs steht, kannte aber
+   die beiden Ausnahmen nicht, die der Build selbst anwendet (`noindex`,
+   `istDuenneRegion`). Niedersachsen und Rhein-Neckar sind freigegeben und
+   stehen absichtlich nicht in der Sitemap — die Gegenprobe wurde daraufhin
+   rot. Sie war seit ihrer Entstehung nie gelaufen: Der ganze Block
+   übersprang sich, solange kein Entwurf im Register lag, und bis zu diesem
+   Commit lag keiner darin. **Korrigiert und in beide Richtungen geprüft**
+   — zurückgehalten heißt jetzt nachweislich *nicht* in der Sitemap, statt
+   bloß „wird nicht gefragt". Zwei Mutationen belegen es (siehe unten).
+
+2. **Der Bandbuilder und die Datumsprüfung widersprechen sich.**
+   `bandBuilder` schreibt `datePublished: "1988"` je Album,
+   `check-jsonld.ts` verlangt für Datumsfelder `YYYY-MM-TT`, und
+   `MusicAlbum` führt `datePublished` als Pflichtfeld. Ergebnis: **Jede
+   gefüllte `veroeffentlichungen`-Liste macht `npm run jsonld` rot.** Der
+   Fehler steckt seit dem Bau des Builders drin und konnte nicht auffallen,
+   weil es keine Band gab.
+
+**Beim zweiten Punkt wurde bewusst nicht repariert.** Die Reparatur ist
+eine Vertragsfrage mit zwei vertretbaren Antworten, und damit gehört sie
+zum Menschen (BETRIEB 2.5):
+
+- *Die Prüfung lockern.* ISO 8601 kennt die verkürzte Form, „1988" ist ein
+  gültiges Datum, und `foundingDate` gibt im selben Builder längst bare
+  Jahreszahlen aus, ohne dass es jemand prüft. Kosten: Eine blanke
+  Lockerung erlaubt dann auch bei `Article` ein Datum ohne Tag, was Googles
+  Vorgaben widerspricht. Sauber wäre die Regel je Knotentyp — eine
+  Strukturänderung an `check-jsonld.ts`, für das es bisher **keinen
+  eigenen Test in der Prüfkette gibt**.
+- *Ein Datum erfinden.* Ausgeschlossen. „Unbekannt heißt Feld weglassen,
+  nicht schätzen" gilt auch für den 1. Januar.
+
+Solange das offen ist, trägt `mad-sin.md` **keine** `veroeffentlichungen`.
+Die Diskografie steht vollständig und belegt im Fließtext — verloren geht
+nichts außer der maschinenlesbaren Form. Der Posten steht als `mensch` in
+OFFENE-PUNKTE.md.
+
+**`typ: vergleich` statt `typ: pillar` beim ersten Artikel**, aus
+demselben Grund. Ein Pillar legt die Struktur einer Säule der Themenkarte
+fest, und die Themenkarte liegt nicht in diesem Repo. Ein Vergleich
+beantwortet eine abgegrenzte Frage und lässt sich später über `gehoertZu`
+unter einen Pillar hängen, ohne umgeschrieben zu werden. Die
+zurückhaltende Variante kostet hier nichts und nimmt keine Entscheidung
+vorweg.
+
+**Nebenbefund, nicht gebaut:** `npm run verify` war auf `main` bereits rot,
+bevor dieser Zweig entstand — die Boogie-Party vom 2026-09-20 stand noch
+auf `geplant`. `npm run archivieren` hat sie umgestellt; das ist genau der
+dafür vorgesehene Befehl und steckt hier mit drin, weil die Prüfkette sonst
+nicht grün wird. Die Sache hat einen Haken, der einen eigenen Posten wert
+wäre: Diese Prüfung wird durch bloßen Zeitablauf rot, ohne dass jemand
+etwas committet.
+
+**Mutationsbelege** (jeweils auf den betroffenen Block begrenzt,
+zeichengenau zurückgebaut):
+
+| Mutation | Erwartung | Ergebnis |
+|---|---|---|
+| `istDuenneRegion` aus dem Sitemap-Filter entfernt | genau die beiden „Zurueckgehalten"-Behauptungen fallen | 2 von 80 gefallen, exakt diese |
+| Sitemap-Filter wirft alles weg (`false &&`) | alle „Freigegeben"-Behauptungen fallen, die beiden zurückgehaltenen bleiben grün | 36 gefallen, die zwei blieben grün |
+| eine `veroeffentlichung` mit `jahr: 1996` eingesetzt | `jsonld` meldet genau ein `datum`-Problem, `validate` meldet die fehlende Felddeckung | genau das, 1 Fehler + 1 Warnung |
+
+---
+
 ## 2026-09-20 — Der unbeaufsichtigte Lauf steht, nach fünf Fehlstarts
 
 Nachtrag zum Eintrag unten. Die Routine war angelegt, lief aber nicht: Jede

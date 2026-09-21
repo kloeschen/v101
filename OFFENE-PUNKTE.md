@@ -32,6 +32,48 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Bands und Artikel: je ein Entwurf steht, die Freigabe fehlt.** Rest des
+am 2026-09-21 abgearbeiteten Postens, und er gehört von vornherein zum
+Menschen. `bands/mad-sin.md` und `artikel/petticoat-reifrock-unterrock.md`
+sind belegt und geprüft, aber `entwurf` — ein Lauf darf den freigegebenen
+Status nicht setzen. Solange das so ist, führt `npm run stale` beide
+Sammlungen weiter unter „Sammlungen ohne Eintrag": Der Bericht zählt
+freigegebene Einträge, und das ist richtig so, denn im Index steht nichts.
+Mit der Freigabe erledigt sich dieser Posten und die Meldung gleich mit.
+Beim Prüfen lohnt der Blick in beide Redaktionsnotizen: Sie nennen, was
+bewusst leer blieb und warum (`label`, `veroeffentlichungen`,
+`naechstePruefung`) und wo die Quellen sich widersprechen.
+
+`mensch` **`datePublished` als Jahreszahl: Prüfung lockern oder Feld anders
+füllen?** Gefunden am 2026-09-21 beim ersten Bandeintrag, vorher unsichtbar.
+`bandBuilder` schreibt je Album `datePublished: "1988"`, die Datumsprüfung in
+`scripts/check-jsonld.ts` verlangt `YYYY-MM-TT`, und `MusicAlbum` führt
+`datePublished` als Pflichtfeld. Jede gefüllte `veroeffentlichungen`-Liste
+macht `npm run jsonld` damit rot — nachgestellt und belegt, siehe
+ENTSCHEIDUNGEN.md vom 2026-09-21. `mad-sin.md` trägt deshalb vorerst keine
+Werkliste; die Diskografie steht im Fließtext.
+Zu entscheiden ist eines von zweien. **(a) Die Prüfung je Knotentyp
+auffächern:** `MusicAlbum.datePublished` darf `YYYY` sein — ISO 8601 erlaubt
+die verkürzte Form, und `foundingDate` gibt im selben Builder längst bare
+Jahreszahlen aus —, `Article.datePublished` bleibt taggenau, weil Googles
+Vorgaben das verlangen. Kosten: eine Strukturänderung an
+`check-jsonld.ts`, für das es bisher **keinen eigenen Test in der Prüfkette
+gibt**; der müsste mitkommen, sonst ist die neue Regel unbewiesen.
+**(b) Pauschal lockern.** Billiger, erlaubt dann aber auch bei Artikeln ein
+Datum ohne Tag. Ein Datum zu erfinden ist keine dritte Möglichkeit.
+
+`mensch` **Die Prüfkette wird durch bloßen Zeitablauf rot.** Am 2026-09-21 war
+`npm run verify` auf `main` rot, ohne dass jemand etwas geändert hatte: Die
+Boogie-Party vom 2026-09-20 stand noch auf `durchfuehrung: geplant`, und
+`validate-content.ts` macht daraus zu Recht einen Fehler. `npm run
+archivieren` stellt es in einem Befehl um — aber bis das jemand aufruft, ist
+jeder Zweig rot, auch einer, der mit Terminen nichts zu tun hat. Zu
+entscheiden: ob die wöchentliche Pflege (`.github/workflows/pflege.yml`)
+dafür reicht, ob `archivieren` in die Kette gehört, oder ob der Befund für
+noch nicht archivierte Termine eine Warnung statt eines Fehlers sein sollte.
+Alle drei sind vertretbar und haben unterschiedliche Nebenwirkungen; die
+Datei liegt zudem hinter der `.github/`-Sperre.
+
 `mensch` **`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
 Bash-Zweig blockiert jeden Befehl, der die gesperrte Schemadatei nennt und
 irgendwo ein `>` enthält. Das trifft `2>&1` genauso wie eine Pfeilfunktion
@@ -49,12 +91,6 @@ geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
-
-`frei` **Bands und Artikel sind leer, und der Bericht sagt es jetzt.** `npm run
-stale` führt beide unter „Sammlungen ohne Eintrag"; ihre Übersichten sind
-erreichbar, aber nicht im Index, und der Sitemap-Index nennt sie nicht. Das
-ist kein Fehler, sondern der Stand — erledigt ist der Posten, sobald je ein
-belegter Eintrag steht. Für Bands hängt daran die Schemafrage unten.
 
 `frei` **Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
 fünf Regionen haben jetzt drei bis fünf Verweise und kommen mit der Freigabe
