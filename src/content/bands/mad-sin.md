@@ -2,9 +2,9 @@
 name: Mad Sin
 aliases: [Madsin]
 kurzbeschreibung: Mad Sin ist eine 1987 in Berlin gegründete Psychobilly-Band, die seit ihrem Debütalbum von 1988 zu den bekanntesten Vertretern des Genres zählt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-21
-geprueftAm: 2026-09-21
+geprueftAm: 2026-09-22
 autor: markus
 typ: band
 gegruendet: 1987

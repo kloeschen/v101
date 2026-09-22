@@ -2,9 +2,9 @@
 name: "Hot Rod, Custom Car, Kustom Kulture: die Autoseite der Szene"
 aliases: [Hot Rod Kultur]
 kurzbeschreibung: Hot Rod, Custom Car und Kustom Kulture sind drei verschiedene Dinge — ein aufgerüstetes Vorkriegsauto, ein umgebautes Serienfahrzeug jüngeren Baujahrs und der Oberbegriff für die Szene aus Fahrzeugen, Kunst, Frisuren und Kleidung.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-20
-geprueftAm: 2026-09-20
+geprueftAm: 2026-09-22
 autor: markus
 typ: pillar
 saeule: kustom-kulture

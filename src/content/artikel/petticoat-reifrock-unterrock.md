@@ -2,9 +2,9 @@
 name: "Petticoat, Reifrock oder Unterrock: Was worunter getragen wird"
 aliases: [Unterschied Petticoat Reifrock, Petticoat oder Reifrock]
 kurzbeschreibung: Petticoat, Reifrock und Unterrock sind drei verschiedene Kleidungsstücke, die sich daran unterscheiden, wie sie Volumen erzeugen — durch ein Gestell, durch versteiftes Gewebe, oder gar nicht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-21
-geprueftAm: 2026-09-21
+geprueftAm: 2026-09-22
 autor: markus
 typ: vergleich
 saeule: mode

@@ -2,7 +2,7 @@
 name: Rat Rod
 aliases: [Rat Rodding]
 kurzbeschreibung: Rat Rod ist die Gegenbewegung zum verchromten Hot Rod — ein bewusst roh und angerostet belassenes Fahrzeug, dessen Technik darunter in gutem Zustand ist.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-22
 geprueftAm: 2026-09-22
 autor: markus

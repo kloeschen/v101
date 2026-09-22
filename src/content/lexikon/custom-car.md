@@ -2,7 +2,7 @@
 name: Custom Car
 aliases: [Custom Cars]
 kurzbeschreibung: Custom Car ist ein nach den Wünschen des Eigners umgebautes Serienfahrzeug, das sich deutlich von der Serie unterscheidet — die Abgrenzung zum Hot Rod läuft über das Baujahr der Basis.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-22
 geprueftAm: 2026-09-22
 autor: markus
