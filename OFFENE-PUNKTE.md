@@ -86,6 +86,36 @@ sie behauptet über eine reale Band eine falsche Jahreszahl. Ob die Vorlage
 auf eine erfundene Band umgestellt oder die Zahl korrigiert wird, ist eine
 Entscheidung über die Vorlage selbst.
 
+`mensch` **Auf dem Freigabe-Pull-Request läuft die CI gar nicht.** Gefunden am 2026-09-22 beim
+ersten echten Lauf des Freigabe-Workflows. Der Lauf öffnete PR #32 sauber,
+aber der CI-Lauf dazu steht auf `action_required` und wartet auf eine
+manuelle Freigabe in der Actions-Oberfläche: GitHub hält Workflows an, die
+ein Bot-Token ausgelöst hat.
+Die Folge ist schlimmer als ein roter Haken. Ein roter Haken sagt, dass
+etwas geprüft wurde und nicht passt. Hier wurde **nichts geprüft**, und der
+Pull Request sieht unauffällig aus — genau die stille Voreinstellung, die
+dieses Projekt sonst überall vermeidet (Lektion 19). Beim ersten Lauf hat
+das gekostet: `npm run test` wäre auf dem Merge-Ergebnis rot gewesen, und
+nur weil der Merge von Hand nachgestellt wurde, fiel es auf.
+Ganz ungeprüft sind die Einträge nicht — `freigeben.ts` prüft jeden im
+freigegebenen Zustand gegen `validate-content --strict` und
+`check-jsonld --strict`. Was fehlt, ist die **ganze Kette auf dem
+Merge-Kandidaten**: Tests, Build, Autolink-Drift.
+Zu entscheiden: **(a)** Jeden Freigabe-PR von Hand in der Actions-Oberfläche
+freigeben („Approve and run") — kostet nichts, ist aber ein Handgriff, den
+man nach dem dritten Mal vergisst, und er steht nirgends in der Prüfkette.
+**(b)** Die Einstellung unter Settings → Actions ändern, die Läufe von
+`github-actions[bot]` anhält — wirkt für alle Workflows, nicht nur diesen,
+und das ist eine Abwägung über mehr als die Freigabe. **(c)** Den
+Freigabe-Workflow die Kette selbst laufen lassen, bevor er den PR öffnet
+(`npm run verify:ci` nach `freigeben.ts`) — dann ist das Ergebnis geprüft,
+bevor es jemand sieht, und der fehlende CI-Lauf ist nur noch kosmetisch.
+Kostet einen Schritt in `.github/workflows/freigeben.yml` und liegt damit
+hinter der Agentensperre.
+Empfehlung ist (c) mit (a) als Zwischenlösung: (c) verlegt die Prüfung
+dorthin, wo der PR entsteht, statt sich auf einen Haken zu verlassen, der
+aus einem anderen Grund fehlen kann.
+
 `mensch` **`main` ist nicht geschützt — die Sperre, auf der die Autonomie ruht, gibt es nicht.** Gefunden am
 2026-09-21 beim Nachsehen des Freigabewegs. Die GitHub-API meldet für
 **alle** Branches dieses Repos `protected: false`, `main` eingeschlossen.
