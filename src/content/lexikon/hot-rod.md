@@ -2,7 +2,7 @@
 name: Hot Rod
 aliases: [Hotrod, Hot Rodding]
 kurzbeschreibung: Hot Rod ist ein speziell modifiziertes, meist US-amerikanisches Automobil bis Baujahr 1949 — mit stärkerem Motor, umgebauter Karosserie und einer Herkunft im Beschleunigungsrennen der 1940er Jahre.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-22
 geprueftAm: 2026-09-22
 autor: markus

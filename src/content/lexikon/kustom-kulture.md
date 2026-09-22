@@ -2,7 +2,7 @@
 name: Kustom Kulture
 aliases: []
 kurzbeschreibung: Kustom Kulture ist der Oberbegriff für Kunst, Fahrzeuge, Frisuren und Kleidungsstil der Customizing-Szene — gemeint ist das ganze Umfeld, nicht die Autos allein.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-22
 geprueftAm: 2026-09-22
 autor: markus
