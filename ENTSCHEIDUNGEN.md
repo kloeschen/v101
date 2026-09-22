@@ -13,6 +13,69 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-22 — Die Autoseite bekommt ihre Entitäten
+
+Vier Lexikoneinträge angelegt (`hot-rod`, `custom-car`, `rat-rod`,
+`kustom-kulture`), die Autoseite damit verdrahtet. Damit ist die
+Lexikonkategorie `auto` nicht mehr leer und der erste Artikel des Registers
+trägt eine `hauptentitaet`.
+
+**Der Fund, der über den Posten hinausgeht: `hauptentitaet` war ein blinder
+Pfad.** Kein Artikel hat das Feld je getragen, also ist auch kein Codeweg je
+damit gelaufen — und es hängen drei daran, jeder an anderer Stelle: `about`
+im JSON-LD, der Rückverweis in `buildRegistry` (das einzige Referenzfeld, das
+nicht in `referenzFelder` steht, weil es kollektionsübergreifend zeigt) und
+die Zeile „Handelt von" im Faktenblock. Alle drei stehen jetzt unter
+Negativtests, 13 neue Prüfungen in `test-links.ts` und 5 in `test-jsonld.ts`,
+jede mit ihrem Gegenstück. Drei Mutationen belegen, dass genau die erwarteten
+Behauptungen fallen. Das ist Lektion 19 als Suchheuristik: Wo eine Sammlung
+oder ein Feld seinen ersten Wert bekommt, laufen Prüfungen zum ersten Mal.
+
+Am härtesten wiegt dabei nicht, dass `about` gesetzt wird, sondern dass die
+`@id` dieselbe ist, die der Lexikon-Builder für denselben Slug schreibt.
+Liefen beide Seiten auseinander, wäre die Referenz im Projektgraphen ein
+Verweis ins Leere. Der Test vergleicht deshalb gegen einen wirklich gebauten
+Lexikonknoten und nicht gegen `entitaetsId` mit sich selbst.
+
+**Verworfen: die Duplikatregel kollektionsübergreifend ziehen.** Der Artikel
+trug „Kustom Kulture" als Alias, der neue Lexikoneintrag trägt den Namen —
+zwei Entitäten, ein Name. Die Regel `duplikat` sieht das nicht, weil sie
+innerhalb einer Collection prüft. Gemessen: Über den ganzen Bestand gibt es
+heute **null** kollektionsübergreifende Namenskollisionen, die Regel ließe
+sich also ohne einen einzigen Fehlalarm einschalten. Trotzdem nicht gebaut.
+Eine Band darf legitim so heißen wie ein Lexikonbegriff („Petticoat"), und
+unter `validate:strict` ist auch eine Warnung rot — die Regel würde beim
+ersten solchen Eintrag zum Fehlalarm, und eine Prüfung mit Fehlalarmquote
+wird nach zwei Wochen ignoriert. Gewählt wurde stattdessen die enge Lösung:
+Der Alias am Artikel ist weg, weil der Begriff jetzt eine eigene Entität hat.
+
+**Verworfen: `kustom-kulture` in die Kategorie `szene`.** Sie wäre genauer —
+die Quelldefinition nennt vier Bereiche, von denen nur einer die Fahrzeuge
+sind. Den Ausschlag gab, dass der offene Punkt alle vier Begriffe
+ausdrücklich als Füllung der leeren Kategorie `auto` benennt, die Themensäule
+ebenfalls `kustom-kulture` heißt und ein Einzeleintrag in einer sonst leeren
+Kategorie den Begriff von den drei Fahrzeugeinträgen getrennt hätte, auf die
+er sich bezieht. Die Alternative steht in der Redaktionsnotiz des Eintrags,
+damit sie beim Prüfen sichtbar ist und nicht erst hier.
+
+**Kein `aeraVon`/`aeraBis` an allen vier Einträgen.** Die Nachschlagewerke
+datieren durchweg in Jahrzehnten („aus den 1920er bis 1940er Jahren", „in den
+vierziger Jahren"). Die einzigen harten Jahreszahlen sind Baujahre und die
+NHRA-Gründung im Mai 1951 — keine davon ist der Beginn einer Ära. Ein
+Jahrzehnt in eine Jahreszahl umzumünzen wäre geschätzt; die Zahlen stehen
+deshalb im Fließtext, wo sie sagen, was die Quelle sagt.
+
+**Rock'n'Roll nicht mitgebaut, sondern als eigener Posten geführt.** Der
+offene Punkt nannte ihn als Nebenbefund. Zwei Gründe, ihn zu trennen, beide
+gemessen: Der Begriff kommt im Bestand 76-mal in 30 Dateien vor, ein
+Lexikoneintrag dazu würde den Autolink also quer durch das ganze Register
+schreiben — ein Diff, der neben vier Fahrzeugeinträgen nicht mehr prüfbar
+ist. Und die naheliegende Quelle, der deutsche Wikipedia-Artikel, trägt einen
+Belege-fehlen-Baustein. Für den Ursprungsbegriff der ganzen Szene ist das zu
+dünn; der Posten verlangt jetzt ausdrücklich eine zweite Quelle.
+
+---
+
 ## 2026-09-21 — Vier Entscheidungen nach zwei Tagen unbeaufsichtigtem Lauf
 
 Erst gemessen, dann entschieden. Die Messung hat die Reihenfolge der

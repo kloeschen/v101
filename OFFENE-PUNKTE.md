@@ -51,17 +51,23 @@ Reloaded", der Austritt von Gitarrist Stein). Und die offizielle Website war
 an beiden Recherchetagen nicht abrufbar, der Eintrag stützt sich also
 ausschließlich auf Fremdbeschreibungen.
 
-`frei` **Die Autoseite hat einen Artikel, aber keine Entitäten.** Der Artikel
-`hot-rod-und-kustom-kulture` trägt keine `hauptentitaet`, weil es keine gibt:
-Die Lexikonkategorie `auto` ist leer. Es fehlen Hot Rod, Custom Car, Kustom
-Kulture und Rat Rod — vier Begriffe, die der Artikel erklärt, ohne dass die
-Entität dahinter existiert. Quellenlage ist gut (deutsche Wikipedia zu allen
-drei Hauptbegriffen, am 2026-09-20 geöffnet). Sobald sie stehen, bekommt der
-Artikel seine `hauptentitaet`, und `erwaehnteBegriffe` wächst über Rockabilly
-und Psychobilly hinaus. Dabei ebenfalls zu prüfen, weil derselbe Fund: Dem
-Register fehlt ein Lexikoneintrag zu **Rock'n'Roll**. Bands, deren Quellen
-genau dieses Wort nennen — The Firebirds etwa —, sind derzeit nicht
-eintragbar, weil `genres` mindestens einen Lexikonslug verlangt.
+`frei` **Rock'n'Roll fehlt im Lexikon, und zwar mit einer zweiten Quelle.** Abgetrennt
+am 2026-09-22 vom Posten zur Autoseite, der ihn als Nebenbefund nannte. Bands,
+deren Quellen genau dieses Wort nennen — The Firebirds etwa —, sind derzeit
+nicht eintragbar, weil `genres` mindestens einen Lexikonslug verlangt. Zwei
+Gründe, warum das ein eigener Posten ist und kein Anhängsel, beide gemessen:
+Der Begriff steht 76-mal in 30 Dateien des Bestands, ein Eintrag dazu schreibt
+den Autolink also quer durch das ganze Register — das gehört in einen Pull
+Request, den man noch prüfen kann. Und die naheliegende Quelle, der deutsche
+Wikipedia-Artikel, trägt einen Belege-fehlen-Baustein; für den Ursprungsbegriff
+der ganzen Szene ist das zu dünn. **Vor dem Anlegen zu klären**, weil es den
+Text prägt: Der Artikel datiert nur in Jahrzehnten (1950er bis frühe 1960er),
+`aeraVon`/`aeraBis` bleiben also voraussichtlich leer; und er nennt die
+Wortprägung „vermutlich 1951 durch Alan Freed", führt aber im selben Absatz
+Belege von 1934 und 1951 dagegen an — dieser Widerspruch gehört nach Lektion 20
+in den Text, nicht in die Auswahl. Schreibweise im Bestand: 76-mal
+`Rock'n'Roll`, 15-mal `Rock-'n'-Roll`; der Autolink braucht beide als Alias,
+sonst greift er nur bei der einen.
 
 `frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
 Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
