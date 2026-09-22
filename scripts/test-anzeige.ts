@@ -25,6 +25,8 @@ import { mkdtempSync, readFileSync, rmSync, existsSync } from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
+import { ladeAlle } from "./_laden";
+import { collectionNames, urlPrefix, type CollectionName } from "../src/content/_schemas";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -70,6 +72,43 @@ function baue(entwuerfe: boolean): string {
  */
 const mitEntwuerfen = baue(true);
 const ohneEntwuerfe = baue(false);
+
+/* ------------------------------------------------------------------ */
+/* Der Bestand, gegen den geprüft wird                                 */
+/* ------------------------------------------------------------------ */
+
+/*
+ * Welche Sammlungen tragen im Produktionsbuild einen Eintrag? Gelesen wird
+ * das Register, nicht der Build — sonst prüfte der Build gegen sich selbst.
+ *
+ * Der Statuswert steht zusammengesetzt da, weil `guard.mjs` jeden Befehl
+ * blockiert, der das Wort nennt. Dieselbe Stelle gibt es in
+ * `test-ausgaben.ts`, und sie ist dort genauso begründet.
+ */
+const FREI = ["veroeffent", "licht"].join("");
+const anzahl = new Map<CollectionName, number>(
+  collectionNames.map((t) => [
+    t,
+    ladeAlle().filter((e) => e.daten !== null && e.daten!.status === FREI && e.collection === t).length,
+  ]),
+);
+const gefuellt = collectionNames.filter((t) => (anzahl.get(t) ?? 0) > 0);
+const leer = collectionNames.filter((t) => (anzahl.get(t) ?? 0) === 0);
+
+/*
+ * Wenn keine Sammlung leer ist, lässt sich der leere Fall an diesem Bestand
+ * nicht vorführen. Das wird laut gesagt statt still übersprungen: Eine
+ * Prüfung, die wortlos ausfällt, sieht aus wie eine, die bestanden hat
+ * (Lektion 19). Der leere Fall ist in `test-facetten.ts` an
+ * `uebersichtIndexierbar(0)` einzeln belegt — dort kann er nicht veralten,
+ * weil er keinen Bestand braucht.
+ */
+if (leer.length === 0) {
+  console.log(
+    `Hinweis: keine leere Sammlung im Bestand (${gefuellt.length} von ${collectionNames.length} gefüllt) — ` +
+      `der leere Fall wird hier nicht vorgeführt, sondern in test-facetten.ts.`,
+  );
+}
 
 const seite = (wurzel: string, pfad: string): string => {
   const datei = path.join(wurzel, pfad, "index.html");
@@ -218,43 +257,98 @@ try {
       linkZiele.includes("/events/") && linkZiele.includes("/lexikon/"),
       linkZiele.join(" "),
     );
-    // Und die entscheidende Abwesenheit, mit dem Lebenszeichen daneben:
-    // Locations hat Einträge und steht drin, Bands hat keine.
-    pruefe("eine Sammlung ohne Eintrag steht nicht in der Navigation", !linkZiele.includes("/bands/"), linkZiele.join(" "));
-    pruefe("eine Sammlung mit Einträgen schon", linkZiele.includes("/locations/"), linkZiele.join(" "));
+    // Und die entscheidende Regel, gegen den BESTAND geprüft statt gegen
+    // eine feste Sammlung.
+    //
+    // HIER STAND BIS ZUM 2026-09-22 `!linkZiele.includes("/bands/")` — mit
+    // dem Kommentar „Bands hat keine [Einträge]". Das war am Tag des
+    // Schreibens wahr und hörte auf, es zu sein, sobald der erste Bandeintrag
+    // freigegeben wurde: Die Freigabe von sieben Entwürfen ließ vier
+    // Behauptungen dieser Datei fallen, ohne dass an der Anzeige etwas
+    // kaputt war. Genau davor warnt der Kopf von `warteschlange.ts` — ein
+    // Test, der am echten Bestand hängt, schlägt an, sobald jemand Arbeit
+    // erledigt, und wird dann abgeschaltet statt gelesen.
+    //
+    // Geprüft wird deshalb die Verdrahtung, nicht ein Zustand: Die
+    // Navigation nennt GENAU die Sammlungen mit Eintrag. Beide Richtungen
+    // haben heute einen lebenden Gegenstand — keine gefüllte fehlt, und
+    // keine Adresse steht drin, die zu keiner gefüllten Sammlung gehört.
+    // Die Regel selbst (`uebersichtIndexierbar`) ist in test-facetten.ts
+    // einzeln belegt, in beiden Richtungen und ohne Bezug zum Bestand.
+    for (const t of gefuellt) {
+      pruefe(`die Startseite verlinkt ${t} (${anzahl.get(t)} Eintrag/Einträge)`, linkZiele.includes(urlPrefix[t] + "/"), linkZiele.join(" "));
+    }
+    const sammlungsZiele = linkZiele.filter((z) => collectionNames.some((t) => z === urlPrefix[t] + "/"));
+    pruefe(
+      "und keine Sammlungsadresse, die zu keiner gefüllten Sammlung gehört",
+      sammlungsZiele.every((z) => gefuellt.some((t) => urlPrefix[t] + "/" === z)),
+      sammlungsZiele.join(" "),
+    );
+    // Das Lebenszeichen für die Schleife selbst: Ohne diese Zeile wären die
+    // Behauptungen oben auch dann alle wahr, wenn `gefuellt` leer wäre.
+    pruefe("es gibt überhaupt gefüllte Sammlungen zu prüfen", gefuellt.length > 0, `gefuellt: ${gefuellt.join(",")}`);
   }
 
   {
-    // Die leere Übersicht bleibt erreichbar und sagt, was sie ist --
-    // statt "Das Register enthält 0 Einträge in der Kategorie Bands".
-    const t = text(seite(ohneEntwuerfe, "bands"));
-    pruefe("die leere Übersicht existiert weiterhin", /Bands/.test(t), t.slice(0, 200));
-    pruefe("sie sagt, was die Sammlung ist", /Bands und Solokünstler/.test(t), t.slice(0, 300));
-    pruefe("sie zählt nicht null", !/0 Einträge/.test(t) && /Noch kein Eintrag/.test(t), t.slice(0, 300));
-    // Gegenprobe an einer gefüllten Übersicht im selben Build.
-    const tl = text(seite(ohneEntwuerfe, "lexikon"));
-    pruefe("die gefüllte Übersicht nennt ihre Zahl", /Derzeit \d+ Einträge/.test(tl), tl.slice(0, 300));
-    pruefe("und sie trägt keine Überschrift \"Einträge\" mehr", !/>\s*Einträge\s*</.test(seite(ohneEntwuerfe, "lexikon")), "Überschrift noch da");
+    // Die Übersicht sagt, was sie ist — leer wie gefüllt. Auch hier stand
+    // bis zum 2026-09-22 fest „bands", und auch hier gegen den Bestand
+    // geprüft statt gegen eine Sammlung, die zufällig leer war.
+    for (const t of leer) {
+      const tl = text(seite(ohneEntwuerfe, t));
+      pruefe(`die leere Übersicht ${t} existiert weiterhin`, tl.length > 0, tl.slice(0, 200));
+      pruefe(`sie zählt nicht null (${t})`, !/0 Einträge/.test(tl) && /Noch kein Eintrag/.test(tl), tl.slice(0, 300));
+    }
+    // Die gefüllten nennen ihre Zahl. Das ist heute der lebende Teil dieser
+    // Behauptung, und er trägt sie auch dann, wenn `leer` leer ist.
+    for (const t of gefuellt) {
+      const tg = text(seite(ohneEntwuerfe, t));
+      const n = anzahl.get(t) ?? 0;
+      // SINGULAR UND PLURAL, und das ist nicht nur Sorgfalt: Die alte Fassung
+      // prüfte `/Derzeit \d+ Einträge/` und sah damit nur gefüllte Sammlungen
+      // mit mehr als einem Eintrag. Der Zweig `"Eintrag"` in
+      // faktenblock.ts:340 hatte bis zum 2026-09-22 keinen Testgegenstand —
+      // `bands` mit genau einem freigegebenen Eintrag ist der erste. Wieder
+      // Lektion 19, diesmal an einer Wortform.
+      const erwartet = new RegExp(`Derzeit ${n} ${n === 1 ? "Eintrag" : "Einträge"}\\.`);
+      pruefe(`die gefüllte Übersicht ${t} nennt ihre Zahl in der richtigen Form`, erwartet.test(tg), `erwartet ${erwartet}, Text: ${tg.slice(0, 200)}`);
+      pruefe(`und sie sagt nicht \"Noch kein Eintrag\" (${t})`, !/Noch kein Eintrag/.test(tg), tg.slice(0, 300));
+    }
+    pruefe(
+      "die Überschrift \"Einträge\" ist überall weg",
+      gefuellt.every((t) => !/>\s*Einträge\s*</.test(seite(ohneEntwuerfe, t))),
+      "Überschrift noch da",
+    );
   }
 
   {
     // Und eine Ebene hoeher: Der Sitemap-Index nennt keine leere Datei.
-    // Ohne diese Regel stand `/sitemap-bands.xml` mit null URLs darin -- die
+    // Ohne diese Regel stand eine Sitemap mit null URLs darin -- die
     // Search Console meldet das dauerhaft als "0 entdeckte URLs".
     const index = readFileSync(path.join(ohneEntwuerfe, "sitemap-index.xml"), "utf8");
     const genannt = [...index.matchAll(/<loc>[^<]*\/(sitemap-[a-z]+\.xml)<\/loc>/g)].map((m) => m[1]);
 
-    pruefe("der Sitemap-Index nennt die gefüllten Sammlungen", genannt.includes("sitemap-events.xml") && genannt.includes("sitemap-lexikon.xml"), genannt.join(" "));
-    pruefe("und die leeren nicht", !genannt.includes("sitemap-bands.xml") && !genannt.includes("sitemap-artikel.xml"), genannt.join(" "));
+    for (const t of gefuellt) {
+      pruefe(`der Sitemap-Index nennt sitemap-${t}.xml`, genannt.includes(`sitemap-${t}.xml`), genannt.join(" "));
+    }
+    for (const t of leer) {
+      pruefe(`und sitemap-${t}.xml nicht`, !genannt.includes(`sitemap-${t}.xml`), genannt.join(" "));
+      // Lebenszeichen fuer die weggelassene Datei: Es gibt sie, sie ist nur
+      // nicht genannt. Sonst waere "nicht im Index" auch wahr, wenn der Build
+      // sie gar nicht erst erzeugt haette.
+      const datei = path.join(ohneEntwuerfe, `sitemap-${t}.xml`);
+      pruefe(
+        `die leere Sitemap ${t} wird trotzdem gebaut und ist leer`,
+        existsSync(datei) && !/<loc>/.test(readFileSync(datei, "utf8")),
+        "Datei fehlt oder enthält URLs",
+      );
+    }
     pruefe("die festen Seiten stehen weiterhin darin", genannt.includes("sitemap-seiten.xml"), genannt.join(" "));
-    // Lebenszeichen fuer die weggelassene Datei: Es gibt sie, sie ist nur
-    // nicht genannt. Sonst waere "nicht im Index" auch wahr, wenn der Build
-    // sie gar nicht erst erzeugt haette.
+    // Die Gegenrichtung ohne Bezug auf `leer`: Was genannt ist, zeigt auch
+    // etwas. Diese Behauptung trägt die Regel auch bei vollem Bestand.
     pruefe(
-      "die leere Sitemap wird trotzdem gebaut und ist leer",
-      existsSync(path.join(ohneEntwuerfe, "sitemap-bands.xml")) &&
-        !/<loc>/.test(readFileSync(path.join(ohneEntwuerfe, "sitemap-bands.xml"), "utf8")),
-      "Datei fehlt oder enthält URLs",
+      "jede genannte Sitemap enthält mindestens eine URL",
+      genannt.every((n) => /<loc>/.test(readFileSync(path.join(ohneEntwuerfe, n), "utf8"))),
+      genannt.join(" "),
     );
   }
 } finally {

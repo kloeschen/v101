@@ -13,6 +13,92 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-22 — Die erste Freigabe über den Knopf hätte `main` rot gemacht
+
+Der Freigabe-Workflow lief am 2026-09-22 zum ersten Mal wirklich (die
+bisherigen Freigaben waren Direktcommits vom 9. und 10. September). Er
+arbeitete korrekt: sieben Einträge, jeder im freigegebenen Zustand gegen
+`validate-content --strict` und `check-jsonld --strict` geprüft, Pull
+Request geöffnet. Trotzdem war das Ergebnis nicht mergefähig, und zwar aus
+zwei Gründen, die beide erst durch das Nachstellen des Merges sichtbar
+wurden.
+
+### Befund 1: Auf dem Freigabe-PR läuft die CI überhaupt nicht
+
+Der CI-Lauf steht auf `action_required` — GitHub hält Workflows an, die ein
+Bot-Token ausgelöst hat. **Das ist schlimmer als ein roter Haken.** Ein
+roter Haken sagt, dass geprüft wurde und etwas nicht passt; hier wurde
+nichts geprüft, und der Pull Request sieht unauffällig aus. Genau die
+stille Voreinstellung, die dieses Projekt sonst überall vermeidet.
+
+Die Vorhersage in diesem Protokoll vom Vortag — „ein Freigabe-PR wird die
+CI rot machen, und zwar planmäßig" — war damit falsch, und zwar in der
+gefährlicheren Richtung. Als eigener `mensch`-Posten in OFFENE-PUNKTE.md,
+mit drei Wegen; Empfehlung ist, `verify:ci` in den Freigabe-Workflow zu
+ziehen, statt sich auf einen Haken zu verlassen, der aus einem anderen
+Grund fehlen kann.
+
+### Befund 2: Vier Prüfungen hingen am Bestand statt an der Regel
+
+`npm run test` fiel auf dem Merge-Ergebnis mit vier Fehlschlägen in
+`test-anzeige.ts`. Alle vier benutzten **`bands` und `artikel` als Beispiel
+für „leere Sammlung"**, fest verdrahtet — am Tag des Schreibens richtig,
+und falsch in der Sekunde, in der der erste Bandeintrag freigegeben wurde.
+Nach dieser Freigabe ist keine Sammlung mehr leer.
+
+An der Anzeige war nichts kaputt. Die Prüfungen fielen, weil die Arbeit
+gelungen ist.
+
+**Das ist genau der Fehler, vor dem der Kopf von `warteschlange.ts`
+ausdrücklich warnt:** „Ein Test, der an der echten Datei hängt, schlägt an,
+sobald jemand einen Posten erledigt — und wird dann abgeschaltet statt
+gelesen." Dort war die Warnung aufgeschrieben und befolgt; hier, zwei
+Dateien weiter, war derselbe Fehler schon eingebaut. Eine Lektion schützt
+nur die Stelle, an der jemand an sie gedacht hat.
+
+**Entscheidung von Markus:** gegen den Bestand prüfen, kein dritter Build.
+Die Navigation und der Sitemap-Index müssen **genau** die Sammlungen mit
+Eintrag nennen — aus dem Register ermittelt, nicht aus dem Build, sonst
+prüfte der Build gegen sich selbst. Beide Richtungen haben heute einen
+lebenden Gegenstand.
+
+**Verworfen:** ein dritter Build gegen ein Fixture-Register mit einer
+absichtlich leeren Sammlung (das Muster gäbe es in `test-ausgaben.ts`). Er
+könnte nie veralten, kostet aber einen weiteren vollständigen astro-Build
+in einem ohnehin langsamen Test. Der leere Fall ist in `test-facetten.ts`
+an `uebersichtIndexierbar(0)` einzeln belegt, wo er keinen Bestand braucht.
+
+**Was der Verzicht kostet, steht im Code und in der Ausgabe:** Ist keine
+Sammlung leer, schreibt der Test eine Zeile, die genau das sagt. Ein
+wortlos ausgefallener Fall sähe aus wie ein bestandener.
+
+### Der Nebenfund war der hübscheste
+
+Die alte Prüfung lautete `/Derzeit \d+ Einträge/` und sah damit nur
+Sammlungen mit **mehr als einem** Eintrag. Der Zweig `"Eintrag"` in
+`faktenblock.ts` hatte deshalb nie einen Testgegenstand — `bands` mit genau
+einem freigegebenen Eintrag ist der erste in der Geschichte des Registers.
+Die neue Prüfung verlangt die zur Zahl passende Wortform.
+
+### Belege
+
+`npm run verify` grün, und zwar **in beiden Zuständen**: auf `main` (bands
+und artikel leer, 49 Prüfungen) und auf dem nachgestellten Merge mit der
+Freigabe (keine Sammlung leer, 49 Prüfungen). Dass dieselbe Datei beide
+Bestände trägt, ist der eigentliche Beleg der Umstellung.
+
+| Mutation | Was fällt |
+|---|---|
+| Startseite filtert leere Sammlungen nicht mehr weg | 1 — „keine Sammlungsadresse, die zu keiner gefüllten Sammlung gehört" |
+| Sitemap-Index nennt auch leere Dateien | 3, darunter „jede genannte Sitemap enthält mindestens eine URL" — die bestandsunabhängige |
+| Singular und Plural vertauscht | 6, darunter der Einzelfall `bands` |
+
+Die zweite Mutation ist die wichtige: Die gefallene bestandsunabhängige
+Behauptung greift auch bei vollem Register. Genau das war der Zweck der
+Umstellung, und ohne diese Mutation wäre es eine Absichtserklärung
+geblieben.
+
+
 ## 2026-09-22 — Die Autoseite bekommt ihre Entitäten
 
 Vier Lexikoneinträge angelegt (`hot-rod`, `custom-car`, `rat-rod`,
