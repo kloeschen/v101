@@ -1,6 +1,6 @@
 ---
 name: "Hot Rod, Custom Car, Kustom Kulture: die Autoseite der Szene"
-aliases: [Kustom Kulture, Hot Rod Kultur]
+aliases: [Hot Rod Kultur]
 kurzbeschreibung: Hot Rod, Custom Car und Kustom Kulture sind drei verschiedene Dinge — ein aufgerüstetes Vorkriegsauto, ein umgebautes Serienfahrzeug jüngeren Baujahrs und der Oberbegriff für die Szene aus Fahrzeugen, Kunst, Frisuren und Kleidung.
 status: entwurf
 erstelltAm: 2026-09-20
@@ -8,7 +8,10 @@ geprueftAm: 2026-09-20
 autor: markus
 typ: pillar
 saeule: kustom-kulture
-erwaehnteBegriffe: [rockabilly, psychobilly]
+hauptentitaet:
+  typ: lexikon
+  slug: kustom-kulture
+erwaehnteBegriffe: [kustom-kulture, hot-rod, custom-car, rat-rod, rockabilly, psychobilly]
 veroeffentlichtAm: 2026-09-20
 naechstePruefung: 2027-03-19
 faq:
@@ -46,11 +49,24 @@ redaktionsnotiz: >-
   Eintrag hat (`kategorie: auto` ist leer). Ein Artikel zu Mode oder Musik
   hätte einen vorhandenen Lexikoneintrag in längerer Form wiederholt.
 
-  KEINE `hauptentitaet` GESETZT. Das Feld verlangt genau eine Hauptentität
-  aus dem Register; einen Lexikoneintrag zu Hot Rod, Custom Car oder Kustom
-  Kulture gibt es nicht. Ein Artikel kann die fehlende Entität nicht
-  ersetzen — er verweist auf sie, sobald sie da ist. Der Posten dafür steht
-  in OFFENE-PUNKTE.md.
+  `hauptentitaet` NACHGETRAGEN am 2026-09-22, zusammen mit den vier
+  Lexikoneinträgen Hot Rod, Custom Car, Rat Rod und Kustom Kulture. Die
+  Wahl fiel auf `lexikon/kustom-kulture`, weil das Feld genau eine
+  Hauptentität verlangt und von den drei Titelbegriffen nur die Kustom
+  Kulture den ganzen Artikel abdeckt: Hot Rod und Custom Car sind zwei
+  Unterfälle darin und stehen jetzt in `erwaehnteBegriffe`. Erster Eintrag
+  des Registers, der dieses Feld überhaupt setzt — die drei Codewege, die
+  daran hängen (`about` im JSON-LD, der Rückverweis, der Faktenblock),
+  liefen bis dahin nie mit einem Wert und sind seitdem in
+  `scripts/test-jsonld.ts` und `scripts/test-links.ts` belegt.
+
+  ALIAS „Kustom Kulture" ENTFERNT, ebenfalls am 2026-09-22. Der Begriff hat
+  jetzt einen eigenen Lexikoneintrag und damit eine Entität, die diesen
+  Namen trägt; zwei Einträge mit demselben Namen sind genau das, was die
+  Duplikatregel verhindern soll. Sie sieht es hier nur nicht, weil sie
+  innerhalb einer Collection prüft und die beiden in verschiedenen liegen.
+  Der Artikel behält `Hot Rod Kultur` und führt den Begriff ohnehin im
+  Namen. Begründung in ENTSCHEIDUNGEN.md.
 
   WIDERSPRUCH ZUR DATIERUNG, benannt statt weggelassen. Der
   Wikipedia-Artikel zur Kustom Kulture ordnet die Einflüsse nach Jahrzehnten
@@ -106,7 +122,7 @@ quellen:
     art: offiziell
 ---
 
-Hot Rod, Custom Car und Kustom Kulture sind drei Begriffe, die in der Vintage-Szene regelmäßig durcheinandergehen, obwohl sie Verschiedenes meinen: ein aufgerüstetes Vorkriegsauto, ein umgebautes Serienfahrzeug jüngeren Baujahrs und den Oberbegriff für die ganze Szene dahinter — Fahrzeuge, Kunst, Frisuren, Kleidung. Diese Seite trennt die drei und sagt, was im deutschsprachigen Raum davon tatsächlich zu sehen ist.
+[Hot Rod](/lexikon/hot-rod/), [Custom Car](/lexikon/custom-car/) und [Kustom Kulture](/lexikon/kustom-kulture/) sind drei Begriffe, die in der Vintage-Szene regelmäßig durcheinandergehen, obwohl sie Verschiedenes meinen: ein aufgerüstetes Vorkriegsauto, ein umgebautes Serienfahrzeug jüngeren Baujahrs und den Oberbegriff für die ganze Szene dahinter — Fahrzeuge, Kunst, Frisuren, Kleidung. Diese Seite trennt die drei und sagt, was im deutschsprachigen Raum davon tatsächlich zu sehen ist.
 
 ## Was ein Hot Rod ist
 
@@ -134,7 +150,7 @@ Ursprünglich dienten die ersten vier dem Gewicht und dem Luftwiderstand — man
 
 ## Stilrichtungen, und was ein Rat Rod ist
 
-Die heutigen Spielarten heißen Old School Rods, High-Tech Rods, Street Rods und Resto Rods. Die bekannteste Gegenbewegung sind die **Rat Rods**: Wo der klassische Hot Rod verchromt und aufwendig lackiert ist, zielt der Rat Rod auf ein möglichst rohes, minimalistisches Bild. Alles, was nicht zum Fahren gebraucht wird, kommt heraus, die oft großflächig angerostete Oberfläche bleibt unbehandelt. Entscheidend für das Verständnis: Die Technik darunter ist in gutem Zustand. Das Vergammelte ist Gestaltung, nicht Verwahrlosung.
+Die heutigen Spielarten heißen Old School Rods, High-Tech Rods, Street Rods und Resto Rods. Die bekannteste Gegenbewegung sind die **Rat Rods**: Wo der klassische Hot Rod verchromt und aufwendig lackiert ist, zielt der [Rat Rod](/lexikon/rat-rod/) auf ein möglichst rohes, minimalistisches Bild. Alles, was nicht zum Fahren gebraucht wird, kommt heraus, die oft großflächig angerostete Oberfläche bleibt unbehandelt. Entscheidend für das Verständnis: Die Technik darunter ist in gutem Zustand. Das Vergammelte ist Gestaltung, nicht Verwahrlosung.
 
 ## Kustom Kulture: mehr als die Autos
 

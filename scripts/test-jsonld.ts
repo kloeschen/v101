@@ -21,14 +21,20 @@
  * das belegte „keine Befunde" nichts — es wäre auch dann grün, wenn gar kein
  * Album im Graphen stünde.
  *
- * Die zweite Regel steht am Ende der Datei: die Urheberschaft am Article.
- * Auch sie war widersprüchlich, solange die Collection leer stand.
+ * Die zweite Regel steht weiter unten: die Urheberschaft am Article. Auch
+ * sie war widersprüchlich, solange die Collection leer stand.
+ *
+ * Die dritte, am 2026-09-22 dazugekommen, ist die Hauptentität: `about`
+ * setzt sich aus `typ` und `slug` zusammen und zeigt als einziges Feld über
+ * Collectiongrenzen hinweg. Auch dieser Zweig lief erst, als der erste
+ * Artikel `hauptentitaet` wirklich trug.
  *
  *   npx tsx scripts/test-jsonld.ts
  */
 
 import { datumsBefunde, DATUMSFELDER } from "./_jsonld-datum";
 import { buildGraph } from "../src/lib/jsonld";
+import { entitaetsId } from "../src/lib/jsonld/shared";
 import { site } from "../src/site.config";
 
 let bestanden = 0;
@@ -273,6 +279,79 @@ pruefe(
 );
 
 /* ------------------------------------------------------------------ */
+/* Die Hauptentitaet am Article: about                                 */
+/* ------------------------------------------------------------------ */
+/*
+ * Dritter Fall derselben Sorte. `hauptentitaet` ist das einzige Feld, das
+ * kollektionsuebergreifend referenziert — `about` wird aus `typ` und `slug`
+ * zusammengesetzt. Bis zum 2026-09-22 trug kein Artikel des Registers einen
+ * Wert, der Zweig lief also nie.
+ *
+ * Entscheidend ist nicht, dass `about` irgendetwas enthaelt, sondern dass die
+ * @id dieselbe ist, die der Lexikon-Builder fuer denselben Slug schreibt.
+ * Liefen beide Seiten auseinander, waere die Referenz im Projektgraphen ein
+ * Verweis ins Leere — und genau das meldet check-jsonld.ts als "Referenz
+ * zeigt auf eine unbekannte @id".
+ */
+
+const artikelMitHaupt = (haupt?: { typ: string; slug: string }) => ({
+  ...artikel("markus"),
+  ...(haupt ? { hauptentitaet: haupt } : {}),
+});
+
+const aboutVon = (haupt?: { typ: string; slug: string }) =>
+  (buildGraph("artikel", "autoseite", artikelMitHaupt(haupt) as any)["@graph"] as any[]).find((k) =>
+    [k["@type"]].flat().includes("Article"),
+  )?.about;
+
+gleich(
+  "hauptentitaet wird zu about mit der @id der Entitaet",
+  aboutVon({ typ: "lexikon", slug: "kustom-kulture" }),
+  { "@id": entitaetsId("lexikon", "kustom-kulture") },
+);
+
+{
+  // Das positive Lebenszeichen der Gegenseite: Der Lexikon-Builder muss
+  // denselben Wert wirklich erzeugen. Ohne diese Prüfung belegte die obige
+  // nur, dass `entitaetsId` mit sich selbst uebereinstimmt.
+  const lexikonKnoten = (buildGraph("lexikon", "kustom-kulture", {
+    name: "Kustom Kulture",
+    aliases: [],
+    kurzbeschreibung: "Kustom Kulture ist ein Oberbegriff der Customizing-Szene.",
+    status: "entwurf",
+    erstelltAm: new Date("2026-01-01"),
+    geprueftAm: new Date("2026-01-01"),
+    kategorie: "auto",
+    definition: "Kustom Kulture ist ein Oberbegriff fuer Kunst, Fahrzeuge, Frisuren und Kleidungsstil.",
+    verwandt: [],
+    quellen: [],
+    bilder: [],
+    faq: [],
+    noindex: false,
+    links: {},
+  } as any)["@graph"] as any[]).find((k) => [k["@type"]].flat().includes("DefinedTerm"));
+
+  pruefe("Lexikon-Builder erzeugt einen DefinedTerm-Knoten", Boolean(lexikonKnoten), "kein DefinedTerm im @graph");
+  gleich(
+    "und dessen @id ist genau die, auf die about zeigt",
+    lexikonKnoten?.["@id"],
+    (aboutVon({ typ: "lexikon", slug: "kustom-kulture" }) as any)?.["@id"],
+  );
+}
+
+gleich(
+  "ohne hauptentitaet traegt der Article kein about — dieselbe Vorrichtung, anderes Ergebnis",
+  aboutVon(),
+  undefined,
+);
+
+gleich(
+  "der Typ wird wirklich ausgewertet und nicht auf lexikon festgenagelt",
+  aboutVon({ typ: "bands", slug: "mad-sin" }),
+  { "@id": entitaetsId("bands", "mad-sin") },
+);
+
+/* ------------------------------------------------------------------ */
 
 if (fehler.length) {
   console.error(`\n${fehler.length} Prüfung(en) fehlgeschlagen:\n`);
@@ -280,4 +359,4 @@ if (fehler.length) {
   console.error("");
   process.exit(1);
 }
-console.log(`${bestanden} Prüfungen bestanden — Datumsregel und Urheberschaft im JSON-LD.`);
+console.log(`${bestanden} Prüfungen bestanden — Datumsregel, Urheberschaft und Hauptentität im JSON-LD.`);

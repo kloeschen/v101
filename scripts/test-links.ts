@@ -23,6 +23,7 @@ import {
   type RegistryEingabe,
 } from "../src/lib/links";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
+import { faktZeilen } from "../src/lib/faktenblock";
 
 let bestanden = 0;
 const fehler: string[] = [];
@@ -279,6 +280,78 @@ if (!hatInhalte("the-firebirds", "bands")) {
   const pfade = interneLinks("[a](/lexikon/rockabilly/) und [b](/bands/the-firebirds/) und [a](/lexikon/rockabilly/)");
   gleich("interne Links dedupliziert", pfade.length, 2);
   pruefe("unbekannter Pfad löst nicht auf", pfadZuEintrag(echte, "/bands/gibt-es-nicht/") === undefined);
+}
+
+/* ------------------------------------------------------------------ */
+/* Die Hauptentität eines Artikels                                     */
+/* ------------------------------------------------------------------ */
+/*
+ * Lektion 19 in Reinform. `hauptentitaet` ist das einzige Referenzfeld, das
+ * nicht in `referenzFelder` steht: Es zeigt auf eine variable Collection und
+ * wird in `buildRegistry` deshalb von Hand behandelt. Bis zum 2026-09-22 trug
+ * kein Artikel des Registers einen Wert — beide Wege, die daran hängen, sind
+ * also nie gelaufen: der Rückverweis auf die Entität und die Zeile
+ * "Handelt von" im Faktenblock.
+ *
+ * Geprüft wird in beide Richtungen. Ein Test, der nur zeigt, dass ein
+ * Rückverweis existiert, belegt nicht, dass er an `hauptentitaet` hängt — er
+ * wäre auch grün, wenn ihn ein anderes Feld erzeugte. Deshalb steht neben
+ * jeder Anwesenheit eine Abwesenheit mit derselben Vorrichtung.
+ */
+
+const artikelMit = (haupt?: { typ: string; slug: string }): RegistryEingabe => ({
+  collection: "artikel",
+  slug: "autoseite",
+  daten: {
+    name: "Die Autoseite",
+    aliases: [],
+    kurzbeschreibung: "Die Autoseite ist ein Testartikel.",
+    typ: "pillar",
+    saeule: "kustom-kulture",
+    erwaehnteBegriffe: [],
+    ...(haupt ? { hauptentitaet: haupt } : {}),
+  },
+});
+
+const mitHaupt = buildRegistry([lex("kustom-kulture", "Kustom Kulture"), artikelMit({ typ: "lexikon", slug: "kustom-kulture" })]);
+const ohneHaupt = buildRegistry([lex("kustom-kulture", "Kustom Kulture"), artikelMit()]);
+const insLeere = buildRegistry([lex("kustom-kulture", "Kustom Kulture"), artikelMit({ typ: "lexikon", slug: "gibt-es-nicht" })]);
+
+{
+  const verweise = eingehendeVerweise(mitHaupt, "lexikon", "kustom-kulture");
+  gleich("hauptentitaet erzeugt genau einen Rückverweis", verweise.length, 1);
+  gleich("und dieser Rückverweis ist als hauptentitaet ausgewiesen", verweise[0]?.feld, "hauptentitaet");
+  gleich("er zeigt auf den Artikel, der das Feld trägt", verweise[0]?.von.slug, "autoseite");
+
+  gleich(
+    "ohne hauptentitaet gibt es den Rückverweis nicht — dieselbe Vorrichtung, anderes Ergebnis",
+    eingehendeVerweise(ohneHaupt, "lexikon", "kustom-kulture").length,
+    0,
+  );
+  gleich(
+    "eine hauptentitaet ins Leere erzeugt keinen Rückverweis (und keinen Absturz)",
+    eingehendeVerweise(insLeere, "lexikon", "kustom-kulture").length,
+    0,
+  );
+}
+
+{
+  // Faktenblock: dieselbe Angabe, anderer Konsument.
+  const zeile = (r: typeof mitHaupt) =>
+    faktZeilen("artikel", aufloesen(r, "artikel", "autoseite")!.daten, r).find((z) => z.feld === "hauptentitaet");
+
+  const gesetzt = zeile(mitHaupt);
+  pruefe("Faktenblock zeigt eine Zeile zur Hauptentität", Boolean(gesetzt), "keine Zeile mit feld=hauptentitaet");
+  gleich("die Zeile trägt die Beschriftung Handelt von", gesetzt?.label, "Handelt von");
+  gleich("sie nennt den Namen der Entität", gesetzt?.stuecke[0]?.text, "Kustom Kulture");
+  gleich("und verlinkt sie", gesetzt?.stuecke[0]?.href, "/lexikon/kustom-kulture/");
+
+  pruefe("ohne hauptentitaet fehlt die Zeile", zeile(ohneHaupt) === undefined);
+
+  const leer = zeile(insLeere);
+  pruefe("eine hauptentitaet ins Leere fällt auf den Rohwert zurück", Boolean(leer), "keine Zeile");
+  gleich("dort steht Typ und Slug", leer?.stuecke[0]?.text, "lexikon/gibt-es-nicht");
+  gleich("und es wird nicht verlinkt", leer?.stuecke[0]?.href, undefined);
 }
 
 /* ------------------------------------------------------------------ */
