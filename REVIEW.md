@@ -245,8 +245,10 @@ der letzten drei Sitzungen entstanden. Schicht 1 hat dieselbe Grenze, und die
 Dokumentation von Claude Code benennt sie ausdrücklich („don't apply to
 arbitrary subprocesses"); für Durchsetzung auf Betriebssystemebene verweist
 sie auf die Sandbox. Schicht 3 fängt davon den Fall ab, der wirklich schadet
-— die unbeabsichtigte Veröffentlichung —, aber nur, wo eine Basis vorliegt,
-und das ist in der CI derzeit nicht der Fall (M10).
+— die unbeabsichtigte Veröffentlichung —, aber nur, wo eine Basis vorliegt.
+In der CI ist das seit der Behebung von M10 am 2026-09-03 der Fall
+(`fetch-depth: 0`, `freigabe:ci` in der Kette); dieser Satz behauptete bis
+zum 2026-09-22 noch das Gegenteil.
 
 **Zweitwirkung, die man kennen muss:** Die Mustererkennung ist grob und
 meldet lieber zu viel. In der Sitzung, die sie gebaut hat, blockierte sie
