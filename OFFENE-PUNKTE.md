@@ -80,6 +80,44 @@ sie behauptet über eine reale Band eine falsche Jahreszahl. Ob die Vorlage
 auf eine erfundene Band umgestellt oder die Zahl korrigiert wird, ist eine
 Entscheidung über die Vorlage selbst.
 
+`mensch` **`main` ist nicht geschützt — die Sperre, auf der die Autonomie ruht, gibt es nicht.** Gefunden am
+2026-09-21 beim Nachsehen des Freigabewegs. Die GitHub-API meldet für
+**alle** Branches dieses Repos `protected: false`, `main` eingeschlossen.
+Damit ist Schritt 4 aus `SETUP.md` nie umgesetzt worden — dort steht die
+Einrichtung als Bedingung dafür, dass agentische Workflows gefahrlos laufen
+können, samt dem Satz „Ein Agent, der auf `main` schreiben darf, ist ein
+Agent ohne Netz".
+Genau dieser Satz trägt seit dem 2026-09-20 den unbeaufsichtigten Lauf. Er
+ist derzeit eine **Prompt-Regel und keine Sperre**: „Nie auf `main` pushen"
+steht im Prompt der Routine und in `BETRIEB.md`, technisch verhindert es
+nichts. Bisher hat sich jeder Lauf daran gehalten, und das ist der ganze
+Beleg — Lektion 6 gilt hier umgekehrt: Eine Sperre, die es nicht gibt, ist
+nicht dadurch wirksam, dass niemand sie gebraucht hat.
+Einzurichten unter Settings → Branches → Add rule für `main`: „Require a
+pull request before merging" und „Require status checks to pass" mit
+`verify`. Nur ein Mensch kann das; `.github/` wäre ohnehin gesperrt, und
+Branch-Schutz liegt gar nicht im Repo.
+**Zu entscheiden ist dabei eine echte Abwägung, und deshalb steht hier
+`mensch` und nicht `frei`.** Mit `verify` als Required Check wird **jeder
+Freigabe-Pull-Request unmergebar**, bis jemand die Bestätigungszeile
+ausführt: `check-freigabe.ts` läuft in `verify:ci` mit `--basis-pflicht`,
+`ci.yml` klont mit `fetch-depth: 0`, findet also die Basis und meldet den
+Statuswechsel als unbestätigt — genau wie vorgesehen (Befund M8). Heute ist
+der rote Haken folgenlos, weil nichts geschützt ist; mit Schutz wird er zum
+Tor. Drei Wege: **(a)** Schutz mit `verify` als Required Check — dichteste
+Variante, macht die Freigabe aber zum Zwei-Schritt-Vorgang mit
+Kommandozeile. **(b)** Schutz nur mit „Require a pull request", ohne
+Required Check — verhindert den Direktpush auf `main`, lässt den roten
+Haken folgenlos, ist also genau die Sperre, die heute fehlt, ohne neue
+Reibung. **(c)** `check-freigabe.ts` aus `verify:ci` herausnehmen und als
+eigenen, nicht erforderlichen Check führen — bequem, schwächt aber eine
+Prüfung, die ausdrücklich für diesen Fall gebaut wurde.
+Empfehlung wäre (b) als Erstes, weil sie das gemessene Loch schließt und
+keine neue Frage aufwirft. Der Freigabe-Workflow ist außerdem noch nie
+gelaufen (beide bisherigen Freigaben waren Direktcommits vom 9. und
+10. September); über (a) zu entscheiden, bevor der Weg einmal benutzt
+wurde, wäre eine Entscheidung ohne Messung.
+
 `mensch` **`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
 Bash-Zweig blockiert jeden Befehl, der die gesperrte Schemadatei nennt und
 irgendwo ein `>` enthält. Das trifft `2>&1` genauso wie eine Pfeilfunktion

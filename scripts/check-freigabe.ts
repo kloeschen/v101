@@ -21,15 +21,24 @@
  * Das ist eine Handlung an der Kommandozeile, nichts, was im Repository
  * steht. Ein Agent, der `npm run verify` aufruft, setzt sie nicht.
  *
- * GRENZE — und sie ist erheblich: Die Prüfung braucht eine Basis im
- * Git-Verzeichnis. Die CI dieses Projekts klont mit `actions/checkout@v4` in
- * der Standardtiefe 1; dort gibt es keinen Vorgänger und die Prüfung meldet
- * das laut und läuft durch. Wirksam ist sie damit lokal — dort, wo CLAUDE.md
- * `npm run verify` vor jedem Commit verlangt — und überall, wo die Historie
- * vorhanden ist. Was fehlt, ist `fetch-depth: 0` im Workflow; das steht als
- * M10 in REVIEW.md und liegt in `.github/`, das für Agenten gesperrt ist.
- * `--basis-pflicht` macht die fehlende Basis zum Fehler, sobald das behoben
- * ist.
+ * GRENZE: Die Prüfung braucht eine Basis im Git-Verzeichnis. Liegt keine
+ * vor, meldet sie das laut und läuft durch — `--basis-pflicht` macht die
+ * fehlende Basis stattdessen zum Fehler.
+ *
+ * SEIT DEM 2026-09-03 GILT DAS AUCH IN DER CI (Befund M10, behoben): `ci.yml`
+ * klont mit `fetch-depth: 0`, und `verify:ci` ruft `freigabe:ci` auf, also
+ * diese Prüfung mit `--basis-pflicht`. Der Kommentar hier behauptete bis zum
+ * 2026-09-22 das Gegenteil — er beschrieb den Zustand vor der Behebung und
+ * ließ glauben, die Prüfung sei in der CI folgenlos.
+ *
+ * WAS DAS FÜR EINEN FREIGABE-PULL-REQUEST BEDEUTET: Er wird die CI rot
+ * machen, und zwar planmäßig. Der Statuswechsel steht im Diff, bestätigt hat
+ * ihn beim Aufruf niemand, also schlägt diese Prüfung an — sie soll es. Wer
+ * den Pull Request prüft, führt die Bestätigungszeile aus, die `freigeben.ts`
+ * am Ende ausgibt, oder merged in dem Wissen, welche Slugs freigegeben
+ * werden. Solange `main` nicht geschützt ist, ist der rote Haken folgenlos;
+ * mit `verify` als Required Check wird er zum Tor (Posten in
+ * OFFENE-PUNKTE.md).
  *
  *   npx tsx scripts/check-freigabe.ts
  *   npx tsx scripts/check-freigabe.ts --basis origin/main
