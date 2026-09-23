@@ -13,6 +13,53 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Zweiter Termin für Niedersachsen und Rhein-Neckar: die Häuser, nicht die Verzeichnisse
+
+**Anlass:** Posten „Niedersachsen und Rhein-Neckar brauchen einen zweiten
+Termin". Beide Regionen standen bei zwei von drei freigegebenen Einträgen.
+
+**Ergebnis:** Vier Entwürfe, je Region ein Haus und ein Konzert:
+`asb-bahnhof-barsinghausen` mit Boppin'B am 3. Oktober 2026 (Niedersachsen),
+`cafe-central-weinheim` mit Long Tall Texans am 20. November 2026
+(Rhein-Neckar). Nach der Freigabe stehen beide Regionen bei vier von drei.
+Jeder Termin ist an zwei voneinander unabhängigen Stellen belegt: Seite des
+Hauses und Ticketanbieter (Reservix bzw. loveyourartist).
+
+### Funde mit Folgen
+
+**Die Verzeichnisse sind der falsche Einstieg, die Häuser der richtige.**
+livegigs.de antwortet mit 403, boogie-online.de mit 503, die Terminseite von
+rock-and-roll-termine.de mit 404. Gefunden wurden beide Termine über die
+Programmseiten der Häuser selbst und über den Terminkalender der Band beim
+Ticketanbieter — der ist dann zugleich die zweite, unabhängige Quelle.
+Für künftige Recherchen: zuerst Häuser mit Szeneprogramm suchen, dann deren
+Kalender lesen.
+
+**Das Café Central Weinheim verwendet alte Ankündigungstexte weiter.** Die
+Detailseite zum Termin 2026 kündigt im Fließtext eine „Deutschlandtour im
+Februar 2023" an, und unter `/konzert/rockabilly-mafia/` steht im selben
+Seitenaufbau ein Termin von 2021. Auf der Startseite fehlen die Jahreszahlen
+ganz. Termine dieses Hauses deshalb nur mit Jahreszahl aus der Datumszeile
+der Detailseite übernehmen und gegen den Ticketanbieter halten. Der
+Widerspruch steht im Eintrag, nicht nur hier (Regel 5).
+
+**Die vier Entwürfe lassen sich nur gemeinsam freigeben.** Haus und Konzert
+verlinken einander; einzeln scheitert jedes an `link-auf-entwurf`.
+Belegt im Trockenlauf: `freigeben.ts --slugs cafe-central-weinheim
+--dry-run` lehnt mit genau dieser Regel ab, alle vier zusammen gehen durch
+(4 würden freigegeben, 0 abgelehnt). Das ist die Regel vom selben Tag im
+ersten echten Einsatz — sie verlangt einen Freigabelauf mit allen vier
+Slugs.
+
+**Nicht gebaut:** Bandseiten für Boppin'B und Long Tall Texans. Beide stehen
+in `lineupWeitere`; Boppin'B hat mit zwei Terminen im Register (Barsinghausen,
+und laut Café Central Weinheim am 9. Januar 2027) die stärkste Grundlage.
+Ob sie entstehen, entscheidet Markus. Verworfen für Rhein-Neckar: den
+Swing-Social des TSV Mannheim aus seiner Wiederholungsregel (jeder zweite und
+vierte Donnerstag) zu datieren — ein abgeleiteter Termin ist kein belegter.
+
+---
+
 ## 2026-09-23 — Links entstehen erst mit der Freigabe
 
 **Anlass:** Der Rock'n'Roll-Eintrag kam als Entwurf, der Autolink setzte ihn
