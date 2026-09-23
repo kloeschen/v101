@@ -83,15 +83,31 @@ git remote add origin git@github.com:DEIN-NAME/rockabilly-guide.git
 git push -u origin main
 ```
 
-**Branch-Schutz einrichten** (Settings → Branches → Add rule für `main`):
+**Branch-Schutz einrichten** (Settings → Rules → Rulesets → New branch
+ruleset). Stand 2026-09-23, so eingerichtet und belegt:
 
-- „Require a pull request before merging"
-- „Require status checks to pass" → nach dem ersten CI-Lauf den Check
-  `verify` auswählen
+- Name `main schützen`, Enforcement **Active**
+- **Bypass list leer** — auch für Admins, siehe unten
+- Target: **Include default branch** (nur `main`; `vorschau` bekommt von
+  `vorschau.yml` einen Force-Push und darf nicht mitgeschützt werden)
+- ✅ Restrict deletions, ✅ Block force pushes
+- ✅ Require a pull request before merging, **Required approvals: 0**
+  (GitHub lässt niemanden die eigenen PRs genehmigen)
+- ❌ Require status checks — auf Freigabe-PRs läuft die CI nicht, sie wären
+  sonst nie mergebar; die Kette läuft im Freigabe-Workflow selbst
+- ❌ Require linear history, ❌ Require signed commits
 
 Das ist kein Zierrat: Es ist die Bedingung dafür, dass agentische Workflows
-später gefahrlos laufen können. Ein Agent, der auf `main` schreiben darf,
-ist ein Agent ohne Netz.
+gefahrlos laufen können. Ein Agent, der auf `main` schreiben darf, ist ein
+Agent ohne Netz. **Warum die Umgehungsliste leer bleibt:** Die Agenten
+arbeiten mit derselben GitHub-Identität wie der Mensch. Wer sich selbst
+ausnimmt, nimmt sie mit aus.
+
+Nur bei einem **öffentlichen** Repo ist das kostenlos. Bei einem privaten
+Repo ohne bezahlten Plan legt GitHub das Ruleset an, setzt es aber nicht
+durch — eine Sperre, die still nicht greift. Belegen lässt es sich in jedem
+Fall nur mit einem Push, der abgelehnt werden muss (`ENTSCHEIDUNGEN.md`,
+2026-09-23).
 
 ---
 

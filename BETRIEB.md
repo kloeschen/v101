@@ -268,7 +268,28 @@ sie eine Bitte an ein Modell; als Skript sind sie ein Exitcode, und
 Unverändert und ausdrücklich: den freigegebenen Status setzen, eine der
 vier gesperrten Dateien anfassen, auf `main` pushen, einen Inhalts-PR
 mergen, oder einen `mensch`-Posten bauen. Die ersten beiden blockiert der
-Hook, die übrigen sind Regeln mit Prüfung.
+Hook. **Den Push auf `main` blockiert seit dem 2026-09-23 GitHub selbst**
+(Ruleset „main schützen", siehe unten). Die übrigen sind Regeln mit Prüfung.
+
+**Was der Branch-Schutz leistet, und was er nicht leisten kann.** Die
+Agenten — der tägliche Lauf wie die interaktive Sitzung — treten gegenüber
+GitHub als `kloeschen` auf, mit derselben Identität wie der Mensch. Daraus
+folgen zwei Dinge:
+
+- Die Umgehungsliste des Rulesets ist **leer**, auch für Admins. Stünde der
+  Admin darauf, dürfte jeder Agent mit dessen Token direkt pushen, und die
+  Sperre hielte niemanden auf. Der Preis: Auch der Mensch committet nicht
+  mehr direkt auf `main`.
+- Einen Pull Request mergen kann ein Agent weiterhin, denn er ist ja
+  „kloeschen". Dass Inhalts-PRs auf den Menschen warten, bleibt deshalb eine
+  Regel in `automerge:erlaubt` und im Prompt, keine Sperre. Pflicht-
+  Genehmigungen würden das ändern, aber GitHub lässt niemanden die eigenen
+  PRs genehmigen — in einem Repo mit einer Person sperrten sie den Menschen
+  mit aus.
+
+Das Ruleset verlangt **keine** Status-Checks: Auf Freigabe-PRs läuft die CI
+nicht (Bot-Token), sie wären sonst nie mergebar. Die Kette läuft dort im
+Freigabe-Workflow selbst, bevor der PR entsteht.
 
 #### Was das kostet, und was es nicht löst
 

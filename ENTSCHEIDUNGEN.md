@@ -13,6 +13,75 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — `main` ist geschützt, und der Schutz ist belegt
+
+**Anlass:** Am 2026-09-21 gefunden: Die GitHub-API meldete für alle Branches
+`protected: false`. Schritt 4 aus `SETUP.md` war nie umgesetzt. „Nie auf
+`main` pushen" — der Satz, auf dem der tägliche unbeaufsichtigte Lauf ruht —
+war eine Prompt-Regel, keine Sperre.
+
+**Eingerichtet von Markus**, als Ruleset „main schützen": Active, nur der
+Default-Branch, Löschen und Force-Push blockiert, Pull Request Pflicht mit
+0 Genehmigungen, keine Status-Checks, **Umgehungsliste leer**.
+
+### Die Entscheidung, die alles andere bestimmt: keine Ausnahme für den Admin
+
+Die Agenten treten gegenüber GitHub als `kloeschen` auf — der tägliche Lauf
+(PR #34 zeigt „kloeschen" als Autor) genauso wie die Sitzung über die
+GitHub-Werkzeuge. **Wer den Admin auf die Umgehungsliste setzt, setzt damit
+jeden Agenten mit diesem Token darauf.** Die Sperre hielte dann niemanden
+auf, der sie betreffen soll.
+
+Der Preis ist bewusst gezahlt: Auch der Mensch committet nicht mehr direkt
+auf `main`. Die Freigaben vom 9. und 10. September, beide Direktcommits,
+gingen so nicht mehr — und genau darum geht es.
+
+**Verworfen:**
+- *Status-Check `verify` als Pflicht.* Auf Freigabe-PRs läuft die CI nicht
+  (Bot-Token) — sie wären nie mergebar. Seit PR #36 läuft die Kette im
+  Freigabe-Workflow, bevor der PR entsteht.
+- *Pflicht-Genehmigungen.* GitHub lässt niemanden die eigenen PRs
+  genehmigen. In einem Repo mit einer Person sperrten sie den Menschen aus.
+- *Ein Muster wie `*` statt nur `main`.* `vorschau.yml` pusht mit `--force`
+  auf den Branch `vorschau`; der wäre mitgesperrt.
+
+### Was der Schutz leistet, und was nicht
+
+**Er leistet:** Kein Direktpush auf `main`, von niemandem, kein Force-Push,
+kein Löschen.
+
+**Er leistet nicht:** Einen Pull Request mergen kann ein Agent weiterhin —
+er ist ja „kloeschen". Dass Inhalts-PRs auf den Menschen warten, bleibt eine
+Regel in `automerge:erlaubt` und im Prompt. Das ist die Grenze dessen, was
+sich in einem Repo mit einer Person und einer geteilten Identität sperren
+lässt, und sie steht hier, damit niemand sie für geschlossen hält.
+
+### Belege (Regel 6: Eine Sperre, die nie blockiert hat, ist unbewiesen)
+
+**Die Probe:** ein leerer Commit, direkt auf `main` gepusht, mit dem Titel
+„Sperrprobe: dieser Push muss abgelehnt werden".
+
+```
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: - Changes must be made through a pull request.
+ ! [remote rejected] HEAD -> main (push declined due to repository rule violations)
+```
+
+Exitcode 1, `origin/main` danach unverändert auf dem Merge von #36, kein
+Commit „Sperrprobe" in der Historie.
+
+**Die Gegenprobe:** Dieser Eintrag selbst kommt über einen Pull Request auf
+`main`. Ginge das nicht, wäre die Sperre zu eng — ein Schutz, der auch den
+legitimen Weg blockiert, wird ausgeschaltet statt beachtet. Dass der Merge
+durchging, steht in der Historie unmittelbar nach diesem Commit.
+
+Warum der Beleg nicht optional war: Bei einem privaten Repo ohne bezahlten
+Plan legt GitHub ein Ruleset an und setzt es **nicht** durch. Die Oberfläche
+sähe genauso aus. Nur ein abgelehnter Push unterscheidet eine Sperre von
+einer Einstellung. (Dieses Repo ist öffentlich; geprüft wurde trotzdem.)
+
+---
+
 ## 2026-09-23 — Der Freigabe-Workflow prüft sein Ergebnis selbst
 
 **Anlass:** Der erste Freigabe-PR (#32) hätte `main` rot gemacht, und keine
