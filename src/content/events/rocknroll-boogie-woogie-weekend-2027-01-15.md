@@ -70,7 +70,7 @@ quellen:
     art: offiziell
 ---
 
-Das Rock'n'Roll & Boogie Woogie Weekend ist ein zweitägiges Tanzwochenende am 15. und 16. Januar 2027 in der Westernstadt Pullman City in Eging am See. Der Betreiber richtet es selbst aus und verbindet Tanzkurse mit einem Livekonzert und DJ-Programm; [Rockabilly](/lexikon/rockabilly/) und [Boogie-Woogie](/lexikon/boogie-woogie/) stehen schon im Titel.
+Das [Rock'n'Roll](/lexikon/rocknroll/) & Boogie Woogie Weekend ist ein zweitägiges Tanzwochenende am 15. und 16. Januar 2027 in der Westernstadt Pullman City in Eging am See. Der Betreiber richtet es selbst aus und verbindet Tanzkurse mit einem Livekonzert und DJ-Programm; [Rockabilly](/lexikon/rockabilly/) und [Boogie-Woogie](/lexikon/boogie-woogie/) stehen schon im Titel.
 
 ## Der Termin
 

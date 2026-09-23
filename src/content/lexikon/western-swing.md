@@ -63,7 +63,7 @@ Die Besetzung ist der Kern des Genres, weil sie zwei Welten zusammenbringt. Auf 
 
 Als Begründer gelten zwei Bandleader. Milton Brown und seine Musical Brownies ab etwa 1932, und Bob Wills mit den Texas Playboys, die er 1933 zusammenstellte; die englische Wikipedia nennt für Wills die Jahre 1934 bis 1943 als Zeit der allabendlichen Auftritte im Cain's Ballroom in Tulsa und führt die Light Crust Doughboys als erste professionelle Band des Genres. Brown starb 1936 bei einem Unfall.
 
-Die Blütezeit lag in den 1930er und 1940er Jahren mit Zentren in Texas, Oklahoma und Kalifornien. Die deutsche Wikipedia sieht sie Ende der 1940er Jahre enden, unter anderem durch die Konkurrenz von [Rockabilly](/lexikon/rockabilly/) und Rock'n'Roll; die englische nennt als weiteren Grund eine 1944 eingeführte Bundessteuer auf Tanzveranstaltungen. Ein Revival trägt seit den 1970er Jahren vor allem Asleep at the Wheel.
+Die Blütezeit lag in den 1930er und 1940er Jahren mit Zentren in Texas, Oklahoma und Kalifornien. Die deutsche Wikipedia sieht sie Ende der 1940er Jahre enden, unter anderem durch die Konkurrenz von [Rockabilly](/lexikon/rockabilly/) und [Rock'n'Roll](/lexikon/rocknroll/); die englische nennt als weiteren Grund eine 1944 eingeführte Bundessteuer auf Tanzveranstaltungen. Ein Revival trägt seit den 1970er Jahren vor allem Asleep at the Wheel.
 
 ## Der Name Western Swing
 

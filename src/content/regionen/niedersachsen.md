@@ -41,7 +41,7 @@ Das Land umfasst nach Angaben der Wikipedia 47.709,82 Quadratkilometer und hatte
 
 Die Struktur ähnelt der bayerischen: viel Fläche, verteilte Bevölkerung, und daraus folgend Veranstaltungsformate, die Anreise und Übernachtung mitdenken müssen. Das [Rock'n'Roll Festival Ganderkesee](/events/rocknroll-festival-ganderkesee-2027/) bei Bremen ist dafür ein deutliches Beispiel: Es findet auf einem Flugplatzgelände statt, hat einen eigenen Campground direkt daneben und organisiert einen Shuttleverkehr aus den umliegenden Orten.
 
-Der Veranstalter bezeichnet die Veranstaltung auf der eigenen Seite als das größte Rock'n'Roll Festival in Norddeutschland. Das ist eine Selbstauskunft und keine geprüfte Angabe; sie steht hier, weil sie die Selbsteinordnung zeigt, nicht weil sie belegt wäre.
+Der Veranstalter bezeichnet die Veranstaltung auf der eigenen Seite als das größte [Rock'n'Roll](/lexikon/rocknroll/) Festival in Norddeutschland. Das ist eine Selbstauskunft und keine geprüfte Angabe; sie steht hier, weil sie die Selbsteinordnung zeigt, nicht weil sie belegt wäre.
 
 ## Zuschnitt dieser Region
 

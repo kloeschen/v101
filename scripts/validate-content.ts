@@ -22,6 +22,7 @@ import { existsSync } from "node:fs";
 import { ladeAlle, WURZEL, liegtImRegister, type GeladenerEintrag } from "./_laden";
 import { RESERVIERTE_SEGMENTE } from "../src/lib/facetten";
 import { istVorbei, jahrIn } from "../src/lib/datum";
+import { segmentiere } from "../src/lib/links";
 import {
   collectionSchemas,
   collectionNames,
@@ -162,6 +163,59 @@ function normalisiere(s: string): string {
     .replace(/^(the|die|der|das)\s+/, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+/**
+ * Trennzeichen innerhalb eines Fachbegriffs: Leerraum, Apostroph (gerade und
+ * typografisch), Akzentzeichen, Bindestrich. Dieselbe Menge, die `normalisiere`
+ * einschmilzt -- hier wird sie gebraucht, um sie wieder aufzufalten.
+ */
+const TRENNZEICHEN = "[\\s'\u2019`\u00b4\\-]";
+
+/** Nur der Text, den der Autolink anfassen darf. */
+const freierText = (() => {
+  const merker = new Map<string, string>();
+  return (markdown: string): string => {
+    const fertig = merker.get(markdown);
+    if (fertig !== undefined) return fertig;
+    const text = segmentiere(markdown)
+      .filter((seg) => !seg.geschuetzt)
+      .map((seg) => seg.text)
+      .join("\n");
+    merker.set(markdown, text);
+    return text;
+  };
+})();
+
+/**
+ * Muster, das denselben mehrteiligen Begriff in jeder Trennzeichen-Schreibung
+ * findet: "Rock'n'Roll" findet auch "Rock 'n' Roll" und "Rock-'n'-Roll".
+ *
+ * Zwei Entscheidungen stecken darin, beide gemessen:
+ *
+ *  - Einteilige Begriffe geben `null` zurueck. Ohne Trennzeichen gibt es keine
+ *    Trennzeichen-Varianten, und ein Muster darauf faende nur sich selbst.
+ *  - Zwischen den Bestandteilen steht `+`, nicht `*`. Der Treffer muss also
+ *    genauso viele Bestandteile haben wie der Begriff. Mit `*` matchte
+ *    "Pork Pie Hat" auf "Porkpie hat" -- ein deutsches Hilfsverb hinter einem
+ *    Hut, keine Schreibvariante. Das war der einzige Fehlalarm der Messung
+ *    ueber den Bestand, und er faellt damit weg.
+ *
+ * Gross- und Kleinschreibung wird beachtet (kein `i`-Flag): Die Regel soll
+ * Schreibvarianten desselben Namens finden, nicht jedes Wort, das zufaellig
+ * dieselben Buchstaben traegt.
+ */
+function variantenMuster(begriff: string): RegExp | null {
+  const teile = begriff.split(new RegExp(`${TRENNZEICHEN}+`)).filter(Boolean);
+  if (teile.length < 2) return null;
+  const maskiert = teile.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  // Wortgrenzen wie im Autolink (src/lib/links.ts): ein vorangehender
+  // Bindestrich blockiert, ein folgender nicht. Sonst meldete die Regel
+  // Stellen, die der Autolink ohnehin nicht anfassen wuerde.
+  return new RegExp(
+    `(?<![\\p{L}\\p{N}_\\-])(${maskiert.join(`${TRENNZEICHEN}+`)})(?![\\p{L}\\p{N}_])`,
+    "gu",
+  );
 }
 
 function tageSeit(d: Date, heute: Date): number {
@@ -738,6 +792,82 @@ const REGELN: Regel[] = [
         code: "",
         feld: "abgrenzung",
         nachricht: "Keine Abgrenzung. Wovon wird der Begriff häufig verwechselt? Falsche Zuordnung ist die häufigste Fehlerquelle bei Entitäten, nicht fehlende Fakten.",
+      }];
+    },
+  },
+
+  {
+    /**
+     * Schreibvarianten, die der Autolink nie erreicht.
+     *
+     * `sync-autolinks.ts` sucht Name, Aliases und bezeichnungDe/En LITERAL.
+     * Steht derselbe Begriff im Bestand in einer anderen Trennzeichen-
+     * Schreibung, greift der Autolink dort nicht -- still, ohne Meldung, und
+     * niemand sieht die fehlenden Links, weil fehlende Links nichts anzeigen.
+     *
+     * Der Anlass ist gemessen: Der Posten zum Rock'n'Roll-Eintrag nannte zwei
+     * Schreibungen im Bestand ("Rock'n'Roll" 77-mal, "Rock-'n'-Roll" 15-mal)
+     * und verlangte beide als Alias. Es sind drei -- "Rock 'n' Roll" steht
+     * viermal in drei Dateien. Die Anforderung stand in Prosa, die Prosa war
+     * unvollstaendig, und ohne den dritten Alias waeren diese vier Stellen
+     * unverlinkt geblieben. Genau dafuer ist Regel 3 da: Was zaehlt, gehoert
+     * in Code.
+     *
+     * HINWEIS, nicht Warnung -- und das ist eine Abwaegung, nicht die bequeme
+     * Wahl. Nach dem Kriterium oben bei `Ebene` waere eine Warnung richtig:
+     * Die Regel nennt eine Zeichenfolge, die nachweislich im Bestand steht,
+     * es ist also nichts zu erfinden. Blockierend waere sie aber erst
+     * tragfaehig, wenn die zwei Altfunde im Bestand entschieden sind
+     * ("Custom-Car", "Hot-Rod"), und ob eine Bindestrichschreibung einen
+     * Alias verdient, ist eine redaktionelle Frage an veroeffentlichten
+     * Eintraegen. Die steht als eigener Posten in OFFENE-PUNKTE.md; danach
+     * kann die Ebene steigen.
+     */
+    code: "lexikon-schreibvarianten",
+    collections: ["lexikon"],
+    pruefe(e, ctx) {
+      if (!e.daten) return [];
+      const begriffe = [
+        e.daten.name,
+        ...(e.daten.aliases ?? []),
+        e.daten.bezeichnungDe,
+        e.daten.bezeichnungEn,
+      ].filter((x): x is string => typeof x === "string" && x.trim().length >= 4);
+
+      const gedeckt = new Set(begriffe.map((x) => x.toLowerCase()));
+      const muster = begriffe
+        .map(variantenMuster)
+        .filter((m): m is RegExp => m !== null);
+      if (muster.length === 0) return [];
+
+      // Gezaehlt wird ueber den ganzen Bestand, nicht nur im eigenen Eintrag:
+      // Der Autolink schreibt auch in fremde Dateien, und dort entsteht der
+      // Schaden.
+      const offen = new Map<string, Set<string>>();
+      for (const andere of ctx.eintraege) {
+        const text = freierText(andere.body);
+        for (const m of muster) {
+          for (const treffer of text.matchAll(m)) {
+            const wort = treffer[1];
+            if (gedeckt.has(wort.toLowerCase())) continue;
+            if (!offen.has(wort)) offen.set(wort, new Set());
+            offen.get(wort)!.add(`${andere.collection}/${andere.slug}`);
+          }
+        }
+      }
+      if (offen.size === 0) return [];
+
+      const liste = [...offen]
+        .map(([wort, dateien]) => `"${wort}" (${dateien.size} Datei(en))`)
+        .join(", ");
+      return [{
+        ebene: "hinweis",
+        code: "",
+        feld: "aliases",
+        nachricht:
+          `Schreibvariante(n) im Bestand, die kein Name und kein Alias deckt: ${liste}. ` +
+          `Der Autolink sucht literal und laesst diese Stellen unverlinkt. ` +
+          `Als Alias eintragen, wenn die Schreibung gebraeuchlich ist -- sonst im Text angleichen.`,
       }];
     },
   },

@@ -84,7 +84,7 @@ An der Tageskasse kostet der Nachmittag 8 Euro, mit Vorreservierung 5 Euro. Die 
 
 ## Die Musik
 
-Was gespielt wird, sagt die Quelle nicht genauer als „Tolle Musik mit DJ- Ernst und Charly". Das ist weniger belanglos, als es klingt: Ein Boogie-Nachmittag läuft in aller Regel nicht zum Klavierstil [Boogie-Woogie](/lexikon/boogie-woogie/), sondern zu Rock'n'Roll, [Rockabilly](/lexikon/rockabilly/), [Jump Blues](/lexikon/jump-blues/) und Swing. Dieser Eintrag ordnet dem Termin deshalb kein Genre zu — die Zuordnung wäre eine Behauptung über den Abend, die niemand belegt hat.
+Was gespielt wird, sagt die Quelle nicht genauer als „Tolle Musik mit DJ- Ernst und Charly". Das ist weniger belanglos, als es klingt: Ein Boogie-Nachmittag läuft in aller Regel nicht zum Klavierstil [Boogie-Woogie](/lexikon/boogie-woogie/), sondern zu [Rock'n'Roll](/lexikon/rocknroll/), [Rockabilly](/lexikon/rockabilly/), [Jump Blues](/lexikon/jump-blues/) und Swing. Dieser Eintrag ordnet dem Termin deshalb kein Genre zu — die Zuordnung wäre eine Behauptung über den Abend, die niemand belegt hat.
 
 ## Einordnung
 

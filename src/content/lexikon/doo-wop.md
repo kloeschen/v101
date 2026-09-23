@@ -68,7 +68,7 @@ Zu den prägenden Gruppen zählen The Orioles, The Clovers, The Dominoes, The Pl
 
 Hier widersprechen sich die Quellen offen, und der Widerspruch gehört benannt. Die deutsche Wikipedia führt die Verbreitung des Begriffs auf den New Yorker Discjockey Gus Gossert zurück, der ihn ab 1969 populär gemacht habe. Die englische nennt einen früheren gedruckten Beleg — 1961 im Chicago Defender, im Zusammenhang mit einem Titel der Marcels — und hält ausdrücklich fest, dass die Zuschreibung an Gossert bestritten wurde: Er selbst habe gesagt, der Ausdruck sei in Kalifornien bereits in Gebrauch gewesen.
 
-Was beide Fassungen tragen, ist das Gefälle zwischen Musik und Wort. Der Stil begann Ende der 1940er Jahre, der Name erscheint frühestens 1961 im Druck. Zur Entstehungszeit lief diese Musik unter Rhythm and Blues oder Rock'n'Roll — je nachdem, woher der Künstler kam. Wer eine Aufnahme von 1955 zeitgenössisch als Doo Wop bezeichnet findet, sollte die Quelle prüfen.
+Was beide Fassungen tragen, ist das Gefälle zwischen Musik und Wort. Der Stil begann Ende der 1940er Jahre, der Name erscheint frühestens 1961 im Druck. Zur Entstehungszeit lief diese Musik unter Rhythm and Blues oder [Rock'n'Roll](/lexikon/rocknroll/) — je nachdem, woher der Künstler kam. Wer eine Aufnahme von 1955 zeitgenössisch als Doo Wop bezeichnet findet, sollte die Quelle prüfen.
 
 ## Doo Wop in diesem Register
 

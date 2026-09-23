@@ -568,3 +568,46 @@ keine Regel, sondern fällt in die Lücke zwischen zweien.
 **Regel:** Ein Negativtest für „wird gemeldet" braucht den Zwilling „wird
 überhaupt gefunden". Beide zusammen schließen die Lücke; einer allein lässt
 sie offen (dieselbe Form wie Lektion 19, eine Ebene tiefer).
+
+## 24. Der Mutationsbeleg prüft zuerst die Vorrichtung, nicht den Code
+
+**Am 2026-09-23 zweimal in derselben Stunde passiert**, beim Beleg für die
+neue Regel `lexikon-schreibvarianten`. Beide Male fiel eine Mutation nicht,
+die hätte fallen müssen — und beide Male lag es an der Prüfvorrichtung, nicht
+am Prüfling. Lektion 17 und 23 haben dieselbe Form; hier kommt die Variante
+dazu, die beim *Belegen* auftritt statt beim Prüfen.
+
+**Erster Fall: die Messung sah ihren Gegenstand nicht.** Die erste Fassung
+suchte ungedeckte Schreibvarianten, indem sie den Fließtext in Wort-Tokens
+zerlegte und deren Normalform verglich. Danach wurde der Alias `Rock 'n' Roll`
+absichtlich entfernt. Die Messung meldete: null Funde. Das sah wie ein
+sauberer Bestand aus und war ein blindes Muster — `[ '’-][\p{L}]+` liest
+genau *ein* Trennzeichen, `Rock 'n' Roll` hat an jeder Fuge zwei
+(Leerzeichen plus Apostroph). Das Token endete nach „Rock".
+
+**Zweiter Fall: dasselbe Muster war zu gierig.** Mit `{1,3}` auf dem
+Trennzeichen las es die Fuge, griff dafür aber über vier Wörter:
+`Rock 'n' Roll war` — Normalform `rocknrollwar`, kein Treffer. Die Messung
+meldete wieder null, diesmal aus dem entgegengesetzten Grund. Zwei
+verschiedene Ursachen, identische Ausgabe, und die Ausgabe war beide Male die
+beruhigende.
+
+**Dritter Fall, eine Ebene weiter: der Testfall prüfte etwas anderes als
+sein Name.** Der Fall „Treffer mit weniger Bestandteilen ist kein Fehlalarm"
+blieb grün, als die Trennzeichen im Muster von `+` auf `*` mutiert wurden —
+also gerade dann, wenn der Schutz weg ist. Grund: Die Fixture schrieb den
+letzten Bestandteil `Hat` groß, der Prosatext `hat` klein. Der Fall fiel
+nicht über die Zahl der Bestandteile, sondern über die
+Groß-/Kleinschreibung. Er prüfte eine Behauptung, die niemand aufgestellt
+hatte, und die, um die es ging, gar nicht. Erst mit kleingeschriebenem
+Bestandteil — wie im echten Fund `Pork pie hat` — fiel die Mutation.
+
+**Regel:** Fällt eine Mutation nicht, ist das zuerst ein Befund über die
+Vorrichtung. Die Vorrichtung umbauen, bis die Mutation fällt — nicht die
+Behauptung streichen, und schon gar nicht die grüne Ausgabe als Beleg
+nehmen. „Null Funde" ist kein Lebenszeichen (Lektion 19); beim Belegen ist
+es die wahrscheinlichste Form des Selbstbetrugs.
+
+**Regel:** Eine Fixture muss den echten Fund nachbauen, nicht nur seine
+Form. Der echte Fehlalarm hieß `Pork pie hat`, klein geschrieben, und genau
+darauf hing er. Wer ihn beim Nachbauen „aufräumt", baut einen anderen Fall.

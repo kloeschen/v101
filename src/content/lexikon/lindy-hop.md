@@ -53,7 +53,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Lindy Hop ist ein amerikanischer Paartanz, der nach Angabe der englischen Wikipedia 1928 in den afroamerikanischen Vierteln Harlems entstand und Elemente aus Jazz, Stepp, Breakaway und Charleston zusammenführt. Getanzt wurde er zur Musik der Swing-Big-Bands, sein Zentrum war der Savoy Ballroom. Als ursprünglicher Swing-Tanz gilt er als Vorläufer von Jive, [Boogie-Woogie](/lexikon/boogie-woogie/) und akrobatischem Rock'n'Roll.
+Lindy Hop ist ein amerikanischer Paartanz, der nach Angabe der englischen Wikipedia 1928 in den afroamerikanischen Vierteln Harlems entstand und Elemente aus Jazz, Stepp, Breakaway und Charleston zusammenführt. Getanzt wurde er zur Musik der Swing-Big-Bands, sein Zentrum war der Savoy Ballroom. Als ursprünglicher Swing-Tanz gilt er als Vorläufer von Jive, [Boogie-Woogie](/lexikon/boogie-woogie/) und akrobatischem [Rock'n'Roll](/lexikon/rocknroll/).
 
 ## Merkmale von Lindy Hop
 
