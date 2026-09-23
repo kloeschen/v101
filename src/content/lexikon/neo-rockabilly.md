@@ -2,7 +2,7 @@
 name: Neo-Rockabilly
 aliases: [Neorockabilly]
 kurzbeschreibung: Neo-Rockabilly ist die Spielart des Rockabilly, die an der Wende von den 1970er zu den 1980er Jahren in Großbritannien entstand und Klang und Stil der 1950er mit der Haltung des Punk verband.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
 autor: markus
