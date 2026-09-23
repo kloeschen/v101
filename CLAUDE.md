@@ -136,6 +136,8 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 
 - Golden Examples: `src/content/*/_golden-example.md` — daran orientieren,
   nicht an Beschreibungen.
+- Termine finden und anlegen: `docs/ablaeufe/termin-recherche.md` —
+  Quellenliste, Suchlauf, gesammelte Fallen.
 - Architektur, Verträge und Begründungen: `README.md`
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
 - Was als Nächstes ansteht: `OFFENE-PUNKTE.md`
@@ -148,6 +150,13 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
 
 Keine Änderungen an `site.config.ts` (die Domain steckt in jeder `@id` des
 Wissensgraphen), an `.claude/` oder an `.github/`.
+
+**Keine Recherche-Skills aus dem claude.ai-Konto.** events-recherche,
+events-pflege, bands-recherche, barbershops-recherche, tattoo-recherche und
+publish stammen aus einem aufgegebenen Vorgängerprojekt, festival-onboarding
+und winzer-event-discovery aus der Weinmesse. Keiner davon gilt hier, auch
+wenn sein Auslöser passt: fremdes Frontmatter, keine Belegpflicht, Push auf
+`main`. Termine laufen über `docs/ablaeufe/termin-recherche.md`.
 
 **Warum diese beiden Verzeichnisse.** Dort liegt die Mechanik der
 Absicherung: Hooks, Berechtigungen, Agentendefinitionen, CI-Schritte. Was

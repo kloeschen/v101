@@ -42,15 +42,17 @@ siehst das Ergebnis als Pull Request. Der Mac mini muss dafür nicht einmal
 eingeschaltet sein.
 
 Deine auf claude.ai aktivierten Plugins werden in Cloud-Sessions
-heruntergeladen und als `<name>@synced` geladen — deine Recherche-Skills
-sind dort also verfügbar.
+heruntergeladen und als `<name>@synced` geladen — auch solche, die zu
+anderen Projekten gehören. Für dieses Repo gilt keiner der alten
+Recherche-Skills (CLAUDE.md, „Orientierung"); der Ablauf steht in
+`docs/ablaeufe/termin-recherche.md`.
 
 **Einmal einrichten:** `/web-setup` im Terminal. Danach kannst du
 Cloud-Sessions auch aus dem Terminal mit `--cloud` starten und mit
 `--teleport` ins Terminal zurückholen.
 
 **Ein Punkt zum Prüfen:** Cloud-Umgebungen haben konfigurierbare
-Netzzugriffs-Stufen. Deine Recherche-Skills brauchen Websuche und
+Netzzugriffs-Stufen. Suchlauf und tägliche Recherche brauchen Websuche und
 Seitenabrufe — stell sicher, dass die Umgebung das darf, sonst scheitern
 Discovery-Läufe stumm.
 
@@ -298,7 +300,7 @@ steht still, wenn er aus ist.
   Netzzugriffs-Stufen, Umgebungsvariablen und Setup-Skripte. Hinterlege
   `npm ci` als Setup-Skript, dann startet jede Session arbeitsbereit statt
   mit einer Minute Installation.
-- **Netzzugriff prüfen:** Deine Recherche-Skills brauchen Websuche und
+- **Netzzugriff prüfen:** Suchlauf und Recherche brauchen Websuche und
   Seitenabrufe. Ohne passende Stufe scheitern Discovery-Läufe stumm.
 - **Deploy Previews einschalten** (Netlify: Standard für PRs) und die
   Vorschau-URL zur Gewohnheit machen: Kein Merge ohne einen Blick darauf.

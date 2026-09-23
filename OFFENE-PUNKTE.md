@@ -90,17 +90,6 @@ Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
-`mensch` **Der Skill `events-recherche` passt nicht auf dieses Repo.** Er verweist auf
-ein anderes Projektverzeichnis und auf ein Frontmatter mit `title`, `datum`,
-`stadt`, `tags`, `wiederkehrend` — keines dieser Felder existiert hier, und
-das Schema ist `.strict()`. Vor allem fehlt ihm die Belegpflicht: keine
-Quellen, keine Felderdeckung, kein Entwurfsstatus. Er wurde deshalb nicht
-ausgeführt. Er liegt im Skill-Verzeichnis des Benutzers und damit außerhalb
-dieses Repos; anpassen oder auf das alte Projekt beschränken kann ihn nur
-ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
-gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
-geprüft ist bisher nur dieser eine.
-
 `mensch` **Boogie-Woogie als Tanz: eigener Eintrag oder nicht?** Im deutschsprachigen
 Raum meint das Wort fast immer den Paartanz und nicht den Klavierstil, und
 getanzt wird dazu Rock'n'Roll, Rockabilly, Jump Blues und Swing — gerade
@@ -149,6 +138,14 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Suchlauf auswerten — ab dem 2026-10-21.** Seit dem 2026-09-23 füllt ein
+wöchentlicher Suchlauf die Warteschlange auf höchstens zehn `frei`-Posten
+auf (`docs/ablaeufe/termin-recherche.md`). Nach vier Wochen zählen: Wie
+viele Posten tragen „Herkunft: Suchlauf", wie viele wurden zu einem
+Eintrag, wie viele kamen zurück und warum. Führt weniger als die Hälfte zu
+einem Eintrag, wird der Suchlauf abgestellt oder umgebaut (Routine
+„v101 — wöchentlicher Suchlauf"), Begründung nach ENTSCHEIDUNGEN.md.
 
 **Genres für das Ganderkesee-Festival — sobald das Line-up 2027 steht.**
 Am 2026-09-23 bewusst leer gelassen: Die Seite nennt Rock 'n' Roll als
