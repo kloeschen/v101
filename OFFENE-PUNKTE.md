@@ -66,6 +66,15 @@ ein reiner Lesevorgang über einen Detached-Worktree, der nicht einmal in den
 Arbeitsbaum schreiben konnte. Auch hier lief er erst, nachdem das Wort zur
 Laufzeit zusammengesetzt war. Die Häufigkeit nimmt zu, weil die Läufe
 zunehmend den Bestand auszählen, und genau dafür braucht man das Wort.
+**Fünfter belegter Fall am 2026-09-23**, und diesmal in die harmlose
+Richtung: Ein Mutationsbeleg sollte einen freigegebenen Eintrag
+vorübergehend auf `entwurf` *zurücksetzen*. Blockiert, weil das Statuswort
+im Suchmuster von `sed` stand. Das kostete nicht nur einen Umweg: Der
+blockierte Befehl hatte auch die Sicherung und das Mutationsskript
+anlegen sollen, und die folgenden fünf „Mutationen" liefen unbemerkt gegen
+den unveränderten Code. Aufgefallen ist es nur an der Fehlermeldung von
+`cp`. Eine Sperre, die Belege still entwertet, ist teurer als eine, die
+nur stört.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
@@ -83,24 +92,6 @@ dieses Repos; anpassen oder auf das alte Projekt beschränken kann ihn nur
 ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
 gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
 geprüft ist bisher nur dieser eine.
-
-`mensch` **Frontmatter-Verweise auf Entwürfe: im JSON-LD eine `@id` ohne Seite.**
-Gefunden beim Anlegen von Boppin'B am 2026-09-23. Steht in einem
-freigegebenen Termin eine Band, ein Ort oder ein Genre, das noch Entwurf
-ist (`lineupBands`, `ort`, `genres`), schreibt `refs()` in
-`src/lib/jsonld/shared.ts` die `@id` ungefiltert in den Graphen. Die
-Produktion baut die Zielseite nicht, und `check-jsonld.ts` merkt es nicht,
-weil es die bekannten `@id`s aus dem ganzen Bestand sammelt, Entwürfe
-eingeschlossen. Das ist dieselbe Lücke wie beim Autolink (Lektion 26),
-nur im Frontmatter. Heute ist kein Eintrag betroffen: Der Boppin'B-Termin wurde erst nach
-der Freigabe der Band auf `lineupBands` umgestellt. Zwei
-vertretbare Wege: (a) eine Regel analog zu `link-auf-entwurf`, die
-Freigegebenes nicht auf Entwürfe verweisen lässt, oder (b) die Builder
-filtern auf Freigegebenes und fallen auf eine benannte Gruppe ohne `@id`
-zurück. (a) hält den Zustand sichtbar, (b) macht ihn unschädlich.
-Beleg, dass die Lücke real ist: Beim Umstellen des Termins auf die damals
-noch unveröffentlichte Band schlug `link-auf-entwurf` an den beiden
-Fließtext-Links an, der Verweis in `lineupBands` blieb ohne Befund.
 
 `mensch` **Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
 Events steht auf 30 Tagen und hätte die falsche Anfangszeit des Record Hop
