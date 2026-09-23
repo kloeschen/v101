@@ -2,7 +2,7 @@
 name: ASB-Bahnhof Barsinghausen
 aliases: [ASB-Bahnhof, Bahnhof Barsinghausen, ASB-Bahnhof Basche]
 kurzbeschreibung: Der ASB-Bahnhof Barsinghausen ist das sanierte Bahnhofsgebäude der Stadt Barsinghausen in der Region Hannover, in dem neben Bistro und Schulungszentrum regelmäßig Konzerte stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
 autor: markus

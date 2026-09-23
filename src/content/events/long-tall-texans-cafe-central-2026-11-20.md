@@ -2,7 +2,7 @@
 name: Long Tall Texans im Café Central Weinheim
 aliases: [Long Tall Texans Weinheim 2026, Long Tall Texans und Cobra Express]
 kurzbeschreibung: Psychobilly-Konzert der Band Long Tall Texans mit Cobra Express am Freitag, 20. November 2026, im Café Central in Weinheim.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
 autor: markus

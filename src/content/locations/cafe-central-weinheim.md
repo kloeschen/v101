@@ -2,7 +2,7 @@
 name: Café Central Weinheim
 aliases: [Café Central, Cafe Central Weinheim, Cafe Central]
 kurzbeschreibung: Das Café Central in der Weinheimer Bahnhofstraße ist ein Musikclub im Rhein-Neckar-Kreis, der neben Metal- und Rockkonzerten auch mehrere Rockabilly- und Psychobilly-Termine im Jahr anbietet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
 autor: markus
