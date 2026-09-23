@@ -84,14 +84,6 @@ ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
 gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
 geprüft ist bisher nur dieser eine.
 
-`frei` **`genres` an den restlichen Events.** Nachgetragen sind Rockabilly
-Convention, Record Hop und die beiden neuen Termine. Offen bleiben Bella
-Italia und das Ganderkesee-Festival. Es ist kein Formalakt: Jede Zuordnung
-ist eine Behauptung über die Veranstaltung und braucht einen Beleg in deren
-eigener Quellenlage. Wo die Quelle schweigt, bleibt das Feld leer — und bei
-Boogie-Tanzabenden bleibt es leer, auch wenn die Quelle „Boogie" sagt, weil
-der Lexikoneintrag den Klavierstil bezeichnet und nicht den Tanz.
-
 `mensch` **Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
 Events steht auf 30 Tagen und hätte die falsche Anfangszeit des Record Hop
 beinahe bis nach den Termin getragen; gefunden wurde sie nur, weil die Seite
@@ -161,6 +153,12 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Genres für das Ganderkesee-Festival — sobald das Line-up 2027 steht.**
+Am 2026-09-23 bewusst leer gelassen: Die Seite nennt Rock 'n' Roll als
+Thema, nicht als Musik der Bands, und das Wort ist zugleich ein Tanz
+(Begründung in der Redaktionsnotiz des Eintrags). Mit Bands und
+Stilangaben wird die Zuordnung belegbar.
 
 **Aktualitätsbeleg als Schemafeld — nach etwa dreißig Events.** Die Regel
 greift (sie hat zweimal vor einem Fehler bewahrt), aber die tragfähigen
