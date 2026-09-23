@@ -5,12 +5,13 @@ kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band B
 status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
+geaendertAm: 2026-09-23
 autor: markus
 typ: konzert
 beginn: 2026-10-03T20:15:00+02:00
 ort: asb-bahnhof-barsinghausen
 region: niedersachsen
-lineupWeitere: [Boppin'B]
+lineupBands: [boppin-b]
 preise:
   - bezeichnung: Vorverkauf im ASB-Bahnhof
     betrag: 20
@@ -41,11 +42,11 @@ redaktionsnotiz: >-
   nennt (asb-bahnhof.reservix.de).
   `ende` ungesetzt: Keine Quelle nennt eine Endzeit. Einlass 19:15 steht
   im Text, nicht in `beginn` -- `beginn` ist der Konzertbeginn.
-  BAND NICHT ANGELEGT: Boppin'B steht in `lineupWeitere`. Die Band hat
-  als Aschaffenburger Band mit 40 Jahren Geschichte und mehreren
-  Terminen (auch Weinheim am 9. Januar 2027, laut
-  cafecentral.de/konzert/goppin-b/) das Zeug zu einer eigenen Seite;
-  ob sie entsteht, entscheidet ein Mensch.
+  BAND: Stand zuerst in `lineupWeitere`. Am 2026-09-23 hat Markus eine
+  Bandseite beschlossen (`bands/boppin-b`); nach deren Freigabe steht die
+  Band hier in `lineupBands`. Die Reihenfolge ist Absicht: Vorher haette
+  das JSON-LD dieses freigegebenen Termins auf eine Seite gezeigt, die die
+  Produktion nicht baut (Posten in OFFENE-PUNKTE.md).
   Die Schreibweise schwankt in den Quellen (BOPPIN' B, Boppin'B,
   Boppin B, boppin b.); gewaehlt ist die Form aus dem Fliesstext der
   Ankuendigung.
@@ -57,7 +58,7 @@ quellen:
   - url: https://www.asb-bahnhof-barsinghausen.de/2026/05/29/03-10-2026-boppin-b/
     titel: 03.10.2026 – Boppin' B (ASB-Bahnhof Barsinghausen)
     abgerufenAm: 2026-09-23
-    felder: [beginn, ort, preise, eintritt, ticketUrl, lineupWeitere, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
+    felder: [beginn, ort, preise, eintritt, ticketUrl, lineupBands, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.reservix.de/tickets-boppinb/t3454
     titel: Boppin' B – Tickets und Termine (Reservix)
@@ -66,7 +67,7 @@ quellen:
     art: aggregator
 ---
 
-Boppin'B im ASB-Bahnhof Barsinghausen ist ein Konzert der Aschaffenburger Band Boppin'B am Samstag, dem 3. Oktober 2026, um 20:15 Uhr. Angekündigt ist ein Abend mit [Rock'n'Roll](/lexikon/rocknroll/) und [Rockabilly](/lexikon/rockabilly/) aus dem Jubiläumsprogramm zu 40 Jahren Bandgeschichte.
+Boppin'B im ASB-Bahnhof Barsinghausen ist ein Konzert der Aschaffenburger Band [Boppin'B](/bands/boppin-b/) am Samstag, dem 3. Oktober 2026, um 20:15 Uhr. Angekündigt ist ein Abend mit [Rock'n'Roll](/lexikon/rocknroll/) und [Rockabilly](/lexikon/rockabilly/) aus dem Jubiläumsprogramm zu 40 Jahren Bandgeschichte.
 
 ## Der Termin von Boppin'B in Barsinghausen
 
@@ -76,7 +77,7 @@ Die Terminliste der Band beim Ticketanbieter führt denselben Abend mit derselbe
 
 ## Die Musik von Boppin'B
 
-Das Haus zählt die Band zu den erfolgreichsten Vertretern ihres Genres in Deutschland; sie steht seit 40 Jahren auf der Bühne und hat nach dieser Angabe mehr als 6.000 Konzerte gespielt. Die Ankündigung verspricht einen Abend zum Tanzen; sie verbindet nach ihrer Beschreibung die Wurzeln des Rockabilly mit eigenen Songs. Eine eigene Seite hat Boppin'B in diesem Register noch nicht, die Band steht deshalb als Name im Line-up.
+Das Haus zählt die Band zu den erfolgreichsten Vertretern ihres Genres in Deutschland; sie steht seit 40 Jahren auf der Bühne und hat nach dieser Angabe mehr als 6.000 Konzerte gespielt. Die Ankündigung verspricht einen Abend zum Tanzen; sie verbindet nach ihrer Beschreibung die Wurzeln des Rockabilly mit eigenen Songs.
 
 ## Einordnung des Konzerts in Barsinghausen
 
