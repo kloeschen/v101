@@ -93,18 +93,6 @@ zurück" bekommt. Vorher messen, wie oft sich Angaben in den letzten Tagen vor
 einem Termin tatsächlich ändern — bei sieben Events ist das noch nicht
 beantwortbar.
 
-`frei` **Neo-Rockabilly: erst eine Quelle, dann ein Eintrag.** Der Begriff war als
-achter der Gruppe vorgesehen und ist nicht angelegt, weil ihn keine der
-geöffneten Quellen definiert. Die englische Wikipedia führt einen Stub, der
-das Genre auf „ab 1990" datiert und Kings of Leon und The Black Keys nennt;
-die deutsche Wikipedia datiert Neo-Rockabilly im Rockabilly-Artikel auf die
-1980er Jahre und die Stray Cats. Der Artikel zu Restless nennt die Band
-„pioneers of neo-rockabilly", ohne zu sagen, was das ist. Zwei einander
-widersprechende Datierungen und keine Definition tragen keinen Eintrag.
-Nötig wäre eine Quelle, die den Begriff bestimmt — Fachliteratur oder ein
-Szenemagazin. Bis dahin steht die Unterscheidung in der `abgrenzung` von
-Rockabilly und Psychobilly.
-
 `mensch` **Boogie-Woogie als Tanz: eigener Eintrag oder nicht?** Im deutschsprachigen
 Raum meint das Wort fast immer den Paartanz und nicht den Klavierstil, und
 getanzt wird dazu Rock'n'Roll, Rockabilly, Jump Blues und Swing — gerade
