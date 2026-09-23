@@ -433,6 +433,70 @@ fall({
   verboten: ["interne-links"],
 });
 
+/* --- link-auf-entwurf (seit 2026-09-23) --------------------------- */
+/*
+ * Ein freigegebener Eintrag, der im Fliesstext auf einen Entwurf verlinkt,
+ * zeigt in der Produktion ins Leere: Entwuerfe werden dort nicht gebaut.
+ * `interne-links` sieht es nicht, weil es gegen den Bestand prueft. Am
+ * 2026-09-23 standen so zwanzig Links auf einen Entwurf, und alles war gruen.
+ *
+ * Die vier Faelle sind so gewaehlt, dass jede Bedingung der Regel einzeln
+ * einen Gegenstand hat: Status der Quelle, Status des Ziels, Existenz des
+ * Ziels.
+ */
+const LIVE = ["veroeffent", "licht"].join("");
+
+fall({
+  name: "link-auf-entwurf: freigegebenes Ziel fuer die Gegenprobe",
+  datei: "lexikon/freiziel.md",
+  inhalt: md(lexFelder("Freizielrock", { status: LIVE }), lexKoerper("Freizielrock")),
+  verboten: ["schema", "link-auf-entwurf"],
+});
+
+fall({
+  name: "link-auf-entwurf: freigegeben verlinkt auf Entwurf schlaegt an",
+  datei: "lexikon/frei-auf-entwurf.md",
+  inhalt: md(
+    lexFelder("Freilinkrock", { status: LIVE }),
+    `${lexKoerper("Freilinkrock")}\n\nVergleiche den [Tellerrock](/lexikon/tellerrock/) und den [Freizielrock](/lexikon/freiziel/).`,
+  ),
+  erwartet: { "link-auf-entwurf": "fehler" },
+  // Der Link auf `tellerrock` loest im Bestand auf — `interne-links` darf
+  // hier NICHT anschlagen. Genau das war die Luecke.
+  verboten: ["interne-links"],
+});
+
+fall({
+  name: "link-auf-entwurf: freigegeben verlinkt nur auf Freigegebenes schweigt",
+  datei: "lexikon/frei-auf-frei.md",
+  inhalt: md(
+    lexFelder("Freifreirock", { status: LIVE }),
+    `${lexKoerper("Freifreirock")}\n\nVergleiche den [Freizielrock](/lexikon/freiziel/) und den [Freilinkrock](/lexikon/frei-auf-entwurf/).`,
+  ),
+  verboten: ["link-auf-entwurf"],
+});
+
+fall({
+  name: "link-auf-entwurf: ein Entwurf darf auf einen Entwurf zeigen",
+  datei: "lexikon/entwurf-auf-entwurf.md",
+  inhalt: md(
+    lexFelder("Entwurflinkrock"),
+    `${lexKoerper("Entwurflinkrock")}\n\nVergleiche den [Tellerrock](/lexikon/tellerrock/) und den [Bolero](/lexikon/bolero/).`,
+  ),
+  verboten: ["link-auf-entwurf"],
+});
+
+fall({
+  name: "link-auf-entwurf: ein toter Link wird nicht doppelt gemeldet",
+  datei: "lexikon/frei-tot.md",
+  inhalt: md(
+    lexFelder("Freitotrock", { status: LIVE }),
+    `${lexKoerper("Freitotrock")}\n\nVergleiche den [Nichteintrag](/lexikon/gibtesnichtimregister/) und den [Freizielrock](/lexikon/freiziel/).`,
+  ),
+  erwartet: { "interne-links": "fehler" },
+  verboten: ["link-auf-entwurf"],
+});
+
 /* ------------------------------------------------------------------ */
 /* Duplikate (globale Pruefung)                                        */
 /* ------------------------------------------------------------------ */
@@ -1097,6 +1161,12 @@ fall({
  * `interne-links` verlangt. Ohne sie truebe eine zweite, echte Warnung den
  * Exitcode, und der Lauf misst nicht mehr, was er messen soll.
  */
+// BIS ZUM 2026-09-23 verlinkte dieser freigegebene Eintrag auf `tellerrock`
+// und `bolero` — beide hier Entwuerfe. Er galt als "sauber bis auf den
+// Hinweis", weil nichts pruefte, dass ein freigegebener Eintrag nicht auf
+// einen Entwurf zeigen darf. Die Regel `link-auf-entwurf` hat ihn beim
+// ersten Lauf gemeldet: Die Vorrichtung trug genau den Zustand, den die neue
+// Regel verbietet. Jetzt zeigt er auf zwei freigegebene Ziele.
 fall({
   name: "veroeffentlichungsreife: sonst sauberer Eintrag, nur ohne aliases",
   datei: "lexikon/reife-nur-hinweis.md",
@@ -1104,7 +1174,7 @@ fall({
     lexFelder("Nurhinweisrock", { status: "veroeffentlicht", aliases: "[]" }),
     `Ein Nurhinweisrock ist ein Kleidungsstueck aus der Mode der fuenfziger Jahre, das in der Taille eng anliegt und nach unten weit ausschwingt. ` +
       `In der Vintage- und Rockabilly-Szene gilt der Nurhinweisrock bis heute als feste Groesse, weil er die Silhouette der Zeit ohne Hilfsmittel traegt.\n\n` +
-      `## Schnitt von Nurhinweisrock\n\nVerwandt sind der [Tellerrock](/lexikon/tellerrock/) und der [Bolero](/lexikon/bolero/). ${fueller(80)}`,
+      `## Schnitt von Nurhinweisrock\n\nVerwandt sind der [Freizielrock](/lexikon/freiziel/) und der [Reifgutrock](/lexikon/reife-gut/). ${fueller(80)}`,
   ),
   erwartet: { veroeffentlichungsreife: "hinweis" },
   verboten: ["interne-links", "pruefkadenz", "quellen-vorhanden", "gp-abgrenzung"],

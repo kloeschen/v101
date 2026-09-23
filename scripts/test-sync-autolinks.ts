@@ -88,6 +88,42 @@ definition: Ein Eintrag ist ein Element dieses Registers ohne weiteren Text.
 `,
 );
 
+// Seit dem 2026-09-23: Ein Entwurf ist kein Linkziel. Der Begriff
+// "Tellerrock" existiert nur als Entwurf, und ein freigegebener Artikel
+// nennt ihn. Ein Link darauf zeigte in der Produktion ins Leere.
+const tellerrockDatei = inhalt(
+  "lexikon/tellerrock.md",
+  `---
+name: Tellerrock
+aliases: []
+kurzbeschreibung: Der Tellerrock ist ein weit schwingender Rock, dessen Stoff im Schnitt einen vollen Kreis ergibt.
+status: entwurf
+erstelltAm: 2026-08-01
+geprueftAm: 2026-08-01
+kategorie: mode
+definition: Der Tellerrock ist ein kreisrund geschnittener Rock.
+---
+
+Der Tellerrock ist ein kreisrund geschnittener Rock. Ausgebreitet ergibt sein Stoff einen Kreis, daher der Name, und beim Drehen hebt er sich weit vom Körper ab.
+`,
+);
+const tellerArtikel = inhalt(
+  "artikel/drehen.md",
+  `---
+name: Warum sich ein Rock beim Tanzen hebt und wovon das abhängt
+aliases: []
+kurzbeschreibung: Wie weit sich ein Rock beim Drehen hebt, hängt vom Schnitt ab, und kaum ein Schnitt hebt sich so weit wie der Tellerrock.
+${basis}
+autor: markus
+typ: spoke
+saeule: mode
+veroeffentlichtAm: 2026-08-01
+---
+
+Wie weit sich ein Rock beim Drehen hebt, hängt vor allem vom Schnitt ab. Der Tellerrock hebt sich dabei am weitesten, weil sein Stoff einen vollen Kreis bildet und nichts ihn an den Hüften hält.
+`,
+);
+
 /* ------------------------------------------------------------------ */
 /* Läufe                                                               */
 /* ------------------------------------------------------------------ */
@@ -142,6 +178,41 @@ pruefe("Datei nach zweitem Lauf byteidentisch", readFileSync(falleDatei, "utf8")
 const standVorDry = readFileSync(falleDatei, "utf8");
 execFileSync("npx", ["tsx", skript, "--dry-run"], { cwd: wurzel, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
 pruefe("--dry-run schreibt nichts", readFileSync(falleDatei, "utf8") === standVorDry);
+
+/* --- Entwurf ist kein Ziel, Freigabe macht es zu einem ---------- */
+{
+  const artikelStand = readFileSync(tellerArtikel, "utf8");
+  pruefe(
+    "ein Entwurf wird nicht verlinkt, auch wenn ein freigegebener Text ihn nennt",
+    !artikelStand.includes("](/lexikon/tellerrock/)"),
+    artikelStand.slice(-250),
+  );
+  // Lebenszeichen: Der Artikel enthält den Begriff wirklich. Sonst wäre
+  // "kein Link" auch dann wahr, wenn das Wort gar nicht darin stünde.
+  pruefe("der Artikel nennt den Begriff tatsächlich", artikelStand.includes("Tellerrock"), artikelStand.slice(-250));
+
+  // Jetzt freigeben — dieselbe Zeile, die freigeben.ts ändert — und erneut
+  // laufen lassen. Der Link muss jetzt kommen: Sonst wäre die Sperre oben
+  // auch mit einem Skript wahr, das Tellerrock grundsätzlich nie verlinkt.
+  const FREI = ["veroeffent", "licht"].join("");
+  writeFileSync(
+    tellerrockDatei,
+    readFileSync(tellerrockDatei, "utf8").replace("status: entwurf", `status: ${FREI}`),
+    "utf8",
+  );
+  let ausgabe3 = "";
+  try {
+    ausgabe3 = lauf();
+  } catch (e) {
+    fehler.push(`dritter Lauf abgestürzt: ${(e as any).stderr ?? e}`);
+  }
+  pruefe(
+    "nach der Freigabe wird der Begriff verlinkt",
+    readFileSync(tellerArtikel, "utf8").includes("[Tellerrock](/lexikon/tellerrock/)"),
+    readFileSync(tellerArtikel, "utf8").slice(-250),
+  );
+  pruefe("und der Bericht nennt genau diese Datei", ausgabe3.includes("drehen.md"), ausgabe3);
+}
 
 rmSync(wurzel, { recursive: true, force: true });
 

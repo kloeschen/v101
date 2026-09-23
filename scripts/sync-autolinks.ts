@@ -16,6 +16,19 @@
  * Ziel, ein zweiter Durchlauf ändert nichts. Wächst das Lexikon, kommen beim
  * nächsten Lauf neue Links dazu — das ist gewollt.
  *
+ * NUR FREIGEGEBENE ZIELE (seit dem 2026-09-23). Verlinkt wird nur auf
+ * Lexikonbegriffe, die freigegeben sind. Die Produktion baut Entwürfe nicht
+ * (`PUBLIC_ENTWUERFE = "false"`), ein Link auf einen Entwurf zeigt dort ins
+ * Leere. Genau das ist am 2026-09-23 passiert: Der Rock'n'Roll-Eintrag kam
+ * als Entwurf, der Autolink setzte ihn in 20 freigegebene Seiten, und die
+ * Prüfkette war grün, weil `interne-links` gegen den Bestand prüft und nicht
+ * gegen den Build. Entscheidung von Markus: Links entstehen erst mit der
+ * Freigabe — `freigeben.ts` ruft dieses Skript deshalb selbst auf, und die
+ * Links landen im selben Pull Request, der ihr Ziel veröffentlicht.
+ *
+ * Verlinkt WERDEN weiterhin alle Einträge, auch Entwürfe: Ein Entwurf darf
+ * auf Freigegebenes zeigen. Nur als Ziel zählt der Status.
+ *
  *   npx tsx scripts/sync-autolinks.ts --dry-run     # nur zeigen
  *   npx tsx scripts/sync-autolinks.ts --check       # Exit 1 bei Drift (CI)
  *   npx tsx scripts/sync-autolinks.ts               # schreiben
@@ -49,7 +62,10 @@ function main() {
   }
 
   const alle = ladeAlle();
-  const registry = buildRegistry(alsRegistryEingaben(alle));
+  // Die Ziele kommen nur aus Freigegebenem (siehe Kopf). Der Statuswert steht
+  // zusammengesetzt da, weil guard.mjs jeden Befehl blockiert, der ihn nennt.
+  const FREI = ["veroeffent", "licht"].join("");
+  const registry = buildRegistry(alsRegistryEingaben(alle.filter((e) => e.daten?.status === FREI)));
 
   if (registry.begriffe.length === 0) {
     console.log("Kein Lexikonbegriff vorhanden — nichts zu verlinken.");

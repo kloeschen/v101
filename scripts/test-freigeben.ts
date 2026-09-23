@@ -155,12 +155,29 @@ try {
    * belastbarere Fall: Einen Autor hat jeder Eintrag, den ein Mensch
    * freigibt, das ist immer erfüllbar.
    */
-  // Alle drei zuerst anlegen: Die internen Links zeigen aufeinander, und ein
-  // Link auf einen noch nicht existierenden Eintrag waere ein Verstoss, der
-  // mit der Freigabelogik nichts zu tun hat.
-  writeFileSync(datei("kaputt"), eintrag("Kaputtprobe", ["sauber", "trocken"], { autor: undefined }));
-  writeFileSync(datei("sauber"), eintrag("Sauberprobe", ["kaputt", "trocken"]));
-  writeFileSync(datei("trocken"), eintrag("Trockenprobe", ["kaputt", "sauber"]));
+  // FESTE LINKZIELE, von Anfang an freigegeben.
+  //
+  // Bis zum 2026-09-23 verlinkten die Prüfeinträge aufeinander: `sauber`
+  // zeigte auf `kaputt` (fällt durch, bleibt Entwurf) und auf `trocken` (wird
+  // nie freigegeben). In der Produktion wären das tote Links gewesen. Die
+  // Regel `link-auf-entwurf` hat beim ersten Lauf dieser Datei elf
+  // Behauptungen fallen lassen — nicht weil die Freigabelogik falsch war,
+  // sondern weil die Vorrichtung genau den Zustand trug, den die neue Regel
+  // verbietet. Jetzt zeigen alle Prüfeinträge auf drei Anker, die schon
+  // freigegeben sind; Querverweise gibt es nur dort, wo ein Abschnitt sie
+  // prüft (8 und 9).
+  const ANKER = ["anker-eins", "anker-zwei", "anker-drei"];
+  for (const a of ANKER) {
+    writeFileSync(
+      datei(a),
+      eintrag(`Anker${a.split("-")[1]}`, ANKER.filter((x) => x !== a), { status: FREI }),
+    );
+  }
+  const ziele = ["anker-eins", "anker-zwei"];
+
+  writeFileSync(datei("kaputt"), eintrag("Kaputtprobe", ziele, { autor: undefined }));
+  writeFileSync(datei("sauber"), eintrag("Sauberprobe", ziele));
+  writeFileSync(datei("trocken"), eintrag("Trockenprobe", ziele));
 
   {
     const r = lauf(temp, ["--slugs", "kaputt,sauber"]);
@@ -210,7 +227,7 @@ try {
     // Ergebnis; der Mutationsbeleg hat genau das aufgedeckt (Lektion 19).
     writeFileSync(
       datei("schonfrei"),
-      eintrag("Schonfreiprobe", ["kaputt", "sauber"], { status: FREI, geprueftAm: "2026-01-15" }),
+      eintrag("Schonfreiprobe", ziele, { status: FREI, geprueftAm: "2026-01-15" }),
     );
     const vorher = readFileSync(datei("schonfrei"), "utf8");
     const r = lauf(temp, ["--slugs", "schonfrei"]);
@@ -274,8 +291,8 @@ try {
    * Eintrag scheitert, den er gerade freigegeben hat.
    */
   {
-    writeFileSync(datei("ausgabeok"), eintrag("Ausgabeprobe", ["ausgabekaputt", "sauber"]));
-    writeFileSync(datei("ausgabekaputt"), eintrag("Ausgabefehler", ["ausgabeok", "sauber"], { autor: undefined }));
+    writeFileSync(datei("ausgabeok"), eintrag("Ausgabeprobe", ziele));
+    writeFileSync(datei("ausgabekaputt"), eintrag("Ausgabefehler", ziele, { autor: undefined }));
     const ausgabe = path.join(temp, "github-output.txt");
     writeFileSync(ausgabe, "", "utf8");
 
@@ -294,12 +311,92 @@ try {
   }
   {
     // Ein Trockenlauf gibt nichts frei, also bestätigt er auch nichts.
-    writeFileSync(datei("ausgabetrocken"), eintrag("Trockenausgabe", ["ausgabeok", "sauber"]));
+    writeFileSync(datei("ausgabetrocken"), eintrag("Trockenausgabe", ziele));
     const ausgabe = path.join(temp, "github-output-trocken.txt");
     writeFileSync(ausgabe, "", "utf8");
     lauf(temp, ["--slugs", "ausgabetrocken", "--dry-run"], { GITHUB_OUTPUT: ausgabe });
     gleich("ein Trockenlauf schreibt keine Slug-Ausgabe", readFileSync(ausgabe, "utf8"), "");
     gleich("und lässt den Eintrag, wie er war", statusVon("ausgabetrocken"), "entwurf");
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* 7. Die Freigabe zieht den Autolink nach                           */
+  /* ---------------------------------------------------------------- */
+  /*
+   * Seit dem 2026-09-23 verlinkt der Autolink nur freigegebene Ziele. Ein
+   * eben freigegebener Begriff wird also erst durch die Freigabe zum Ziel —
+   * und freigeben.ts muss die Links im selben Lauf setzen. Täte es das
+   * nicht, meldete `autolink:check` im Freigabe-Workflow Drift, `verify:ci`
+   * würde rot, und es entstünde gar kein Pull Request.
+   */
+  {
+    writeFileSync(datei("slaptechnik"), eintrag("Slaptechnik", ziele));
+    writeFileSync(
+      datei("erwaehner"),
+      eintrag("Erwaehnerprobe", ziele) +
+        "\nIm Unterricht beginnt man selten mit der Slaptechnik, sondern mit dem gezupften Grundton.\n",
+    );
+    const nenntLink = () => readFileSync(datei("erwaehner"), "utf8").includes("[Slaptechnik](/lexikon/slaptechnik/)");
+
+    // Lebenszeichen: Der erwähnende Text nennt den Begriff wirklich — sonst
+    // wäre "kein Link" auch aus diesem Grund wahr.
+    pruefe("Probe: der Text nennt den Begriff", readFileSync(datei("erwaehner"), "utf8").includes("Slaptechnik"));
+
+    // Trockenlauf: nichts freigegeben, also auch kein Link.
+    lauf(temp, ["--slugs", "slaptechnik", "--dry-run"]);
+    pruefe("ein Trockenlauf setzt keinen Link auf den Kandidaten", !nenntLink());
+    gleich("und der Kandidat bleibt Entwurf", statusVon("slaptechnik"), "entwurf");
+
+    // Echte Freigabe: Jetzt muss der Link da sein.
+    const r = lauf(temp, ["--slugs", "slaptechnik"]);
+    gleich("der Begriff wurde freigegeben", statusVon("slaptechnik"), FREI);
+    pruefe("die Freigabe setzt den Link im selben Lauf", nenntLink(), readFileSync(datei("erwaehner"), "utf8").slice(-200));
+    pruefe("der Bericht weist den Autolink aus", r.out.includes("Autolink nach der Freigabe"), JSON.stringify(r.out.slice(-300)));
+    pruefe("Lauf endet ohne Fehlercode", r.code === 0, `Code ${r.code}`);
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* 8. Gemeinsam freigeben: die Reihenfolge darf nichts entscheiden   */
+  /* ---------------------------------------------------------------- */
+  /*
+   * Seit `link-auf-entwurf` darf ein freigegebener Eintrag nicht auf einen
+   * Entwurf zeigen. Früher wurde Eintrag für Eintrag geprüft — ein Artikel,
+   * der vor seinem Begriff an der Reihe war, wäre abgelehnt worden, weil der
+   * Begriff in dem Moment noch Entwurf war. Die Freigabe vom 2026-09-22 wäre
+   * daran gescheitert.
+   *
+   * "kette-artikel" kommt alphabetisch VOR "kette-begriff": Die Reihenfolge,
+   * die früher scheiterte, ist hier die, in der das Skript sie sieht.
+   */
+  {
+    writeFileSync(datei("kette-begriff"), eintrag("Kettenbegriff", ziele));
+    writeFileSync(datei("kette-artikel"), eintrag("Kettenartikel", ["kette-begriff", "anker-eins"]));
+    const r = lauf(temp, ["--slugs", "kette-artikel,kette-begriff"]);
+    gleich("der Begriff wird freigegeben", statusVon("kette-begriff"), FREI);
+    gleich("und der Artikel, der vor ihm an der Reihe war, ebenfalls", statusVon("kette-artikel"), FREI);
+    pruefe("keiner der beiden wird abgelehnt", !/ABGELEHNT/.test(r.out), JSON.stringify(r.out.slice(0, 400)));
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* 9. Kaskade: fällt das Ziel durch, fällt der Verweis mit           */
+  /* ---------------------------------------------------------------- */
+  /*
+   * Das Gegenstück zu 8, und der Grund für die Wiederholung bis zum
+   * Fixpunkt: Im ersten Durchgang ist das Ziel noch mit freigegeben, der
+   * Verweis darauf also gültig. Erst wenn das Ziel zurückgerollt ist, zeigt
+   * der Verweis auf einen Entwurf — das sieht nur ein zweiter Durchgang.
+   */
+  {
+    writeFileSync(datei("kaskade-ziel"), eintrag("Kaskadenziel", ziele, { autor: undefined }));
+    writeFileSync(datei("kaskade-zeiger"), eintrag("Kaskadenzeiger", ["kaskade-ziel", "anker-eins"]));
+    const r = lauf(temp, ["--slugs", "kaskade-ziel,kaskade-zeiger"]);
+    gleich("das Ziel mit Regelverstoß bleibt Entwurf", statusVon("kaskade-ziel"), "entwurf");
+    gleich("der Eintrag, der darauf zeigt, bleibt ebenfalls Entwurf", statusVon("kaskade-zeiger"), "entwurf");
+    pruefe(
+      "und der Bericht nennt dafür den Link auf den Entwurf",
+      /ABGELEHNT[\s\S]*kaskade-zeiger[\s\S]*link-auf-entwurf/.test(r.out),
+      JSON.stringify(r.out.slice(0, 600)),
+    );
   }
 } finally {
   rmSync(temp, { recursive: true, force: true });

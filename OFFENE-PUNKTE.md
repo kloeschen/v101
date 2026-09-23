@@ -32,36 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **Ein Entwurf, auf den 20 freigegebene Seiten zeigen.** Der Autolink hat
-beim Rock'n'Roll-Eintrag am 2026-09-23 zum ersten Mal Links in freigegebene
-Dateien geschrieben, deren **Ziel ein Entwurf ist**. In der Produktion
-(`PUBLIC_ENTWUERFE = "false"` in `netlify.toml`) wird `/lexikon/rocknroll/`
-nicht gebaut — die 20 Seiten tragen dort also einen Link ins Leere, und die
-ganze Prüfkette ist dabei grün: `interne-links` prüft gegen den Bestand,
-nicht gegen den Build. Gemessen, nicht vermutet: `npm run build` ohne den
-Vorschauschalter erzeugt 20 Dateien mit `href="/lexikon/rocknroll/"` und
-keine Zielseite. **Neu ist das mit diesem Eintrag** — vor der Freigabe vom
-2026-09-22 war kein Entwurf im Bestand, auf den eine freigegebene Seite
-zeigte (nachgestellt gegen `d96c6b1^1`: sieben Entwürfe, kein einziger
-Verweis von einer freigegebenen Seite). Lektion 19 hat das vorhergesagt: Ein
-Zustand, den es zum ersten Mal gibt, lässt Prüfungen zum ersten Mal laufen.
-**Zu entscheiden ist eine Semantik, deshalb liegt es hier.** Zwei
-vertretbare Wege:
-(a) *Der Autolink verlinkt nur freigegebene Ziele.* Kosten: Die Links
-entstehen erst beim nächsten Autolink-Lauf nach der Freigabe, also im
-Freigabe-Pull-Request — dort wird `autolink:check` rot, bis jemand
-`npm run autolink` ausführt. Die Freigabe bekommt damit einen Handgriff mehr,
-und der Freigabe-PR wächst um die Linkdateien. Gewinn: Was der Autolink
-schreibt, zeigt immer auf eine Seite, die es in der Produktion gibt.
-(b) *Entwürfe werden gebaut, aber mit `noindex`.* Kosten: Die Produktion
-zeigt dann unfreigegebene Inhalte, und `netlify.toml` sagt dort ausdrücklich
-das Gegenteil zu („Die Produktion zeigt ausschließlich, was ein Mensch
-freigegeben hat"). Gewinn: kein Handgriff, keine Drift, Links stimmen sofort.
-Empfehlung: (a) — sie hält beide bestehenden Zusagen, (b) bricht eine davon.
-**Bis dahin:** Diesen Pull Request nicht lange offen liegen lassen und den
-Eintrag zeitnah freigeben; solange `PUBLIC_INDEXIERBAR = "false"` steht,
-sieht kein Suchindex die 20 Stellen.
-
 `frei` **Zwei Altfunde der neuen Regel `lexikon-schreibvarianten`.** Die Regel
 (seit 2026-09-23 in `validate-content.ts`) meldet Trennzeichen-Schreibungen
 im Bestand, die kein Name und kein Alias deckt und die der Autolink deshalb

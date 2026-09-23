@@ -408,6 +408,15 @@ Eintrag ohne `autor` käme sonst durch. Fällt ein Eintrag durch, wird er
 zurückgerollt, im Bericht mit Grund genannt — und der Lauf macht mit den
 übrigen weiter.
 
+**Seit dem 2026-09-23 gibt `freigeben.ts` gemeinsam frei**: alle Kandidaten
+zugleich schreiben, dann prüfen, Durchgefallene zurückrollen, wiederholen,
+bis nichts mehr kippt. Ein Artikel und der Begriff, auf den er verlinkt,
+gehen also im selben Lauf durch, egal in welcher Reihenfolge. Fällt der
+Begriff durch, fällt der Artikel mit — er zeigte sonst in der Produktion
+ins Leere (`link-auf-entwurf`). Danach zieht das Skript den Autolink nach:
+Der verlinkt nur freigegebene Ziele, ein eben freigegebener Begriff wird
+also erst jetzt verlinkt, und zwar im selben Pull Request.
+
 Bereits freigegebene Einträge werden übersprungen, nicht erneut angefasst.
 Sonst wanderte `geprueftAm` bei jedem Lauf weiter und behauptete eine
 Prüfung, die niemand vorgenommen hat.
