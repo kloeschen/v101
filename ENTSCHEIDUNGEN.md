@@ -13,6 +13,99 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Der Rock'n'Roll-Eintrag, und was er über drei Prüfungen verrät
+
+Der unbeaufsichtigte Lauf hat den obersten freien Posten gebaut: den
+Lexikoneintrag zum Rock'n'Roll. Vier Quellen einzeln geöffnet (deutsche
+Wikipedia, Britannica, DWDS, Duden), und aus dem Eintrag selbst sind drei
+Funde gefallen, die über ihn hinausreichen.
+
+### 1. `aeraVon`/`aeraBis` bleiben leer, weil sich die Quellen widersprechen
+
+Alle vier datieren in Jahrzehnten, und zwar unterschiedlich: Duden „Anfang
+der 50er-Jahre", Britannica „mid-1950s", die deutsche Wikipedia „1950er- und
+frühe 1960er-Jahre", das DWDS schlicht „50er Jahre 20. Jh.". Keine nennt ein
+Jahr für Anfang oder Ende. Jede Zahl in diesen Feldern wäre damit eine
+Auslegung von „Anfang" oder „Mitte" — also geschätzt. Die Felder bleiben
+leer, die Spannbreite bekommt einen eigenen Abschnitt im Text. Der Posten
+hatte das vorhergesagt; die Messung hat es bestätigt und um den Duden
+erweitert.
+
+### 2. Zur Wortprägung widerspricht sich die Wikipedia selbst
+
+Sie schreibt, der Begriff sei „vermutlich erstmals 1951 vom amerikanischen DJ
+Alan Freed geprägt" worden, führt im nächsten Satz Gegenbelege von 1934
+(Boswell Sisters) und 1951 (Eunice Davis) an, und datiert Freeds erste
+Verwendung als Genrebezeichnung an anderer Stelle auf den **Herbst 1955**.
+Drei Angaben, eine Quelle, kein Ausgleich — und der Artikel trägt einen
+„Belege fehlen"-Baustein. Britannica stützt die Gegenseite: „For decades
+African Americans had used the term rock and roll as a euphemism for sex",
+und Freed erscheint dort als einer von drei Diskjockeys, die den Sound
+verbreiteten. Nach Lektion 20 steht der Widerspruch im Text, benannt und
+zugeordnet; gesichert übrig bleibt die schwächere Aussage, dass Freed den
+Begriff durchgesetzt, nicht erfunden hat.
+
+### 3. Neue Regel `lexikon-schreibvarianten` — weil die Prosa danebenlag
+
+Der Posten nannte zwei Schreibungen im Bestand (`Rock'n'Roll` 77-mal,
+`Rock-'n'-Roll` 15-mal) und verlangte beide als Alias. **Es sind drei:**
+`Rock 'n' Roll` mit Leerzeichen steht viermal in drei Dateien. Ohne diesen
+dritten Alias wären genau diese vier Stellen stumm unverlinkt geblieben —
+fehlende Links zeigen nichts an, deshalb hätte es niemand gemerkt. Das ist
+Regel 3 im Reinformat: Eine Anforderung, die zählt, stand in Prosa, und die
+Prosa war unvollständig.
+
+Die Regel meldet jetzt jede Trennzeichen-Schreibung eines Lexikonbegriffs,
+die im freien Text des Bestands steht und die kein Name und kein Alias
+literal deckt. Gemessen über den ganzen Bestand: drei Funde, null
+Fehlalarme. Einen davon hat der Lauf gleich selbst behoben (das
+Wikipedia-Lemma mit typografischen Apostrophen als vierten Alias), zwei
+stehen als eigener `frei`-Posten offen.
+
+**Verworfen: Ebene `warnung`.** Nach dem Kriterium im Kopf von
+`validate-content.ts` — eine Warnung benennt etwas, das ein sorgfältiger
+Eintrag beheben kann, ein Hinweis etwas, das er nur durch Erfinden beheben
+kann — wäre eine Warnung richtig: Die Regel nennt eine Zeichenfolge, die
+nachweislich im Bestand steht, es ist nichts zu erfinden. Blockierend wird
+sie aber erst tragfähig, wenn die zwei Altfunde entschieden sind, und ob eine
+Bindestrichschreibung einen Alias verdient, ist eine redaktionelle Frage an
+freigegebenen Einträgen. Erst der Posten, dann die Ebene.
+
+**Verworfen: die Messung über Wort-Tokens.** Der erste Entwurf zerlegte den
+Fließtext in Tokens und verglich deren Normalform. Er fiel zweimal um, und
+beide Male zeigte es der Mutationsbeleg, nicht der Code: Das Token-Muster
+konnte weder zwei Trennzeichen hintereinander lesen (`Rock 'n' Roll`) noch
+aufhören, gierig bis zum vierten Wort zu greifen (`Rock 'n' Roll war`). Die
+tragfähige Fassung dreht die Richtung um: pro Begriff ein Muster, das seine
+Bestandteile mit beliebigen Trennzeichen wieder zusammensetzt.
+
+Zwischen den Bestandteilen steht `+` und nicht `*`, und das ist der einzige
+Unterschied zwischen null und einem Fehlalarm: Mit `*` matchte
+`Pork Pie Hat` auf „Porkpie hat" — ein deutsches Hilfsverb hinter einem Hut.
+Belegt durch eine Mutation, deren erster Anlauf nicht fiel, weil der Testfall
+`Hat` groß schrieb und damit nur die Groß-/Kleinschreibung prüfte.
+
+### 4. Fund ohne Entscheidung: 20 freigegebene Seiten zeigen auf einen Entwurf
+
+Der Autolink hat 20 Links in freigegebene Dateien geschrieben, deren Ziel
+`status: entwurf` trägt. In der Produktion wird die Seite nicht gebaut —
+`npm run build` ohne Vorschauschalter erzeugt 20 Dateien mit
+`href="/lexikon/rocknroll/"` und keine Zielseite —, und die Prüfkette ist
+dabei grün, weil `interne-links` gegen den Bestand prüft und nicht gegen den
+Build. Den Zustand gibt es zum ersten Mal: Vor der Freigabe vom 2026-09-22
+war kein Entwurf im Bestand, auf den eine freigegebene Seite zeigte
+(nachgestellt gegen `d96c6b1^1`). Lektion 19, wörtlich eingetreten.
+
+Hier wurde **nicht** gebaut, weil zwei vertretbare Wege offenstehen und die
+Wahl eine Semantik ist: Entweder verlinkt der Autolink nur freigegebene
+Ziele (dann wird `autolink:check` im Freigabe-PR rot, bis jemand
+`npm run autolink` ausführt), oder Entwürfe werden mit `noindex` gebaut (dann
+zeigt die Produktion unfreigegebene Inhalte, was `netlify.toml` ausdrücklich
+ausschließt). Als `mensch`-Posten in OFFENE-PUNKTE.md, mit Empfehlung für den
+ersten Weg — er hält beide bestehenden Zusagen.
+
+---
+
 ## 2026-09-22 — Die erste Freigabe über den Knopf hätte `main` rot gemacht
 
 Der Freigabe-Workflow lief am 2026-09-22 zum ersten Mal wirklich (die

@@ -39,7 +39,7 @@ quellen:
     art: offiziell
 ---
 
-Das Lido ist ein Konzertclub in der Cuvrystraße 7 in Berlin-Kreuzberg. Für die Vintage- und Rock-'n'-Roll-Szene ist es kein Stammhaus, sondern eine der Adressen, an denen internationale Gastspiele landen — etwa das Konzert von [Billy Childish und Trainwrecks](/events/billy-childish-trainwrecks-lido-2026-09-11/) im September 2026.
+Das Lido ist ein Konzertclub in der Cuvrystraße 7 in Berlin-Kreuzberg. Für die Vintage- und [Rock-'n'-Roll](/lexikon/rocknroll/)-Szene ist es kein Stammhaus, sondern eine der Adressen, an denen internationale Gastspiele landen — etwa das Konzert von [Billy Childish und Trainwrecks](/events/billy-childish-trainwrecks-lido-2026-09-11/) im September 2026.
 
 ## Das Haus
 

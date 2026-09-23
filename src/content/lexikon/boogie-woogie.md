@@ -75,6 +75,6 @@ Prägend waren in den späten 1920er Jahren Pinetop Smith und Jimmy Yancey — B
 
 ## Boogie-Woogie als Tanz
 
-Der Grund, warum dieser Eintrag mit einer Warnung beginnt, steht in einem eigenen Wikipedia-Artikel: Boogie-Woogie ist auch ein Gesellschafts- und Turniertanz aus der Familie der Swing-Tänze, entstanden in den 1920er Jahren in den USA aus dem East Coast Swing, einem vereinfachten Ableger des [Lindy Hop](/lexikon/lindy-hop/). Nach Europa brachten ihn amerikanische Soldaten nach dem Zweiten Weltkrieg. International werden die Turniere von der World Rock'n'Roll Confederation koordiniert.
+Der Grund, warum dieser Eintrag mit einer Warnung beginnt, steht in einem eigenen Wikipedia-Artikel: Boogie-Woogie ist auch ein Gesellschafts- und Turniertanz aus der Familie der Swing-Tänze, entstanden in den 1920er Jahren in den USA aus dem East Coast Swing, einem vereinfachten Ableger des [Lindy Hop](/lexikon/lindy-hop/). Nach Europa brachten ihn amerikanische Soldaten nach dem Zweiten Weltkrieg. International werden die Turniere von der World [Rock'n'Roll](/lexikon/rocknroll/) Confederation koordiniert.
 
 Entscheidend für die Verwechslungsgefahr ist die Musik: Getanzt wird Boogie-Woogie nach Angabe derselben Quelle überwiegend zu Rock'n'Roll, [Rockabilly](/lexikon/rockabilly/), Rock, [Jump Blues](/lexikon/jump-blues/) und Swing — also gerade nicht zum Klavierstil, der ihm den Namen gab. Wer in einem Terminkalender der Szene auf das Wort stößt, hat es deshalb fast immer mit dem Tanz zu tun.

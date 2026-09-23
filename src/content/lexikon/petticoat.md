@@ -120,7 +120,7 @@ Formgebende Unterröcke sind sehr viel älter als das Wort: Bereits im 16. Jahrh
 
 Seine Zeit kam mit der Nachkriegsmode. Christian Dior stellte am 12. Februar 1947 seine erste Kollektion vor — die Ligne Corolle, von Carmel Snow, damals Chefredakteurin der amerikanischen *Harper's Bazaar*, spontan „New Look" getauft. Schmale Taille über weitem, langem Rock prägte daraufhin die Damenmode der 50er und frühen 60er Jahre, und das taillierte Kostüm wurde je nach Saison mit engem oder mit petticoatgestütztem weitem Rock getragen.
 
-Ab 1954 wurde der Petticoat durch das Aufkommen des Rock-'n'-Roll-Tanzes ein zweites Mal populär, weil die weiten Röcke den Bewegungsabläufen des Tanzes entgegenkamen. Wie sehr er die Zeit beschäftigte, zeigt der Streit von 1958 darüber, ob Petticoats länger als die Überbekleidung und damit öffentlich sichtbar sein dürften. Er hielt sich durch die Twist-Phase und verschwand ab 1966 mit dem Aufkommen der Minirock-Mode aus der Alltagsmode.
+Ab 1954 wurde der Petticoat durch das Aufkommen des [Rock-'n'-Roll](/lexikon/rocknroll/)-Tanzes ein zweites Mal populär, weil die weiten Röcke den Bewegungsabläufen des Tanzes entgegenkamen. Wie sehr er die Zeit beschäftigte, zeigt der Streit von 1958 darüber, ob Petticoats länger als die Überbekleidung und damit öffentlich sichtbar sein dürften. Er hielt sich durch die Twist-Phase und verschwand ab 1966 mit dem Aufkommen der Minirock-Mode aus der Alltagsmode.
 
 ## Abgrenzung des Petticoats
 

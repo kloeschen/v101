@@ -92,7 +92,7 @@ quellen:
     art: offiziell
 ---
 
-Das Rock'n'Roll Festival Ganderkesee 2027 ist ein dreitägiges Festival vom 20. bis 22. August 2027 auf dem Flugplatz Ganderkesee westlich von Bremen. Drei Tage lang gibt es Livemusik, Tanzkurse, Oldtimer, einen Vintage-Markt und Foodtrucks auf einem Freigelände mit eigenem Campground.
+Das [Rock'n'Roll](/lexikon/rocknroll/) Festival Ganderkesee 2027 ist ein dreitägiges Festival vom 20. bis 22. August 2027 auf dem Flugplatz Ganderkesee westlich von Bremen. Drei Tage lang gibt es Livemusik, Tanzkurse, Oldtimer, einen Vintage-Markt und Foodtrucks auf einem Freigelände mit eigenem Campground.
 
 ## Der Termin
 

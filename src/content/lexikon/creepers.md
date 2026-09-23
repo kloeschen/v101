@@ -96,7 +96,7 @@ Ihren Höhepunkt hatten Creepers bei den Teds der 1950er und frühen 1960er Jahr
 
 Über dieselbe britische Linie kam ein zweites Stück in die Szene, das oft danebensteht und doch anders zu verorten ist: der [Porkpie](/lexikon/pork-pie/). Er gehört nicht zu den Teds, sondern zu den jamaikanischen Rude Boys und zum Ska — zwei Wege nach Großbritannien, die im heutigen Weekender-Publikum nebeneinander sichtbar sind.
 
-Rock 'n' Roll war für die Teds identitätsstiftend, und die Bewegung lebte Mitte der 1970er Jahre wieder auf — die Wikipedia nennt unter anderem die Stray Cats. Damit sind Creepers für die heutige Szene doppelt anschlussfähig: über die Teds selbst und über das Psychobilly-Revival, das dieselbe Silhouette weiterführte.
+[Rock 'n' Roll](/lexikon/rocknroll/) war für die Teds identitätsstiftend, und die Bewegung lebte Mitte der 1970er Jahre wieder auf — die Wikipedia nennt unter anderem die Stray Cats. Damit sind Creepers für die heutige Szene doppelt anschlussfähig: über die Teds selbst und über das Psychobilly-Revival, das dieselbe Silhouette weiterführte.
 
 ## Abgrenzung der Creepers
 

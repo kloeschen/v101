@@ -50,7 +50,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Jump Blues ist eine schnelle Spielart des Blues, die vor allem in den 1940er Jahren in den USA populär war und von einer kleinen Combo mit dominanter Bläsergruppe gespielt wurde. Sie steht am Übergang von der Big-Band-Ära zum Rhythm and Blues und gilt beiden geöffneten Quellen als Vorläufer des Rock'n'Roll. Für die Tanzszene ist sie bis heute Repertoire, nicht Geschichte.
+Jump Blues ist eine schnelle Spielart des Blues, die vor allem in den 1940er Jahren in den USA populär war und von einer kleinen Combo mit dominanter Bläsergruppe gespielt wurde. Sie steht am Übergang von der Big-Band-Ära zum Rhythm and Blues und gilt beiden geöffneten Quellen als Vorläufer des [Rock'n'Roll](/lexikon/rocknroll/). Für die Tanzszene ist sie bis heute Repertoire, nicht Geschichte.
 
 ## Merkmale von Jump Blues
 

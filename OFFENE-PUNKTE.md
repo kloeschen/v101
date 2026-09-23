@@ -32,42 +32,49 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **Bands und Artikel: drei Entwürfe stehen, die Freigabe fehlt.** Rest des
-an zwei aufeinanderfolgenden Tagen abgearbeiteten Postens, und er gehört von
-vornherein zum Menschen. `bands/mad-sin.md`,
-`artikel/petticoat-reifrock-unterrock.md` und
-`artikel/hot-rod-und-kustom-kulture.md` sind belegt und geprüft, aber
-`entwurf` — ein Lauf darf den freigegebenen Status nicht setzen. Solange das
-so ist, führt `npm run stale` beide Sammlungen weiter unter „Sammlungen ohne
-Eintrag": Der Bericht zählt freigegebene Einträge, und das ist richtig so,
-denn im Index steht nichts. Mit der Freigabe erledigt sich dieser Posten und
-die Meldung gleich mit.
-**Was beim Prüfen besonders hinzusehen ist**, jeweils in der
-Redaktionsnotiz begründet: Bei Mad Sin steht `aktiv: true` auf seinem
-Vorgabewert — Songkick führte die Band am 2026-09-20 als „off tour", Reservix
-meldete keine Termine, das letzte Album ist von 2020. Zwei Widersprüche
-zwischen Quellen stehen bewusst im Text statt im Feld (das Album „Babylon
-Reloaded", der Austritt von Gitarrist Stein). Und die offizielle Website war
-an beiden Recherchetagen nicht abrufbar, der Eintrag stützt sich also
-ausschließlich auf Fremdbeschreibungen.
+`mensch` **Ein Entwurf, auf den 20 freigegebene Seiten zeigen.** Der Autolink hat
+beim Rock'n'Roll-Eintrag am 2026-09-23 zum ersten Mal Links in freigegebene
+Dateien geschrieben, deren **Ziel ein Entwurf ist**. In der Produktion
+(`PUBLIC_ENTWUERFE = "false"` in `netlify.toml`) wird `/lexikon/rocknroll/`
+nicht gebaut — die 20 Seiten tragen dort also einen Link ins Leere, und die
+ganze Prüfkette ist dabei grün: `interne-links` prüft gegen den Bestand,
+nicht gegen den Build. Gemessen, nicht vermutet: `npm run build` ohne den
+Vorschauschalter erzeugt 20 Dateien mit `href="/lexikon/rocknroll/"` und
+keine Zielseite. **Neu ist das mit diesem Eintrag** — vor der Freigabe vom
+2026-09-22 war kein Entwurf im Bestand, auf den eine freigegebene Seite
+zeigte (nachgestellt gegen `d96c6b1^1`: sieben Entwürfe, kein einziger
+Verweis von einer freigegebenen Seite). Lektion 19 hat das vorhergesagt: Ein
+Zustand, den es zum ersten Mal gibt, lässt Prüfungen zum ersten Mal laufen.
+**Zu entscheiden ist eine Semantik, deshalb liegt es hier.** Zwei
+vertretbare Wege:
+(a) *Der Autolink verlinkt nur freigegebene Ziele.* Kosten: Die Links
+entstehen erst beim nächsten Autolink-Lauf nach der Freigabe, also im
+Freigabe-Pull-Request — dort wird `autolink:check` rot, bis jemand
+`npm run autolink` ausführt. Die Freigabe bekommt damit einen Handgriff mehr,
+und der Freigabe-PR wächst um die Linkdateien. Gewinn: Was der Autolink
+schreibt, zeigt immer auf eine Seite, die es in der Produktion gibt.
+(b) *Entwürfe werden gebaut, aber mit `noindex`.* Kosten: Die Produktion
+zeigt dann unfreigegebene Inhalte, und `netlify.toml` sagt dort ausdrücklich
+das Gegenteil zu („Die Produktion zeigt ausschließlich, was ein Mensch
+freigegeben hat"). Gewinn: kein Handgriff, keine Drift, Links stimmen sofort.
+Empfehlung: (a) — sie hält beide bestehenden Zusagen, (b) bricht eine davon.
+**Bis dahin:** Diesen Pull Request nicht lange offen liegen lassen und den
+Eintrag zeitnah freigeben; solange `PUBLIC_INDEXIERBAR = "false"` steht,
+sieht kein Suchindex die 20 Stellen.
 
-`frei` **Rock'n'Roll fehlt im Lexikon, und zwar mit einer zweiten Quelle.** Abgetrennt
-am 2026-09-22 vom Posten zur Autoseite, der ihn als Nebenbefund nannte. Bands,
-deren Quellen genau dieses Wort nennen — The Firebirds etwa —, sind derzeit
-nicht eintragbar, weil `genres` mindestens einen Lexikonslug verlangt. Zwei
-Gründe, warum das ein eigener Posten ist und kein Anhängsel, beide gemessen:
-Der Begriff steht 76-mal in 30 Dateien des Bestands, ein Eintrag dazu schreibt
-den Autolink also quer durch das ganze Register — das gehört in einen Pull
-Request, den man noch prüfen kann. Und die naheliegende Quelle, der deutsche
-Wikipedia-Artikel, trägt einen Belege-fehlen-Baustein; für den Ursprungsbegriff
-der ganzen Szene ist das zu dünn. **Vor dem Anlegen zu klären**, weil es den
-Text prägt: Der Artikel datiert nur in Jahrzehnten (1950er bis frühe 1960er),
-`aeraVon`/`aeraBis` bleiben also voraussichtlich leer; und er nennt die
-Wortprägung „vermutlich 1951 durch Alan Freed", führt aber im selben Absatz
-Belege von 1934 und 1951 dagegen an — dieser Widerspruch gehört nach Lektion 20
-in den Text, nicht in die Auswahl. Schreibweise im Bestand: 76-mal
-`Rock'n'Roll`, 15-mal `Rock-'n'-Roll`; der Autolink braucht beide als Alias,
-sonst greift er nur bei der einen.
+`frei` **Zwei Altfunde der neuen Regel `lexikon-schreibvarianten`.** Die Regel
+(seit 2026-09-23 in `validate-content.ts`) meldet Trennzeichen-Schreibungen
+im Bestand, die kein Name und kein Alias deckt und die der Autolink deshalb
+nie erreicht. Zwei stehen offen, beide als Hinweis, beide an freigegebenen
+Einträgen: `„Custom-Car"` in `lexikon/custom-car.md` und `„Hot-Rod"` in
+`lexikon/kustom-kulture.md` und `artikel/hot-rod-und-kustom-kulture.md`. Zu
+klären ist pro Fall dasselbe: Ist die Bindestrichschreibung gebräuchlich
+genug für einen Alias — dann belegen und eintragen —, oder ist sie nur an
+dieser Stelle so geschrieben — dann den Text an die geführte Schreibung
+angleichen. Beides ist ohne Rückfrage entscheidbar, wenn die Quelle
+danebenliegt. **Danach kann die Ebene steigen:** Die Regel ist als Hinweis
+gebaut, weil sie blockierend erst tragfähig ist, wenn kein Altfund mehr
+offensteht; die Begründung steht im Kopf der Regel.
 
 `frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
 Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
@@ -172,6 +179,13 @@ Die Auszählung des Bestands lief erst, nachdem die Zeichenkette zur Laufzeit
 zusammengesetzt war. Damit trifft die Sperre inzwischen regelmäßig
 Lesevorgänge, und das ist die Sorte Sperre, um die herumformuliert statt
 beachtet wird.
+**Vierter belegter Fall am 2026-09-23**, gleiche Bauart wie der dritte: Ein
+`git worktree`-Vergleich gegen einen älteren Stand wurde blockiert, weil der
+Befehl das Statuswort in einem Shell-Vergleich (`[ "$st" = … ]`) enthielt —
+ein reiner Lesevorgang über einen Detached-Worktree, der nicht einmal in den
+Arbeitsbaum schreiben konnte. Auch hier lief er erst, nachdem das Wort zur
+Laufzeit zusammengesetzt war. Die Häufigkeit nimmt zu, weil die Läufe
+zunehmend den Bestand auszählen, und genau dafür braucht man das Wort.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
@@ -237,6 +251,17 @@ Unterscheidung in `abgrenzung` und einem eigenen Abschnitt. Ob daraus ein
 zweiter Eintrag `boogie-woogie-tanz` wird, ist eine Ermessensfrage: Zwei
 Einträge sind sauberer, ein Slug mit Klammerzusatz ist hässlich, und der
 Autolink kann zwei gleichnamige Begriffe nicht auseinanderhalten.
+**Seit dem 2026-09-23 stellt sich dieselbe Frage ein zweites Mal**, und
+damit ist sie keine Einzelfallfrage mehr: Rock'n'Roll heißt genauso beides,
+die Musik und der aus dem Lindy Hop hervorgegangene Turniertanz. Der neue
+Lexikoneintrag behandelt die Musik und trennt beides in `abgrenzung` und im
+Abgrenzungsabschnitt — dieselbe Lösung wie beim Boogie-Woogie. Sichtbare
+Folge: Der Autolink verlinkt jetzt auch Stellen auf den Musikeintrag, die
+den Tanz meinen (`lexikon/petticoat.md` und
+`artikel/petticoat-reifrock-unterrock.md`, beide „Rock-'n'-Roll-Tanz").
+Irreführend ist das nicht — der Eintrag sagt im ersten Absatz, dass er die
+Musik beschreibt —, aber es ist auch nicht das beste Ziel. Wer die Frage
+entscheidet, entscheidet sie besser für beide Begriffe zugleich.
 
 ## Vor dem Go-Live
 

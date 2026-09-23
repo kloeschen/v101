@@ -57,7 +57,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Rockabilly ist ein Musikstil, der Mitte der 1950er Jahre im Süden der USA entstand, als weiße Musiker den Rhythm and Blues schwarzer Künstler mit der eigenen Country-Tradition verbanden. Das DWDS führt ihn als deutsches Substantiv und definiert ihn als Verbindung von Rhythm and Blues und Hillbillymusic. Innerhalb des Rock'n'Roll bezeichnet Rockabilly die country-geprägte Spielart — nicht die Szene, die sich heute auf ihn beruft.
+Rockabilly ist ein Musikstil, der Mitte der 1950er Jahre im Süden der USA entstand, als weiße Musiker den Rhythm and Blues schwarzer Künstler mit der eigenen Country-Tradition verbanden. Das DWDS führt ihn als deutsches Substantiv und definiert ihn als Verbindung von Rhythm and Blues und Hillbillymusic. Innerhalb des [Rock'n'Roll](/lexikon/rocknroll/) bezeichnet Rockabilly die country-geprägte Spielart — nicht die Szene, die sich heute auf ihn beruft.
 
 ## Merkmale von Rockabilly
 

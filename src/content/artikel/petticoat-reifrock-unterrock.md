@@ -95,7 +95,7 @@ Das hat eine Folge, die man beim Tragen sofort merkt. Ein Gestell gibt eine Silh
 
 Ein Petticoat erzeugt sein Volumen ohne jedes Gestell. Er besteht aus versteiften Perlon- und Nylonstoffen sowie mehreren Lagen Tüll, meist in rüschen- und spitzenverzierten Stufen: oben ein schmalerer Sattel in Hüfthöhe, darunter der eigentliche breite Teil mit drei oder vier Stufen. Das Volumen entsteht also allein daraus, dass sich die Lagen gegeneinander abdrücken.
 
-Deshalb verhält sich ein Petticoat völlig anders als ein Reifrock. Er fällt weicher, er lässt sich zusammendrücken und er bewegt sich mit. Genau das machte ihn ab 1954 zum Kleidungsstück des Rock-'n'-Roll-Tanzes, für dessen Bewegungsabläufe die weiten Röcke als gut geeignet galten. Seinen ersten Schub hatte er schon 1947 mit der Ligne Corolle von Christian Dior bekommen, die weite, taillenbetonte Röcke durchsetzte; mit der Minirock-Mode verschwand er ab 1966 wieder aus der Alltagsmode.
+Deshalb verhält sich ein Petticoat völlig anders als ein Reifrock. Er fällt weicher, er lässt sich zusammendrücken und er bewegt sich mit. Genau das machte ihn ab 1954 zum Kleidungsstück des [Rock-'n'-Roll](/lexikon/rocknroll/)-Tanzes, für dessen Bewegungsabläufe die weiten Röcke als gut geeignet galten. Seinen ersten Schub hatte er schon 1947 mit der Ligne Corolle von Christian Dior bekommen, die weite, taillenbetonte Röcke durchsetzte; mit der Minirock-Mode verschwand er ab 1966 wieder aus der Alltagsmode.
 
 ## Der Unterrock formt gar nicht
 

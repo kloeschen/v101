@@ -92,7 +92,7 @@ quellen:
     art: offiziell
 ---
 
-Der Walldorf Rock'n'Roll Weekender 2026 war nach Angaben der Veranstalter die letzte Ausgabe eines Weekenders, der über 27 Jahre in der Astoria-Halle in Walldorf stattfand. Er lief von Freitag, dem 22., bis Montag, dem 25. Mai 2026, mit Konzerten, Vintage-Markt, Pool-Party und Tanzworkshops.
+Der Walldorf [Rock'n'Roll](/lexikon/rocknroll/) Weekender 2026 war nach Angaben der Veranstalter die letzte Ausgabe eines Weekenders, der über 27 Jahre in der Astoria-Halle in Walldorf stattfand. Er lief von Freitag, dem 22., bis Montag, dem 25. Mai 2026, mit Konzerten, Vintage-Markt, Pool-Party und Tanzworkshops.
 
 ## Der Abschied
 

@@ -42,7 +42,7 @@ quellen:
     art: offiziell
 ---
 
-Die Alte Feuerwache in Berlin-Friedrichshain ist ein Kulturhaus, das sich selbst so bezeichnet und ein Programm quer durch alle Sparten fährt. Für die Rock-'n'-Roll-Szene ist sie einer der Orte, an denen regelmäßig [Record Hops](/events/record-hop-alte-feuerwache-2026-09-25/) stattfinden — Tanzabende mit Plattenauflegern statt Livemusik.
+Die Alte Feuerwache in Berlin-Friedrichshain ist ein Kulturhaus, das sich selbst so bezeichnet und ein Programm quer durch alle Sparten fährt. Für die [Rock-'n'-Roll](/lexikon/rocknroll/)-Szene ist sie einer der Orte, an denen regelmäßig [Record Hops](/events/record-hop-alte-feuerwache-2026-09-25/) stattfinden — Tanzabende mit Plattenauflegern statt Livemusik.
 
 ## Das Haus
 

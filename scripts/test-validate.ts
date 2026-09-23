@@ -155,7 +155,8 @@ fall({
   verboten: [
     "schema", "kapsel-vorhanden", "kapsel-definitorisch", "ueberschriften", "mindestlaenge",
     "platzhalter", "reservierter-slug", "quellen-vorhanden", "belegpflicht",
-    "quellen-felder-gueltig", "referenzen", "lexikon-definition", "gp-lead",
+    "quellen-felder-gueltig", "referenzen", "lexikon-definition",
+    "lexikon-schreibvarianten", "gp-lead",
     "gp-erstsatz-nennt-begriff", "gp-h2-nennt-begriff", "gp-abgrenzung", "bildrechte",
     "veroeffentlichungsreife", "pruefkadenz", "duplikat",
   ],
@@ -968,6 +969,56 @@ fall({
     lexKoerper("Defpunktrock"),
   ),
   erwartet: { "lexikon-definition": "warnung" },
+});
+
+/* --- lexikon-schreibvarianten -------------------------------------- */
+/*
+ * Drei Faelle, weil die Regel drei Behauptungen aufstellt: Sie findet eine
+ * ungedeckte Trennzeichen-Variante, sie schweigt bei einer gedeckten, und sie
+ * schweigt bei einem Treffer mit weniger Bestandteilen als der Begriff. Die
+ * dritte war der einzige Fehlalarm der Messung ueber den Bestand
+ * ("Pork Pie Hat" auf "Porkpie hat") und ist deshalb hier festgenagelt.
+ */
+
+fall({
+  name: "lexikon-schreibvarianten: ungedeckte Bindestrichschreibung gibt einen Hinweis",
+  datei: "lexikon/variante-offen.md",
+  inhalt: md(
+    lexFelder("Schwof Tanz", { aliases: "[]" }),
+    lexKoerper("Schwof Tanz") +
+      `\n\nGeschrieben wird der Schwof-Tanz in der Szene auch mit Bindestrich, und genau darum geht es hier.`,
+  ),
+  erwartet: { "lexikon-schreibvarianten": "hinweis" },
+});
+
+fall({
+  name: "lexikon-schreibvarianten: dieselbe Schreibung als Alias schweigt",
+  datei: "lexikon/variante-gedeckt.md",
+  inhalt: md(
+    lexFelder("Boogie Schritt", { aliases: "[Boogie-Schritt]" }),
+    lexKoerper("Boogie Schritt") +
+      `\n\nGeschrieben wird der Boogie-Schritt in der Szene auch mit Bindestrich, und dieser Eintrag fuehrt ihn als Alias.`,
+  ),
+  verboten: ["lexikon-schreibvarianten"],
+});
+
+fall({
+  /*
+   * Nachbau des echten Fehlalarms: pork-pie.md fuehrt bezeichnungEn
+   * "Pork pie hat" -- kleines "hat" am Ende. Waeren die Trennzeichen
+   * optional, matchte das Muster auf "Porkpie hat" im deutschen Satz, also
+   * auf ein Hilfsverb. Die Schreibung der Bestandteile muss hier deshalb
+   * kleingeschrieben sein wie im Original, sonst prueft der Fall nur die
+   * Gross-/Kleinschreibung und nicht die Zahl der Bestandteile.
+   */
+  name: "lexikon-schreibvarianten: Treffer mit weniger Bestandteilen ist kein Fehlalarm",
+  datei: "lexikon/variante-hilfsverb.md",
+  inhalt: md(
+    lexFelder("Zwirbelhut", { aliases: "[]", bezeichnungEn: "Zwirbel rock hat" }),
+    lexKoerper("Zwirbelhut") +
+      `\n\nDer Zwirbelrock hat einen schmalen Saum, und das ist keine Schreibvariante.`,
+  ),
+  verboten: ["lexikon-schreibvarianten"],
 });
 
 /* ------------------------------------------------------------------ */

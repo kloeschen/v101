@@ -28,7 +28,7 @@ quellen:
     art: offiziell
 ---
 
-Niederösterreich ist das flächengrößte und zweitbevölkerungsreichste Bundesland Österreichs und für die Tanzszene der Region um Wien der Ort, an dem die meisten Boogie- und Rock-'n'-Roll-Abende stattfinden — getragen von Vereinen, nicht von Veranstaltungsfirmen.
+Niederösterreich ist das flächengrößte und zweitbevölkerungsreichste Bundesland Österreichs und für die Tanzszene der Region um Wien der Ort, an dem die meisten Boogie- und [Rock-'n'-Roll](/lexikon/rocknroll/)-Abende stattfinden — getragen von Vereinen, nicht von Veranstaltungsfirmen.
 
 ## Eckdaten zu Niederösterreich
 
