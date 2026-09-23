@@ -2,7 +2,7 @@
 name: Rock'n'Roll
 aliases: [Rock-'n'-Roll, Rock 'n' Roll, "Rock ’n’ Roll", Rock and Roll]
 kurzbeschreibung: Rock'n'Roll ist eine US-amerikanische Musikrichtung der 1950er und frühen 1960er Jahre, die Rhythm and Blues mit Country-Musik verbindet und als Ursprungsform der Rockmusik gilt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
 autor: markus
