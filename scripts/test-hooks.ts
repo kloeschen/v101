@@ -31,7 +31,12 @@ import os from "node:os";
 import { fileURLToPath } from "node:url";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const GUARD = path.join(PROJEKT, ".claude", "hooks", "guard.mjs");
+// V101_GUARD prüft eine andere Fassung, etwa einen Vorschlag unter docs/
+// vorschlaege/, bevor ein Mensch ihn einsetzt. Ohne die Variable gilt der
+// echte Hook — und nur der zählt in der Prüfkette.
+const GUARD = process.env.V101_GUARD
+  ? path.resolve(PROJEKT, process.env.V101_GUARD)
+  : path.join(PROJEKT, ".claude", "hooks", "guard.mjs");
 const VALIDATE = path.join(PROJEKT, ".claude", "hooks", "validate-changed.sh");
 
 let bestanden = 0;
@@ -183,6 +188,14 @@ const bashGesperrt: Array<[string, string]> = [
   ["mv auf den Datenvertrag", `mv /tmp/neu.ts ${SCHEMA}`],
   ["git checkout auf die Agenten-Konfiguration", `git checkout main -- ${AGENT}`],
   ["git restore auf die CI-Konfiguration", `git restore ${CI}`],
+  // Seit 2026-09-23 werden Umleitungen nach ihrem Ziel beurteilt. Diese
+  // Faelle halten fest, dass jede Schreibweise einer echten Umleitung auf
+  // einen gesperrten Pfad weiter sperrt.
+  ["Umleitung mit Anführungszeichen um das Ziel", `echo 'x' > "${SCHEMA}"`],
+  ["stderr in den Datenvertrag", `node gen.mjs 2> ${SCHEMA}`],
+  ["stdout und stderr in die Site-Konfiguration", `npm run build &> ${SITE}`],
+  ["Umleitung neben 2>&1", `node gen.mjs > ${SCHEMA} 2>&1`],
+  ["Umleitung ohne Leerzeichen", `echo x >${AGENT}`],
 ];
 
 for (const [was, command] of bashGesperrt) {
@@ -217,6 +230,11 @@ const bashStatus: Array<[string, string]> = [
     "vollständiges Frontmatter im Heredoc",
     `cat > ${EINTRAG} <<'EOF'\n---\nname: Probe\nstatus: ${LIVE}\ntyp: konzert\n---\nText\nEOF`,
   ],
+  // Bewusst weiter gesperrt, auch nach der Verengung vom 2026-09-23: eine
+  // Ersetzung in der Statuszeile, selbst rueckwaerts. Die Richtung aus dem
+  // Befehlstext zu lesen waere fehleranfaellig (fuenfter Fall im guard-Posten).
+  ["Statuszeile rückwärts per sed", `sed -i 's/^status: ${LIVE}$/status: entwurf/' ${EINTRAG}`],
+  ["Ersetzung mit Umleitung nach /dev/null", `sed -i 's/entwurf/${LIVE}/' ${EINTRAG} 2>/dev/null`],
 ];
 
 for (const [was, command] of bashStatus) {
@@ -294,6 +312,46 @@ const bashErlaubt: Array<[string, string]> = [
 for (const [was, command] of bashErlaubt) {
   const r = rufeHook("node", GUARD, bashEvent(command));
   gleich(`guard lässt durch: ${was}`, r.code, 0);
+}
+
+/* ------------------------------------------------------------------ */
+/* Die belegten Fehlalarme (OFFENE-PUNKTE, guard-Posten)               */
+/* ------------------------------------------------------------------ */
+/*
+ * Reine Lesebefehle, die der Bash-Zweig bis zum 2026-09-23 blockierte, weil
+ * er jedes `>` als Umleitung las — `=>`, `>=`, `2>&1`, `2>/dev/null` — und
+ * danach den gesperrten Pfad oder das Statuswort irgendwo im Befehl genuegen
+ * liess. Fuenf Faelle sind belegt; der fuenfte (Rueckweg per sed) ist
+ * absichtlich weiter gesperrt und steht oben in `bashStatus`.
+ *
+ * Gegen den alten Hook schlagen diese Faelle fehl: Das ist der Beleg, dass
+ * sie den Fehlalarm wirklich nachbauen. Gegen die neue Fassung laufen sie
+ * durch, waehrend `bashGesperrt` und `bashStatus` weiter sperren muessen.
+ */
+const bashFehlalarm: Array<[string, string]> = [
+  [
+    "Fall 1: Pfeilfunktion beim Lesen des Datenvertrags",
+    `npx tsx -e "import('./${SCHEMA}').then((m) => console.log(Object.keys(m).length))"`,
+  ],
+  ["Fall 2: 2>&1 beim Lesen des Datenvertrags", `grep -n quelle ${SCHEMA} 2>&1 | head -5`],
+  ["Fall 3: Statuswort zählen, stderr verworfen", `grep -l '^status: ${LIVE}' src/content/*/*.md 2>/dev/null | wc -l`],
+  [
+    "Fall 4: Statusvergleich in der Shell, Ausgabe nach /tmp",
+    `for f in src/content/*/*.md; do st=$(grep -m1 '^status:' "$f"); [ "$st" = "status: ${LIVE}" ] && echo "$f"; done > /tmp/liste.txt`,
+  ],
+  [
+    "Vergleich >= in node -e beim Lesen des Datenvertrags",
+    `node -e "console.log(require('fs').readFileSync('${SCHEMA}', 'utf8').length >= 1)"`,
+  ],
+  ["Lesen des Datenvertrags mit Ausgabe nach /tmp", `grep -n quelle ${SCHEMA} > /tmp/quelle.txt`],
+  // Sechster belegter Fall, am 2026-09-23 beim Bau dieses Vorschlags selbst:
+  // eine Suche ueber mehrere Verzeichnisse, darunter die CI-Konfiguration.
+  ["Fall 6: Suche mit 2>/dev/null über die CI-Konfiguration", `grep -rn golden scripts/ ${CI.split("/")[0]}/ 2>/dev/null`],
+];
+
+for (const [was, command] of bashFehlalarm) {
+  const r = rufeHook("node", GUARD, bashEvent(command));
+  gleich(`guard lässt den belegten Lesebefehl durch: ${was}`, r.code, 0);
 }
 
 /* ------------------------------------------------------------------ */

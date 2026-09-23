@@ -13,6 +13,70 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — guard.mjs: Umleitungen nach ihrem Ziel beurteilen
+
+**Anlass:** Posten „`guard.mjs` sperrt zu breit", fünf belegte Fälle, in
+denen der Bash-Zweig reine Lesebefehle blockierte. Einer davon hat heute
+einen Mutationsbeleg still entwertet. Ein sechster kam beim Bau dieses
+Vorschlags dazu: ein `grep` mit `2>/dev/null` über mehrere Verzeichnisse,
+darunter die CI-Konfiguration.
+
+**Entscheidung von Markus:** Die Korrektur schreibe ich als fertigen Block,
+eingesetzt wird sie von einem Menschen (`.claude/` ist für Agenten
+gesperrt, Lektion 16). Der Vorschlag lag unter `docs/vorschlaege/guard.mjs`.
+Markus hat ihn am 2026-09-23 eingesetzt (Commit `5fbbd4e`), die
+Vorschlagsdatei ist danach gelöscht.
+
+**Nachweis am eingesetzten Hook:** Die Datei war byte-gleich mit dem
+Vorschlag (`cmp`). `test-hooks.ts` gegen den echten Hook ergab 125 von 125.
+Live in der Sitzung: Ein `grep` mit `2>/dev/null` über `.github/`, vorher
+blockiert, lief durch.
+
+**Die Korrektur:**
+- Umleitungen werden nach ihrem **Ziel** beurteilt: Jedes `>` liefert das
+  Wort dahinter als Kandidatenziel, und gesperrt wird nur, wenn dieses Ziel
+  ein gesperrter Pfad ist oder, für den Status, in `src/content/` liegt.
+- Verben (`sed -i`, `cp`, `mv`, `tee` …) bleiben so grob wie bisher, weil
+  ihr Pfad irgendwo im Befehl stehen kann.
+- Die Statussperre bleibt in der Sache gleich, auch gegen den Rückweg per
+  `sed -i` (fünfter Fall, bewusst weiter gesperrt).
+
+**Fund beim Bau:** Der geltende Hook lässt `echo x >.claude/settings.json`
+durch, eine Umleitung ohne Leerzeichen, weil das Pfadmuster vor `.claude/`
+kein `>` erwartet. Der Vorschlag schließt die Lücke, weil er das Ziel
+herauslöst (Lektion 29).
+
+**Belege:**
+- `test-hooks.ts` hat dreizehn neue Fälle:
+  - fünf weitere Schreibweisen, die sperren müssen: Anführungszeichen,
+    `2>`, `&>`, Umleitung neben `2>&1`, kein Leerzeichen
+  - zwei Statusfälle, die gesperrt bleiben
+  - sieben nachgebaute Fehlalarme, die durchgehen müssen
+- Gegen den geltenden Hook fallen genau zehn Behauptungen: sieben
+  Fehlalarme und die drei zur Lücke ohne Leerzeichen. Gegen den Vorschlag
+  (`V101_GUARD=docs/vorschlaege/guard.mjs`) bestehen alle 125.
+
+| Mutation am Vorschlag | fällt |
+|---|---|
+| Umleitungsziele nicht gegen gesperrte Pfade geprüft | 24 Behauptungen, alle Umleitungsfälle |
+| Umleitung in `src/content/` zählt nicht als Schreiben | 10, Statuszeile per `>>`, awk mit Umleitung … |
+| jede Umleitung zählt als Schreiben ins Register | Fall 3 und 4 (Fehlalarme kehren zurück) |
+| Anführungszeichen ums Ziel nicht behandelt | „Umleitung mit Anführungszeichen um das Ziel" |
+| Verben ignoriert | 21, `sed -i`, `cp`, `mv`, `tee`, `git checkout` … |
+| alte Logik: Pfad irgendwo im Befehl | „Umleitung ohne Leerzeichen" (die Lücke kehrt zurück) |
+
+Die erste Fassung unterschied echte Umleitungen von `=>`, `>=` und `2>&1`
+per Look-arounds und filterte `/dev/null`. Drei Mutationen daran
+überlebten: Mit der Zielprüfung sind diese Bausteine wirkungslos. Sie
+sind entfernt, die Fassung ist entsprechend schlichter.
+
+Bis der Block eingesetzt war, war die Prüfkette des Zweigs rot, an genau
+den zehn Behauptungen, wie bei #36 gewollt.
+
+Posten entfällt.
+
+---
+
 ## 2026-09-23 — Band-Vorlage: ein echter Eintrag statt einer korrigierten Halbfiktion
 
 **Anlass:** Posten „Das Golden Example der Bands nennt für The Firebirds

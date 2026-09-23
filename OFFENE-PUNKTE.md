@@ -32,40 +32,14 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **`guard.mjs` sperrt zu breit — und nur ein Mensch kann es ändern.** Der
-Bash-Zweig blockiert jeden Befehl, der die gesperrte Schemadatei nennt und
-irgendwo ein `>` enthält. Das trifft `2>&1` genauso wie eine Pfeilfunktion
-`i => i.path[0]` — also auch reine **Lesezugriffe**. Belegt am 2026-09-11:
-derselbe `npx tsx -e`-Befehl lief erst, nachdem die Pfeilfunktion durch
-`function` ersetzt war. Zu breit ist besser als zu schmal, aber eine Sperre,
-um die man täglich herumformuliert, wird irgendwann umgangen statt beachtet.
-Naheliegend: den Schreibverben ein Wortgrenzen-Muster geben, statt auf das
-bloße Zeichen `>` zu prüfen — dieselbe Korrektur wie damals beim
-Statuswort (Lektion 18). `.claude/` ist für Agenten gesperrt, auch für diese
-Änderung.
-**Dritter belegter Fall am 2026-09-21**, und diesmal ohne `>`: Ein reines
-`grep -l "^status: …"` über den Bestand wurde blockiert, weil der Befehl das
-Statuswort *enthielt*. Kein Schreibzugriff, keine Umleitung — nur das Wort.
-Die Auszählung des Bestands lief erst, nachdem die Zeichenkette zur Laufzeit
-zusammengesetzt war. Damit trifft die Sperre inzwischen regelmäßig
-Lesevorgänge, und das ist die Sorte Sperre, um die herumformuliert statt
-beachtet wird.
-**Vierter belegter Fall am 2026-09-23**, gleiche Bauart wie der dritte: Ein
-`git worktree`-Vergleich gegen einen älteren Stand wurde blockiert, weil der
-Befehl das Statuswort in einem Shell-Vergleich (`[ "$st" = … ]`) enthielt —
-ein reiner Lesevorgang über einen Detached-Worktree, der nicht einmal in den
-Arbeitsbaum schreiben konnte. Auch hier lief er erst, nachdem das Wort zur
-Laufzeit zusammengesetzt war. Die Häufigkeit nimmt zu, weil die Läufe
-zunehmend den Bestand auszählen, und genau dafür braucht man das Wort.
-**Fünfter belegter Fall am 2026-09-23**, und diesmal in die harmlose
-Richtung: Ein Mutationsbeleg sollte einen freigegebenen Eintrag
-vorübergehend auf `entwurf` *zurücksetzen*. Blockiert, weil das Statuswort
-im Suchmuster von `sed` stand. Das kostete nicht nur einen Umweg: Der
-blockierte Befehl hatte auch die Sicherung und das Mutationsskript
-anlegen sollen, und die folgenden fünf „Mutationen" liefen unbemerkt gegen
-den unveränderten Code. Aufgefallen ist es nur an der Fehlermeldung von
-`cp`. Eine Sperre, die Belege still entwertet, ist teurer als eine, die
-nur stört.
+`mensch` **Kopfkommentar im Hook `guard.mjs` noch vom Vorschlag.** Der am
+2026-09-23 eingesetzte Hook ist byte-gleich mit dem Vorschlag, einschließlich
+dessen Kopf: Die Zeilen 2 bis 13 („VORSCHLAG — wird nicht ausgeführt …" bis
+zur Trennlinie aus Bindestrichen samt der Leerzeile danach) beschreiben jetzt
+etwas Falsches. Sie gehören gelöscht, sodass auf `/**` direkt „Sperren für
+agentische Schreibzugriffe …" folgt. Rein kosmetisch, ohne Wirkung auf die
+Sperre. Nur ein Mensch kann es ändern, weil der Hook im gesperrten
+Agentenverzeichnis liegt.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.

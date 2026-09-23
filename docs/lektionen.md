@@ -756,3 +756,34 @@ Zusammenfassung dient zum Finden, nicht zum Belegen. Ein Widerspruch
 zwischen Quellen wird erst notiert, wenn er in beiden Originaltexten
 steht.
 
+## 29. Eine Sperre, die nach dem Zeichen urteilt statt nach dem Ziel, ist zugleich zu breit und zu schmal
+
+**Was passiert ist:** Der Bash-Zweig von `guard.mjs` las jedes `>` als
+Umleitung und ließ danach einen gesperrten Pfad *irgendwo* im Befehl
+genügen. Sechsmal blockierte er reine Lesebefehle: eine Pfeilfunktion (`=>`),
+ein `2>&1`, ein `2>/dev/null` neben einem `grep`, einen Shell-Vergleich mit
+Ausgabe nach /tmp, eine Suche mit `2>/dev/null` über mehrere Verzeichnisse.
+Einmal entwertete er dabei still einen Mutationsbeleg,
+weil der blockierte Befehl auch die Vorbereitung enthielt. Als die
+Fehlalarme als Testfälle nachgebaut wurden, fiel ein weiterer Fall auf, in
+die andere Richtung: `echo x >.claude/settings.json`, eine Umleitung
+**ohne Leerzeichen**, ging durch. Das Pfadmuster erwartete vor `.claude/`
+ein Leerzeichen, ein Anführungszeichen, `=` oder `/`, aber kein `>`.
+
+**Warum beides dieselbe Ursache hat:** Die Sperre fragte „steht hier ein
+Schreibzeichen, und steht irgendwo ein gesperrter Pfad?", statt „wohin wird
+geschrieben?". Zeichen und Pfad wurden getrennt gesucht und nie
+zusammengebracht. Das Ergebnis traf Befehle, die nichts schrieben, und
+verfehlte einen, der genau in den gesperrten Pfad schrieb.
+
+**Was jetzt gilt (seit dem 2026-09-23, eingesetzt von Markus):** Jedes
+`>` liefert ein Kandidatenziel, und nur das Ziel entscheidet. Ob das `>`
+„wirklich" eine Umleitung ist, muss niemand mehr entscheiden. Die erste
+Fassung versuchte es mit Look-arounds und einem /dev/null-Filter, und der
+Mutationsbeleg zeigte alle drei als wirkungslos: Bei `=>` ist das Ziel ein
+harmloses Wort. Die schlichtere Fassung ist die richtigere.
+
+**Regel:** Eine Sperre fragt nach dem, was sie schützt, nicht nach dem
+Werkzeug. Wer nach Zeichen sucht, sucht nach dem falschen Ding und findet
+dabei zu viel und zu wenig.
+
