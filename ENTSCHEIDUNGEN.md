@@ -13,6 +13,60 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Stale-Report: nahe Termine mit alter Prüfung
+
+**Anlass:** Der Posten „Termine kurz vor dem Datum noch einmal anfassen"
+wollte erst messen, wie oft sich Angaben kurz vor einem Termin ändern. Bei
+neun Terminen lässt sich das nicht messen. Inzwischen gibt es aber zwei
+belegte Fälle: die falsche Anfangszeit des Record Hop und das Line-up der
+Rockabilly Convention, das ohne Bewegung im `dateModified` erschien.
+
+**Entscheidung von Markus:** die einfache Fassung, als Posten im
+Stale-Report und nicht als Regel im Validator. Ob sich eine Quelle
+geändert hat, weiß erst, wer sie wieder öffnet. Ein blockierender Build
+scheiterte an einem Datum, nicht an einem Fehler.
+
+**Die Zahlen:** Beginn in höchstens **14** Kalendertagen, letzte Prüfung
+älter als **7** Tage. Nur freigegebene Termine, nicht abgesagte, nicht
+stattgefundene. Gewicht 260 plus Nähe, also über „Reihe ohne Folgetermin"
+(250) und unter „vergangen" (300). Die Kurzfassung für den SessionStart
+nennt die Zahl, wenn sie nicht null ist.
+
+**Kalendertage in Ortszeit:** Neue Hilfsfunktion `tageBis` in
+`src/lib/datum.ts`, über die Wanduhr gerechnet. Sie wird auch für das
+Alter der Prüfung genutzt, statt `tage()` mit 24-Stunden-Blöcken. Sonst
+zählte eine Prüfung von vor acht Tagen zwischen 00:00 und 02:00 Ortszeit
+als sieben, und der Rand des Fensters wackelte.
+
+**Erster echter Treffer beim Bau:** der Record Hop, in 2 Tagen, zuletzt vor
+13 Tagen geprüft.
+
+**Belege:**
+- `test-datum` 33 → 40, darunter der 00:30-Rand und die Zeitumstellung.
+  Beide laufen auch unter vier Prozess-Zeitzonen.
+- `test-stale` 9 → 16, mit zehn Terminen in einem Lauf, jeder mit genau
+  einer Abweichung. Das Lebenszeichen: Der Entwurf taucht als Entwurf auf,
+  wurde also gelesen.
+
+| Mutation | fällt |
+|---|---|
+| Freigabe-Bedingung entfernt | „genau die drei" (Entwurf rutscht hinein) |
+| Abgesagt-Bedingung entfernt | „genau die drei" (Abgesagter rutscht hinein) |
+| `<= 14` → `< 14` | „genau die drei", „der Rand nennt die Tage" |
+| `> 7` → `>= 7` | „genau die drei" (Rand Sieben rutscht hinein) |
+| `bis >= 0` entfernt | „genau die drei", „der nächste steht vorn", „heute heißt heute" (laufendes Festival) |
+| Gewicht 260 → 200 | „alle nahen Termine stehen vor der Reihe" |
+| `tageBis` über UTC-Tage | `test-datum`: 00:30-Rand und Zeitumstellung, unter allen vier Zonen |
+
+**Eine Mutation überlebte:** `!vorbei` entfernt. Die Bedingung war neben
+`bis >= 0` logisch wirkungslos, denn ein Termin, der heute oder später
+beginnt, ist nicht vorbei. Sie ist deshalb entfernt, statt einen Test für
+sie zu erfinden.
+
+Posten entfällt.
+
+---
+
 ## 2026-09-23 — `verweis-auf-entwurf`: Frontmatter-Verweise auf Entwürfe sind ein Fehler
 
 **Anlass:** Beim Verlinken von Boppin'B schlug `link-auf-entwurf` an den

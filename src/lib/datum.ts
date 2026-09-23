@@ -154,6 +154,26 @@ export function istVorbei(datum: Datumswert, jetzt: Date = new Date(), zone: str
 }
 
 /**
+ * Kalendertage von heute bis zum Tag von `datum`, beide in `zone`: 0 heißt
+ * heute, 1 morgen, negativ vergangen. Gezählt werden Tage auf der Wanduhr,
+ * nicht 24-Stunden-Blöcke — sonst zählte ein Termin am Sonntag nach der
+ * Zeitumstellung um eine Stunde falsch, und um 00:30 Ortszeit stünde auf
+ * einem UTC-Runner noch der Vortag (Lektion 1).
+ *
+ * Ein unlesbares Datum liefert NaN; jeder Vergleich damit ist falsch, der
+ * Wert fällt also aus jeder Fenster-Abfrage heraus, statt hineinzurutschen.
+ */
+export function tageBis(datum: Datumswert, jetzt: Date = new Date(), zone: string = site.zeitzone): number {
+  const d = datum instanceof Date ? datum : new Date(datum);
+  if (Number.isNaN(d.getTime())) return NaN;
+  const heute = wanduhr(jetzt, zone);
+  const ziel = wanduhr(d, zone);
+  const tagHeute = Date.UTC(heute.year, heute.month - 1, heute.day);
+  const tagZiel = Date.UTC(ziel.year, ziel.month - 1, ziel.day);
+  return Math.round((tagZiel - tagHeute) / 86_400_000);
+}
+
+/**
  * Die Gegenprobe. Kein eigener Vergleich, damit es keinen Rand gibt, an dem
  * ein Termin weder kommend noch vergangen ist.
  */

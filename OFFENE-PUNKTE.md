@@ -93,15 +93,6 @@ ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
 gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
 geprüft ist bisher nur dieser eine.
 
-`mensch` **Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
-Events steht auf 30 Tagen und hätte die falsche Anfangszeit des Record Hop
-beinahe bis nach den Termin getragen; gefunden wurde sie nur, weil die Seite
-aus einem anderen Grund erneut geöffnet wurde. Zu entscheiden: ob
-`stale-report.ts` einen Posten „Termin steht bevor, letzte Prüfung liegt
-zurück" bekommt. Vorher messen, wie oft sich Angaben in den letzten Tagen vor
-einem Termin tatsächlich ändern — bei sieben Events ist das noch nicht
-beantwortbar.
-
 `mensch` **Boogie-Woogie als Tanz: eigener Eintrag oder nicht?** Im deutschsprachigen
 Raum meint das Wort fast immer den Paartanz und nicht den Klavierstil, und
 getanzt wird dazu Rock'n'Roll, Rockabilly, Jump Blues und Swing — gerade

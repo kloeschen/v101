@@ -259,6 +259,95 @@ try {
       JSON.stringify(leer),
     );
   }
+
+  /* ---------------------------------------------------------------- */
+  /* 5. Termin naht, Pruefung liegt zurueck (seit 2026-09-23)          */
+  /* ---------------------------------------------------------------- */
+  /*
+   * Zehn Termine in einem Lauf, jeder mit genau einer Abweichung vom
+   * Grundfall "freigegeben, in 5 Tagen, vor 10 Tagen geprueft". Gemeldet
+   * werden duerfen genau drei. Das Paar steht wieder im selben Lauf: Eine
+   * Rubrik, die gar nicht laeuft, faellt an den dreien, eine, die wahllos
+   * meldet, an den sieben anderen. Die Raender liegen auf beiden Achsen
+   * (14/15 Tage bis zum Termin, 7/8 Tage seit der Pruefung).
+   */
+  {
+    const naht = (slug: string, name: string, inTagen: number, geprueftVor: number, extra: Record<string, string> = {}) => {
+      const felder: Record<string, string> = {
+        name,
+        kurzbeschreibung: `${name} ist ein erfundener Tanzabend der Rockabilly-Szene, an dem die Pruefung naher Termine getestet wird.`,
+        status: FREI,
+        erstelltAm: tagVorOrt(-30),
+        geprueftAm: tagVorOrt(-geprueftVor),
+        autor: "markus",
+        typ: "tanzabend",
+        beginn: tagVorOrt(inTagen),
+        ganztaegig: "true",
+        ort: "testhalle",
+        region: "testregion",
+        eintritt: "frei",
+        durchfuehrung: "geplant",
+        ...extra,
+      };
+      const kopf = Object.entries(felder).map(([k, v]) => `${k}: ${v}`).join("\n");
+      writeFileSync(path.join(temp, "src", "content", "events", `${slug}.md`), `---
+${kopf}
+quellen:
+  - url: https://de.wikipedia.org/wiki/Rockabilly
+    titel: Rockabilly (Wikipedia)
+    abgerufenAm: ${tagVorOrt(-geprueftVor)}
+    felder: [beginn, ort, eintritt, durchfuehrung]
+    art: nachschlagewerk
+---
+
+${name} ist ein erfundener Tanzabend der Rockabilly-Szene. Er existiert nur in den Pruefdaten dieses Projekts und dient dazu, den Bericht ueber nahe Termine mit veralteter Pruefung zu testen.
+`);
+    };
+    // Laufende Reihe, damit der Reihenfolge-Test unten einen Gegenstand hat.
+    writeFileSync(evDatei, event("testreihe", "Testreihe Weekender", false));
+    naht("naht-grund", "Nah Alt", 5, 10);
+    naht("naht-heute", "Heute Alt", 0, 10);
+    naht("naht-rand14", "Rand Vierzehn", 14, 8);
+    naht("naht-frisch", "Nah Frisch", 5, 3);
+    naht("naht-rand7", "Rand Sieben", 5, 7);
+    naht("naht-rand15", "Rand Fuenfzehn", 15, 8);
+    naht("naht-fern", "Fern Alt", 20, 10);
+    naht("naht-entwurf", "Entwurf Nah Alt", 5, 10, { status: "entwurf" });
+    naht("naht-abgesagt", "Abgesagt Nah Alt", 5, 10, { durchfuehrung: "abgesagt" });
+    // Laeuft gerade: Beginn gestern, Ende morgen -- nicht vorbei, aber auch nicht "bevorstehend".
+    naht("naht-laeuft", "Laeuft Alt", -1, 10, { ende: tagVorOrt(1), typ: "weekender" });
+
+    const b = bericht(temp);
+    const nah = b.posten.filter((p) => p.art === "termin-naht");
+
+    // Lebenszeichen: Alle zehn muessen geladen sein, sonst belegt jedes
+    // "nicht gemeldet" nur ein Schema, das die Datei verworfen hat. Der
+    // Entwurf taucht als Entwurf auf -- er wurde also gelesen.
+    pruefe(
+      "der Entwurf wurde gelesen (steht als Entwurf im Bericht)",
+      b.posten.some((p) => p.art === "entwurf" && p.titel === "Entwurf Nah Alt"),
+      JSON.stringify(b.posten.map((p) => `${p.art}:${p.titel}`)),
+    );
+    gleich(
+      "genau die drei faelligen Termine werden gemeldet",
+      nah.map((p) => p.titel).sort(),
+      ["Heute Alt", "Nah Alt", "Rand Vierzehn"],
+    );
+    gleich("der naechste steht vorn", nah[0]?.titel, "Heute Alt");
+    pruefe("heute heisst heute", /^heute, zuletzt vor 10 Tagen/.test(nah[0]?.detail ?? ""), nah[0]?.detail ?? "");
+    pruefe(
+      "der Rand nennt die Tage",
+      nah.some((p) => p.titel === "Rand Vierzehn" && /^in 14 Tagen, zuletzt vor 8 Tagen/.test(p.detail)),
+      JSON.stringify(nah),
+    );
+    const reihe = b.posten.findIndex((q) => q.art === "reihe-ohne-folge");
+    pruefe("die Reihe ohne Folgetermin steht im selben Bericht", reihe >= 0, JSON.stringify(b.posten.map((p) => p.art)));
+    pruefe(
+      "und alle nahen Termine stehen vor ihr",
+      reihe >= 0 && nah.every((p) => b.posten.indexOf(p) < reihe),
+      JSON.stringify(b.posten.map((p) => `${p.art}:${p.titel}`)),
+    );
+  }
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }
