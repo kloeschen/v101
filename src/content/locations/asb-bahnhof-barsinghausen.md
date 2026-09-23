@@ -61,7 +61,7 @@ Der ASB-Bahnhof Barsinghausen ist das Bahnhofsgebäude der Stadt Barsinghausen a
 
 Nach der Darstellung des Hauses kaufte der Arbeiter-Samariter-Bund das marode Gebäude 2009 und ließ es sanieren; eröffnet wurde es am 14. Januar 2012. Unter seinem Dach liegen seither ein Bistro, ein Schulungszentrum und ein Serviceschalter, vor allem aber Veranstaltungen und Konzerte. Das Gebäude dient weiterhin auch als Bahnhof. Barsinghausen gehört zur Region Hannover und damit zu [Niedersachsen](/regionen/niedersachsen/).
 
-Über Größe, Bestuhlung und Boden des Saals sagt die Quelle nichts. Kapazität, Tanzfläche und Barrierefreiheit bleiben deshalb offen — für einen Rock'n'Roll-Abend wäre die Tanzfläche die wichtigste dieser Angaben.
+Über Größe, Bestuhlung und Boden des Saals sagt die Quelle nichts. Kapazität, Tanzfläche und Barrierefreiheit bleiben deshalb offen — für einen [Rock'n'Roll](/lexikon/rocknroll/)-Abend wäre die Tanzfläche die wichtigste dieser Angaben.
 
 ## Programm im ASB-Bahnhof Barsinghausen
 

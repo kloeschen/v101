@@ -60,7 +60,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Das Café Central Weinheim ist ein Musikclub in der Bahnhofstraße 19 in Weinheim an der Bergstraße. Für die Szene ist es ein Haus in der [Region Rhein-Neckar](/regionen/rhein-neckar/), das [Rockabilly](/lexikon/rockabilly/)- und [Psychobilly](/lexikon/psychobilly/)-Bands mehrfach in einer Saison auf die Bühne holen.
+Das Café Central Weinheim ist ein Musikclub in der Bahnhofstraße 19 in Weinheim an der Bergstraße. Für die Szene ist es ein Haus in der [Region Rhein-Neckar](/regionen/rhein-neckar/), das [Rockabilly](/lexikon/rockabilly/)- und [Psychobilly](/lexikon/psychobilly/)-Bands mehrfach in einer Saison auf die Bühne holt.
 
 ## Das Haus Café Central Weinheim
 

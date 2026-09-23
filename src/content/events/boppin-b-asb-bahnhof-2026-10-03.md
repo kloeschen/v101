@@ -44,7 +44,8 @@ redaktionsnotiz: >-
   BAND NICHT ANGELEGT: Boppin'B steht in `lineupWeitere`. Die Band hat
   als Aschaffenburger Band mit 40 Jahren Geschichte und mehreren
   Terminen (auch Weinheim am 9. Januar 2027, laut
-  cafecentral.de/konzert/goppin-b/) das Zeug zu einer eigenen Seite; ob sie entsteht, entscheidet ein Mensch.
+  cafecentral.de/konzert/goppin-b/) das Zeug zu einer eigenen Seite;
+  ob sie entsteht, entscheidet ein Mensch.
   Die Schreibweise schwankt in den Quellen (BOPPIN' B, Boppin'B,
   Boppin B, boppin b.); gewaehlt ist die Form aus dem Fliesstext der
   Ankuendigung.
