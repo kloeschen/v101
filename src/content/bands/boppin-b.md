@@ -2,7 +2,7 @@
 name: Boppin'B
 aliases: [Boppin' B, Boppin B, Boppin' Bunny and the Be Bop Boys]
 kurzbeschreibung: Boppin'B ist eine 1985 in Aschaffenburg gegründete Rock'n'Roll- und Rockabilly-Band, die nach eigener Zählung mehr als 6.000 Konzerte gespielt hat und seit ihrer Gründung ohne Pause aktiv ist.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
 autor: markus
