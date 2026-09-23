@@ -87,6 +87,17 @@ jobs:
           else
             echo "geaendert=ja" >> "$GITHUB_OUTPUT"
           fi
+      - name: Prüfkette auf dem Freigabe-Ergebnis
+        if: steps.diff.outputs.geaendert == 'ja'
+        # Die ganze Kette auf dem, was gleich als Pull Request erscheint.
+        # Auf dem PR selbst läuft die CI nicht (Bot-Token), und selbst wenn,
+        # endete sie an der Freigabeprüfung, bevor Tests und Build laufen.
+        # FREIGABE_BESTAETIGT: nur die Slugs, die freigeben.ts eben wirklich
+        # freigegeben hat (siehe Kopf von scripts/check-freigabe.ts).
+        env:
+          FREIGABE_BESTAETIGT: ${{ steps.lauf.outputs.slugs }}
+        run: npm run verify:ci
+
 
       - name: Pull Request öffnen
         if: steps.diff.outputs.geaendert == 'ja'

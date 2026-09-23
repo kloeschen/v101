@@ -398,24 +398,49 @@ Preis stimmt, ob die Quelle trägt —, sieht keine Regel. Das bleibt beim
 Menschen, und deshalb steht am Ende ein Pull Request und kein Push auf
 `main`.
 
-### Was dabei rot wird, und warum das so gehört
+### Wo die Prüfkette läuft, und warum nicht auf dem Pull Request
 
-Die Freigabeprüfung `check-freigabe.ts` (Befund M8) meldet jeden Wechsel
-auf den freigegebenen Status, den niemand **beim Aufruf** bestätigt hat.
-Sie wird deshalb in der CI jedes Freigabe-Pull-Requests anschlagen. Das ist
-kein Fehler im Werkzeug, sondern ihr Zweck: Die Bestätigung ist eine
-Handlung an der Kommandozeile und steht bewusst nicht im Repository —
-sonst könnte sie jeder schreiben, der schreiben kann.
+**Seit dem 2026-09-23 prüft der Freigabe-Workflow sein Ergebnis selbst**,
+bevor er den Pull Request öffnet: Nach `freigeben.ts` läuft `npm run
+verify:ci` auf dem Arbeitsstand mit den freigegebenen Einträgen, also die
+ganze Kette mit Tests und Build. Scheitert sie, entsteht **kein** Pull
+Request; der Bericht liegt trotzdem als Artefakt am Lauf.
 
-`freigeben.ts` gibt am Ende die passende Zeile aus:
+Die Bestätigung, die `check-freigabe.ts` verlangt, kommt dabei aus
+`FREIGABE_BESTAETIGT` — und zwar genau die Slugs, die `freigeben.ts` eben
+tatsächlich freigegeben hat, nicht die Eingabe des Workflows. Abgelehnte
+Einträge stehen nicht darin.
+
+**Warum nicht einfach die CI auf dem Pull Request?** Aus zwei Gründen, die
+beide am 2026-09-22 beim ersten echten Lauf sichtbar wurden:
+
+1. **Sie läuft dort gar nicht.** Ein Pull Request, den ein Workflow mit
+   seinem Bot-Token öffnet, bekommt einen CI-Lauf, der auf eine manuelle
+   Freigabe wartet — und nach dem Merge als „failure" ohne einen einzigen
+   Job stehen bleibt. Ein fehlender Haken sieht auf den ersten Blick aus wie
+   einer ohne Befund.
+2. **Liefe sie, endete sie zu früh.** `verify:ci` ist eine `&&`-Kette, die
+   Freigabeprüfung ist Schritt 3 von 9, und auf einem Freigabe-Ergebnis
+   schlägt sie planmäßig an. Tests und Build stehen dahinter und liefen nie.
+   Genau dort lag beim ersten Mal der echte Fehler — hinter dem erwarteten
+   Rot versteckt (Lektion 25).
+
+Dass der Workflow-Schritt noch dasteht, prüft `test-pruefkette.ts`: Er muss
+`npm run verify:ci` aufrufen, die Slugs aus `steps.lauf.outputs.slugs`
+weiterreichen, nach dem Freigabelauf und vor `gh pr create` stehen.
+`.github/` liegt hinter der Agentensperre — ohne diese Prüfung wüsste
+niemand, ob ein Mensch den Schritt beim nächsten Umbau versehentlich
+entfernt.
+
+**Was das für dich beim Mergen heißt:** Ist der Freigabe-PR da, ist die
+Kette gelaufen. Der CI-Eintrag am PR bleibt leer bzw. „failure ohne Jobs" —
+das ist kein Befund. Die Prüfung, die zählt, steht im Lauf des Workflows
+„Freigeben".
+
+Von Hand geht es wie bisher: `freigeben.ts` gibt am Ende die
+Bestätigungszeile aus.
 
     npx tsx scripts/check-freigabe.ts --freigabe petticoat --freigabe korsett
-
-Wer den Pull Request prüft, führt sie aus oder merged in dem Wissen, dass
-genau diese Slugs freigegeben werden. Wenn dieser rote Haken auf Dauer
-stört, ist die Alternative, die Bestätigung in den Commit zu schreiben und
-`check-freigabe.ts` sie dort lesen zu lassen — das wäre bequemer und
-schwächer, und es ist eine Entscheidung, keine Nebensache.
 
 ---
 

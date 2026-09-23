@@ -172,6 +172,79 @@ pruefe(
 );
 
 /* ------------------------------------------------------------------ */
+/* freigeben.yml prüft sein Ergebnis, bevor er den PR öffnet           */
+/* ------------------------------------------------------------------ */
+/*
+ * SEIT DEM 2026-09-23. Der erste Freigabe-PR hätte `main` rot gemacht, und
+ * keine Prüfung hätte es gezeigt: Die CI auf einem PR, den der Workflow mit
+ * seinem Bot-Token öffnet, läuft gar nicht, und selbst wenn sie liefe, endete
+ * `verify:ci` bei Schritt 3 von 9 — an der Freigabeprüfung, die auf einem
+ * Freigabe-Ergebnis naturgemäß anschlägt. Tests und Build liefen nie.
+ *
+ * Deshalb lässt der Freigabe-Workflow die Kette selbst laufen, und zwar mit
+ * den Slugs, die er gerade freigegeben hat, als Bestätigung
+ * (FREIGABE_BESTAETIGT, siehe Kopf von check-freigabe.ts).
+ *
+ * Diese Prüfungen stehen hier und nicht in einer Beschreibung, weil
+ * `.github/` hinter der Agentensperre liegt: Den Schritt setzt ein Mensch ein,
+ * und ohne Prüfung wüsste niemand, ob er noch dasteht. Eine Sperre, die nie
+ * geprüft wurde, ist wirkungslos, bis das Gegenteil gezeigt ist (Regel 6).
+ */
+
+const freigabeWorkflow = readFileSync(path.join(PROJEKT, ".github", "workflows", "freigeben.yml"), "utf8");
+
+/** Die Schritte eines Jobs, je als Textblock ab dem `- `, das ihn beginnt. */
+function schritte(yaml: string): string[] {
+  const zeilen = yaml.split("\n");
+  const start = zeilen.findIndex((z) => /^\s*steps:\s*$/.test(z));
+  if (start < 0) return [];
+  const bloecke: string[][] = [];
+  let einzug = -1;
+  for (let i = start + 1; i < zeilen.length; i++) {
+    const z = zeilen[i] ?? "";
+    const m = z.match(/^(\s*)- /);
+    if (m && (einzug < 0 || (m[1] ?? "").length === einzug)) {
+      einzug = (m[1] ?? "").length;
+      bloecke.push([z]);
+      continue;
+    }
+    // Weniger eingerückt als ein Schritt: der Job ist zu Ende.
+    if (einzug >= 0 && z.trim() !== "" && ((z.match(/^(\s*)/) ?? ["", ""])[1] ?? "").length < einzug) break;
+    bloecke[bloecke.length - 1]?.push(z);
+  }
+  return bloecke.map((b) => b.join("\n"));
+}
+
+const fSchritte = schritte(freigabeWorkflow);
+const iLauf = fSchritte.findIndex((b) => /\bid:\s*lauf\b/.test(b));
+const iKette = fSchritte.findIndex((b) => runBefehle(b).some((c) => /^npm run verify:ci$/.test(c)));
+const iPr = fSchritte.findIndex((b) => /gh pr create/.test(b));
+
+// Lebenszeichen für den Zerleger: Ohne erkannte Schritte wären alle
+// folgenden Behauptungen aus demselben Grund falsch — und keine sagte etwas.
+pruefe("freigeben.yml: Schritte werden erkannt", fSchritte.length >= 6, `erkannt: ${fSchritte.length}`);
+pruefe("freigeben.yml: der Freigabelauf trägt id: lauf", iLauf >= 0);
+pruefe("freigeben.yml: der Pull Request wird mit gh pr create geöffnet", iPr >= 0);
+
+pruefe(
+  "freigeben.yml lässt die Kette auf dem Freigabe-Ergebnis laufen (npm run verify:ci)",
+  iKette >= 0,
+  "Schritt fehlt — der Block steht in BETRIEB.md, Abschnitt \"Wo die Prüfkette läuft\", und im Kopf von check-freigabe.ts",
+);
+pruefe(
+  "die Kette bekommt die freigegebenen Slugs als Bestätigung",
+  iKette >= 0 && /FREIGABE_BESTAETIGT:\s*\$\{\{\s*steps\.lauf\.outputs\.slugs\s*\}\}/.test(fSchritte[iKette] ?? ""),
+  fSchritte[iKette] ?? "(kein Kettenschritt)",
+);
+pruefe("sie läuft nach dem Freigabelauf", iLauf >= 0 && iKette > iLauf, `lauf=${iLauf}, kette=${iKette}`);
+pruefe("und bevor der Pull Request entsteht", iPr >= 0 && iKette >= 0 && iKette < iPr, `kette=${iKette}, pr=${iPr}`);
+pruefe(
+  "freigeben.yml holt die volle Historie (fetch-depth: 0)",
+  /fetch-depth:\s*0/.test(freigabeWorkflow),
+  "Ohne sie findet freigabe:ci mit --basis-pflicht keine Basis.",
+);
+
+/* ------------------------------------------------------------------ */
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);
 for (const f of fehler) console.log(`  FEHLER  ${f}`);
