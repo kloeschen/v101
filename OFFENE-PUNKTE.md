@@ -95,16 +95,6 @@ Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
-`frei` **Niedersachsen und Rhein-Neckar brauchen einen zweiten Termin.** Drei der
-fünf Regionen haben jetzt drei bis fünf Verweise und kommen mit der Freigabe
-über die Bestandsschwelle. Diese beiden stehen weiter bei zwei. Für
-Niedersachsen führt jede Spur auf das Festival in Ganderkesee zurück, das
-schon erfasst ist. Für Rhein-Neckar war der Walldorf Weekender 2026
-ausdrücklich die letzte Ausgabe, und es wurde kein Ersatz gefunden; die
-naheliegenden Verzeichnisse (livegigs.de) antworten automatisierten Abrufen
-mit HTTP 403. Beides braucht entweder eine andere Quelle oder eine Recherche
-von Hand.
-
 `mensch` **Der Skill `events-recherche` passt nicht auf dieses Repo.** Er verweist auf
 ein anderes Projektverzeichnis und auf ein Frontmatter mit `title`, `datum`,
 `stadt`, `tags`, `wiederkehrend` — keines dieser Felder existiert hier, und
