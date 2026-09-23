@@ -32,6 +32,58 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **Berlin: bis zu drei weitere Termine aus dem Rockin'-Wildcat-Gig-Guide.**
+Der Guide (https://www.rockin-wildcat.com/rwc/guide) führte am 2026-09-04
+achtzehn Termine bis März 2027, jeweils mit JSON-LD; im Register stehen
+zwei, einer davon vorbei. Die nächsten kommenden Termine mit Szenebezug
+übernehmen, je Termin die Detailseite öffnen und den Aktualitätsbeleg wie
+beim Record Hop führen (JSON-LD, Datum im Fließtext, keine geratenen
+Detail-URLs). Fehlt der Spielort, ihn mit anlegen und im selben PR lassen,
+denn Termin und Ort gehen nur gemeinsam durch die Freigabe
+(`verweis-auf-entwurf`). Bands in `lineupWeitere`. Der Preis `0` im
+JSON-LD dieser Quelle ist ein Vorgabewert, kein freier Eintritt.
+
+`frei` **Boppin'B im Colos-Saal Aschaffenburg am 26. Dezember 2026 anlegen.**
+Die Terminliste der Band bei Reservix
+(https://www.reservix.de/tickets-boppinb/t3454) nennt „Sa. 26.12.2026,
+20:00 Uhr, Aschaffenburg, Colos-Saal, ab 24,10 €". Die Seite des Hauses als
+zweite Quelle öffnen, den Colos-Saal als Location anlegen (Region `bayern`,
+Adresse nur mit Beleg) und den Termin mit `lineupBands: [boppin-b]`. Die
+Band ist freigegeben, der Verweis ist also erlaubt. Zeitzone im Dezember:
+`+01:00`.
+
+`frei` **Boppin'B im Café Central Weinheim am 9. Januar 2027 anlegen.** Die
+Detailseite https://cafecentral.de/konzert/goppin-b/ nennt „Sa 9.1.2027",
+Einlass 19 Uhr, Beginn 20 Uhr. Der Ticketshop (loveyourartist, Profil
+„Cafe Central/TocopillA Events") nennt 22 €. Haus und Band sind
+freigegeben. Zeitzone `+01:00`. Vorsicht: Das Haus verwendet alte
+Ankündigungstexte weiter, das Datum also nur aus der Datumszeile der
+Detailseite übernehmen und gegen den Ticketshop halten (ENTSCHEIDUNGEN,
+2026-09-23).
+
+`frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
+(unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
+britische Jugendkultur der 1950er, auf die sich die Rockabilly-Szene in
+Großbritannien bis heute bezieht. Quellen öffnen (Wikipedia de/en,
+Vintage Rock, ein Nachschlagewerk zur Mode), Widersprüche in den Text.
+`abgrenzung` gegen Rockabilly als Musik und gegen die Mods. Danach
+`npm run autolink`.
+
+`frei` **Lexikon: Jive.** Steht in fünf Texten, unter anderem bei den
+Tanzkursen in Ganderkesee, und hat keinen Eintrag. Jive ist ein Tanz ohne
+gleichnamige Musikrichtung, also nicht betroffen von der offenen Frage
+„Boogie-Woogie als Tanz". `kategorie: tanz`. Die Abgrenzung gegen den
+Lindy Hop und gegen den Rock'n'Roll als Turniertanz gehört in den Text,
+mit Quelle.
+
+`frei` **Psychobilly-Osterfestival im Café Central Weinheim.** Die Startseite
+nennt „Frenzy — Psychobilly Oster Festival, Sa 27.03." und „Demented Are
+Go, So 28.03." ohne Jahr (Detailseiten /konzert/frenzy/ und
+/konzert/demented-are-go/). Nur anlegen, wenn eine Detailseite oder der
+Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
+zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
+Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
+
 `mensch` **Kopfkommentar im Hook `guard.mjs` noch vom Vorschlag.** Der am
 2026-09-23 eingesetzte Hook ist byte-gleich mit dem Vorschlag, einschließlich
 dessen Kopf: Die Zeilen 2 bis 13 („VORSCHLAG — wird nicht ausgeführt …" bis
