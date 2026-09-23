@@ -84,6 +84,24 @@ ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
 gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
 geprüft ist bisher nur dieser eine.
 
+`mensch` **Frontmatter-Verweise auf Entwürfe: im JSON-LD eine `@id` ohne Seite.**
+Gefunden beim Anlegen von Boppin'B am 2026-09-23. Steht in einem
+freigegebenen Termin eine Band, ein Ort oder ein Genre, das noch Entwurf
+ist (`lineupBands`, `ort`, `genres`), schreibt `refs()` in
+`src/lib/jsonld/shared.ts` die `@id` ungefiltert in den Graphen. Die
+Produktion baut die Zielseite nicht, und `check-jsonld.ts` merkt es nicht,
+weil es die bekannten `@id`s aus dem ganzen Bestand sammelt, Entwürfe
+eingeschlossen. Das ist dieselbe Lücke wie beim Autolink (Lektion 26),
+nur im Frontmatter. Heute ist kein Eintrag betroffen, weil der
+Boppin'B-Termin die Band bewusst weiter in `lineupWeitere` führt. Zwei
+vertretbare Wege: (a) eine Regel analog zu `link-auf-entwurf`, die
+Freigegebenes nicht auf Entwürfe verweisen lässt, oder (b) die Builder
+filtern auf Freigegebenes und fallen auf eine benannte Gruppe ohne `@id`
+zurück. (a) hält den Zustand sichtbar, (b) macht ihn unschädlich.
+**Folgearbeit unabhängig davon:** Nach der Freigabe von `bands/boppin-b`
+den Termin in Barsinghausen von `lineupWeitere` auf `lineupBands`
+umstellen.
+
 `mensch` **Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
 Events steht auf 30 Tagen und hätte die falsche Anfangszeit des Record Hop
 beinahe bis nach den Termin getragen; gefunden wurde sie nur, weil die Seite
