@@ -2,7 +2,7 @@
 name: Boppin'B im ASB-Bahnhof Barsinghausen
 aliases: [Boppin B Barsinghausen 2026, Boppin'B 40 Jahre Barsinghausen]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Samstag, 3. Oktober 2026, im ASB-Bahnhof Barsinghausen bei Hannover.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
 autor: markus
