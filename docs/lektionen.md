@@ -688,3 +688,32 @@ für ein Register, das so nicht existieren kann.
 Vorrichtung umgebaut, nicht die Regel. Und bevor eine neue Invariante
 eingeführt wird, lohnt der gezielte Blick: Welche Vorrichtung baut den
 Zustand, den sie verbietet, nebenbei mit?
+
+## 27. Die lokale Kette darf nachsichtiger sein als die CI, aber nicht lückenhafter
+
+**Was passiert ist:** PR #39 (zwei neue Häuser, zwei Konzerte) war lokal
+grün — `npm run verify` ohne Befund — und in der CI rot, an Schritt 6 von 9:
+Autolink-Drift. Der Text des ASB-Bahnhofs nannte „Rock'n'Roll", der Begriff
+war freigegeben, und der Autolink hätte ihn verlinkt. `verify:ci` prüft
+das, `verify` prüfte es nicht. Der Fehler fiel erst nach dem Push auf.
+
+**Warum das mehr ist als ein vergessener Schritt:** Die beiden Ketten sind
+absichtlich verschieden. `verify` ist nachsichtig — Warnungen bleiben
+Warnungen, die Freigabeprüfung überspringt sich ohne Basis —, weil lokal
+nicht jede Voraussetzung der CI da ist. Diese Unterscheidung ist
+begründet und im Kommentar in `package.json` festgehalten. Aber im selben
+Kommentar zu `verify:ci` stand „und der Autolink-Drift wird geprüft", als
+wäre das eine weitere Strenge. Das war es nicht: Autolink-Drift ist kein
+Schwellenwert, den man lokal milder fassen kann, sondern ein Zustand, der
+entweder synchron ist oder nicht. Eine Lücke, die als Nachsicht beschriftet
+war.
+
+**Was jetzt gilt:** `test-pruefkette.ts` verlangt, dass `verify` jeden
+Schritt von `verify:ci` erreicht — selbst oder in einer ausdrücklich
+genannten milden Fassung (`freigabe`, `validate`, `jsonld`). Ein neuer
+Schritt, der nur in die CI-Kette eingetragen wird, macht den Test rot.
+
+**Regel:** Wo zwei Ketten dasselbe absichern sollen, wird ihre Differenz
+aufgezählt, nicht beschrieben. Was nicht auf der Liste steht, ist eine
+Lücke — egal, wie es im Kommentar heißt.
+
