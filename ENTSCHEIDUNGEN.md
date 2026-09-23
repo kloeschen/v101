@@ -86,6 +86,14 @@ Belegt im Trockenlauf: `freigeben.ts --slugs cafe-central-weinheim
 ersten echten Einsatz — sie verlangt einen Freigabelauf mit allen vier
 Slugs.
 
+**Freigegeben am selben Tag** (#40, ein Lauf mit allen vier Slugs,
+`verify:ci` im Workflow grün). Beleg über den Build mit
+`PUBLIC_INDEXIERBAR=true`, vorher gegen nachher: Auf dem Stand vor #40
+tragen `/regionen/niedersachsen/` und `/regionen/rhein-neckar/`
+`noindex, follow` und fehlen in der Sitemap, `/regionen/berlin/` als
+Gegenprobe nicht. Nach #40 sind alle drei ohne `noindex` und in der
+Sitemap. `npm run stale` meldet keine Region mehr unter der Schwelle.
+
 **Nicht gebaut:** Bandseiten für Boppin'B und Long Tall Texans. Beide stehen
 in `lineupWeitere`; Boppin'B hat mit zwei Terminen im Register (Barsinghausen,
 und laut Café Central Weinheim am 9. Januar 2027) die stärkste Grundlage.
