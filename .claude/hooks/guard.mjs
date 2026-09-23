@@ -1,4 +1,16 @@
 /**
+ * VORSCHLAG — wird nicht ausgeführt.
+ *
+ * Einzusetzen als `.claude/hooks/guard.mjs` (vollständiger Ersatz). Das
+ * Löschen dieser Datei danach übernimmt ein Agent. Agenten können `.claude/`
+ * nicht schreiben, deshalb
+ * liegt der Vorschlag hier; Begründung und Belege stehen in
+ * ENTSCHEIDUNGEN.md („guard.mjs: Umleitungen nach ihrem Ziel beurteilen")
+ * und im PR. `scripts/test-hooks.ts` prüft diese Fassung mit
+ * `V101_GUARD=docs/vorschlaege/guard.mjs npx tsx scripts/test-hooks.ts`.
+ *
+ * ---------------------------------------------------------------------
+ *
  * Sperren für agentische Schreibzugriffe. Exit 2 blockiert den Tool-Aufruf,
  * stderr geht als Begründung an das Modell zurück.
  *
@@ -101,6 +113,12 @@ if (befehl) {
   // Der Befehlstext wird als Ganzes betrachtet, nicht geparst. Lieber eine
   // Meldung zu viel — ein Lesezugriff lässt sich anders formulieren, ein
   // übersehener Schreibzugriff nicht zurücknehmen.
+  //
+  // Umleitungen stehen seit dem 2026-09-23 NICHT mehr in dieser Liste,
+  // sondern werden unten nach ihrem Ziel beurteilt. Das nackte Zeichen `>`
+  // traf `=>` (Pfeilfunktionen), `>=`, `2>&1` und `2>/dev/null` — also
+  // reine Lesebefehle. Sechs belegte Fälle, einer davon hat einen
+  // Mutationsbeleg still entwertet (OFFENE-PUNKTE.md, ENTSCHEIDUNGEN.md).
   const schreibverben = [
     /\bsed\b[^|;&]*\s-[a-zA-Z]*i/, //   sed -i, sed -Ei, sed --in-place
     /\bsed\b[^|;&]*--in-place/,
@@ -114,18 +132,32 @@ if (befehl) {
     /\bpatch\b/,
     /\bgit\s+(checkout|restore|apply)\b/,
     /\bperl\b[^|;&]*\s-[a-zA-Z]*i/, //  perl -pi -e
-    />>?/, //                           Umleitungen, auch 2> und &>
   ];
+  const verbSchreibt = schreibverben.some((r) => r.test(befehl));
 
-  const schreibt = schreibverben.some((r) => r.test(befehl));
+  // Umleitungen werden nach ihrem Ziel beurteilt, nicht nach ihrem Zeichen.
+  // Jedes `>` liefert ein Kandidatenziel: das Wort dahinter. Ob es wirklich
+  // eine Umleitung ist oder `=>`, `>=`, `2>&1` — das zu unterscheiden hieße,
+  // die Shell zu parsen. Es ist auch nicht nötig: Bei `=>` ist das
+  // „Ziel" ein Wort wie `console.log`, bei `>=` ein `=`, bei `2>&1` gibt es
+  // keines, und `/dev/null` ist harmlos. Sperren kann nur ein Ziel, das ein
+  // gesperrter Pfad ist oder (für den Status) in src/content/ liegt.
+  //
+  // Die erste Fassung dieses Vorschlags unterschied die Fälle mit
+  // Look-arounds und filterte /dev/null. Der Mutationsbeleg hat alle drei
+  // Bausteine als wirkungslos gezeigt — sie sind deshalb weg.
+  const umleitungsZiele = [...befehl.matchAll(/>>?\s*(["']?)([^\s"'|;&()<>]+)\1/g)].map((m) => m[2]);
 
-  if (schreibt) {
-    for (const { imBefehl, grund } of gesperrt) {
-      if (imBefehl.test(befehl)) {
-        verweigern(
-          `${grund}\n\nDieser Pfad ist auch über die Shell gesperrt: Der Befehl enthält einen Schreibzugriff (Umleitung, sed -i, tee, cp, mv, git checkout/restore o. ä.) auf einen gesperrten Pfad. Der Hook prüft Write, Edit und Bash gleichermaßen.`,
-        );
-      }
+  for (const { imBefehl, grund } of gesperrt) {
+    // Verben nehmen ihren Pfad als Argument irgendwo im Befehl — dort bleibt
+    // es beim groben Blick auf den ganzen Text. Eine Umleitung dagegen
+    // schreibt genau in ihr Ziel, und nur das Ziel entscheidet.
+    const perVerb = verbSchreibt && imBefehl.test(befehl);
+    const perUmleitung = umleitungsZiele.some((ziel) => imBefehl.test(ziel));
+    if (perVerb || perUmleitung) {
+      verweigern(
+        `${grund}\n\nDieser Pfad ist auch über die Shell gesperrt: Der Befehl enthält einen Schreibzugriff (Umleitung, sed -i, tee, cp, mv, git checkout/restore o. ä.) auf einen gesperrten Pfad. Der Hook prüft Write, Edit und Bash gleichermaßen.`,
+      );
     }
   }
 
@@ -135,10 +167,8 @@ if (befehl) {
   // Beim ersten Probelauf dieses Hooks ging genau dieser Befehl durch.
   //
   // Das Wort allein taugt aber nicht als Muster: Der dritte Preiszustand
-  // heißt `unveroeffentlicht` und enthält es als Teilwort. Jeder
-  // Shell-Schreibzugriff auf eine Eventdatei mit diesem Wert wurde deshalb
-  // als Statusänderung abgelehnt — mit einer Begründung, die zur Lage nicht
-  // passte. Geprüft werden jetzt zwei Formen, beide mit Wortgrenze:
+  // heißt `unveroeffentlicht` und enthält es als Teilwort. Geprüft werden
+  // deshalb zwei Formen, beide mit Wortgrenze:
   //
   //   1. der Feldname davor — `status: veroeffentlicht`, auch mit
   //      Anführungszeichen oder zusätzlichem Leerraum;
@@ -149,19 +179,24 @@ if (befehl) {
   // den Befehl wieder durch, der beim ersten Probelauf durchging;
   // `scripts/test-hooks.ts` hält diesen Fall seit damals fest.
   //
-  // Ein reines `grep veroeffentlicht src/content/` bleibt erlaubt, weil dort
-  // kein Schreibverb steht.
+  // Geschrieben wird hier, wenn ein Verb im Befehl steht, eine Umleitung in
+  // src/content/ zielt oder ein Heredoc Text liefert. Eine Umleitung nach
+  // /tmp oder /dev/null neben einem lesenden `grep` auf das Statuswort ist
+  // kein Schreibzugriff auf das Register — sie wurde bis zum 2026-09-23
+  // trotzdem blockiert.
+  //
+  // Bewusst NICHT gelockert: Eine Ersetzung per `sed -i` in einer
+  // Statuszeile bleibt gesperrt, auch rückwärts (`veroeffentlicht` zu
+  // `entwurf`). Die Richtung aus dem Befehlstext zu lesen, wäre fehleranfällig,
+  // und der seltene Rückweg lässt sich über ein Skript gehen.
   const heredoc = /<<-?\s*['"]?\w+/.test(befehl);
   const WORT = String.raw`\bveroeffentlicht\b`;
   const freigabeMuster = [
     new RegExp(String.raw`status:\s*["']?\s*` + WORT),
     new RegExp(String.raw`["'/|,#]\s*` + WORT + String.raw`\s*["'/|,#]`),
   ];
-  if (
-    freigabeMuster.some((r) => r.test(befehl)) &&
-    /src\/content\//.test(befehl) &&
-    (schreibt || heredoc)
-  ) {
+  const schreibtInsRegister = verbSchreibt || heredoc || umleitungsZiele.some((ziel) => /src\/content\//.test(ziel));
+  if (freigabeMuster.some((r) => r.test(befehl)) && /src\/content\//.test(befehl) && schreibtInsRegister) {
     verweigern(
       "status: veroeffentlicht darf nur ein Mensch setzen. Lege den Eintrag mit status: entwurf an; die Freigabe läuft über die Review-Warteschlange (npm run stale).\n\nDieser Befehl setzt den Status über die Shell. Die Sperre gilt für Write, Edit und Bash gleichermaßen — und `scripts/check-freigabe.ts` prüft den Statuswechsel zusätzlich im Build gegen die Basis, unabhängig davon, welches Werkzeug geschrieben hat.",
     );
