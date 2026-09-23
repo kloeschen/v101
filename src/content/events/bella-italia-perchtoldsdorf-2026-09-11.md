@@ -40,6 +40,14 @@ redaktionsnotiz: >-
   nicht gefunden. Eine Deutung waere geraten.
   Nicht gefuellt: ende (die Quelle nennt nur eine Anfangszeit),
   veranstalterUrl, preise, djs, genres, kapazitaet.
+  GENRES GEPRUEFT am 2026-09-23 und bewusst leer (Entscheidung Markus,
+  Posten "genres an den restlichen Events"): Die einzige Quelle nennt die
+  Reihe "Finest Boogie & Swing". "Boogie" meint hier den Paartanz, der
+  Lexikoneintrag `boogie-woogie` den Klavierstil; fuer "Swing" gibt es
+  keinen passenden Eintrag (`western-swing` ist etwas anderes). Eine
+  Musikauswahl nennt die Quelle nicht. Der Termin ist vorbei, und die
+  Liste entfernt Vergangenes -- eine bessere Quelle wird es nicht mehr
+  geben.
 quellen:
   - url: https://boogie.at/
     titel: BOOGIE.at — Terminliste

@@ -4,7 +4,7 @@ aliases: [Rock'n'Roll Festival Ganderkesee, Festival Ganderkesee]
 kurzbeschreibung: Dreitaegiges Rock-'n'-Roll-Festival vom 20. bis 22. August 2027 auf dem Flugplatz Ganderkesee bei Bremen, mit Livebands, Tanzkursen, Oldtimern und eigenem Campground.
 status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-10
+geprueftAm: 2026-09-23
 autor: markus
 typ: festival
 reihe: rocknroll-festival-ganderkesee
@@ -81,6 +81,20 @@ redaktionsnotiz: >-
   abgerufenen Text, nur die Domain), lineupBands, lineupWeitere (fuer
   2027 ist noch kein Line-up bekanntgegeben), kapazitaet,
   barrierefrei, genres.
+  GENRES GEPRUEFT am 2026-09-23 und bewusst leer (Entscheidung Markus,
+  Posten "genres an den restlichen Events"). Die Seite nennt Rock 'n' Roll
+  als Thema und Namen ("Taucht ein in die glanzvolle Welt des Rock 'n'
+  Roll"), sagt aber nicht, welche Musik die "Live Bands und Deejays"
+  spielen. "Rock'n'Roll" ist im Deutschen zugleich ein Tanz -- dieselbe
+  Doppeldeutigkeit wie bei "Boogie", und der Lexikoneintrag `rocknroll`
+  bezeichnet die Musikrichtung. "Rockabilly" steht nur bei den Tanzkursen
+  ("Moves ... ob Rockabilly, Jive oder Swing") und traegt deshalb keine
+  Musikaussage. Nachtragen, sobald das Line-up 2027 Bands mit Stilangabe
+  nennt; die Programmrubrik stand am 2026-09-23 noch auf "Programm Lineup
+  fuer 2026" mit "Coming soon" an allen drei Tagen.
+  Beim Abruf am 2026-09-23 unveraendert: Termin 20.-22. August 2027,
+  Campground 20.-23.08.2027, alle acht Preise. Der HTML-Titel nennt
+  weiterhin den Termin 2026.
   Die Selbstbeschreibung als groesstes Rock'n'Roll-Festival
   Norddeutschlands ist eine Werbeaussage des Veranstalters und im
   Fliesstext als solche gekennzeichnet.
@@ -89,6 +103,11 @@ quellen:
     titel: Rock'n'Roll Festival Ganderkesee
     abgerufenAm: 2026-09-04
     felder: [beginn, ende, ort, eintritt, preise, camping, veranstalterUrl, name, kurzbeschreibung, durchfuehrung, body:termin, body:gelaende, body:eintritt, body:anreise]
+    art: offiziell
+  - url: https://rocknroll-festival.de/
+    titel: Rock'n'Roll Festival Ganderkesee, erneuter Abruf
+    abgerufenAm: 2026-09-23
+    felder: [beginn, ende, preise, camping]
     art: offiziell
 ---
 

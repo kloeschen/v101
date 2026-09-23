@@ -13,6 +13,35 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Genres: Ein Tanzwort ist keine Musikangabe
+
+**Anlass:** Posten „`genres` an den restlichen Events", offen waren noch
+Bella Italia und das Rock'n'Roll Festival Ganderkesee.
+
+**Entscheidung von Markus:** Beide bleiben leer. Die Linie, die schon für
+„Boogie" galt, gilt auch für „Rock'n'Roll" und „Rockabilly", wenn sie als
+Tanz gemeint sein können. Ein Szenewort, das zugleich einen Tanz
+bezeichnet, trägt allein keine Zuordnung zu einem Lexikoneintrag, der
+eine Musikrichtung beschreibt. Nötig ist eine Aussage über die Musik,
+etwa „die Bands spielen …" oder eine Stilangabe am Line-up.
+
+- **Bella Italia:** Die Quelle nennt nur „Finest Boogie & Swing".
+  „Swing" hat keinen passenden Eintrag, der Termin ist vorbei, und die
+  Quelle entfernt Vergangenes.
+- **Ganderkesee:** Rock 'n' Roll ist dort Thema und Name, die Musik der
+  Bands bleibt ungenannt. Rockabilly steht nur bei den Tanzkursen. Das
+  Line-up 2027 ist „Coming soon". Der Fall steht in OFFENE-PUNKTE unter
+  „Später, mit Bedingung".
+
+**Verworfen:** `rocknroll` für Ganderkesee eintragen, weil Name und
+Selbstbeschreibung als Beleg reichten. Vertretbar, aber die Zuordnung ginge
+als `about` ins JSON-LD und behauptete eine Musikrichtung, die die Quelle
+nicht nennt.
+
+Posten entfällt.
+
+---
+
 ## 2026-09-23 — `lexikon-schreibvarianten`: Komposita sind keine Schreibvarianten
 
 **Anlass:** Der Posten „Zwei Altfunde der neuen Regel" ließ zwei Wege offen:
