@@ -97,7 +97,8 @@ drei steht, existiert nach der Sitzung nicht mehr.
 npm run verify
 ```
 
-Prüft Typen, Zeitzonenkonvention, Inhalte, JSON-LD, alle Tests und den Build.
+Prüft Typen, Zeitzonenkonvention, Inhalte, JSON-LD, Autolink-Drift, alle
+Tests und den Build — jeden Schritt der CI-Kette, teils milder (Lektion 27).
 
 Architekturentscheidungen, geänderte Regeln und Funde mit Folgen gehören
 als Eintrag in `ENTSCHEIDUNGEN.md` — neueste oben.

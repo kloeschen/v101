@@ -13,6 +13,41 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — `npm run verify` prüft den Autolink-Drift
+
+**Anlass:** #39 war lokal grün und in der CI rot (Schritt 6/9,
+Autolink-Drift). Die lokale Kette enthielt `autolink:check` nicht.
+
+**Entscheidung:** `verify` ruft `autolink:check` auf, zwischen JSON-LD und
+Freigabeprüfung. Kosten: unter einer Sekunde. Und `test-pruefkette.ts`
+verlangt jetzt allgemein, dass `verify` jeden Schritt von `verify:ci`
+erreicht, streng oder in einer ausdrücklich genannten milden Fassung
+(`freigabe:ci`→`freigabe`, `validate:strict`→`validate`,
+`jsonld:strict`→`jsonld`). Genau diese drei Unterschiede sind gewollt; jeder
+weitere ist eine Lücke.
+
+**Verworfen:** Nur die eine Zeile in `package.json` ergänzen. Das hätte den
+Fall behoben, nicht die Ursache: Beim nächsten Schritt, der nur in
+`verify:ci` eingetragen wird, entsteht dieselbe Lücke, und niemand merkt es
+vor dem Push.
+
+**Belege:** Vor der Korrektur scheitert der neue Test an genau einer
+Behauptung (`verify erreicht den CI-Schritt "autolink:check"`), danach
+63/63. Mutationen, jede nur an den Zeilen `verify` bzw. `verify:ci`:
+
+| Mutation | fällt |
+|---|---|
+| neuer Schritt `lint:neu` nur in `verify:ci` | „verify erreicht den CI-Schritt lint:neu" |
+| `validate` aus `verify` entfernt | „… validate:strict oder seine nachsichtige Fassung validate" |
+| `validate:strict` in `verify:ci` durch `validate` ersetzt | die bestehende Behauptung „verify:ci erreicht validate:strict" und die neue „validate:strict ist wirklich ein Schritt von verify:ci" |
+| `autolink:check` aus `verify` entfernt | „verify erreicht den CI-Schritt autolink:check" |
+
+Lektion 27. Die Beschriftung im Kommentar zu `verify:ci` („und der
+Autolink-Drift wird geprüft") ist entfernt; sie hatte die Lücke als
+Strenge ausgegeben.
+
+---
+
 ## 2026-09-23 — Zweiter Termin für Niedersachsen und Rhein-Neckar: die Häuser, nicht die Verzeichnisse
 
 **Anlass:** Posten „Niedersachsen und Rhein-Neckar brauchen einen zweiten
@@ -50,6 +85,14 @@ Belegt im Trockenlauf: `freigeben.ts --slugs cafe-central-weinheim
 (4 würden freigegeben, 0 abgelehnt). Das ist die Regel vom selben Tag im
 ersten echten Einsatz — sie verlangt einen Freigabelauf mit allen vier
 Slugs.
+
+**Freigegeben am selben Tag** (#40, ein Lauf mit allen vier Slugs,
+`verify:ci` im Workflow grün). Beleg über den Build mit
+`PUBLIC_INDEXIERBAR=true`, vorher gegen nachher: Auf dem Stand vor #40
+tragen `/regionen/niedersachsen/` und `/regionen/rhein-neckar/`
+`noindex, follow` und fehlen in der Sitemap, `/regionen/berlin/` als
+Gegenprobe nicht. Nach #40 sind alle drei ohne `noindex` und in der
+Sitemap. `npm run stale` meldet keine Region mehr unter der Schwelle.
 
 **Nicht gebaut:** Bandseiten für Boppin'B und Long Tall Texans. Beide stehen
 in `lineupWeitere`; Boppin'B hat mit zwei Terminen im Register (Barsinghausen,

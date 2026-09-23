@@ -9,7 +9,7 @@
  * hätte dem Vergleich die Basis gefehlt. Aufgefallen ist es erst, als jemand
  * ins Job-Log sah. Ein grüner Lauf hatte nichts bewiesen.
  *
- * Diese Datei macht daraus eine Bedingung. Sie prüft dreierlei:
+ * Diese Datei macht daraus eine Bedingung. Sie prüft viererlei:
  *
  *   1. `ci.yml` ruft die Kette auf, statt Schritte aufzuzählen. Damit gibt es
  *      genau eine Stelle, an der ein Prüfschritt eingetragen wird, und die
@@ -20,6 +20,9 @@
  *   3. Der Checkout holt die volle Historie. Ohne sie hat die
  *      Freigabeprüfung keine Basis, und `--basis-pflicht` würde die CI
  *      dauerhaft rot färben statt zu prüfen.
+ *   4. Die lokale Kette `verify` erreicht jeden Schritt von `verify:ci`,
+ *      selbst oder in einer ausdrücklich genannten milden Fassung. Sonst
+ *      ist lokal grün, was nach dem Push rot wird (Lektion 27).
  *
  * Ausnahmen sind erlaubt, aber nur ausdrücklich und mit Begründung: siehe
  * AUSNAHMEN. Eine stillschweigende Lücke ist genau der Zustand, den M10
@@ -122,6 +125,44 @@ for (const datei of Object.keys(AUSNAHMEN)) {
 // billigen — sonst ist "verify:ci" ein Name ohne Inhalt.
 for (const noetig of ["check", "build", "test", "freigabe:ci", "validate:strict", "jsonld:strict", "autolink:check", "check:zeit"]) {
   pruefe(`verify:ci erreicht das Skript "${noetig}"`, besucht.has(noetig), [...besucht].sort().join(", "));
+}
+
+/* ------------------------------------------------------------------ */
+/* Die lokale Kette deckt jeden Schritt der CI-Kette                   */
+/* ------------------------------------------------------------------ */
+
+// Am 2026-09-23 war PR #39 lokal grün und in der CI rot: `verify:ci` prüft
+// den Autolink-Drift, `verify` tat es nicht. CLAUDE.md verlangt vor jedem
+// Commit `npm run verify` — ein Schritt, der nur in der CI hängt, fällt also
+// erst nach dem Push auf (Lektion 27).
+//
+// Nachsichtiger darf die lokale Kette sein, lückenhafter nicht. Erlaubt ist
+// je CI-Schritt genau eine nachsichtige Entsprechung, und nur die hier
+// genannten; die Begründung steht im Kommentar "// verify" in package.json.
+const NACHSICHTIG: Record<string, string> = {
+  "freigabe:ci": "freigabe", // ohne --basis-pflicht: lokal fehlt oft die Basis
+  "validate:strict": "validate", // Warnungen bleiben lokal Warnungen
+  "jsonld:strict": "jsonld",
+};
+
+const ciSchritte = [...(skripte["verify:ci"] ?? "").matchAll(/npm run (?:--silent )?([A-Za-z0-9:_-]+)/g)].map((m) => m[1]);
+// Lebenszeichen: Ohne erkannte Schritte wäre die Schleife unten leer und
+// jede Lücke unsichtbar.
+pruefe("verify:ci besteht aus erkennbaren Schritten", ciSchritte.length >= 5, JSON.stringify(ciSchritte));
+pruefe("darunter der Autolink-Drift, an dem die Lücke auffiel", ciSchritte.includes("autolink:check"), JSON.stringify(ciSchritte));
+
+const { besucht: lokalBesucht } = erreichbar("verify");
+for (const schritt of ciSchritte) {
+  const ersatz = NACHSICHTIG[schritt];
+  pruefe(
+    `verify erreicht den CI-Schritt "${schritt}"${ersatz ? ` oder seine nachsichtige Fassung "${ersatz}"` : ""}`,
+    lokalBesucht.has(schritt) || (ersatz !== undefined && lokalBesucht.has(ersatz)),
+    `verify erreicht: ${[...lokalBesucht].sort().join(", ")}`,
+  );
+}
+for (const [streng, milde] of Object.entries(NACHSICHTIG)) {
+  pruefe(`nachsichtige Fassung "${milde}" existiert als Skript`, typeof skripte[milde] === "string");
+  pruefe(`"${streng}" ist wirklich ein Schritt von verify:ci`, ciSchritte.includes(streng), JSON.stringify(ciSchritte));
 }
 
 /* ------------------------------------------------------------------ */
