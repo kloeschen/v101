@@ -717,3 +717,32 @@ Schritt, der nur in die CI-Kette eingetragen wird, macht den Test rot.
 aufgezählt, nicht beschrieben. Was nicht auf der Liste steht, ist eine
 Lücke — egal, wie es im Kommentar heißt.
 
+## 28. Eine Zusammenfassung ist keine Quelle
+
+**Was passiert ist:** An einem Tag, bei drei Recherchen, hat die
+maschinelle Zusammenfassung einer Seite dreimal etwas behauptet, das auf
+der Seite nicht stand:
+
+- Die Website von Boppin'B sollte „Solid as a Rock" auf 2024 datieren. Die
+  Seite selbst sagt 26.09.2025.
+- laut.de sollte Markus Gleim als „ursprüngliche Stimme" ab 1989 nennen,
+  was nach einem Widerspruch zur Wikipedia aussah. Im Originaltext steht
+  „kurz darauf" nach dem Album von 1989, deckungsgleich mit Wikipedia und
+  Bandwebsite.
+- Die Suchzusammenfassung zu Neo-Rockabilly schrieb der englischen
+  Wikipedia den Satz zu, der Begriff sei eine Journalistenprägung. Der
+  Satz steht in einem Magazinartikel, als Zitat eines Musikers, und nicht
+  in der Wikipedia.
+
+**Warum das gefährlich ist:** Keiner der drei Fehler war abwegig. Jeder
+hätte einen Eintrag ergeben, der plausibel aussieht und eine Quelle nennt,
+die ihn nicht trägt. Der zweite hätte sogar einen Widerspruch zwischen
+Quellen erzeugt, den es nicht gibt, und Regel 5 hätte ihn gewissenhaft in
+den Text geschrieben.
+
+**Regel:** Zahlen, Daten, Namen und Zuschreibungen werden am Rohtext der
+Quelle geprüft, bevor sie in ein Feld oder in den Text gehen. Die
+Zusammenfassung dient zum Finden, nicht zum Belegen. Ein Widerspruch
+zwischen Quellen wird erst notiert, wenn er in beiden Originaltexten
+steht.
+
