@@ -651,3 +651,40 @@ aus wie jeder andere alte Lauf. Wo die Prüfung nicht dort laufen kann, wo man
 sie erwartet, muss sie dorthin verlegt werden, wo sie laufen kann — und ihr
 Platz dort braucht selbst eine Prüfung, sonst verschwindet er beim nächsten
 Umbau unbemerkt (`test-pruefkette.ts`, Abschnitt `freigeben.yml`).
+
+---
+
+## 26. Eine neue Regel findet ihren verbotenen Zustand zuerst in den eigenen Vorrichtungen
+
+**Der Fund:** Die Regel `link-auf-entwurf` — ein freigegebener Eintrag darf
+im Fließtext nicht auf einen Entwurf zeigen — war auf dem echten Register
+sofort grün. Es gab dort keinen einzigen Entwurf. In den Tests schlug sie
+dagegen zweimal an, bevor sie überhaupt ihren eigenen Negativtest bestand:
+
+- In `test-validate.ts` war die Fixture „sonst sauberer Eintrag, nur ohne
+  aliases" freigegeben und verlinkte auf `tellerrock` und `bolero` — beide
+  im Test-Register Entwürfe.
+- In `test-freigeben.ts` war die **ganze Vorrichtung** so gebaut: `sauber`
+  zeigte auf `kaputt` (fällt durch, bleibt Entwurf) und auf `trocken` (wird
+  nie freigegeben). Elf Behauptungen fielen, ohne dass an der Freigabelogik
+  etwas falsch war.
+
+**Warum gerade dort:** Vorrichtungen sind der einzige Ort, an dem
+absichtlich Zustände gebaut werden, die im echten Bestand nicht vorkommen
+sollen — ein Eintrag ohne Autor, ein toter Link, ein Entwurf neben einem
+freigegebenen. Wer sie baut, achtet auf die Eigenschaft, die er gerade
+prüfen will, und nimmt den Rest, wie er sich ergibt. Eine neue Regel über
+genau diesen Rest trifft deshalb zuerst die Vorrichtungen, nicht das
+Register. Das ist kein Unfall, sondern die Regel: Was nie verboten war,
+wurde nebenbei gebaut.
+
+**Die Gefahr darin:** Der naheliegende Reflex ist, die Regel für die
+Vorrichtung abzuschwächen oder den Fall aus der Prüfung zu nehmen — „der
+Test ist doch nur ein Test". Damit prüft die Vorrichtung aber weiter gegen
+einen Zustand, den es nicht mehr geben darf, und jede Aussage aus ihr gilt
+für ein Register, das so nicht existieren kann.
+
+**Regel:** Schlägt eine neue Regel in einer Vorrichtung an, wird die
+Vorrichtung umgebaut, nicht die Regel. Und bevor eine neue Invariante
+eingeführt wird, lohnt der gezielte Blick: Welche Vorrichtung baut den
+Zustand, den sie verbietet, nebenbei mit?

@@ -182,6 +182,25 @@ function main() {
   const abgelehnt: Zeile[] = [];
   const unveraendert: Zeile[] = [];
 
+  /*
+   * GEMEINSAM FREIGEBEN, DANN PRÜFEN — BIS NICHTS MEHR KIPPT (seit dem
+   * 2026-09-23).
+   *
+   * Früher wurde Eintrag für Eintrag geschrieben und sofort geprüft. Seit der
+   * Regel `link-auf-entwurf` hängt das Ergebnis dabei an der Reihenfolge: Ein
+   * Artikel, der auf einen Begriff aus DERSELBEN Freigabe verlinkt, wäre
+   * abgelehnt worden, sobald er vor dem Begriff an der Reihe war — der Begriff
+   * stand zu dem Zeitpunkt noch auf Entwurf. Die Freigabe vom 2026-09-22 wäre
+   * genau daran gescheitert (`hot-rod-und-kustom-kulture` verlinkt auf
+   * `hot-rod` und `kustom-kulture`, alle drei im selben Lauf).
+   *
+   * Deshalb: alle Kandidaten zugleich schreiben, dann prüfen. Wer durchfällt,
+   * wird zurückgerollt — und weil das einen anderen Kandidaten ungültig machen
+   * kann, der auf ihn verlinkt, wird wiederholt, bis ein Durchgang niemanden
+   * mehr ablehnt. Die Menge schrumpft bei jeder Wiederholung, also endet es.
+   */
+  const kandidaten: { e: (typeof gewaehlt)[number]; kurz: Zeile; roh: string; text: string }[] = [];
+
   for (const e of gewaehlt) {
     const kurz = { slug: e.slug, collection: e.collection, datei: path.relative(process.cwd(), e.datei) };
 
@@ -196,37 +215,67 @@ function main() {
       abgelehnt.push({ ...kurz, grund: [fehler] });
       continue;
     }
+    kandidaten.push({ e, kurz, roh, text });
+  }
 
-    if (trocken) {
-      // Auch im Trockenlauf wird wirklich geprüft: Ein --dry-run, der die
-      // Prüfung überspringt, sagt nichts über den echten Lauf aus.
-      writeFileSync(e.datei, text, "utf8");
-      let ergebnis: Pruefergebnis;
-      try {
-        ergebnis = pruefe(e.datei);
-      } finally {
-        writeFileSync(e.datei, roh, "utf8");
+  // Alles, was geschrieben wurde, muss bei einem Absturz zurück — und im
+  // Trockenlauf ohnehin. Deshalb steht das Zurückrollen im finally.
+  let offen = [...kandidaten];
+  try {
+    for (const k of offen) writeFileSync(k.e.datei, k.text, "utf8");
+
+    for (;;) {
+      const durchgefallen: { k: (typeof kandidaten)[number]; meldungen: string[] }[] = [];
+      for (const k of offen) {
+        const ergebnis = pruefe(k.e.datei);
+        if (!ergebnis.sauber) durchgefallen.push({ k, meldungen: ergebnis.meldungen });
       }
-      if (ergebnis.sauber) freigegeben.push(kurz);
-      else abgelehnt.push({ ...kurz, grund: ergebnis.meldungen });
-      continue;
+      if (durchgefallen.length === 0) break;
+      for (const { k, meldungen } of durchgefallen) {
+        writeFileSync(k.e.datei, k.roh, "utf8");
+        abgelehnt.push({ ...k.kurz, grund: meldungen });
+      }
+      const raus = new Set(durchgefallen.map((d) => d.k));
+      offen = offen.filter((k) => !raus.has(k));
     }
 
-    // Schreiben, prüfen, bei Befund zurückrollen. Siehe Kopfkommentar:
-    // Die Regel `veroeffentlichungsreife` schweigt für Entwürfe vollständig.
-    writeFileSync(e.datei, text, "utf8");
-    let ergebnis: Pruefergebnis;
+    for (const k of offen) freigegeben.push(k.kurz);
+  } catch (err) {
+    for (const k of kandidaten) writeFileSync(k.e.datei, k.roh, "utf8");
+    throw err;
+  } finally {
+    // Auch im Trockenlauf wird wirklich geprüft — ein --dry-run, der die
+    // Prüfung überspringt, sagte nichts über den echten Lauf. Danach geht
+    // alles zurück.
+    if (trocken) for (const k of kandidaten) writeFileSync(k.e.datei, k.roh, "utf8");
+  }
+
+  /* ---- Autolink nachziehen -------------------------------------- */
+
+  // Seit dem 2026-09-23 verlinkt der Autolink nur freigegebene Ziele (siehe
+  // Kopf von sync-autolinks.ts). Ein Begriff, der eben freigegeben wurde,
+  // ist damit erst JETZT ein Ziel — die Links darauf entstehen hier, im
+  // selben Lauf und damit im selben Pull Request, der ihn veröffentlicht.
+  //
+  // Ohne diesen Schritt bliebe der Autolink nach jeder Freigabe eines
+  // Lexikonbegriffs aus dem Takt: `autolink:check` meldete Drift, `verify:ci`
+  // im Freigabe-Workflow würde rot, und es entstünde gar kein Pull Request.
+  let autolinkBericht = "";
+  if (!trocken && freigegeben.length > 0) {
     try {
-      ergebnis = pruefe(e.datei);
-    } catch (err) {
-      writeFileSync(e.datei, roh, "utf8");
-      throw err;
-    }
-    if (ergebnis.sauber) {
-      freigegeben.push(kurz);
-    } else {
-      writeFileSync(e.datei, roh, "utf8");
-      abgelehnt.push({ ...kurz, grund: ergebnis.meldungen });
+      const aus = execFileSync("npx", ["tsx", "scripts/sync-autolinks.ts"], {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "pipe"],
+      });
+      autolinkBericht = aus.trim().split("\n").filter(Boolean).slice(-1)[0] ?? "";
+    } catch (e: any) {
+      // Die Freigabe ist geschrieben, die Links nicht. Das darf nicht still
+      // bleiben: Der Workflow soll hier scheitern, bevor er einen Pull
+      // Request mit halbem Stand öffnet.
+      console.error(
+        `\nAutolink nach der Freigabe fehlgeschlagen:\n${`${e.stdout ?? ""}${e.stderr ?? ""}`.trim()}`,
+      );
+      process.exitCode = 1;
     }
   }
 
@@ -267,6 +316,7 @@ function main() {
     `${freigegeben.length} freigegeben, ${abgelehnt.length} abgelehnt, ` +
       `${unveraendert.length} unverändert${unbekannt.length ? `, ${unbekannt.length} nicht gefunden` : ""}.`,
   );
+  if (autolinkBericht) console.log(`Autolink nach der Freigabe: ${autolinkBericht}`);
 
   if (freigegeben.length > 0 && !trocken) {
     // check-freigabe.ts meldet jeden Statuswechsel gegen die Basis, solange

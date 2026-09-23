@@ -13,6 +13,89 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Links entstehen erst mit der Freigabe
+
+**Anlass:** Der Rock'n'Roll-Eintrag kam als Entwurf, der Autolink setzte ihn
+in 20 freigegebene Seiten, und in der Produktion — die Entwürfe nicht baut —
+zeigten alle 20 ins Leere. Die Prüfkette war grün: `interne-links` prüft
+gegen den Bestand, und im Bestand stand der Entwurf.
+
+**Entscheidung von Markus: (a)** — der Autolink verlinkt nur freigegebene
+Ziele. **Verworfen: (b)**, Entwürfe mit `noindex` bauen. Das bräche die
+Zusage in `netlify.toml` („Die Produktion zeigt ausschließlich, was ein
+Mensch freigegeben hat") und stellte ungeprüfte Recherche live.
+**Verworfen, der Vollständigkeit halber:** Links beim Rendern entfernen,
+wenn das Ziel nicht gebaut wird. Das widerspricht dem Grund, aus dem der
+Autolink in die Quelle schreibt (Kopf von `sync-autolinks.ts`): Links
+sollen im Diff stehen, und die Linkzählung soll zur Seite passen.
+
+### Drei Teile, und warum es drei sein mussten
+
+**1. `sync-autolinks.ts` nimmt Ziele nur aus Freigegebenem.** Verlinkt
+werden weiterhin alle Einträge — ein Entwurf darf auf Freigegebenes zeigen.
+Heute null Änderungen, weil es keine Entwürfe gibt.
+
+**2. `freigeben.ts` zieht den Autolink nach.** Das stand im Posten als
+Handgriff — seit #36 wäre es mehr gewesen: Der Freigabe-Workflow lässt
+`verify:ci` laufen, und das enthält `autolink:check`. Ein eben
+freigegebener Begriff hätte Drift erzeugt, die Kette wäre rot geworden, und
+es wäre **gar kein** Freigabe-PR entstanden. Jetzt entstehen die Links im
+selben Lauf und damit im selben PR, der ihr Ziel veröffentlicht.
+
+**3. Neue Regel `link-auf-entwurf`, Ebene `fehler`.** Ein freigegebener
+Eintrag darf im Fließtext nicht auf einen Entwurf verlinken. (a) schließt
+den Autolink als Quelle, aber ein von Hand geschriebener Link — auch von
+einem unbeaufsichtigten Lauf — stellte denselben Zustand still wieder her.
+Nur Fließtext: Frontmatter-Verweise löst der Faktenblock über die Registry
+auf, die in der Produktion nur Freigegebenes enthält; unaufgelöst wird dort
+Text statt Link.
+
+### Ein Nebenfund, der den Umbau der Freigabe erzwungen hat
+
+`freigeben.ts` gab Eintrag für Eintrag frei und prüfte jeden sofort. Mit der
+neuen Regel hängt das Ergebnis an der Reihenfolge: Ein Artikel, der vor
+seinem Begriff an der Reihe ist, wäre abgelehnt worden, weil der Begriff in
+dem Moment noch Entwurf ist. **Die Freigabe vom 2026-09-22 wäre daran
+gescheitert** — `hot-rod-und-kustom-kulture` verlinkt auf `hot-rod` und
+`kustom-kulture`, alle drei im selben Lauf.
+
+Jetzt: alle Kandidaten zugleich schreiben, prüfen, Durchgefallene
+zurückrollen, **wiederholen bis zum Fixpunkt**. Die Wiederholung ist nötig:
+Im ersten Durchgang ist ein Ziel noch mitfreigegeben, der Verweis darauf
+also gültig — erst nach dem Zurückrollen zeigt er auf einen Entwurf.
+
+### Und die Regel fand ihren Zustand zuerst in den Tests
+
+Auf dem Register war sie sofort grün. In den Vorrichtungen schlug sie
+zweimal an: eine Fixture in `test-validate.ts`, freigegeben, verlinkt auf
+zwei Entwürfe; und die **ganze** Vorrichtung von `test-freigeben.ts`, in
+der die Prüfeinträge aufeinander zeigten, auch auf solche, die nie
+freigegeben werden — elf Behauptungen fielen. Umgebaut wurden die
+Vorrichtungen, nicht die Regel: `test-freigeben.ts` hat jetzt drei feste,
+freigegebene Anker als Linkziele. Lektion 26.
+
+### Belege
+
+| Prüfung | vorher | jetzt |
+|---|---|---|
+| `test-sync-autolinks.ts` | 9 | 13 |
+| `test-freigeben.ts` | 24 | 37 |
+| `test-validate.ts` | 207 | 222 |
+
+Sieben Mutationen, je auf den Block begrenzt und zurückgebaut:
+
+| Mutation | Was fällt |
+|---|---|
+| Autolink nimmt wieder alle Ziele | 2 — „ein Entwurf wird nicht verlinkt …" |
+| `freigeben.ts` zieht den Autolink nicht nach | 2 — „die Freigabe setzt den Link im selben Lauf" |
+| Regel abgeschaltet | 1 — „freigegeben verlinkt auf Entwurf schlägt an" |
+| Regel prüft auch Entwürfe als Quelle | 1 — „ein Entwurf darf auf einen Entwurf zeigen" |
+| Regel meldet auch nicht existierende Ziele | 1 — „ein toter Link wird nicht doppelt gemeldet" |
+| Freigabe mit nur einem Durchgang | 2 — der Zeiger wird freigegeben, sein Ziel nicht: genau der tote Link |
+| Freigabe wieder Eintrag für Eintrag | 2 — der Artikel vor seinem Begriff wird abgelehnt |
+
+---
+
 ## 2026-09-23 — `main` ist geschützt, und der Schutz ist belegt
 
 **Anlass:** Am 2026-09-21 gefunden: Die GitHub-API meldete für alle Branches

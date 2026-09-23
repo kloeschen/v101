@@ -75,6 +75,8 @@ interface Kontext {
   slugs: Map<CollectionName, Set<string>>;
   /** normalisierter Name/Alias -> Liste "collection/slug" */
   namensIndex: Map<string, string[]>;
+  /** collection -> Set der freigegebenen Slugs (für `link-auf-entwurf`) */
+  freigegeben: Map<CollectionName, Set<string>>;
   heute: Date;
 }
 
@@ -520,6 +522,61 @@ const REGELN: Regel[] = [
 
   /* --- Fachliche Konsistenz --------------------------------------- */
 
+  {
+    /**
+     * Ein freigegebener Eintrag verlinkt im Fließtext auf einen Entwurf.
+     *
+     * Die Produktion baut Entwürfe nicht (`PUBLIC_ENTWUERFE = "false"`), der
+     * Link zeigt dort ins Leere. `interne-links` sieht das nicht, weil es
+     * gegen den Bestand prüft, und im Bestand steht der Entwurf. Genau so
+     * standen am 2026-09-23 zwanzig Links auf `/lexikon/rocknroll/` in
+     * freigegebenen Seiten, und die ganze Prüfkette war grün.
+     *
+     * Die Hauptquelle solcher Links ist seit demselben Tag zu: Der Autolink
+     * verlinkt nur noch Freigegebenes. Diese Regel fängt den Rest — Links,
+     * die jemand von Hand schreibt, auch ein unbeaufsichtigter Lauf.
+     *
+     * NUR DER FLIESSTEXT. Verweise im Frontmatter (region, hauptentitaet, …)
+     * löst der Faktenblock über die Registry auf, und die enthält in der
+     * Produktion nur Freigegebenes; ein unaufgelöster Verweis wird dort Text
+     * statt Link (faktenblock.ts). Im Fließtext steht der Link dagegen
+     * wörtlich im Markdown.
+     *
+     * Ebene `fehler`, wie ein toter interner Link — es ist einer, nur erst in
+     * der Produktion. Ein Ziel, das es gar nicht gibt, meldet `interne-links`;
+     * hier geht es nur um Ziele, die es gibt, aber nicht freigegeben.
+     */
+    code: "link-auf-entwurf",
+    auchOhneSchema: true,
+    collections: "*",
+    pruefe(e, ctx) {
+      if (e.roh.status !== ["veroeffent", "licht"].join("")) return [];
+      const b: Befund[] = [];
+      const gesehen = new Set<string>();
+      for (const m of e.body.matchAll(/\]\((\/[^)#\s]*)/g)) {
+        const pfad = (m[1] ?? "").replace(/\/$/, "");
+        const treffer = Object.entries(urlPrefix).find(([, prefix]) => pfad.startsWith(prefix + "/"));
+        if (!treffer) continue;
+        const [coll, prefix] = treffer as [CollectionName, string];
+        const ziel = pfad.slice(prefix.length + 1).split("/")[0];
+        if (!ziel) continue;
+        const schluessel = `${coll}/${ziel}`;
+        if (gesehen.has(schluessel)) continue;
+        gesehen.add(schluessel);
+        if (!ctx.slugs.get(coll)?.has(ziel)) continue; // toter Link: meldet interne-links
+        if (ctx.freigegeben.get(coll)?.has(ziel)) continue;
+        b.push({
+          ebene: "fehler",
+          code: "",
+          nachricht:
+            `Freigegebener Eintrag verlinkt auf einen Entwurf: ${pfad}/ — ` +
+            `die Produktion baut Entwürfe nicht, der Link zeigt dort ins Leere. ` +
+            `Das Ziel zuerst oder im selben Lauf freigeben, oder den Link entfernen.`,
+        });
+      }
+      return b;
+    },
+  },
   {
     code: "event-zeitraum",
     collections: ["events"],
@@ -1053,9 +1110,16 @@ function baueKontext(): Kontext {
   const slugs = new Map<CollectionName, Set<string>>();
   const namensIndex = new Map<string, string[]>();
 
-  for (const name of collectionNames) slugs.set(name, new Set());
+  const freigegeben = new Map<CollectionName, Set<string>>();
+  // Zusammengesetzt, weil guard.mjs jeden Befehl blockiert, der den Wert nennt.
+  const FREI = ["veroeffent", "licht"].join("");
+  for (const name of collectionNames) {
+    slugs.set(name, new Set());
+    freigegeben.set(name, new Set());
+  }
   for (const e of alle) {
     slugs.get(e.collection)!.add(e.slug);
+    if (e.roh.status === FREI) freigegeben.get(e.collection)!.add(e.slug);
     const namen = [String(e.roh.name ?? ""), ...alsArray(e.roh.aliases)].filter(Boolean);
     for (const n of namen) {
       const norm = normalisiere(n);
@@ -1065,7 +1129,7 @@ function baueKontext(): Kontext {
       namensIndex.get(key)!.push(`${e.collection}/${e.slug}`);
     }
   }
-  return { eintraege: alle, slugs, namensIndex, heute: new Date() };
+  return { eintraege: alle, slugs, namensIndex, freigegeben, heute: new Date() };
 }
 
 /* ------------------------------------------------------------------ */
