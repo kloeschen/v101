@@ -611,3 +611,43 @@ es die wahrscheinlichste Form des Selbstbetrugs.
 **Regel:** Eine Fixture muss den echten Fund nachbauen, nicht nur seine
 Form. Der echte Fehlalarm hieß `Pork pie hat`, klein geschrieben, und genau
 darauf hing er. Wer ihn beim Nachbauen „aufräumt", baut einen anderen Fall.
+
+---
+
+## 25. Ein erwartetes Rot versteckt das echte
+
+**Der Fehler:** Auf einem Freigabe-Pull-Request schlägt die Freigabeprüfung
+planmäßig an — sie meldet jeden Statuswechsel, den niemand beim Aufruf
+bestätigt hat, und ein Freigabe-PR besteht aus nichts anderem. Das war
+bekannt, dokumentiert und als „roter Haken, der so gehört" beschrieben.
+
+Übersehen war, was dieses Rot mit dem Rest der Kette macht. `verify:ci` ist
+eine `&&`-Kette; die Freigabeprüfung ist Schritt 3 von 9. Tests (9) und
+Build (8) stehen dahinter. **Auf einem Freigabe-PR liefen sie also nie.**
+
+Am 2026-09-22 lag genau dort ein echter Fehler: Vier Prüfungen in
+`test-anzeige.ts` hingen an einer fest verdrahteten leeren Sammlung, und die
+Freigabe füllte sie. Hätte die CI auf dem PR gelaufen — sie lief aus einem
+zweiten Grund gar nicht —, wäre sie bei Schritt 3 stehengeblieben, mit dem
+Rot, das alle erwartet hatten. Der echte Fehler wäre dahinter nicht zu sehen
+gewesen. Gefunden hat ihn nur ein von Hand nachgestellter Merge.
+
+**Was daran allgemein ist:** Ein Signal, das in einem bekannten Fall immer
+rot ist, trägt in diesem Fall keine Information mehr — weder über sich noch
+über das, was es verdeckt. „Rot, aber erwartet" ist in einer `&&`-Kette
+gleichbedeutend mit „der Rest wurde nicht geprüft". Wer einen Schritt als
+planmäßig rot beschreibt, beschreibt zugleich alle nachfolgenden als
+planmäßig ungeprüft, ob er es merkt oder nicht.
+
+**Regel:** Eine Prüfung, die in einem bekannten Fall anschlagen soll, braucht
+für diesen Fall einen Weg, auf dem sie bestätigt statt übergangen wird —
+sodass die Kette weiterläuft und der Rest wirklich geprüft ist. Im Projekt:
+`FREIGABE_BESTAETIGT`, gesetzt vom Freigabe-Workflow mit genau den Slugs,
+die er freigegeben hat.
+
+**Regel:** „Kein Haken" ist kein Ergebnis. Ein CI-Lauf ohne einen einzigen
+Job, der nach dem Merge als „failure" stehen bleibt, sieht in der Übersicht
+aus wie jeder andere alte Lauf. Wo die Prüfung nicht dort laufen kann, wo man
+sie erwartet, muss sie dorthin verlegt werden, wo sie laufen kann — und ihr
+Platz dort braucht selbst eine Prüfung, sonst verschwindet er beim nächsten
+Umbau unbemerkt (`test-pruefkette.ts`, Abschnitt `freigeben.yml`).

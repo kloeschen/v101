@@ -32,7 +32,7 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { ladeAlle } from "./_laden";
 import { collectionNames, type CollectionName } from "../src/content/_schemas";
@@ -277,6 +277,18 @@ function main() {
       `\nDiese Freigabe bestätigen (check-freigabe.ts meldet sie sonst als unbestätigt):\n` +
         `  npx tsx scripts/check-freigabe.ts ${freigegeben.map((z) => `--freigabe ${z.slug}`).join(" ")}`,
     );
+  }
+
+  // Für den Freigabe-Workflow: Welche Slugs wurden TATSÄCHLICH freigegeben?
+  // Der nächste Schritt dort lässt `verify:ci` auf dem Ergebnis laufen und
+  // reicht genau diese Liste als FREIGABE_BESTAETIGT weiter (siehe Kopf von
+  // check-freigabe.ts). Nicht die Eingabe des Workflows: Die kann eine ganze
+  // Collection sein, und abgelehnte Einträge gehören nicht in die Bestätigung.
+  //
+  // Geschrieben wird nur, wenn GitHub Actions die Datei bereitstellt. Ein
+  // Aufruf von Hand bleibt davon unberührt.
+  if (process.env.GITHUB_OUTPUT && !trocken) {
+    appendFileSync(process.env.GITHUB_OUTPUT, `slugs=${freigegeben.map((z) => z.slug).join(",")}\n`, "utf8");
   }
 
   // Abgelehnte Einträge sind kein Fehlschlag des Laufs — sie sind sein

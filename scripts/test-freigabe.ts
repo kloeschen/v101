@@ -49,9 +49,21 @@ const eintrag = (slug: string, status: string) => {
   return datei;
 };
 
-/** Ruft check-freigabe.ts im Temp-Verzeichnis auf. */
-const lauf = (...args: string[]) => {
-  const r = spawnSync("npx", ["tsx", SKRIPT, ...args], { cwd: wurzel, encoding: "utf8" });
+/**
+ * Ruft check-freigabe.ts im Temp-Verzeichnis auf.
+ *
+ * `FREIGABE_BESTAETIGT` wird ausdrücklich geleert, wenn der Aufruf sie nicht
+ * setzt: Eine Variable, die zufällig in der Umgebung des Testlaufs steht,
+ * bestätigte sonst Fälle, die hier als unbestätigt geprüft werden — und der
+ * Test bestünde aus dem falschen Grund.
+ */
+const lauf = (...args: string[]) => laufMit({}, ...args);
+const laufMit = (umgebung: Record<string, string>, ...args: string[]) => {
+  const r = spawnSync("npx", ["tsx", SKRIPT, ...args], {
+    cwd: wurzel,
+    encoding: "utf8",
+    env: { ...process.env, FREIGABE_BESTAETIGT: "", ...umgebung },
+  });
   return { code: r.status ?? -1, stdout: r.stdout ?? "", stderr: r.stderr ?? "" };
 };
 
@@ -104,6 +116,68 @@ try {
     gleich("zweite unbestätigte Veröffentlichung ergibt Exit 1", r.code, 1);
     pruefe("Bericht nennt die zweite Datei", r.stdout.includes("tellerrock.md"), r.stdout);
     pruefe("Bericht nennt die erste weiterhin als bestätigt", r.stdout.includes("bestätigt"), r.stdout);
+  }
+
+  /* --- Bestätigung aus der Umgebung (seit 2026-09-23) ------------ */
+  /*
+   * Der Freigabe-Workflow reicht die Slugs, die er gerade freigegeben hat,
+   * über FREIGABE_BESTAETIGT an `verify:ci` weiter. Hier steht petticoat
+   * und tellerrock auf live, beide gegenüber der Basis gewechselt.
+   */
+  {
+    const r = laufMit({ FREIGABE_BESTAETIGT: "petticoat,tellerrock" }, "--basis", basis);
+    gleich("Bestätigung aus der Umgebung ergibt Exit 0", r.code, 0);
+    pruefe(
+      "Bericht nennt die Herkunft der Bestätigung",
+      r.stdout.includes("aus FREIGABE_BESTAETIGT"),
+      r.stdout,
+    );
+  }
+  {
+    // Die Umgebung deckt nur, was sie nennt.
+    const r = laufMit({ FREIGABE_BESTAETIGT: "petticoat" }, "--basis", basis);
+    gleich("Umgebung deckt nicht die zweite Datei", r.code, 1);
+    pruefe("Bericht nennt die ungedeckte Datei", r.stdout.includes("tellerrock.md"), r.stdout);
+  }
+  {
+    // Kein Sammelwert: `*` und `alle` sind keine Slugs und bestätigen nichts.
+    const r1 = laufMit({ FREIGABE_BESTAETIGT: "*" }, "--basis", basis);
+    gleich("ein Stern bestätigt nichts", r1.code, 1);
+    const r2 = laufMit({ FREIGABE_BESTAETIGT: "alle" }, "--basis", basis);
+    gleich("\"alle\" bestätigt nichts", r2.code, 1);
+    // Leer, nur Kommas, nur Leerzeichen: dasselbe wie gar keine Variable.
+    const r3 = laufMit({ FREIGABE_BESTAETIGT: " , ,, " }, "--basis", basis);
+    gleich("eine Variable aus Leerraum und Kommas bestätigt nichts", r3.code, 1);
+  }
+  {
+    // Aufruf und Umgebung zusammen: jede Quelle deckt ihren Teil, und der
+    // Bericht unterscheidet sie.
+    const r = laufMit({ FREIGABE_BESTAETIGT: "tellerrock" }, "--basis", basis, "--freigabe", "petticoat");
+    gleich("Aufruf und Umgebung zusammen ergeben Exit 0", r.code, 0);
+    pruefe("Aufruf-Bestätigung ohne Herkunftsvermerk", r.stdout.includes("(Freigabe: petticoat)"), r.stdout);
+    pruefe(
+      "Umgebungs-Bestätigung mit Herkunftsvermerk",
+      r.stdout.includes("(Freigabe: tellerrock, aus FREIGABE_BESTAETIGT)"),
+      r.stdout,
+    );
+  }
+  {
+    // Ein Slug ohne Statuswechsel: kein Fehler, aber sichtbar.
+    const r = laufMit({ FREIGABE_BESTAETIGT: "petticoat,tellerrock,gibtesnicht" }, "--basis", basis);
+    gleich("ein überzähliger Slug macht nicht rot", r.code, 0);
+    pruefe(
+      "er wird auf stderr gemeldet",
+      r.stderr.includes("ohne Statuswechsel") && r.stderr.includes("gibtesnicht"),
+      JSON.stringify(r.stderr.slice(0, 200)),
+    );
+  }
+  {
+    // Lebenszeichen für den Harnisch selbst: Ohne gesetzte Variable ist
+    // derselbe Stand weiterhin rot. Sonst wären die grünen Fälle oben auch
+    // mit einem Skript wahr, das die Variable gar nicht liest und einfach
+    // alles durchwinkt.
+    const r = lauf("--basis", basis);
+    gleich("ohne Variable bleibt derselbe Stand rot", r.code, 1);
   }
 
   /* --- Neu angelegter Eintrag, direkt live ---------------------- */

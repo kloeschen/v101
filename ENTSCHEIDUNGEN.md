@@ -13,6 +13,91 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Der Freigabe-Workflow prüft sein Ergebnis selbst
+
+**Anlass:** Der erste Freigabe-PR (#32) hätte `main` rot gemacht, und keine
+Prüfung hätte es angezeigt. Der Posten dazu empfahl, die Kette in den
+Freigabe-Workflow zu ziehen, und als Zwischenlösung, den CI-Lauf auf dem PR
+von Hand freizugeben. **Beim Nachprüfen fiel die Zwischenlösung weg:** Auch
+ein freigegebener CI-Lauf wäre an der Freigabeprüfung (Schritt 3 von 9)
+stehengeblieben, bevor Tests und Build laufen — genau dort lag der Fehler.
+Das erwartete Rot hätte das echte verdeckt. Lektion 25.
+
+**Entscheidung von Markus:** Der Freigabe-Workflow lässt `npm run verify:ci`
+auf seinem Ergebnis laufen, bevor er den Pull Request öffnet. Scheitert die
+Kette, entsteht kein PR.
+
+### Wie die Bestätigung in die Kette kommt
+
+`verify:ci` ruft `freigabe:ci` als festen Schritt ohne Schalter auf. Damit
+die Kette auf einem Freigabe-Ergebnis weiterläuft, liest `check-freigabe.ts`
+die Bestätigung jetzt zusätzlich aus `FREIGABE_BESTAETIGT`.
+`freigeben.ts` schreibt dafür die **tatsächlich** freigegebenen Slugs nach
+`$GITHUB_OUTPUT` — nicht die Eingabe des Workflows, die eine ganze Collection
+sein kann, und keine abgelehnten Einträge.
+
+**Warum das die Prüfung nicht schwächt — und eine Korrektur dazu.** Der Kopf
+von `check-freigabe.ts` nannte die Bestätigung „eine Handlung an der
+Kommandozeile", die bewusst nicht im Repository steht. Das war nie ein
+Beweis für einen Menschen: Am 2026-09-22 hat ein Agent sowohl den
+Freigabe-Workflow per API ausgelöst als auch die Bestätigungszeile
+ausgeführt. Was die Prüfung tatsächlich leistet, steht in ihrem eigenen
+Kopf: Sie fängt die **unbeabsichtigte** Veröffentlichung, einen
+Statuswechsel, der nebenbei in einem PR landet. Der Freigabe-Workflow ist
+per Definition beabsichtigt.
+
+**Damit eine liegengebliebene Variable nicht alles durchwinkt:** kein
+Sammelwert (`*`, `alle` und Leerraum bestätigen nichts), jede Bestätigung
+aus der Umgebung steht mit Herkunft im Bericht, und ein genannter Slug ohne
+Statuswechsel wird auf stderr gemeldet.
+
+**Verworfen:**
+- *Die Kette im Workflow einzeln aufzählen und `freigabe:ci` weglassen.*
+  `test-pruefkette.ts` verbietet das nur für `ci.yml`, erlaubt wäre es also.
+  Aber es ist der M10-Fehler in neuer Datei: zwei Orte, an denen die Kette
+  definiert ist.
+- *`freigabe:ci` in der Kette nach hinten ziehen.* Tests und Build liefen
+  dann, aber das Gesamtergebnis bliebe rot, und man müsste jedes Mal lesen,
+  ob das Rot das erwartete ist. Das ist Lektion 25 in anderer Form.
+- *Die Bestätigung im Commit lesen.* Dort kann sie jeder schreiben, der
+  pushen kann — und sie gälte dann auch für jeden anderen PR.
+
+### Der Schritt im Workflow, und warum er geprüft wird
+
+Den Schritt in `.github/workflows/freigeben.yml` setzt ein Mensch ein;
+`.github/` liegt hinter der Agentensperre. `test-pruefkette.ts` verlangt
+jetzt, dass er dasteht, `npm run verify:ci` aufruft, die Slugs aus
+`steps.lauf.outputs.slugs` weiterreicht, nach dem Freigabelauf und vor
+`gh pr create` steht. **Ohne ihn ist die Kette rot** — gewollt: Der Pull
+Request mit dieser Änderung ist erst mergebar, wenn der Schritt im selben
+Zweig steht.
+
+### Belege
+
+| Prüfung | vorher | jetzt |
+|---|---|---|
+| `test-freigabe.ts` | 17 | 30 |
+| `test-freigeben.ts` | 17 | 24 |
+| `test-pruefkette.ts` | 38 | 46 |
+
+`test-pruefkette.ts` in beide Richtungen: gegen den heutigen Workflow
+**genau vier** Fehlschläge (die vier Behauptungen über den Kettenschritt),
+die drei Lebenszeichen des Zerlegers bestehen. Gegen eine Kopie mit dem
+eingesetzten Block **46/46**.
+
+Sechs Mutationen, je auf den Block begrenzt und zurückgebaut:
+
+| Mutation | Was fällt |
+|---|---|
+| Kettenschritt nach dem PR-Schritt | 1 — „bevor der Pull Request entsteht" |
+| Kettenschritt ohne `FREIGABE_BESTAETIGT` | 1 — „bekommt die freigegebenen Slugs" |
+| Umgebung wird ignoriert | 6, darunter „Bestätigung aus der Umgebung ergibt Exit 0" |
+| Sammelwert eingeführt (`*`/`alle` decken alles) | 2 — genau die beiden Sammelwert-Fälle |
+| Herkunftsvermerk fehlt | 2 |
+| `freigeben.ts` gibt die Eingabe statt der Freigegebenen aus | 2, darunter „der abgelehnte Slug steht nicht darin" |
+
+---
+
 ## 2026-09-23 — Der Rock'n'Roll-Eintrag, und was er über drei Prüfungen verrät
 
 Der unbeaufsichtigte Lauf hat den obersten freien Posten gebaut: den

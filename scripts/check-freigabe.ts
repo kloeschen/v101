@@ -44,8 +44,37 @@
  *   npx tsx scripts/check-freigabe.ts --basis origin/main
  *   npx tsx scripts/check-freigabe.ts --freigabe petticoat --freigabe rockabilly
  *   npx tsx scripts/check-freigabe.ts --basis-pflicht     # fehlende Basis = Fehler
+ *   FREIGABE_BESTAETIGT=petticoat,korsett npm run verify:ci
  *
  * Exit 0 = sauber, 1 = unbestätigte Veröffentlichung.
+ *
+ * DIE BESTÄTIGUNG AUS DER UMGEBUNG (seit dem 2026-09-23). `FREIGABE_BESTAETIGT`
+ * nimmt eine kommagetrennte Slug-Liste und wirkt wie dieselbe Zahl
+ * `--freigabe`-Schalter. Es gibt sie aus genau einem Grund: Der
+ * Freigabe-Workflow soll die ganze Kette auf seinem Ergebnis laufen lassen,
+ * bevor er den Pull Request öffnet. `verify:ci` ruft diese Prüfung aber als
+ * festen Schritt auf, ohne Schalter — und bricht an ihr ab, weil ein
+ * Freigabe-Ergebnis naturgemäß lauter Statuswechsel enthält. Tests und Build
+ * stehen in der Kette dahinter und liefen nie.
+ *
+ * Genau das ist am 2026-09-22 passiert: Der erste Freigabe-PR hätte `main`
+ * rot gemacht, und keine Prüfung hätte es gezeigt. Die CI auf dem PR lief
+ * gar nicht (von einem Bot-Token ausgelöst), und selbst wenn sie gelaufen
+ * wäre, hätte sie bei Schritt 3 von 9 geendet — mit dem erwarteten Rot, hinter
+ * dem das echte versteckt gewesen wäre.
+ *
+ * WARUM DAS DIE PRÜFUNG NICHT SCHWÄCHT: Oben steht, die Bestätigung sei „eine
+ * Handlung an der Kommandozeile". Das war nie ein Beweis für einen Menschen —
+ * ein Agent mit Shell ruft dieselbe Zeile auf, und am 2026-09-22 hat einer
+ * genau das getan. Wogegen die Prüfung schützt, ist die UNBEABSICHTIGTE
+ * Veröffentlichung: ein Statuswechsel, der nebenbei in einem Pull Request
+ * landet. Der Freigabe-Workflow ist per Definition beabsichtigt, und er
+ * reicht nur die Slugs durch, die er selbst gerade freigegeben hat.
+ *
+ * Damit eine liegengebliebene Variable nicht still alles durchwinkt, gilt:
+ * Es gibt keinen Sammelwert (kein `*`, kein `alle`), jede Bestätigung aus der
+ * Umgebung steht im Bericht mit ihrer Herkunft, und ein Slug, den die
+ * Variable nennt, der aber gar nicht wechselt, wird auf stderr gemeldet.
  */
 
 import { execFileSync } from "node:child_process";
@@ -60,7 +89,16 @@ const werte = (n: string): string[] => {
   return aus;
 };
 
-const freigegeben = new Set(werte("--freigabe"));
+const ausAufruf = new Set(werte("--freigabe"));
+const ausUmgebung = new Set(
+  (process.env.FREIGABE_BESTAETIGT ?? "")
+    .split(",")
+    .map((s) => s.trim())
+    // Nur, was wie ein Slug aussieht. Ein Sammelwert wäre eine Bestätigung
+    // für alles, und genau die soll es nicht geben.
+    .filter((s) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s)),
+);
+const freigegeben = new Set([...ausAufruf, ...ausUmgebung]);
 const basisPflicht = flag("--basis-pflicht");
 
 /** git ohne Rauschen. Gibt null zurück, statt zu werfen. */
@@ -127,6 +165,7 @@ const geaendert = [...new Set(`${ausDiff}\n${unversioniert}`.split("\n").map((z)
 
 const befunde: string[] = [];
 const bestaetigt: string[] = [];
+const gewechselt = new Set<string>();
 
 for (const datei of geaendert) {
   const vorher = status(git("show", `${basis}:${datei}`));
@@ -142,8 +181,20 @@ for (const datei of geaendert) {
   if (jetzt !== "veroeffentlicht" || vorher === "veroeffentlicht") continue;
 
   const slug = path.basename(datei, ".md");
-  if (freigegeben.has(slug)) bestaetigt.push(`${datei} (Freigabe: ${slug})`);
+  gewechselt.add(slug);
+  if (ausAufruf.has(slug)) bestaetigt.push(`${datei} (Freigabe: ${slug})`);
+  else if (ausUmgebung.has(slug)) bestaetigt.push(`${datei} (Freigabe: ${slug}, aus FREIGABE_BESTAETIGT)`);
   else befunde.push(`${datei}: status ${vorher ?? "(neu)"} → veroeffentlicht`);
+}
+
+// Eine Bestätigung ohne Wechsel ist kein Fehler, aber ein Zeichen: Entweder
+// liegt die Variable von einem früheren Lauf herum, oder jemand hat einen
+// Slug vertippt. Beides soll man sehen.
+const leerlauf = [...ausUmgebung].filter((s) => !gewechselt.has(s));
+if (leerlauf.length > 0) {
+  console.error(
+    `Hinweis: FREIGABE_BESTAETIGT nennt ${leerlauf.length} Slug(s) ohne Statuswechsel: ${leerlauf.join(", ")}`,
+  );
 }
 
 /* ------------------------------------------------------------------ */

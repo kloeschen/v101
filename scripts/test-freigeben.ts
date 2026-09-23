@@ -118,10 +118,16 @@ function baueTempProjekt(): string {
   return wurzel;
 }
 
-function lauf(wurzel: string, args: string[]) {
+function lauf(wurzel: string, args: string[], umgebung: Record<string, string> = {}) {
+  // GITHUB_OUTPUT wird entfernt, solange ein Fall sie nicht ausdrücklich
+  // setzt: Läuft dieser Test selbst in GitHub Actions, stünde sie sonst in
+  // der Umgebung, und jeder Fall schriebe in die echte Ausgabedatei der CI.
+  const basis = { ...process.env };
+  delete basis.GITHUB_OUTPUT;
   const r = spawnSync("npx", ["tsx", path.join(PROJEKT, "scripts", "freigeben.ts"), ...args], {
     encoding: "utf8",
     cwd: wurzel,
+    env: { ...basis, ...umgebung },
   });
   return { code: r.status ?? -1, out: `${r.stdout ?? ""}${r.stderr ?? ""}` };
 }
@@ -254,6 +260,46 @@ try {
     const r = lauf(temp, []);
     gleich("Aufruf ohne Auswahl endet mit Fehlercode", r.code, 2);
     pruefe("und sagt, was fehlt", r.out.includes("--slugs"), JSON.stringify(r.out.slice(0, 200)));
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* 6. Die Slug-Ausgabe für den Freigabe-Workflow                     */
+  /* ---------------------------------------------------------------- */
+  /*
+   * Der Workflow reicht diese Liste als FREIGABE_BESTAETIGT an `verify:ci`
+   * weiter. Entscheidend ist, WAS darin steht: die tatsächlich
+   * freigegebenen Slugs — nicht die Eingabe. Ein abgelehnter Eintrag in der
+   * Liste wäre eine Bestätigung für etwas, das gar nicht wechselt; ein
+   * fehlender freigegebener hieße, dass die Kette im Workflow an genau dem
+   * Eintrag scheitert, den er gerade freigegeben hat.
+   */
+  {
+    writeFileSync(datei("ausgabeok"), eintrag("Ausgabeprobe", ["ausgabekaputt", "sauber"]));
+    writeFileSync(datei("ausgabekaputt"), eintrag("Ausgabefehler", ["ausgabeok", "sauber"], { autor: undefined }));
+    const ausgabe = path.join(temp, "github-output.txt");
+    writeFileSync(ausgabe, "", "utf8");
+
+    const r = lauf(temp, ["--slugs", "ausgabeok,ausgabekaputt"], { GITHUB_OUTPUT: ausgabe });
+    const inhalt = readFileSync(ausgabe, "utf8");
+
+    // Lebenszeichen zuerst: Der Lauf hat wirklich einen freigegeben und
+    // einen abgelehnt. Sonst wäre die Ausgabe auch aus einem zweiten Grund
+    // so, wie sie ist.
+    gleich("Probe: der saubere Eintrag wurde freigegeben", statusVon("ausgabeok"), FREI);
+    gleich("Probe: der kaputte blieb Entwurf", statusVon("ausgabekaputt"), "entwurf");
+
+    gleich("die Ausgabe nennt genau die freigegebenen Slugs", inhalt, "slugs=ausgabeok\n");
+    pruefe("der abgelehnte Slug steht nicht darin", !inhalt.includes("ausgabekaputt"), JSON.stringify(inhalt));
+    pruefe("Lauf endet ohne Fehlercode", r.code === 0, `Code ${r.code}`);
+  }
+  {
+    // Ein Trockenlauf gibt nichts frei, also bestätigt er auch nichts.
+    writeFileSync(datei("ausgabetrocken"), eintrag("Trockenausgabe", ["ausgabeok", "sauber"]));
+    const ausgabe = path.join(temp, "github-output-trocken.txt");
+    writeFileSync(ausgabe, "", "utf8");
+    lauf(temp, ["--slugs", "ausgabetrocken", "--dry-run"], { GITHUB_OUTPUT: ausgabe });
+    gleich("ein Trockenlauf schreibt keine Slug-Ausgabe", readFileSync(ausgabe, "utf8"), "");
+    gleich("und lässt den Eintrag, wie er war", statusVon("ausgabetrocken"), "entwurf");
   }
 } finally {
   rmSync(temp, { recursive: true, force: true });
