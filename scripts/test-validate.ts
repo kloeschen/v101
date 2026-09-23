@@ -1037,7 +1037,7 @@ fall({
 
 /* --- lexikon-schreibvarianten -------------------------------------- */
 /*
- * Drei Faelle, weil die Regel drei Behauptungen aufstellt: Sie findet eine
+ * Drei Grundfaelle, weil die Regel drei Behauptungen aufstellt: Sie findet eine
  * ungedeckte Trennzeichen-Variante, sie schweigt bei einer gedeckten, und sie
  * schweigt bei einem Treffer mit weniger Bestandteilen als der Begriff. Die
  * dritte war der einzige Fehlalarm der Messung ueber den Bestand
@@ -1045,14 +1045,60 @@ fall({
  */
 
 fall({
-  name: "lexikon-schreibvarianten: ungedeckte Bindestrichschreibung gibt einen Hinweis",
+  name: "lexikon-schreibvarianten: ungedeckte Bindestrichschreibung gibt eine Warnung",
   datei: "lexikon/variante-offen.md",
   inhalt: md(
     lexFelder("Schwof Tanz", { aliases: "[]" }),
     lexKoerper("Schwof Tanz") +
       `\n\nGeschrieben wird der Schwof-Tanz in der Szene auch mit Bindestrich, und genau darum geht es hier.`,
   ),
-  erwartet: { "lexikon-schreibvarianten": "hinweis" },
+  erwartet: { "lexikon-schreibvarianten": "warnung" },
+});
+
+/*
+ * Komposita: Der Bindestrich nach dem Treffer ist dort Pflicht, keine
+ * Variante. Jeder Fall hat einen eigenen Begriff: Die Regel zaehlt ueber den
+ * ganzen Bestand, und das freistehende "Schwof-Tanz" aus dem Fall oben
+ * wuerde hier sonst mitgezaehlt (Lektion 26). Zwei Formen, weil beide im Bestand stehen -- das fortgesetzte
+ * Wort ("Custom-Car-Szene") und der Ergaenzungsstrich ("Hot-Rod- und
+ * Lowrider-Customizer").
+ */
+fall({
+  name: "lexikon-schreibvarianten: Kompositum schweigt",
+  datei: "lexikon/variante-kompositum.md",
+  inhalt: md(
+    lexFelder("Kreisel Schritt", { aliases: "[]" }),
+    lexKoerper("Kreisel Schritt") +
+      `\n\nDie Kreisel-Schritt-Szene ist klein, und das Wort ist zusammengesetzt, nicht anders geschrieben.`,
+  ),
+  verboten: ["lexikon-schreibvarianten"],
+});
+
+fall({
+  name: "lexikon-schreibvarianten: Ergaenzungsstrich schweigt",
+  datei: "lexikon/variante-ergaenzung.md",
+  inhalt: md(
+    lexFelder("Wiege Schritt", { aliases: "[]" }),
+    lexKoerper("Wiege Schritt") +
+      `\n\nWiege-Schritt- und Walzerschritte werden hier getrennt voneinander gelehrt.`,
+  ),
+  verboten: ["lexikon-schreibvarianten"],
+});
+
+fall({
+  /*
+   * Lebenszeichen fuer den Ausschluss: Ein Kompositum neben einer echten
+   * Variante darf die Variante nicht verdecken. Ohne diesen Fall bewiese
+   * "Kompositum schweigt" auch eine Regel, die gar nichts mehr meldet.
+   */
+  name: "lexikon-schreibvarianten: Kompositum verdeckt die echte Variante nicht",
+  datei: "lexikon/variante-gemischt.md",
+  inhalt: md(
+    lexFelder("Zapfen Tanz", { aliases: "[]" }),
+    lexKoerper("Zapfen Tanz") +
+      `\n\nDie Zapfen-Tanz-Szene ist klein. Getanzt wird der Zapfen-Tanz trotzdem jede Woche.`,
+  ),
+  erwartet: { "lexikon-schreibvarianten": "warnung" },
 });
 
 fall({

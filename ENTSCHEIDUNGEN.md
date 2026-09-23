@@ -13,6 +13,51 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — `lexikon-schreibvarianten`: Komposita sind keine Schreibvarianten
+
+**Anlass:** Der Posten „Zwei Altfunde der neuen Regel" ließ zwei Wege offen:
+Bindestrichschreibung als Alias eintragen oder den Text angleichen. Beide
+beruhten auf einer falschen Annahme. Alle vier Treffer waren Komposita mit
+Pflicht-Bindestrich (Durchkopplung): „Custom-Car-Szene", „Custom-Car-Fans",
+„Hot-Rod-Szene", „Hot-Rod- und Lowrider-Customizer". Ein Alias „Custom-Car"
+wäre eine falsche Schreibung des Begriffs selbst und ginge als
+`alternateName` ins JSON-LD. „Angleichen" ergäbe „Custom Car-Szene", und das
+ist nach Duden falsch. Gemessen ohne Link-Adressen: Freistehend mit
+Bindestrich steht keiner der mehrteiligen Begriffe im Bestand.
+
+**Entscheidung von Markus:** Die Regel lässt Komposita aus und steigt auf
+Warnung. Ein Treffer zählt nicht, wenn direkt ein Bindestrich folgt
+(Fortsetzung oder Ergänzungsstrich). Ein vorangehender Bindestrich
+(„Ur-Custom-Car") war schon vorher durch das Muster ausgeschlossen.
+**Verworfen:** Den Autolink Komposita verlinken lassen
+(„[Custom-Car](…)-Szene"). Das hätte vier Stellen erreicht, dafür aber
+einen Eingriff in `sync-autolinks.ts` und eigene Tests gebraucht. **Und:**
+So lassen. Eine Regel mit vier bekannten Fehlalarmen kann nie blockierend
+werden.
+
+**Folge:** Der Bestand hat null Funde, `validate --strict` hat zwei Hinweise
+weniger (8 → 6). Solche Stellen bleiben unverlinkt, wie vorher.
+
+**Belege:** Die Ebenenänderung allein lässt den bestehenden Fall an genau
+seiner Erwartung scheitern („meldet Ebene hinweis — gemeldet: warnung").
+Drei neue Fälle: Kompositum schweigt, Ergänzungsstrich schweigt, Kompositum
+verdeckt die echte Variante nicht. Der letzte ist das Lebenszeichen, ohne
+ihn bewiese „schweigt" auch eine tote Regel. `test-validate` 222 → 226.
+Die neuen Fälle scheiterten zuerst an der eigenen Vorrichtung: Die Regel
+zählt über den ganzen Test-Bestand, und das freistehende „Schwof-Tanz" eines
+Nachbarfalls wurde mitgezählt. Jeder Fall hat jetzt einen eigenen Begriff
+(Lektion 26).
+
+| Mutation (nur im Regelblock) | fällt |
+|---|---|
+| Kompositum-Ausschluss entfernt | „Kompositum schweigt", „Ergänzungsstrich schweigt"; im echten Bestand zwei Warnungen (`custom-car`, `hot-rod`) |
+| Ausschluss auf jedes folgende Trennzeichen erweitert | „ungedeckte Bindestrichschreibung gibt eine Warnung", „Kompositum verdeckt die echte Variante nicht" |
+| Ebene zurück auf Hinweis | dieselben zwei, an der Ebene |
+
+Posten entfällt (9 Posten, 3 frei).
+
+---
+
 ## 2026-09-23 — `npm run verify` prüft den Autolink-Drift
 
 **Anlass:** #39 war lokal grün und in der CI rot (Schritt 6/9,

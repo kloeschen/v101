@@ -32,20 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Zwei Altfunde der neuen Regel `lexikon-schreibvarianten`.** Die Regel
-(seit 2026-09-23 in `validate-content.ts`) meldet Trennzeichen-Schreibungen
-im Bestand, die kein Name und kein Alias deckt und die der Autolink deshalb
-nie erreicht. Zwei stehen offen, beide als Hinweis, beide an freigegebenen
-Einträgen: `„Custom-Car"` in `lexikon/custom-car.md` und `„Hot-Rod"` in
-`lexikon/kustom-kulture.md` und `artikel/hot-rod-und-kustom-kulture.md`. Zu
-klären ist pro Fall dasselbe: Ist die Bindestrichschreibung gebräuchlich
-genug für einen Alias — dann belegen und eintragen —, oder ist sie nur an
-dieser Stelle so geschrieben — dann den Text an die geführte Schreibung
-angleichen. Beides ist ohne Rückfrage entscheidbar, wenn die Quelle
-danebenliegt. **Danach kann die Ebene steigen:** Die Regel ist als Hinweis
-gebaut, weil sie blockierend erst tragfähig ist, wenn kein Altfund mehr
-offensteht; die Begründung steht im Kopf der Regel.
-
 `frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
 Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
 Registereintrag nicht steht: Fahrerinnen und Fahrer von Fahrzeugen der 50er

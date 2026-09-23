@@ -870,15 +870,23 @@ const REGELN: Regel[] = [
      * unverlinkt geblieben. Genau dafuer ist Regel 3 da: Was zaehlt, gehoert
      * in Code.
      *
-     * HINWEIS, nicht Warnung -- und das ist eine Abwaegung, nicht die bequeme
-     * Wahl. Nach dem Kriterium oben bei `Ebene` waere eine Warnung richtig:
-     * Die Regel nennt eine Zeichenfolge, die nachweislich im Bestand steht,
-     * es ist also nichts zu erfinden. Blockierend waere sie aber erst
-     * tragfaehig, wenn die zwei Altfunde im Bestand entschieden sind
-     * ("Custom-Car", "Hot-Rod"), und ob eine Bindestrichschreibung einen
-     * Alias verdient, ist eine redaktionelle Frage an veroeffentlichten
-     * Eintraegen. Die steht als eigener Posten in OFFENE-PUNKTE.md; danach
-     * kann die Ebene steigen.
+     * KOMPOSITA ZAEHLEN NICHT. Folgt auf den Treffer ein Bindestrich, ist er
+     * erster Teil eines zusammengesetzten Worts ("Custom-Car-Szene") oder
+     * steht vor einem Ergaenzungsstrich ("Hot-Rod- und Lowrider-Customizer").
+     * Dort ist der Bindestrich Pflicht (Durchkopplung), keine Schreibvariante:
+     * Ein Alias "Custom-Car" waere eine falsche Schreibung des Begriffs selbst
+     * und ginge ins JSON-LD, und "angleichen" ergaebe "Custom Car-Szene".
+     * Gemessen am 2026-09-23: Alle Altfunde, fuer die diese Regel bis dahin nur
+     * ein Hinweis war, waren Komposita; freistehend mit Bindestrich stand keiner
+     * der mehrteiligen Begriffe im Bestand. Solche Stellen bleiben unverlinkt
+     * -- wie vorher auch. Ein vorangehender Bindestrich ("Ur-Custom-Car") ist
+     * schon durch das Muster ausgeschlossen.
+     *
+     * WARNUNG seit 2026-09-23, vorher Hinweis. Die Regel nennt eine
+     * Zeichenfolge, die nachweislich im Bestand steht -- nach dem Kriterium
+     * oben bei `Ebene` ist das eine Warnung. Hinweis war sie nur, solange die
+     * Altfunde offen waren; mit dem Kompositum-Ausschluss sind es null.
+     * Entscheidung von Markus, ENTSCHEIDUNGEN.md vom selben Tag.
      */
     code: "lexikon-schreibvarianten",
     collections: ["lexikon"],
@@ -907,6 +915,8 @@ const REGELN: Regel[] = [
           for (const treffer of text.matchAll(m)) {
             const wort = treffer[1];
             if (gedeckt.has(wort.toLowerCase())) continue;
+            // Kompositum oder Ergaenzungsstrich -- siehe Kopf der Regel.
+            if (text[(treffer.index ?? 0) + treffer[0].length] === "-") continue;
             if (!offen.has(wort)) offen.set(wort, new Set());
             offen.get(wort)!.add(`${andere.collection}/${andere.slug}`);
           }
@@ -918,7 +928,7 @@ const REGELN: Regel[] = [
         .map(([wort, dateien]) => `"${wort}" (${dateien.size} Datei(en))`)
         .join(", ");
       return [{
-        ebene: "hinweis",
+        ebene: "warnung",
         code: "",
         feld: "aliases",
         nachricht:
