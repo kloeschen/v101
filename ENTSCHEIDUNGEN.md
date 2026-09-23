@@ -13,6 +13,34 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — `dateModified` belegt keinen unveränderten Inhalt
+
+**Anlass:** Posten „Rockabilly Convention: die Oldtimer-Regelung fehlt".
+Beim erneuten Abruf der Veranstalterseite standen dort nicht nur die
+Oldtimer-Regelung und der kostenlose Parkplatz, sondern auch ein Line-up
+mit Uhrzeiten und Bühnen: drei Bands am Freitag, eine am Samstag. Der
+Eintrag sagte „Ein Line-up für 2027 nennt die Seite nicht". Das
+`dateModified` im JSON-LD der Seite ist in beiden Abrufen dasselbe
+(2026-08-23).
+
+**Fund mit Folgen:** Die Redaktionsnotiz nannte diesen Termin den
+„stärksten der fünf Fälle", weil die Quelle ihr eigenes Pflegedatum
+mitliefert. Für das *Datum* des Termins stimmt das weiterhin. Aber ein
+unverändertes `dateModified` belegt nicht, dass der übrige Inhalt
+unverändert ist. Entweder wurden die Acts nachgetragen, ohne dass sich das
+Datum bewegt hat (bei Seiten, die Unterobjekte wie Acts einbinden,
+naheliegend), oder der erste Abruf hat die Tagesansicht nicht erfasst.
+Entscheiden lässt sich das nicht. Beides steht im Eintrag.
+
+**Konsequenz, ohne neue Regel:** Das Pflegedatum einer Seite taugt als
+Aktualitätsbeleg für den Termin, nicht als Grund, sie nicht erneut zu
+lesen. Das stützt den offenen `mensch`-Posten „Termine kurz vor dem Datum
+noch einmal anfassen" mit einem zweiten Fall nach dem Record Hop.
+Umgesetzt ist hier nur der Eintrag. Das Line-up ist als Stand vom
+2026-09-23 formuliert, die Bands stehen in `lineupWeitere`.
+
+---
+
 ## 2026-09-23 — `lexikon-schreibvarianten`: Komposita sind keine Schreibvarianten
 
 **Anlass:** Der Posten „Zwei Altfunde der neuen Regel" ließ zwei Wege offen:
