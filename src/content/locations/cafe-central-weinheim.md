@@ -68,4 +68,4 @@ Das Haus beschreibt sich selbst als Musikclub und Konzertlocation. Weinheim ist 
 
 ## Programm im Café Central Weinheim
 
-Das Programm ist breit und reicht von Metal und Rock bis zu Partys. Szenetermine stehen darin trotzdem mehrere: Für den Herbst und Winter 2026/27 sind die Psychobilly-Band [Long Tall Texans](/events/long-tall-texans-cafe-central-2026-11-20/) im November und die Rockabilly-Band Boppin'B im Januar angekündigt, dazu ein Psychobilly-Festival über Ostern. Die Termine verkauft das Haus über einen eigenen Ticketshop bei einem Online-Anbieter.
+Das Programm ist breit und reicht von Metal und Rock bis zu Partys. Szenetermine stehen darin trotzdem mehrere: Für den Herbst und Winter 2026/27 sind die Psychobilly-Band [Long Tall Texans](/events/long-tall-texans-cafe-central-2026-11-20/) im November und die Rockabilly-Band [Boppin'B](/bands/boppin-b/) im Januar angekündigt, dazu ein Psychobilly-Festival über Ostern. Die Termine verkauft das Haus über einen eigenen Ticketshop bei einem Online-Anbieter.
