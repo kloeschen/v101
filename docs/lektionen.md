@@ -776,7 +776,7 @@ geschrieben?". Zeichen und Pfad wurden getrennt gesucht und nie
 zusammengebracht. Das Ergebnis traf Befehle, die nichts schrieben, und
 verfehlte einen, der genau in den gesperrten Pfad schrieb.
 
-**Was jetzt gilt (Vorschlag, einzusetzen durch einen Menschen):** Jedes
+**Was jetzt gilt (seit dem 2026-09-23, eingesetzt von Markus):** Jedes
 `>` liefert ein Kandidatenziel, und nur das Ziel entscheidet. Ob das `>`
 „wirklich" eine Umleitung ist, muss niemand mehr entscheiden. Die erste
 Fassung versuchte es mit Look-arounds und einem /dev/null-Filter, und der

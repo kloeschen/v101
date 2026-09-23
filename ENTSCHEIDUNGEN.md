@@ -23,8 +23,14 @@ darunter die CI-Konfiguration.
 
 **Entscheidung von Markus:** Die Korrektur schreibe ich als fertigen Block,
 eingesetzt wird sie von einem Menschen (`.claude/` ist für Agenten
-gesperrt, Lektion 16). Der Vorschlag liegt vollständig in
-`docs/vorschlaege/guard.mjs`.
+gesperrt, Lektion 16). Der Vorschlag lag unter `docs/vorschlaege/guard.mjs`.
+Markus hat ihn am 2026-09-23 eingesetzt (Commit `5fbbd4e`), die
+Vorschlagsdatei ist danach gelöscht.
+
+**Nachweis am eingesetzten Hook:** Die Datei war byte-gleich mit dem
+Vorschlag (`cmp`). `test-hooks.ts` gegen den echten Hook ergab 125 von 125.
+Live in der Sitzung: Ein `grep` mit `2>/dev/null` über `.github/`, vorher
+blockiert, lief durch.
 
 **Die Korrektur:**
 - Umleitungen werden nach ihrem **Ziel** beurteilt: Jedes `>` liefert das
@@ -64,11 +70,10 @@ per Look-arounds und filterte `/dev/null`. Drei Mutationen daran
 überlebten: Mit der Zielprüfung sind diese Bausteine wirkungslos. Sie
 sind entfernt, die Fassung ist entsprechend schlichter.
 
-**Bis der Block eingesetzt ist, ist die Prüfkette dieses Zweigs rot**, an
-genau den zehn Behauptungen. Das ist gewollt, wie bei #36: Der PR wird
-erst mergebar, wenn ein Mensch den Hook ersetzt hat.
+Bis der Block eingesetzt war, war die Prüfkette des Zweigs rot, an genau
+den zehn Behauptungen, wie bei #36 gewollt.
 
-Posten entfällt mit dem Einsetzen.
+Posten entfällt.
 
 ---
 
