@@ -32,14 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
-Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
-Registereintrag nicht steht: Fahrerinnen und Fahrer von Fahrzeugen der 50er
-und 60er Jahre haben freien Eintritt und dürfen in der Westernstadt parken
-und durchfahren, Einfahrt Freitag und Samstag ab 10 Uhr. Das ist genau die
-Art Angabe, für die jemand ein Register aufsucht. Gefunden beim Beleg für den
-Kustom-Kulture-Artikel, nicht nebenbei mitgebaut.
-
 `mensch` **Das Golden Example der Bands nennt für The Firebirds 1985.** Die
 deutsche Wikipedia datiert die Bandgründung auf Mai 1992; 1985 war das erste
 musikalische Zusammentreffen zweier späterer Mitglieder. Die Datei ist eine
@@ -91,14 +83,6 @@ dieses Repos; anpassen oder auf das alte Projekt beschränken kann ihn nur
 ein Mensch. Dasselbe dürfte für die übrigen mitgelieferten Recherche-Skills
 gelten (`bands-recherche`, `barbershops-recherche`, `tattoo-recherche`) —
 geprüft ist bisher nur dieser eine.
-
-`frei` **`genres` an den restlichen Events.** Nachgetragen sind Rockabilly
-Convention, Record Hop und die beiden neuen Termine. Offen bleiben Bella
-Italia und das Ganderkesee-Festival. Es ist kein Formalakt: Jede Zuordnung
-ist eine Behauptung über die Veranstaltung und braucht einen Beleg in deren
-eigener Quellenlage. Wo die Quelle schweigt, bleibt das Feld leer — und bei
-Boogie-Tanzabenden bleibt es leer, auch wenn die Quelle „Boogie" sagt, weil
-der Lexikoneintrag den Klavierstil bezeichnet und nicht den Tanz.
 
 `mensch` **Termine kurz vor dem Datum noch einmal anfassen.** Die Prüfkadenz für
 Events steht auf 30 Tagen und hätte die falsche Anfangszeit des Record Hop
@@ -157,6 +141,12 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Genres für das Ganderkesee-Festival — sobald das Line-up 2027 steht.**
+Am 2026-09-23 bewusst leer gelassen: Die Seite nennt Rock 'n' Roll als
+Thema, nicht als Musik der Bands, und das Wort ist zugleich ein Tanz
+(Begründung in der Redaktionsnotiz des Eintrags). Mit Bands und
+Stilangaben wird die Zuordnung belegbar.
 
 **Aktualitätsbeleg als Schemafeld — nach etwa dreißig Events.** Die Regel
 greift (sie hat zweimal vor einem Fehler bewahrt), aber die tragfähigen
