@@ -13,6 +13,53 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Band-Vorlage: ein echter Eintrag statt einer korrigierten Halbfiktion
+
+**Anlass:** Posten „Das Golden Example der Bands nennt für The Firebirds
+1985" (Wikipedia: Mai 1992). Die Vorlage war außerdem halb erfunden:
+Leipziger Band mit Region Rhein-Neckar, „Beispiel Musiker" in der
+Besetzung.
+
+**Entscheidung von Markus:** Die Vorlage wird durch den Aufbau eines echten,
+belegten Eintrags ersetzt, nicht korrigiert. Gewählt ist **Mad Sin**. Der
+Eintrag zeigt alles, was eine Vorlage zeigen soll:
+- eine Quelle je Feld
+- zwei Widersprüche im Text statt in der Auswahl
+- leere Felder mit Begründung (Label, Website)
+- eine offizielle Seite, die sich nicht öffnen ließ und deshalb nicht als
+  Quelle steht
+
+**Eine Abweichung vom Original:** `status: entwurf`. Eine Vorlage zeigt, was
+ein Agent schreibt, und neue Einträge sind immer Entwürfe. Mit
+`veroeffentlicht` hätte die Vorlage genau den Wert vorgemacht, den nur ein
+Mensch setzt. Ein YAML-Kommentar im Kopf nennt die Herkunft und den Stand;
+weicht `mad-sin.md` später ab, gilt `mad-sin.md`.
+
+**Fund mit Folgen:** Der Abschnitt „Rückverweise gegen echte Daten" in
+`scripts/test-links.ts` ist seit dem 2026-09-01 nie gelaufen. Er hing an
+`the-firebirds`, und die gab es nur in der Vorlage, die der Loader
+überspringt. Sechs Prüfungen hatten nie etwas gesehen, jeder Lauf druckte
+„übersprungen" und meldete Erfolg (Nachtrag zu Lektion 19).
+- Jetzt hängt der Abschnitt an `bands/boppin-b` samt seinem
+  Barsinghausen-Termin, und ein fehlender Anker ist ein Fehler.
+- `test-links` hat jetzt 56 Prüfungen statt 45.
+- **Belege:**
+  - Anker auf eine Band, die es nicht gibt: vier Fehlschläge, keine
+    stille Überspringung.
+  - Anker auf Mad Sin (keine Auftritte im Register): „Auftritt fällt aus
+    den Eventdaten heraus" fällt. Die Prüfung liest also wirklich die
+    Eventdaten.
+
+**Nicht angefasst:** Die Event- und die Lexikon-Vorlage nennen weiterhin The
+Firebirds, als Line-up-Referenz bzw. als Link. Beide sind Formvorlagen,
+die der Loader überspringt, und ihr Umbau ist eine eigene Entscheidung.
+Für die Event-Vorlage steht dieselbe Frage schon in der Redaktionsnotiz des
+echten Walldorf-Eintrags.
+
+Posten entfällt.
+
+---
+
 ## 2026-09-23 — Stale-Report: nahe Termine mit alter Prüfung
 
 **Anlass:** Der Posten „Termine kurz vor dem Datum noch einmal anfassen"
