@@ -56,6 +56,7 @@ scripts/test-checklinks.ts             Testet deren Bewertung ohne Netz.
 scripts/check-zeitzonen.ts             Statischer Check gegen zonenlose
                                        Datumsverarbeitung.
 scripts/stale-report.ts                Was ansteht: Entwürfe, Überfälliges,
+                                       nahe Termine mit alter Prüfung,
                                        Reihen ohne Folgetermin, Regionen
                                        unter der Indexschwelle.
 scripts/archive-events.ts              Vergangene Termine auf stattgefunden.

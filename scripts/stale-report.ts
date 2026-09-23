@@ -17,7 +17,7 @@
 import path from "node:path";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
-import { eventVorbei, istVorbei } from "../src/lib/datum";
+import { eventVorbei, istVorbei, tageBis } from "../src/lib/datum";
 import { pruefKadenzTage } from "../src/content/_schemas";
 import { istFreigegeben } from "../src/lib/sichtbarkeit";
 import { regionsIndexierbarkeit } from "../src/lib/regionen";
@@ -28,6 +28,7 @@ import { SAMMLUNGSNAME, sammlungsPfad } from "../src/lib/faktenblock";
 interface Posten {
   art:
     | "entwurf"
+    | "termin-naht"
     | "ueberfaellig"
     | "vergangen"
     | "reihe-ohne-folge"
@@ -41,6 +42,23 @@ interface Posten {
   /** Höher = dringender. Steuert die Reihenfolge im Bericht. */
   gewicht: number;
 }
+
+/**
+ * Termin naht, Prüfung liegt zurück. Entscheidung von Markus vom
+ * 2026-09-23 (ENTSCHEIDUNGEN.md): Beginn in höchstens TERMIN_NAHT_TAGE
+ * Kalendertagen, letzte Prüfung älter als PRUEFUNG_FRISCH_TAGE Tage.
+ *
+ * Zwei belegte Fälle stehen dahinter: Die Anfangszeit des Record Hop war
+ * falsch und wurde nur zufällig vor dem Termin gefunden, und das Line-up
+ * der Rockabilly Convention erschien, ohne dass sich das dateModified der
+ * Seite bewegte. Die Prüfkadenz von 30 Tagen fängt keinen der beiden.
+ *
+ * Ein Posten im Bericht, keine Regel im Validator: Ob sich eine Quelle
+ * geändert hat, weiß erst, wer sie wieder öffnet. Blockieren hieße, den
+ * Build an einem Datum scheitern zu lassen, nicht an einem Fehler.
+ */
+const TERMIN_NAHT_TAGE = 14;
+const PRUEFUNG_FRISCH_TAGE = 7;
 
 const tage = (d: Date | string) => Math.floor((Date.now() - new Date(d).getTime()) / 86_400_000);
 const rel = (p: string) => path.relative(process.cwd(), p);
@@ -96,6 +114,37 @@ function main() {
           titel: d.name,
           detail: 'Termin vorbei, Status noch "geplant" — npm run archivieren',
           gewicht: 300,
+        });
+      }
+      // Nur Freigegebenes: Ein Entwurf steht ohnehin in der Warteschlange
+      // und wird bei der Freigabe geprüft. Abgesagte und stattgefundene
+      // Termine brauchen keine Nachprüfung vor dem Datum mehr.
+      // Ein eigenes `!vorbei` braucht es nicht: `bis >= 0` heißt, der Beginn
+      // ist heute oder später, und dann ist der Termin nicht vorbei. Der
+      // Mutationsbeleg hat die Bedingung als wirkungslos gezeigt.
+      const bis = tageBis(d.beginn, jetzt);
+      // Kalendertage, nicht 24-Stunden-Bloecke wie `tage()`: Sonst zaehlte
+      // eine Pruefung von vor acht Tagen zwischen Mitternacht und 02:00
+      // Ortszeit als sieben, und der Rand des Fensters wackelte.
+      const seitPruefung = -tageBis(d.geprueftAm, jetzt);
+      if (
+        istFreigegeben(d) &&
+        d.durchfuehrung !== "abgesagt" &&
+        d.durchfuehrung !== "stattgefunden" &&
+        bis >= 0 &&
+        bis <= TERMIN_NAHT_TAGE &&
+        seitPruefung > PRUEFUNG_FRISCH_TAGE
+      ) {
+        posten.push({
+          art: "termin-naht",
+          datei: e.datei,
+          titel: d.name,
+          detail:
+            `${bis === 0 ? "heute" : bis === 1 ? "morgen" : `in ${bis} Tagen`}, ` +
+            `zuletzt vor ${seitPruefung} Tagen geprüft — Quelle erneut öffnen`,
+          // Über einer Reihe ohne Folgetermin, unter einem vergangenen
+          // Termin; je näher, desto dringender.
+          gewicht: 260 + (TERMIN_NAHT_TAGE - bis),
         });
       }
       if (!d.quellen?.length) {
@@ -221,7 +270,8 @@ function main() {
     if (posten.length === 0) return console.log("Register ist auf Stand — nichts überfällig.");
     console.log(
       `Offen: ${zaehle("vergangen")} vergangene Termine ohne Statuspflege, ` +
-        `${zaehle("ueberfaellig")} überfällige Prüfungen, ${zaehle("entwurf")} Entwürfe in der Warteschlange.`,
+        `${zaehle("ueberfaellig")} überfällige Prüfungen, ${zaehle("entwurf")} Entwürfe in der Warteschlange` +
+        (zaehle("termin-naht") ? `, ${zaehle("termin-naht")} nahe Termine ohne frische Prüfung.` : "."),
     );
     const top = posten[0];
     console.log(`Dringendstes: ${top.titel} — ${top.detail}`);
@@ -230,6 +280,7 @@ function main() {
 
   const ueberschrift: Record<Posten["art"], string> = {
     vergangen: "Vergangene Termine ohne Statuspflege",
+    "termin-naht": `Termine in den nächsten ${TERMIN_NAHT_TAGE} Tagen, Prüfung älter als ${PRUEFUNG_FRISCH_TAGE} Tage`,
     "reihe-ohne-folge": "Reihen ohne Folgetermin",
     ueberfaellig: "Überfällige Prüfungen",
     "ohne-quelle": "Ohne Belegkette",
@@ -239,7 +290,7 @@ function main() {
     entwurf: "Entwürfe in der Warteschlange",
   };
 
-  for (const art of ["vergangen", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "region-noindex", "sammlung-leer", "verwaiste-band", "entwurf"] as const) {
+  for (const art of ["vergangen", "termin-naht", "reihe-ohne-folge", "ueberfaellig", "ohne-quelle", "region-noindex", "sammlung-leer", "verwaiste-band", "entwurf"] as const) {
     const gruppe = posten.filter((p) => p.art === art).slice(0, limit);
     if (gruppe.length === 0) continue;
     console.log(`\n## ${ueberschrift[art]} (${posten.filter((p) => p.art === art).length})`);

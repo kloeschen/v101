@@ -20,7 +20,7 @@
 
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { endeDesTages, istVorbei, istKommend, eventVorbei } from "../src/lib/datum";
+import { endeDesTages, istVorbei, istKommend, eventVorbei, tageBis } from "../src/lib/datum";
 import { site } from "../src/site.config";
 
 const SELBST = fileURLToPath(import.meta.url);
@@ -136,6 +136,22 @@ pruefe("unlesbares Datum ergibt ein ungültiges Date", Number.isNaN(endeDesTages
   gleich("ohne Datum keine Aussage", eventVorbei({}, zweiterTag), false);
   gleich("ohne Daten keine Aussage", eventVorbei(undefined, zweiterTag), false);
 }
+
+/* ------------------------------------------------------------------ */
+/* tageBis — Kalendertage auf der Wanduhr (Stale-Hinweis "Termin naht") */
+/* ------------------------------------------------------------------ */
+
+const um = (s: string) => new Date(s);
+gleich("tageBis: derselbe Tag ist 0", tageBis("2026-09-23", um("2026-09-23T10:00:00+02:00")), 0);
+gleich("tageBis: morgen ist 1", tageBis("2026-09-24", um("2026-09-23T10:00:00+02:00")), 1);
+gleich("tageBis: gestern ist -1", tageBis("2026-09-22", um("2026-09-23T10:00:00+02:00")), -1);
+gleich("tageBis: 14 Tage sind 14", tageBis("2026-10-07T20:00:00+02:00", um("2026-09-23T23:00:00+02:00")), 14);
+// Der Rand, an dem ein UTC-Vergleich falsch zaehlt: 00:30 in Berlin ist
+// in UTC noch der Vortag. Ortszeitlich ist der 24. heute, nicht morgen.
+gleich("tageBis: 00:30 Ortszeit zaehlt schon den neuen Tag", tageBis("2026-09-24", um("2026-09-23T22:30:00Z")), 0);
+// Ueber die Zeitumstellung (25.10.2026): 24-Stunden-Bloecke ergaeben 1,96.
+gleich("tageBis: ueber die Zeitumstellung", tageBis("2026-10-26T00:30:00+01:00", um("2026-10-24T23:30:00+02:00")), 2);
+pruefe("tageBis: unlesbares Datum ist NaN", Number.isNaN(tageBis("kein Datum", um("2026-09-23T10:00:00+02:00"))));
 
 /* ------------------------------------------------------------------ */
 /* Unabhängigkeit von der Prozess-Zeitzone (Lektion 1)                 */
