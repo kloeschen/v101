@@ -13,6 +13,38 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — Neo-Rockabilly: die Quelle, die den Begriff bestimmt
+
+**Anlass:** Posten „Neo-Rockabilly: erst eine Quelle, dann ein Eintrag".
+Er verlangte eine Quelle, die den Begriff bestimmt, nicht nur verwendet.
+
+**Gefunden:** Der Feature-Artikel „The voices of neo-rockabilly" des
+britischen Magazins Vintage Rock (22. Juni 2022). Er beschreibt Herkunft,
+Szene, Labels und Bands und sagt ausdrücklich, dass schon der Begriff
+umstritten ist. Der Eintrag `lexikon/neo-rockabilly` liegt als Entwurf
+vor, mit drei Quellen.
+
+**Der Widerspruch steht im Text (Regel 5):** Vintage Rock datiert die
+Anfänge ans Ende der 1970er, die deutsche Wikipedia auf die 1980er. Die
+englische Wikipedia überschreibt ihren Abschnitt mit „1990–present", nennt
+darin aber Restless „since the early 1980s". `aeraVon` bleibt deshalb leer,
+weil kein Jahr von mehr als einer Quelle getragen wird. Gesichert und im
+Text: die britische Herkunft und die Hochphase in den frühen 1980ern.
+
+**Zwei Nebenbefunde:**
+- Der englische Stub „Neo-rockabilly", den der Posten nannte, leitet
+  inzwischen auf den Abschnitt im Rockabilly-Artikel weiter.
+- Der Posten sagte, die Unterscheidung stehe „bis dahin in der
+  `abgrenzung` von Rockabilly und Psychobilly". Das stimmte nicht: Sie
+  stand nur im Golden Example, das der Loader überspringt.
+
+**Nicht als Alias:** „Neo", die Szenekurzform. Der Autolink würde es in
+„Neo-Swing" und ähnliche Komposita setzen.
+
+Posten entfällt.
+
+---
+
 ## 2026-09-23 — `lexikon-schreibvarianten`: Komposita sind keine Schreibvarianten
 
 **Anlass:** Der Posten „Zwei Altfunde der neuen Regel" ließ zwei Wege offen:
