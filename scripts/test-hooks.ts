@@ -344,6 +344,9 @@ const bashFehlalarm: Array<[string, string]> = [
     `node -e "console.log(require('fs').readFileSync('${SCHEMA}', 'utf8').length >= 1)"`,
   ],
   ["Lesen des Datenvertrags mit Ausgabe nach /tmp", `grep -n quelle ${SCHEMA} > /tmp/quelle.txt`],
+  // Sechster belegter Fall, am 2026-09-23 beim Bau dieses Vorschlags selbst:
+  // eine Suche ueber mehrere Verzeichnisse, darunter die CI-Konfiguration.
+  ["Fall 6: Suche mit 2>/dev/null über die CI-Konfiguration", `grep -rn golden scripts/ ${CI.split("/")[0]}/ 2>/dev/null`],
 ];
 
 for (const [was, command] of bashFehlalarm) {

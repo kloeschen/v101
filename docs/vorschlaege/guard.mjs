@@ -117,7 +117,7 @@ if (befehl) {
   // Umleitungen stehen seit dem 2026-09-23 NICHT mehr in dieser Liste,
   // sondern werden unten nach ihrem Ziel beurteilt. Das nackte Zeichen `>`
   // traf `=>` (Pfeilfunktionen), `>=`, `2>&1` und `2>/dev/null` — also
-  // reine Lesebefehle. Fünf belegte Fälle, einer davon hat einen
+  // reine Lesebefehle. Sechs belegte Fälle, einer davon hat einen
   // Mutationsbeleg still entwertet (OFFENE-PUNKTE.md, ENTSCHEIDUNGEN.md).
   const schreibverben = [
     /\bsed\b[^|;&]*\s-[a-zA-Z]*i/, //   sed -i, sed -Ei, sed --in-place

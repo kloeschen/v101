@@ -17,7 +17,9 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 **Anlass:** Posten „`guard.mjs` sperrt zu breit", fünf belegte Fälle, in
 denen der Bash-Zweig reine Lesebefehle blockierte. Einer davon hat heute
-einen Mutationsbeleg still entwertet.
+einen Mutationsbeleg still entwertet. Ein sechster kam beim Bau dieses
+Vorschlags dazu: ein `grep` mit `2>/dev/null` über mehrere Verzeichnisse,
+darunter die CI-Konfiguration.
 
 **Entscheidung von Markus:** Die Korrektur schreibe ich als fertigen Block,
 eingesetzt wird sie von einem Menschen (`.claude/` ist für Agenten
@@ -39,14 +41,14 @@ kein `>` erwartet. Der Vorschlag schließt die Lücke, weil er das Ziel
 herauslöst (Lektion 29).
 
 **Belege:**
-- `test-hooks.ts` hat zwölf neue Fälle:
+- `test-hooks.ts` hat dreizehn neue Fälle:
   - fünf weitere Schreibweisen, die sperren müssen: Anführungszeichen,
     `2>`, `&>`, Umleitung neben `2>&1`, kein Leerzeichen
   - zwei Statusfälle, die gesperrt bleiben
-  - sechs nachgebaute Fehlalarme, die durchgehen müssen
-- Gegen den geltenden Hook fallen genau neun Behauptungen: sechs
+  - sieben nachgebaute Fehlalarme, die durchgehen müssen
+- Gegen den geltenden Hook fallen genau zehn Behauptungen: sieben
   Fehlalarme und die drei zur Lücke ohne Leerzeichen. Gegen den Vorschlag
-  (`V101_GUARD=docs/vorschlaege/guard.mjs`) bestehen alle 124.
+  (`V101_GUARD=docs/vorschlaege/guard.mjs`) bestehen alle 125.
 
 | Mutation am Vorschlag | fällt |
 |---|---|
@@ -63,10 +65,57 @@ per Look-arounds und filterte `/dev/null`. Drei Mutationen daran
 sind entfernt, die Fassung ist entsprechend schlichter.
 
 **Bis der Block eingesetzt ist, ist die Prüfkette dieses Zweigs rot**, an
-genau den neun Behauptungen. Das ist gewollt, wie bei #36: Der PR wird
+genau den zehn Behauptungen. Das ist gewollt, wie bei #36: Der PR wird
 erst mergebar, wenn ein Mensch den Hook ersetzt hat.
 
 Posten entfällt mit dem Einsetzen.
+
+---
+
+## 2026-09-23 — Band-Vorlage: ein echter Eintrag statt einer korrigierten Halbfiktion
+
+**Anlass:** Posten „Das Golden Example der Bands nennt für The Firebirds
+1985" (Wikipedia: Mai 1992). Die Vorlage war außerdem halb erfunden:
+Leipziger Band mit Region Rhein-Neckar, „Beispiel Musiker" in der
+Besetzung.
+
+**Entscheidung von Markus:** Die Vorlage wird durch den Aufbau eines echten,
+belegten Eintrags ersetzt, nicht korrigiert. Gewählt ist **Mad Sin**. Der
+Eintrag zeigt alles, was eine Vorlage zeigen soll:
+- eine Quelle je Feld
+- zwei Widersprüche im Text statt in der Auswahl
+- leere Felder mit Begründung (Label, Website)
+- eine offizielle Seite, die sich nicht öffnen ließ und deshalb nicht als
+  Quelle steht
+
+**Eine Abweichung vom Original:** `status: entwurf`. Eine Vorlage zeigt, was
+ein Agent schreibt, und neue Einträge sind immer Entwürfe. Mit
+`veroeffentlicht` hätte die Vorlage genau den Wert vorgemacht, den nur ein
+Mensch setzt. Ein YAML-Kommentar im Kopf nennt die Herkunft und den Stand;
+weicht `mad-sin.md` später ab, gilt `mad-sin.md`.
+
+**Fund mit Folgen:** Der Abschnitt „Rückverweise gegen echte Daten" in
+`scripts/test-links.ts` ist seit dem 2026-09-01 nie gelaufen. Er hing an
+`the-firebirds`, und die gab es nur in der Vorlage, die der Loader
+überspringt. Sechs Prüfungen hatten nie etwas gesehen, jeder Lauf druckte
+„übersprungen" und meldete Erfolg (Nachtrag zu Lektion 19).
+- Jetzt hängt der Abschnitt an `bands/boppin-b` samt seinem
+  Barsinghausen-Termin, und ein fehlender Anker ist ein Fehler.
+- `test-links` hat jetzt 56 Prüfungen statt 45.
+- **Belege:**
+  - Anker auf eine Band, die es nicht gibt: vier Fehlschläge, keine
+    stille Überspringung.
+  - Anker auf Mad Sin (keine Auftritte im Register): „Auftritt fällt aus
+    den Eventdaten heraus" fällt. Die Prüfung liest also wirklich die
+    Eventdaten.
+
+**Nicht angefasst:** Die Event- und die Lexikon-Vorlage nennen weiterhin The
+Firebirds, als Line-up-Referenz bzw. als Link. Beide sind Formvorlagen,
+die der Loader überspringt, und ihr Umbau ist eine eigene Entscheidung.
+Für die Event-Vorlage steht dieselbe Frage schon in der Redaktionsnotiz des
+echten Walldorf-Eintrags.
+
+Posten entfällt.
 
 ---
 

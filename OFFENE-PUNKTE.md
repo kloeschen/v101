@@ -32,15 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **Das Golden Example der Bands nennt für The Firebirds 1985.** Die
-deutsche Wikipedia datiert die Bandgründung auf Mai 1992; 1985 war das erste
-musikalische Zusammentreffen zweier späterer Mitglieder. Die Datei ist eine
-Vorlage und wird vom Loader übersprungen, richtet also keinen Schaden im
-Register an — aber sie ist das, woran sich jeder neue Eintrag orientiert, und
-sie behauptet über eine reale Band eine falsche Jahreszahl. Ob die Vorlage
-auf eine erfundene Band umgestellt oder die Zahl korrigiert wird, ist eine
-Entscheidung über die Vorlage selbst.
-
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der

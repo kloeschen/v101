@@ -218,21 +218,33 @@ const echte = buildRegistry(alsRegistryEingaben(ladeAlle()));
 
 /**
  * Dieser Abschnitt prüft gegen die tatsächlichen Inhalte des Registers.
- * Auf einem frischen Klon ist es leer — dann gibt es nichts zu prüfen, und
- * ein roter Testlauf wäre eine Falschmeldung. Die Logik selbst ist oben
- * bereits gegen synthetische Daten abgesichert.
+ *
+ * BIS ZUM 2026-09-23 LIEF ER NIE. Er hing an der Band `the-firebirds`, und
+ * die gab es nur im Golden Example, das der Loader überspringt. Jeder Lauf
+ * endete mit „Abschnitt übersprungen", drei Wochen lang, und sechs
+ * Prüfungen hatten nie etwas gesehen (Lektion 19). Aufgefallen ist es beim
+ * Ersetzen der Vorlage.
+ *
+ * Jetzt hängt er an echten, freigegebenen Einträgen, und ein fehlender Anker
+ * ist ein Fehler, kein Hinweis: Ein Test, der sich still abschaltet, wenn
+ * sein Gegenstand fehlt, ist genau der Zustand, aus dem er kam. Wird ein
+ * Anker gelöscht, ist der Test umzustellen, nicht zu überspringen.
  */
 const hatInhalte = (slug: string, art: Parameters<typeof aufloesen>[1]) =>
   aufloesen(echte, art, slug) !== undefined;
+const ANKER_BAND = "boppin-b";
 
-if (!hatInhalte("the-firebirds", "bands")) {
-  console.log("Hinweis: Register enthält die Beispieldaten nicht — Abschnitt gegen echte Inhalte übersprungen.");
-} else {
+pruefe(
+  "Anker im Register: die Band, gegen die geprüft wird",
+  hatInhalte(ANKER_BAND, "bands"),
+  `${ANKER_BAND} fehlt — Anker umstellen, nicht überspringen`,
+);
 {
-  const band = aufloesen(echte, "bands", "the-firebirds");
-  pruefe("Band wird aufgelöst", !!band, "the-firebirds fehlt");
+{
+  const band = aufloesen(echte, "bands", ANKER_BAND);
+  pruefe("Band wird aufgelöst", !!band, `${ANKER_BAND} fehlt`);
 
-  const { kommend, vergangen } = auftritte(echte, "the-firebirds");
+  const { kommend, vergangen } = auftritte(echte, ANKER_BAND);
   pruefe(
     "Auftritt fällt aus den Eventdaten heraus",
     kommend.length + vergangen.length >= 1,
@@ -271,7 +283,7 @@ if (!hatInhalte("the-firebirds", "bands")) {
 }
 
 {
-  pruefe("Pfad wird zum Eintrag aufgelöst", pfadZuEintrag(echte, "/bands/the-firebirds/")?.name === "The Firebirds");
+  pruefe("Pfad wird zum Eintrag aufgelöst", pfadZuEintrag(echte, `/bands/${ANKER_BAND}/`)?.name === "Boppin'B");
 }
 }
 

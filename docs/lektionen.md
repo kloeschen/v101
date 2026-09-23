@@ -386,6 +386,16 @@ mit Exitcode 2 und nennt sie; `scripts/test-hooks.ts` fährt den Hook einmal
 über einen selbst gebauten Symlink und verlangt, dass der konkrete Befund in
 der Begründung steht — nicht bloß, dass blockiert wurde.
 
+**Nachtrag vom 2026-09-23, derselbe Fehler in einem Test:** Der Abschnitt
+„Rückverweise gegen echte Daten" in `scripts/test-links.ts` lief vom ersten
+Tag an nie. Er prüfte nur, wenn die Band `the-firebirds` im Register
+stand, und die gab es nur im Golden Example, das der Loader überspringt.
+Jeder Lauf druckte „Abschnitt übersprungen" und meldete trotzdem „45
+Prüfungen bestanden". Das ist die zweite Regel oben in Testform: Ein Test,
+der sich abschaltet, wenn sein Gegenstand fehlt, braucht für diesen Fall
+einen *roten* Ausgang, keinen Hinweis. Seitdem hängt der Abschnitt an einem
+echten Eintrag, und ein fehlender Anker ist ein Fehler.
+
 ---
 
 ## 20. Widersprüche zwischen Quellen gehören in den Text, nicht in die Auswahl
@@ -750,11 +760,12 @@ steht.
 
 **Was passiert ist:** Der Bash-Zweig von `guard.mjs` las jedes `>` als
 Umleitung und ließ danach einen gesperrten Pfad *irgendwo* im Befehl
-genügen. Fünfmal blockierte er reine Lesebefehle: eine Pfeilfunktion (`=>`),
+genügen. Sechsmal blockierte er reine Lesebefehle: eine Pfeilfunktion (`=>`),
 ein `2>&1`, ein `2>/dev/null` neben einem `grep`, einen Shell-Vergleich mit
-Ausgabe nach /tmp. Einmal entwertete er dabei still einen Mutationsbeleg,
+Ausgabe nach /tmp, eine Suche mit `2>/dev/null` über mehrere Verzeichnisse.
+Einmal entwertete er dabei still einen Mutationsbeleg,
 weil der blockierte Befehl auch die Vorbereitung enthielt. Als die
-Fehlalarme als Testfälle nachgebaut wurden, fiel ein sechster Fall auf, in
+Fehlalarme als Testfälle nachgebaut wurden, fiel ein weiterer Fall auf, in
 die andere Richtung: `echo x >.claude/settings.json`, eine Umleitung
 **ohne Leerzeichen**, ging durch. Das Pfadmuster erwartete vor `.claude/`
 ein Leerzeichen, ein Anführungszeichen, `=` oder `/`, aber kein `>`.

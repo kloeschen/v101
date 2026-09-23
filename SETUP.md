@@ -212,6 +212,11 @@ gegen eine Quelle und trage sie in `quellen[]` ein.
 Auch der Walldorf-Eintrag ist nur teilweise belegt. Verwende ihn als
 Formvorlage, nicht als Datensatz.
 
+Ausnahme seit dem 2026-09-23: Die Band-Vorlage
+(`src/content/bands/_golden-example.md`) ist eine Kopie des echten,
+belegten Eintrags Mad Sin, mit `status: entwurf`. Die frühere Vorlage
+(The Firebirds) nannte ein falsches Gründungsjahr.
+
 ---
 
 ## Wenn etwas klemmt
