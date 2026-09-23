@@ -84,15 +84,6 @@ Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
 zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
 Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
 
-`mensch` **Kopfkommentar im Hook `guard.mjs` noch vom Vorschlag.** Der am
-2026-09-23 eingesetzte Hook ist byte-gleich mit dem Vorschlag, einschließlich
-dessen Kopf: Die Zeilen 2 bis 13 („VORSCHLAG — wird nicht ausgeführt …" bis
-zur Trennlinie aus Bindestrichen samt der Leerzeile danach) beschreiben jetzt
-etwas Falsches. Sie gehören gelöscht, sodass auf `/**` direkt „Sperren für
-agentische Schreibzugriffe …" folgt. Rein kosmetisch, ohne Wirkung auf die
-Sperre. Nur ein Mensch kann es ändern, weil der Hook im gesperrten
-Agentenverzeichnis liegt.
-
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
