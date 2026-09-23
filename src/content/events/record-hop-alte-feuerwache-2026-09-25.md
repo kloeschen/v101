@@ -4,8 +4,8 @@ aliases: [Record Hop Friedrichshain]
 kurzbeschreibung: Tanzabend mit vier DJs in der Alten Feuerwache Berlin-Friedrichshain am 25. September 2026, mit 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und Rockabilly.
 status: veroeffentlicht
 erstelltAm: 2026-09-04
-geprueftAm: 2026-09-10
-geaendertAm: 2026-09-10
+geprueftAm: 2026-09-23
+geaendertAm: 2026-09-23
 autor: markus
 typ: tanzabend
 beginn: 2026-09-25T19:00:00+02:00
@@ -69,11 +69,25 @@ redaktionsnotiz: >-
   geoeffnet, weil auf derselben Seite nach Nachbarterminen gesucht wurde.
   Ohne diesen Zufall haette die Pruefkadenz von 30 Tagen den Fehler erst
   Anfang Oktober gefunden -- nach dem Termin.
+  ERNEUT GEPRUEFT am 2026-09-23, zwei Tage vor dem Termin (Stale-Posten
+  "Termin naht, Pruefung liegt zurueck"): Seite erreichbar, eventStatus
+  weiter EventScheduled, Datum und DJs unveraendert. Die Anfangszeit steht
+  weiter widerspruechlich in der Quelle: sichtbares Feld "Uhrzeit" 19:00
+  und Kalenderlink 20260925T170000Z (19:00 MESZ) gegen JSON-LD startDate
+  21:00. Zwei von drei Stellen tragen 19:00, dabei bleibt es. Der
+  Widerspruch steht jetzt auch im Fliesstext (Regel 5), weil er fuer
+  Besucher zaehlt: Wer der maschinenlesbaren Angabe folgt, kommt zwei
+  Stunden zu spaet.
 quellen:
   - url: https://www.rockin-wildcat.com/rwc/events/record-hop-60
     titel: Record Hop, 25. September 2026 (Rockin' Wildcat)
     abgerufenAm: 2026-09-04
     felder: [beginn, ende, ort, djs, eintritt, genres, name, kurzbeschreibung, durchfuehrung, body:abend, body:musik]
+    art: offiziell
+  - url: https://www.rockin-wildcat.com/rwc/events/record-hop-60
+    titel: Record Hop, 25. September 2026 (Rockin' Wildcat), erneuter Abruf
+    abgerufenAm: 2026-09-23
+    felder: [beginn, djs, durchfuehrung, body:abend]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/guide
     titel: Berlin Gig Guide (Rockin' Wildcat)
@@ -87,6 +101,8 @@ Der Record Hop ist ein Tanzabend am 25. September 2026 ab 19 Uhr in der Alten Fe
 ## Der Abend
 
 Ein Record Hop ist ein Tanzabend ohne Liveband — die Musik kommt von Platten, und das Programm hängt entsprechend an den Auflegenden. Für diesen Termin sind Sweet Sue, Chrille, Raockin' Vagabond und Chill Bill angekündigt.
+
+Die Anfangszeit steht auf der Seite nicht einheitlich: Die sichtbare Angabe und der Kalendereintrag nennen 19 Uhr, die maschinenlesbaren Daten derselben Seite 21 Uhr. Dieser Eintrag folgt den beiden übereinstimmenden Stellen; wer sichergehen will, fragt beim Veranstalter nach.
 
 Einen Eintrittspreis nennt die Quelle nicht. Das maschinenlesbare Angebot auf der Seite trägt zwar einen Preis von null Euro, dieser Wert steht dort aber bei jedem Termin gleich — auch bei Konzerten in großen Häusern. Er taugt deshalb nicht als Beleg für freien Eintritt, und dieser Eintrag macht dazu keine Angabe.
 

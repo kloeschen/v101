@@ -1,16 +1,4 @@
 /**
- * VORSCHLAG — wird nicht ausgeführt.
- *
- * Einzusetzen als `.claude/hooks/guard.mjs` (vollständiger Ersatz). Das
- * Löschen dieser Datei danach übernimmt ein Agent. Agenten können `.claude/`
- * nicht schreiben, deshalb
- * liegt der Vorschlag hier; Begründung und Belege stehen in
- * ENTSCHEIDUNGEN.md („guard.mjs: Umleitungen nach ihrem Ziel beurteilen")
- * und im PR. `scripts/test-hooks.ts` prüft diese Fassung mit
- * `V101_GUARD=docs/vorschlaege/guard.mjs npx tsx scripts/test-hooks.ts`.
- *
- * ---------------------------------------------------------------------
- *
  * Sperren für agentische Schreibzugriffe. Exit 2 blockiert den Tool-Aufruf,
  * stderr geht als Begründung an das Modell zurück.
  *
