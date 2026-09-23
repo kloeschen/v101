@@ -32,14 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Rockabilly Convention: die Oldtimer-Regelung fehlt im Eintrag.** Die
-Veranstalterseite nennt am 2026-09-20 eine konkrete Bedingung, die im
-Registereintrag nicht steht: Fahrerinnen und Fahrer von Fahrzeugen der 50er
-und 60er Jahre haben freien Eintritt und dürfen in der Westernstadt parken
-und durchfahren, Einfahrt Freitag und Samstag ab 10 Uhr. Das ist genau die
-Art Angabe, für die jemand ein Register aufsucht. Gefunden beim Beleg für den
-Kustom-Kulture-Artikel, nicht nebenbei mitgebaut.
-
 `mensch` **Das Golden Example der Bands nennt für The Firebirds 1985.** Die
 deutsche Wikipedia datiert die Bandgründung auf Mai 1992; 1985 war das erste
 musikalische Zusammentreffen zweier späterer Mitglieder. Die Datei ist eine
