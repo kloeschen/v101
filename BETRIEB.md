@@ -413,7 +413,9 @@ zugleich schreiben, dann prüfen, Durchgefallene zurückrollen, wiederholen,
 bis nichts mehr kippt. Ein Artikel und der Begriff, auf den er verlinkt,
 gehen also im selben Lauf durch, egal in welcher Reihenfolge. Fällt der
 Begriff durch, fällt der Artikel mit — er zeigte sonst in der Produktion
-ins Leere (`link-auf-entwurf`). Danach zieht das Skript den Autolink nach:
+ins Leere (`link-auf-entwurf`). Dasselbe gilt für Verweise im Frontmatter,
+etwa einen Termin und die Band in seinem Line-up (`verweis-auf-entwurf`,
+seit demselben Tag). Danach zieht das Skript den Autolink nach:
 Der verlinkt nur freigegebene Ziele, ein eben freigegebener Begriff wird
 also erst jetzt verlinkt, und zwar im selben Pull Request.
 

@@ -536,11 +536,10 @@ const REGELN: Regel[] = [
      * verlinkt nur noch Freigegebenes. Diese Regel fängt den Rest — Links,
      * die jemand von Hand schreibt, auch ein unbeaufsichtigter Lauf.
      *
-     * NUR DER FLIESSTEXT. Verweise im Frontmatter (region, hauptentitaet, …)
-     * löst der Faktenblock über die Registry auf, und die enthält in der
-     * Produktion nur Freigegebenes; ein unaufgelöster Verweis wird dort Text
-     * statt Link (faktenblock.ts). Im Fließtext steht der Link dagegen
-     * wörtlich im Markdown.
+     * NUR DER FLIESSTEXT. Verweise im Frontmatter prüft `verweis-auf-entwurf`
+     * gleich darunter. (Bis zum 2026-09-23 stand hier, der Faktenblock löse
+     * sie über die Registry auf und sie brauchten keine Regel. Für den
+     * Faktenblock stimmt das, für das JSON-LD nicht.)
      *
      * Ebene `fehler`, wie ein toter interner Link — es ist einer, nur erst in
      * der Produktion. Ein Ziel, das es gar nicht gibt, meldet `interne-links`;
@@ -574,6 +573,58 @@ const REGELN: Regel[] = [
             `Das Ziel zuerst oder im selben Lauf freigeben, oder den Link entfernen.`,
         });
       }
+      return b;
+    },
+  },
+  {
+    /**
+     * Ein freigegebener Eintrag verweist im Frontmatter auf einen Entwurf —
+     * `lineupBands`, `ort`, `genres`, `region`, `verwandt`, `hauptentitaet`
+     * und alle übrigen Felder aus `referenzFelder`.
+     *
+     * Der Faktenblock verkraftet das (ein unaufgelöster Verweis wird Text
+     * statt Link), das JSON-LD nicht: `refs()` in src/lib/jsonld/shared.ts
+     * schreibt die `@id` ungefiltert in den Graphen, und die Produktion baut
+     * die Zielseite nicht. `check-jsonld.ts` sieht es nicht, weil es die
+     * bekannten `@id`s aus dem ganzen Bestand sammelt. Gefunden am
+     * 2026-09-23 beim Verlinken von Boppin'B: `link-auf-entwurf` schlug an
+     * den beiden Fließtext-Links an, der Verweis in `lineupBands` blieb
+     * stumm.
+     *
+     * Entscheidung von Markus: Regel statt Filter im Builder. Ein Filter
+     * machte den Zustand unschädlich, aber unsichtbar; die Regel hält ihn
+     * sichtbar, und der Freigabelauf kann Verweis und Ziel gemeinsam
+     * freigeben (Fixpunkt in freigeben.ts).
+     *
+     * Alle Referenzfelder, nicht nur die sechs, die heute ins JSON-LD gehen:
+     * Eine zweite Liste neben `referenzFelder` veraltet still, und ein
+     * Verweis auf einen Entwurf ist in jedem Feld ein unfertiger Zustand.
+     * Ein Ziel, das es gar nicht gibt, meldet `referenzen`.
+     */
+    code: "verweis-auf-entwurf",
+    collections: "*",
+    pruefe(e, ctx) {
+      if (!e.daten) return [];
+      if (e.daten.status !== ["veroeffent", "licht"].join("")) return [];
+      const b: Befund[] = [];
+      const pruefe = (feld: string, ziel: CollectionName, s: string) => {
+        if (!ctx.slugs.get(ziel)?.has(s)) return; // gibt es nicht: meldet `referenzen`
+        if (ctx.freigegeben.get(ziel)?.has(s)) return;
+        b.push({
+          ebene: "fehler",
+          code: "",
+          feld,
+          nachricht:
+            `Freigegebener Eintrag verweist in ${feld} auf einen Entwurf: ${ziel}/${s} — ` +
+            `im JSON-LD entstünde eine @id auf eine Seite, die die Produktion nicht baut. ` +
+            `Das Ziel zuerst oder im selben Lauf freigeben, oder den Verweis entfernen.`,
+        });
+      };
+      for (const [feld, ziel] of Object.entries(referenzFelder[e.collection])) {
+        for (const s of alsArray(e.daten[feld])) pruefe(feld, ziel, s);
+      }
+      const h = e.daten.hauptentitaet;
+      if (h) pruefe("hauptentitaet", h.typ as CollectionName, h.slug);
       return b;
     },
   },

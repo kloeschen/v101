@@ -497,6 +497,100 @@ fall({
   verboten: ["link-auf-entwurf"],
 });
 
+/* --- verweis-auf-entwurf (seit 2026-09-23) ------------------------ */
+/*
+ * Das Gegenstueck zu link-auf-entwurf fuer das Frontmatter. Ein Verweis
+ * aus einem freigegebenen Eintrag auf einen Entwurf erzeugt im JSON-LD
+ * eine @id ohne Seite. Gefunden beim Verlinken von Boppin'B: Der Verweis
+ * in lineupBands blieb stumm, waehrend link-auf-entwurf an den
+ * Fliesstext-Links anschlug.
+ *
+ * Jede Bedingung hat einen eigenen Fall: Status der Quelle, Status des
+ * Ziels, Existenz des Ziels, dazu ein Event (die echte Form der Luecke)
+ * und der Sonderweg ueber `hauptentitaet` samt Gegenprobe.
+ */
+
+fall({
+  name: "verweis-auf-entwurf: freigegeben verweist in verwandt auf Entwurf schlaegt an",
+  datei: "lexikon/verweis-frei-auf-entwurf.md",
+  inhalt: md(
+    lexFelder("Verweisrock", { status: LIVE, verwandt: "[tellerrock]" }),
+    `${lexKoerper("Verweisrock")}\n\nVergleiche den [Freizielrock](/lexikon/freiziel/).`,
+  ),
+  erwartet: { "verweis-auf-entwurf": "fehler" },
+  // Das Ziel existiert — `referenzen` darf NICHT anschlagen. Genau das war
+  // die Luecke.
+  verboten: ["referenzen"],
+});
+
+fall({
+  name: "verweis-auf-entwurf: freigegeben verweist nur auf Freigegebenes schweigt",
+  datei: "lexikon/verweis-frei-auf-frei.md",
+  inhalt: md(
+    lexFelder("Verweisfreirock", { status: LIVE, verwandt: "[freiziel]" }),
+    `${lexKoerper("Verweisfreirock")}\n\nVergleiche den [Freizielrock](/lexikon/freiziel/).`,
+  ),
+  verboten: ["verweis-auf-entwurf", "referenzen"],
+});
+
+fall({
+  name: "verweis-auf-entwurf: ein Entwurf darf auf einen Entwurf verweisen",
+  datei: "lexikon/verweis-entwurf-auf-entwurf.md",
+  inhalt: md(lexFelder("Verweisentwurfrock", { verwandt: "[tellerrock]" }), lexKoerper("Verweisentwurfrock")),
+  verboten: ["verweis-auf-entwurf"],
+});
+
+fall({
+  name: "verweis-auf-entwurf: ein Verweis ins Leere wird nicht doppelt gemeldet",
+  datei: "lexikon/verweis-frei-tot.md",
+  inhalt: md(
+    lexFelder("Verweistotrock", { status: LIVE, verwandt: "[gibtesnichtimregister]" }),
+    `${lexKoerper("Verweistotrock")}\n\nVergleiche den [Freizielrock](/lexikon/freiziel/).`,
+  ),
+  erwartet: { referenzen: "fehler" },
+  verboten: ["verweis-auf-entwurf"],
+});
+
+
+const artFelder = (name: string, ueber: Record<string, string | undefined> = {}) => ({
+  name,
+  aliases: `[${name} Kurz]`,
+  kurzbeschreibung: `${name} ist ein erfundener Artikel, der in diesem Testharnisch die Verweisregeln ausloest.`,
+  status: LIVE,
+  erstelltAm: HEUTE,
+  geprueftAm: HEUTE,
+  autor: "markus",
+  typ: "pillar",
+  saeule: "mode",
+  veroeffentlichtAm: HEUTE,
+  quellen: quelle("kurzbeschreibung"),
+  ...ueber,
+});
+const artKoerper = (name: string) =>
+  `${name} ist ein erfundener Artikel, der in diesem Testharnisch den Verweis ueber die Hauptentitaet prueft. ` +
+  `Er verlinkt den [Freizielrock](/lexikon/freiziel/).\n\n## Worum es in ${name} geht\n\n${fueller(300)}`;
+
+fall({
+  name: "verweis-auf-entwurf: hauptentitaet auf einen Entwurf schlaegt an",
+  datei: "artikel/verweis-haupt-entwurf.md",
+  inhalt: md(
+    artFelder("Verweisartikel Entwurf", { hauptentitaet: "\n  typ: lexikon\n  slug: tellerrock" }),
+    artKoerper("Verweisartikel Entwurf"),
+  ),
+  erwartet: { "verweis-auf-entwurf": "fehler" },
+  verboten: ["referenzen", "schema"],
+});
+
+fall({
+  name: "verweis-auf-entwurf: hauptentitaet auf Freigegebenes schweigt",
+  datei: "artikel/verweis-haupt-frei.md",
+  inhalt: md(
+    artFelder("Verweisartikel Frei", { hauptentitaet: "\n  typ: lexikon\n  slug: freiziel" }),
+    artKoerper("Verweisartikel Frei"),
+  ),
+  verboten: ["verweis-auf-entwurf", "referenzen", "schema"],
+});
+
 /* ------------------------------------------------------------------ */
 /* Duplikate (globale Pruefung)                                        */
 /* ------------------------------------------------------------------ */
@@ -540,6 +634,15 @@ const evKoerper = (name: string) =>
   `${name} ist ein erfundener Weekender, der in diesem Testharnisch die Regeln zu Zeitraum, Reihe und Preisen ausloest. ` +
   `Die Veranstaltung existiert nicht und dient ausschliesslich der Pruefung des Validators.\n\n` +
   `## Programm von ${name}\n\n${fueller(190)}`;
+
+// verweis-auf-entwurf, Fall Event: steht hier, weil evFelder erst hier definiert ist.
+fall({
+  name: "verweis-auf-entwurf: freigegebener Termin an einem Ort, der Entwurf ist",
+  datei: "events/verweis-ort-entwurf.md",
+  inhalt: md(evFelder("Verweis Weekender", { status: LIVE }), evKoerper("Verweis Weekender")),
+  erwartet: { "verweis-auf-entwurf": "fehler" },
+  verboten: ["referenzen"],
+});
 
 fall({
   name: "event-zeitraum: Ende liegt vor Beginn",

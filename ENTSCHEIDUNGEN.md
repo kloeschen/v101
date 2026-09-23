@@ -13,6 +13,59 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-23 — `verweis-auf-entwurf`: Frontmatter-Verweise auf Entwürfe sind ein Fehler
+
+**Anlass:** Beim Verlinken von Boppin'B schlug `link-auf-entwurf` an den
+beiden Fließtext-Links an, der Verweis in `lineupBands` blieb stumm. Im
+JSON-LD des freigegebenen Termins hätte eine `@id` auf eine Seite
+gestanden, die die Produktion nicht baut. `refs()` filtert nicht, und
+`check-jsonld.ts` sammelt die bekannten `@id`s aus dem ganzen Bestand,
+Entwürfe eingeschlossen.
+
+**Entscheidung von Markus: (a)**, eine Regel und Ebene `fehler`, analog zu
+`link-auf-entwurf`. **Verworfen: (b)**, die Builder filtern auf
+Freigegebenes und fallen auf eine benannte Gruppe zurück. Das machte den
+Zustand unschädlich, aber unsichtbar.
+
+**Umfang:** alle Felder aus `referenzFelder` plus `hauptentitaet`, nicht
+nur die sechs, die heute ins JSON-LD gehen. Eine zweite Liste neben
+`referenzFelder` veraltet still. Ein Ziel, das es gar nicht gibt, meldet
+weiterhin nur `referenzen`.
+
+**Freigabe:** Der Fixpunkt in `freigeben.ts` validiert regelunabhängig und
+trägt die neue Regel ohne Änderung. Belegt am echten Bestand, mit Band und
+Termin vorübergehend auf Entwurf:
+- nur der Termin: abgelehnt, mit `verweis-auf-entwurf` und
+  `link-auf-entwurf`
+- Termin und Band zusammen: beide würden freigegeben
+
+**Belege:** `test-validate` 226 → 245, sieben Fälle. Jede Bedingung der
+Regel hat einen eigenen Fall, dazu ein Event (die echte Form der Lücke)
+und `hauptentitaet` samt Gegenprobe. Das Lebenszeichen im echten Bestand:
+Mit Boppin'B auf Entwurf meldet die Regel genau den `lineupBands`-Verweis
+des Termins. Heute gibt es im Bestand null Funde, und keine
+Test-Vorrichtung brach.
+
+| Mutation (nur im Regelblock) | fällt |
+|---|---|
+| Statusprüfung der Quelle entfernt | „ein Entwurf darf auf einen Entwurf verweisen" |
+| Freigabeprüfung des Ziels entfernt | „nur auf Freigegebenes schweigt", „hauptentitaet auf Freigegebenes schweigt" |
+| Existenzprüfung entfernt | „ein Verweis ins Leere wird nicht doppelt gemeldet" |
+| `hauptentitaet`-Zweig entfernt | „hauptentitaet auf einen Entwurf schlägt an" |
+| Schleife über `referenzFelder` entfernt | „verweist in verwandt auf Entwurf", „Termin an einem Ort, der Entwurf ist" |
+
+**Zwischenfall beim Beleg:** Der erste Mutationslauf war wertlos. Die
+Schutzsperre hatte den Befehl blockiert, der Sicherung und
+Mutationsskript anlegen sollte, weil das Statuswort in einem
+`sed`-Muster stand. Die fünf „Mutationen" liefen danach gegen den
+unveränderten Code und meldeten grün. Erkannt wurde das an der
+Fehlermeldung von `cp`, verworfen und wiederholt. Der Fall steht jetzt
+beim guard-Posten als fünfter Beleg.
+
+Posten „Frontmatter-Verweise auf Entwürfe" entfällt.
+
+---
+
 ## 2026-09-23 — Neo-Rockabilly: die Quelle, die den Begriff bestimmt
 
 **Anlass:** Posten „Neo-Rockabilly: erst eine Quelle, dann ein Eintrag".
