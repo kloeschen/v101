@@ -32,16 +32,54 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Berlin: bis zu drei weitere Termine aus dem Rockin'-Wildcat-Gig-Guide.**
-Der Guide (https://www.rockin-wildcat.com/rwc/guide) führte am 2026-09-04
-achtzehn Termine bis März 2027, jeweils mit JSON-LD; im Register stehen
-zwei, einer davon vorbei. Die nächsten kommenden Termine mit Szenebezug
-übernehmen, je Termin die Detailseite öffnen und den Aktualitätsbeleg wie
-beim Record Hop führen (JSON-LD, Datum im Fließtext, keine geratenen
-Detail-URLs). Fehlt der Spielort, ihn mit anlegen und im selben PR lassen,
-denn Termin und Ort gehen nur gemeinsam durch die Freigabe
-(`verweis-auf-entwurf`). Bands in `lineupWeitere`. Der Preis `0` im
-JSON-LD dieser Quelle ist ein Vorgabewert, kein freier Eintritt.
+`frei` **Zeitzonenprüfung deckt `src/content/` nicht ab.** `check-zeitzonen.ts`
+liest `src/**/*.{ts,astro,mjs}` und `scripts/**/*.ts`, also nur Code. Ein
+Frontmatter-Wert mit Uhrzeit, aber ohne Zonenangabe — `beginn:
+2026-10-18T16:00:00` — läuft am 2026-09-24 durch `check:zeit`, `validate`
+und `jsonld` grün durch. `z.coerce.date()` liest ihn dann in der
+Prozess-Zeitzone: `TZ=UTC` ergibt `16:00Z`, `TZ=Europe/Berlin` ergibt
+`14:00Z`. Zwei Stunden Unterschied, je nachdem wo gebaut wird — und das ist
+genau die Fehlerklasse aus Lektion 1, eine Ebene unterhalb ihrer eigenen
+Prüfung. Zu bauen: eine Regel, die in `validate-content.ts` oder in
+`check-zeitzonen.ts` jeden Datumswert im Frontmatter ablehnt, der eine
+Uhrzeit trägt, aber keinen Offset. Reine Datumswerte (`erstelltAm`,
+`geprueftAm`) bleiben erlaubt, sonst fallen alle bestehenden Einträge.
+Negativtest und Mutationsbeleg gehören dazu; der Gegenbeleg oben ist die
+Vorlage.
+
+`frei` **Record Hop in der Alten Feuerwache nachziehen.** Zwei Felder des
+veröffentlichten Eintrags `record-hop-alte-feuerwache-2026-09-25.md` stehen
+auf einer Lesart, die am 2026-09-24 widerlegt wurde (ENTSCHEIDUNGEN,
+2026-09-24). Erstens `ende: 2026-09-26T05:00:00+02:00`: Sieben der acht
+geprüften Termine dieser Quelle enden auf 05:00 Ortszeit, unabhängig von
+Anfangszeit und Spielort; beim achten fällt das Ende mit dem Beginn
+zusammen. Entweder konstant oder leer — ein Vorgabewert, kein Fakt. Das Feld gehört
+entfernt, die Begründung in die Redaktionsnotiz und in den Fließtext.
+Zweitens `art: offiziell` für Rockin' Wildcat: Der Gig Guide bündelt fremde
+Ankündigungen, das ist `aggregator` nach der Definition im Schema. Die
+beiden neuen Berliner Einträge vom 2026-09-24 führen die Quelle bereits so.
+Der Eintrag ist veröffentlicht, der Termin am 2026-09-25 vorbei — also erst
+nach `npm run archivieren` anfassen und die Änderung als Korrektur mit
+Datum in die Redaktionsnotiz schreiben, nicht stillschweigend.
+
+`frei` **Berlin: die nächsten Termine aus dem Rockin'-Wildcat-Gig-Guide.**
+Nachfolger des am 2026-09-24 erledigten Postens; zwei Termine sind
+angelegt (The Sinners 10.10., Record Hop Rathaus Friedrichshagen 18.10.).
+Als Nächstes anstehen: Jets / Smokestack Lightnin' am 03.10.2026 im
+Roadrunner's Rock & Motor Club (Saarbrücker Str. 24, 10405 Berlin), The
+Sinners' Nachbartermine im American Western Saloon (Aron King & his
+Ferriday Rockers am 07.11., De Waltons am 21.11.) und die beiden weiteren
+Record Hops im Rathaus Friedrichshagen (08.11., 06.12.). **Vorsicht beim
+Roadrunner's:** Die Website `roadrunners-paradise.de` lieferte am
+2026-09-24 ein Zertifikat, das sich nicht verifizieren ließ; der Spielort
+war deshalb nicht gegenzulesen und wurde nicht angelegt. Erst erneut
+versuchen, und wenn sie weiter nicht erreichbar ist, eine zweite Quelle für
+die Adresse suchen, bevor die Location entsteht. Für die Quelle selbst
+gelten seit dem 2026-09-24 drei belegte Regeln (ENTSCHEIDUNGEN): sichtbare
+Uhrzeit statt JSON-LD `startDate`, sichtbares Feld „Kosten" entscheidet
+über den Preis, kein `ende` übernehmen. Detail-URLs immer aus
+`offers.url` des JSON-LD, nie raten. Bands in `lineupWeitere`. Termine, die
+vor der nächsten Freigabe vorbei wären, überspringen.
 
 `frei` **Boppin'B im Colos-Saal Aschaffenburg am 26. Dezember 2026 anlegen.**
 Die Terminliste der Band bei Reservix
