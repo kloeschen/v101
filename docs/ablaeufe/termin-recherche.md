@@ -36,12 +36,12 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | Quelle | Region | Art | maschinenlesbar | Hinweis |
 |---|---|---|---|---|
 | [Rockin' Wildcat, Gig Guide](https://www.rockin-wildcat.com/rwc/guide) | Berlin | Szenekalender | ja, 24 Termine als JSON-LD | drei feste Leseregeln (siehe Fallen); Detail-URL immer aus `offers.url`, nie raten |
-| [boogie.at](https://boogie.at/) | Niederösterreich, Wien, vereinzelt Bayern | Szenekalender | nein | Kalender, nicht Veranstalter — `veranstalterUrl` nie auf boogie.at setzen |
+| [boogie.at](https://boogie.at/) | Niederösterreich, Wien, Oberösterreich, vereinzelt Bayern | Szenekalender | nein | Kalender, nicht Veranstalter — `veranstalterUrl` nie auf boogie.at setzen. Die Startseite zeigt nur die ersten rund 20 Termine; die übrigen stehen unter `?page=1` bis `?page=4` (Zählung ab 0), alle Seiten öffnen |
 | [Pullman City, Events](https://www.pullmancity.de/events-shows-musik/events) | Bayern | Veranstalter | nein | nur die www-Form verwenden, die andere leitet um |
 | [Café Central Weinheim](https://cafecentral.de/) | Rhein-Neckar | Haus | nein | Startseite nennt Termine teils ohne Jahr |
 | [Walldorf Weekender](https://www.walldorf-weekender.net/) | Rhein-Neckar | Festival | nein | Jahreszahl steht im URL-Pfad |
 | [ASB-Bahnhof Barsinghausen](https://www.asb-bahnhof-barsinghausen.de/) | Niedersachsen | Haus | nein | breites Programm, Szenebezug je Termin prüfen |
-| [Rock'n'Roll Festival Ganderkesee](https://rocknroll-festival.de) | Niedersachsen | Festival | nicht erreichbar (Timeout) | einmal im Jahr, Ausgabe über die Seite prüfen |
+| [Rock'n'Roll Festival Ganderkesee](https://rocknroll-festival.de) | Niedersachsen | Festival | nein (am 2026-09-23 Timeout, am 2026-09-24 erreichbar, kein `Event` im JSON-LD) | einmal im Jahr, Ausgabe über die Seite prüfen |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite; Reservix-Bandlisten antworten Skripten mit 403 |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
