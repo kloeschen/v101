@@ -1,0 +1,153 @@
+# Termin-Recherche
+
+Wie neue Termine ins Register kommen: wo gesucht wird, wie aus einem Fund
+ein Posten wird, und woran ein Termin-Posten beim Bauen am häufigsten
+scheitert.
+
+Diese Datei ist **Text über den Ablauf, nicht Mechanik** (Lektion 18). Sie
+liegt deshalb in `docs/` und nicht unter `.claude/`: Jeder Agent darf sie
+pflegen, und das soll er auch — jede neue Falle, jede neue Quelle gehört
+hier hinein, sobald sie auffällt. Die Sperren selbst (Hook, Validator,
+`automerge:erlaubt`) gelten unabhängig von diesem Text.
+
+Die Recherche-Skills aus dem claude.ai-Konto (`events-recherche`,
+`events-pflege`, `bands-recherche`, `publish` u. a.) gehören zu einem
+aufgegebenen Vorgängerprojekt und gelten hier nicht. Was aus ihnen
+übernommen wurde, steht am Ende dieser Datei.
+
+## Zwei Läufe, zwei Aufgaben
+
+| Lauf | Wann | Tut | Tut nicht |
+|---|---|---|---|
+| **Suchlauf** | wöchentlich | Quellen unten absuchen, Funde als `frei`-Posten in `OFFENE-PUNKTE.md` schreiben | Inhalte anlegen. Ein Fund ist ein Hinweis, kein Beleg. |
+| **Täglicher Lauf** | täglich | genau einen Posten bauen (`BETRIEB.md`, 2.5) | suchen, was nicht im Posten steht |
+
+Die Trennung ist Absicht. Der Suchlauf darf großzügig sein, weil er nur
+Arbeitsaufträge erzeugt; ein Posten-PR berührt nur `OFFENE-PUNKTE.md` und
+darf nach `automerge:erlaubt` selbst mergen. Der tägliche Lauf öffnet jede
+Quelle erneut und belegt jedes Feld — erst dort entsteht ein Fakt, und der
+wartet auf Markus.
+
+## Quellen
+
+Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
+`application/ld+json`-Blöcke mit `Event`-Typ und iCal-Verweise.
+
+| Quelle | Region | Art | maschinenlesbar | Hinweis |
+|---|---|---|---|---|
+| [Rockin' Wildcat, Gig Guide](https://www.rockin-wildcat.com/rwc/guide) | Berlin | Szenekalender | ja, 24 Termine als JSON-LD | JSON-LD kann von der sichtbaren Angabe abweichen (siehe Fallen) |
+| [boogie.at](https://boogie.at/) | Niederösterreich, Wien, vereinzelt Bayern | Szenekalender | nein | Kalender, nicht Veranstalter — `veranstalterUrl` nie auf boogie.at setzen |
+| [Pullman City, Events](https://www.pullmancity.de/events-shows-musik/events) | Bayern | Veranstalter | nein | nur die www-Form verwenden, die andere leitet um |
+| [Café Central Weinheim](https://cafecentral.de/) | Rhein-Neckar | Haus | nein | Startseite nennt Termine teils ohne Jahr |
+| [Walldorf Weekender](https://www.walldorf-weekender.net/) | Rhein-Neckar | Festival | nein | Jahreszahl steht im URL-Pfad |
+| [ASB-Bahnhof Barsinghausen](https://www.asb-bahnhof-barsinghausen.de/) | Niedersachsen | Haus | nein | breites Programm, Szenebezug je Termin prüfen |
+| [Rock'n'Roll Festival Ganderkesee](https://rocknroll-festival.de) | Niedersachsen | Festival | nicht erreichbar (Timeout) | einmal im Jahr, Ausgabe über die Seite prüfen |
+| Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite; Reservix-Bandlisten antworten Skripten mit 403 |
+
+**Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
+die Posten, die aus ihr entstanden sind. Regionen ohne eigene Quelle
+(derzeit alle außer den fünf oben) brauchen zuerst eine — ein Szenekalender
+ist mehr wert als ein einzelner Termin.
+
+## Der Suchlauf
+
+1. **Platz in der Warteschlange ermitteln.** `npm run warteschlange` zählt
+   die `frei`-Posten. Der Suchlauf füllt auf **höchstens zehn** auf; stehen
+   schon zehn da, meldet er das und hört auf. Zehn pro Woche ist die Zahl,
+   die Markus am 2026-09-23 als tragbare Prüflast genannt hat.
+2. **Quellen abgehen.** Jede Kalenderseite öffnen, kommende Termine mit
+   Szenebezug notieren. Szenebezug heißt: ein Genre, Tanz oder Stil, für
+   den es einen Lexikoneintrag gibt oder geben sollte.
+3. **Nicht zu früh.** Nur Termine, die **mindestens 21 Tage** nach dem
+   Suchlauf beginnen. Die Rechnung: Bei zehn Posten und einem Posten pro
+   Tag wird der letzte nach zehn Tagen gebaut; dazu kommen Prüfung und
+   Freigabe. Ein Termin, der bis dahin vorbei ist, kostet einen Lauf und
+   bringt nichts.
+4. **Duplikate ausschließen**, dreifach: gegen `src/content/events/` (Name,
+   `aliases`, Datum, Ort), gegen die offenen Posten, und gegen die Zweige,
+   die gerade gebaut werden (`npm run warteschlange:belegt`).
+5. **Priorität:** nahe Termine vor fernen; bei gleichem Abstand die Region
+   mit weniger freigegebenen Einträgen zuerst.
+6. **Posten schreiben**, einer pro Termin, oben unter „Als Nächstes":
+
+   ```
+   `frei` **<Band/Veranstaltung> in <Ort> am <Datum> anlegen.** Gesehen am
+   JJJJ-MM-TT auf <URL der Kalenderseite> (Herkunft: Suchlauf JJJJ-MM-TT).
+   Dort steht: <Datum, Uhrzeit, Ort so wie angegeben>. <Was beim Bauen zu
+   prüfen ist — Detailseite, Jahreszahl, zweite Quelle.>
+   ```
+
+   Der fette Titel schließt in derselben Zeile. „Dort steht" gibt wieder,
+   was die Quelle sagt — es ist kein Beleg und wird beim Bauen erneut
+   geöffnet. Die Zeile „Herkunft: Suchlauf" ist für die Auswertung (unten)
+   nötig; ohne sie lässt sich nicht zählen, was der Suchlauf gebracht hat.
+7. **Abliefern:** Branch, PR, der nur `OFFENE-PUNKTE.md` (und ggf. diese
+   Datei) berührt, `npm run verify`, `npm run automerge:erlaubt`, bei
+   Exitcode 0 und grüner CI selbst mergen. Kein Fund ist ein vollständiges
+   Ergebnis: melden, kein PR.
+
+## Fallen beim Bauen eines Termin-Postens
+
+Gesammelt aus den bisherigen Einträgen. Jede hat mindestens einmal einen
+Fehler verursacht oder beinahe verursacht.
+
+- **JSON-LD ist nicht die Wahrheit.** Beim Record Hop nannten die sichtbare
+  Angabe und der Kalenderlink 19 Uhr, das JSON-LD derselben Seite 21 Uhr.
+  Immer die sichtbare Angabe gegenlesen; bei Abweichung Regel 5 (CLAUDE.md).
+- **Eine Zusammenfassung ist keine Quelle** (Lektion 28). Abrufwerkzeuge,
+  die eine Seite zusammenfassen, haben hier schon Jahreszahlen und
+  Zuschreibungen erfunden. Den Rohtext prüfen.
+- **Jahreszahl von der Detailseite.** Café Central nennt auf der
+  Startseite Termine ohne Jahr, und seine `/konzert/`-Seiten sehen für
+  jedes Jahr gleich aus (eine davon ist von 2021). Ohne Jahr kein Termin —
+  den Posten mit genau diesem Befund zurückgeben, nicht schätzen.
+- **Aktualitätsbeleg.** Gilt die Angabe der kommenden Ausgabe? Kein
+  Veranstalter schreibt es hin; getragen haben bisher Uploadpfad, Datum im
+  Dateinamen, `dateModified`, Jahreszahl im URL-Pfad, Wochentag passend zum
+  Datum, eine zweite unabhängige Quelle. Den Beleg in die `redaktionsnotiz`
+  (ENTSCHEIDUNGEN.md, 2026-09-04).
+- **Zeitzone je Tag.** Die Sommerzeit endet am 25.10.2026 und beginnt am
+  28.03.2027. Ein Wochenende über die Umstellung hat zwei Offsets.
+  `npm run check:zeit` fängt fehlende Zonen, nicht falsche.
+- **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
+  Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
+  `veranstalterUrl`. Bisherige Praxis: die beiden Szenekalender als
+  `art: offiziell`, Reservix und andere Ticketportale als
+  `art: aggregator`.
+- **Bands aus dem Line-up** stehen in `lineupWeitere`, solange sie keine
+  eigene Seite haben. Ob eine entsteht, entscheidet Markus.
+- **Ankündigungen selbst formulieren**, keine Sätze des Veranstalters
+  übernehmen.
+- **Abrufhürden:** Reservix antwortet Skripten mit 403, Wikimedia drosselt
+  ohne User-Agent. Anderes Abrufwerkzeug nehmen, nicht die Quelle
+  weglassen.
+
+## Auswertung nach vier Wochen
+
+Ab dem 2026-10-21 (Posten in `OFFENE-PUNKTE.md`, „Später, mit
+Bedingung"): Wie viele Posten mit „Herkunft: Suchlauf" sind entstanden, wie
+viele wurden zu einem Eintrag, wie viele kamen zurück, und warum? Führt
+weniger als die Hälfte zu einem Eintrag, wird der Suchlauf abgestellt oder
+umgebaut, mit Begründung in ENTSCHEIDUNGEN.md — eine Suche, deren Funde
+meistens verworfen werden, kostet mehr Läufe, als sie spart.
+
+## Aus den alten Konto-Skills übernommen
+
+- **Länderkreis** DE, AT, CH, NL, BE, FR, PL, CZ, DK. Das Schema kennt
+  diese Länder; Termine und Orte stehen bisher nur aus DE und AT im Register.
+- **Suchbegriffe** als Ausgangspunkt für neue Quellen: „Rockabilly
+  Festival <Jahr> <Land>", „Psychobilly Konzert <Region>", „Swing
+  Tanzkurs <Stadt>", „Vintage Car Show <Stadt>".
+- **Englische Szenebegriffe nicht übersetzen** (Pompadour, Jive, Creeper,
+  Hot Rod).
+- **Stichworte ohne Prüfung:** Der alte Skill nannte das Psychobilly
+  Meeting in Pineda de Mar und ein „Sleaford Roots Festival" als
+  wiederkehrende Veranstaltungen. Beides ist ungeprüft und liegt außerhalb
+  des bisherigen Registers; allenfalls ein Ansatz für eine Quellensuche.
+
+**Nicht übernommen:** das Frontmatter (`title`, `datum`, `stadt`, `tags`,
+`wiederkehrend`), Dateinamen mit Datumspräfix, das Verschieben vergangener
+Termine nach `events/archiv/` (ändert URL und `@id`; hier setzt
+`npm run archivieren` die Durchführung), das Überschreiben von Terminen
+wiederkehrender Veranstaltungen ohne Quelle, `MEMORY.md` und der Push
+direkt auf `main`.
