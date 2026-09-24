@@ -125,4 +125,4 @@ Die Stilmischung passt zum Haus: Doo Wop und 50s Rock'n'Roll liegen nah an dem C
 
 ## Einordnung des Konzerts in Berlin
 
-Für [Berlin](/regionen/berlin/) ist der Saloon ein Spielort abseits der üblichen Clubs. Er liegt im Norden der Stadt, hat eine Küche, eine Tanzfläche für Line Dance und ein Publikum, das wöchentlich kommt — das Konzert ist hier der Sonderfall im laufenden Betrieb und nicht der Zweck des Hauses. Wer die Berliner Termine sammelt, findet solche Orte nur über den Gig Guide, in dem auch der [Record Hop in der Alten Feuerwache](/events/record-hop-alte-feuerwache-2026-09-25/) steht.
+Für [Berlin](/regionen/berlin/) ist der Saloon ein Spielort abseits der üblichen Clubs. Er liegt in Reinickendorf am Rand des Märkischen Viertels, hat eine Küche, eine Tanzfläche für Line Dance und einen Betrieb, der ohne Konzerte vier Tage die Woche läuft — das Konzert ist hier der Sonderfall im laufenden Betrieb und nicht der Zweck des Hauses. Wer die Berliner Termine sammelt, findet solche Orte nur über den Gig Guide, in dem auch der [Record Hop in der Alten Feuerwache](/events/record-hop-alte-feuerwache-2026-09-25/) steht.
