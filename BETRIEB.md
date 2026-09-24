@@ -174,7 +174,7 @@ Stale-Report liefert die Warteschlange.
 |---|---|---|
 | montags 05:00 | Termine archivieren, Autolinks, Bericht → PR | `pflege.yml` (fertig) |
 | montags 06:00 | Externe Links, Issue bei Funden | `linkcheck.yml` (fertig) |
-| wöchentlich | Discovery: Veranstalter-Websites nach neuen Terminen absuchen | dein bestehender Skill, noch als Cron einzurichten |
+| sonntags 04:30 | Suchlauf: Quellenliste nach neuen Terminen absuchen, Warteschlange auf höchstens zehn `frei`-Posten auffüllen, Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` |
 | monatlich | Zitations-Check gegen ein festes Prompt-Set | noch zu bauen |
 | monatlich | Bot-Log-Auswertung aus den Netlify-Logs | noch zu bauen |
 | laufend | Recherche neuer Entitäten | Cowork, aus dem Stale-Report gesteuert |
@@ -336,10 +336,12 @@ Funden zu rechnen.
 
 ### 2.6 Was für den agentischen Teil noch fehlt
 
-1. **Das Plugin.** Deine Recherche-Skills, die Subagent-Definitionen und die
-   Hooks als versioniertes Bündel unter `.claude/skills/` im Repo — dann
-   sehen Cowork und dein lokales Claude Code dasselbe. Aktuell liegen die
-   Hooks im Repo, die Skills aber nur in deinem Konto.
+1. ~~Das Plugin.~~ **Entschieden am 2026-09-23: kein Plugin, keine
+   Konto-Skills.** Die Recherche-Skills im Konto stammten aus einem
+   aufgegebenen Vorgängerprojekt und passten nicht auf dieses Schema. Der
+   Ablauf steht jetzt als Text in `docs/ablaeufe/termin-recherche.md` —
+   dort und nicht unter `.claude/skills/`, weil er ständig wächst und ein
+   Agent ihn pflegen können soll (Lektion 18).
 2. **Die Subagent-Definitionen** (`event-rechercheur` und Geschwister) mit
    `disallowedTools: Edit`, damit ein Recherche-Agent nur anlegt und nie
    Bestehendes überschreibt.
@@ -361,6 +363,11 @@ Recherche mit Subagenten ist der teuerste Teil. Was hilft:
 - Deterministisches nie an ein Modell geben (siehe 2.1).
 - Discovery-Läufe crawlen zuerst mit einem Skript und lassen das Modell nur
   die gefundenen Kandidaten bewerten — nicht das Modell selbst crawlen.
+  **Gemessen am 2026-09-23 trägt das noch nicht:** Von acht Quellen führte
+  eine ihre Termine maschinenlesbar (Rockin' Wildcat, JSON-LD), und auch
+  die lag bei einer Anfangszeit falsch. Der Suchlauf liest die Seiten
+  deshalb vorerst mit dem Modell, begrenzt durch die Quellenliste und die
+  Obergrenze von zehn Posten.
 - Der Stale-Report begrenzt den Umfang: Ein Agent bekommt die zehn
   dringendsten Posten, nicht den Auftrag „finde alles".
 

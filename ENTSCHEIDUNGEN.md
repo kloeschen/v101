@@ -100,6 +100,68 @@ OFFENE-PUNKTE.md.
 
 ---
 
+## 2026-09-23 — Termin-Recherche: Ablauf im Repo, wöchentlicher Suchlauf, keine Konto-Skills
+
+**Anlass:** Der offene Posten „Der Skill `events-recherche` passt nicht auf
+dieses Repo". Durchgesehen wurden alle 19 Skills, die aus dem
+claude.ai-Konto in jede Cloud-Sitzung geladen werden. Sechs stammen aus
+dem Vorgängerprojekt „vintage-rockabilly-guide" (`events-recherche`,
+`events-pflege`, `bands-recherche`, `barbershops-recherche`,
+`tattoo-recherche`, `publish`), zwei aus der Weinmesse
+(`festival-onboarding`, `winzer-event-discovery`). Keiner passt:
+fremdes Frontmatter, keine Belegpflicht. `events-pflege` verschiebt
+vergangene Termine nach `events/archiv/` und ändert damit URL und `@id`.
+`publish` pusht auf `main`. Die Auslöser überschneiden sich mit
+dem hiesigen Vokabular („mach einen Commit", „suche neue Events").
+
+**Befund:** Was `events-recherche` inhaltlich kann, deckt das Repo längst
+ab: Posten, Vorlage, Validator, Hooks, täglicher Lauf. Seine einzige echte
+Leistung — selbst neue Termine finden — fehlt dagegen. `BETRIEB.md` 2.4
+führte dafür „dein bestehender Skill" auf, den es für v101 nie gab.
+
+**Messung:** Acht Quellen bisheriger Termine abgerufen. Maschinenlesbar
+(JSON-LD) war eine: Rockin' Wildcat mit 24 Terminen. Fünf hatten weder
+JSON-LD noch iCal, eine lief in einen Timeout, Reservix antwortete mit 403.
+Die eine maschinenlesbare Quelle lag beim Record Hop bei der Anfangszeit
+falsch.
+
+**Entscheidungen (Markus, 2026-09-23):**
+
+1. Der alte Guide ist aufgegeben, von ihm wird nichts behalten. Die sechs
+   Skills entfernt Markus aus dem Konto. Bis dahin — und für die beiden
+   Weinmesse-Skills dauerhaft — sagt CLAUDE.md, dass keiner davon hier
+   gilt. Was aus ihnen brauchbar war (Länderkreis, Suchbegriffe,
+   Tonregel), steht jetzt in `docs/ablaeufe/termin-recherche.md`.
+2. **Der Ablauf wird Text in `docs/`, kein Skill unter `.claude/`.** Er
+   wächst mit jeder gefundenen Falle. Unter `.claude/` bräuchte jede
+   Ergänzung einen Menschen (Lektion 18).
+3. **Wöchentlicher Suchlauf** als Routine: Er füllt die Warteschlange auf
+   höchstens zehn `frei`-Posten auf und legt selbst keinen Inhalt an. Sein
+   PR berührt nur `OFFENE-PUNKTE.md` und merged nach `automerge:erlaubt`
+   selbst. Die Zahl zehn hat Markus als tragbare Prüflast genannt.
+
+**Verworfen:**
+- **Ein Skript, das JSON-LD sammelt.** Es deckt eine von acht Quellen ab
+  und liefert selbst dort nur Kandidaten.
+- **Eine Hook-Sperre gegen einzelne Skill-Namen.** Beweisbar wäre sie,
+  aber am Ende steht ohnehin ein PR, den ein Mensch prüft. Der mögliche
+  Schaden ist Verschwendung, nicht Stille.
+- **Die Konto-Skills umschreiben.** Sie wären unversioniert, ungetestet
+  und außerhalb des Repos.
+
+**Gesetzte Zahlen, mit Rechnung:**
+- **Mindestabstand 21 Tage bis zum Termin.** Zehn Posten bei einem Posten
+  pro Tag sind zehn Tage, dazu kommen Prüfung und Freigabe.
+- **Auswertung ab 2026-10-21, Schwelle: die Hälfte der Posten wird zum
+  Eintrag.** Das ist ein Vorschlag, keine Messung. Er wird mit der
+  Auswertung überprüft.
+
+**Durchsatz:** Der tägliche Lauf baut sieben Posten pro Woche. Die
+Obergrenze von zehn ist also ein Puffer, kein Wochenziel. Mehr Durchsatz
+hieße einen zweiten Posten je Lauf, und das wäre eine eigene Entscheidung.
+
+---
+
 ## 2026-09-23 — guard.mjs: Umleitungen nach ihrem Ziel beurteilen
 
 **Anlass:** Posten „`guard.mjs` sperrt zu breit", fünf belegte Fälle, in
