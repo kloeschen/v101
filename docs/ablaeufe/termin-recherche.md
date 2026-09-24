@@ -35,7 +35,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 
 | Quelle | Region | Art | maschinenlesbar | Hinweis |
 |---|---|---|---|---|
-| [Rockin' Wildcat, Gig Guide](https://www.rockin-wildcat.com/rwc/guide) | Berlin | Szenekalender | ja, 24 Termine als JSON-LD | JSON-LD kann von der sichtbaren Angabe abweichen (siehe Fallen) |
+| [Rockin' Wildcat, Gig Guide](https://www.rockin-wildcat.com/rwc/guide) | Berlin | Szenekalender | ja, 24 Termine als JSON-LD | drei feste Leseregeln (siehe Fallen); Detail-URL immer aus `offers.url`, nie raten |
 | [boogie.at](https://boogie.at/) | Niederösterreich, Wien, vereinzelt Bayern | Szenekalender | nein | Kalender, nicht Veranstalter — `veranstalterUrl` nie auf boogie.at setzen |
 | [Pullman City, Events](https://www.pullmancity.de/events-shows-musik/events) | Bayern | Veranstalter | nein | nur die www-Form verwenden, die andere leitet um |
 | [Café Central Weinheim](https://cafecentral.de/) | Rhein-Neckar | Haus | nein | Startseite nennt Termine teils ohne Jahr |
@@ -94,6 +94,13 @@ Fehler verursacht oder beinahe verursacht.
 - **JSON-LD ist nicht die Wahrheit.** Beim Record Hop nannten die sichtbare
   Angabe und der Kalenderlink 19 Uhr, das JSON-LD derselben Seite 21 Uhr.
   Immer die sichtbare Angabe gegenlesen; bei Abweichung Regel 5 (CLAUDE.md).
+- **Rockin' Wildcat: drei Leseregeln**, gemessen an acht Detailseiten am
+  2026-09-24 (ENTSCHEIDUNGEN, 2026-09-24). Erstens gilt die sichtbare
+  Uhrzeit, nie `startDate` im JSON-LD: Das liegt systematisch um den
+  UTC-Versatz zu spät. Zweitens entscheidet das sichtbare Feld „Kosten"
+  über den Preis; fehlt es, heißt `offers.price` „0" nur „kein Preis
+  hinterlegt". Drittens kein `ende` übernehmen: Der Kalenderlink endet
+  fast immer auf 05:00 Ortszeit, ein Vorgabewert.
 - **Eine Zusammenfassung ist keine Quelle** (Lektion 28). Abrufwerkzeuge,
   die eine Seite zusammenfassen, haben hier schon Jahreszahlen und
   Zuschreibungen erfunden. Den Rohtext prüfen.
@@ -111,9 +118,10 @@ Fehler verursacht oder beinahe verursacht.
   `npm run check:zeit` fängt fehlende Zonen, nicht falsche.
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
-  `veranstalterUrl`. Bisherige Praxis: die beiden Szenekalender als
-  `art: offiziell`, Reservix und andere Ticketportale als
-  `art: aggregator`.
+  `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'
+  Wildcat als `art: aggregator` (bündelt fremde Ankündigungen, Definition
+  im Schema); ältere Einträge ziehen nach. Ticketportale wie Reservix
+  ebenfalls `aggregator`.
 - **Bands aus dem Line-up** stehen in `lineupWeitere`, solange sie keine
   eigene Seite haben. Ob eine entsteht, entscheidet Markus.
 - **Ankündigungen selbst formulieren**, keine Sätze des Veranstalters
