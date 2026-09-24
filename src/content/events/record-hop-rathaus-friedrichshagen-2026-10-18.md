@@ -28,7 +28,10 @@ redaktionsnotiz: >-
   eventStatus EventScheduled mit einem Datum in der Zukunft. Drittens
   liegt das hinterlegte Bild unter /2026/09/ und heisst
   TT__18terOkt__online.jpg -- Uploadmonat und Datum im Dateinamen passen
-  zum Termin, und "TT" steht bei dieser Quelle fuer Tanztee.
+  zum Termin. Das Kuerzel "TT" deute ich nicht: Beim Record Hop in der
+  Alten Feuerwache heisst das Bild "tanzteefeuerwache20260925.jpg", das
+  legt Tanztee nahe, belegt es aber nicht. Fuer den Aktualitaetsbeleg
+  zaehlt allein das Datum im Dateinamen.
   DIE DETAILADRESSE IST NICHT GERATEN, sondern aus dem Feld offers.url des
   JSON-LD im Gig Guide uebernommen. Bei nummerierten Reihen ist das
   Pflicht: Die Quelle fuehrt allein sechs Adressen der Form
@@ -112,7 +115,7 @@ Der Record Hop im Rathaus Friedrichshagen ist ein Tanznachmittag am Sonntag, dem
 
 ## Der Termin im Rathaus Friedrichshagen
 
-Ein Record Hop ist ein Tanzabend ohne Liveband — die Musik kommt von Platten. Dass dieser hier am Nachmittag beginnt, ist kein Versehen: Die Quelle führt ihn als Tanztee, und das Bild zum Termin trägt diese Abkürzung im Dateinamen.
+Ein Record Hop ist ein Tanzabend ohne Liveband — die Musik kommt von Platten. Ungewöhnlich ist hier die Uhrzeit: Der Termin beginnt am Sonntagnachmittag um 16 Uhr und nicht am Abend.
 
 Angekündigt ist der Nachmittag allein im Berliner Gig Guide von Rockin' Wildcat. Das [Rathaus Friedrichshagen](/locations/rathaus-friedrichshagen/) selbst führt ihn nicht in seinem Veranstaltungskalender, obwohl der eine eigene Kategorie für Tanz kennt. Wer hinfahren will, fragt deshalb besser vorher nach.
 
@@ -120,7 +123,7 @@ Die Anfangszeit steht auf der Seite nicht einheitlich: Die sichtbare Angabe und 
 
 ## Die Musik beim Record Hop
 
-Die vier genannten Stilrichtungen decken mehr ab als Rockabilly allein. Jump & Jive und Rhythm'n'Blues stehen für Tempi, die sich über einen ganzen Nachmittag durchhalten lassen; ein Tanztee braucht anderes als ein Konzert, das auf Höhepunkte hinarbeitet.
+Die vier genannten Stilrichtungen decken mehr ab als Rockabilly allein. Jump & Jive und Rhythm'n'Blues stehen für Tempi, die sich über einen ganzen Nachmittag durchhalten lassen; ein Tanznachmittag braucht anderes als ein Konzert, das auf Höhepunkte hinarbeitet.
 
 ## Einordnung des Record Hops in Berlin
 
