@@ -13,6 +13,19 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-24 — Neue Orte und Regionen ohne Rückfrage
+
+Der erste Suchlauf (PR #58) gab einem Posten die Anweisung mit, für einen
+Termin in Sierning die Region Oberösterreich neu anzulegen. Bisher hatte
+jede neue Region ein Mensch beschlossen, eine Regel dazu gab es nicht.
+**Markus am 2026-09-24:** Orte und Regionen, die ein Termin braucht, legt
+der Lauf selbst an. Das Risiko ist gering: Eine neue Region bleibt unter
+der Schwelle von drei Einträgen unsichtbar, und alles entsteht als
+`entwurf` in einem Inhalts-PR, den ein Mensch merged. Festgehalten in
+`docs/ablaeufe/termin-recherche.md`, Abschnitt „Fallen".
+
+---
+
 ## 2026-09-24 — Rockin' Wildcat: drei Lesarten der Quelle, korrigiert und belegt
 
 **Anlass:** Posten „Berlin: bis zu drei weitere Termine aus dem

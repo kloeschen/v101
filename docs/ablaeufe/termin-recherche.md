@@ -124,6 +124,12 @@ Fehler verursacht oder beinahe verursacht.
   ebenfalls `aggregator`.
 - **Bands aus dem Line-up** stehen in `lineupWeitere`, solange sie keine
   eigene Seite haben. Ob eine entsteht, entscheidet Markus.
+- **Neue Orte und Regionen legt der Lauf selbst an**, wenn ein Termin sie
+  braucht (Markus, 2026-09-24). Ort mit Adresse nur aus einer Quelle, die
+  sie nennt. Eine neue Region nach dem Muster der vorhandenen (Bundesland:
+  `src/content/regionen/niederoesterreich.md`), ebenfalls `entwurf`. Eine
+  Region mit weniger als drei Einträgen bleibt ohnehin unsichtbar
+  (`MIN_REGION_EINTRAEGE`), also kein Grund für eine Rückfrage.
 - **Ankündigungen selbst formulieren**, keine Sätze des Veranstalters
   übernehmen.
 - **Abrufhürden:** Reservix antwortet Skripten mit 403, Wikimedia drosselt
