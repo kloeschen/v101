@@ -76,13 +76,13 @@ quellen:
     art: aggregator
 ---
 
-Das Rathaus Friedrichshagen ist ein 1899 eingeweihtes Amtshaus an der Bölschestraße in Berlin-Köpenick, das heute als privates Bürgerprojekt geführt wird. Für die Szene in [Berlin](/regionen/berlin/) ist es ein Saalbetrieb im Osten der Stadt, in dem nach dem Berliner Gig Guide mehrmals im Herbst zum Tanz aufgelegt wird.
+Das Rathaus Friedrichshagen ist ein 1899 eingeweihtes Amtshaus an der Bölschestraße in Berlin-Köpenick, das heute als privates Bürgerprojekt geführt wird. Für die Szene in [Berlin](/regionen/berlin/) ist es ein Saalbetrieb nahe dem S-Bahnhof Friedrichshagen, in dem nach dem Berliner Gig Guide mehrmals im Herbst 2026 zum Tanz aufgelegt wird.
 
 ## Das Haus Rathaus Friedrichshagen
 
 Bis 1920 war das Gebäude Sitz der eigenständigen Gemeindeverwaltung Friedrichshagen, zwischen 1920 und 2011 diente es wechselnden Zwecken. Nach einer langen Sanierung wird es heute von einer Projektgesellschaft betrieben und beherbergt Mieter vom Einzelhandel über eine Musikschule bis zur Sozialstiftung Köpenick. Das Haus betont selbst, dass es kein Amtsgebäude mehr ist.
 
-Alle Ebenen sind nach Angabe des Hauses mit einem Aufzug barrierefrei erreichbar, der Zugang führt über das neue Foyer in der ehemaligen Toreinfahrt. Zur Größe der Säle, zum Bodenbelag und zu Parkplätzen sagen die Seiten nichts; diese Angaben bleiben deshalb offen. Im Erdgeschoss gibt es einen Ratskeller mit deutscher Küche und ein hauseigenes Craft-Beer-Label.
+Alle Ebenen sind nach Angabe des Hauses mit einem Aufzug barrierefrei erreichbar, der Zugang führt über das neue Foyer in der ehemaligen Toreinfahrt. Zur Größe der Säle, zum Bodenbelag und zu Parkplätzen sagen die Seiten nichts; diese Angaben bleiben deshalb offen. Zum Haus gehören ein Ratskeller mit deutscher Küche und ein hauseigenes Craft-Beer-Label in vier Sorten.
 
 ## Programm im Rathaus Friedrichshagen
 
