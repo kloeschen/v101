@@ -13,6 +13,93 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-24 — Rockin' Wildcat: drei Lesarten der Quelle, korrigiert und belegt
+
+**Anlass:** Posten „Berlin: bis zu drei weitere Termine aus dem
+Rockin'-Wildcat-Gig-Guide". Beim Bau wurden acht Detailseiten der Quelle
+geöffnet statt der zwei, die für zwei Termine nötig gewesen wären. Das war
+der Punkt, an dem die Annahmen gekippt sind.
+
+**Fund 1 — das JSON-LD `startDate` dieser Quelle ist systematisch falsch.**
+Bei allen acht geprüften Terminen liegt es genau um den UTC-Versatz später
+als der Kalenderlink derselben Seite (Sommerzeit zwei Stunden, Winterzeit
+eine). Beispiele: `record-hop-66` Kalender `20260926T180000Z` gegen JSON-LD
+`22:00+02:00`; `kitty-daisy-lewis-2` Kalender `20261026T190000Z` gegen
+JSON-LD `21:00+01:00`. Das Redaktionssystem schreibt die örtliche Uhrzeit
+in ein Feld, das als UTC gelesen wird — Lektion 1, eine Ebene tiefer.
+**Folge:** Aus dieser Quelle gilt die sichtbare Uhrzeit beziehungsweise der
+Kalenderlink, nie das JSON-LD `startDate`. Der Record-Hop-Eintrag vom
+2026-09-10 hatte diese Entscheidung schon getroffen, aber als Einzelfall
+(„zwei von drei Stellen tragen 19:00"). Sie ist keiner.
+
+**Fund 2 — `offers.price: "0"` ist kein durchgängiger Vorgabewert.** Die
+bisherige Lesart („steht bei allen achtzehn Terminen auf 0") ist gemessen
+falsch: Von den 24 Terminen im Gig Guide tragen am 2026-09-24 fünf einen
+Preis ungleich null — `rocknroll-trio-8` mit 12, `record-hop-63` mit 10,
+`27306` mit 10, `record-hop-64` mit 10 und `boppin-b-5` mit 25 Euro. Auf
+den acht geöffneten Detailseiten fällt das sichtbare Feld „Kosten" genau
+mit diesem Fall zusammen: `record-hop-63` trägt es und hat einen Preis, die
+übrigen sieben tragen es nicht und haben `price: "0"` — acht von acht. **Die belastbare Regel lautet:** Das sichtbare
+Feld „Kosten" entscheidet. Steht es da, stimmt auch `offers.price`; fehlt
+es, heißt die Null „kein Preis hinterlegt". Die Schlussfolgerung des
+Record-Hop-Eintrags bleibt damit richtig — ihre Begründung ist jetzt belegt
+statt vermutet, und `record-hop-rathaus-friedrichshagen-2026-10-18` trägt
+deshalb `eintritt: beziffert` mit 10 Euro.
+
+**Fund 3 — die Endzeit dieser Quelle ist ein Vorgabewert.** Sieben der
+acht geprüften Termine enden auf 05:00 Ortszeit, unabhängig von
+Anfangszeit, Spielort und Zeitzonenhälfte: ein Tanztee um 16:00 ebenso wie
+ein Konzert um 20:00. Beim achten (`jets-smokestack-lightnin`) fällt das
+Ende mit dem Beginn zusammen, ist also gar keine Angabe. Der Wert ist damit
+entweder konstant oder leer, nie terminbezogen. **Folge:** Neue Einträge
+aus dieser Quelle bekommen kein `ende`.
+
+**Was daraus nicht gebaut wurde.** Der veröffentlichte Eintrag
+`record-hop-alte-feuerwache-2026-09-25` trägt `ende: 2026-09-26T05:00:00+02:00`
+und führt Rockin' Wildcat als `art: offiziell`. Beides gehört nachgezogen —
+aber es ist ein zweiter Posten, und ein Lauf baut einen. Steht in
+OFFENE-PUNKTE.md.
+
+**Zwei statt drei Termine, mit Begründung.** Der Posten erlaubt „bis zu
+drei". Gebaut sind zwei; die drei nächstliegenden Termine sind bewusst
+übersprungen:
+
+| Termin | warum nicht |
+|---|---|
+| 25.09. Rock'n'Roll Trio, KulturMarktHalle | Ein Eintrag entsteht als `entwurf` und wird erst von einem Menschen freigegeben. Realistisch ist das frühestens am Folgetag — dann ist der Termin vorbei. Ein vergangener Termin mit `durchfuehrung: geplant` färbt zudem jeden Zweig rot, bis jemand `archivieren` läuft. |
+| 26.09. Record Hop, Sixties Diner | dieselbe Begründung |
+| 27.09. Record Hop, Zeesener Hof | Zeesen liegt in Brandenburg, nicht in Berlin. Der Eintrag bräuchte eine Region, die es nicht gibt. |
+
+**Verworfen: Jets / Smokestack Lightnin' am 03.10. im Roadrunner's.** Der
+Termin wäre der dritte gewesen. Die Website des Spielorts
+(`roadrunners-paradise.de`) liefert am 2026-09-24 ein Zertifikat, das sich
+nicht verifizieren lässt; über die Werkzeuge dieser Sitzung ist sie nicht
+erreichbar. Damit hätte der Spielort als neue Entität allein auf einer
+Zweitnennung im Gig Guide beruht. Lieber zwei belegte Einträge als drei,
+von denen einer auf einer Adresse steht, die niemand gegengelesen hat.
+
+**Quellenart `aggregator` statt `offiziell`.** Rockin' Wildcat ist ein
+Online-Magazin, das im Gig Guide fremde Ankündigungen bündelt — genau die
+Definition im Schema. Für den American Western Saloon steht daneben das
+Haus selbst als `offiziell`.
+
+**Belege:** `npm run verify` grün (0 Fehler, 0 Warnungen, 1077 Prüfungen in
+18 Testläufen). Zehn Mutationen an den vier neuen Dateien, alle gefallen —
+Referenzen, Belegpflicht, Preislogik, Zeitraum, interne Links,
+Schemaaufzählung. Jede Mutation zeichengenau zurückgebaut (SHA-256 vorher
+und nachher gleich).
+
+**Gegenprobe mit Folge:** `npm run check:zeit` prüft `src/**/*.{ts,astro,mjs}`
+und `scripts/**/*.ts` — **nicht** `src/content/`. Ein `beginn:
+2026-10-18T16:00:00` ohne Zonenangabe läuft durch `check:zeit`, `validate`
+und `jsonld` grün durch, wird aber von `z.coerce.date()` in der
+Prozess-Zeitzone gelesen: `TZ=UTC` ergibt `16:00Z`, `TZ=Europe/Berlin`
+ergibt `14:00Z`. Zwei Stunden Unterschied, je nachdem wo gebaut wird.
+Lektion 1 hat unterhalb ihrer eigenen Prüfung eine Lücke. Posten in
+OFFENE-PUNKTE.md.
+
+---
+
 ## 2026-09-23 — Termin-Recherche: Ablauf im Repo, wöchentlicher Suchlauf, keine Konto-Skills
 
 **Anlass:** Der offene Posten „Der Skill `events-recherche` passt nicht auf
