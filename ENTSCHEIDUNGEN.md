@@ -13,6 +13,40 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-24 — Methodik-Seite: drei Grundsatzantworten
+
+`/methodik/` beschreibt, wie das Register arbeitet: Aufnahme, Recherche,
+Belegpflicht, Widersprüche, Freigabe, Aktualität, eigene Texte,
+Unabhängigkeit, offene Daten. Jede Aussage beschreibt einen Ablauf, den es
+im Repo gibt. Der Kopfkommentar der Seite nennt die Stellen. Ändert sich
+einer dieser Abläufe, muss die Seite mitgehen.
+
+**Drei Antworten von Markus:**
+- **Geld:** Keine bezahlten Einträge und keine Provisionen. Werbung ist
+  später möglich, wird dann gekennzeichnet und hat keinen Einfluss auf
+  Aufnahme und Darstellung.
+- **KI:** Die Seite sagt ausdrücklich und konkret, dass Recherche und
+  Entwürfe mit KI-Agenten entstehen. Veröffentlicht wird nur nach
+  menschlicher Prüfung, und die Freigabe ist technisch gesperrt.
+- **Redaktion:** Sie steht mit vollem Namen auf der Seite (Markus
+  Klöschen), im JSON-LD als `editor`.
+
+**Technik:**
+- `publishingPrinciples` am Organisationsknoten zeigt auf die Seite. Damit
+  steht sie in jedem Graphen der Site.
+- Die Seite steht in `sitemap-seiten.xml`, und die Navigation verlinkt sie
+  zusammen mit `/daten/`, das bisher nur über die Startseite erreichbar war.
+- `test-ausgaben` prüft, dass sie gebaut wird und keinen Entwurfspfad
+  enthält. Mutationsbeleg: Ohne die Seite fällt genau diese Behauptung
+  (112/113).
+
+**Bewusst offen:** Der Abschnitt „Vorschläge und Korrekturen“ sagt, dass
+der Weg dafür gerade eingerichtet wird. Die Methode ist ein eigener
+gemeinsamer Posten in OFFENE-PUNKTE.md. Bis dahin steht dort kein Kanal,
+den es nicht gibt.
+
+---
+
 ## 2026-09-24 — Neue Orte und Regionen ohne Rückfrage
 
 Der erste Suchlauf (PR #58) gab einem Posten die Anweisung mit, für einen

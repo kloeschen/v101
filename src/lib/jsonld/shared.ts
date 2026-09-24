@@ -151,6 +151,8 @@ export function organisationsKnoten(): Knoten {
     logo: absolut(site.logo),
     foundingDate: site.gegruendet,
     sameAs: site.sameAs,
+    // Die Methodik-Seite: wie recherchiert, belegt und freigegeben wird.
+    publishingPrinciples: `${site.url}/methodik/`,
   });
 }
 

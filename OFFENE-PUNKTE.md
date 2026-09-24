@@ -152,6 +152,18 @@ Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
 zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
 Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
 
+`mensch` **Vorschläge aus der Szene: eine Methode, gemeinsam zu entwerfen.** Die
+Szene soll Termine vorschlagen und Fehler melden können. Bisher gibt es
+dafür keinen Weg, zwei Seiten versprechen ihn aber schon: `/daten/` („bitte
+melden") und `/methodik/`, Abschnitt „Vorschläge und Korrekturen" („wird
+gerade eingerichtet"). Zu klären: Kanal (Formular, E-Mail,
+GitHub-Issue-Vorlage), wie ein Vorschlag in die Warteschlange kommt (als
+`frei`-Posten mit „Herkunft: Vorschlag"?), Schutz gegen Spam und
+Eigenwerbung, und ob Einsender genannt werden. Grundsatz steht bereits auf
+der Methodik-Seite: Vorschläge durchlaufen dieselbe Belegpflicht wie alles
+andere. Markus hat das am 2026-09-24 als gemeinsames Vorhaben gesetzt.
+Wenn der Weg steht, beide Seiten nachziehen.
+
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
@@ -182,11 +194,6 @@ entscheidet, entscheidet sie besser für beide Begriffe zugleich.
 
 **Impressum und Datenschutzerklärung.** In Deutschland Pflicht. Inhalt
 kommt vom Menschen, Struktur kann vorbereitet werden.
-
-**Methodik-Seite.** Wie wird recherchiert, geprüft, aufgenommen? Gibt es
-bezahlte Einträge? Wird selten gebaut und wirkt bei einem Register stark —
-sie beantwortet die Frage, die ein skeptischer Leser und ein bewertendes
-Modell gleichermaßen haben.
 
 **Analytics ohne Einwilligungsbanner.** Netlify Analytics (serverseitig,
 keine Cookies) oder Plausible. Ein Cookie-Banner auf einem Register kostet

@@ -135,6 +135,7 @@ if (entwuerfe.length === 0) {
       { name: "sitemap-*.xml", inhalt: alleSitemaps() },
       { name: "/llms.txt", inhalt: lies("llms.txt") },
       { name: "/daten/", inhalt: lies(path.join("daten", "index.html")) },
+      { name: "/methodik/", inhalt: lies(path.join("methodik", "index.html")) },
     ];
 
     for (const a of ausgaben) {

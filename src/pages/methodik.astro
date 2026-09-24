@@ -1,0 +1,168 @@
+---
+/**
+ * Die Methodik-Seite.
+ *
+ * Beantwortet die Frage, die ein skeptischer Leser und ein bewertendes
+ * Modell gleichermaßen stellen, bevor sie einem Register glauben: Woher
+ * kommen die Angaben, wer prüft sie, und wer bezahlt?
+ *
+ * Jede Aussage hier beschreibt einen Ablauf, den es im Repo tatsächlich
+ * gibt — Belegpflicht (validate-content.ts), Freigabe nur durch einen
+ * Menschen (guard.mjs, check-freigabe.ts), Suchlauf und täglicher Lauf
+ * (docs/ablaeufe/termin-recherche.md, BETRIEB.md 2.5). Ändert sich einer
+ * davon, muss diese Seite mitgehen. Die Grundsatzantworten (keine bezahlten
+ * Einträge, offener Umgang mit KI, Redaktion mit vollem Namen) hat Markus
+ * am 2026-09-24 gegeben (ENTSCHEIDUNGEN.md).
+ *
+ * `publishingPrinciples` am Organisationsknoten zeigt auf diese Seite —
+ * so findet sie auch, wer nur den Graphen liest.
+ */
+import BasisLayout from "../layouts/BasisLayout.astro";
+import { site, siteIds } from "../site.config";
+import { organisationsKnoten, websiteKnoten, autorId } from "../lib/jsonld";
+
+const REDAKTION = "Markus Klöschen";
+
+const url = `${site.url}/methodik/`;
+const kapsel = `${site.name} nimmt nur auf, was sich belegen lässt: Jede Angabe hat eine Quelle, Unbekanntes bleibt leer, und veröffentlicht wird ein Eintrag erst, wenn ein Mensch ihn geprüft hat.`;
+
+const jsonld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    organisationsKnoten(),
+    websiteKnoten(),
+    {
+      "@type": "AboutPage",
+      "@id": `${url}#webpage`,
+      url,
+      name: "Wie dieses Register arbeitet",
+      description: kapsel,
+      inLanguage: site.sprache,
+      isPartOf: { "@id": siteIds.website },
+      about: { "@id": siteIds.organization },
+      editor: { "@id": autorId("markus") },
+    },
+    {
+      "@type": "Person",
+      "@id": autorId("markus"),
+      name: REDAKTION,
+    },
+  ],
+};
+---
+<BasisLayout titel="Wie dieses Register arbeitet" beschreibung={kapsel} kanonisch="/methodik/" jsonld={jsonld}>
+  <h1>Wie dieses Register arbeitet</h1>
+  <p class="kapsel">{kapsel}</p>
+
+  <h2>Was ins Register kommt</h2>
+  <p>
+    {site.name} verzeichnet die Vintage- und Rockabilly-Szene im
+    deutschsprachigen Raum: Veranstaltungen, die Orte, an denen sie
+    stattfinden, Bands, Regionen und ein Lexikon der Begriffe von Rockabilly
+    bis Petticoat. Aufgenommen wird, was einen erkennbaren Bezug zur Szene
+    hat — zu ihrer Musik, ihren Tänzen oder ihrer Mode. Ein Ort mit breitem
+    Programm steht im Register, weil dort Szenetermine stattfinden, nicht
+    wegen des übrigen Programms.
+  </p>
+
+  <h2>Wie recherchiert wird</h2>
+  <p>
+    Recherche und erste Entwürfe entstehen mit KI-Agenten. Einmal pro Woche
+    geht ein Agent eine feste Liste von Szenekalendern und
+    Veranstalterseiten durch und notiert neue Termine als Arbeitsaufträge.
+    Täglich arbeitet ein Agent einen dieser Aufträge ab: Er öffnet die
+    Quellen, trägt zusammen, was sie belegen, und legt einen Entwurf an.
+    Ein Suchtreffer gilt dabei nicht als Beleg, sondern nur als Hinweis,
+    wo einer stehen könnte.
+  </p>
+  <p>
+    Die Agenten entscheiden nicht, was erscheint. Das tut ein Mensch — dazu
+    unten mehr.
+  </p>
+
+  <h2>Kein Fakt ohne Quelle</h2>
+  <p>
+    Jede recherchierte Angabe — Datum, Uhrzeit, Ort, Eintrittspreis,
+    Line-up, Gründungsjahr — ist einer Quelle zugeordnet, und jede Quelle
+    trägt das Datum, an dem sie abgerufen wurde. Unter jedem Eintrag stehen
+    diese Quellen zum Nachprüfen. Eine automatische Prüfung hält das fest:
+    Ein Eintrag, in dem eine Angabe ohne Quelle steht, kann nicht
+    veröffentlicht werden.
+  </p>
+  <p>
+    Was keine Quelle nennt, bleibt leer. Ein Eintrag ohne Preis ist besser
+    als einer mit einem geschätzten, denn ein erfundener Termin oder
+    Eintrittspreis ist der größte Schaden, den ein Register anrichten kann.
+  </p>
+
+  <h2>Wenn Quellen sich widersprechen</h2>
+  <p>
+    Nicht jede Quelle sagt dasselbe. Wo sie sich widersprechen, steht der
+    Widerspruch im Text, mit Zuordnung — statt dass stillschweigend eine
+    Fassung gewählt wird. Ein Beispiel: Auf der Seite eines Berliner
+    Tanzabends nannten die sichtbare Angabe und der Kalendereintrag 19 Uhr,
+    die maschinenlesbaren Daten derselben Seite 21 Uhr. Der Eintrag folgt
+    den beiden übereinstimmenden Stellen und sagt dazu, dass es eine
+    abweichende gibt.
+  </p>
+
+  <h2>Prüfung und Freigabe</h2>
+  <p>
+    Alles, was ein Agent anlegt, ist zunächst ein Entwurf und öffentlich
+    nicht sichtbar. Veröffentlicht wird ein Eintrag erst, wenn ein Mensch
+    ihn gelesen, gegen die Quellen geprüft und freigegeben hat. Diese
+    Freigabe ist technisch gesperrt: Ein Agent kann einen Eintrag nicht
+    selbst veröffentlichen. Verantwortlich für die Redaktion ist
+    {REDAKTION}.
+  </p>
+  <p>
+    Vor jeder Veröffentlichung laufen außerdem automatische Prüfungen: ob
+    jedes Feld dem Datenformat entspricht, ob jede Uhrzeit eine Zeitzone
+    trägt und ob alle Verweise auf veröffentlichte Einträge zeigen.
+  </p>
+
+  <h2>Wie das Register aktuell bleibt</h2>
+  <p>
+    Jeder Eintrag nennt das Datum seiner letzten redaktionellen Prüfung.
+    Vergangene Termine werden als stattgefunden markiert, nicht gelöscht.
+    Termine, die bald stattfinden und deren letzte Prüfung länger
+    zurückliegt, werden zur erneuten Prüfung gegen die Quelle vorgemerkt.
+    Externe Links werden jede Woche automatisch geprüft.
+  </p>
+  <p>
+    Veranstalter ändern ihre Angaben trotzdem manchmal kurzfristig. Wer
+    sichergehen will, schaut vor der Anreise auf der verlinkten Seite des
+    Veranstalters nach.
+  </p>
+
+  <h2>Eigene Texte</h2>
+  <p>
+    Alle Texte sind selbst formuliert. Ankündigungen von Veranstaltern
+    werden nicht übernommen, sondern in eigenen Worten wiedergegeben.
+    Songtexte gibt es hier nicht, Bilder nur mit dokumentierten Rechten.
+  </p>
+
+  <h2>Unabhängigkeit</h2>
+  <p>
+    Kein Eintrag ist käuflich. Weder die Aufnahme ins Register noch die
+    Darstellung eines Eintrags lässt sich bezahlen, und es gibt keine
+    Provisionen für Ticketverkäufe. Sollte die Seite künftig Werbung
+    tragen, wird sie als solche gekennzeichnet und hat keinen Einfluss
+    darauf, was aufgenommen wird und wie es dasteht.
+  </p>
+
+  <h2>Vorschläge und Korrekturen</h2>
+  <p>
+    Das Register lebt davon, dass die Szene Fehler meldet und fehlende
+    Veranstaltungen vorschlägt. Der Weg dafür wird gerade eingerichtet und
+    hier beschrieben, sobald er steht. Vorschläge durchlaufen dieselbe
+    Prüfung wie alles andere: Aufgenommen wird, was eine Quelle belegt.
+  </p>
+
+  <h2>Offene Daten</h2>
+  <p>
+    Alle veröffentlichten Einträge stehen als JSON-, Kalender- und
+    RSS-Feed unter einer freien Lizenz zur Nachnutzung bereit — siehe
+    <a href="/daten/">Daten und Schnittstellen</a>.
+  </p>
+</BasisLayout>
