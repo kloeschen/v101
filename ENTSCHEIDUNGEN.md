@@ -13,6 +13,55 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Impressum und Datenschutz: Gerüst mit Go-Live-Sperre
+
+**Anlass:** Beide Seiten sind Pflicht und fehlten. Markus: „kannst du schon
+anlegen“. Die Angaben kommen von ihm.
+
+**Gebaut:**
+- `/impressum/` nach § 5 DDG und § 18 Abs. 2 MStV.
+- `/datenschutz/` nach Art. 13 DSGVO.
+- Links auf beide im Footer jeder Seite.
+- Alle Angaben an einer Stelle, `src/lib/rechtliches.ts`. Was fehlt, ist
+  `null` und erscheint auf der Seite als „[wird ergänzt: …]“.
+- Beide Seiten sind `noindex`; sie haben keinen Suchwert.
+
+**Die Sperre:** Fehlt noch eine Angabe oder ist ein Prüfpunkt offen, bricht
+der Build ab, sobald `PUBLIC_INDEXIERBAR` auf `true` steht. Der Go-Live ist
+genau diese Zeile. Ein halbes Impressum kann damit nicht mit ihm online
+gehen, während die Platzhalter vorher niemanden stören.
+
+**Die Datenschutzerklärung beschreibt, was der Code tatsächlich tut.** Am
+selben Tag geprüft:
+- keine Cookies und keine Reichweitenmessung;
+- keine fremden Schriften, Skripte oder Einbettungen;
+- das Vorschlagsformular über Netlify Forms mit Akismet.
+
+**Fund mit Folge:** Das Repo ist öffentlich. Eingesandte Adressen und
+Hinweise können als Arbeitsauftrag öffentlich in OFFENE-PUNKTE.md stehen.
+Das steht jetzt in der Datenschutzerklärung und als Satz direkt über dem
+Absenden-Knopf des Formulars („bitte keine persönlichen Angaben“).
+
+**Nicht selbst beantwortet, sondern als Prüfpunkte offen gelassen:**
+- DPF oder Standardvertragsklauseln und der Auftragsverarbeitungsvertrag
+  (DPA) bei Netlify;
+- die Speicherdauer der Logs;
+- welche Daten an Akismet gehen;
+- die Löschfrist der Einsendungen;
+- die zuständige Aufsichtsbehörde.
+
+Eine geratene Antwort in einer Datenschutzerklärung wäre schlimmer als eine
+offene Frage. Beide Texte sind ein Entwurf und keine Rechtsberatung. Vor
+dem Go-Live gehört ein fachkundiger Blick darauf.
+
+**Belege:**
+- `test-rechtliches`: 10 Prüfungen.
+- Mutation „Sperre schweigt immer“: 4 fallen.
+- Ein Build mit `PUBLIC_INDEXIERBAR=true` bricht mit der Liste der
+  fehlenden Angaben ab (Exit 1). Der normale Build läuft durch.
+
+---
+
 ## 2026-09-25 — Qualitätsrunde: Linkprüfung, Prüfzettel-Vorschau, doppelte Titel
 
 **Anlass:** Markus fragte, was die Qualität der Seite verbessert. Gemessen

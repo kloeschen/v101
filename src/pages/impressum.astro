@@ -1,0 +1,57 @@
+---
+/**
+ * Impressum nach § 5 DDG, mit der Angabe nach § 18 Abs. 2 MStV.
+ *
+ * Die Angaben stehen in `src/lib/rechtliches.ts`. Fehlt eine, zeigt die
+ * Seite einen sichtbaren Platzhalter, und der Build bricht ab, sobald
+ * `PUBLIC_INDEXIERBAR` auf `true` steht — ein halbes Impressum kann nicht
+ * mit dem Go-Live online gehen.
+ */
+import BasisLayout from "../layouts/BasisLayout.astro";
+import { site, indexierbar } from "../site.config";
+import { IMPRESSUM, PRUEFEN, goLiveSperre } from "../lib/rechtliches";
+
+const sperre = goLiveSperre(indexierbar, IMPRESSUM, PRUEFEN);
+if (sperre) throw new Error(sperre);
+
+const offen = (wert: string | null | undefined, was: string) => wert ?? `[wird ergänzt: ${was}]`;
+const a = IMPRESSUM;
+const kapsel = `Impressum von ${site.name}: Angaben zum Anbieter nach § 5 DDG und zur Verantwortlichkeit für die redaktionellen Inhalte.`;
+---
+<BasisLayout titel="Impressum" beschreibung={kapsel} kanonisch="/impressum/" noindex>
+  <h1>Impressum</h1>
+
+  <h2>Angaben nach § 5 DDG</h2>
+  <p>
+    {offen(a.name, "Name")}<br />
+    {offen(a.strasse, "Straße und Hausnummer")}<br />
+    {offen(a.plzOrt, "PLZ und Ort")}<br />
+    {offen(a.land, "Land")}
+  </p>
+
+  <h2>Kontakt</h2>
+  <p>
+    E-Mail: {a.email ? <a href={`mailto:${a.email}`}>{a.email}</a> : offen(a.email, "E-Mail-Adresse")}
+    {a.telefon !== undefined && <><br />Telefon: {offen(a.telefon, "Telefon")}</>}
+  </p>
+
+  {a.ustId !== undefined && (
+    <>
+      <h2>Umsatzsteuer</h2>
+      <p>Umsatzsteuer-Identifikationsnummer nach § 27a UStG: {offen(a.ustId, "USt-IdNr.")}</p>
+    </>
+  )}
+
+  <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+  <p>
+    {offen(a.name, "Name")}, Anschrift wie oben.
+  </p>
+
+  <h2>Wie die Inhalte entstehen</h2>
+  <p>
+    Wie recherchiert, belegt und freigegeben wird, steht auf der Seite
+    <a href="/methodik/">Wie dieses Register arbeitet</a>. Hinweise auf
+    Fehler nimmt das Formular <a href="/vorschlagen/">Vorschlagen oder Fehler
+    melden</a> entgegen.
+  </p>
+</BasisLayout>

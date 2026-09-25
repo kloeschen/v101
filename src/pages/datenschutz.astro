@@ -1,0 +1,98 @@
+---
+/**
+ * Datenschutzerklärung nach Art. 13 DSGVO.
+ *
+ * Beschreibt, was die Seite tatsächlich tut — Stand 2026-09-25 geprüft am
+ * Code: keine Cookies, keine Reichweitenmessung, keine externen Schriften,
+ * Skripte oder eingebetteten Inhalte; ein Formular (Netlify Forms mit
+ * Spamprüfung über Akismet). Ändert sich eines davon — etwa durch
+ * Analytics, Karten oder eingebettete Videos —, muss diese Seite im selben
+ * Änderungssatz mitgehen.
+ *
+ * Offene Fragen stehen in `src/lib/rechtliches.ts` (PRUEFEN) und werden
+ * hier sichtbar aufgelistet. Sie sperren den Go-Live wie fehlende Angaben.
+ */
+import BasisLayout from "../layouts/BasisLayout.astro";
+import { site, indexierbar } from "../site.config";
+import { IMPRESSUM, PRUEFEN, DATENSCHUTZ_STAND, goLiveSperre } from "../lib/rechtliches";
+
+const sperre = goLiveSperre(indexierbar, IMPRESSUM, PRUEFEN);
+if (sperre) throw new Error(sperre);
+
+const offen = (wert: string | null | undefined, was: string) => wert ?? `[wird ergänzt: ${was}]`;
+const a = IMPRESSUM;
+// Aus der Zeichenkette, nicht über `Date`: ein reines Datum braucht keine Zeitzone (Lektion 1).
+const stand = DATENSCHUTZ_STAND.split("-").reverse().join(".");
+const kapsel = `Datenschutzerklärung von ${site.name}: Die Seite setzt keine Cookies und misst keine Reichweite. Daten fallen beim Aufruf der Seite und beim Absenden des Vorschlagsformulars an.`;
+---
+<BasisLayout titel="Datenschutzerklärung" beschreibung={kapsel} kanonisch="/datenschutz/" noindex>
+  <h1>Datenschutzerklärung</h1>
+  <p class="kapsel">{kapsel}</p>
+
+  {PRUEFEN.length > 0 && (
+    <aside>
+      <p><strong>Entwurf.</strong> Diese Erklärung ist noch nicht abgeschlossen. Offen sind:</p>
+      <ul>{PRUEFEN.map((p) => <li>{p.thema}: {p.frage}</li>)}</ul>
+    </aside>
+  )}
+
+  <h2>Verantwortlich</h2>
+  <p>
+    {offen(a.name, "Name")}, {offen(a.strasse, "Straße und Hausnummer")}, {offen(a.plzOrt, "PLZ und Ort")}.
+    E-Mail: {a.email ? <a href={`mailto:${a.email}`}>{a.email}</a> : offen(a.email, "E-Mail-Adresse")}.
+  </p>
+
+  <h2>Was beim Aufruf der Seite geschieht</h2>
+  <p>
+    {site.name} ist eine statische Website und wird bei Netlify, Inc. (USA)
+    betrieben. Beim Aufruf jeder Seite verarbeitet Netlify technisch
+    notwendige Daten: die IP-Adresse, Datum und Uhrzeit, die aufgerufene
+    Adresse, die zuvor besuchte Seite und die Kennung des Browsers. Das ist
+    nötig, um die Seite auszuliefern und vor Missbrauch zu schützen
+    (Art. 6 Abs. 1 lit. f DSGVO). Eine Auswertung dieser Daten zu einzelnen
+    Personen findet nicht statt.
+  </p>
+  <p>
+    Die Seite setzt <strong>keine Cookies</strong>, misst <strong>keine
+    Reichweite</strong> und lädt <strong>keine Schriften, Skripte oder
+    eingebetteten Inhalte von fremden Servern</strong>. Links auf andere
+    Websites — Veranstalter, Quellen, Profile — übertragen erst dann Daten an
+    deren Betreiber, wenn sie angeklickt werden.
+  </p>
+  <p>
+    Datenschutzhinweise von Netlify:
+    <a href="https://www.netlify.com/privacy/">netlify.com/privacy</a>.
+  </p>
+
+  <h2>Das Vorschlagsformular</h2>
+  <p>
+    Wer über <a href="/vorschlagen/">Vorschlagen oder Fehler melden</a> etwas
+    einsendet, übermittelt die Adresse einer Seite, auf Wunsch einen kurzen
+    Hinweis und, falls das Formular von einem Eintrag aus geöffnet wurde,
+    dessen Kennung. Namen oder E-Mail-Adressen fragt das Formular nicht ab.
+    Die Einsendung wird von Netlify (Netlify Forms) entgegengenommen und
+    gespeichert. Zur Abwehr von Spam prüft Netlify sie mit dem Dienst
+    Akismet der Automattic Inc. (USA). Rechtsgrundlage ist das berechtigte
+    Interesse, Hinweise aus der Szene zu erhalten und Spam abzuwehren
+    (Art. 6 Abs. 1 lit. f DSGVO).
+  </p>
+  <p>
+    <strong>Wichtig:</strong> Die Arbeitsaufträge dieses Registers liegen in
+    einem öffentlich einsehbaren Projektarchiv bei GitHub. Wird aus einer
+    Einsendung ein Auftrag, können die eingesandte Adresse und der Hinweis
+    dort öffentlich erscheinen. Deshalb gehören keine persönlichen Angaben
+    in das Hinweisfeld.
+  </p>
+
+  <h2>Ihre Rechte</h2>
+  <p>
+    Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung
+    (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung
+    (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen eine
+    Verarbeitung auf Grundlage berechtigter Interessen (Art. 21). Wenden Sie
+    sich dafür an die oben genannte Adresse. Außerdem können Sie sich bei
+    einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO).
+  </p>
+
+  <p>Stand: {stand}</p>
+</BasisLayout>
