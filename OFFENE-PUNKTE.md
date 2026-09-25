@@ -232,11 +232,6 @@ eine Systematik behaupten, die es nicht gibt. Wenn sich nach dreißig
 Events wiederkehrende Belegarten zeigen, wird daraus ein Feld — vorher
 nicht.
 
-**Prüfbericht für die Freigabe — wenn die Handarbeit zu viel wird.** Bei
-zehn Einträgen genügt Lesen. Bei sechzig braucht es ein Werkzeug, das je
-Eintrag zeigt, welche Behauptung an welcher Quelle hängt. Erst bauen, wenn
-klar ist, was beim Freigeben tatsächlich geprüft wird.
-
 **Preisstaffeln zweidimensional — wenn achtwertige Staffeln häufig
 werden.** Derzeit werden Tag und Kaufweg in die `bezeichnung` gefaltet,
 maschinell nicht auswertbar. Bewusste Grenze der Schnittstelle, in
