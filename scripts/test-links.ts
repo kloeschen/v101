@@ -184,6 +184,58 @@ const registry = buildRegistry([
   gleich("Ausnahmen greifen", verlinkt, []);
 }
 
+/* --- Mehrdeutige Wörter (2026-09-25) ------------------------------ *
+ * Trägt mehr als ein Eintrag dasselbe Wort, verlinkt der Autolink es nicht.
+ * Gegenprobe: Mit nur einem Träger wird dasselbe Wort verlinkt — sonst
+ * wäre „kein Link" auch aus einem kaputten Muster erklärbar (Lektion 17). */
+{
+  const nurMusik = buildRegistry([lex("rocknroll", "Rock'n'Roll", { aliases: ["Rock and Roll"] })]);
+  const { verlinkt } = autolink("Die Band spielt Rock'n'Roll.", nurMusik);
+  gleich("Gegenprobe: ein Träger, Wort wird verlinkt", verlinkt, ["rocknroll"]);
+  gleich("Gegenprobe: ohne Geschwister nichts mehrdeutig", [...nurMusik.mehrdeutig.keys()], []);
+}
+
+{
+  const beide = buildRegistry([
+    lex("rocknroll", "Rock'n'Roll", { aliases: ["Rock and Roll"] }),
+    lex("rocknroll-tanz", "Rock'n'Roll-Tanz", { aliases: ["Rock'n'Roll", "Akrobatischer Rock'n'Roll"] }),
+    lex("petticoat", "Petticoat"),
+  ]);
+  gleich("geteiltes Wort ist mehrdeutig, mit beiden Trägern", beide.mehrdeutig.get("rock'n'roll"), ["rocknroll", "rocknroll-tanz"]);
+  const a = autolink("Die Band spielt Rock'n'Roll zum Petticoat.", beide);
+  gleich("mehrdeutiges Wort wird nicht verlinkt, eindeutiges schon", a.verlinkt, ["petticoat"]);
+  const b = autolink("Der Rock'n'Roll-Tanz ist akrobatisch.", beide);
+  gleich("eindeutige Form verlinkt den Tanz", b.verlinkt, ["rocknroll-tanz"]);
+  pruefe("…und nicht die Musik als Teilwort", !b.markdown.includes("/lexikon/rocknroll/"), b.markdown);
+  const c = autolink("Rock and Roll kam aus den USA.", beide);
+  gleich("nicht geteilter Alias bleibt beim Träger", c.verlinkt, ["rocknroll"]);
+  const d = autolink("Er tanzt [Rock'n'Roll](/lexikon/rocknroll-tanz/) und hört Rock'n'Roll.", beide);
+  pruefe("Handlink bleibt, das zweite Vorkommen bleibt unverlinkt", d.markdown === "Er tanzt [Rock'n'Roll](/lexikon/rocknroll-tanz/) und hört Rock'n'Roll.", d.markdown);
+}
+
+{
+  // Fund am echten Bestand: Der Unterrock trägt „Petticoat" als englische
+  // Bezeichnung. Die zählt nachrangig, sonst verlöre der Petticoat seinen Link.
+  const rang = buildRegistry([
+    lex("unterrock", "Unterrock", { bezeichnungEn: "Petticoat" }),
+    lex("petticoat", "Petticoat", { bezeichnungEn: "Petticoat" }),
+  ]);
+  gleich("Name schlägt fremde englische Bezeichnung", autolink("Ein Petticoat.", rang).verlinkt, ["petticoat"]);
+  gleich("…und macht das Wort nicht mehrdeutig", [...rang.mehrdeutig.keys()], []);
+  const nurEn = buildRegistry([
+    lex("a-eintrag", "Erster Eintrag", { bezeichnungEn: "Swingout" }),
+    lex("b-eintrag", "Zweiter Eintrag", { bezeichnungEn: "Swingout" }),
+  ]);
+  gleich("gleichrangige englische Bezeichnungen sind mehrdeutig", nurEn.mehrdeutig.get("swingout"), ["a-eintrag", "b-eintrag"]);
+  const allein = buildRegistry([lex("unterrock", "Unterrock", { bezeichnungEn: "Petticoat" })]);
+  gleich("englische Bezeichnung ohne Konkurrenz verlinkt weiter", autolink("Ein Petticoat.", allein).verlinkt, ["unterrock"]);
+}
+
+{
+  const gross = buildRegistry([lex("boogie-woogie", "Boogie-Woogie"), lex("boogie-woogie-tanz", "Boogie-Woogie-Tanz", { aliases: ["boogie-woogie"] })]);
+  gleich("Mehrdeutigkeit unabhängig von Groß-/Kleinschreibung", [...gross.mehrdeutig.keys()], ["boogie-woogie"]);
+}
+
 {
   const md = "Siehe https://example.com/petticoat-guide für mehr.";
   const { markdown } = autolink(md, registry);

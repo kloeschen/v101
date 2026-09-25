@@ -13,6 +13,56 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Musik oder Tanz: eigene Tanzeinträge, mehrdeutige Wörter ohne Autolink
+
+**Messung:** Von 35 Links auf die Musikeinträge Rock'n'Roll und
+Boogie-Woogie meinten 9 den Tanz, 5 waren mehrdeutig, 21 richtig. Beispiele
+für den Tanz: „Rock-'n'-Roll-Tanz“ beim Petticoat, der Boogie-Woogie-Club
+in Perchtoldsdorf, die World Rock'n'Roll Confederation, das Tanzwochenende
+in Pullman City. Ein Viertel der Links zeigte also falsch, und mit jedem
+Termin der Boogie-Szene kamen weitere dazu.
+
+**Entscheidung von Markus: Variante C.**
+- Der Tanz bekommt eigene Einträge, **Rock'n'Roll-Tanz** und
+  **Boogie-Woogie-Tanz**, nach dem Vorbild von Lindy Hop. Beide stehen als
+  `frei`-Posten in der Warteschlange.
+- Namen mit Bindestrich statt Klammerzusatz, damit sich der erste Satz
+  natürlich liest.
+
+**Autolink:**
+- Trägt mehr als ein Lexikoneintrag dasselbe Wort, wird es nicht mehr
+  automatisch verlinkt.
+- Die Mehrdeutigkeit wird aus dem Bestand abgeleitet, nicht in einer Liste
+  gepflegt (Lektion 14). Die Tanzeinträge tragen die kurzen Schreibweisen
+  als Alias, daran erkennt der Autolink das Paar.
+- Eindeutige Formen wie „Rock'n'Roll-Tanz“ bleiben verlinkbar. Mehrdeutige
+  Stellen verlinkt, wer schreibt, von Hand. Bestehende Links sind geschützt.
+
+**Fund beim Bau:** Am echten Bestand erkannte die erste Fassung sofort ein
+mehrdeutiges Wort, nämlich „Petticoat“. Der Unterrock trägt es als
+englische Bezeichnung, weil englisch *petticoat* Unterrock heißt. Nach der
+einfachen Regel hätte der Petticoat seinen Autolink verloren. Deshalb zählt
+jetzt der Rang: Name, Alias und deutsche Bezeichnung gehen der englischen
+Bezeichnung vor. Mehrdeutig ist ein Wort nur, wenn zwei Einträge es auf
+demselben Rang tragen. Der Bestand hat danach kein mehrdeutiges Wort, und
+`autolink:check` meldet keine Drift.
+
+**Belege:** `test-links` hat 13 neue Prüfungen, jede mit Gegenprobe, etwa
+dass das Wort mit nur einem Träger weiter verlinkt wird.
+- Mutation „Mehrdeutigkeit aus“: 5 Prüfungen fallen.
+- Mutation „englische Bezeichnung gleichrangig“: 2 fallen.
+
+**Verworfen:**
+- Variante A, nichts tun: die falschen Links bleiben und werden mehr.
+- Variante B, Sperrliste im Code ohne Tanzeinträge: Der Tanz hätte keinen
+  Ort, und die Liste müsste von Hand gepflegt werden.
+- Die Flexion („Rock'n'Roll-Tanzes“) auf mehrteilige Begriffe auszudehnen:
+  Das wäre Raten wie bei „Wet Set“. Die neun falschen Links biegt ohnehin
+  jemand von Hand um, sobald die Tanzeinträge freigegeben sind (Posten
+  unter „Später, mit Bedingung“).
+
+---
+
 ## 2026-09-25 — Vorschläge aus der Szene: Formular mit einer URL
 
 **Grundsätze von Markus (2026-09-24):**

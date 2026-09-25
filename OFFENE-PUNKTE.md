@@ -114,6 +114,30 @@ Ankündigungstexte weiter, das Datum also nur aus der Datumszeile der
 Detailseite übernehmen und gegen den Ticketshop halten (ENTSCHEIDUNGEN,
 2026-09-23).
 
+`frei` **Lexikon: Rock'n'Roll-Tanz.** Entscheidung Markus 2026-09-25: Der Tanz
+bekommt einen eigenen Eintrag neben der Musik (`lexikon/rocknroll`), nach dem
+Vorbild von `lexikon/lindy-hop`. Slug `rocknroll-tanz`, Name
+„Rock'n'Roll-Tanz", `kategorie: tanz`; erster Satz „Der Rock'n'Roll-Tanz
+ist ein …". **Aliases:** die Schreibweisen, die auch der Musikeintrag trägt
+(„Rock'n'Roll", „Rock-'n'-Roll", „Rock 'n' Roll", „Rock ’n’ Roll") — daran
+erkennt der Autolink seit dem 2026-09-25 das Wort als mehrdeutig und
+verlinkt es nicht mehr automatisch; weitere Namen wie „Akrobatischer
+Rock'n'Roll" nur mit Quelle. `abgrenzung` gegen die Musik, gegen Lindy Hop
+und gegen Boogie-Woogie als Tanz; Turnierwesen (World Rock'n'Roll
+Confederation, im Musikeintrag schon genannt) mit Quelle. Im Musikeintrag
+den Abgrenzungsabschnitt auf den neuen Eintrag verlinken.
+
+`frei` **Lexikon: Boogie-Woogie-Tanz.** Wie der Posten davor: Slug
+`boogie-woogie-tanz`, Name „Boogie-Woogie-Tanz", `kategorie: tanz`, erster
+Satz „Der Boogie-Woogie-Tanz ist ein …". Aliases „Boogie-Woogie" und
+„Boogie Woogie" (die Schreibweisen des Musikeintrags). Der Musikeintrag
+`lexikon/boogie-woogie` beschreibt den Tanz bisher in einem eigenen
+Abschnitt samt Quellen — die dortigen Belege sind der Ausgangspunkt, der
+Abschnitt wird danach auf einen Verweis gekürzt. Abgrenzung gegen die
+Musik, gegen Lindy Hop und gegen den Rock'n'Roll-Tanz. Im
+deutschsprachigen Raum meint das Wort fast immer den Tanz — das gehört mit
+Quelle in den Text, nicht als Behauptung.
+
 `frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
 (unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
 britische Jugendkultur der 1950er, auf die sich die Rockabilly-Szene in
@@ -124,10 +148,9 @@ Vintage Rock, ein Nachschlagewerk zur Mode), Widersprüche in den Text.
 
 `frei` **Lexikon: Jive.** Steht in fünf Texten, unter anderem bei den
 Tanzkursen in Ganderkesee, und hat keinen Eintrag. Jive ist ein Tanz ohne
-gleichnamige Musikrichtung, also nicht betroffen von der offenen Frage
-„Boogie-Woogie als Tanz". `kategorie: tanz`. Die Abgrenzung gegen den
-Lindy Hop und gegen den Rock'n'Roll als Turniertanz gehört in den Text,
-mit Quelle.
+gleichnamige Musikrichtung, das Wort ist also nicht mehrdeutig. `kategorie: tanz`. Die Abgrenzung gegen den
+Lindy Hop und gegen den Rock'n'Roll-Tanz gehört in den Text, mit Quelle;
+steht der Eintrag `rocknroll-tanz` schon, dorthin verlinken.
 
 `frei` **Psychobilly-Osterfestival im Café Central Weinheim.** Die Startseite
 nennt „Frenzy — Psychobilly Oster Festival, Sa 27.03." und „Demented Are
@@ -142,26 +165,6 @@ geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
-
-`mensch` **Boogie-Woogie als Tanz: eigener Eintrag oder nicht?** Im deutschsprachigen
-Raum meint das Wort fast immer den Paartanz und nicht den Klavierstil, und
-getanzt wird dazu Rock'n'Roll, Rockabilly, Jump Blues und Swing — gerade
-nicht die gleichnamige Musik. Derzeit trägt der Musikeintrag die
-Unterscheidung in `abgrenzung` und einem eigenen Abschnitt. Ob daraus ein
-zweiter Eintrag `boogie-woogie-tanz` wird, ist eine Ermessensfrage: Zwei
-Einträge sind sauberer, ein Slug mit Klammerzusatz ist hässlich, und der
-Autolink kann zwei gleichnamige Begriffe nicht auseinanderhalten.
-**Seit dem 2026-09-23 stellt sich dieselbe Frage ein zweites Mal**, und
-damit ist sie keine Einzelfallfrage mehr: Rock'n'Roll heißt genauso beides,
-die Musik und der aus dem Lindy Hop hervorgegangene Turniertanz. Der neue
-Lexikoneintrag behandelt die Musik und trennt beides in `abgrenzung` und im
-Abgrenzungsabschnitt — dieselbe Lösung wie beim Boogie-Woogie. Sichtbare
-Folge: Der Autolink verlinkt jetzt auch Stellen auf den Musikeintrag, die
-den Tanz meinen (`lexikon/petticoat.md` und
-`artikel/petticoat-reifrock-unterrock.md`, beide „Rock-'n'-Roll-Tanz").
-Irreführend ist das nicht — der Eintrag sagt im ersten Absatz, dass er die
-Musik beschreibt —, aber es ist auch nicht das beste Ziel. Wer die Frage
-entscheidet, entscheidet sie besser für beide Begriffe zugleich.
 
 ## Vor dem Go-Live
 
@@ -189,6 +192,22 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
+Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen
+aber den Tanz. Sie sind geschützt und ändern sich nicht von selbst.
+`lexikon/petticoat` und `artikel/petticoat-reifrock-unterrock`
+(„Rock-'n'-Roll-Tanzes"), `lexikon/lindy-hop` (Boogie-Woogie und
+akrobatischer Rock'n'Roll als Nachfolgetänze, zwei Links),
+`lexikon/boogie-woogie` („World Rock'n'Roll Confederation"),
+`events/bella-italia-perchtoldsdorf-2026-09-11` („Boogie-Woogie-Club"),
+`events/rocknroll-boogie-woogie-weekend-2027-01-15` (Tanzwochenende, zwei
+Links), `regionen/niederoesterreich` („Boogie- und Rock-'n'-Roll-Abende"
+der Tanzszene). Mehrdeutig und bewusst beim Musikeintrag belassen: die
+Festivalnamen Ganderkesee und Walldorf, `regionen/niedersachsen`,
+`locations/asb-bahnhof-barsinghausen`, der Boogie-Woogie-Link der
+Rockabilly Convention. Einfach als `frei`-Posten nach oben ziehen, wenn
+die Bedingung erfüllt ist.
 
 **Suchlauf auswerten — ab dem 2026-10-21.** Seit dem 2026-09-23 füllt ein
 wöchentlicher Suchlauf die Warteschlange auf höchstens zehn `frei`-Posten
