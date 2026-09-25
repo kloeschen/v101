@@ -76,6 +76,8 @@ a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
 
 nav[aria-label] { font-family: var(--schrift-ui); font-size: var(--groesse-klein); color: var(--farbe-text-leise); }
 nav[aria-label="Hauptnavigation"] { max-width: var(--inhalt-breite); margin: 0 auto; padding: var(--raum-4); border-top: var(--linie); display: flex; gap: var(--raum-3); flex-wrap: wrap; }
+/* Impressum und Datenschutz unter der Navigation: gleiche Breite und Schrift, ohne eigene Linie. */
+body > footer { max-width: var(--inhalt-breite); margin: 0 auto; padding: 0 var(--raum-4) var(--raum-4); display: flex; gap: var(--raum-3); flex-wrap: wrap; font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
