@@ -37,6 +37,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 |---|---|---|---|---|
 | [Rockin' Wildcat, Gig Guide](https://www.rockin-wildcat.com/rwc/guide) | Berlin | Szenekalender | ja, 24 Termine als JSON-LD | drei feste Leseregeln (siehe Fallen); Detail-URL immer aus `offers.url`, nie raten |
 | [boogie.at](https://boogie.at/) | Niederösterreich, Wien, Oberösterreich, vereinzelt Bayern | Szenekalender | nein | Kalender, nicht Veranstalter — `veranstalterUrl` nie auf boogie.at setzen. Die Startseite zeigt nur die ersten rund 20 Termine; die übrigen stehen unter `?page=1` bis `?page=4` (Zählung ab 0), alle Seiten öffnen |
+| [Stadtgalerie Mödling, Kalender](https://www.stadtgaleriekultur.info/events/kalender/) | Niederösterreich | Haus | nein | nennt Wochentag und Jahr je Termin; die Tanzabende stehen dort als „Tanzabend“. Reservierungsadressen sind per Cloudflare verschleiert |
 | [Pullman City, Events](https://www.pullmancity.de/events-shows-musik/events) | Bayern | Veranstalter | nein | nur die www-Form verwenden, die andere leitet um |
 | [Café Central Weinheim](https://cafecentral.de/) | Rhein-Neckar | Haus | nein | Startseite nennt Termine teils ohne Jahr |
 | [Walldorf Weekender](https://www.walldorf-weekender.net/) | Rhein-Neckar | Festival | nein | Jahreszahl steht im URL-Pfad |
@@ -46,7 +47,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
 die Posten, die aus ihr entstanden sind. Regionen ohne eigene Quelle
-(derzeit alle außer den fünf oben) brauchen zuerst eine — ein Szenekalender
+(derzeit alle außer den oben genannten) brauchen zuerst eine — ein Szenekalender
 ist mehr wert als ein einzelner Termin.
 
 ## Der Suchlauf
@@ -156,6 +157,10 @@ Fehler verursacht oder beinahe verursacht.
 - **Zeitzone je Tag.** Die Sommerzeit endet am 25.10.2026 und beginnt am
   28.03.2027. Ein Wochenende über die Umstellung hat zwei Offsets.
   `npm run check:zeit` fängt fehlende Zonen, nicht falsche.
+- **„Parkett" ist oft eine Redewendung.** „Das Tanzbein auf einem
+  schönen Parkett schwingen" sagt nichts über den Boden. `tanzflaeche`
+  nur setzen, wenn die Quelle den Belag als Belag nennt (Stadtgalerie
+  Mödling, 2026-09-25).
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
   `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'

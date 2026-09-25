@@ -32,21 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Rock'n' Boogie Tanzparty in der Stadtgalerie Mödling am 16. Oktober 2026 anlegen.**
-Gesehen am 2026-09-24 auf https://boogie.at/ (Herkunft: Suchlauf
-2026-09-24), Detailseite https://boogie.at/event/rockn-boogie-tanzparty-2.
-Dort steht: „Fr., 16.10.2026 - 20:00", Stadtgalerie Mödling, Kaiserin
-Elisabeth-Straße 1, 2340 Mödling; Person/Organisation „DJ Sascha Kapoun";
-„Eintritt € 12,-"; Link auf https://www.diestadtgalerie.at. Beim Bauen
-prüfen: boogie.at ist Kalender, nicht Veranstalter — Datum, Beginn und
-Preis auf der Seite der Stadtgalerie gegenlesen, `veranstalterUrl` nie auf
-boogie.at. Location Stadtgalerie Mödling neu, Region
-`niederoesterreich`, Adresse nur mit Beleg. Die Detailseite nennt eine
-monatliche Reihe (13.11.2026 als „Boogieball '26", dann 2027 fortlaufend);
-nur den 16.10. anlegen, die Reihe in der Redaktionsnotiz erwähnen. Termin
-liegt nahe: Wird der Posten erst nach dem 2026-10-09 gebaut, überspringen
-und zurückgeben. Zeitzone `+02:00`.
-
 `frei` **Steyrtal Boogie Party in Sierning am 17. Oktober 2026 anlegen.**
 Gesehen am 2026-09-24 auf https://boogie.at/ (Herkunft: Suchlauf
 2026-09-24), Detailseite https://boogie.at/event/steyrtal-boogie-party-1.
