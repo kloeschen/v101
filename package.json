@@ -24,7 +24,7 @@
     "links:extern": "tsx scripts/check-links.ts",
     "freigabe": "tsx scripts/check-freigabe.ts",
     "freigabe:ci": "tsx scripts/check-freigabe.ts --basis-pflicht",
-    "test": "npm run test:datum && npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink && npm run test:hooks && npm run test:validate && npm run test:jsonld && npm run test:freigabe && npm run test:freigeben && npm run test:pruefkette && npm run test:ausgaben && npm run test:anzeige && npm run test:stale && npm run test:orientierung && npm run test:regionen && npm run test:checklinks && npm run test:warteschlange && npm run test:vorschlaege && npm run test:pruefzettel && npm run test:rechtliches",
+    "test": "npm run test:datum && npm run test:links && npm run test:facetten && npm run test:feeds && npm run test:autolink && npm run test:hooks && npm run test:validate && npm run test:jsonld && npm run test:freigabe && npm run test:freigeben && npm run test:pruefkette && npm run test:ausgaben && npm run test:anzeige && npm run test:stale && npm run test:orientierung && npm run test:regionen && npm run test:checklinks && npm run test:warteschlange && npm run test:vorschlaege && npm run test:pruefzettel && npm run test:rechtliches && npm run test:vorschaubild",
     "test:links": "tsx scripts/test-links.ts",
     "test:datum": "tsx scripts/test-datum.ts",
     "test:facetten": "tsx scripts/test-facetten.ts",
@@ -36,7 +36,7 @@
     "test:freigabe": "tsx scripts/test-freigabe.ts",
     "test:freigeben": "tsx scripts/test-freigeben.ts",
     "// verify": "Lokale Pruefkette vor jedem Commit. Nachsichtig: Warnungen bleiben Warnungen, die Freigabepruefung laeuft ohne --basis-pflicht und ueberspringt sich, wenn keine Basis da ist. Nachsichtiger als verify:ci, aber nicht lueckenhafter: Jeder Schritt von verify:ci steht auch hier, streng oder in der milden Fassung (scripts/test-pruefkette.ts, Lektion 27).",
-    "verify": "npm run check && npm run check:zeit && npm run warteschlange:check && npm run validate && npm run jsonld && npm run autolink:check && npm run freigabe && npm run test && npm run build",
+    "verify": "npm run check && npm run check:zeit && npm run warteschlange:check && npm run validate && npm run jsonld && npm run autolink:check && npm run freigabe && npm run test && npm run build && npm run check:vorschaubilder",
     "// verify:ci": "Pruefkette der CI. Strenger: --strict laesst Warnungen zu Fehlern werden, --basis-pflicht macht die fehlende Vergleichsbasis zum Fehler statt zum Hinweis. ci.yml ruft ausschliesslich diese Kette auf, statt Schritte aufzuzaehlen (Befund M10): Ein neuer Pruefschritt wird hier eingetragen und nirgends sonst. scripts/test-pruefkette.ts haelt das fest. Reihenfolge nach Laufzeit, billig vor teuer - nur die Typpruefung steht vor dem Build, damit ein Typfehler nicht erst danach auffaellt.",
     "test:pruefkette": "tsx scripts/test-pruefkette.ts",
     "test:ausgaben": "tsx scripts/test-ausgaben.ts",
@@ -51,6 +51,8 @@
     "pruefzettel": "tsx scripts/pruefzettel.ts",
     "test:pruefzettel": "tsx scripts/test-pruefzettel.ts",
     "test:rechtliches": "tsx scripts/test-rechtliches.ts",
+    "test:vorschaubild": "tsx scripts/test-vorschaubild.ts",
+    "check:vorschaubilder": "tsx scripts/check-vorschaubilder.ts",
     "// warteschlange": "Welcher offene Punkt darf ohne Menschen gebaut werden? --check scheitert bei einem Posten ohne Marke und haengt deshalb in der Kette.",
     "warteschlange": "tsx scripts/warteschlange.ts",
     "warteschlange:check": "tsx scripts/warteschlange.ts --check",
@@ -59,7 +61,7 @@
     "warteschlange:belegt": "tsx scripts/warteschlange.ts --belegt",
     "// automerge": "Darf dieser Zweig ohne menschliche Pruefung mergen? Exitcode 0 = ja. Wird von der taeglichen Routine aufgerufen, nicht von der Kette.",
     "automerge:erlaubt": "tsx scripts/automerge-erlaubt.ts",
-    "verify:ci": "echo '::: [1/9 Zeitzonen-Konvention] :::' && npm run check:zeit && echo '::: [2/9 Warteschlange markiert] :::' && npm run warteschlange:check && echo '::: [3/9 Freigabepruefung (Basis erforderlich)] :::' && npm run freigabe:ci && echo '::: [4/9 Inhalte (strict)] :::' && npm run validate:strict && echo '::: [5/9 JSON-LD-Graphen (strict)] :::' && npm run jsonld:strict && echo '::: [6/9 Autolink-Drift] :::' && npm run autolink:check && echo '::: [7/9 Typen (astro check)] :::' && npm run check && echo '::: [8/9 Build] :::' && npm run build && echo '::: [9/9 Tests] :::' && npm run test"
+    "verify:ci": "echo '::: [1/10 Zeitzonen-Konvention] :::' && npm run check:zeit && echo '::: [2/10 Warteschlange markiert] :::' && npm run warteschlange:check && echo '::: [3/10 Freigabepruefung (Basis erforderlich)] :::' && npm run freigabe:ci && echo '::: [4/10 Inhalte (strict)] :::' && npm run validate:strict && echo '::: [5/10 JSON-LD-Graphen (strict)] :::' && npm run jsonld:strict && echo '::: [6/10 Autolink-Drift] :::' && npm run autolink:check && echo '::: [7/10 Typen (astro check)] :::' && npm run check && echo '::: [8/10 Build] :::' && npm run build && echo '::: [9/10 Vorschaubilder im Build] :::' && npm run check:vorschaubilder && echo '::: [10/10 Tests] :::' && npm run test"
   },
   "dependencies": {
     "astro": "^7.2.10",
@@ -67,9 +69,13 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@fontsource/libre-baskerville": "^5.3.0",
+    "@fontsource/source-sans-3": "^5.3.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^26.4.0",
     "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",
+    "satori": "^0.33.5",
     "tsx": "^4.23.12",
     "typescript": "^5.9.3",
     "zod": "^4.5.4"

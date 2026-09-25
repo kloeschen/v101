@@ -26,6 +26,7 @@
  * ENTSCHEIDUNGEN.md samt ihrer gemessenen Kosten festgehalten.
  */
 import BasisLayout from "./BasisLayout.astro";
+import { vorschauPfad } from "../lib/vorschaubild";
 import Faktenblock from "../components/Faktenblock.astro";
 import FaqBlock from "../components/FaqBlock.astro";
 import Quellen from "../components/Quellen.astro";
@@ -64,6 +65,7 @@ const entwurf = daten.status !== "veroeffentlicht";
   kanonisch={pfad}
   noindex={entwurf || daten.noindex || noindex}
   jsonld={graph}
+  vorschaubild={vorschauPfad(collection, slug)}
 >
   <nav aria-label="Brotkrumen">
     <a href="/">Start</a> ›

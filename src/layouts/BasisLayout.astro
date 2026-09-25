@@ -14,6 +14,7 @@ import { jsonldSicher } from "../lib/jsonld";
 import { holeRegistry } from "../lib/registry";
 import { collectionNames, type CollectionName } from "../content/_schemas";
 import { SAMMLUNGSNAME, sammlungsPfad } from "../lib/faktenblock";
+import { vorschauPfad, BREITE, HOEHE } from "../lib/vorschaubild";
 
 interface Props {
   titel: string;
@@ -21,8 +22,10 @@ interface Props {
   kanonisch: string;
   noindex?: boolean;
   jsonld?: unknown;
+  /** Pfad des Vorschaubilds für geteilte Links; ohne Angabe das Standardbild. */
+  vorschaubild?: string;
 }
-const { titel, beschreibung, kanonisch, noindex = false, jsonld } = Astro.props;
+const { titel, beschreibung, kanonisch, noindex = false, jsonld, vorschaubild = vorschauPfad() } = Astro.props;
 
 // Der globale Schalter sticht jede Einzelentscheidung: Solange die Site
 // nicht freigegeben ist, wird nichts indexiert.
@@ -58,6 +61,11 @@ const sammlungen = collectionNames.filter((typ: CollectionName) =>
     <meta property="og:description" content={beschreibung} />
     <meta property="og:url" content={`${site.url}${kanonisch}`} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={`${site.url}${vorschaubild}`} />
+    <meta property="og:image:width" content={String(BREITE)} />
+    <meta property="og:image:height" content={String(HOEHE)} />
+    <meta property="og:image:alt" content={titel} />
+    <meta name="twitter:card" content="summary_large_image" />
     {/* is:inline ist hier richtig: Der Graph soll unverarbeitet im HTML stehen,
         nicht durch Astros Skript-Pipeline laufen. */}
     {jsonld && <script is:inline type="application/ld+json" set:html={jsonldSicher(jsonld)} />}
