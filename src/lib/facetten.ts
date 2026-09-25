@@ -150,7 +150,10 @@ export const FACETTEN: FacettenDefinition[] = [
     segment: "kategorie",
     label: "Kategorie",
     werte: (d) => (d.kategorie ? [d.kategorie] : []),
-    wertLabel: (w) => KATEGORIE[w] ?? w,
+    // „Mode im Lexikon", nicht „Mode": Das Label ist zugleich der
+    // Seitentitel, und „Mode" gab es am 2026-09-25 zweimal — hier und als
+    // Themenbereich der Artikel. `test-facetten.ts` prüft die Eindeutigkeit.
+    wertLabel: (w) => `${KATEGORIE[w] ?? w} im Lexikon`,
     sortiere: nachName,
   },
   {
@@ -167,7 +170,9 @@ export const FACETTEN: FacettenDefinition[] = [
     segment: "saeule",
     label: "Themenbereich",
     werte: (d) => (d.saeule ? [d.saeule] : []),
-    wertLabel: (w) => SAEULE[w] ?? w,
+    // „Artikel zu Kustom Kulture", nicht „Kustom Kulture": So heißt schon
+    // der Lexikoneintrag (gleiche Kollision wie bei den Kategorien oben).
+    wertLabel: (w) => `Artikel zu ${SAEULE[w] ?? w}`,
     sortiere: nachName,
   },
 ];

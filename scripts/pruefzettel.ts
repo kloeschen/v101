@@ -26,6 +26,13 @@
  *   npx tsx scripts/pruefzettel.ts                        # alle Entwürfe
  *   npx tsx scripts/pruefzettel.ts --basis origin/main    # nur, was dieser Zweig ändert
  *   npx tsx scripts/pruefzettel.ts --dateien a.md,b.md
+ *   npx tsx scripts/pruefzettel.ts --basis origin/main --pr 69   # Vorschau-Links auf den PR
+ *
+ * Vorschau-Links: Ohne `--pr` zeigen sie auf die Branch-Vorschau
+ * `vorschau--`, die `main` spiegelt. Dort sind Entwürfe erst nach dem Merge
+ * zu sehen — für einen offenen PR führte der Link ins Leere (404, gefunden
+ * am 2026-09-25 an #68 und #69). Mit `--pr` zeigen sie auf die
+ * Deploy-Vorschau genau dieses PRs.
  *
  * Ausgabe: Markdown auf stdout, gedacht für die Beschreibung eines PR.
  */
@@ -148,7 +155,12 @@ function kurzTitel(b: Beleg): string {
   }
 }
 
-export function alsMarkdown(zettel: Zettel[]): string {
+/** Wo die Seiten eines Eintrags vor der Freigabe zu sehen sind. */
+export function vorschauBasis(pr?: number): string {
+  return pr ? `https://deploy-preview-${pr}--v101s.netlify.app` : "https://vorschau--v101s.netlify.app";
+}
+
+export function alsMarkdown(zettel: Zettel[], optionen: { pr?: number } = {}): string {
   if (zettel.length === 0) return "## Prüfzettel\n\nKeine Inhalte zu prüfen.\n";
   const auffaellig = zettel.filter((z) => z.signale.length);
   const ruhig = zettel.filter((z) => !z.signale.length);
@@ -158,7 +170,7 @@ export function alsMarkdown(zettel: Zettel[]): string {
     );
     const tabelle = zeilen.length ? `| Fakt | Wert | Quelle |\n|---|---|---|\n${zeilen.join("\n")}\n` : "";
     const hinsehen = z.signale.length ? `\n**Hinsehen:**\n${z.signale.map((s) => `- ${s}`).join("\n")}\n` : "";
-    return `### ${z.titel}\n\`${z.pfad}\` · [Vorschau](https://vorschau--v101s.netlify.app/${z.pfad}/)\n\n${tabelle}${hinsehen}`;
+    return `### ${z.titel}\n\`${z.pfad}\` · [Vorschau](${vorschauBasis(optionen.pr)}/${z.pfad}/)\n\n${tabelle}${hinsehen}`;
   };
   let md = `## Prüfzettel\n\n${auffaellig.length} von ${zettel.length} Einträgen mit Hinweisen. Geprüft werden sollten vor allem Datum, Uhrzeit und Ort gegen die verlinkte Quelle.\n\n`;
   md += auffaellig.map(block).join("\n");
@@ -194,7 +206,12 @@ function main() {
   // Termine zuerst, dann Orte, dann der Rest — die Reihenfolge, in der Fehler teuer sind.
   const rang = (c: string) => ["events", "locations"].indexOf(c) === -1 ? 9 : ["events", "locations"].indexOf(c);
   auswahl.sort((a, b) => rang(a.collection) - rang(b.collection) || a.slug.localeCompare(b.slug));
-  console.log(alsMarkdown(auswahl.map((e) => zettelFuer(e, kontext))));
+  const pr = wert("--pr") ? Number(wert("--pr")) : undefined;
+  if (pr !== undefined && !(Number.isInteger(pr) && pr > 0)) {
+    console.error(`--pr erwartet eine PR-Nummer, bekam "${wert("--pr")}".`);
+    process.exit(2);
+  }
+  console.log(alsMarkdown(auswahl.map((e) => zettelFuer(e, kontext)), { pr }));
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

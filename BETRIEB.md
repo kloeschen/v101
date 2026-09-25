@@ -443,7 +443,11 @@ lohnt: Fakt nur von Aggregatoren belegt, Beginn an einer einzigen Quelle,
 Abweichung laut Redaktionsnotiz, Termin nahe, Ort neu, keine Genres, alte
 Quellen. Unauffällige Einträge stehen eingeklappt am Ende. Ohne Argument
 listet er alle Entwürfe, mit `--basis origin/main` nur, was ein Zweig
-ändert.
+ändert. Mit `--pr <Nummer>` zeigen die Vorschau-Links auf die
+Deploy-Vorschau dieses PRs. Ohne die Nummer zeigen sie auf `vorschau--`,
+und dort erscheint ein Entwurf erst nach dem Merge. Der tägliche Lauf
+öffnet deshalb zuerst den PR und setzt den Zettel danach mit der Nummer
+ein.
 
 **Die Prüfung ist die Bedingung, der Klick ist die Entscheidung.** Das
 Skript kann nur verhindern, dass etwas Fehlerhaftes freigegeben wird. Ob

@@ -13,6 +13,59 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Qualitätsrunde: Linkprüfung, Prüfzettel-Vorschau, doppelte Titel
+
+**Anlass:** Markus fragte, was die Qualität der Seite verbessert. Gemessen
+an der gebauten Seite (89 Seiten) und allen 162 externen Links, dann drei
+kleine Punkte umgesetzt (Antwort „ja“).
+
+**1. Linkprüfung: 8 von 8 „toten“ Links waren Bot-Abwehr.**
+Nachgeprüft mit Browserkennung am selben Tag:
+- **Reservix, 3 Links:** Die Seiten liefern HTTP 200 mit dem erwarteten
+  Titel. Nur das Prüfskript bekommt 403.
+- **Discogs, 2 Links:** Cloudflare-Browserprüfung, 403 auch mit
+  Browserkennung.
+- **Facebook, 2 Links:** 400 ohne Anmeldung.
+
+Bei Discogs und Facebook lässt sich per Skript nicht feststellen, ob die
+Seite existiert. Genau dafür ist die Warnung „bekannte Bot-Abwehr, von Hand
+prüfen“ da. Alle drei Hosts stehen jetzt in `BOT_ABWEHR`, jeder mit
+Begründung und Messdatum. Facebook sperrt mit 400 statt 403, deshalb hat
+jeder Eintrag jetzt einen eigenen Status (Vorgabe 403). Das ist eine enge
+Ausnahme: Der Status gilt nur für diesen Host, und 404 und 410 darf kein
+Eintrag nennen. Der echte Bestand hat danach 0 tote Links und 10
+auffällige, vorher waren es 8 tote.
+
+Belege:
+- `test-checklinks`: 10 neue Prüfungen.
+- Mutation Statusliste ignoriert: 6 Behauptungen fallen, darunter „404 bei
+  Bot-Abwehr bleibt ein Fehler“.
+- Mutation Facebook ohne eigenen Status: 4 Behauptungen fallen.
+
+**2. Prüfzettel: Der Vorschau-Link führte bei offenen PRs ins Leere.** Er
+zeigte auf `vorschau--`, und das spiegelt `main`. Ein Entwurf aus einem
+offenen PR ist dort nicht zu sehen (404, gefunden an #68 und #69). Neu ist
+`--pr <Nummer>`: Damit zeigt der Link auf die Deploy-Vorschau dieses PRs.
+Der tägliche Lauf öffnet deshalb zuerst den PR und setzt den Zettel danach
+ein; der Routine-Prompt ist angepasst. Belegt durch Test und Gegenfall, dazu
+eine Mutation (1 Behauptung fällt).
+
+**3. Doppelte Seitentitel.** „Mode“ gab es als Lexikon-Kategorie und als
+Themenbereich der Artikel. „Kustom Kulture“ gab es als Lexikoneintrag und
+als Themenbereich. Die Labels heißen jetzt „Mode im Lexikon“ und „Artikel zu
+Mode“. Neue Prüfung in `test-facetten` am echten Bestand, Entwürfe
+eingeschlossen: Kein Eintragsname und kein Facettenlabel darf zweimal
+vorkommen, mit Lebenszeichen. Die Mutation (alte Labels) findet genau die
+beiden Dopplungen.
+
+**Nicht gebaut: Beschreibungen kürzen.** 30 Seiten haben eine meta
+description über 170 Zeichen, meist aus der `kurzbeschreibung` (erlaubt bis
+320). Kürzen würde Inhalt abschneiden, den das JSON-LD vollständig braucht.
+Google schreibt Beschreibungen ohnehin häufig selbst. Eine Warnregel hätte
+30 Befunde am ersten Tag und würde überlesen.
+
+---
+
 ## 2026-09-25 — Läden & Studios in den Läufen; Grenzfall KS Barbershop aufgenommen
 
 **Entscheidungen von Markus** auf die zwei `mensch`-Posten aus #67:
