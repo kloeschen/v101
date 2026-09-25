@@ -430,6 +430,16 @@ Bereits freigegebene Einträge werden übersprungen, nicht erneut angefasst.
 Sonst wanderte `geprueftAm` bei jedem Lauf weiter und behauptete eine
 Prüfung, die niemand vorgenommen hat.
 
+**Der Prüfzettel** (`npm run pruefzettel`, seit dem 2026-09-25) ist für
+genau diesen Blick gebaut. Er steht in der Beschreibung jedes Inhalts-PR des
+täglichen Laufs und zeigt je Eintrag Beginn, Ort und Preis mit einem Klick
+zur belegenden Quelle, darunter nur die Stellen, an denen sich Hinsehen
+lohnt: Fakt nur von Aggregatoren belegt, Beginn an einer einzigen Quelle,
+Abweichung laut Redaktionsnotiz, Termin nahe, Ort neu, keine Genres, alte
+Quellen. Unauffällige Einträge stehen eingeklappt am Ende. Ohne Argument
+listet er alle Entwürfe, mit `--basis origin/main` nur, was ein Zweig
+ändert.
+
 **Die Prüfung ist die Bedingung, der Klick ist die Entscheidung.** Das
 Skript kann nur verhindern, dass etwas Fehlerhaftes freigegeben wird. Ob
 ein fehlerfreier Eintrag *richtig* ist — ob der Termin stattfindet, ob der

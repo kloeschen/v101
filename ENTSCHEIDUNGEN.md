@@ -13,6 +13,63 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Prüfzettel statt Prüfbericht
+
+**Anlass:** Die Vorbedingung des Postens „Prüfbericht für die Freigabe“
+lautete: erst bauen, wenn klar ist, was beim Freigeben tatsächlich geprüft
+wird. Markus hat am 2026-09-25 geantwortet:
+- Inhalts-PRs werden **meist nur überflogen**.
+- Wenn geprüft wird, dann **Datum, Uhrzeit und Ort gegen die Quelle**
+  sowie der **Szenebezug**.
+
+Ein vollständiger Bericht würde unter diesen Bedingungen nicht gelesen.
+
+**Gebaut:** `scripts/pruefzettel.ts`, ein Zettel zum Überfliegen.
+- Je Eintrag stehen die harten Fakten da: Beginn mit Wochentag in
+  Berliner Zeit, Ort mit Adresse, Preis. Jeder Fakt verlinkt die Quellen,
+  die ihn belegen, Aggregatoren sind markiert.
+- Darunter stehen nur Signale, keine Fehler:
+  - Fakt nur schwach belegt
+  - Beginn an einer einzigen Quelle
+  - Abweichung laut Redaktionsnotiz
+  - Termin in weniger als 21 Tagen, oder vergangen
+  - Ort neu im selben Änderungssatz
+  - keine Genres
+  - Quelle älter als 14 Tage
+- Unauffällige Einträge stehen eingeklappt am Ende.
+- Der tägliche Lauf schreibt den Zettel in jede Inhalts-PR-Beschreibung
+  (Routine-Prompt, Schritt 4).
+
+**Warum 21 und 14:** 21 ist der Mindestabstand des Suchlaufs, und darunter
+eilt eine Freigabe tatsächlich. 14 ist die Grenze, ab der der Stale-Report
+einen nahen Termin zur Nachprüfung vormerkt.
+
+**Am Bestand erprobt:** Der Zettel meldete beim Record Hop Friedrichshagen,
+dass Beginn und Preis nur von Aggregatoren belegt sind, bei der Mödlinger
+Tanzparty „keine Genres“. Beides stimmt und ist genau die Art Stelle, an
+der sich Hinsehen lohnt.
+
+**Belege:**
+- `test-pruefzettel`: 28 Prüfungen. Jedes Signal hat einen Fall, in dem
+  es feuern muss, und einen Gegenfall. Dazu ein Lebenszeichen am echten
+  Bestand.
+- Mutationen:
+  - Aggregator-Signal aus: 1 Prüfung fällt.
+  - Nähe-Signal aus: 2 fallen.
+  - Neuer-Ort-Signal aus: 1 fällt.
+  - Abweichungs-Signal aus: 4 fallen.
+  - Zeitzone entfernt: Der Beginn verrutscht um eine Stunde, 1 fällt
+    (Regel 1).
+
+**Bewusst nicht:**
+- Sprunglinks auf die genaue Textstelle der Quelle (`#:~:text=`). Dafür
+  müsste der Lauf die Belegstelle wörtlich festhalten, das wäre ein neues
+  Schemafeld und eine Entscheidung für Markus.
+- Eine Prüfansicht auf der Vorschau-Seite. Markus schaut in den PR, also
+  gehört der Zettel dorthin.
+
+---
+
 ## 2026-09-25 — Musik oder Tanz: eigene Tanzeinträge, mehrdeutige Wörter ohne Autolink
 
 **Messung:** Von 35 Links auf die Musikeinträge Rock'n'Roll und
