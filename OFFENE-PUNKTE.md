@@ -96,7 +96,12 @@ Uhrzeit statt JSON-LD `startDate`, sichtbares Feld „Kosten" entscheidet
 `offers.url` des JSON-LD, nie raten. Bands in `lineupWeitere`. Termine, die
 vor der nächsten Freigabe vorbei wären, überspringen.
 
-`frei` **Boppin'B im Colos-Saal Aschaffenburg am 26. Dezember 2026 anlegen.**
+`frei` **Boppin'B, Bündel: 2 Termine anlegen (26.12.2026 Colos-Saal Aschaffenburg, 9.1.2027 Café Central Weinheim).**
+Beide stehen auf der Live-Seite der Band (`bands/boppin-b`, `links.website`)
+und werden dort gegengelesen; je Termin zusätzlich die Seite des Hauses.
+Einzelheiten je Termin:
+
+- **Boppin'B im Colos-Saal Aschaffenburg am 26. Dezember 2026 anlegen.**
 Die Terminliste der Band bei Reservix
 (https://www.reservix.de/tickets-boppinb/t3454) nennt „Sa. 26.12.2026,
 20:00 Uhr, Aschaffenburg, Colos-Saal, ab 24,10 €". Die Seite des Hauses als
@@ -104,8 +109,7 @@ zweite Quelle öffnen, den Colos-Saal als Location anlegen (Region `bayern`,
 Adresse nur mit Beleg) und den Termin mit `lineupBands: [boppin-b]`. Die
 Band ist freigegeben, der Verweis ist also erlaubt. Zeitzone im Dezember:
 `+01:00`.
-
-`frei` **Boppin'B im Café Central Weinheim am 9. Januar 2027 anlegen.** Die
+- **Boppin'B im Café Central Weinheim am 9. Januar 2027 anlegen.** Die
 Detailseite https://cafecentral.de/konzert/goppin-b/ nennt „Sa 9.1.2027",
 Einlass 19 Uhr, Beginn 20 Uhr. Der Ticketshop (loveyourartist, Profil
 „Cafe Central/TocopillA Events") nennt 22 €. Haus und Band sind
@@ -114,7 +118,12 @@ Ankündigungstexte weiter, das Datum also nur aus der Datumszeile der
 Detailseite übernehmen und gegen den Ticketshop halten (ENTSCHEIDUNGEN,
 2026-09-23).
 
-`frei` **Lexikon: Rock'n'Roll-Tanz.** Entscheidung Markus 2026-09-25: Der Tanz
+`frei` **Lexikon, Bündel Tanz: Rock'n'Roll-Tanz, Boogie-Woogie-Tanz, Jive.** Drei
+Einträge in einem PR (Bündel-Posten seit dem 2026-09-25). Die drei gehören
+zusammen: Sie grenzen sich gegeneinander und gegen Lindy Hop ab, und das
+geht am besten in einem Zug. Einzelheiten je Begriff:
+
+- **Rock'n'Roll-Tanz.** Entscheidung Markus 2026-09-25: Der Tanz
 bekommt einen eigenen Eintrag neben der Musik (`lexikon/rocknroll`), nach dem
 Vorbild von `lexikon/lindy-hop`. Slug `rocknroll-tanz`, Name
 „Rock'n'Roll-Tanz", `kategorie: tanz`; erster Satz „Der Rock'n'Roll-Tanz
@@ -127,7 +136,7 @@ und gegen Boogie-Woogie als Tanz; Turnierwesen (World Rock'n'Roll
 Confederation, im Musikeintrag schon genannt) mit Quelle. Im Musikeintrag
 den Abgrenzungsabschnitt auf den neuen Eintrag verlinken.
 
-`frei` **Lexikon: Boogie-Woogie-Tanz.** Wie der Posten davor: Slug
+- **Boogie-Woogie-Tanz.** Wie der Posten davor: Slug
 `boogie-woogie-tanz`, Name „Boogie-Woogie-Tanz", `kategorie: tanz`, erster
 Satz „Der Boogie-Woogie-Tanz ist ein …". Aliases „Boogie-Woogie" und
 „Boogie Woogie" (die Schreibweisen des Musikeintrags). Der Musikeintrag
@@ -137,6 +146,11 @@ Abschnitt wird danach auf einen Verweis gekürzt. Abgrenzung gegen die
 Musik, gegen Lindy Hop und gegen den Rock'n'Roll-Tanz. Im
 deutschsprachigen Raum meint das Wort fast immer den Tanz — das gehört mit
 Quelle in den Text, nicht als Behauptung.
+- **Jive.** Steht in fünf Texten, unter anderem bei den
+Tanzkursen in Ganderkesee, und hat keinen Eintrag. Jive ist ein Tanz ohne
+gleichnamige Musikrichtung, das Wort ist also nicht mehrdeutig. `kategorie: tanz`. Die Abgrenzung gegen den
+Lindy Hop und gegen den Rock'n'Roll-Tanz gehört in den Text, mit Quelle;
+steht der Eintrag `rocknroll-tanz` schon, dorthin verlinken.
 
 `frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
 (unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
@@ -145,12 +159,6 @@ Großbritannien bis heute bezieht. Quellen öffnen (Wikipedia de/en,
 Vintage Rock, ein Nachschlagewerk zur Mode), Widersprüche in den Text.
 `abgrenzung` gegen Rockabilly als Musik und gegen die Mods. Danach
 `npm run autolink`.
-
-`frei` **Lexikon: Jive.** Steht in fünf Texten, unter anderem bei den
-Tanzkursen in Ganderkesee, und hat keinen Eintrag. Jive ist ein Tanz ohne
-gleichnamige Musikrichtung, das Wort ist also nicht mehrdeutig. `kategorie: tanz`. Die Abgrenzung gegen den
-Lindy Hop und gegen den Rock'n'Roll-Tanz gehört in den Text, mit Quelle;
-steht der Eintrag `rocknroll-tanz` schon, dorthin verlinken.
 
 `frei` **Psychobilly-Osterfestival im Café Central Weinheim.** Die Startseite
 nennt „Frenzy — Psychobilly Oster Festival, Sa 27.03." und „Demented Are
@@ -192,6 +200,12 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Durchsatz messen — ab dem 2026-10-09.** Seit dem 2026-09-25 zwei Läufe am
+Tag und Bündel-Posten (bis sechs Termine, vier Begriffe). Nach zwei Wochen
+zählen: freigegebene Einträge pro Woche, Inhalts-PRs pro Woche, wie viele
+Bündel ganz, teilweise oder gar nicht durchkamen, Kosten pro Lauf. Daran
+entscheidet sich, ob Bündelgröße oder Laufzahl nachjustiert wird.
 
 **Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
 Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen

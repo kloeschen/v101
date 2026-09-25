@@ -13,6 +13,48 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Mehr Durchsatz: Bündel-Posten und zwei Läufe am Tag
+
+**Ausgangslage:** Die Startschwelle verlangt 80 Termine und 80
+Lexikonbegriffe. Freigegeben waren 14 Termine, davon 10 kommend, und 23
+Begriffe. Bei einem Posten pro Tag wäre die Schwelle in rund vier Monaten
+erreicht, und in der Zeit verfallen Termine.
+
+**Messung der Kosten:**
+- 24.09., Opus 5, Berlin mit zwei Terminen und zwei Orten: 21,28 $, 36 min.
+- 25.09., Opus 5.5, Mödling mit einem Termin und einem Ort: 1,88 $, 8 min.
+
+Seit der Umstellung auf Opus 5.5 bremsen die Kosten den Durchsatz nicht
+mehr. Die Grenze ist die Prüfzeit.
+
+**Entscheidungen von Markus:**
+- **Bündel-Posten:** Ein Posten deckt bis zu sechs Termine derselben
+  Quelle oder Reihe ab, oder bis zu vier verwandte Begriffe. Der Lauf baut
+  alles in einem PR. Der Prüfzettel (gleicher Tag) macht auch größere PRs
+  überfliegbar.
+- **Zwei Läufe am Tag:** Die bestehende Routine bekommt einen zweiten
+  Zeitpunkt, 30 4,14 * * * (06:30 und 16:30 MESZ). Das ist bewusst keine
+  zweite Routine, damit Repo-Anbindung und Werkzeugliste erhalten bleiben.
+  Beim Suchlauf fehlten sie beim Anlegen per Werkzeug, und nur ein Mensch
+  konnte sie nachtragen. Markus hat dabei bewusst die früher genannte
+  Grenze von zehn Inhalts-PRs pro Woche überschritten.
+
+**Abgeleitet:** Zwei Läufe am Tag verbrauchen rund 14 Posten pro Woche.
+Deshalb läuft auch der Suchlauf zweimal pro Woche, sonntags und mittwochs,
+und füllt jeweils auf zehn auf.
+
+**Gleich umgesetzt:**
+- Die drei Tanzbegriffe sind ein Bündel: Rock'n'Roll-Tanz,
+  Boogie-Woogie-Tanz, Jive.
+- Die beiden Boppin'B-Termine sind ein Bündel, Quelle ist die Live-Seite
+  der Band.
+
+**Auswertung:** ab dem 2026-10-09, als Posten unter „Später, mit
+Bedingung“. Gemessen werden Einträge pro Woche, PRs pro Woche, Bündel
+ganz, teilweise oder gescheitert, und die Kosten pro Lauf.
+
+---
+
 ## 2026-09-25 — Prüfzettel statt Prüfbericht
 
 **Anlass:** Die Vorbedingung des Postens „Prüfbericht für die Freigabe“
