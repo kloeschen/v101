@@ -13,6 +13,57 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Vorschaubilder je Seite für geteilte Links
+
+**Anlass:** Keine der 89 Seiten hatte ein `og:image`. Die Szene teilt über
+Facebook-Gruppen und WhatsApp, ein geteilter Termin erschien dort als
+nackter Text. Markus hat sich für ein Bild je Seite mit Titel entschieden,
+gegen ein festes Bild für alle.
+
+**Gebaut:**
+- Beim Build entsteht für jeden Eintrag ein PNG unter
+  `/og/{sammlung}/{slug}.png`. Alle übrigen Seiten zeigen auf
+  `/og/standard.png`.
+- **Was auf dem Bild steht:** Wortmarke, Sammlung, Titel und eine Zeile
+  mit harten Fakten, alles in den Farben der Seite. Die Zeile nennt bei
+  Terminen Datum und Ort, bei Orten und Läden Stadt und Region, bei Bands
+  die Herkunft.
+- **Keine Fotos:** Bilder brauchen dokumentierte Rechte, Schrift und Farbe
+  nicht.
+- **Meta-Tags:** `og:image` mit Maßen und Alternativtext sowie
+  `twitter:card`.
+
+**Werkzeug:** satori (Layout zu SVG) und resvg (SVG zu PNG), dazu die
+Schriften Libre Baskerville und Source Sans 3 (SIL Open Font License) aus
+den @fontsource-Paketen. Alle vier sind Entwicklungsabhängigkeiten und
+laufen nur beim Build. Die Seite selbst lädt weiterhin keine Schrift. Der
+Build dauert mit 59 Bildern rund 7,5 s.
+
+**Tagesgrenze:** Eine Party von 19 bis 1:30 Uhr ist ein Abend und steht
+auf dem Bild mit einem Datum. Erst ab zwölf Stunden Dauer wird es ein
+Zeitraum („Fr., 22.05. – Mo., 25.05.2026“). Alle Zeiten gelten in
+Berliner Zeit.
+
+**Belege:**
+- `test-vorschaubild`: 16 Prüfungen, darunter die Tagesgrenze und ein
+  echt gezeichnetes Bild als Lebenszeichen.
+- Neue Prüfung am fertigen Build, `check-vorschaubilder`, in `verify` und
+  `verify:ci` (Schritt 9/10). Jede Seite hat genau ein `og:image` auf der
+  eigenen Domain, die Datei existiert und ist ein PNG in 1200 × 630.
+  Lebenszeichen: Mindestens eine Seite hat ein eigenes Bild. Stand: 91
+  Seiten, 58 mit eigenem Bild, 0 Fehler.
+- Drei Mutationen:
+  - Tagesgrenze entfernt: 1 Prüfung fällt.
+  - Ein Bild aus dem Build gelöscht: genau diese Seite wird gemeldet.
+  - Alle Eintragsseiten zeigen auf das Standardbild: Das Lebenszeichen
+    schlägt an.
+
+**Folge im Lockfile:** `npm install` mit npm 10.9 hat bei einigen
+bestehenden Einträgen die `libc`-Angaben entfernt. `npm ci` läuft sauber
+durch (335 Pakete), auch die resvg-Binärpakete für glibc und musl.
+
+---
+
 ## 2026-09-25 — Messung: Barrierefreiheit und Ladezeit sind kein Engpass
 
 **Gemessen:** 15 Seiten, eine je Seitentyp, in Chromium bei 390 px Breite,
