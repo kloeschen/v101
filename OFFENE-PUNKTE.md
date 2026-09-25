@@ -152,17 +152,18 @@ Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
 zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
 Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
 
-`mensch` **Vorschläge aus der Szene: eine Methode, gemeinsam zu entwerfen.** Die
-Szene soll Termine vorschlagen und Fehler melden können. Bisher gibt es
-dafür keinen Weg, zwei Seiten versprechen ihn aber schon: `/daten/` („bitte
-melden") und `/methodik/`, Abschnitt „Vorschläge und Korrekturen" („wird
-gerade eingerichtet"). Zu klären: Kanal (Formular, E-Mail,
-GitHub-Issue-Vorlage), wie ein Vorschlag in die Warteschlange kommt (als
-`frei`-Posten mit „Herkunft: Vorschlag"?), Schutz gegen Spam und
-Eigenwerbung, und ob Einsender genannt werden. Grundsatz steht bereits auf
-der Methodik-Seite: Vorschläge durchlaufen dieselbe Belegpflicht wie alles
-andere. Markus hat das am 2026-09-24 als gemeinsames Vorhaben gesetzt.
-Wenn der Weg steht, beide Seiten nachziehen.
+`mensch` **Vorschlagsformular scharf schalten: zwei Einstellungen bei Netlify.** Formular,
+Abrufskript und Suchlauf-Schritt stehen seit dem 2026-09-25
+(`docs/ablaeufe/termin-recherche.md`, „Vorschläge aus der Szene"). Es fehlt
+nur, was hinter Netlify-Konto und Cloud-Umgebung liegt: (1) In Netlify die
+Formularerkennung einschalten (Site → Forms → Enable form detection), dann
+neu deployen; danach erscheint dort das Formular „vorschlag". (2) Einen
+persönlichen Netlify-Zugangsschlüssel anlegen und zusammen mit der Site-ID
+als Umgebungsvariablen `NETLIFY_AUTH_TOKEN` und `NETLIFY_SITE_ID` in der
+Cloud-Umgebung der Routinen eintragen. Bis dahin meldet der Suchlauf
+„VORSCHLÄGE NICHT ABGERUFEN" — gewollt laut, nicht still. Beleg danach:
+eine Testeinsendung über `/vorschlagen/` muss beim nächsten
+`npm run vorschlaege` als NEU erscheinen.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
@@ -193,7 +194,10 @@ entscheidet, entscheidet sie besser für beide Begriffe zugleich.
 ## Vor dem Go-Live
 
 **Impressum und Datenschutzerklärung.** In Deutschland Pflicht. Inhalt
-kommt vom Menschen, Struktur kann vorbereitet werden.
+kommt vom Menschen, Struktur kann vorbereitet werden. Die Datenschutzerklärung
+muss das Vorschlagsformular (Netlify Forms, Spamprüfung über Akismet)
+nennen — Personendaten fragt es nicht ab, verarbeitet werden aber
+technische Daten der Einsendung.
 
 **Analytics ohne Einwilligungsbanner.** Netlify Analytics (serverseitig,
 keine Cookies) oder Plausible. Ein Cookie-Banner auf einem Register kostet

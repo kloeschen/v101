@@ -1,0 +1,17 @@
+---
+/** Ziel nach dem Absenden. Nicht indexieren — ohne Absenden ist sie sinnlos. */
+import BasisLayout from "../../layouts/BasisLayout.astro";
+---
+<BasisLayout
+  titel="Danke für den Vorschlag"
+  beschreibung="Der Vorschlag ist angekommen und wird geprüft."
+  kanonisch="/vorschlagen/danke/"
+  noindex
+>
+  <h1>Danke für den Vorschlag</h1>
+  <p>
+    Er ist angekommen und wird geprüft. Was eine Quelle belegt und zur Szene
+    gehört, erscheint nach der Freigabe im Register.
+  </p>
+  <p><a href="/">Zur Startseite</a> · <a href="/vorschlagen/">Noch etwas vorschlagen</a></p>
+</BasisLayout>

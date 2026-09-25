@@ -33,6 +33,7 @@ import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
 import { istDuenneRegion } from "../src/lib/regionen";
 import { urlPrefix } from "../src/content/_schemas";
+import { VORSCHLAG } from "../src/lib/vorschlag";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -136,11 +137,31 @@ if (entwuerfe.length === 0) {
       { name: "/llms.txt", inhalt: lies("llms.txt") },
       { name: "/daten/", inhalt: lies(path.join("daten", "index.html")) },
       { name: "/methodik/", inhalt: lies(path.join("methodik", "index.html")) },
+      { name: "/vorschlagen/", inhalt: lies(path.join("vorschlagen", "index.html")) },
     ];
 
     for (const a of ausgaben) {
       pruefe(`${a.name} wurde ueberhaupt gebaut`, a.inhalt.length > 0, "leere oder fehlende Datei");
     }
+
+    // Das Vorschlagsformular: Netlify erkennt es nur an diesen Attributen,
+    // und scripts/vorschlaege.ts liest genau diese Feldnamen. Beides kommt
+    // aus src/lib/vorschlag.ts; hier wird geprüft, dass es im gebauten HTML
+    // auch ankommt. Fehlt eins, nimmt Netlify nichts an oder das Skript
+    // findet nichts — beides still.
+    const formular = lies(path.join("vorschlagen", "index.html"));
+    for (const erwartet of [
+      'data-netlify="true"',
+      `netlify-honeypot="${VORSCHLAG.honigtopf}"`,
+      `name="form-name" value="${VORSCHLAG.formName}"`,
+      `name="${VORSCHLAG.felder.url}"`,
+      `name="${VORSCHLAG.felder.hinweis}"`,
+      `name="${VORSCHLAG.felder.eintrag}"`,
+      `action="${VORSCHLAG.danke}"`,
+    ]) {
+      pruefe(`Vorschlagsformular traegt ${erwartet}`, formular.includes(erwartet), "fehlt im gebauten HTML");
+    }
+    pruefe("Danke-Seite wurde gebaut", lies(path.join(...VORSCHLAG.danke.split("/").filter(Boolean), "index.html")).length > 0);
 
     // Die eigentliche Behauptung, in beide Richtungen.
     for (const e of entwuerfe) {
