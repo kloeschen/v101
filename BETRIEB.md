@@ -174,7 +174,7 @@ Stale-Report liefert die Warteschlange.
 |---|---|---|
 | montags 05:00 | Termine archivieren, Autolinks, Bericht → PR | `pflege.yml` (fertig) |
 | montags 06:00 | Externe Links, Issue bei Funden | `linkcheck.yml` (fertig) |
-| sonntags und mittwochs 04:30 | Suchlauf: zuerst Vorschläge aus dem Formular (`npm run vorschlaege`), dann die Quellenliste nach neuen Terminen absuchen, Warteschlange auf höchstens zehn `frei`-Posten auffüllen, Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` |
+| sonntags und mittwochs 04:30 | Suchlauf: zuerst Vorschläge aus dem Formular (`npm run vorschlaege`), dann die Quellenliste nach neuen Terminen absuchen, dazu höchstens zwei Adressen-Posten, Warteschlange auf höchstens zehn `frei`-Posten auffüllen, Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` und `docs/ablaeufe/adressen-recherche.md` |
 | monatlich | Zitations-Check gegen ein festes Prompt-Set | noch zu bauen |
 | monatlich | Bot-Log-Auswertung aus den Netlify-Logs | noch zu bauen |
 | laufend | Recherche neuer Entitäten | Cowork, aus dem Stale-Report gesteuert |
@@ -184,8 +184,8 @@ Stale-Report liefert die Warteschlange.
 Eingerichtet am 2026-09-20. Entstanden aus einer Messung, nicht aus einem
 Wunsch. **Seit dem 2026-09-25 zweimal am Tag** (06:30 und 16:30 deutscher
 Sommerzeit, dieselbe Routine mit zwei Zeitpunkten) und mit **gebündelten
-Posten** — bis zu sechs Termine oder vier Begriffe pro Posten und PR
-(Entscheidung Markus, ENTSCHEIDUNGEN.md). Zwei Läufe kollidieren nicht:
+Posten** — bis zu sechs Termine, vier Begriffe oder vier Läden & Studios
+pro Posten und PR (Entscheidung Markus, ENTSCHEIDUNGEN.md). Zwei Läufe kollidieren nicht:
 `warteschlange:naechster` überspringt Posten, die ein offener Zweig schon
 bearbeitet.
 
