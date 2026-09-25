@@ -13,6 +13,32 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Messung: Barrierefreiheit und Ladezeit sind kein Engpass
+
+**Gemessen:** 15 Seiten, eine je Seitentyp, in Chromium bei 390 px Breite,
+mit axe-core und den Regelsätzen WCAG 2.0/2.1 A und AA sowie Best Practice.
+Geprüft wurde der Stand mit Entwürfen.
+
+- **Barrierefreiheit:** 0 Verstöße auf allen 15 Seiten. Ein gemeldeter
+  Verstoß auf `/kalender/` war ein Messfehler: Die Adresse hat keine
+  eigene Seite, ausgewertet wurde die Verzeichnisliste des Testservers.
+  Verlinkt ist `/kalender/` nirgends.
+- **Ladezeit:** 6 bis 22 KB HTML je Seite, keine weiteren Anfragen (das
+  CSS steckt in der Seite, es gibt keine Schriften und kein JavaScript
+  außer dem Formularhelfer). DOMContentLoaded lag lokal bei 12 bis 42 ms.
+- **Kein horizontales Scrollen** auf dem Handy.
+
+**Folge:** Hier ist nichts zu bauen. Die Messung hat aber einen eigenen
+Fehler gefunden: Der neue Footer mit Impressum und Datenschutz hatte kein
+CSS, beide Links klebten zusammen. Er ist im selben PR behoben.
+
+**Korrektur einer eigenen Aussage:** In der Qualitätsübersicht stand, die
+Seite habe kein CSS. Das stimmte nicht. Das CSS liegt in `src/styles/`,
+und Astro bettet es ins HTML ein. Die Suche nach `<style>` im Quellcode
+hatte deshalb nichts gefunden.
+
+---
+
 ## 2026-09-25 — Impressum und Datenschutz: Gerüst mit Go-Live-Sperre
 
 **Anlass:** Beide Seiten sind Pflicht und fehlten. Markus: „kannst du schon
