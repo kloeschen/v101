@@ -174,10 +174,13 @@ async function parallelJeHost(
  * bekommt sie weiterhin als Blocker. Ein Übergehen wäre der falsche Weg:
  * Dann verschwände auch der Fall, in dem die Seite tatsächlich weg ist.
  *
- * NUR 403. Ein 404 von einem dieser Hosts bleibt ein Fehler — die Liste sagt
- * "dieser Anbieter sperrt Roboter aus", nicht "diesem Anbieter glauben wir
- * alles". Genau diese Unterscheidung ist der Grund, warum hier ein Status
- * und nicht ein Host allein steht.
+ * NUR DER GENANNTE STATUS, im Normalfall 403. Ein 404 von einem dieser Hosts
+ * bleibt ein Fehler — die Liste sagt "dieser Anbieter sperrt Roboter aus",
+ * nicht "diesem Anbieter glauben wir alles". Genau diese Unterscheidung ist
+ * der Grund, warum hier ein Status und nicht ein Host allein steht.
+ * Facebook sperrt nicht mit 403, sondern mit 400, auch gegenüber einer
+ * Browserkennung; der Eintrag nennt deshalb 400 statt 403 (2026-09-25).
+ * 404 und 410 darf kein Eintrag nennen — `test-checklinks.ts` prüft das.
  *
  * WARUM ÜBERHAUPT: Eine gute Quelle zu streichen, weil ein Prüfskript sie
  * nicht sehen darf, wäre der falsche Weg herum. Ein wöchentlicher Bericht,
@@ -188,32 +191,53 @@ async function parallelJeHost(
  * das; eine Liste ohne Begründungen wäre die stille Ausnahme, die sie
  * verhindern soll.
  */
-export const BOT_ABWEHR: { host: string; grund: string }[] = [
+export const BOT_ABWEHR: { host: string; grund: string; status?: number[] }[] = [
   {
     host: "britannica.com",
     grund:
       "Antwortet Prüfskripten mit HTTP 403, auch nach dem GET-Nachfassen. " +
       "Die Seite /art/boogie-woogie war am 2026-09-09 im Browser abrufbar und ist gelesen.",
   },
+  {
+    host: "reservix.de",
+    grund:
+      "Antwortet Prüfskripten mit HTTP 403. Mit Browserkennung lieferten am 2026-09-25 " +
+      "drei Ticketseiten (Boppin'B, Mad Sin, ASB-Bahnhof) HTTP 200 mit dem erwarteten Titel.",
+  },
+  {
+    host: "discogs.com",
+    grund:
+      "Cloudflare-Browserprüfung (\"Just a moment...\"), HTTP 403 auch mit Browserkennung " +
+      "(2026-09-25). Ob die Seite existiert, lässt sich per Skript nicht feststellen.",
+  },
+  {
+    host: "facebook.com",
+    status: [400],
+    grund:
+      "Antwortet ohne Anmeldung mit HTTP 400, auch mit Browserkennung (2026-09-25). " +
+      "Ob die Seite existiert, lässt sich per Skript nicht feststellen.",
+  },
 ];
 
 /**
- * Gehört der Host der URL zu einem Eintrag der Liste?
+ * Gehört der Host der URL zu einem Eintrag der Liste, und nennt der
+ * Eintrag den Status, mit dem geantwortet wurde (Vorgabe: nur 403)?
  *
  * Verglichen wird auf den eingetragenen Host selbst oder eine Subdomain
  * davon — `www.britannica.com` zählt, `notbritannica.com` nicht. Ein
  * schlichtes `includes()` würde den zweiten Fall durchlassen; genau daran
  * ist der Bash-Zweig von guard.mjs schon einmal gescheitert (Lektion 18).
  */
-export function botAbwehrGrund(url: string): string | null {
+export function botAbwehrGrund(url: string, status = 403): string | null {
   let host: string;
   try {
     host = new URL(url).hostname.toLowerCase();
   } catch {
     return null;
   }
-  for (const { host: h, grund } of BOT_ABWEHR) {
+  for (const { host: h, grund, status: codes = [403] } of BOT_ABWEHR) {
     if (host !== h && !host.endsWith(`.${h}`)) continue;
+    if (!codes.includes(status)) return null;
     // Ein Eintrag ohne Begründung wirkt nicht. Das war vorher ein Zufall
     // der Falsy-Prüfung weiter unten und steht jetzt als Regel hier: Wer
     // einen Host einträgt, ohne zu sagen warum, hebt die Prüfung nicht auf.
@@ -236,14 +260,14 @@ export function bewerte(url: string, e: CacheEintrag): Befund | null {
   if (e.status === 429) {
     return { ebene: "warnung", code: "gedrosselt", url, nachricht: "HTTP 429 — Prüfung gedrosselt" };
   }
-  if (e.status === 403) {
-    const grund = botAbwehrGrund(url);
+  if (e.status >= 400) {
+    const grund = botAbwehrGrund(url, e.status);
     if (grund) {
       return {
         ebene: "warnung",
         code: "bot-abwehr",
         url,
-        nachricht: `HTTP 403 — bekannte Bot-Abwehr, von Hand prüfen. ${grund}`,
+        nachricht: `HTTP ${e.status} — bekannte Bot-Abwehr, von Hand prüfen. ${grund}`,
       };
     }
   }

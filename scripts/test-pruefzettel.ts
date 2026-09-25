@@ -102,6 +102,10 @@ pruefe("Auffällige stehen vor Unauffälligen", md.indexOf("in **8 Tagen**") < m
 pruefe("Unauffällige eingeklappt, Einzahl korrekt", md.includes("1 unauffälliger Eintrag"));
 pruefe("Aggregator in der Quellenspalte markiert", md.includes("_(aggregator)_"));
 pruefe("leere Auswahl sagt das", alsMarkdown([]).includes("Keine Inhalte zu prüfen"));
+pruefe("mit PR-Nummer: Vorschau-Link auf die Deploy-Vorschau des PRs",
+  alsMarkdown([ruhig], { pr: 69 }).includes("](https://deploy-preview-69--v101s.netlify.app/events/testabend/)"));
+pruefe("Gegenfall ohne PR-Nummer: Vorschau-Link auf die Branch-Vorschau",
+  alsMarkdown([ruhig]).includes("](https://vorschau--v101s.netlify.app/events/testabend/)") && !alsMarkdown([ruhig]).includes("deploy-preview"));
 
 /* --- Lebenszeichen am echten Bestand ---------------------------------- */
 const echt = ladeAlle({ collection: "events" }).filter((e) => e.daten?.beginn && (e.daten.quellen ?? []).length);

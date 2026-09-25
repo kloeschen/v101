@@ -129,6 +129,37 @@ pruefe("eine unbrauchbare URL wirft nicht, sondern zählt nicht", botAbwehrGrund
 }
 
 /* ------------------------------------------------------------------ */
+/* Status je Eintrag (seit 2026-09-25)                                 */
+/* ------------------------------------------------------------------ */
+/*
+ * Facebook sperrt mit 400 statt 403. Der Eintrag nennt deshalb seinen
+ * eigenen Status. Das ist die enge Form: Der Status gilt nur für diesen
+ * Host, und jeder übrige Status desselben Hosts bleibt, was er war.
+ */
+
+const FB = "https://www.facebook.com/madsinofficial";
+const RESERVIX = "https://asb-bahnhof.reservix.de/";
+
+{
+  const b = bewerte(FB, antwort(400));
+  gleich("400 bei Facebook: Warnung", b?.ebene, "warnung");
+  gleich("400 bei Facebook: eigener Code", b?.code, "bot-abwehr");
+  pruefe("400 bei Facebook: Meldung nennt den echten Status", !!b?.nachricht.startsWith("HTTP 400 "), b?.nachricht ?? "kein Befund");
+}
+// Gegenfälle: Der Sonderstatus gilt weder für andere Hosts noch ersetzt er
+// die Unterscheidung zwischen gesperrt und weg.
+gleich("400 bei Britannica bleibt ein Fehler (Status gilt nur je Eintrag)", bewerte(BRIT, antwort(400))?.code, "tot");
+gleich("400 bei einem fremden Host bleibt ein Fehler", bewerte(FREMD, antwort(400))?.code, "tot");
+gleich("403 bei Facebook bleibt ein Fehler (Eintrag nennt nur 400)", bewerte(FB, antwort(403))?.code, "tot");
+gleich("404 bei Facebook bleibt ein Fehler", bewerte(FB, antwort(404))?.code, "tot");
+gleich("403 bei einer Reservix-Subdomain: Warnung", bewerte(RESERVIX, antwort(403))?.code, "bot-abwehr");
+gleich("404 bei Reservix bleibt ein Fehler", bewerte(RESERVIX, antwort(404))?.code, "tot");
+pruefe(
+  "kein Eintrag nennt 404 oder 410 — das hieße, einem Anbieter alles zu glauben",
+  BOT_ABWEHR.every((e) => !(e.status ?? []).some((s) => s === 404 || s === 410)),
+);
+
+/* ------------------------------------------------------------------ */
 /* Die übrigen Regeln, damit die Erweiterung nichts verschoben hat     */
 /* ------------------------------------------------------------------ */
 

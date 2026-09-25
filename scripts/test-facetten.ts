@@ -342,6 +342,36 @@ gleich("viele Einträge sind erst recht indexierbar", uebersichtIndexierbar(99).
 }
 
 /* ------------------------------------------------------------------ */
+/* Seitentitel sind eindeutig (seit 2026-09-25)                         */
+/* ------------------------------------------------------------------ */
+/*
+ * Das Facettenlabel ist zugleich der <title> der Seite. Am 2026-09-25 hieß
+ * die Lexikon-Kategorie „Mode" genauso wie der Themenbereich „Mode" der
+ * Artikel, und der Themenbereich „Kustom Kulture" genauso wie der
+ * Lexikoneintrag. Zwei Seiten mit demselben Titel konkurrieren in der Suche
+ * und sind im Tab nicht zu unterscheiden. Geprüft wird am echten Bestand,
+ * mit Entwürfen — ein Entwurf wird irgendwann freigegeben.
+ */
+{
+  const reg = buildRegistry(alsRegistryEingaben(ladeAlle()));
+  const titel = new Map<string, string[]>();
+  const merke = (name: string, pfad: string) => {
+    const k = name.trim().toLowerCase();
+    titel.set(k, [...(titel.get(k) ?? []), pfad]);
+  };
+  for (const e of reg.eintraege.values()) merke(e.name, `${e.collection}/${e.slug}`);
+  for (const f of sammleFacetten(reg)) merke(f.label, f.pfad);
+  const doppelt = [...titel.entries()].filter(([, p]) => p.length > 1);
+  // Lebenszeichen: Beide Arten von Titeln sind im Spiel, sonst wäre
+  // „keine Dopplung" auch bei einer leeren Menge wahr (Lektion 19).
+  pruefe(
+    "Titelprüfung sieht Einträge und Facetten",
+    reg.eintraege.size > 20 && sammleFacetten(reg).some((f) => f.segment === "kategorie") && sammleFacetten(reg).some((f) => f.segment === "saeule"),
+  );
+  pruefe("kein Seitentitel kommt zweimal vor", doppelt.length === 0, doppelt.map(([k, p]) => `${k}: ${p.join(", ")}`).join(" | "));
+}
+
+/* ------------------------------------------------------------------ */
 /* Die Kapsel der Übersichtsseite                                       */
 /* ------------------------------------------------------------------ */
 
