@@ -32,35 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **Läden & Studios in die Läufe aufnehmen?** Die Sammlung steht
-seit dem 2026-09-25, mit einem Eintrag (Rockin' Barber, Berlin). Suchlauf
-und täglicher Lauf kennen bisher nur Termine und Begriffe. Offen sind drei
-Fragen:
-(1) Soll der Suchlauf auch Adressen-Posten schreiben, und mit welchem Anteil
-an den zehn Plätzen? Vorschlag: höchstens zwei, damit Termine nicht
-verdrängt werden.
-(2) Wie groß darf ein Bündel sein? Vorschlag: bis zu vier Anbieter derselben
-Region und desselben Typs, analog zu den Begriffen.
-(3) Welche Quellen soll der Suchlauf absuchen? Vorschlag: die Aussteller-
-und Händlerlisten der Weekender. Walldorf führt eine eigene Seite
-„Vintage Hair & Tattoo“
-(https://www.walldorf-weekender.net/deutsch/50s-markt/vintage-hair-tattoo-2024/).
-Die Liste ist nur ein Hinweis. Belegt wird immer über die eigene Seite des
-Anbieters (`docs/ablaeufe/adressen-recherche.md`).
-
-`mensch` **KS Barbershop Berlin-Steglitz — aufnehmen?** Das ist ein
-Grenzfall des Aufnahmekriteriums. Die Seite https://www.ks-barbershop.de/
-nennt ein Ladenlokal (Gardeschützenweg 65, 12203 Berlin) und unter
-„Leistungen“: „wer auf das Besondere steht, bekommt auch einen Rockabilly
-Style oder einen Fiftie Haircut“. Eine Unterseite
-(https://www.ks-barbershop.de/fifties-haircuts-und-oldtimer/) sagt „Wir
-lieben Rock ’n‘ Roll und Oldtimer“ und nennt Flat Tops, Crew Cuts und
-Pompadour. Sie ist nach dem Bildnamen wohl von 2017. Die letzte Meldung
-unter „News“ stammt von 2020. Zu entscheiden ist, ob das ein
-Szene-Schwerpunkt ist oder ein Nebenangebot. Wenn ja, wird der Posten
-`frei`. Beim Bauen dann prüfen, ob der Laden noch betrieben wird: Das
-Impressum antwortete am 2026-09-25 mit 503.
-
 `frei` **Zeitzonenprüfung deckt `src/content/` nicht ab.** `check-zeitzonen.ts`
 liest `src/**/*.{ts,astro,mjs}` und `scripts/**/*.ts`, also nur Code. Ein
 Frontmatter-Wert mit Uhrzeit, aber ohne Zonenangabe — `beginn:

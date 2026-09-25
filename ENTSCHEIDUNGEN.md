@@ -13,6 +13,37 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Läden & Studios in den Läufen; Grenzfall KS Barbershop aufgenommen
+
+**Entscheidungen von Markus** auf die zwei `mensch`-Posten aus #67:
+
+- **Der Suchlauf schreibt auch Adressen-Posten.** Höchstens zwei der zehn
+  `frei`-Plätze, damit Termine nicht verdrängt werden. Ein Posten bündelt
+  bis zu vier Anbieter derselben Region und desselben Typs.
+  Aus der Begründung abgeleitet (nicht eigens entschieden): Termine haben
+  Vorrang, und eine Adresse belegt nie den letzten freien Platz.
+  Erste Quelle sind die Aussteller- und Händlerlisten der Weekender,
+  beginnend mit Walldorfs Seite „Vintage Hair & Tattoo“.
+  Ablauf und Postenformat stehen in `docs/ablaeufe/adressen-recherche.md`.
+  Beide Routinen verweisen jetzt darauf.
+- **KS Barbershop in Berlin-Steglitz wird aufgenommen.** Damit steht der
+  Maßstab für Grenzfälle: Ein Szene-Angebot genügt, wenn es auf der
+  eigenen Seite konkret benannt ist, auch wenn es nicht das einzige
+  Angebot ist. Ein bloßes „bieten wir auch an“ ohne Konkretes bleibt ein
+  `mensch`-Posten.
+
+**Beim Bauen gefunden:**
+- Das Impressum, das am Vormittag mit 503 antwortete, war am Nachmittag
+  erreichbar.
+- Für den laufenden Betrieb gibt es keinen Beleg nach Mai 2020. Das steht
+  offen in der Redaktionsnotiz. `aktiv` bleibt auf dem Standardwert.
+
+**Falle, im Ablauf festgehalten:** Ein Stand auf einem Weekender-Markt ist
+kein Ladenlokal. Wer auf dem Markt frisiert oder tätowiert, braucht auf der
+eigenen Website eine Ladenadresse, sonst wird er verworfen.
+
+---
+
 ## 2026-09-25 — Steyrtal Boogie Party: erste Region Oberösterreich, Kalender-Vorgabewert nicht als Preis gelesen
 
 **Anlass:** Posten aus dem Suchlauf vom 2026-09-24, gebaut im Lauf vom

@@ -96,6 +96,10 @@ ist mehr wert als ein einzelner Termin.
    Termin der Reihe schon im Register, gehören die nächsten in einen
    Posten, der auf den bestehenden Eintrag als Vorlage verweist.
    **Lexikon-Posten** bündeln bis zu vier verwandte Begriffe.
+   **Adressen-Posten** (Läden & Studios) bündeln bis zu vier Anbieter
+   derselben Region und desselben Typs. Es stehen höchstens zwei davon in
+   der Warteschlange, und Termine haben Vorrang. Ablauf, Quellen und Format
+   stehen in `docs/ablaeufe/adressen-recherche.md`.
 7. **Abliefern:** Branch, PR, der nur `OFFENE-PUNKTE.md` (und ggf. diese
    Datei) berührt, `npm run verify`, `npm run automerge:erlaubt`, bei
    Exitcode 0 und grüner CI selbst mergen. Kein Fund ist ein vollständiges
