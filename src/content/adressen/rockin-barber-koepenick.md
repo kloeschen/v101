@@ -2,7 +2,7 @@
 name: Rockin' Barber
 aliases: [Rockin Barber, Rockin Barber Köpenick]
 kurzbeschreibung: Rockin' Barber ist ein Friseursalon in Berlin-Köpenick, der sich nach eigener Angabe auf Rock'n'Roll- und Rockabilly-Frisuren für Damen und Herren spezialisiert hat.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
 autor: markus

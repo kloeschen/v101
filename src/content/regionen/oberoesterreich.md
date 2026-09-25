@@ -2,7 +2,7 @@
 name: Oberösterreich
 aliases: [OÖ, Ober-Oesterreich]
 kurzbeschreibung: Oberösterreich ist ein Bundesland im Norden Österreichs mit der Landeshauptstadt Linz; im Register ist es bisher über den Boogie-Verein Crazy Boogiefreaks aus dem Raum Steyr vertreten.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
 autor: markus

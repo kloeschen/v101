@@ -2,7 +2,7 @@
 name: Steyrtal Boogie Party, Oktober 2026
 aliases: [Steyrtal Boogie Party Sierning Oktober 2026, Steyrtal Boogie Party Zorba der Grieche]
 kurzbeschreibung: Boogie-Party des Vereins Crazy Boogiefreaks am Samstag, 17. Oktober 2026, von 19 bis 1:30 Uhr im Zorba der Grieche in Sierning bei Steyr.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
 autor: markus
