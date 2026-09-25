@@ -13,6 +13,30 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Rock'n' Boogie Mödling: boogie.at als Aggregator, DJ-Angabe nicht übernommen
+
+Posten „Rock'n' Boogie Tanzparty in der Stadtgalerie Mödling". Drei Punkte
+mit Folgen über diesen Eintrag hinaus:
+
+- **boogie.at steht in neuen Einträgen als `art: aggregator`**, nicht mehr
+  als `offiziell` wie bei den Kammgarnsaal-Nachmittagen vom 2026-09-10. Das
+  folgt der Regel „Kalender ist nicht Veranstalter" aus
+  `docs/ablaeufe/termin-recherche.md`; die Seite bündelt Einträge
+  verschiedener Vereine und Häuser. Ältere Einträge ziehen bei ihrer
+  nächsten Prüfung nach, wie bei Rockin' Wildcat.
+- **Eine DJ-Angabe, die nur boogie.at trägt, bleibt aus `djs` heraus.**
+  Das Haus nennt keinen DJ, nur die Reservierungsadresse derselben Person.
+  Nach CLAUDE.md Regel 5 steht die Angabe im Text, benannt und boogie.at
+  zugeordnet, das Feld bleibt leer. Verworfen: `djs` setzen, weil die
+  E-Mail-Adresse die Person bestätigt — sie bestätigt die Organisation,
+  nicht das Auflegen.
+- **„Parkett" in einer Ankündigung ist kein Beleg für `tanzflaeche`.**
+  „Das Tanzbein auf einem schönen Parkett schwingen" ist die Redewendung
+  für die Tanzfläche, keine Angabe zum Belag. Als Falle in den Ablauf
+  aufgenommen.
+
+---
+
 ## 2026-09-24 — Neue Orte und Regionen ohne Rückfrage
 
 Der erste Suchlauf (PR #58) gab einem Posten die Anweisung mit, für einen
