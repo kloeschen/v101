@@ -174,7 +174,7 @@ Stale-Report liefert die Warteschlange.
 |---|---|---|
 | montags 05:00 | Termine archivieren, Autolinks, Bericht → PR | `pflege.yml` (fertig) |
 | montags 06:00 | Externe Links, Issue bei Funden | `linkcheck.yml` (fertig) |
-| sonntags 04:30 | Suchlauf: Quellenliste nach neuen Terminen absuchen, Warteschlange auf höchstens zehn `frei`-Posten auffüllen, Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` |
+| sonntags 04:30 | Suchlauf: zuerst Vorschläge aus dem Formular (`npm run vorschlaege`), dann die Quellenliste nach neuen Terminen absuchen, Warteschlange auf höchstens zehn `frei`-Posten auffüllen, Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` |
 | monatlich | Zitations-Check gegen ein festes Prompt-Set | noch zu bauen |
 | monatlich | Bot-Log-Auswertung aus den Netlify-Logs | noch zu bauen |
 | laufend | Recherche neuer Entitäten | Cowork, aus dem Stale-Report gesteuert |

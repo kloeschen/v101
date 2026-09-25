@@ -16,7 +16,7 @@ export const GET: APIRoute = async () => {
     .filter((f) => indexierbarkeit(f, einleitungFuer(f)).indexierbar)
     .map((f) => ({ pfad: f.pfad }));
 
-  return new Response(sitemapXml([{ pfad: "/" }, { pfad: "/daten/" }, ...facetten]), {
+  return new Response(sitemapXml([{ pfad: "/" }, { pfad: "/daten/" }, { pfad: "/methodik/" }, ...facetten]), {
     headers: { "Content-Type": "application/xml; charset=utf-8" },
   });
 };

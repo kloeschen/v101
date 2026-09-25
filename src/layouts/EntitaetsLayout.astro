@@ -34,6 +34,7 @@ import { buildGraph } from "../lib/jsonld";
 import { verwandtes, type Registry } from "../lib/links";
 import { SAMMLUNGSNAME, sammlungsPfad } from "../lib/faktenblock";
 import type { CollectionName } from "../content/_schemas";
+import { meldePfad } from "../lib/vorschlag";
 
 interface Props {
   collection: CollectionName;
@@ -91,5 +92,8 @@ const entwurf = daten.status !== "veroeffentlicht";
     <EintragsListe titel={`Verwandt mit ${daten.name}`} eintraege={verwandt} knapp />
 
     <Quellen quellen={daten.quellen ?? []} geprueftAm={daten.geprueftAm} autor={daten.autor} />
+    {/* Korrekturen laufen über dasselbe Formular wie Vorschläge; der
+        Eintrag ist vorbelegt, damit die Meldung zuordenbar ist. */}
+    <p class="melden"><a href={meldePfad(collection, slug)}>Fehler melden oder etwas ergänzen</a></p>
   </article>
 </BasisLayout>

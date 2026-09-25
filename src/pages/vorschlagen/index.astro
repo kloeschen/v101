@@ -1,0 +1,93 @@
+---
+/**
+ * Vorschläge und Korrekturen aus der Szene.
+ *
+ * Ein Netlify-Formular: Die Seite ist statisch, Netlify erkennt das
+ * Formular beim Deploy an `data-netlify` und nimmt die Einsendungen an.
+ * Spamfilter: Akismet (bei Netlify immer an) und ein Honigtopf-Feld.
+ * Kein reCAPTCHA — es hält Menschen auf, und Linkspam hat hier nichts zu
+ * gewinnen: Eingesandte URLs erscheinen nirgends öffentlich.
+ *
+ * Wie ein Vorschlag weiterläuft: `docs/ablaeufe/termin-recherche.md`,
+ * Abschnitt „Vorschläge aus der Szene".
+ */
+import BasisLayout from "../../layouts/BasisLayout.astro";
+import { VORSCHLAG } from "../../lib/vorschlag";
+
+const { felder } = VORSCHLAG;
+const kapsel =
+  "Hier kann jede und jeder eine Veranstaltung, einen Ort oder eine Band vorschlagen oder einen Fehler melden. Es genügt die Adresse der Seite, auf der die Angabe steht.";
+---
+<BasisLayout titel="Vorschlagen oder Fehler melden" beschreibung={kapsel} kanonisch="/vorschlagen/">
+  <h1>Vorschlagen oder Fehler melden</h1>
+  <p class="kapsel">{kapsel}</p>
+
+  <form
+    name={VORSCHLAG.formName}
+    method="POST"
+    action={VORSCHLAG.danke}
+    data-netlify="true"
+    netlify-honeypot={VORSCHLAG.honigtopf}
+  >
+    <input type="hidden" name="form-name" value={VORSCHLAG.formName} />
+    <p hidden>
+      <label>Nicht ausfüllen: <input name={VORSCHLAG.honigtopf} tabindex="-1" autocomplete="off" /></label>
+    </p>
+    <input type="hidden" name={felder.eintrag} value="" data-eintrag />
+    <p data-eintrag-hinweis hidden>
+      Du meldest etwas zum Eintrag <strong data-eintrag-name></strong>.
+    </p>
+
+    <p>
+      <label for="vorschlag-url">Adresse der Seite (Pflicht)</label><br />
+      <input
+        id="vorschlag-url"
+        type="url"
+        name={felder.url}
+        required
+        inputmode="url"
+        placeholder="https://…"
+      />
+    </p>
+    <p>
+      <label for="vorschlag-hinweis">Worum geht es? (freiwillig, eine Zeile)</label><br />
+      <input
+        id="vorschlag-hinweis"
+        type="text"
+        name={felder.hinweis}
+        maxlength={VORSCHLAG.hinweisMaxLaenge}
+        placeholder="zum Beispiel: Konzert am 9. Januar, oder: Uhrzeit stimmt nicht"
+      />
+    </p>
+    <p><button type="submit">Absenden</button></p>
+  </form>
+
+  <h2>Was mit einem Vorschlag passiert</h2>
+  <p>
+    Jeder Vorschlag wird geprüft wie jede andere Quelle auch: Die Seite wird
+    geöffnet, die Angaben werden gegengelesen, und aufgenommen wird nur, was
+    sie belegen und was zur Szene gehört. Auch Veranstalter und Bands dürfen
+    ihre eigenen Termine vorschlagen — maßgeblich sind Relevanz und Beleg,
+    nicht, wer einsendet.
+  </p>
+  <p>
+    Wir fragen nicht nach Namen oder E-Mail-Adresse und können deshalb nicht
+    antworten. Ein aufgenommener Vorschlag erscheint nach Prüfung und
+    Freigabe im Register. Wie das Register insgesamt arbeitet, steht auf der
+    Seite <a href="/methodik/">Methodik</a>.
+  </p>
+
+  <script is:inline>
+    // Vorbelegung aus ?eintrag=collection/slug (Link „Fehler melden").
+    (function () {
+      var wert = new URLSearchParams(location.search).get("eintrag");
+      if (!wert || !/^[a-z]+\/[a-z0-9-]+$/.test(wert)) return;
+      var feld = document.querySelector("[data-eintrag]");
+      var hinweis = document.querySelector("[data-eintrag-hinweis]");
+      var name = document.querySelector("[data-eintrag-name]");
+      if (feld) feld.value = wert;
+      if (name) name.textContent = wert;
+      if (hinweis) hinweis.hidden = false;
+    })();
+  </script>
+</BasisLayout>
