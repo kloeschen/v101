@@ -177,4 +177,8 @@ export const faktenblockFelder: Record<CollectionName, string[]> = {
     "erwaehnteBegriffe", "gehoertZu", "howto", "veroeffentlichtAm",
     "geaendertAm", "autor",
   ],
+  adressen: [
+    "name", "kurzbeschreibung", "typ", "schwerpunkte", "adresse", "region",
+    "barrierefrei", "aktiv", "links",
+  ],
 };

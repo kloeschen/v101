@@ -1054,6 +1054,114 @@ fall({
 });
 
 /* ------------------------------------------------------------------ */
+/* Läden & Studios (seit 2026-09-25)                                   */
+/* ------------------------------------------------------------------ */
+/*
+ * adressen-szenebeleg: Der Szene-Schwerpunkt muss von der eigenen Seite
+ * oder dem eigenen Profil stammen. Jede Bedingung hat ihren Fall — die Art
+ * der Quelle, ob sie `schwerpunkte` deckt, und der Kartendienst, der als
+ * `offiziell` eingestuft ist. Der saubere Fall ist zugleich das
+ * Lebenszeichen, dass Fixture und Schema zusammenpassen.
+ */
+
+const adrQuelle = (url: string, art: string, felder = "typ, schwerpunkte, adresse") =>
+  `\n  - url: ${url}\n` +
+  `    titel: Testquelle\n` +
+  `    abgerufenAm: ${HEUTE}\n` +
+  `    felder: [${felder}]\n` +
+  `    art: ${art}`;
+
+const adrFelder = (name: string, ueber: Record<string, string | undefined> = {}) => ({
+  name,
+  aliases: `[${name} Kurz]`,
+  kurzbeschreibung: `${name} ist ein erfundener Barbershop, der in diesem Testharnisch die Regeln der Sammlung Läden & Studios ausloest.`,
+  status: "entwurf",
+  erstelltAm: HEUTE,
+  geprueftAm: HEUTE,
+  autor: "markus",
+  typ: "barber",
+  schwerpunkte: "[Pompadour, Flat Top]",
+  adresse: "\n  strasse: Teststrasse 1\n  plz: '10115'\n  ort: Teststadt\n  land: DE",
+  region: "testregion",
+  quellen: adrQuelle("https://barber-test.example/", "offiziell"),
+  ...ueber,
+});
+
+const adrKoerper = (name: string) =>
+  `${name} ist ein erfundener Barbershop, der in diesem Testharnisch die Regeln der Sammlung Läden und Studios ausloest. ` +
+  `Den Laden gibt es nicht, er dient ausschliesslich der Pruefung des Validators.\n\n` +
+  `## Angebot von ${name}\n\n${fueller(110)}`;
+
+fall({
+  name: "adressen-szenebeleg: Schwerpunkt von der eigenen Seite schweigt",
+  datei: "adressen/barber-eigen.md",
+  inhalt: md(adrFelder("Testbarber Eigen"), adrKoerper("Testbarber Eigen")),
+  verboten: ["schema", "adressen-szenebeleg", "belegpflicht", "referenzen"],
+});
+
+fall({
+  name: "adressen-szenebeleg: eigenes Social-Profil genuegt",
+  datei: "adressen/barber-social.md",
+  inhalt: md(
+    adrFelder("Testbarber Profil", { quellen: adrQuelle("https://instagram.example/testbarber", "social") }),
+    adrKoerper("Testbarber Profil"),
+  ),
+  verboten: ["schema", "adressen-szenebeleg"],
+});
+
+fall({
+  name: "adressen-szenebeleg: nur ein Verzeichnis belegt den Schwerpunkt",
+  datei: "adressen/barber-verzeichnis.md",
+  inhalt: md(
+    adrFelder("Testbarber Verzeichnis", { quellen: adrQuelle("https://branchen.example/testbarber", "aggregator") }),
+    adrKoerper("Testbarber Verzeichnis"),
+  ),
+  erwartet: { "adressen-szenebeleg": "warnung" },
+  // belegpflicht ist erfuellt — genau die Luecke, die diese Regel schliesst.
+  verboten: ["belegpflicht"],
+});
+
+fall({
+  name: "adressen-szenebeleg: eigene Seite belegt nur die Adresse, nicht den Schwerpunkt",
+  datei: "adressen/barber-nur-adresse.md",
+  inhalt: md(
+    adrFelder("Testbarber Adresse", {
+      quellen:
+        adrQuelle("https://barber-adresse.example/", "offiziell", "typ, adresse") +
+        adrQuelle("https://branchen.example/testbarber-adresse", "aggregator", "schwerpunkte"),
+    }),
+    adrKoerper("Testbarber Adresse"),
+  ),
+  erwartet: { "adressen-szenebeleg": "warnung" },
+});
+
+for (const [url, kurz] of [
+  ["https://www.google.com/maps/place/Testbarber", "google.com/maps"],
+  ["https://maps.app.goo.gl/AbCdEf123", "maps.app.goo.gl"],
+  ["https://g.page/testbarber", "g.page"],
+] as const) {
+  fall({
+    name: `adressen-szenebeleg: Kartendienst ${kurz} zaehlt nicht, auch als "offiziell"`,
+    datei: `adressen/barber-karte-${kurz.replace(/[^a-z]/g, "")}.md`,
+    inhalt: md(
+      adrFelder(`Testbarber Karte ${kurz.replace(/[^a-z]/g, "")}`, { quellen: adrQuelle(url, "offiziell") }),
+      adrKoerper(`Testbarber Karte ${kurz.replace(/[^a-z]/g, "")}`),
+    ),
+    erwartet: { "adressen-szenebeleg": "warnung" },
+  });
+}
+
+fall({
+  name: "adressen-szenebeleg: freigegeben ohne eigenen Beleg ist ein Fehler",
+  datei: "adressen/barber-frei-verzeichnis.md",
+  inhalt: md(
+    adrFelder("Testbarber Frei", { status: LIVE, quellen: adrQuelle("https://branchen.example/testbarber-frei", "aggregator") }),
+    adrKoerper("Testbarber Frei"),
+  ),
+  erwartet: { "adressen-szenebeleg": "fehler" },
+});
+
+/* ------------------------------------------------------------------ */
 /* Lexikon: Grounding-Page-Bausteine                                   */
 /* ------------------------------------------------------------------ */
 

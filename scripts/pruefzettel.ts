@@ -118,10 +118,12 @@ export function zettelFuer(e: GeladenerEintrag, k: Kontext): Zettel {
       if (bis < 0) signale.push("Der Termin **liegt in der Vergangenheit**.");
     }
     if (!(d.genres ?? []).length) signale.push("**Keine Genres** — der Szenebezug steht nur im Text.");
-  } else if (e.collection === "locations") {
+  } else if (e.collection === "locations" || e.collection === "adressen") {
     const a = d.adresse;
     if (a) hart("Adresse", "adresse", [a.strasse, [a.plz, a.ort].filter(Boolean).join(" ")].filter(Boolean).join(", "));
     if (d.typ) hart("Typ", "typ", String(d.typ));
+    // Bei Läden & Studios ist der Szenebezug das Aufnahmekriterium.
+    if ((d.schwerpunkte ?? []).length) hart("Schwerpunkte", "schwerpunkte", d.schwerpunkte.join(", "));
   } else {
     hart("Kurzbeschreibung", "kurzbeschreibung", d.kurzbeschreibung);
     if ((d.quellen ?? []).length === 1) signale.push("Der Eintrag stützt sich auf **eine einzige Quelle**.");

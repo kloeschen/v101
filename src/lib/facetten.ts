@@ -100,6 +100,11 @@ const KATEGORIE: Record<string, string> = {
   tattoo: "Tattoo", szene: "Szene", medium: "Medien", epoche: "Epochen",
 };
 
+const ADRESSEN_TYP: Record<string, string> = {
+  barber: "Barbershops", friseur: "Friseure", tattoo: "Tattoo-Studios",
+  "vintage-laden": "Vintage-Läden", "oldtimer-verleih": "Oldtimer-Verleih",
+};
+
 const SAEULE: Record<string, string> = {
   musik: "Musik", geschichte: "Geschichte", mode: "Mode", frisur: "Frisur",
   tanz: "Tanz", "kustom-kulture": "Kustom Kulture", szene: "Szene",
@@ -146,6 +151,15 @@ export const FACETTEN: FacettenDefinition[] = [
     label: "Kategorie",
     werte: (d) => (d.kategorie ? [d.kategorie] : []),
     wertLabel: (w) => KATEGORIE[w] ?? w,
+    sortiere: nachName,
+  },
+  {
+    // Läden & Studios nach Art (seit 2026-09-25): „Barbershops", „Tattoo-Studios" …
+    collection: "adressen",
+    segment: "typ",
+    label: "Art",
+    werte: (d) => (d.typ ? [d.typ] : []),
+    wertLabel: (w) => ADRESSEN_TYP[w] ?? w,
     sortiere: nachName,
   },
   {

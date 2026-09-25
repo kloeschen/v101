@@ -237,7 +237,11 @@ try {
    * auffiel: `/bands/` und `/artikel/` standen indexierbar in der Sitemap,
    * obwohl sie nichts zeigten.
    *
-   * Das Paar steht wieder in einem Lauf: Die drei leeren Sammlungen muessen
+   * Seit dem 2026-09-25 gibt es eine vierte leere Sammlung, Laeden &
+   * Studios -- dass sie ohne Zutun mitgemeldet wird, zeigt, dass die Rubrik
+   * ueber collectionNames laeuft und nicht ueber eine feste Liste.
+   *
+   * Das Paar steht wieder in einem Lauf: Die leeren Sammlungen muessen
    * gemeldet werden, die drei gefuellten nicht. Eine Rubrik, die gar nicht
    * laeuft, faellt an der ersten Haelfte; eine, die wahllos meldet, an der
    * zweiten.
@@ -247,7 +251,7 @@ try {
     const b = bericht(temp);
     const leer = b.posten.filter((p) => p.art === "sammlung-leer").map((p) => p.titel.replace(/ \(.*\)$/, ""));
 
-    gleich("die leeren Sammlungen werden gemeldet", [...leer].sort(), ["Artikel", "Bands", "Lexikon"]);
+    gleich("die leeren Sammlungen werden gemeldet", [...leer].sort(), ["Artikel", "Bands", "Lexikon", "Läden & Studios"]);
     pruefe(
       "und der Posten sagt, was ihnen fehlt",
       b.posten.some((p) => p.art === "sammlung-leer" && /keinen Eintrag/.test(p.detail)),

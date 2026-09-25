@@ -82,6 +82,20 @@ pruefe("alte Quellen → Signal", /2 Quelle\(n\) vor mehr als 14 Tagen/.test(sig
 const ohneBeleg = termin({ quellen: [{ url: "https://x.example", felder: ["ort"], art: "offiziell", abgerufenAm: new Date("2026-09-24") }] });
 pruefe("Fakt ohne Beleg → Signal", /Beginn\*\* ist von keiner Quelle gedeckt/.test(signale(ohneBeleg)), signale(ohneBeleg));
 
+/* --- Läden & Studios -------------------------------------------------- */
+const laden = (quellen: any[]): GeladenerEintrag => ({
+  datei: "z", collection: "adressen", slug: "testbarber", roh: {}, body: "",
+  daten: { name: "Testbarber", typ: "barber", schwerpunkte: ["Pompadour", "Flat Top"],
+    adresse: { strasse: "Teststraße 1", plz: "10115", ort: "Berlin" }, quellen },
+});
+const eigen = { url: "https://barber.example/", felder: ["typ", "schwerpunkte", "adresse"], art: "offiziell", abgerufenAm: new Date("2026-09-24") };
+const lz = zettelFuer(laden([eigen]), kontext());
+pruefe("Laden: Schwerpunkte als harter Fakt", lz.fakten.find((f) => f.name === "Schwerpunkte")?.wert === "Pompadour, Flat Top", JSON.stringify(lz.fakten));
+pruefe("Laden: Adresse als harter Fakt", lz.fakten.find((f) => f.name === "Adresse")?.wert === "Teststraße 1, 10115 Berlin");
+const lzVerz = zettelFuer(laden([{ ...eigen, art: "aggregator" }]), kontext());
+pruefe("Laden: Schwerpunkt nur im Verzeichnis → Signal", lzVerz.signale.some((s) => /Schwerpunkte\*\* steht nur in aggregator/.test(s)), lzVerz.signale.join(" | "));
+pruefe("Gegenfall: Laden mit eigener Seite → kein Schwerpunkt-Signal", !lz.signale.some((s) => /Schwerpunkte/.test(s)), lz.signale.join(" | "));
+
 /* --- Darstellung ------------------------------------------------------- */
 const md = alsMarkdown([zettelFuer(nah, kontext()), ruhig]);
 pruefe("Auffällige stehen vor Unauffälligen", md.indexOf("in **8 Tagen**") < md.indexOf("<details>"), md);

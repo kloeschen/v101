@@ -13,6 +13,71 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Neue Sammlung „Läden & Studios“ (`adressen`)
+
+**Anlass:** Die alte Website führte echte Barber, Rockabilly-Friseure und
+Oldtimer-Verleih. Markus wollte das wieder aufnehmen, dazu Tattoo-Studios
+und Vintage-Läden. Die alte Liste gibt es nicht mehr. Ihre Quelle war
+Google Maps.
+
+**Entscheidungen von Markus:**
+- Name „Läden & Studios“, URL `/adressen/`.
+- Fünf Typen: `barber`, `friseur`, `tattoo`, `vintage-laden`,
+  `oldtimer-verleih`.
+- Nur mit Ladenlokal. Reine Online-Shops kommen nicht hinein, das Schema
+  verlangt `adresse.strasse`.
+- Aufnahmekriterium ist ein Szene-Schwerpunkt, belegt auf der eigenen
+  Website oder dem eigenen Profil.
+- Die Schemaänderung hat Markus ausdrücklich beauftragt und selbst
+  eingespielt (`_schemas.ts`, Commit e9283ee). Der Vorschlag lag unter
+  `docs/vorschlaege/`, weil der Guard Agenten den Schreibzugriff auf die
+  Datei sperrt, auch mit Auftrag. So ist es gedacht.
+
+**Neue Regel `adressen-szenebeleg`:** `belegpflicht` allein hätte das
+Kriterium nicht geschützt. Ein Branchenverzeichnis mit dem Stichwort
+„Rockabilly“ hätte als Quelle genügt, und so war die alte Liste
+entstanden. Die neue Regel verlangt deshalb für `schwerpunkte` eine Quelle
+der Art `offiziell` oder `social`. Google-Maps- und Unternehmensprofil-URLs
+zählen nicht, auch wenn sie als `offiziell` eingestuft sind: Das Profil
+setzt der Eintragende oder ein Dritter, und die Nutzungsbedingungen
+verbieten es, Inhalte daraus in eine eigene Datenbank zu übernehmen.
+Für Entwürfe ist ein Verstoß eine Warnung, für freigegebene Einträge ein
+Fehler.
+
+Belege:
+- Sieben Fälle in `test-validate.ts`: eigene Seite, eigenes Profil, nur
+  Verzeichnis, eigene Seite ohne `schwerpunkte`, drei Kartendienste und die
+  Freigabe-Ebene.
+- Zwei Mutationen: Ohne die Art-Prüfung fallen genau die drei
+  Verzeichnisfälle, ohne die Kartenerkennung genau die drei Kartenfälle.
+- Lebenszeichen am echten Eintrag: Mit der Quelle auf `aggregator`
+  umgestellt, schlägt die Regel an. Mit der echten Quelle schweigt sie.
+
+**Bewusst nicht erfasst: Öffnungszeiten und Preise.** Sie ändern sich ohne
+Ankündigung. Schon der erste Eintrag bestätigt das: Die Startseite des
+Salons nennt beides zweimal, und die Angaben stimmen nicht überein. Ein
+Schemafeld gibt es dafür nicht, und es soll auch keines entstehen.
+
+**Weitere Verdrahtung:**
+- JSON-LD: `HairSalon`, `TattooParlor`, `ClothingStore` und `AutoRental`,
+  sonst `LocalBusiness`. Pflichtfelder in `check-jsonld.ts` sind `name` und
+  `address`.
+- Facette nach Typ, Abschnitt in `llms.txt` und Faktenblock.
+- Der Prüfzettel zeigt Adresse, Typ und Schwerpunkte als harte Fakten.
+  Stehen die Schwerpunkte nur in einem Verzeichnis, gibt er ein Signal.
+
+**Erster Eintrag:** Rockin' Barber in Berlin-Köpenick, zugleich die
+Vorlage für das Golden Example. `typ: friseur` statt `barber` ist eine
+offen begründete Abwägung. Ein zweiter Kandidat, KS Barbershop in
+Steglitz, ist ein Grenzfall und steht als `mensch`-Posten in
+`OFFENE-PUNKTE.md`. Ebenfalls offen und bei Markus: ob und wie die Läufe
+Adressen-Posten bekommen.
+
+**Verworfen:** Einträge ohne Ladenlokal und Google Maps als Beleg. Beides
+ist oben begründet.
+
+---
+
 ## 2026-09-25 — Mehr Durchsatz: Bündel-Posten und zwei Läufe am Tag
 
 **Ausgangslage:** Die Startschwelle verlangt 80 Termine und 80

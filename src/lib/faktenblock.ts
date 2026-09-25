@@ -91,6 +91,7 @@ const LABEL: Record<string, string> = {
   veroeffentlichtAm: "Veröffentlicht",
   geaendertAm: "Aktualisiert",
   autor: "Autor",
+  schwerpunkte: "Schwerpunkte",
   links: "Weblinks",
 };
 
@@ -126,6 +127,8 @@ const ENUM_TEXT: Record<string, string> = {
   metropolregion: "Metropolregion", stadt: "Stadt",
   pillar: "Überblick", spoke: "Vertiefung", howto: "Anleitung",
   vergleich: "Vergleich", liste: "Liste", report: "Report", praxis: "Praxis",
+  barber: "Barbershop", friseur: "Friseur", tattoo: "Tattoo-Studio",
+  "vintage-laden": "Vintage-Laden", "oldtimer-verleih": "Oldtimer-Verleih",
 };
 
 // Immer in der Zeitzone der Site formatieren, nie in der des Build-Servers.
@@ -310,6 +313,7 @@ export const SAMMLUNGSNAME: Record<CollectionName, string> = {
   regionen: "Regionen",
   lexikon: "Lexikon",
   artikel: "Artikel",
+  adressen: "Läden & Studios",
 };
 
 /**
@@ -330,6 +334,8 @@ export const SAMMLUNGSKAPSEL: Record<CollectionName, string> = {
   lexikon:
     "Die Begriffe der Szene, definiert und gegeneinander abgegrenzt — von Rockabilly bis Petticoat.",
   artikel: "Längere Texte zu Musik, Mode, Tanz und Geschichte der Szene.",
+  adressen:
+    "Barbershops, Friseure, Tattoo-Studios, Vintage-Läden und Oldtimer-Verleih mit Szene-Schwerpunkt — jeder mit Ladenlokal und belegtem Angebot.",
 };
 
 /** Die Kapsel einer Übersichtsseite: Auskunft zuerst, Zahl danach. */
