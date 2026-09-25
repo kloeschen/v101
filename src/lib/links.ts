@@ -62,6 +62,13 @@ export interface Registry {
   rueckverweise: Map<string, Rueckverweis[]>;
   /** Nach Länge absteigend: längere Begriffe gewinnen gegen kürzere. */
   begriffe: BegriffMuster[];
+  /**
+   * Wörter, die mehr als ein Lexikoneintrag trägt (Name, Alias oder
+   * Bezeichnung), mit den Slugs, die sie tragen. Diese Wörter verlinkt der
+   * Autolink nicht — welcher Eintrag gemeint ist, steht im Satz, nicht im
+   * Wort. Kleingeschrieben.
+   */
+  mehrdeutig: Map<string, string[]>;
 }
 
 const schluessel = (c: CollectionName, s: string) => `${c}/${s}`;
@@ -126,7 +133,8 @@ export function buildRegistry(eingaben: RegistryEingabe[]): Registry {
     }
   }
 
-  return { eintraege, slugs, rueckverweise, begriffe: baueBegriffe(eintraege) };
+  const { muster, mehrdeutig } = baueBegriffe(eintraege);
+  return { eintraege, slugs, rueckverweise, begriffe: muster, mehrdeutig };
 }
 
 function alsListe(v: unknown): string[] {
@@ -272,35 +280,67 @@ function maskiere(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function baueBegriffe(eintraege: Map<string, EintragMeta>): BegriffMuster[] {
-  const muster: BegriffMuster[] = [];
-  const gesehen = new Set<string>();
-
+/**
+ * MEHRDEUTIGE WÖRTER (seit dem 2026-09-25, Entscheidung Markus). Dasselbe
+ * Wort kann zwei Einträge meinen: „Rock'n'Roll" ist die Musik und der
+ * Turniertanz, „Boogie-Woogie" der Klavierstil und der Paartanz. Vorher
+ * gewann der erste Eintrag, und eine Zählung am 2026-09-25 ergab, dass
+ * neun von 35 Links auf die Musikeinträge den Tanz meinten.
+ *
+ * Die Mehrdeutigkeit wird nicht gepflegt, sondern abgeleitet (Lektion 14):
+ * Trägt mehr als ein Eintrag dasselbe Wort, wird es nicht mehr automatisch
+ * verlinkt. Dabei zählt der Rang: Name, Alias und deutsche Bezeichnung
+ * gehen der englischen Bezeichnung vor. Der Unterrock trägt „Petticoat" als
+ * englische Bezeichnung — im deutschen Text meint das Wort trotzdem immer
+ * den Petticoat-Eintrag. Mehrdeutig ist ein Wort nur, wenn es zwei Einträge
+ * auf demselben Rang tragen (Fund beim Bau, 2026-09-25). Eindeutige Formen bleiben verlinkbar — „Rock'n'Roll-Tanz"
+ * gehört nur dem Tanzeintrag. Mehrdeutige Stellen verlinkt, wer schreibt,
+ * von Hand auf den gemeinten Eintrag; bestehende Links sind geschützt.
+ */
+function baueBegriffe(eintraege: Map<string, EintragMeta>): {
+  muster: BegriffMuster[];
+  mehrdeutig: Map<string, string[]>;
+} {
+  // Erst zählen, wer welches Wort auf welchem Rang trägt, dann bauen.
+  // Rang 0: Name, Alias, deutsche Bezeichnung. Rang 1: englische Bezeichnung.
+  const traeger = new Map<string, { begriff: string; rang: number; slugs: Set<string> }>();
   for (const e of eintraege.values()) {
     if (e.collection !== "lexikon") continue;
-    const kandidaten = [
-      e.name,
-      ...(e.daten.aliases ?? []),
-      e.daten.bezeichnungDe,
-      e.daten.bezeichnungEn,
-    ].filter((x): x is string => typeof x === "string" && x.trim().length >= 4);
-
-    for (const begriff of kandidaten) {
-      const norm = begriff.toLowerCase();
-      if (gesehen.has(norm)) continue; // erster Eintrag gewinnt, danach Duplikat
-      gesehen.add(norm);
-      const einteilig = !/[\s\-']/.test(begriff);
-      muster.push({
-        slug: e.slug,
-        begriff,
-        regex: new RegExp(`${VOR}(${maskiere(begriff)}${einteilig ? FLEXION : ""})${NACH}`, "iu"),
-      });
+    const kandidaten: [unknown, number][] = [
+      [e.name, 0],
+      ...((e.daten.aliases ?? []) as unknown[]).map((a): [unknown, number] => [a, 0]),
+      [e.daten.bezeichnungDe, 0],
+      [e.daten.bezeichnungEn, 1],
+    ];
+    for (const [roh, rang] of kandidaten) {
+      if (typeof roh !== "string" || roh.trim().length < 4) continue;
+      const norm = roh.toLowerCase();
+      const t = traeger.get(norm);
+      if (!t || rang < t.rang) traeger.set(norm, { begriff: roh, rang, slugs: new Set([e.slug]) });
+      else if (rang === t.rang) t.slugs.add(e.slug);
     }
+  }
+
+  const muster: BegriffMuster[] = [];
+  const mehrdeutig = new Map<string, string[]>();
+  for (const [norm, { begriff, slugs }] of traeger) {
+    if (slugs.size > 1) {
+      mehrdeutig.set(norm, [...slugs].sort());
+      continue;
+    }
+    const [slug] = slugs;
+    const einteilig = !/[\s\-']/.test(begriff);
+    muster.push({
+      slug,
+      begriff,
+      regex: new RegExp(`${VOR}(${maskiere(begriff)}${einteilig ? FLEXION : ""})${NACH}`, "iu"),
+    });
   }
 
   // Längster Begriff zuerst: "Neo-Rockabilly" darf nicht als "Rockabilly"
   // verlinkt werden, nur weil das kürzere Muster früher dran war.
-  return muster.sort((a, b) => b.begriff.length - a.begriff.length);
+  muster.sort((a, b) => b.begriff.length - a.begriff.length);
+  return { muster, mehrdeutig };
 }
 
 interface Segment {
