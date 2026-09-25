@@ -2,7 +2,7 @@
 name: Rock'n' Boogie Tanzparty in der Stadtgalerie Mödling, Oktober 2026
 aliases: [Rock'n'Boogie Mödling Oktober 2026, Rock'n'Boogie Stadtgalerie Mödling]
 kurzbeschreibung: Boogie-Tanzabend am Freitag, 16. Oktober 2026, ab 20 Uhr in der Stadtgalerie Mödling südlich von Wien, Eintritt 12 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
 autor: markus
