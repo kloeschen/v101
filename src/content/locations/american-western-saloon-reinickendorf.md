@@ -2,9 +2,9 @@
 name: American Western Saloon
 aliases: [American Western Saloon Berlin, Western Saloon Berlin]
 kurzbeschreibung: Der American Western Saloon im Fontane-Haus in Berlin-Reinickendorf ist ein Country- und Line-Dance-Lokal mit Bühne, auf der an den Wochenenden auch Rockabilly- und Rock'n'Roll-Bands spielen.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-24
-geprueftAm: 2026-09-24
+geprueftAm: 2026-09-25
 autor: markus
 typ: kneipe
 adresse:

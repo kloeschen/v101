@@ -2,9 +2,9 @@
 name: The Sinners im American Western Saloon
 aliases: [The Sinners Berlin 2026, The Sinners Western Saloon]
 kurzbeschreibung: Konzert der Band The Sinners am Samstag, 10. Oktober 2026, im American Western Saloon in Berlin-Reinickendorf, mit 50s Rock'n'Roll, Doo Wop und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-24
-geprueftAm: 2026-09-24
+geprueftAm: 2026-09-25
 autor: markus
 typ: konzert
 beginn: 2026-10-10T20:00:00+02:00

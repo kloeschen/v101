@@ -2,9 +2,9 @@
 name: Rathaus Friedrichshagen
 aliases: [Altes Rathaus Friedrichshagen, Historisches Rathaus Friedrichshagen, Bürgerrathaus Friedrichshagen]
 kurzbeschreibung: Das historische Rathaus Friedrichshagen an der Bölschestraße in Berlin-Köpenick ist ein 1899 eingeweihtes Amtshaus, das heute als privates Bürgerprojekt Säle, einen Ratskeller und ein Kulturprogramm beherbergt — im Herbst 2026 darunter mehrere Tanztermine der Szene.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-24
-geprueftAm: 2026-09-24
+geprueftAm: 2026-09-25
 autor: markus
 typ: gemeindehaus
 adresse:

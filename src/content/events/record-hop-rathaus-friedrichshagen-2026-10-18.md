@@ -2,9 +2,9 @@
 name: Record Hop im Rathaus Friedrichshagen
 aliases: [Record Hop Friedrichshagen, Tanztee im Rathaus Friedrichshagen]
 kurzbeschreibung: Tanznachmittag mit DJ Capt'n K. im Rathaus Friedrichshagen in Berlin-Köpenick am 18. Oktober 2026, mit 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-24
-geprueftAm: 2026-09-24
+geprueftAm: 2026-09-25
 autor: markus
 typ: tanzabend
 beginn: 2026-10-18T16:00:00+02:00

@@ -2,7 +2,7 @@
 name: Stadtgalerie Mödling
 aliases: [Stadtgalerie, KulturQuadrat in der Stadtgalerie, Stadtgalerie Moedling]
 kurzbeschreibung: Die Stadtgalerie Mödling ist eine Kultur- und Veranstaltungslocation in Mödling südlich von Wien, in der neben Kabarett und Konzerten regelmäßig Boogie-Tanzabende stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
 autor: markus
