@@ -54,8 +54,9 @@ ist mehr wert als ein einzelner Termin.
 
 1. **Platz in der Warteschlange ermitteln.** `npm run warteschlange` zählt
    die `frei`-Posten. Der Suchlauf füllt auf **höchstens zehn** auf; stehen
-   schon zehn da, meldet er das und hört auf. Zehn pro Woche ist die Zahl,
-   die Markus am 2026-09-23 als tragbare Prüflast genannt hat. **Die
+   schon zehn da, meldet er das und hört auf. Er läuft sonntags und
+   mittwochs: Seit dem 2026-09-25 baut der tägliche Lauf zweimal am Tag
+   (Entscheidung Markus), braucht also rund vierzehn Posten pro Woche. **Die
    Vorschläge aus dem Formular kommen zuerst** (Abschnitt „Vorschläge aus
    der Szene"); die eigene Suche füllt nur, was danach frei ist.
 2. **Quellen abgehen.** Jede Kalenderseite öffnen, kommende Termine mit
@@ -71,19 +72,29 @@ ist mehr wert als ein einzelner Termin.
    die gerade gebaut werden (`npm run warteschlange:belegt`).
 5. **Priorität:** nahe Termine vor fernen; bei gleichem Abstand die Region
    mit weniger freigegebenen Einträgen zuerst.
-6. **Posten schreiben**, einer pro Termin, oben unter „Als Nächstes":
+6. **Posten schreiben — gebündelt** (seit dem 2026-09-25): **ein Posten
+   pro Quelle oder Reihe, mit bis zu sechs Terminen.** Der tägliche Lauf
+   baut alle Termine eines Postens in einem PR; Quelle, Ort und Leseregeln
+   teilen sie sich. Gehören Termine zu verschiedenen Quellen, sind es
+   verschiedene Posten. Oben unter „Als Nächstes":
 
    ```
-   `frei` **<Band/Veranstaltung> in <Ort> am <Datum> anlegen.** Gesehen am
-   JJJJ-MM-TT auf <URL der Kalenderseite> (Herkunft: Suchlauf JJJJ-MM-TT).
-   Dort steht: <Datum, Uhrzeit, Ort so wie angegeben>. <Was beim Bauen zu
-   prüfen ist — Detailseite, Jahreszahl, zweite Quelle.>
+   `frei` **<Veranstaltung/Reihe/Quelle>: <n> Termine anlegen (<Datum>, <Datum> …).**
+   Gesehen am JJJJ-MM-TT auf <URL der Kalenderseite> (Herkunft: Suchlauf
+   JJJJ-MM-TT). Dort steht: <je Termin Datum, Uhrzeit, Ort so wie
+   angegeben>. <Was beim Bauen zu prüfen ist — Detailseiten, Jahreszahl,
+   zweite Quelle.>
    ```
 
    Der fette Titel schließt in derselben Zeile. „Dort steht" gibt wieder,
    was die Quelle sagt — es ist kein Beleg und wird beim Bauen erneut
    geöffnet. Die Zeile „Herkunft: Suchlauf" ist für die Auswertung (unten)
    nötig; ohne sie lässt sich nicht zählen, was der Suchlauf gebracht hat.
+   **Folgetermine von Reihen** (Record Hop, Boogie-Abende eines Vereins,
+   Konzertreihen eines Hauses) sind der billigste Zuwachs: Steht ein
+   Termin der Reihe schon im Register, gehören die nächsten in einen
+   Posten, der auf den bestehenden Eintrag als Vorlage verweist.
+   **Lexikon-Posten** bündeln bis zu vier verwandte Begriffe.
 7. **Abliefern:** Branch, PR, der nur `OFFENE-PUNKTE.md` (und ggf. diese
    Datei) berührt, `npm run verify`, `npm run automerge:erlaubt`, bei
    Exitcode 0 und grüner CI selbst mergen. Kein Fund ist ein vollständiges
