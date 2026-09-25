@@ -149,6 +149,12 @@ Fehler verursacht oder beinahe verursacht.
   Startseite Termine ohne Jahr, und seine `/konzert/`-Seiten sehen für
   jedes Jahr gleich aus (eine davon ist von 2021). Ohne Jahr kein Termin —
   den Posten mit genau diesem Befund zurückgeben, nicht schätzen.
+- **Das Datum im Seitenkopf ist nicht das Termindatum.** Nachrichten- und
+  Stadtportale zeigen oben das heutige Datum, darunter liegen oft Artikel
+  aus früheren Jahren. Die erste Testeinsendung über das Formular
+  (2026-09-25, wirindortmund.de) trug im Kopf „Freitag, 25. September
+  2026" und beschrieb einen Termin am 28.10.2017. Maßgeblich ist nur das
+  Datum im Text des Termins selbst, mit Jahreszahl.
 - **Aktualitätsbeleg.** Gilt die Angabe der kommenden Ausgabe? Kein
   Veranstalter schreibt es hin; getragen haben bisher Uploadpfad, Datum im
   Dateinamen, `dateModified`, Jahreszahl im URL-Pfad, Wochentag passend zum
