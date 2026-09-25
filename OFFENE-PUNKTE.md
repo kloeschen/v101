@@ -137,19 +137,6 @@ Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
 zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
 Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
 
-`mensch` **Vorschlagsformular scharf schalten: zwei Einstellungen bei Netlify.** Formular,
-Abrufskript und Suchlauf-Schritt stehen seit dem 2026-09-25
-(`docs/ablaeufe/termin-recherche.md`, „Vorschläge aus der Szene"). Es fehlt
-nur, was hinter Netlify-Konto und Cloud-Umgebung liegt: (1) In Netlify die
-Formularerkennung einschalten (Site → Forms → Enable form detection), dann
-neu deployen; danach erscheint dort das Formular „vorschlag". (2) Einen
-persönlichen Netlify-Zugangsschlüssel anlegen und zusammen mit der Site-ID
-als Umgebungsvariablen `NETLIFY_AUTH_TOKEN` und `NETLIFY_SITE_ID` in der
-Cloud-Umgebung der Routinen eintragen. Bis dahin meldet der Suchlauf
-„VORSCHLÄGE NICHT ABGERUFEN" — gewollt laut, nicht still. Beleg danach:
-eine Testeinsendung über `/vorschlagen/` muss beim nächsten
-`npm run vorschlaege` als NEU erscheinen.
-
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
