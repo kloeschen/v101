@@ -83,7 +83,56 @@ Türen. Der Text verweist auf die Website des Anbieters.
 - **Eigene Worte.** Selbstbeschreibungen werden umformuliert. Ein kurzes,
   gekennzeichnetes Zitat ist erlaubt, wenn es den Schwerpunkt belegt.
 
+## Adressen im Suchlauf
+
+Seit dem 2026-09-25 schreibt der Suchlauf auch Adressen-Posten
+(Entscheidung Markus). Termine bleiben die Hauptsache, deshalb gelten drei
+Grenzen:
+
+- **Höchstens zwei Adressen-Posten** unter den zehn `frei`-Plätzen. Stehen
+  schon zwei da, sucht der Suchlauf keine weiteren.
+- **Ein Posten, bis zu vier Anbieter** derselben Region und desselben Typs.
+  Der tägliche Lauf baut sie in einem PR.
+- **Vorrang haben Termine.** Adressen füllen nur Plätze, für die der
+  Suchlauf keinen Termin gefunden hat, und nie den letzten freien Platz.
+
+### Quellen
+
+| Quelle | Region | Hinweis |
+|---|---|---|
+| [Walldorf Weekender, „Vintage Hair & Tattoo“](https://www.walldorf-weekender.net/deutsch/50s-markt/vintage-hair-tattoo-2024/) | überregional | Barber, Vintage-Friseure und Tätowierer auf dem Markt, jeweils mit eigener Website. Die URL trägt ein altes Jahr, der Seitentitel das aktuelle |
+| Händler- und Ausstellerlisten anderer Weekender und Festivals im Register | je nach Veranstaltung | über `links.website` der Events und Reihen |
+| Einsendungen über das Formular | beliebig | wie Termin-Vorschläge: Seite öffnen, Kriterium prüfen |
+
+Eine neue Quelle kommt als Zeile in diese Tabelle, im selben PR wie die
+Posten, die aus ihr entstanden sind.
+
+**Falle: Ein Marktstand ist kein Ladenlokal.** Wer auf einem Weekender
+frisiert oder tätowiert, hat nicht unbedingt einen festen Laden. Der
+Suchlauf öffnet deshalb schon die eigene Website und nimmt nur Anbieter
+auf, die dort eine Ladenadresse nennen. Mobile Anbieter werden verworfen,
+mit Grund im Bericht.
+
+### Das Postenformat
+
+```
+`frei` **Läden & Studios: <n> <Typ> in <Region> anlegen (<Name>, <Name> …).**
+Gesehen am JJJJ-MM-TT auf <URL der Liste> (Herkunft: Suchlauf JJJJ-MM-TT).
+Je Anbieter: eigene Website <URL>; dort steht zum Schwerpunkt: „<kurzes
+Zitat>“; Ladenadresse laut Website: <Adresse>. <Was beim Bauen zu prüfen
+ist.> Ablauf: docs/ablaeufe/adressen-recherche.md.
+```
+
+Das Zitat zum Schwerpunkt ist Pflicht. Ohne Zitat ist es kein Posten,
+sondern eine Vermutung. Ist das Zitat schwach („bietet auch … an“), wird
+der Posten `mensch` statt `frei` geschrieben, mit dem Zitat als Frage.
+
 ## Kandidaten, die auf eine Entscheidung warten
 
 Grenzfälle kommen als `mensch`-Posten nach `OFFENE-PUNKTE.md`, mit dem
-Zitat, an dem die Entscheidung hängt.
+Zitat, an dem die Entscheidung hängt. Der erste Grenzfall, KS Barbershop
+in Berlin-Steglitz, wurde aufgenommen (Markus, 2026-09-25): Er bot
+Fifties-Schnitte als Angebot neben regulären Schnitten an, auf einer
+eigenen Unterseite ausdrücklich benannt. Daran lassen sich künftige
+Grenzfälle messen. Ein Szene-Angebot, das auf der eigenen Seite konkret
+benannt ist, genügt, auch wenn es nicht das einzige Angebot ist.
