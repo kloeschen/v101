@@ -13,6 +13,44 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-25 — Steyrtal Boogie Party: erste Region Oberösterreich, Kalender-Vorgabewert nicht als Preis gelesen
+
+**Anlass:** Posten aus dem Suchlauf vom 2026-09-24, gebaut im Lauf vom
+2026-09-25. Angelegt: Termin, Ort (Zorba der Grieche, Sierning) und die
+Region `oberoesterreich`, alle `entwurf`.
+
+**Entschieden:**
+- **`eintritt: unveroeffentlicht` statt leer.** Der Posten sagte „ohne
+  Preisangabe bleibt `eintritt` leer" — das Feld ist Pflicht, der
+  Schemawert für „die Quelle nennt keinen Preis" ist `unveroeffentlicht`.
+  Gemeint war dasselbe.
+- **`x-cost-type: free` im iCal-Export ist kein Preis.** Der Kalender des
+  Vereins (All-in-One Event Calendar) trägt den Wert bei jedem Termin,
+  auch bei einem, für den es laut Beschreibung Karten gibt. Er ist der
+  Vorgabewert des Plugins. Als neue Falle in
+  `docs/ablaeufe/termin-recherche.md` eingetragen.
+- **`ende` gesetzt**, weil die sichtbare Terminseite des Vereins „bis
+  18. Oktober 2026 um 1:30" nennt. Die Rockin'-Wildcat-Regel „kein `ende`
+  übernehmen" betrifft einen Vorgabewert jener Quelle, nicht Enden
+  überhaupt.
+- **Ort nur einmal ausdrücklich belegt** (boogie.at); die Vereinsseite
+  nennt beim Termin keinen Ort, hat aber unter derselben Anschrift ihre
+  Kontaktadresse und ihr Training. Im Text benannt, nicht verschwiegen
+  (Regel 5).
+- **Sierning oder Neuzeug:** boogie.at schreibt Sierning, der Verein
+  Neuzeug. Neuzeug ist eine Ortschaft der Marktgemeinde Sierning; die
+  Adresse führt die Gemeinde, der Text beide Namen.
+- **Keine `links.website` für das Lokal:** zorbadergrieche.at löste am
+  2026-09-25 nicht auf.
+- **Neue Quelle** crazy-boogiefreaks.at in die Quellentabelle der
+  Termin-Recherche, mit iCal-Export.
+
+**Verworfen:** `typ: kneipe` für das Lokal (Behauptung über den Charakter
+des Hauses ohne Beleg, stattdessen `sonstiges`); `reihe` setzen (eine
+Ausgabe im Register ergäbe eine leere Reihenseite, wie bei Mödling).
+
+---
+
 ## 2026-09-25 — Neue Sammlung „Läden & Studios“ (`adressen`)
 
 **Anlass:** Die alte Website führte echte Barber, Rockabilly-Friseure und

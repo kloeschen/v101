@@ -61,21 +61,6 @@ Szene-Schwerpunkt ist oder ein Nebenangebot. Wenn ja, wird der Posten
 `frei`. Beim Bauen dann prüfen, ob der Laden noch betrieben wird: Das
 Impressum antwortete am 2026-09-25 mit 503.
 
-`frei` **Steyrtal Boogie Party in Sierning am 17. Oktober 2026 anlegen.**
-Gesehen am 2026-09-24 auf https://boogie.at/ (Herkunft: Suchlauf
-2026-09-24), Detailseite https://boogie.at/event/steyrtal-boogie-party-1.
-Dort steht: „Sa., 17.10.2026 - 19:00", Zorba der Grieche,
-Wilhelm-von-Auersperg-Straße 2, 4523 Sierning; Person/Organisation „Crazy
-Boogiefreaks"; Link auf http://zorbadergrieche.at; kein Preis angegeben.
-Beim Bauen prüfen: eine zweite Quelle beim Verein Crazy Boogiefreaks
-suchen (Kontaktadresse auf der Detailseite deutet auf
-crazy-boogiefreaks.at); ohne Preisangabe bleibt `eintritt` leer.
-Oberösterreich hat noch keine Region im Register — `oberoesterreich` als
-Region (`ebene: bundesland`, aufgebaut wie
-`src/content/regionen/niederoesterreich.md`) muss mit angelegt werden, bevor die Location
-entstehen kann. Termin liegt nahe: Wird der Posten erst nach dem
-2026-10-10 gebaut, überspringen und zurückgeben. Zeitzone `+02:00`.
-
 `frei` **Zeitzonenprüfung deckt `src/content/` nicht ab.** `check-zeitzonen.ts`
 liest `src/**/*.{ts,astro,mjs}` und `scripts/**/*.ts`, also nur Code. Ein
 Frontmatter-Wert mit Uhrzeit, aber ohne Zonenangabe — `beginn:
