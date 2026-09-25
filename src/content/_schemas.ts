@@ -490,7 +490,7 @@ export const artikelSchema = basis
     /** Genau eine Hauptentität. Wird zu schema.org `about`. */
     hauptentitaet: z
       .object({
-        typ: z.enum(["events", "bands", "locations", "regionen", "lexikon", "artikel"]),
+        typ: z.enum(["events", "bands", "locations", "regionen", "lexikon", "artikel", "adressen"]),
         slug,
       })
       .strict()
@@ -519,6 +519,39 @@ export const artikelSchema = basis
   .strict();
 
 /* ------------------------------------------------------------------ */
+/* 7. Adressen — Läden & Studios                                       */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Anbieter der Szene mit Ladenlokal: Barber, Friseure, Tattoo-Studios,
+ * Vintage-Läden, Oldtimer-Verleih. Eingeführt am 2026-09-25 auf
+ * ausdrückliche Anweisung von Markus (ENTSCHEIDUNGEN.md).
+ *
+ * Zwei Grundsätze stehen im Schema selbst:
+ *   - **Nur mit Ladenlokal.** `adresse.strasse` ist Pflicht; reine
+ *     Online-Shops haben keine Region und gehören nicht hierher.
+ *   - **Der Szenebezug ist belegpflichtig.** `schwerpunkte` nennt, was der
+ *     Anbieter selbst anbietet oder zeigt — „Pompadour", „Victory Rolls",
+ *     „Old School", „50er-Mode", „US-Cars der 50er". Aufnahmekriterium ist,
+ *     dass das auf der eigenen Website oder dem eigenen Profil steht; die
+ *     Regel `adressen-szenebeleg` in validate-content.ts prüft die Quellenart.
+ *
+ * Öffnungszeiten gibt es bewusst nicht: Sie ändern sich öfter, als ein
+ * Register sie nachprüfen kann.
+ */
+export const adressenSchema = basis
+  .extend({
+    typ: z.enum(["barber", "friseur", "tattoo", "vintage-laden", "oldtimer-verleih"]),
+    schwerpunkte: z.array(z.string().min(2)).min(1, "Ohne Schwerpunkt kein Szenebezug"),
+    adresse: adresse.required({ strasse: true }),
+    region: slug,
+    barrierefrei: z.enum(["ja", "teilweise", "nein", "unbekannt"]).default("unbekannt"),
+    aktiv: z.boolean().default(true),
+    links: linksSchema.default({}),
+  })
+  .strict();
+
+/* ------------------------------------------------------------------ */
 /* Registry                                                            */
 /* ------------------------------------------------------------------ */
 
@@ -529,6 +562,7 @@ export const collectionSchemas = {
   regionen: regionSchema,
   lexikon: lexikonSchema,
   artikel: artikelSchema,
+  adressen: adressenSchema,
 } as const;
 
 export type CollectionName = keyof typeof collectionSchemas;
@@ -542,6 +576,7 @@ export const urlPrefix: Record<CollectionName, string> = {
   regionen: "/regionen",
   lexikon: "/lexikon",
   artikel: "/artikel",
+  adressen: "/adressen",
 };
 
 /**
@@ -556,6 +591,7 @@ export const belegpflichtigeFelder: Record<CollectionName, string[]> = {
   regionen: [],
   lexikon: ["aeraVon", "aeraBis", "herkunftsland"],
   artikel: [],
+  adressen: ["typ", "schwerpunkte", "adresse"],
 };
 
 /** Prüfkadenz in Tagen. Speist den Stale-Report. */
@@ -566,6 +602,7 @@ export const pruefKadenzTage: Record<CollectionName, number> = {
   regionen: 180,
   lexikon: 365,
   artikel: 180,
+  adressen: 180,
 };
 
 /** Referenzfelder: welches Feld zeigt auf welche Collection? */
@@ -577,6 +614,7 @@ export const referenzFelder: Record<CollectionName, Record<string, CollectionNam
   regionen: { uebergeordnet: "regionen" },
   lexikon: { uebergeordnet: "lexikon", verwandt: "lexikon" },
   artikel: { erwaehnteBegriffe: "lexikon", gehoertZu: "artikel" },
+  adressen: { region: "regionen" },
 };
 
 /** Mindestlänge des Fließtexts in Wörtern. Unter diesem Wert: Thin Content. */
@@ -587,4 +625,5 @@ export const minWorte: Record<CollectionName, number> = {
   regionen: 250,
   lexikon: 90,
   artikel: 500,
+  adressen: 100,
 };

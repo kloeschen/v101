@@ -236,6 +236,23 @@ function belegteFelder(daten: Record<string, any>): Set<string> {
   return s;
 }
 
+/** Quellenarten, die für den Anbieter selbst sprechen. */
+const EIGENE_ARTEN = new Set(["offiziell", "social"]);
+
+/** Google Maps und Unternehmensprofile — Suchhinweis, nie Beleg. */
+function istKartendienst(url: string): boolean {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\./, "");
+    if (host === "maps.app.goo.gl" || host === "g.page" || host === "g.co") return true;
+    if (host === "goo.gl" && u.pathname.startsWith("/maps")) return true;
+    if (/^maps\.google\./.test(host)) return true;
+    return /^google\.[a-z.]+$/.test(host) && /^\/(maps|search)\b/.test(u.pathname);
+  } catch {
+    return false;
+  }
+}
+
 /* ------------------------------------------------------------------ */
 /* Regeln                                                              */
 /* ------------------------------------------------------------------ */
@@ -809,6 +826,43 @@ const REGELN: Regel[] = [
         }
       }
       return b;
+    },
+  },
+
+  /* --- Läden & Studios ------------------------------------------- */
+
+  {
+    /**
+     * Aufnahmekriterium der Sammlung (Markus, 2026-09-25): Der Szene-
+     * Schwerpunkt muss auf der eigenen Website oder dem eigenen Profil des
+     * Anbieters stehen. `belegpflicht` allein reicht dafür nicht — sie
+     * verlangt irgendeine Quelle, und ein Branchenverzeichnis, das
+     * „Rockabilly" als Stichwort führt, würde genügen. Genau so war die
+     * Liste der alten Website entstanden: aus Google Maps, wo Kategorie und
+     * Stichworte vom Eintragenden oder von Dritten stammen und nichts über
+     * das tatsächliche Angebot sagen.
+     *
+     * Deshalb: `schwerpunkte` braucht eine Quelle der Art `offiziell` oder
+     * `social`. Google-Maps- und Unternehmensprofil-Adressen zählen nicht,
+     * auch wenn sie so eingestuft sind — sie sind ein Suchhinweis, kein
+     * Beleg (docs/ablaeufe/adressen-recherche.md).
+     */
+    code: "adressen-szenebeleg",
+    collections: ["adressen"],
+    pruefe(e) {
+      if (!e.daten || !(e.daten.schwerpunkte ?? []).length) return [];
+      const eigene = (e.daten.quellen ?? []).filter(
+        (q: any) => (q.felder ?? []).includes("schwerpunkte") && EIGENE_ARTEN.has(q.art) && !istKartendienst(q.url),
+      );
+      if (eigene.length) return [];
+      return [{
+        ebene: e.daten.status === "veroeffentlicht" ? "fehler" : "warnung",
+        code: "",
+        feld: "schwerpunkte",
+        nachricht:
+          "Der Szene-Schwerpunkt ist nicht von der eigenen Website oder dem eigenen Profil des Anbieters belegt " +
+          "(quellen[] mit art offiziell/social und felder: schwerpunkte). Verzeichnisse und Kartendienste zählen nicht.",
+      }];
     },
   },
 

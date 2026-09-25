@@ -141,6 +141,8 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
   nicht an Beschreibungen.
 - Termine finden und anlegen: `docs/ablaeufe/termin-recherche.md` —
   Quellenliste, Suchlauf, gesammelte Fallen.
+- Läden & Studios aufnehmen: `docs/ablaeufe/adressen-recherche.md` —
+  Aufnahmekriterium, was als Beleg zählt, warum Google Maps keiner ist.
 - Architektur, Verträge und Begründungen: `README.md`
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
 - Was als Nächstes ansteht: `OFFENE-PUNKTE.md`

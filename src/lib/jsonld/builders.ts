@@ -24,6 +24,7 @@ import {
   eventStatusMap,
   eventTypMap,
   locationTypMap,
+  adressenTypMap,
   regionEbeneMap,
   autorId,
   istNurDerName,
@@ -241,6 +242,50 @@ export const locationBuilder: Builder = {
 };
 
 /* ------------------------------------------------------------------ */
+/* Adressen — Läden & Studios                                         */
+/* ------------------------------------------------------------------ */
+
+export const adressenBuilder: Builder = {
+  verwendeteFelder: [
+    "name", "kurzbeschreibung", "typ", "schwerpunkte", "adresse", "region",
+    "barrierefrei", "links",
+  ],
+
+  entitaet(d, slug) {
+    return saeubern({
+      "@type": adressenTypMap[d.typ] ?? "LocalBusiness",
+      "@id": entitaetsId("adressen", slug),
+      name: d.name,
+      alternateName: d.aliases,
+      description: d.kurzbeschreibung,
+      url: seitenUrl("adressen", slug),
+      address: adressKnoten(d.adresse),
+      geo: geoKnoten(d.adresse?.lat, d.adresse?.lng),
+      containedInPlace: ref("regionen", d.region),
+      // Der belegte Szenebezug — was der Anbieter selbst anbietet.
+      knowsAbout: d.schwerpunkte,
+      ...(d.barrierefrei === "ja" || d.barrierefrei === "teilweise"
+        ? {
+            amenityFeature: {
+              "@type": "LocationFeatureSpecification",
+              name: "Rollstuhlgerecht",
+              value: d.barrierefrei === "ja",
+            },
+          }
+        : {}),
+      sameAs: sameAs(d.links),
+    });
+  },
+
+  breadcrumb(d, slug) {
+    return [
+      { name: "Läden & Studios", url: `${site.url}/adressen/` },
+      { name: d.name, url: seitenUrl("adressen", slug) },
+    ];
+  },
+};
+
+/* ------------------------------------------------------------------ */
 /* Regionen                                                           */
 /* ------------------------------------------------------------------ */
 
@@ -425,4 +470,5 @@ export const builders: Record<CollectionName, Builder> = {
   regionen: regionBuilder,
   lexikon: lexikonBuilder,
   artikel: artikelBuilder,
+  adressen: adressenBuilder,
 };

@@ -423,6 +423,7 @@ export function llmsTxt(registry: Registry, proSammlung = 25): string {
     abschnitt("regionen", "Regionen"),
     abschnitt("events", "Veranstaltungen"),
     abschnitt("bands", "Bands"),
+    abschnitt("adressen", "Läden & Studios"),
   ].filter(Boolean);
 
   return [kopf, ...abschnitte].join("\n\n");

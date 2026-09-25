@@ -31,6 +31,7 @@ const fragment: Record<CollectionName, string> = {
   regionen: "region",
   lexikon: "term",
   artikel: "article",
+  adressen: "business",
 };
 
 export function entitaetsId(collection: CollectionName, slug: string): string {
@@ -289,6 +290,19 @@ export const locationTypMap: Record<string, string> = {
   museum: "Museum",
   tanzschule: "Place",
   sonstiges: "Place",
+};
+
+/**
+ * Läden & Studios (seit 2026-09-25). schema.org kennt keinen eigenen
+ * Barbershop-Typ; HairSalon ist der nächste. TattooParlor und AutoRental
+ * gibt es genau so.
+ */
+export const adressenTypMap: Record<string, string> = {
+  barber: "HairSalon",
+  friseur: "HairSalon",
+  tattoo: "TattooParlor",
+  "vintage-laden": "ClothingStore",
+  "oldtimer-verleih": "AutoRental",
 };
 
 export const regionEbeneMap: Record<string, string> = {
