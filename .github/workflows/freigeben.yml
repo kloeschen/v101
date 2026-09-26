@@ -31,6 +31,8 @@ on:
           - regionen
           - lexikon
           - artikel
+          - adressen
+
 
 permissions:
   contents: write
