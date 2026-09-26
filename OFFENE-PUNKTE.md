@@ -32,21 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Record Hop in der Alten Feuerwache nachziehen.** Zwei Felder des
-veröffentlichten Eintrags `record-hop-alte-feuerwache-2026-09-25.md` stehen
-auf einer Lesart, die am 2026-09-24 widerlegt wurde (ENTSCHEIDUNGEN,
-2026-09-24). Erstens `ende: 2026-09-26T05:00:00+02:00`: Sieben der acht
-geprüften Termine dieser Quelle enden auf 05:00 Ortszeit, unabhängig von
-Anfangszeit und Spielort; beim achten fällt das Ende mit dem Beginn
-zusammen. Entweder konstant oder leer — ein Vorgabewert, kein Fakt. Das Feld gehört
-entfernt, die Begründung in die Redaktionsnotiz und in den Fließtext.
-Zweitens `art: offiziell` für Rockin' Wildcat: Der Gig Guide bündelt fremde
-Ankündigungen, das ist `aggregator` nach der Definition im Schema. Die
-beiden neuen Berliner Einträge vom 2026-09-24 führen die Quelle bereits so.
-Der Eintrag ist veröffentlicht, der Termin am 2026-09-25 vorbei — also erst
-nach `npm run archivieren` anfassen und die Änderung als Korrektur mit
-Datum in die Redaktionsnotiz schreiben, nicht stillschweigend.
-
 `frei` **Berlin: die nächsten Termine aus dem Rockin'-Wildcat-Gig-Guide.**
 Nachfolger des am 2026-09-24 erledigten Postens; zwei Termine sind
 angelegt (The Sinners 10.10., Record Hop Rathaus Friedrichshagen 18.10.).
