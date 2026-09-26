@@ -646,6 +646,53 @@ const REGELN: Regel[] = [
     },
   },
   {
+    /**
+     * Uhrzeit ohne Offset im Frontmatter — die Fehlerklasse aus Lektion 1,
+     * eine Ebene unter `check:zeit`, das nur Code liest.
+     *
+     * Gemessen am 2026-09-26, gray-matter und Astro lesen beide mit js-yaml:
+     *
+     *   beginn: 2026-10-18T16:00:00     → Date, immer 16:00Z. Gemeint war
+     *                                     16:00 Ortszeit, also 14:00Z — zwei
+     *                                     Stunden daneben, auf jedem Rechner.
+     *   beginn: "2026-10-18T16:00:00"   → String, `z.coerce.date()` liest ihn
+     *   beginn: 2026-10-18 16:00          in der Prozess-Zeitzone: TZ=UTC
+     *                                     16:00Z, TZ=Europe/Berlin 14:00Z.
+     *
+     * Die Prüfung liest deshalb den Text und nicht die geparsten Daten — dem
+     * Date der ersten Zeile sieht man nicht mehr an, ob ein Offset dastand.
+     * Sie fragt jede Zeile, deren ganzer Wert ein Zeitstempel ist, nicht eine
+     * Liste von Feldnamen: `quellen[].abgerufenAm` oder ein künftiges
+     * Datumsfeld sind ebenso betroffen wie `beginn`. Reine Datumswerte
+     * (`erstelltAm: 2026-09-24`) bleiben erlaubt; Zeitstempel mitten in
+     * Fließtext auch, weil dort nicht der ganze Wert einer ist.
+     */
+    code: "zeit-ohne-offset",
+    auchOhneSchema: true,
+    collections: "*",
+    pruefe(e) {
+      const b: Befund[] = [];
+      // `feld:`, `- feld:` oder `- ` als Listeneintrag; dann der ganze Wert,
+      // wahlweise in Anführungszeichen und mit Kommentar dahinter.
+      const ZEILE =
+        /^\s*(?:-\s+)?(?:([\w-]+)\s*:\s+)?(["']?)(\d{4}-\d{2}-\d{2}(?:[Tt]|\s+)\d{1,2}:\d{2}(?::\d{2}(?:\.\d+)?)?)\s*(Z|z|[+-]\d{2}(?::?\d{2})?)?\2\s*(?:#.*)?$/;
+      for (const zeile of e.frontmatter.split("\n")) {
+        const m = ZEILE.exec(zeile);
+        if (!m || m[4]) continue;
+        b.push({
+          ebene: "fehler",
+          code: "",
+          feld: m[1],
+          nachricht:
+            `${m[1] ?? "Listeneintrag"}: "${m[3]}" hat eine Uhrzeit, aber keinen Offset — ` +
+            `je nach Schreibweise wird daraus UTC oder die Zeitzone des Rechners, der baut. ` +
+            `Offset anhängen, z. B. ${m[3].replace(/\s+/, "T")}+02:00 (Sommerzeit) oder +01:00 (Winterzeit).`,
+        });
+      }
+      return b;
+    },
+  },
+  {
     code: "event-zeitraum",
     collections: ["events"],
     pruefe(e, ctx) {

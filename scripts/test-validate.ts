@@ -688,6 +688,52 @@ fall({
   verboten: ["event-zeitraum", "reihe-name", "event-preise", "referenzen"],
 });
 
+/* --- zeit-ohne-offset: Uhrzeit ohne Zeitzone im Frontmatter ----------
+ * Die drei Schreibweisen, die js-yaml unterschiedlich liest (unquotiert →
+ * Date in UTC, quotiert oder ohne Sekunden → String in der Prozesszone),
+ * schlagen je einzeln an. Dazu ein verschachteltes Feld, damit die Regel
+ * nicht bloß `beginn` kennt. Die Gegenfälle zeigen, dass Offset, reines
+ * Datum und Zeitstempel im Fließtext durchgehen — der mit Offset ist das
+ * Lebenszeichen, dass dieselbe Zeile gelesen und bewusst freigelassen wird.
+ */
+
+const zeitFall = (slug: string, name: string, beginn: string, soll: boolean, ueber: Record<string, string> = {}) =>
+  fall({
+    name: `zeit-ohne-offset: ${name}`,
+    datei: `events/${slug}.md`,
+    inhalt: md(evFelder(`Zeit ${slug}`, { beginn, ...ueber }), evKoerper(`Zeit ${slug}`)),
+    ...(soll ? { erwartet: { "zeit-ohne-offset": "fehler" as const } } : { verboten: ["zeit-ohne-offset"] }),
+  });
+
+zeitFall("zeit-unquotiert", "unquotiert mit T schlaegt an", `${inTagen(60)}T16:00:00`, true);
+zeitFall("zeit-quotiert", "in Anfuehrungszeichen schlaegt an", `"${inTagen(60)}T16:00:00"`, true);
+zeitFall("zeit-leerzeichen", "mit Leerzeichen und ohne Sekunden schlaegt an", `${inTagen(60)} 16:00`, true);
+zeitFall("zeit-kommentar", "mit Kommentar dahinter schlaegt an", `${inTagen(60)}T16:00:00 # Einlass`, true);
+zeitFall("zeit-verschachtelt", "verschachtelt in quellen[].abgerufenAm schlaegt an", inTagen(60), true, {
+  quellen:
+    `\n  - url: https://de.wikipedia.org/wiki/Rock_(Kleidung)\n` +
+    `    titel: Rock (Kleidung) - Wikipedia\n` +
+    `    abgerufenAm: ${HEUTE}T09:30:00\n` +
+    `    art: nachschlagewerk\n` +
+    `    felder: [beginn, ort]`,
+});
+zeitFall("zeit-listenkopf", "als erstes Feld eines Listeneintrags schlaegt an", inTagen(60), true, {
+  quellen:
+    `\n  - abgerufenAm: ${HEUTE}T09:30:00\n` +
+    `    url: https://de.wikipedia.org/wiki/Rock_(Kleidung)\n` +
+    `    titel: Rock (Kleidung) - Wikipedia\n` +
+    `    art: nachschlagewerk\n` +
+    `    felder: [beginn, ort]`,
+});
+zeitFall("zeit-offset", "mit Offset ist sauber", `${inTagen(60)}T16:00:00+02:00`, false);
+zeitFall("zeit-z", "mit Z ist sauber", `${inTagen(60)}T14:00:00Z`, false);
+zeitFall("zeit-nur-datum", "reines Datum ist sauber", inTagen(60), false);
+zeitFall("zeit-fliesstext", "Zeitstempel im Fliesstext ist sauber", inTagen(60), false, {
+  // Der Zeitstempel steht am Zeilenende: So faellt er nur deshalb nicht
+  // auf, weil die Zeile nicht mit ihm beginnt.
+  redaktionsnotiz: `>-\n  Gemeint ist Ortszeit, die Seite nennt ${inTagen(60)}T16:00:00`,
+});
+
 /* --- Befund M9: der Tagesrand ----------------------------------------
  * Der alte Vergleich war `new Date(ende ?? beginn) < jetzt`. Weil
  * `z.coerce.date()` aus einem Datum ohne Uhrzeit Mitternacht UTC macht, galt

@@ -21,7 +21,7 @@ const pruefe = (name: string, ok: boolean, detail = "") => {
 
 const JETZT = new Date("2026-09-25T10:00:00+02:00");
 const ORT: GeladenerEintrag = {
-  datei: "x", collection: "locations", slug: "testhalle", roh: {}, body: "",
+  datei: "x", collection: "locations", slug: "testhalle", roh: {}, body: "", frontmatter: "",
   daten: { name: "Testhalle", adresse: { strasse: "Hauptstraße 1", plz: "10115", ort: "Berlin" }, typ: "club",
     quellen: [{ url: "https://testhalle.example/", felder: ["adresse", "typ"], art: "offiziell", abgerufenAm: new Date("2026-09-24") }] },
 };
@@ -31,7 +31,7 @@ const kontext = (neu: string[] = []): Kontext => ({
 
 /** Ein unauffälliger Termin: zwei Quellen, eine offiziell, Genres, frische Abrufe, weit weg. */
 const termin = (aenderung: Record<string, any> = {}): GeladenerEintrag => ({
-  datei: "y", collection: "events", slug: "testabend", roh: {}, body: "",
+  datei: "y", collection: "events", slug: "testabend", roh: {}, body: "", frontmatter: "",
   daten: {
     name: "Testabend", beginn: new Date("2026-12-05T20:00:00+01:00"), ort: "testhalle",
     eintritt: "beziffert", preise: [{ bezeichnung: "Abendkasse", betrag: 15, waehrung: "EUR" }],
@@ -84,7 +84,7 @@ pruefe("Fakt ohne Beleg → Signal", /Beginn\*\* ist von keiner Quelle gedeckt/.
 
 /* --- Läden & Studios -------------------------------------------------- */
 const laden = (quellen: any[]): GeladenerEintrag => ({
-  datei: "z", collection: "adressen", slug: "testbarber", roh: {}, body: "",
+  datei: "z", collection: "adressen", slug: "testbarber", roh: {}, body: "", frontmatter: "",
   daten: { name: "Testbarber", typ: "barber", schwerpunkte: ["Pompadour", "Flat Top"],
     adresse: { strasse: "Teststraße 1", plz: "10115", ort: "Berlin" }, quellen },
 });
