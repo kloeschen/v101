@@ -5,17 +5,16 @@ kurzbeschreibung: Tanzabend mit vier DJs in der Alten Feuerwache Berlin-Friedric
 status: veroeffentlicht
 erstelltAm: 2026-09-04
 geprueftAm: 2026-09-23
-geaendertAm: 2026-09-23
+geaendertAm: 2026-09-26
 autor: markus
 typ: tanzabend
 beginn: 2026-09-25T19:00:00+02:00
-ende: 2026-09-26T05:00:00+02:00
 ort: alte-feuerwache-friedrichshain
 region: berlin
 eintritt: unveroeffentlicht
 genres: [rockabilly]
 djs: [Sweet Sue, Chrille, Raockin' Vagabond, Chill Bill]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/record-hop-60
 redaktionsnotiz: >-
@@ -78,22 +77,47 @@ redaktionsnotiz: >-
   Widerspruch steht jetzt auch im Fliesstext (Regel 5), weil er fuer
   Besucher zaehlt: Wer der maschinenlesbaren Angabe folgt, kommt zwei
   Stunden zu spaet.
+  KORREKTUR am 2026-09-26, nach dem Termin, zwei Felder. Beide standen
+  auf einer Lesart der Quelle, die am 2026-09-24 an acht Detailseiten
+  derselben Quelle widerlegt wurde (ENTSCHEIDUNGEN.md, 2026-09-24,
+  "Rockin' Wildcat: drei Lesarten der Quelle").
+  Erstens `ende` ENTFERNT. Es stand seit dem 2026-09-10 auf
+  2026-09-26T05:00:00+02:00, abgeleitet aus dem endDate des
+  Kalenderlinks. Sieben der acht geprueften Termine dieser Quelle enden
+  auf 05:00 Ortszeit, unabhaengig von Anfangszeit und Spielort -- ein
+  Tanztee um 16:00 ebenso wie ein Konzert um 20:00; beim achten faellt
+  das Ende mit dem Beginn zusammen. Der Wert ist ein Vorgabewert des
+  Redaktionssystems, keine Aussage ueber diesen Abend. Die Quelle nennt
+  damit kein Ende, und der Eintrag auch nicht. `ende` ist deshalb auch
+  aus den `felder` beider Quellen gestrichen, die es fuehrten.
+  Zweitens `art: aggregator` statt `offiziell` fuer alle drei
+  Quelleneintraege. Rockin' Wildcat ist ein Online-Magazin, das im Gig
+  Guide fremde Ankuendigungen buendelt, nicht der Veranstalter dieses
+  Abends -- `aggregator` nach der Definition im Schema. Die Berliner
+  Eintraege vom 2026-09-24 fuehren die Quelle bereits so.
+  Folge der Korrektur: Ohne `ende` misst `npm run archivieren` am
+  Beginn, der Eintrag steht deshalb im selben Zug auf
+  `durchfuehrung: stattgefunden`. Das ist eine Ableitung aus dem
+  Kalender, kein Beleg, dass der Abend tatsaechlich stattfand. Die
+  Anfangszeit bleibt 19:00; der Befund vom 2026-09-24, dass das
+  JSON-LD startDate dieser Quelle systematisch um den UTC-Versatz zu
+  spaet liegt, erklaert die 21:00 und stuetzt die gewaehlte Lesart.
 quellen:
   - url: https://www.rockin-wildcat.com/rwc/events/record-hop-60
     titel: Record Hop, 25. September 2026 (Rockin' Wildcat)
     abgerufenAm: 2026-09-04
-    felder: [beginn, ende, ort, djs, eintritt, genres, name, kurzbeschreibung, durchfuehrung, body:abend, body:musik]
-    art: offiziell
+    felder: [beginn, ort, djs, eintritt, genres, name, kurzbeschreibung, durchfuehrung, body:abend, body:musik]
+    art: aggregator
   - url: https://www.rockin-wildcat.com/rwc/events/record-hop-60
     titel: Record Hop, 25. September 2026 (Rockin' Wildcat), erneuter Abruf
     abgerufenAm: 2026-09-23
     felder: [beginn, djs, durchfuehrung, body:abend]
-    art: offiziell
+    art: aggregator
   - url: https://www.rockin-wildcat.com/rwc/guide
     titel: Berlin Gig Guide (Rockin' Wildcat)
     abgerufenAm: 2026-09-04
-    felder: [beginn, ende, ort, body:einordnung]
-    art: offiziell
+    felder: [beginn, ort, body:einordnung]
+    art: aggregator
 ---
 
 Der Record Hop ist ein Tanzabend am 25. September 2026 ab 19 Uhr in der Alten Feuerwache in Berlin-Friedrichshain. Aufgelegt wird von vier DJs; gespielt werden nach Angabe der Veranstalter 50s [Rock'n'Roll](/lexikon/rocknroll/), Jump & Jive, Rhythm'n'Blues und [Rockabilly](/lexikon/rockabilly/).
@@ -103,6 +127,8 @@ Der Record Hop ist ein Tanzabend am 25. September 2026 ab 19 Uhr in der Alten Fe
 Ein Record Hop ist ein Tanzabend ohne Liveband — die Musik kommt von Platten, und das Programm hängt entsprechend an den Auflegenden. Für diesen Termin sind Sweet Sue, Chrille, Raockin' Vagabond und Chill Bill angekündigt.
 
 Die Anfangszeit steht auf der Seite nicht einheitlich: Die sichtbare Angabe und der Kalendereintrag nennen 19 Uhr, die maschinenlesbaren Daten derselben Seite 21 Uhr. Dieser Eintrag folgt den beiden übereinstimmenden Stellen; wer sichergehen will, fragt beim Veranstalter nach.
+
+Eine Endzeit nennt dieser Eintrag nicht. Die Quelle trägt zwar 5 Uhr früh am Folgetag, aber dieselbe Uhrzeit steht dort bei fast jedem Termin, gleich ob Tanztee am Nachmittag oder Konzert am Abend. Sie sagt deshalb nichts darüber, wann dieser Abend endet.
 
 Einen Eintrittspreis nennt die Quelle nicht. Das maschinenlesbare Angebot auf der Seite trägt zwar einen Preis von null Euro, dieser Wert steht dort aber bei jedem Termin gleich — auch bei Konzerten in großen Häusern. Er taugt deshalb nicht als Beleg für freien Eintritt, und dieser Eintrag macht dazu keine Angabe.
 
