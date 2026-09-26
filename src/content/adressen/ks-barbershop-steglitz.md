@@ -2,7 +2,7 @@
 name: KS Barbershop
 aliases: [KS-Barbershop, KS Barbershop Steglitz, Udos Barbershop]
 kurzbeschreibung: KS Barbershop ist ein Friseurladen mit amerikanischem Flair in Berlin-Steglitz, der neben regulären Schnitten Fifties-Haarschnitte wie Flat Top, Crew Cut und Pompadour anbietet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
 autor: markus

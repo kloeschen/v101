@@ -2,7 +2,7 @@
 name: Zorba der Grieche
 aliases: [Zorba der Grieche Sierning, Zorba der Grieche Neuzeug, beim Griechen]
 kurzbeschreibung: Das Zorba der Grieche in Sierning bei Steyr ist ein Lokal, in dem der Verein Crazy Boogiefreaks trainiert und seine Steyrtal Boogie Party ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
 autor: markus
