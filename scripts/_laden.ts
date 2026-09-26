@@ -60,6 +60,13 @@ export interface GeladenerEintrag {
   /** Geprüftes Frontmatter — null, wenn das Schema fehlschlug. */
   daten: Record<string, any> | null;
   body: string;
+  /**
+   * Das Frontmatter als Text, so wie es in der Datei steht. Für Prüfungen,
+   * die nach dem YAML-Parser nicht mehr möglich sind: js-yaml macht aus
+   * `2026-10-18T16:00:00` bereits ein Date, und ob da ein Offset stand,
+   * sieht man ihm nicht mehr an.
+   */
+  frontmatter: string;
 }
 
 export function ladeAlle(optionen: { collection?: CollectionName; dateien?: string[] } = {}): GeladenerEintrag[] {
@@ -93,6 +100,8 @@ export function ladeAlle(optionen: { collection?: CollectionName; dateien?: stri
       roh: roh.data as Record<string, unknown>,
       daten: parsed.success ? (parsed.data as Record<string, any>) : null,
       body: roh.content,
+      // Ohne öffnendes `---` setzt gray-matter das Feld gar nicht.
+      frontmatter: roh.matter ?? "",
     });
   }
   return aus;

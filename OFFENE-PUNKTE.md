@@ -32,21 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Zeitzonenprüfung deckt `src/content/` nicht ab.** `check-zeitzonen.ts`
-liest `src/**/*.{ts,astro,mjs}` und `scripts/**/*.ts`, also nur Code. Ein
-Frontmatter-Wert mit Uhrzeit, aber ohne Zonenangabe — `beginn:
-2026-10-18T16:00:00` — läuft am 2026-09-24 durch `check:zeit`, `validate`
-und `jsonld` grün durch. `z.coerce.date()` liest ihn dann in der
-Prozess-Zeitzone: `TZ=UTC` ergibt `16:00Z`, `TZ=Europe/Berlin` ergibt
-`14:00Z`. Zwei Stunden Unterschied, je nachdem wo gebaut wird — und das ist
-genau die Fehlerklasse aus Lektion 1, eine Ebene unterhalb ihrer eigenen
-Prüfung. Zu bauen: eine Regel, die in `validate-content.ts` oder in
-`check-zeitzonen.ts` jeden Datumswert im Frontmatter ablehnt, der eine
-Uhrzeit trägt, aber keinen Offset. Reine Datumswerte (`erstelltAm`,
-`geprueftAm`) bleiben erlaubt, sonst fallen alle bestehenden Einträge.
-Negativtest und Mutationsbeleg gehören dazu; der Gegenbeleg oben ist die
-Vorlage.
-
 `frei` **Record Hop in der Alten Feuerwache nachziehen.** Zwei Felder des
 veröffentlichten Eintrags `record-hop-alte-feuerwache-2026-09-25.md` stehen
 auf einer Lesart, die am 2026-09-24 widerlegt wurde (ENTSCHEIDUNGEN,

@@ -13,6 +13,59 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-26 — Uhrzeit ohne Offset im Frontmatter ist ein Fehler
+
+**Anlass:** Posten aus OFFENE-PUNKTE.md. `check:zeit` liest nur Code; ein
+Frontmatter-Wert wie `beginn: 2026-10-18T16:00:00` lief durch die ganze
+Prüfkette.
+
+**Gemessen, bevor gebaut wurde** — und die Annahme des Postens stimmte nur
+zur Hälfte. gray-matter und Astro lesen beide mit js-yaml, und das
+unterscheidet nach Schreibweise:
+
+- `beginn: 2026-10-18T16:00:00` (unquotiert) wird ein Date in **UTC**, auf
+  jedem Rechner gleich: 16:00Z. Nicht zonenabhängig, wie der Posten
+  vermutete, sondern immer zwei Stunden daneben — gemeint war 16:00
+  Ortszeit, also 14:00Z.
+- `beginn: "2026-10-18T16:00:00"` und `beginn: 2026-10-18 16:00` bleiben
+  Strings; `z.coerce.date()` liest sie in der Prozess-Zeitzone. `TZ=UTC`
+  ergibt 16:00Z, `TZ=Europe/Berlin` 14:00Z.
+
+Beide Fälle sind falsch, die Regel deckt beide.
+
+**Gebaut:** Regel `zeit-ohne-offset` in `validate-content.ts`, Ebene
+Fehler, für alle Sammlungen und auch ohne gültiges Schema. Sie liest den
+Frontmatter-**Text** (`frontmatter` im Loader, neu), nicht die geparsten
+Daten — dem Date aus der unquotierten Zeile sieht man nicht mehr an, ob
+ein Offset dastand. Geprüft wird jede Zeile, deren ganzer Wert ein
+Zeitstempel ist (`feld:`, `- feld:`, eingerückt, in Anführungszeichen, mit
+Kommentar), nicht eine Liste von Feldnamen: `quellen[].abgerufenAm` ist
+genauso betroffen wie `beginn`. Reine Datumswerte und Zeitstempel im
+Fließtext bleiben erlaubt. Der Bestand (63 Dateien, 14 Zeitstempel als Feldwert) ist
+sauber, alle tragen einen Offset.
+
+**Verworfen:**
+- *In `check-zeitzonen.ts`:* Das prüft Code-Muster zeilenweise über
+  Quelltextdateien; Inhalte liegen im Validator, der auch im
+  PostToolUse-Hook läuft und den Fehler beim Schreiben meldet statt erst
+  in der Kette.
+- *Mit einem YAML-Parser ohne Timestamp-Typ nachlesen:* strukturell sauberer,
+  aber js-yaml ist keine direkte Abhängigkeit (nur über astro und
+  gray-matter, in zwei Versionen). Die Zeilenprüfung kommt ohne aus; ihr
+  bekannter blinder Fleck ist ein Zeitstempel als ganze Zeile in einem
+  Blocktext — ein Fehlalarm, kein Durchlass.
+
+**Belege:** 11 neue Fälle in `test-validate.ts` (6 schlagen an, 5 sind
+sauber; 280 Prüfungen grün). Acht Mutationen am Regelblock, jede lässt
+genau die erwarteten Fälle fallen: Offset-Prüfung weg (die zwei
+Offset-Fälle), Leerzeichen-Form, Anführungszeichen, Kommentar, Einrückung
+(beide verschachtelten), Listenkopf, Zeilenanker (Fließtext), Ebene
+Warnung (alle sechs Positivfälle). Gegenbeleg am echten Register: Offset
+aus `record-hop-rathaus-friedrichshagen-2026-10-18.md` entfernt → genau
+ein Fehler `[zeit-ohne-offset]`, zurückgebaut.
+
+---
+
 ## 2026-09-25 — Vorschaubilder je Seite für geteilte Links
 
 **Anlass:** Keine der 89 Seiten hatte ein `og:image`. Die Szene teilt über
