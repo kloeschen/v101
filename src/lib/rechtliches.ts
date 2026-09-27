@@ -81,10 +81,10 @@ export const PRUEFEN: { thema: string; frage: string }[] = [
     frage:
       "Welche Daten gibt Netlify zur Spamprüfung an Akismet (Automattic Inc., USA) weiter — nur den Inhalt oder auch IP-Adresse und Browserkennung? Die Doku von Netlify sagt es nicht — beim Support nachfragen?",
   },
-  {
-    thema: "Formular",
-    frage: "Netlify löscht Einsendungen nicht von selbst — nach welcher Frist löschen wir verarbeitete Einsendungen im Netlify-Konto?",
-  },
+  // Geklärt am 2026-09-27 (Löschfrist, Entscheidung Markus): Entschiedene
+  // Einsendungen und Spam löscht der Suchlauf mit `vorschlaege --aufraeumen`
+  // als ersten Schritt, also beim nächsten Lauf nach der Entscheidung
+  // (zweimal pro Woche). Steht jetzt im Text.
 ];
 
 /** Stand der Datenschutzerklärung. Bei jeder inhaltlichen Änderung setzen. */

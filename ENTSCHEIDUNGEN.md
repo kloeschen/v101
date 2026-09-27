@@ -13,6 +13,48 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-27 — Einsendungen werden nach der Entscheidung gelöscht
+
+**Anlass:** Netlify speichert zu jeder Formular-Einsendung IP-Adresse,
+Browserkennung und Referrer und löscht nichts von selbst. Die
+Datenschutzerklärung brauchte eine Frist. Markus hat zugestimmt: nach der
+Bearbeitung automatisch löschen.
+
+**Gebaut:** `npm run vorschlaege -- --aufraeumen` (mit `--trocken` als
+Probelauf). Es löscht zwei Arten von Einsendungen:
+- jede, deren Kennung im Verzeichnis `vorschlaege-verarbeitet.json` steht,
+  über die also entschieden ist;
+- jede, die Netlify als Spam markiert hat.
+
+Offene Einsendungen bleiben stehen. Der Suchlauf ruft den Schritt als
+ersten auf, auf dem Stand von `main`. Deshalb löscht nur ein gemergter
+Vermerk. Hängt ein Vermerk in einem PR fest, der nicht durchkommt, bleibt
+die Einsendung erhalten und wird beim nächsten Mal erneut vorgelegt, statt
+spurlos zu verschwinden.
+
+**Verworfen:** Löschen schon in `--vermerke`. Der Schritt läuft ohne
+Zugangsdaten und vor dem Merge. Ein Vermerk in einem gescheiterten PR
+hätte die Einsendung gelöscht, ohne dass ihr Ergebnis irgendwo ankommt.
+
+**Frist in der Datenschutzerklärung:** Gelöscht wird beim nächsten
+Arbeitslauf nach der Entscheidung, die Läufe finden zweimal pro Woche
+statt. Spam wird beim nächsten Lauf ungeprüft gelöscht. Damit ist der
+Prüfpunkt „Löschfrist“ erledigt. Offen bleiben die Log-Frist bei Netlify
+und der Datenumfang an Akismet.
+
+**Belege:**
+- `test-vorschlaege`: vier neue Prüfungen, darunter der Gegenfall, dass
+  eine offene Einsendung bleibt.
+- Mutation „alle Geprüften löschen“: 3 Behauptungen fallen. Der erste
+  Mutationsversuch ließ den Test abstürzen statt eine Behauptung fallen;
+  der Code liest das Ergebnis jetzt mit `?.`, und die Mutation schlägt
+  sauber an.
+- Trockenlauf gegen Netlify: Die eine gespeicherte Einsendung bleibt stehen,
+  weil ihr Vermerk („verworfen“) erst mit #77 auf `main` kommt. Das ist
+  genau die gewollte Reihenfolge.
+
+---
+
 ## 2026-09-27 — Impressum vollständig, Datenschutzerklärung nachgeschärft
 
 **Angaben von Markus:** Anschrift in Bochum, E-Mail-Adresse, Bundesland NRW.
