@@ -131,19 +131,20 @@ Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
 ## Vor dem Go-Live
 
-**Impressum und Datenschutzerklärung: Angaben eintragen.** Das Gerüst steht
-seit dem 2026-09-25 (`/impressum/`, `/datenschutz/`, verlinkt im Footer jeder
-Seite). Die Angaben kommen von Markus und stehen an einer Stelle,
-`src/lib/rechtliches.ts`. Offen sind:
-- Straße, PLZ und Ort sowie die E-Mail-Adresse;
-- fünf Prüfpunkte (`PRUEFEN`): Rechtsgrundlage und DPA bei Netlify, die
-  Speicherdauer der Logs, die Datenweitergabe an Akismet, die Löschfrist
-  der Einsendungen und die zuständige Aufsichtsbehörde.
+**Datenschutzerklärung: drei offene Prüfpunkte.** Impressum und Aufsicht
+sind seit dem 2026-09-27 vollständig (`src/lib/rechtliches.ts`). Offen sind
+noch drei Punkte (`PRUEFEN`):
+- **Log-Speicherdauer:** Wie lange speichert Netlify die Server-Logs? Die
+  Datenschutzerklärung von Netlify nennt keine Frist, also beim Support
+  nachfragen.
+- **Akismet:** Welche Daten gehen zur Spamprüfung an Akismet? Die Doku sagt
+  es nicht, ebenfalls beim Support nachfragen.
+- **Löschfrist:** Nach welcher Frist löschen wir verarbeitete Einsendungen?
+  Das entscheidet Markus.
 
-Solange etwas offen ist, bricht der Build mit `PUBLIC_INDEXIERBAR=true` ab.
-Der Go-Live ist also ohne vollständiges Impressum nicht möglich. Vor dem
-Go-Live gehört ein fachkundiger Blick auf beide Texte; sie sind ein
-Entwurf, keine Rechtsberatung.
+Solange ein Punkt offen ist, bricht der Build mit `PUBLIC_INDEXIERBAR=true`
+ab. Vor dem Go-Live gehört ein fachkundiger Blick auf beide Texte. Sie sind
+ein Entwurf, keine Rechtsberatung.
 
 **Analytics ohne Einwilligungsbanner.** Netlify Analytics (serverseitig,
 keine Cookies) oder Plausible. Ein Cookie-Banner auf einem Register kostet
