@@ -204,16 +204,14 @@ Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
 ## Vor dem Go-Live
 
-**Datenschutzerklärung: drei offene Prüfpunkte.** Impressum und Aufsicht
+**Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht
 sind seit dem 2026-09-27 vollständig (`src/lib/rechtliches.ts`). Offen sind
-noch drei Punkte (`PRUEFEN`):
+noch zwei Punkte (`PRUEFEN`):
 - **Log-Speicherdauer:** Wie lange speichert Netlify die Server-Logs? Die
   Datenschutzerklärung von Netlify nennt keine Frist, also beim Support
   nachfragen.
 - **Akismet:** Welche Daten gehen zur Spamprüfung an Akismet? Die Doku sagt
   es nicht, ebenfalls beim Support nachfragen.
-- **Löschfrist:** Nach welcher Frist löschen wir verarbeitete Einsendungen?
-  Das entscheidet Markus.
 
 Solange ein Punkt offen ist, bricht der Build mit `PUBLIC_INDEXIERBAR=true`
 ab. Vor dem Go-Live gehört ein fachkundiger Blick auf beide Texte. Sie sind

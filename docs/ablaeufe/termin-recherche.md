@@ -117,6 +117,12 @@ Einsender werden nicht genannt und nicht angeschrieben.
 
 **Im Suchlauf, vor der eigenen Suche:**
 
+0. `npm run vorschlaege -- --aufraeumen` löscht bei Netlify jede
+   Einsendung, über die schon entschieden ist (Kennung im Verzeichnis auf
+   `main`), und allen Spam, samt IP-Adresse und Browserkennung. Die
+   Datenschutzerklärung sagt Einsendern genau diese Frist zu (Markus,
+   2026-09-27). Scheitert der Schritt, gehört das in den Bericht; der Lauf
+   macht trotzdem weiter.
 1. `npm run vorschlaege -- --schreiben` holt die Einsendungen, verwirft
    ungültige Adressen und solche, die das Register oder ein offener Posten
    schon kennt, und vermerkt beides in

@@ -32,6 +32,17 @@
  *   npx tsx scripts/vorschlaege.ts --json              # dasselbe maschinenlesbar
  *   npx tsx scripts/vorschlaege.ts --schreiben         # Eindeutiges (ungültig, bekannt) ins Verzeichnis
  *   npx tsx scripts/vorschlaege.ts --vermerke <id> <ergebnis>
+ *   npx tsx scripts/vorschlaege.ts --aufraeumen [--trocken]  # Entschiedenes und Spam bei Netlify löschen
+ *
+ * LÖSCHEN (seit dem 2026-09-27, Entscheidung Markus): Netlify speichert zu
+ * jeder Einsendung IP-Adresse, Browserkennung und Referrer und löscht
+ * nichts von selbst. `--aufraeumen` löscht jede Einsendung, deren Kennung im
+ * Verzeichnis steht, über die also entschieden ist, und jede, die Netlify
+ * als Spam markiert hat. Der Suchlauf ruft es als ersten Schritt auf, auf
+ * dem Stand von `main`. Gelöscht wird deshalb nur, was gemergt ist. Ein
+ * Vermerk, der in einem gescheiterten PR steckt, löscht nichts. Was aus
+ * einer Einsendung wird, steht danach nur noch im Posten, ohne IP und
+ * Browserkennung. Die Datenschutzerklärung nennt diese Frist.
  *
  * Umgebung: NETLIFY_AUTH_TOKEN (persönlicher Zugangsschlüssel),
  *           NETLIFY_SITE_ID (die Site-ID aus den Netlify-Einstellungen).
@@ -203,6 +214,53 @@ function heute(): string {
   return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Berlin" }).format(new Date());
 }
 
+/**
+ * Was `--aufraeumen` löscht: jede Einsendung, über die entschieden ist
+ * (Kennung im Verzeichnis), und jeden Spam. Offene Einsendungen bleiben,
+ * sonst verschwände ein Vorschlag, bevor jemand ihn angesehen hat.
+ */
+export function zuLoeschen(
+  gepruefte: { id: string }[],
+  spam: { id: string }[],
+  verzeichnis: Map<string, Vermerk>,
+): { id: string; grund: string }[] {
+  return [
+    ...gepruefte.filter((e) => verzeichnis.has(e.id)).map((e) => ({ id: e.id, grund: `entschieden: ${verzeichnis.get(e.id)?.ergebnis}` })),
+    ...spam.map((e) => ({ id: e.id, grund: "Spam" })),
+  ];
+}
+
+async function netlify(token: string, pfad: string, methode = "GET"): Promise<any> {
+  const res = await fetch(`https://api.netlify.com/api/v1${pfad}`, { method: methode, headers: { Authorization: `Bearer ${token}` } });
+  if (!res.ok) throw new Error(`Netlify-API antwortet ${res.status} ${res.statusText} auf ${methode} ${pfad}`);
+  return methode === "GET" ? res.json() : null;
+}
+
+async function aufraeumen(token: string, siteId: string, trocken: boolean): Promise<void> {
+  const formulare = ((await netlify(token, `/sites/${encodeURIComponent(siteId)}/forms`)) as any[]).filter(
+    (f) => f.name === VORSCHLAG.formName,
+  );
+  if (formulare.length === 0) {
+    console.log(`Kein Formular „${VORSCHLAG.formName}" bei Netlify — nichts zu löschen.`);
+    return;
+  }
+  const gepruefte: { id: string }[] = [];
+  const spam: { id: string }[] = [];
+  for (const f of formulare) {
+    gepruefte.push(...(await netlify(token, `/forms/${f.id}/submissions?state=verified&per_page=100`)));
+    spam.push(...(await netlify(token, `/forms/${f.id}/submissions?state=spam&per_page=100`)));
+  }
+  const liste = zuLoeschen(gepruefte, spam, leseVerzeichnis());
+  for (const { id, grund } of liste) {
+    if (!trocken) await netlify(token, `/submissions/${encodeURIComponent(id)}`, "DELETE");
+    console.log(`  ${trocken ? "würde löschen" : "gelöscht"}  [${id}]  ${grund}`);
+  }
+  console.log(
+    `${liste.length} Einsendung(en) ${trocken ? "zu löschen (Trockenlauf)" : "gelöscht"}; ` +
+      `${gepruefte.length - liste.filter((x) => !x.grund.startsWith("Spam")).length} offen gelassen.`,
+  );
+}
+
 async function main() {
   const args = process.argv.slice(2);
 
@@ -228,6 +286,16 @@ async function main() {
         `Das ist nicht dasselbe wie „keine Vorschläge". Im Bericht melden.`,
     );
     process.exit(2);
+  }
+
+  if (args.includes("--aufraeumen")) {
+    try {
+      await aufraeumen(token, siteId, args.includes("--trocken"));
+    } catch (err) {
+      console.log(`AUFRÄUMEN GESCHEITERT — ${(err as Error).message}. Im Bericht melden.`);
+      process.exit(1);
+    }
+    return;
   }
 
   let einsendungen: Einsendung[];
