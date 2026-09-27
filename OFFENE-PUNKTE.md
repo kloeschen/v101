@@ -105,21 +105,6 @@ mit `reihe` bietet sich an. DJ Rockin' Daddy legt auch bei der Rockabilly
 Night in Pullman City (27.12.2026) auf; das ist ein eigener Fund für den
 nächsten Suchlauf, nicht Teil dieses Postens. Zeitzone `+01:00`.
 
-`frei` **Record Hop in der Alten Feuerwache nachziehen.** Zwei Felder des
-veröffentlichten Eintrags `record-hop-alte-feuerwache-2026-09-25.md` stehen
-auf einer Lesart, die am 2026-09-24 widerlegt wurde (ENTSCHEIDUNGEN,
-2026-09-24). Erstens `ende: 2026-09-26T05:00:00+02:00`: Sieben der acht
-geprüften Termine dieser Quelle enden auf 05:00 Ortszeit, unabhängig von
-Anfangszeit und Spielort; beim achten fällt das Ende mit dem Beginn
-zusammen. Entweder konstant oder leer — ein Vorgabewert, kein Fakt. Das Feld gehört
-entfernt, die Begründung in die Redaktionsnotiz und in den Fließtext.
-Zweitens `art: offiziell` für Rockin' Wildcat: Der Gig Guide bündelt fremde
-Ankündigungen, das ist `aggregator` nach der Definition im Schema. Die
-beiden neuen Berliner Einträge vom 2026-09-24 führen die Quelle bereits so.
-Der Eintrag ist veröffentlicht, der Termin am 2026-09-25 vorbei — also erst
-nach `npm run archivieren` anfassen und die Änderung als Korrektur mit
-Datum in die Redaktionsnotiz schreiben, nicht stillschweigend.
-
 `frei` **Berlin: die nächsten Termine aus dem Rockin'-Wildcat-Gig-Guide.**
 Nachfolger des am 2026-09-24 erledigten Postens; zwei Termine sind
 angelegt (The Sinners 10.10., Record Hop Rathaus Friedrichshagen 18.10.).
@@ -219,19 +204,20 @@ Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
 ## Vor dem Go-Live
 
-**Impressum und Datenschutzerklärung: Angaben eintragen.** Das Gerüst steht
-seit dem 2026-09-25 (`/impressum/`, `/datenschutz/`, verlinkt im Footer jeder
-Seite). Die Angaben kommen von Markus und stehen an einer Stelle,
-`src/lib/rechtliches.ts`. Offen sind:
-- Straße, PLZ und Ort sowie die E-Mail-Adresse;
-- fünf Prüfpunkte (`PRUEFEN`): Rechtsgrundlage und DPA bei Netlify, die
-  Speicherdauer der Logs, die Datenweitergabe an Akismet, die Löschfrist
-  der Einsendungen und die zuständige Aufsichtsbehörde.
+**Datenschutzerklärung: drei offene Prüfpunkte.** Impressum und Aufsicht
+sind seit dem 2026-09-27 vollständig (`src/lib/rechtliches.ts`). Offen sind
+noch drei Punkte (`PRUEFEN`):
+- **Log-Speicherdauer:** Wie lange speichert Netlify die Server-Logs? Die
+  Datenschutzerklärung von Netlify nennt keine Frist, also beim Support
+  nachfragen.
+- **Akismet:** Welche Daten gehen zur Spamprüfung an Akismet? Die Doku sagt
+  es nicht, ebenfalls beim Support nachfragen.
+- **Löschfrist:** Nach welcher Frist löschen wir verarbeitete Einsendungen?
+  Das entscheidet Markus.
 
-Solange etwas offen ist, bricht der Build mit `PUBLIC_INDEXIERBAR=true` ab.
-Der Go-Live ist also ohne vollständiges Impressum nicht möglich. Vor dem
-Go-Live gehört ein fachkundiger Blick auf beide Texte; sie sind ein
-Entwurf, keine Rechtsberatung.
+Solange ein Punkt offen ist, bricht der Build mit `PUBLIC_INDEXIERBAR=true`
+ab. Vor dem Go-Live gehört ein fachkundiger Blick auf beide Texte. Sie sind
+ein Entwurf, keine Rechtsberatung.
 
 **Analytics ohne Einwilligungsbanner.** Netlify Analytics (serverseitig,
 keine Cookies) oder Plausible. Ein Cookie-Banner auf einem Register kostet
