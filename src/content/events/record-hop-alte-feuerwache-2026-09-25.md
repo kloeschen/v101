@@ -15,7 +15,7 @@ region: berlin
 eintritt: unveroeffentlicht
 genres: [rockabilly]
 djs: [Sweet Sue, Chrille, Raockin' Vagabond, Chill Bill]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/record-hop-60
 redaktionsnotiz: >-
