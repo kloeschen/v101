@@ -32,6 +32,79 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **BWC Gmunden: 5 Termine anlegen (24.10.2026, 31.12.2026, 03.04.2027, 05.06.2027, 23.10.2027).**
+Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten `?page=1` bis
+`?page=4`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
+steht: „BWC Gmunden Herbst Boogie Party", Sa., 24.10.2026, 20:00, Gasthaus
+Forstinger, Raiffeisenplatz 2, 4661 Roitham (/event/bwc-gmunden-herbst-boogie-party-0);
+„BWC Gmuden Silvester Boogie Party" [sic], Do., 31.12.2026, 18:00, Dorfwirt
+Fischlham, Thalheimerstr. 5, 4652 Fischlham, mit Empfangssekt, Buffet und
+Mitternachtssekt, „Nähere Infos siehe Folder" (/event/bwc-gmuden-silvester-boogie-party);
+„Frühjahrs Boogie Party BWC Gmunden", Sa., 03.04.2027, 20:00, Gasthaus
+Forstinger Roitham (/event/fruehjahrs-boogie-party-bwc-gmunden); „Sommer
+Boogie Party BWC Gmunden", Sa., 05.06.2027, 20:00, Gasthaus Kölblinger,
+Hauptstraße 14, 4653 Eberstalzell (/event/sommer-boogie-party-bwc-gmunden);
+„Herbst Boogie Party BWC Gmunden", Sa., 23.10.2027, 20:00, Gasthaus
+Forstinger Roitham (/event/herbst-boogie-party-bwc-gmunden). Musik jeweils
+„DJ.K Boogie Klaus", Platzreservierung telefonisch; einen Preis nennt keine
+der Seiten. Beim Bauen: Vereinsseite http://www.bwc-gmunden.com (laut
+boogie.at) als Veranstalterquelle öffnen, boogie.at ist nur Kalender.
+Drei neue Locations (Roitham, Fischlham, Eberstalzell), Adresse nur aus
+einer Quelle, die sie nennt — Region `oberoesterreich` gibt es. Den Folder
+zur Silvesterparty suchen; ohne sichtbaren Preis `eintritt:
+unveroeffentlicht`. Die Reservierungsnummer ist eine private Handynummer
+und kommt nicht in den Text. Zeitzone: 24.10.2026 noch `+02:00`,
+31.12. `+01:00`, 03.04.2027 und später `+02:00`.
+
+`frei` **Boogie Lions Spillern: 6 Termine anlegen (31.10.2026, 28.11.2026, 09.01.2027, 20.02.2027, 06.03.2027, 01.05.2027).**
+Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten `?page=1` bis
+`?page=3`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
+steht: „‚HAPPY HALLOWEEN' Boogie Party", Sa., 31.10.2026, 20:00, Festsaal
+Wiemex Spillern, Schulgasse 1, 2104 Spillern (/event/happy-halloween-boogie-party-0,
+Beschreibung „Infos folgen"); „Boogie Party" am Sa., 28.11.2026
+(/event/boogie-party-44), Sa., 09.01.2027 (/event/boogie-party-53),
+Sa., 20.02.2027 und Sa., 06.03.2027 (Liste), Sa., 01.05.2027
+(/event/boogie-party-56, eine Sammelseite mit weiteren Terminen bis
+27.11.2027), jeweils 20:00, gleicher Saal, Veranstalter „Boogie Lions".
+Kein Preis, keine Musikangabe. Beim Bauen: Vereinsseite
+https://www.boogielions.at (laut boogie.at) und die Saalseite
+https://www.wiemex.at/ öffnen; boogie.at ist nur Kalender. Neue Location
+Festsaal Wiemex (Region `niederoesterreich`). Eine Reihe mit `reihe`
+bietet sich an, der erste Termin ist die Vorlage für die übrigen.
+Zeitzone: alle Termine `+01:00` (31.10. liegt nach der Umstellung am
+25.10.), außer 01.05.2027 `+02:00`.
+
+`frei` **BWC Rock Dock Teddys, Perchtoldsdorf: 2 Termine anlegen (06.11.2026, 18.12.2026).**
+Folgetermine des Vereins hinter `events/bella-italia-perchtoldsdorf-2026-09-11`
+(Vorlage). Gesehen am 2026-09-27 auf https://boogie.at/ (`?page=1`,
+`?page=2`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
+steht: „Boogie-Herbstparty", Fr., 06.11.2026, 18:30, Kulturzentrum
+Perchtoldsdorf, Beatrixgasse 5A, 2380 Perchtoldsdorf, in Kooperation mit
+der Tanzschule Schmid, DJane Edith & DJ Andreas, „Musikspende pro Person:
+EUR 10,--", Dresscode Tracht/After-Halloween/Pre-Fasching
+(/event/boogie-herbstparty); „Rock this Christmas! Swing this Christmas!",
+Fr., 18.12.2026, 18:30, gleicher Ort, gleiche DJs, gleiche Musikspende,
+Platzreservierung „erforderlich" (/event/rock-christmas-swing-christmas-2).
+Beim Bauen: Vereinsseite http://www.rockdockteddys.at gegenlesen.
+Achtung: anderer Ort als die Vorlage — Kulturzentrum Perchtoldsdorf ist
+neu, nicht `locations/burg-perchtoldsdorf`. Ob „Musikspende" als Eintritt
+gilt, wie beim Bella-Italia-Eintrag entscheiden. Reservierungsnummer ist
+eine Handynummer, nicht in den Text. Zeitzone `+01:00`.
+
+`frei` **Haslinger Hof Kirchham, Boogie Mix: 2 Termine anlegen (13.11.2026, 11.12.2026).**
+Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten 0 bis 2) und der
+Sammelseite https://boogie.at/event/boogie-mix-3 (Herkunft: Suchlauf
+2026-09-27). Dort steht: „BOOGIE MIX", monatlich freitags 19:00, zuletzt
+Fr., 13.11.2026 und Fr., 11.12.2026, Haslinger Hof, Ed 1, 94148
+Kirchham, Link https://www.haslinger-hof.de; „Monatlicher Fifties Tanzmix
+mit 100% Boogie Woogie, Rock'n' Roll, Rockabilly & Swing" von DJ Rockin'
+Daddy. Kein Preis. Weitere Termine für 2027 stehen noch nicht dort. Beim
+Bauen: Seite des Hauses öffnen und den Termin dort suchen — boogie.at ist
+Kalender, nicht Veranstalter. Neue Location in Region `bayern`. Eine Reihe
+mit `reihe` bietet sich an. DJ Rockin' Daddy legt auch bei der Rockabilly
+Night in Pullman City (27.12.2026) auf; das ist ein eigener Fund für den
+nächsten Suchlauf, nicht Teil dieses Postens. Zeitzone `+01:00`.
+
 `frei` **Berlin: die nächsten Termine aus dem Rockin'-Wildcat-Gig-Guide.**
 Nachfolger des am 2026-09-24 erledigten Postens; zwei Termine sind
 angelegt (The Sinners 10.10., Record Hop Rathaus Friedrichshagen 18.10.).
