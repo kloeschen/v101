@@ -13,6 +13,58 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-27 — Boppin'B-Bündel: zwei Termine, Colos-Saal als neuer Ort; die Live-Seite der Band ist ein Bandsintown-Datensatz
+
+**Anlass:** Posten aus OFFENE-PUNKTE.md (Bündel, zwei Termine). Gebaut: 2
+von 2 — `events/boppin-b-colos-saal-2026-12-26`,
+`events/boppin-b-cafe-central-2027-01-09` und der Trägerort
+`locations/colos-saal-aschaffenburg`, alle `entwurf`.
+
+**Fund mit Folgen für künftige Band-Termine:** Die Live-Seite von
+Boppin'B (`boppinb.de/live`), auf die der Posten zum Gegenlesen verwies,
+enthält im HTML keinen einzigen Termin. Sie bettet ein Bandsintown-Widget
+ein (`data-artist-name="id_310419"`), das die Daten erst im Browser lädt.
+Derselbe Datensatz ist ohne Schlüssel abrufbar:
+`https://rest.bandsintown.com/artists/id_310419/events?app_id=js_www.boppinb.de`
+liefert JSON mit Datum, Uhrzeit, Ort und Straße. Er gilt als Angabe der
+Band (`art: offiziell`, zitiert wird die Live-Seite), weil die Band ihn
+selbst auf ihrer Seite ausspielt.
+
+**Aber nicht als Uhrzeitquelle allein:** Für zwei bereits bekannte
+Termine weicht er ab — Barsinghausen 20:00 statt 20:15 (Haus und
+Reservix übereinstimmend 20:15), Dortmund 20:30 statt 20:00 (Reservix).
+Für die beiden neuen Termine stimmen alle drei Stellen überein. Regel
+daraus, als Falle in `docs/ablaeufe/termin-recherche.md`: Bandsintown
+trägt Datum und Ort, die Uhrzeit nur zusammen mit der Seite des Hauses.
+Der freigegebene Barsinghausen-Eintrag bleibt bei 20:15; zwei
+unabhängige Quellen schlagen einen Widget-Datensatz.
+
+**Abgewogen und selbst entschieden:**
+
+- `ende` bleibt in beiden Terminen leer, obwohl der Kalenderlink des
+  Colos-Saals 23:00 und das JSON-LD des Ticketanbieters 22:00 nennt.
+  Sichtbar steht nirgends eine Endzeit, und beide Werte haben die Form
+  bekannter Vorgabewerte.
+- „Alljährlich" (Colos-Saal über den Weihnachtstermin) steht zugeordnet
+  im Text, aber es gibt keine `reihe`: Frühere Ausgaben sind nicht
+  geprüft, und eine Reihe ohne zweiten Termin im Register erzeugt nur
+  eine Reihenseite mit einem Eintrag.
+- Der Beschreibungstext des Café Central ist erneut ein alter (ein Album
+  „in den Startlöchern", das seit 09/2025 erschienen ist); benannt im
+  Text und in der Redaktionsnotiz, das Datum nur aus der Datumszeile.
+- Die freigegebenen Seiten `bands/boppin-b` und
+  `locations/cafe-central-weinheim` verlinken die neuen Termine **nicht**:
+  `link-auf-entwurf` würde es zu Recht ablehnen. Nachziehen, sobald die
+  Termine freigegeben sind (Posten in OFFENE-PUNKTE.md).
+
+**Pflege im selben Zweig:** `npm run archivieren` hat
+`record-hop-alte-feuerwache-2026-09-25` auf `stattgefunden` gesetzt.
+
+**Keine neue Regel, kein Mutationsbeleg:** Der Lauf hat nur Inhalte und
+Text angelegt.
+
+---
+
 ## 2026-09-26 — Uhrzeit ohne Offset im Frontmatter ist ein Fehler
 
 **Anlass:** Posten aus OFFENE-PUNKTE.md. `check:zeit` liest nur Code; ein

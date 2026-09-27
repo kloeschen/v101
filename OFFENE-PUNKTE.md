@@ -66,28 +66,6 @@ Uhrzeit statt JSON-LD `startDate`, sichtbares Feld „Kosten" entscheidet
 `offers.url` des JSON-LD, nie raten. Bands in `lineupWeitere`. Termine, die
 vor der nächsten Freigabe vorbei wären, überspringen.
 
-`frei` **Boppin'B, Bündel: 2 Termine anlegen (26.12.2026 Colos-Saal Aschaffenburg, 9.1.2027 Café Central Weinheim).**
-Beide stehen auf der Live-Seite der Band (`bands/boppin-b`, `links.website`)
-und werden dort gegengelesen; je Termin zusätzlich die Seite des Hauses.
-Einzelheiten je Termin:
-
-- **Boppin'B im Colos-Saal Aschaffenburg am 26. Dezember 2026 anlegen.**
-Die Terminliste der Band bei Reservix
-(https://www.reservix.de/tickets-boppinb/t3454) nennt „Sa. 26.12.2026,
-20:00 Uhr, Aschaffenburg, Colos-Saal, ab 24,10 €". Die Seite des Hauses als
-zweite Quelle öffnen, den Colos-Saal als Location anlegen (Region `bayern`,
-Adresse nur mit Beleg) und den Termin mit `lineupBands: [boppin-b]`. Die
-Band ist freigegeben, der Verweis ist also erlaubt. Zeitzone im Dezember:
-`+01:00`.
-- **Boppin'B im Café Central Weinheim am 9. Januar 2027 anlegen.** Die
-Detailseite https://cafecentral.de/konzert/goppin-b/ nennt „Sa 9.1.2027",
-Einlass 19 Uhr, Beginn 20 Uhr. Der Ticketshop (loveyourartist, Profil
-„Cafe Central/TocopillA Events") nennt 22 €. Haus und Band sind
-freigegeben. Zeitzone `+01:00`. Vorsicht: Das Haus verwendet alte
-Ankündigungstexte weiter, das Datum also nur aus der Datumszeile der
-Detailseite übernehmen und gegen den Ticketshop halten (ENTSCHEIDUNGEN,
-2026-09-23).
-
 `frei` **Lexikon, Bündel Tanz: Rock'n'Roll-Tanz, Boogie-Woogie-Tanz, Jive.** Drei
 Einträge in einem PR (Bündel-Posten seit dem 2026-09-25). Die drei gehören
 zusammen: Sie grenzen sich gegeneinander und gegen Lindy Hop ab, und das
@@ -178,6 +156,14 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Boppin'B-Termine verlinken — sobald sie freigegeben sind.** Die Seiten
+`bands/boppin-b` (Abschnitt „Live") und `locations/cafe-central-weinheim`
+nennen die Konzerte in Aschaffenburg (26.12.2026) und Weinheim (9.1.2027)
+nur als Text bzw. über die Bandseite; `link-auf-entwurf` verbietet den
+Link auf die Entwürfe `events/boppin-b-colos-saal-2026-12-26` und
+`events/boppin-b-cafe-central-2027-01-09`. Nach der Freigabe dort
+verlinken (ENTSCHEIDUNGEN, 2026-09-27).
 
 **Durchsatz messen — ab dem 2026-10-09.** Seit dem 2026-09-25 zwei Läufe am
 Tag und Bündel-Posten (bis sechs Termine, vier Begriffe). Nach zwei Wochen

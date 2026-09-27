@@ -44,7 +44,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [ASB-Bahnhof Barsinghausen](https://www.asb-bahnhof-barsinghausen.de/) | Niedersachsen | Haus | nein | breites Programm, Szenebezug je Termin prüfen |
 | [Rock'n'Roll Festival Ganderkesee](https://rocknroll-festival.de) | Niedersachsen | Festival | nein (am 2026-09-23 Timeout, am 2026-09-24 erreichbar, kein `Event` im JSON-LD) | einmal im Jahr, Ausgabe über die Seite prüfen |
 | [Crazy Boogiefreaks, Termine](https://crazy-boogiefreaks.at/termine/) | Oberösterreich (Steyr, Sierning) | Verein | ja, iCal/XML-Export des Kalender-Plugins | Terminseiten nennen oft keinen Ort; Trainings und Partys im selben Kalender. `x-cost-type` im Export ist ein Vorgabewert (siehe Fallen) |
-| Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite; Reservix-Bandlisten antworten Skripten mit 403 |
+| Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
 die Posten, die aus ihr entstanden sind. Regionen ohne eigene Quelle
@@ -187,6 +187,13 @@ Fehler verursacht oder beinahe verursacht.
   schönen Parkett schwingen" sagt nichts über den Boden. `tanzflaeche`
   nur setzen, wenn die Quelle den Belag als Belag nennt (Stadtgalerie
   Mödling, 2026-09-25).
+- **Band-Websites mit Bandsintown-Widget** (Boppin'B, 2026-09-27): Die
+  Seite enthält im HTML keinen Termin, der Abruf „findet nichts". Die
+  Künstler-ID steht im Attribut `data-artist-name` (etwa `id_310419`);
+  `https://rest.bandsintown.com/artists/<id>/events?app_id=js_<domain>`
+  liefert denselben Datensatz als JSON. Datum und Ort daraus sind
+  brauchbar, die **Uhrzeit nicht allein**: Bei Boppin'B wich sie in zwei
+  von vier geprüften Terminen vom Haus bzw. von Reservix ab.
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
   `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'
