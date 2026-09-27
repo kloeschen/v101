@@ -66,6 +66,37 @@ ein Fehler `[zeit-ohne-offset]`, zurückgebaut.
 
 ---
 
+## 2026-09-27 — Impressum vollständig, Datenschutzerklärung nachgeschärft
+
+**Angaben von Markus:** Anschrift in Bochum, E-Mail-Adresse, Bundesland NRW.
+Das Impressum hat damit keine Lücke mehr.
+
+**Aus Primärquellen geklärt:**
+- **Auftragsverarbeitung bei Netlify:** Das Netlify-DPA (Stand 2026-06-09)
+  „forms part of … the Self-Serve Subscription Agreement“. Es gilt also
+  ohne eigene Unterschrift.
+- **Übermittlung in die USA:** Die Datenschutzerklärung von Netlify nennt
+  dafür die Standardvertragsklauseln (Durchführungsbeschluss 2021/914).
+  Ob Netlify unter dem EU-US Data Privacy Framework zertifiziert ist, ist
+  damit nicht mehr nötig zu wissen. Der Text stützt sich auf die Klauseln.
+- **Aufsicht:** die Landesbeauftragte für Datenschutz und
+  Informationsfreiheit NRW, mit Anschrift nach dem Impressum der Behörde.
+- **Formulardaten, per API am eigenen Konto nachgesehen:** Netlify speichert
+  zu jeder Einsendung `ip`, `user_agent` und `referrer`. Die bisherige
+  Erklärung verschwieg das und nannte nur Adresse, Hinweis und
+  Eintragskennung. Das steht jetzt im Text.
+
+**Offen geblieben, als Prüfpunkte:**
+- die Frist, nach der Netlify die Logs löscht;
+- welche Daten an Akismet gehen.
+
+Beides sagen weder die Datenschutzerklärung noch die Doku von Netlify.
+Dazu kommt unsere eigene Löschfrist für verarbeitete Einsendungen. Netlify
+löscht sie nicht von selbst, die Frist ist Markus' Entscheidung. Die
+Go-Live-Sperre hält, bis alle drei beantwortet sind.
+
+---
+
 ## 2026-09-25 — Vorschaubilder je Seite für geteilte Links
 
 **Anlass:** Keine der 89 Seiten hatte ein `og:image`. Die Szene teilt über
