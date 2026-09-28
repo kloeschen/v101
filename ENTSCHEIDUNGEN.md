@@ -13,6 +13,37 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-28 — Boogie Lions Spillern: einer von sechs Terminen, boogie.at nicht erreichbar
+
+**Anlass:** Bündel-Posten aus dem Suchlauf vom 2026-09-27 (sechs Termine
+der Boogie Lions im Festsaal WieMex, Spillern), gebaut im
+Nachmittagslauf vom 2026-09-28. Angelegt: der Termin am 31.10.2026
+(Halloween) und die Location `festsaal-wiemex-spillern`, beide
+`entwurf`. Gebaut: 1 von 6.
+
+**Entschieden:**
+- **Fünf Termine zurück in die Warteschlange, nicht geschätzt.** Die
+  Veranstaltungsliste des Vereins bestätigt alle sechs Daten, nennt für
+  die fünf späteren aber weder Uhrzeit noch Ort. Beides steht nur bei
+  boogie.at, und boogie.at war aus der Arbeitsumgebung nicht abrufbar
+  (curl: Verbindungsabbruch; WebFetch: 503). „20 Uhr im selben Saal wie
+  immer" wäre eine Schätzung aus Gewohnheit. Der Rest steht als eigener
+  Posten mit diesem Befund in OFFENE-PUNKTE.
+- **Halloween allein aus Vereinsquellen gebaut.** Ankündigung, Flyer und
+  Veranstaltungsliste des Vereins tragen Datum, 20 Uhr, Saal, DJ und
+  Preis; boogie.at hätte nur „Infos folgen" beigesteuert und steht nicht
+  in `quellen`, weil es nicht geöffnet wurde.
+- **„Mitglieder frei" als Preis 0.** Neben „Gäste 5 Euro" als zweiter
+  Eintrag in `preise`, damit die Staffel vollständig ist; `eintritt`
+  bleibt `beziffert`.
+- **Location-Typ `gemeindehaus`.** Verein und Betreiber verorten den
+  Saal im Gemeindezentrum; geführt wird er vom Gastronomen WieMex.
+  Kapazität 250 ist die Angabe des Betreibers für Feiern.
+
+**Folge für die Warteschlange:** Die nächsten beiden Posten (BWC Rock Dock
+Teddys, Haslinger Hof) hängen ebenfalls an boogie.at. Die Falle steht
+in `docs/ablaeufe/termin-recherche.md`.
+
 ## 2026-09-28 — BWC Gmunden: fünf Termine, Flyer schlägt Datumszeile
 
 **Anlass:** Posten aus dem Suchlauf vom 2026-09-27, gebaut im Lauf vom
