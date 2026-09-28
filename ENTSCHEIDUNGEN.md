@@ -13,6 +13,50 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-28 — BWC Gmunden: fünf Termine, Flyer schlägt Datumszeile
+
+**Anlass:** Posten aus dem Suchlauf vom 2026-09-27, gebaut im Lauf vom
+2026-09-28. Angelegt: fünf Termine der Reihe `gmundner-boogie-party`
+(24.10.2026, 31.12.2026, 03.04.2027, 05.06.2027, 23.10.2027) und drei
+Orte (Gasthaus Forstinger Roitham am Traunfall, Dorfwirt Fischlham,
+Gasthaus Kölblinger Eberstalzell), alle `entwurf`. Alle fünf gebaut.
+
+**Entschieden:**
+- **Silvester beginnt um 19 Uhr, nicht um 18 Uhr.** boogie.at nennt in
+  der Datumszeile 18:00, der Flyer des Vereins (auf der Vereinsseite und
+  bei boogie.at) Einlass 18:30, Beginn 19:00. `beginn` folgt dem
+  Veranstalter, die Abweichung steht im Text (Regel 5).
+- **Silvester `beziffert`, 55 Euro.** Der Posten vermutete keinen
+  sichtbaren Preis; der „Folder", auf den boogie.at verweist, ist der
+  Flyer und nennt den Preis samt Leistungen.
+- **Vereinsseite ist bwc-gmunden.jimdofree.com.** Die Domain aus
+  boogie.at und von den Flyern löste nicht auf. Die Jimdo-Seite trägt
+  Impressum und den Aktivitätenkalender 2026 mit den Flyern der beiden
+  Termine 2026; sie ist `veranstalterUrl`.
+- **Termine 2027 mit nur einer Quelle.** Für die drei Termine 2027 gibt es
+  nur boogie.at (Detailseite und Flyer im Design des Vereins); der
+  Vereinskalender reicht bis Ende 2026. Gebaut, weil Wochentag und Datum
+  passen und der Verein dieselben Partys 2026 an denselben Orten
+  angesetzt hat — die Lage steht in jedem Eintrag im Text. Den Flyer auf
+  boogie.at als `aggregator` geführt, obwohl er vom Verein stammt: Wer
+  ihn hochgeladen hat, ist nicht zu sehen.
+- **`reihe` gesetzt**, anders als bei Steyrtal und Mödling: Hier stehen
+  fünf Ausgaben im Register, und alle Flyer tragen denselben Titel
+  „Gmundner Boogie Party". Die Silvesterparty gehört dazu.
+- **„Boogie-Verein" statt „Boogie-Woogie-Club" im Text.** Der Autolink
+  hätte auf den Klavierstil verwiesen (wie beim Zorba der Grieche).
+- **Orte `typ: sonstiges`** wie beim Zorba der Grieche.
+
+**Verworfen:** Den DJ mit dem „DJ Klaus" der Crazy Boogiefreaks
+gleichsetzen (keine Quelle sagt es); die Reservierungskontakte
+übernehmen (private Nummer und Adresse).
+
+**Belege:** `npm run verify` grün. Keine neue Regel, daher keine Mutation.
+Zwei neue Fallen und eine neue Quelle in
+`docs/ablaeufe/termin-recherche.md`.
+
+---
+
 ## 2026-09-27 — Einsendungen werden nach der Entscheidung gelöscht
 
 **Anlass:** Netlify speichert zu jeder Formular-Einsendung IP-Adresse,

@@ -44,6 +44,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [ASB-Bahnhof Barsinghausen](https://www.asb-bahnhof-barsinghausen.de/) | Niedersachsen | Haus | nein | breites Programm, Szenebezug je Termin prüfen |
 | [Rock'n'Roll Festival Ganderkesee](https://rocknroll-festival.de) | Niedersachsen | Festival | nein (am 2026-09-23 Timeout, am 2026-09-24 erreichbar, kein `Event` im JSON-LD) | einmal im Jahr, Ausgabe über die Seite prüfen |
 | [Crazy Boogiefreaks, Termine](https://crazy-boogiefreaks.at/termine/) | Oberösterreich (Steyr, Sierning) | Verein | ja, iCal/XML-Export des Kalender-Plugins | Terminseiten nennen oft keinen Ort; Trainings und Partys im selben Kalender. `x-cost-type` im Export ist ein Vorgabewert (siehe Fallen) |
+| [BWC Gmunden, Aktivitätenkalender](https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/) | Oberösterreich (Roitham, Eberstalzell, Fischlham) | Verein | nein, nur Flyer als Bilder | die auf boogie.at und den Flyern genannte `www.bwc-gmunden.com` löst nicht auf (2026-09-28); Kalender je Jahr, am 2026-09-28 nur bis Ende 2026 |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite; Reservix-Bandlisten antworten Skripten mit 403 |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
@@ -200,6 +201,19 @@ Fehler verursacht oder beinahe verursacht.
   vergangene Termine. Eine Detail-URL belegt also nicht einen Termin,
   sondern eine Reihe; das Datum je Termin aus der Datumszeile der
   Sammelseite übernehmen und in der Quelle nennen (2026-09-27).
+- **boogie.at: die Datumszeile kann vom Flyer abweichen.** Bei der
+  Silvesterparty des BWC Gmunden nennt die Datumszeile 18:00, der Flyer
+  des Vereins auf derselben Seite „Einlass 18.30, Beginn 19.00"
+  (2026-09-28). Liegt ein Flyer bei, ihn öffnen: Er trägt oft auch den
+  Preis, den der Beschreibungstext weglässt („Nähere Infos siehe
+  Folder"). Die Bilddatei in voller Größe liegt unter
+  `/sites/default/files/medien/event/<Jahr>/<Datei>.jpg`, ohne
+  `styles/olivero_hero/public/`. Der Uploadpfad sagt nichts über das
+  Termindatum: Der Flyer zum 24.10.2026 liegt unter `2025/`.
+- **Die verlinkte Vereinsseite kann tot sein.** Kalender und Flyer
+  verweisen oft auf eine alte Domain. Nicht aufgeben, sondern nach dem
+  Vereinsnamen suchen; der BWC Gmunden hat seine Seite bei Jimdo, samt
+  Impressum und Flyern (2026-09-28).
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
   `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'

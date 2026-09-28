@@ -32,30 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **BWC Gmunden: 5 Termine anlegen (24.10.2026, 31.12.2026, 03.04.2027, 05.06.2027, 23.10.2027).**
-Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten `?page=1` bis
-`?page=4`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
-steht: „BWC Gmunden Herbst Boogie Party", Sa., 24.10.2026, 20:00, Gasthaus
-Forstinger, Raiffeisenplatz 2, 4661 Roitham (/event/bwc-gmunden-herbst-boogie-party-0);
-„BWC Gmuden Silvester Boogie Party" [sic], Do., 31.12.2026, 18:00, Dorfwirt
-Fischlham, Thalheimerstr. 5, 4652 Fischlham, mit Empfangssekt, Buffet und
-Mitternachtssekt, „Nähere Infos siehe Folder" (/event/bwc-gmuden-silvester-boogie-party);
-„Frühjahrs Boogie Party BWC Gmunden", Sa., 03.04.2027, 20:00, Gasthaus
-Forstinger Roitham (/event/fruehjahrs-boogie-party-bwc-gmunden); „Sommer
-Boogie Party BWC Gmunden", Sa., 05.06.2027, 20:00, Gasthaus Kölblinger,
-Hauptstraße 14, 4653 Eberstalzell (/event/sommer-boogie-party-bwc-gmunden);
-„Herbst Boogie Party BWC Gmunden", Sa., 23.10.2027, 20:00, Gasthaus
-Forstinger Roitham (/event/herbst-boogie-party-bwc-gmunden). Musik jeweils
-„DJ.K Boogie Klaus", Platzreservierung telefonisch; einen Preis nennt keine
-der Seiten. Beim Bauen: Vereinsseite http://www.bwc-gmunden.com (laut
-boogie.at) als Veranstalterquelle öffnen, boogie.at ist nur Kalender.
-Drei neue Locations (Roitham, Fischlham, Eberstalzell), Adresse nur aus
-einer Quelle, die sie nennt — Region `oberoesterreich` gibt es. Den Folder
-zur Silvesterparty suchen; ohne sichtbaren Preis `eintritt:
-unveroeffentlicht`. Die Reservierungsnummer ist eine private Handynummer
-und kommt nicht in den Text. Zeitzone: 24.10.2026 noch `+02:00`,
-31.12. `+01:00`, 03.04.2027 und später `+02:00`.
-
 `frei` **Boogie Lions Spillern: 6 Termine anlegen (31.10.2026, 28.11.2026, 09.01.2027, 20.02.2027, 06.03.2027, 01.05.2027).**
 Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten `?page=1` bis
 `?page=3`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
@@ -235,6 +211,15 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Oberösterreich-Texte nachziehen — sobald die BWC-Gmunden-Einträge freigegeben sind.**
+Drei freigegebene Texte sagen „bisher": `locations/zorba-der-grieche-sierning`
+(„bisher der einzige Ort des Registers in Oberösterreich"),
+`regionen/oberoesterreich` („bisher über einen einzigen Verein") und
+`events/steyrtal-boogie-party-sierning-2026-10-17` („der erste Termin").
+Mit den fünf Terminen und drei Orten des BWC Gmunden (Lauf 2026-09-28,
+Entwurf) stimmen die ersten beiden nicht mehr, sobald die neuen Einträge
+sichtbar werden. Vorher angepasst, würden sie auf Entwürfe verweisen.
 
 **Durchsatz messen — ab dem 2026-10-09.** Seit dem 2026-09-25 zwei Läufe am
 Tag und Bündel-Posten (bis sechs Termine, vier Begriffe). Nach zwei Wochen
