@@ -164,6 +164,20 @@ Fehler verursacht oder beinahe verursacht.
   über den Preis; fehlt es, heißt `offers.price` „0" nur „kein Preis
   hinterlegt". Drittens kein `ende` übernehmen: Der Kalenderlink endet
   fast immer auf 05:00 Ortszeit, ein Vorgabewert.
+- **Rockin' Wildcat gegen das Haus.** Die sichtbare Uhrzeit des Gig
+  Guides ist nicht immer die des Hauses: Beim Konzert von Aron King am
+  7.11.2026 nennt der Gig Guide 21 Uhr, der Flyer des American Western
+  Saloon und dessen allgemeine Angabe 20 Uhr (2026-09-27). Gibt es eine
+  Seite des Hauses, immer gegenlesen; bei Abweichung folgt der Eintrag
+  dem Haus und nennt den Widerspruch im Text (Regel 5).
+- **Seiten, die nur über http erreichbar sind**, gehören nicht in
+  `quellen[]`: Das Schema verlangt https, und eine https-Adresse
+  einzutragen, deren Abruf gescheitert ist, behauptete einen Beleg, den
+  es nicht gibt. Was sie bestätigen, steht mit Adresse und Abrufdatum in
+  der `redaktionsnotiz`; belegt ist das Feld dann allein durch die
+  https-Quelle. Fall: Roadrunner's Rock & Motor Club, Berlin
+  (2026-09-27), dessen https-Fassung ein selbstsigniertes Zertifikat
+  liefert.
 - **Eine Zusammenfassung ist keine Quelle** (Lektion 28). Abrufwerkzeuge,
   die eine Seite zusammenfassen, haben hier schon Jahreszahlen und
   Zuschreibungen erfunden. Den Rohtext prüfen.
