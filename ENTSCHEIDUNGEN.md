@@ -57,6 +57,53 @@ Zwei neue Fallen und eine neue Quelle in
 
 ---
 
+## 2026-09-27 — Berlin: vier Termine aus dem Gig Guide, De Waltons nicht
+
+**Anlass:** Posten „Berlin: die nächsten Termine aus dem
+Rockin'-Wildcat-Gig-Guide" (täglicher Lauf). Gebaut vier von fünf
+genannten Terminen, alle `entwurf`: Jets / Smokestack Lightnin' (3.10.,
+mit neuem Ort Roadrunner's Rock & Motor Club), Aron King & his Ferriday
+Rockers (7.11., American Western Saloon), Record Hop Rathaus
+Friedrichshagen (8.11. und 6.12.).
+
+**De Waltons (21.11.) nicht gebaut, und kein neuer Posten dafür.** Der
+Posten führte den Termin als Eintrag des Gig Guides; dort steht er nicht.
+Er steht nur beim American Western Saloon, und dessen Flyer nennt als Stil
+„Grass - Country - Rock" — kein Genre mit Lexikoneintrag, kein Szenebezug
+nach der Definition des Suchlaufs. Die „Waltons" am 28.11. im Wild at Heart,
+die der Gig Guide führt, sind eine andere Band (Punk'n'Roll,
+waltons-berlin.de). Der Posten beruhte in diesem Punkt auf einer
+Verwechslung; ein Rückgabeposten würde sie nur weitertragen.
+
+**Roadrunner's: Adresse vom Haus bestätigt, aber nicht zitierbar.** Die
+Website liefert über https weiter ein selbstsigniertes Zertifikat, über
+http ist sie erreichbar und bestätigt Adresse und Termin. Das Schema lässt
+als Quellen-URL nur https zu. Verworfen: die http-Adresse eintragen
+(Vertragsbruch) oder die https-Adresse (behauptet einen Abruf, der nicht
+gelang). Gewählt: Belegt ist nur, was Rockin' Wildcat trägt; die
+Bestätigung durch das Haus steht in der Redaktionsnotiz. Folge: Der DJ
+(„The Louisiana Wax Team") und der Veranstalter stehen nur auf der
+http-Seite und bleiben leer. Keine Ausnahme vom https-Zwang gebaut — das
+wäre eine Schemaänderung.
+
+**Aron King: Haus schlägt Gig Guide.** Gig Guide 21 Uhr (sichtbar und
+Kalenderlink), das Haus 20 Uhr (Flyer und allgemeine Angabe). Der Eintrag
+folgt dem Haus und nennt den Widerspruch im Text. Das ist ein neuer Typ
+Abweichung bei dieser Quelle, nicht der bekannte JSON-LD-Versatz; als
+Falle in `docs/ablaeufe/termin-recherche.md` aufgenommen, zusammen mit
+dem Umgang mit http-only-Seiten.
+
+**Jets am 3.10. trotz sechs Tagen Vorlauf gebaut**, weil die bisherigen
+Berliner Einträge am Tag nach dem Anlegen geprüft waren. Wird er nicht
+rechtzeitig freigegeben, archiviert ihn `npm run archivieren`.
+
+**Keine neue Regel, deshalb kein Mutationsbeleg.** Lebenszeichen der
+Prüfung an den neuen Dateien: Der Validator-Hook schlug beim ersten
+Entwurf des Spielorts zweimal an (fehlendes `geprueftAm`, toter Link auf
+den noch nicht angelegten Termin), `autolink:check` einmal.
+
+---
+
 ## 2026-09-27 — Einsendungen werden nach der Entscheidung gelöscht
 
 **Anlass:** Netlify speichert zu jeder Formular-Einsendung IP-Adresse,

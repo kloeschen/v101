@@ -81,25 +81,6 @@ mit `reihe` bietet sich an. DJ Rockin' Daddy legt auch bei der Rockabilly
 Night in Pullman City (27.12.2026) auf; das ist ein eigener Fund für den
 nächsten Suchlauf, nicht Teil dieses Postens. Zeitzone `+01:00`.
 
-`frei` **Berlin: die nächsten Termine aus dem Rockin'-Wildcat-Gig-Guide.**
-Nachfolger des am 2026-09-24 erledigten Postens; zwei Termine sind
-angelegt (The Sinners 10.10., Record Hop Rathaus Friedrichshagen 18.10.).
-Als Nächstes anstehen: Jets / Smokestack Lightnin' am 03.10.2026 im
-Roadrunner's Rock & Motor Club (Saarbrücker Str. 24, 10405 Berlin), The
-Sinners' Nachbartermine im American Western Saloon (Aron King & his
-Ferriday Rockers am 07.11., De Waltons am 21.11.) und die beiden weiteren
-Record Hops im Rathaus Friedrichshagen (08.11., 06.12.). **Vorsicht beim
-Roadrunner's:** Die Website `roadrunners-paradise.de` lieferte am
-2026-09-24 ein Zertifikat, das sich nicht verifizieren ließ; der Spielort
-war deshalb nicht gegenzulesen und wurde nicht angelegt. Erst erneut
-versuchen, und wenn sie weiter nicht erreichbar ist, eine zweite Quelle für
-die Adresse suchen, bevor die Location entsteht. Für die Quelle selbst
-gelten seit dem 2026-09-24 drei belegte Regeln (ENTSCHEIDUNGEN): sichtbare
-Uhrzeit statt JSON-LD `startDate`, sichtbares Feld „Kosten" entscheidet
-über den Preis, kein `ende` übernehmen. Detail-URLs immer aus
-`offers.url` des JSON-LD, nie raten. Bands in `lineupWeitere`. Termine, die
-vor der nächsten Freigabe vorbei wären, überspringen.
-
 `frei` **Boppin'B, Bündel: 2 Termine anlegen (26.12.2026 Colos-Saal Aschaffenburg, 9.1.2027 Café Central Weinheim).**
 Beide stehen auf der Live-Seite der Band (`bands/boppin-b`, `links.website`)
 und werden dort gegengelesen; je Termin zusätzlich die Seite des Hauses.
