@@ -1,0 +1,41 @@
+# Altlasten von v101.de — die Domain trug bis 2024 einen Preisvergleich.
+# Die alten Pfade stehen in docs/daten/v101-alte-urls.txt (Wayback Machine).
+# scripts/check-weiterleitungen.ts prüft diese Datei gegen die Liste und
+# gegen den Build. Regeln greifen von oben nach unten, die erste gewinnt.
+#
+# 301 nur bei derselben Sache: Die alte Kategorie hieß wie der Begriff, und
+# der Lexikoneintrag ist freigegeben. Eine Weiterleitung ohne thematische
+# Entsprechung ist für Google ein Soft-404 und vererbt nichts.
+/c/bleistiftrock    /lexikon/bleistiftrock/    301
+/c/korsett          /lexikon/korsett/          301
+/c/petticoats       /lexikon/petticoat/        301
+/c/pomade           /lexikon/pomade/           301
+/c/strapsguertel    /lexikon/strapsguertel/    301
+/c/taillenmieder    /lexikon/taillenmieder/    301
+/thema/rockabilly   /lexikon/rockabilly/       301
+
+# 410 für alles, was schon der Form nach keine Entsprechung haben kann:
+# Kombinationen aus Kategorie und Schlagwort oder Jahrzehnt (auch unter
+# Unterkategorien), Folgeseiten, Produkt-, Marken- und Suchseiten,
+# WordPress-Technik. Kategorie-, Themen- und Jahrzehntseiten selbst bleiben
+# bis zur Entscheidung offen (404), damit eine spätere Weiterleitung nicht
+# gegen ein „für immer weg" anlaufen muss.
+/c/:kat/ctag/*            /404.html    410
+/c/:kat/:unter/ctag/*     /404.html    410
+/c/:kat/jahrz/*           /404.html    410
+/c/:kat/:unter/jahrz/*    /404.html    410
+/jahrzehnt/:dekade/page/* /404.html    410
+/brand/*            /404.html    410
+/p/*                /404.html    410
+/search/*           /404.html    410
+/wp-content/*       /404.html    410
+/wp-includes/*      /404.html    410
+/wp-json/*          /404.html    410
+/images/*           /404.html    410
+/kategorien         /404.html    410
+/vintage-themen     /404.html    410
+/footer.js          /404.html    410
+/style.css          /404.html    410
+/manifest.json      /404.html    410
+/logo_192.png       /404.html    410
+/panama-jack-panama-03-leopardo-damen-warm-gefuettert-biker-boots-kurzschaft-stiefel-stiefeletten-gelb-vintage-37-eu    /404.html    410

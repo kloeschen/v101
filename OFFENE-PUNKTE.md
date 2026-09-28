@@ -156,14 +156,20 @@ ein Entwurf, keine Rechtsberatung.
 keine Cookies) oder Plausible. Ein Cookie-Banner auf einem Register kostet
 Nutzer und bringt nichts.
 
-**Alte URLs von v101.de.** Die Domain trug bis 2024 ein
-Preisvergleichssystem, 1447 URLs sind in der Wayback Machine erfasst.
-Weiterleiten lohnt nur für rund 75 davon: 48 szenenahe `/c/`-Kategorien,
-17 `/thema/`-Seiten mit Bezug (rockabilly, pin-up, burlesque, bettie-page,
-elvis, polka-dots, charleston, gatsby, oldschool, cherry, anker) und die
-zwölf `/jahrzehnt/`-Seiten. Der Rest — 953 Kategorie-mal-Tag-Kombinationen
-und Produktseiten — bekommt 410. Eine Weiterleitung ohne thematische
-Entsprechung ist für Google ein Soft-404 und vererbt nichts.
+**Alte URLs von v101.de: 387 Pfade noch ohne Entscheidung.** Seit dem
+2026-09-28 regelt `public/_redirects` die Altlasten des Preisvergleichs
+(Liste: `docs/daten/v101-alte-urls.txt`, 1434 Pfade). 7 bekommen 301, weil
+die alte Kategorie genau einen freigegebenen Lexikonbegriff meinte
+(bleistiftrock, korsett, petticoats, pomade, strapsguertel, taillenmieder,
+thema/rockabilly), 1037 bekommen 410 (Kombinationen, Produkte, Suche,
+WordPress), 3 sind neu belegt. Offen, also 404: 110 Kategorien, 133
+Unterkategorien, 136 Themenseiten, 7 Jahrzehntseiten, `/favicon.ico`.
+Die Schätzung „rund 75 Weiterleitungen" setzte Ziele voraus, die es noch
+nicht gibt. Zu entscheiden: die Offenen jetzt mit 410 abmelden, oder bei
+404 lassen und je Begriff weiterleiten, sobald sein Eintrag freigegeben
+ist (etwa `thema/pin-up`, `thema/burlesque`, `thema/pencil` →
+`lexikon/bleistiftrock`?). `npm run check:weiterleitungen` zählt nach
+jedem Build mit.
 
 **Startschwelle prüfen.** Vor `PUBLIC_INDEXIERBAR=true`: 80+
 Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter

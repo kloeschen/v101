@@ -63,6 +63,10 @@ scripts/archive-events.ts              Vergangene Termine auf stattgefunden.
 .claude/settings.json + hooks/         Guardrails für agentische Zugriffe.
 .github/workflows/pflege.yml           Wöchentliche Pflege als Pull Request.
 netlify.toml                           Build, CORS- und Content-Type-Header.
+                                       Die einzige — test-netlify.ts prüft.
+public/_redirects                      Altlasten von v101.de: 301/410,
+                                       geprüft von check-weiterleitungen.ts
+                                       gegen docs/daten/v101-alte-urls.txt.
 src/content/events/_golden-example.md  Referenz-Eintrag (wird nicht gebaut).
 ```
 

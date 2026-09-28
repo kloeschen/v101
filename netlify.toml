@@ -1,3 +1,33 @@
+# Netlify-Konfiguration. Netlify liest nur diese Datei im Wurzelverzeichnis
+# (Basisverzeichnis der Site: leer). `scripts/test-netlify.ts` hält fest,
+# was hier stehen muss — die Datei war vom 2026-09-03 bis 2026-09-28 auf
+# die Umgebungsschalter gekürzt, und niemand hat es bemerkt (Lektion 30).
+#
+# Wichtig: Im statischen Build verwirft Astro die Response-Header aus den
+# Endpunkt-Dateien — `Access-Control-Allow-Origin` aus events.json.ts und
+# [bereich].ics.ts landet NICHT im Output. Ohne die Header-Blöcke hier wäre
+# die dokumentierte offene Schnittstelle aus dem Browser nicht nutzbar und
+# .ics-Dateien würden als Download statt als Kalenderabo behandelt.
+#
+# Weiterleitungen stehen nicht hier, sondern in `public/_redirects`
+# (Altlasten der früheren Nutzung von v101.de, geprüft von
+# `scripts/check-weiterleitungen.ts`).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Kontextabhängige Indexierung.
+#
+# Sobald die Produktion freigegeben ist, würden Deploy Previews und
+# Branch-Deploys denselben Wert erben — und dieselbe Site wäre unter
+# xyz--deploy-preview-17.netlify.app indexierbar. Das ist Duplicate Content
+# gegen die eigene Domain, erzeugt von der eigenen Vorschau. Deshalb wird
+# der Schalter je Kontext gesetzt und nicht global.
+
 [context.production.environment]
   # Erst auf "true" umstellen, wenn die Startschwelle erreicht ist —
   # siehe BETRIEB.md. Diese eine Zeile ist der Go-Live.
@@ -17,3 +47,23 @@
 [context.branch-deploy.environment]
   PUBLIC_INDEXIERBAR = "false"
   PUBLIC_ENTWUERFE = "true"
+
+# Offene Daten brauchen offene Header.
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/kalender/*"
+  [headers.values]
+    Content-Type = "text/calendar; charset=utf-8"
+    Access-Control-Allow-Origin = "*"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
