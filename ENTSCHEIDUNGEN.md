@@ -65,6 +65,153 @@ Text angelegt.
 
 ---
 
+## 2026-09-27 — Berlin: vier Termine aus dem Gig Guide, De Waltons nicht
+
+**Anlass:** Posten „Berlin: die nächsten Termine aus dem
+Rockin'-Wildcat-Gig-Guide" (täglicher Lauf). Gebaut vier von fünf
+genannten Terminen, alle `entwurf`: Jets / Smokestack Lightnin' (3.10.,
+mit neuem Ort Roadrunner's Rock & Motor Club), Aron King & his Ferriday
+Rockers (7.11., American Western Saloon), Record Hop Rathaus
+Friedrichshagen (8.11. und 6.12.).
+
+**De Waltons (21.11.) nicht gebaut, und kein neuer Posten dafür.** Der
+Posten führte den Termin als Eintrag des Gig Guides; dort steht er nicht.
+Er steht nur beim American Western Saloon, und dessen Flyer nennt als Stil
+„Grass - Country - Rock" — kein Genre mit Lexikoneintrag, kein Szenebezug
+nach der Definition des Suchlaufs. Die „Waltons" am 28.11. im Wild at Heart,
+die der Gig Guide führt, sind eine andere Band (Punk'n'Roll,
+waltons-berlin.de). Der Posten beruhte in diesem Punkt auf einer
+Verwechslung; ein Rückgabeposten würde sie nur weitertragen.
+
+**Roadrunner's: Adresse vom Haus bestätigt, aber nicht zitierbar.** Die
+Website liefert über https weiter ein selbstsigniertes Zertifikat, über
+http ist sie erreichbar und bestätigt Adresse und Termin. Das Schema lässt
+als Quellen-URL nur https zu. Verworfen: die http-Adresse eintragen
+(Vertragsbruch) oder die https-Adresse (behauptet einen Abruf, der nicht
+gelang). Gewählt: Belegt ist nur, was Rockin' Wildcat trägt; die
+Bestätigung durch das Haus steht in der Redaktionsnotiz. Folge: Der DJ
+(„The Louisiana Wax Team") und der Veranstalter stehen nur auf der
+http-Seite und bleiben leer. Keine Ausnahme vom https-Zwang gebaut — das
+wäre eine Schemaänderung.
+
+**Aron King: Haus schlägt Gig Guide.** Gig Guide 21 Uhr (sichtbar und
+Kalenderlink), das Haus 20 Uhr (Flyer und allgemeine Angabe). Der Eintrag
+folgt dem Haus und nennt den Widerspruch im Text. Das ist ein neuer Typ
+Abweichung bei dieser Quelle, nicht der bekannte JSON-LD-Versatz; als
+Falle in `docs/ablaeufe/termin-recherche.md` aufgenommen, zusammen mit
+dem Umgang mit http-only-Seiten.
+
+**Jets am 3.10. trotz sechs Tagen Vorlauf gebaut**, weil die bisherigen
+Berliner Einträge am Tag nach dem Anlegen geprüft waren. Wird er nicht
+rechtzeitig freigegeben, archiviert ihn `npm run archivieren`.
+
+**Keine neue Regel, deshalb kein Mutationsbeleg.** Lebenszeichen der
+Prüfung an den neuen Dateien: Der Validator-Hook schlug beim ersten
+Entwurf des Spielorts zweimal an (fehlendes `geprueftAm`, toter Link auf
+den noch nicht angelegten Termin), `autolink:check` einmal.
+
+---
+
+## 2026-09-27 — Einsendungen werden nach der Entscheidung gelöscht
+
+**Anlass:** Netlify speichert zu jeder Formular-Einsendung IP-Adresse,
+Browserkennung und Referrer und löscht nichts von selbst. Die
+Datenschutzerklärung brauchte eine Frist. Markus hat zugestimmt: nach der
+Bearbeitung automatisch löschen.
+
+**Gebaut:** `npm run vorschlaege -- --aufraeumen` (mit `--trocken` als
+Probelauf). Es löscht zwei Arten von Einsendungen:
+- jede, deren Kennung im Verzeichnis `vorschlaege-verarbeitet.json` steht,
+  über die also entschieden ist;
+- jede, die Netlify als Spam markiert hat.
+
+Offene Einsendungen bleiben stehen. Der Suchlauf ruft den Schritt als
+ersten auf, auf dem Stand von `main`. Deshalb löscht nur ein gemergter
+Vermerk. Hängt ein Vermerk in einem PR fest, der nicht durchkommt, bleibt
+die Einsendung erhalten und wird beim nächsten Mal erneut vorgelegt, statt
+spurlos zu verschwinden.
+
+**Verworfen:** Löschen schon in `--vermerke`. Der Schritt läuft ohne
+Zugangsdaten und vor dem Merge. Ein Vermerk in einem gescheiterten PR
+hätte die Einsendung gelöscht, ohne dass ihr Ergebnis irgendwo ankommt.
+
+**Frist in der Datenschutzerklärung:** Gelöscht wird beim nächsten
+Arbeitslauf nach der Entscheidung, die Läufe finden zweimal pro Woche
+statt. Spam wird beim nächsten Lauf ungeprüft gelöscht. Damit ist der
+Prüfpunkt „Löschfrist“ erledigt. Offen bleiben die Log-Frist bei Netlify
+und der Datenumfang an Akismet.
+
+**Belege:**
+- `test-vorschlaege`: vier neue Prüfungen, darunter der Gegenfall, dass
+  eine offene Einsendung bleibt.
+- Mutation „alle Geprüften löschen“: 3 Behauptungen fallen. Der erste
+  Mutationsversuch ließ den Test abstürzen statt eine Behauptung fallen;
+  der Code liest das Ergebnis jetzt mit `?.`, und die Mutation schlägt
+  sauber an.
+- Trockenlauf gegen Netlify: Die eine gespeicherte Einsendung bleibt stehen,
+  weil ihr Vermerk („verworfen“) erst mit #77 auf `main` kommt. Das ist
+  genau die gewollte Reihenfolge.
+
+---
+
+## 2026-09-27 — Impressum vollständig, Datenschutzerklärung nachgeschärft
+
+**Angaben von Markus:** Anschrift in Bochum, E-Mail-Adresse, Bundesland NRW.
+Das Impressum hat damit keine Lücke mehr.
+
+**Aus Primärquellen geklärt:**
+- **Auftragsverarbeitung bei Netlify:** Das Netlify-DPA (Stand 2026-06-09)
+  „forms part of … the Self-Serve Subscription Agreement“. Es gilt also
+  ohne eigene Unterschrift.
+- **Übermittlung in die USA:** Die Datenschutzerklärung von Netlify nennt
+  dafür die Standardvertragsklauseln (Durchführungsbeschluss 2021/914).
+  Ob Netlify unter dem EU-US Data Privacy Framework zertifiziert ist, ist
+  damit nicht mehr nötig zu wissen. Der Text stützt sich auf die Klauseln.
+- **Aufsicht:** die Landesbeauftragte für Datenschutz und
+  Informationsfreiheit NRW, mit Anschrift nach dem Impressum der Behörde.
+- **Formulardaten, per API am eigenen Konto nachgesehen:** Netlify speichert
+  zu jeder Einsendung `ip`, `user_agent` und `referrer`. Die bisherige
+  Erklärung verschwieg das und nannte nur Adresse, Hinweis und
+  Eintragskennung. Das steht jetzt im Text.
+
+**Offen geblieben, als Prüfpunkte:**
+- die Frist, nach der Netlify die Logs löscht;
+- welche Daten an Akismet gehen.
+
+Beides sagen weder die Datenschutzerklärung noch die Doku von Netlify.
+Dazu kommt unsere eigene Löschfrist für verarbeitete Einsendungen. Netlify
+löscht sie nicht von selbst, die Frist ist Markus' Entscheidung. Die
+Go-Live-Sperre hält, bis alle drei beantwortet sind.
+
+---
+
+## 2026-09-26 — Record Hop Alte Feuerwache: `ende` entfernt, Rockin' Wildcat als `aggregator`
+
+**Anlass:** Posten aus OFFENE-PUNKTE.md, Nachzug zum Eintrag vom
+2026-09-24 („Rockin' Wildcat: drei Lesarten der Quelle"). Der
+veröffentlichte Eintrag `record-hop-alte-feuerwache-2026-09-25` stand
+noch auf den beiden Lesarten, die jener Eintrag widerlegt hatte.
+
+**Geändert:** `ende: 2026-09-26T05:00:00+02:00` ist entfernt und aus den
+`felder` beider Quellen gestrichen, die es führten — die 05:00 der Quelle
+sind ein Vorgabewert, keine Angabe über diesen Abend. Alle drei
+Quelleneinträge tragen `art: aggregator` statt `offiziell`. Begründung und
+Datum stehen als „KORREKTUR am 2026-09-26" in der Redaktionsnotiz, die
+fehlende Endzeit mit Grund auch im Fließtext (Regel 5: Leser sollen sehen,
+warum ein Feld leer ist).
+
+**Folge, die mitkommt:** Ohne `ende` misst `archivieren` am Beginn, der
+Termin stand damit sofort auf `durchfuehrung: stattgefunden`. Vorher hätte
+das `ende` den Eintrag bis nach Mitternacht Ortszeit am 2026-09-26 auf
+`geplant` gehalten — ein erfundener Wert verschob also auch die
+Archivierung. Der Status `veroeffentlicht` bleibt unberührt; die Korrektur
+geht als Inhalts-PR an Markus.
+
+**Nicht mitgebaut:** Der Fließtext nennt den Widerspruch 19 gegen 21 Uhr
+weiter als offen. Fund 1 vom 2026-09-24 erklärt die 21 Uhr (JSON-LD um den
+UTC-Versatz verschoben); das steht jetzt in der Redaktionsnotiz. Den
+Fließtext dafür umzuschreiben lohnt nach dem Termin nicht mehr.
+
 ## 2026-09-26 — Uhrzeit ohne Offset im Frontmatter ist ein Fehler
 
 **Anlass:** Posten aus OFFENE-PUNKTE.md. `check:zeit` liest nur Code; ein

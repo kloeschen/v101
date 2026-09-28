@@ -14,7 +14,7 @@
  */
 import BasisLayout from "../layouts/BasisLayout.astro";
 import { site, indexierbar } from "../site.config";
-import { IMPRESSUM, PRUEFEN, DATENSCHUTZ_STAND, goLiveSperre } from "../lib/rechtliches";
+import { IMPRESSUM, PRUEFEN, DATENSCHUTZ_STAND, AUFSICHT, goLiveSperre } from "../lib/rechtliches";
 
 const sperre = goLiveSperre(indexierbar, IMPRESSUM, PRUEFEN);
 if (sperre) throw new Error(sperre);
@@ -53,6 +53,13 @@ const kapsel = `Datenschutzerklärung von ${site.name}: Die Seite setzt keine Co
     Personen findet nicht statt.
   </p>
   <p>
+    Netlify verarbeitet diese Daten in unserem Auftrag. Der
+    Auftragsverarbeitungsvertrag nach Art. 28 DSGVO ist Bestandteil der
+    Nutzungsbedingungen von Netlify. Für die Übermittlung in die USA gelten
+    die Standardvertragsklauseln der EU-Kommission (Art. 46 Abs. 2 lit. c
+    DSGVO, Durchführungsbeschluss 2021/914).
+  </p>
+  <p>
     Die Seite setzt <strong>keine Cookies</strong>, misst <strong>keine
     Reichweite</strong> und lädt <strong>keine Schriften, Skripte oder
     eingebetteten Inhalte von fremden Servern</strong>. Links auf andere
@@ -71,10 +78,19 @@ const kapsel = `Datenschutzerklärung von ${site.name}: Die Seite setzt keine Co
     Hinweis und, falls das Formular von einem Eintrag aus geöffnet wurde,
     dessen Kennung. Namen oder E-Mail-Adressen fragt das Formular nicht ab.
     Die Einsendung wird von Netlify (Netlify Forms) entgegengenommen und
-    gespeichert. Zur Abwehr von Spam prüft Netlify sie mit dem Dienst
+    gespeichert. Zu jeder Einsendung speichert Netlify außerdem die
+    IP-Adresse, die Kennung des Browsers und die zuvor besuchte Seite. Zur
+    Abwehr von Spam prüft Netlify die Einsendung mit dem Dienst
     Akismet der Automattic Inc. (USA). Rechtsgrundlage ist das berechtigte
     Interesse, Hinweise aus der Szene zu erhalten und Spam abzuwehren
     (Art. 6 Abs. 1 lit. f DSGVO).
+  </p>
+  <p>
+    Gespeichert bleibt eine Einsendung, bis über sie entschieden ist. Beim
+    nächsten Arbeitslauf danach wird sie bei Netlify gelöscht, samt
+    IP-Adresse und Browserkennung. Die Arbeitsläufe finden zweimal pro
+    Woche statt. Als Spam erkannte Einsendungen werden beim nächsten Lauf
+    ungeprüft gelöscht.
   </p>
   <p>
     <strong>Wichtig:</strong> Die Arbeitsaufträge dieses Registers liegen in
@@ -91,7 +107,8 @@ const kapsel = `Datenschutzerklärung von ${site.name}: Die Seite setzt keine Co
     (Art. 18), Datenübertragbarkeit (Art. 20) und Widerspruch gegen eine
     Verarbeitung auf Grundlage berechtigter Interessen (Art. 21). Wenden Sie
     sich dafür an die oben genannte Adresse. Außerdem können Sie sich bei
-    einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO).
+    einer Datenschutz-Aufsichtsbehörde beschweren (Art. 77 DSGVO). Zuständig
+    ist die <a href={AUFSICHT.url}>{AUFSICHT.name}</a>, {AUFSICHT.anschrift}.
   </p>
 
   <p>Stand: {stand}</p>

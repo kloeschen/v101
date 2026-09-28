@@ -117,6 +117,12 @@ Einsender werden nicht genannt und nicht angeschrieben.
 
 **Im Suchlauf, vor der eigenen Suche:**
 
+0. `npm run vorschlaege -- --aufraeumen` löscht bei Netlify jede
+   Einsendung, über die schon entschieden ist (Kennung im Verzeichnis auf
+   `main`), und allen Spam, samt IP-Adresse und Browserkennung. Die
+   Datenschutzerklärung sagt Einsendern genau diese Frist zu (Markus,
+   2026-09-27). Scheitert der Schritt, gehört das in den Bericht; der Lauf
+   macht trotzdem weiter.
 1. `npm run vorschlaege -- --schreiben` holt die Einsendungen, verwirft
    ungültige Adressen und solche, die das Register oder ein offener Posten
    schon kennt, und vermerkt beides in
@@ -158,6 +164,20 @@ Fehler verursacht oder beinahe verursacht.
   über den Preis; fehlt es, heißt `offers.price` „0" nur „kein Preis
   hinterlegt". Drittens kein `ende` übernehmen: Der Kalenderlink endet
   fast immer auf 05:00 Ortszeit, ein Vorgabewert.
+- **Rockin' Wildcat gegen das Haus.** Die sichtbare Uhrzeit des Gig
+  Guides ist nicht immer die des Hauses: Beim Konzert von Aron King am
+  7.11.2026 nennt der Gig Guide 21 Uhr, der Flyer des American Western
+  Saloon und dessen allgemeine Angabe 20 Uhr (2026-09-27). Gibt es eine
+  Seite des Hauses, immer gegenlesen; bei Abweichung folgt der Eintrag
+  dem Haus und nennt den Widerspruch im Text (Regel 5).
+- **Seiten, die nur über http erreichbar sind**, gehören nicht in
+  `quellen[]`: Das Schema verlangt https, und eine https-Adresse
+  einzutragen, deren Abruf gescheitert ist, behauptete einen Beleg, den
+  es nicht gibt. Was sie bestätigen, steht mit Adresse und Abrufdatum in
+  der `redaktionsnotiz`; belegt ist das Feld dann allein durch die
+  https-Quelle. Fall: Roadrunner's Rock & Motor Club, Berlin
+  (2026-09-27), dessen https-Fassung ein selbstsigniertes Zertifikat
+  liefert.
 - **Eine Zusammenfassung ist keine Quelle** (Lektion 28). Abrufwerkzeuge,
   die eine Seite zusammenfassen, haben hier schon Jahreszahlen und
   Zuschreibungen erfunden. Den Rohtext prüfen.
@@ -194,6 +214,13 @@ Fehler verursacht oder beinahe verursacht.
   liefert denselben Datensatz als JSON. Datum und Ort daraus sind
   brauchbar, die **Uhrzeit nicht allein**: Bei Boppin'B wich sie in zwei
   von vier geprüften Terminen vom Haus bzw. von Reservix ab.
+- **boogie.at-Detailseiten sind teils Sammelseiten.** Wiederkehrende
+  Termine eines Vereins zeigen in der Liste alle auf dieselbe Adresse
+  (Boogie Lions: `/event/boogie-party-56` trägt sechs Termine, Boogie Mix
+  im Haslinger Hof: `/event/boogie-mix-3` elf), dazu stehen dort auch
+  vergangene Termine. Eine Detail-URL belegt also nicht einen Termin,
+  sondern eine Reihe; das Datum je Termin aus der Datumszeile der
+  Sammelseite übernehmen und in der Quelle nennen (2026-09-27).
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
   `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'

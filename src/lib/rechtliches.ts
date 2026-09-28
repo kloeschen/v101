@@ -42,10 +42,22 @@ export interface Angaben {
 export const IMPRESSUM: Angaben = {
   // Steht bereits auf /methodik/ als verantwortliche Redaktion.
   name: "Markus Klöschen",
-  strasse: null,
-  plzOrt: null,
+  // Angaben von Markus, 2026-09-27.
+  strasse: "Sudholzstr. 120",
+  plzOrt: "44879 Bochum",
   land: "Deutschland",
-  email: null,
+  email: "markus@kloeschen.de",
+};
+
+/**
+ * Zuständige Aufsichtsbehörde nach Art. 77 DSGVO: die des Bundeslands, in
+ * dem der Verantwortliche sitzt (NRW, Angabe Markus, 2026-09-27). Name und
+ * Anschrift nach dem Impressum der Behörde, abgerufen am 2026-09-27.
+ */
+export const AUFSICHT = {
+  name: "Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen",
+  anschrift: "Kavalleriestr. 2–4, 40213 Düsseldorf",
+  url: "https://www.ldi.nrw.de/",
 };
 
 /**
@@ -54,32 +66,29 @@ export const IMPRESSUM: Angaben = {
  * löschen und die Antwort in den Text der Seite übernehmen.
  */
 export const PRUEFEN: { thema: string; frage: string }[] = [
+  // Geklärt am 2026-09-27 (Übermittlung und DPA): Das Netlify-DPA (Stand
+  // 2026-06-09) ist Teil des Self-Serve Subscription Agreement, also ohne
+  // eigene Unterschrift vereinbart; für Übermittlungen aus der EU nennt die
+  // Datenschutzerklärung von Netlify die Standardvertragsklauseln
+  // (Durchführungsbeschluss 2021/914). Steht jetzt im Text.
   {
     thema: "Hosting",
     frage:
-      "Rechtsgrundlage der Übermittlung an Netlify (USA): Ist Netlify unter dem EU-US Data Privacy Framework zertifiziert, oder gelten Standardvertragsklauseln? Ist ein Auftragsverarbeitungsvertrag (DPA) mit Netlify abgeschlossen?",
-  },
-  {
-    thema: "Hosting",
-    frage: "Wie lange speichert Netlify die Server-Logdateien?",
+      "Wie lange speichert Netlify die Server-Logdateien? Die Datenschutzerklärung von Netlify nennt keine Frist, nur Kriterien — beim Support nachfragen?",
   },
   {
     thema: "Formular",
     frage:
-      "Welche Daten gibt Netlify zur Spamprüfung an Akismet (Automattic Inc., USA) weiter — nur den Inhalt oder auch IP-Adresse und Browserkennung? Auf welcher Grundlage?",
+      "Welche Daten gibt Netlify zur Spamprüfung an Akismet (Automattic Inc., USA) weiter — nur den Inhalt oder auch IP-Adresse und Browserkennung? Die Doku von Netlify sagt es nicht — beim Support nachfragen?",
   },
-  {
-    thema: "Formular",
-    frage: "Nach welcher Frist werden verarbeitete Einsendungen im Netlify-Konto gelöscht?",
-  },
-  {
-    thema: "Aufsicht",
-    frage: "Welche Datenschutz-Aufsichtsbehörde ist zuständig (nach Bundesland des Wohnsitzes)?",
-  },
+  // Geklärt am 2026-09-27 (Löschfrist, Entscheidung Markus): Entschiedene
+  // Einsendungen und Spam löscht der Suchlauf mit `vorschlaege --aufraeumen`
+  // als ersten Schritt, also beim nächsten Lauf nach der Entscheidung
+  // (zweimal pro Woche). Steht jetzt im Text.
 ];
 
 /** Stand der Datenschutzerklärung. Bei jeder inhaltlichen Änderung setzen. */
-export const DATENSCHUTZ_STAND = "2026-09-25";
+export const DATENSCHUTZ_STAND = "2026-09-27";
 
 /** Welche Pflichtangaben fehlen noch? Leere Liste = vollständig. */
 export function fehlendeAngaben(a: Angaben): string[] {
