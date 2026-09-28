@@ -231,6 +231,14 @@ Fehler verursacht oder beinahe verursacht.
   `/sites/default/files/medien/event/<Jahr>/<Datei>.jpg`, ohne
   `styles/olivero_hero/public/`. Der Uploadpfad sagt nichts über das
   Termindatum: Der Flyer zum 24.10.2026 liegt unter `2025/`.
+- **boogie.at kann ganz ausfallen.** Am 2026-09-28 nachmittags brach
+  jeder Abruf ab (curl: Verbindungsabbruch, WebFetch: 503); die
+  Gmunden-Einträge vom selben Tag hatten boogie.at noch abgerufen.
+  Dann trägt nur die Vereinsseite — bei
+  den Boogie Lions steht dort eine Liste aller Termine bis Ende 2027,
+  aber ohne Uhrzeit und Ort; beides gibt es erst in der Ankündigung etwa
+  einen Monat vorher. Ohne Uhrzeit und Ort kein Termin: bauen, was der
+  Verein vollständig nennt, den Rest mit Befund zurückgeben.
 - **Die verlinkte Vereinsseite kann tot sein.** Kalender und Flyer
   verweisen oft auf eine alte Domain. Nicht aufgeben, sondern nach dem
   Vereinsnamen suchen; der BWC Gmunden hat seine Seite bei Jimdo, samt
