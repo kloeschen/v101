@@ -57,7 +57,12 @@ nah, aber eine Kombinationsseite; die Strukturregel bleibt ohne Ausnahme.
 Sache, aber das Schlagwort trug auch Kleider; als Frage an Markus.
 
 **Ob Netlify 410 kann,** sagt die Doku nicht (sie nennt 200, 301, 302,
-404). Gemessen an der Vorschau dieses PR, Ergebnis im PR.
+404). Gemessen an der Vorschau von PR #83: Es kann. 410 für
+`/c/hemd/ctag/rot/`, `/c/kleider/jahrz/70s/`, `/wp-json/` (der Stern trifft
+auch den leeren Rest), 301 für `/c/korsett` mit und ohne Schrägstrich,
+404 für offene Pfade, 200 für `/impressum/`. Dort auch wieder da:
+`Access-Control-Allow-Origin: *` an `/api/events.json` und `/kalender/`,
+`nosniff` und Referrer-Policy an jeder Seite.
 
 **Belege:** `check-weiterleitungen` hängt nach dem Build in `verify` und
 `verify:ci` (Schritt 10/11): Jedes 301-Ziel ist eine gebaute Seite, keine
