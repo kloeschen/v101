@@ -16,7 +16,7 @@ import path from "node:path";
 import { ladeAlle } from "./_laden";
 import {
   normalisiereUrl, registerUrls, postenUrls, beurteile, ausNetlify,
-  leseVerzeichnis, schreibeVerzeichnis, VERZEICHNIS, type Einsendung,
+  leseVerzeichnis, schreibeVerzeichnis, VERZEICHNIS, zuLoeschen, type Einsendung,
 } from "./vorschlaege";
 import { VORSCHLAG, meldePfad } from "../src/lib/vorschlag";
 
@@ -80,6 +80,16 @@ try {
   rmSync(tmp, { recursive: true, force: true });
 }
 pruefe("echtes Verzeichnis ist lesbar", (() => { try { leseVerzeichnis(VERZEICHNIS); return true; } catch { return false; } })());
+
+/* --- Löschen (seit 2026-09-27) --------------------------------------- */
+{
+  const vz = new Map([["a", { id: "a", am: "2026-09-27", ergebnis: "posten" as const }], ["b", { id: "b", am: "2026-09-27", ergebnis: "verworfen" as const }]]);
+  const l = zuLoeschen([{ id: "a" }, { id: "b" }, { id: "offen" }], [{ id: "s" }], vz);
+  gleich("entschiedene und Spam werden gelöscht", l.map((x) => x.id), ["a", "b", "s"]);
+  pruefe("Gegenfall: offene Einsendung bleibt", !l.some((x) => x.id === "offen"));
+  gleich("Grund nennt das Ergebnis", l[0]?.grund, "entschieden: posten");
+  gleich("ohne Verzeichnis nur Spam", zuLoeschen([{ id: "a" }], [{ id: "s" }], new Map()).map((x) => x.id), ["s"]);
+}
 
 /* --- Lebenszeichen am echten Bestand --------------------------------- */
 const echt = registerUrls(ladeAlle());

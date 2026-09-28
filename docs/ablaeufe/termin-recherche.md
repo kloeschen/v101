@@ -117,6 +117,12 @@ Einsender werden nicht genannt und nicht angeschrieben.
 
 **Im Suchlauf, vor der eigenen Suche:**
 
+0. `npm run vorschlaege -- --aufraeumen` löscht bei Netlify jede
+   Einsendung, über die schon entschieden ist (Kennung im Verzeichnis auf
+   `main`), und allen Spam, samt IP-Adresse und Browserkennung. Die
+   Datenschutzerklärung sagt Einsendern genau diese Frist zu (Markus,
+   2026-09-27). Scheitert der Schritt, gehört das in den Bericht; der Lauf
+   macht trotzdem weiter.
 1. `npm run vorschlaege -- --schreiben` holt die Einsendungen, verwirft
    ungültige Adressen und solche, die das Register oder ein offener Posten
    schon kennt, und vermerkt beides in
@@ -201,6 +207,13 @@ Fehler verursacht oder beinahe verursacht.
   schönen Parkett schwingen" sagt nichts über den Boden. `tanzflaeche`
   nur setzen, wenn die Quelle den Belag als Belag nennt (Stadtgalerie
   Mödling, 2026-09-25).
+- **boogie.at-Detailseiten sind teils Sammelseiten.** Wiederkehrende
+  Termine eines Vereins zeigen in der Liste alle auf dieselbe Adresse
+  (Boogie Lions: `/event/boogie-party-56` trägt sechs Termine, Boogie Mix
+  im Haslinger Hof: `/event/boogie-mix-3` elf), dazu stehen dort auch
+  vergangene Termine. Eine Detail-URL belegt also nicht einen Termin,
+  sondern eine Reihe; das Datum je Termin aus der Datumszeile der
+  Sammelseite übernehmen und in der Quelle nennen (2026-09-27).
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
   `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'
