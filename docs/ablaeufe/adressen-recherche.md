@@ -89,7 +89,7 @@ Seit dem 2026-09-25 schreibt der Suchlauf auch Adressen-Posten
 (Entscheidung Markus). Termine bleiben die Hauptsache, deshalb gelten drei
 Grenzen:
 
-- **Höchstens zwei Adressen-Posten** unter den zehn `frei`-Plätzen. Stehen
+- **Höchstens zwei Adressen-Posten** unter den zwölf `frei`-Plätzen. Stehen
   schon zwei da, sucht der Suchlauf keine weiteren.
 - **Ein Posten, bis zu vier Anbieter** derselben Region und desselben Typs.
   Der tägliche Lauf baut sie in einem PR.

@@ -57,6 +57,8 @@
  *   npx tsx scripts/warteschlange.ts --naechster # der nächste freie Posten (Termine
  *                                                  morgens, Lexikon nachmittags zuerst)
  *   npx tsx scripts/warteschlange.ts --check     # Exitcode 1 bei fehlender Marke
+ *                                                  oder mehr als zwölf freien Posten
+ *   npx tsx scripts/warteschlange.ts --platz     # was der Suchlauf schreiben darf
  *   npx tsx scripts/warteschlange.ts --belegt    # was offene Zweige schon bearbeiten
  *   npx tsx scripts/warteschlange.ts --json
  */
@@ -346,6 +348,56 @@ export function waehle(offen: Posten[], stundeUtc: number): Posten | undefined {
 }
 
 /* ------------------------------------------------------------------ */
+/* Wie viel Platz hat der Suchlauf? Obergrenze und Lexikon-Nachschub   */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Weg A, Entscheidung Markus vom 2026-09-29: drei Tagesläufe statt zwei,
+ * der Suchlauf dreimal die Woche statt zweimal, und er füllt auf höchstens
+ * zwölf `frei`-Posten auf statt auf zehn.
+ *
+ * Bis dahin stand die Zahl nur im Prompt des Suchlaufs und in drei
+ * Dokumenten — eine Bitte an ein Modell (Regel 3). Jetzt scheitert
+ * `--check` an einer dreizehnten, und der Suchlauf lässt `--check` vor dem
+ * PR laufen.
+ */
+export const OBERGRENZE = 12;
+
+/**
+ * Lexikon-Nachschub, dieselbe Entscheidung: Stehen weniger als zwei
+ * Lexikon-Posten auf `frei`, zieht der Suchlauf Bündel aus dem
+ * „Lexikon-Vorrat" nach oben, bis drei dastehen — nie über die Obergrenze.
+ * Ohne das hätte der Nachmittagslauf die Bündel in drei, vier Tagen
+ * abgearbeitet und danach wieder nur Termine gebaut; nach oben gezogen
+ * hatte bis dahin niemand.
+ *
+ * Die drei ist eine Grenze fürs Nachziehen, kein Zustand, den `--check`
+ * erzwingt: Von Hand dürfen mehr Lexikon-Posten dastehen (am 2026-09-29
+ * standen vier). Die Obergrenze von zwölf gilt dagegen immer.
+ */
+export const LEXIKON_NACHZIEHEN_UNTER = 2;
+export const LEXIKON_AUFFUELLEN_AUF = 3;
+
+export interface Platz {
+  frei: number;
+  lexikon: number;
+  /** Wie viele Posten der Suchlauf noch schreiben darf. */
+  platz: number;
+  /** Wie viele davon Lexikon-Bündel aus dem Vorrat sein sollen. */
+  lexikonNachziehen: number;
+  /** Wie viele `frei`-Posten über der Obergrenze stehen. */
+  ueber: number;
+}
+
+export function platz(frei: Pick<Posten, "titel">[]): Platz {
+  const lexikon = frei.filter(istLexikon).length;
+  const platz = Math.max(0, OBERGRENZE - frei.length);
+  const lexikonNachziehen =
+    lexikon < LEXIKON_NACHZIEHEN_UNTER ? Math.min(LEXIKON_AUFFUELLEN_AUF - lexikon, platz) : 0;
+  return { frei: frei.length, lexikon, platz, lexikonNachziehen, ueber: Math.max(0, frei.length - OBERGRENZE) };
+}
+
+/* ------------------------------------------------------------------ */
 
 function main() {
   const argv = process.argv.slice(2);
@@ -358,7 +410,25 @@ function main() {
     process.exit(befund.ohneMarke.length ? 1 : 0);
   }
 
+  if (argv.includes("--platz")) {
+    const p = platz(frei);
+    console.log(
+      `${p.frei} frei (davon ${p.lexikon} Lexikon), Obergrenze ${OBERGRENZE}: Platz für ${p.platz}.\n` +
+        `Lexikon nachziehen: ${p.lexikonNachziehen}` +
+        ` (erst unter ${LEXIKON_NACHZIEHEN_UNTER} freien Lexikon-Posten, dann auf ${LEXIKON_AUFFUELLEN_AUF}).`,
+    );
+    process.exit(0);
+  }
+
   if (argv.includes("--check")) {
+    const { ueber } = platz(frei);
+    if (ueber > 0) {
+      console.error(
+        `OFFENE-PUNKTE.md: ${frei.length} \`frei\`-Posten unter 'Als Nächstes', ` +
+          `${ueber} über der Obergrenze von ${OBERGRENZE} (Weg A, 2026-09-29).`,
+      );
+      process.exit(1);
+    }
     if (befund.ohneMarke.length === 0) {
       console.log(
         `OFFENE-PUNKTE.md: ${befund.posten.length} Posten unter 'Als Nächstes', ` +

@@ -5,10 +5,11 @@
  *
  * ANLASS: Seit dem 2026-09-24 kann die Szene über `/vorschlagen/` eine URL
  * einsenden, optional mit einer Zeile Hinweis (Entscheidung Markus). Die
- * Einsendungen liegen bei Netlify Forms. Der wöchentliche Suchlauf macht
+ * Einsendungen liegen bei Netlify Forms. Der Suchlauf macht
  * aus ihnen `frei`-Posten mit „Herkunft: Vorschlag" — und zwar VOR seinen
- * eigenen Funden, innerhalb derselben Obergrenze von zehn Posten
- * (Entscheidung Markus, Variante a).
+ * eigenen Funden, innerhalb derselben Obergrenze von Posten (Entscheidung
+ * Markus, Variante a; seit dem 2026-09-29 zwölf, `OBERGRENZE` in
+ * warteschlange.ts).
  *
  * ARBEITSTEILUNG (BETRIEB.md 2.1: Skripte rechnen, Agenten urteilen):
  * Dieses Skript entscheidet nur, was sich ohne Urteil entscheiden lässt —

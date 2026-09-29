@@ -62,6 +62,7 @@
     "// warteschlange:naechster": "Der oberste freie Posten, den kein offener Zweig schon bearbeitet. Ein eigener Eintrag, damit der Lauf keine Flags durch npm durchreichen muss.",
     "warteschlange:naechster": "tsx scripts/warteschlange.ts --naechster",
     "warteschlange:belegt": "tsx scripts/warteschlange.ts --belegt",
+    "warteschlange:platz": "tsx scripts/warteschlange.ts --platz",
     "// automerge": "Darf dieser Zweig ohne menschliche Pruefung mergen? Exitcode 0 = ja. Wird von der taeglichen Routine aufgerufen, nicht von der Kette.",
     "automerge:erlaubt": "tsx scripts/automerge-erlaubt.ts",
     "verify:ci": "echo '::: [1/11 Zeitzonen-Konvention] :::' && npm run check:zeit && echo '::: [2/11 Warteschlange markiert] :::' && npm run warteschlange:check && echo '::: [3/11 Freigabepruefung (Basis erforderlich)] :::' && npm run freigabe:ci && echo '::: [4/11 Inhalte (strict)] :::' && npm run validate:strict && echo '::: [5/11 JSON-LD-Graphen (strict)] :::' && npm run jsonld:strict && echo '::: [6/11 Autolink-Drift] :::' && npm run autolink:check && echo '::: [7/11 Typen (astro check)] :::' && npm run check && echo '::: [8/11 Build] :::' && npm run build && echo '::: [9/11 Vorschaubilder im Build] :::' && npm run check:vorschaubilder && echo '::: [10/11 Weiterleitungen im Build] :::' && npm run check:weiterleitungen && echo '::: [11/11 Tests] :::' && npm run test"
