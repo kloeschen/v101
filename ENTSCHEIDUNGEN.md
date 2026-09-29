@@ -11,6 +11,77 @@ Hinein gehören: geänderte Regeln, Felder im Datenvertrag, verworfene
 Alternativen, Funde mit Folgen. Nicht hinein gehören: normale Commits,
 Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
+Berichte der täglichen Läufe („fünf Termine gebaut, einer zurück") stehen
+in ihrem PR, neue Fallen im Ablauf. Hierher kommt ein Lauf nur mit einer
+geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
+
+---
+
+## 2026-09-29 — Tägliche Läufe schreiben keine Inhaltsberichte mehr hierher
+
+**Anlass:** Gemessen über die 13 Merges von `main` in offene Zweige seit
+dem 2026-09-20: 9 hatten Konflikte, davon 8 in dieser Datei (dazu 3 in
+`OFFENE-PUNKTE.md`, 2 in `termin-recherche.md`). Jeder Lauf setzt seinen
+Eintrag an dieselbe Stelle oben; wer neben einem Lauf offen ist, bekommt
+einen Konflikt. Rund ein Drittel der Einträge seit dem 2026-09-24 waren
+Inhaltsberichte, die der Kopf dieser Datei ausschließt — der Prompt des
+täglichen Laufs verlangte trotzdem immer einen Eintrag.
+
+**Entscheidung Markus:** Inhaltsläufe schreiben keinen Eintrag mehr. Der
+Bericht steht im PR, eine neue Falle im Abschnitt „Fallen" des Ablaufs;
+hierher nur eine geänderte Regel oder ein Fund mit Folgen über den Posten
+hinaus. Geändert: Prompt des täglichen Laufs, `BETRIEB.md` 2.5, Kopf
+dieser Datei.
+
+**Verworfen:** ein Eintrag je Datei unter `docs/entscheidungen/` — hätte
+die Konflikte hier ganz beseitigt, aber das Protokoll an zwei Orte
+verteilt und eine Lesefassung für den Strategie-Chat gebraucht. Beides
+zusammen: am gründlichsten, am meisten Umbau. Die verbleibenden,
+selteneren Konflikte in `OFFENE-PUNKTE.md` bleiben; ein PR, der länger
+offen steht, wird nachgezogen.
+
+---
+
+## 2026-09-29 — Alte Pfade leiten automatisch weiter, sobald ihre Sache da ist
+
+**Anlass:** Entscheidung Markus zu den 387 offenen alten Pfaden von
+v101.de: „jetzt 404, dann automatisch richtig weiterleiten", und
+`thema/pencil` auf `lexikon/bleistiftrock`.
+
+**Gebaut:** Die 301-Regeln stehen nicht mehr von Hand in
+`public/_redirects`. `scripts/schreibe-weiterleitungen.ts` läuft als Teil
+von `npm run build` und setzt sie vor die Datei in `dist/`. Ein alter
+Kategorie-, Unterkategorie-, Themen- oder Jahrzehntpfad bekommt 301 auf
+`/lexikon/<slug>/`, wenn sein letzter Abschnitt Slug oder Alias genau eines
+Lexikoneintrags ist (oder in `ZUORDNUNG` steht) und der Build die Seite
+hat. Die Produktion baut nur Freigegebenes: Die Weiterleitung entsteht mit
+der Freigabe, ohne dass jemand daran denken muss. Kombinationen und
+Folgeseiten leiten nie weiter, sie tragen weiter 410.
+
+**Gleicher Name heißt gleiche Sache** — die Annahme, auf der schon die
+sieben Handregeln beruhten. Für Ausnahmen gibt es `AUSGESCHLOSSEN` (leer),
+für gleiche Sache mit anderem Namen `ZUORDNUNG` (`c/petticoats`, der
+Eintrag führt den Plural nicht als Alias; `thema/pencil`). Trifft ein Name
+mehrere Einträge, entsteht keine Regel, und der Build meldet es.
+
+**Fund:** Gegen den freigegebenen Bestand ergibt die Regel die sieben
+bisherigen Weiterleitungen, `thema/pencil` und eine achte, die von Hand
+übersehen war: `c/huete/pork-pie` → `lexikon/pork-pie` (Unterkategorie
+„Hüte > Pork Pie"). Offen bleiben 385 Pfade.
+
+**Verworfen:** eine Prüfung, die fällige Weiterleitungen nur meldet. Sie
+hätte dieselbe Namensregel gebraucht und die Arbeit trotzdem einem
+Menschen oder Lauf überlassen. Eine Astro-Integration statt des
+nachgelagerten Skripts: gleiche Wirkung, aber schwerer zu testen und an
+die Astro-API gebunden.
+
+**Belege:** `test-weiterleitungen` (49 Prüfungen) mit Fixtures für Slug,
+Alias, Zuordnung, Mehrdeutigkeit, nicht gebautes Ziel und Kombination,
+dazu die erwartete Liste gegen die echten Daten. Mutationen: Aliase
+ignoriert → 3 Behauptungen fallen; Kombinationen bekommen einen Schlüssel
+→ 5; Build nicht gefragt → 4. `check-weiterleitungen` liest jetzt
+`dist/_redirects`, also das, was ausgeliefert wird.
+
 ---
 
 ## 2026-09-29 — BWC Rock Dock Teddys: einer von zwei Terminen, Verein und Kalender widersprechen sich

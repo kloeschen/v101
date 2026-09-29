@@ -1,7 +1,8 @@
 #!/usr/bin/env -S npx tsx
 /**
- * test-weiterleitungen.ts — der Abgleich von `public/_redirects` mit den
- * alten Pfaden von v101.de und mit dem Build.
+ * test-weiterleitungen.ts — die Regeln für die alten Pfade von v101.de:
+ * der Abgleich (`check-weiterleitungen`) und die automatischen 301
+ * (`schreibe-weiterleitungen`).
  *
  * Jede Fehlerart hat einen Fall, an dem sie anschlagen muss, und den
  * Gegenfall, an dem sie still bleibt. Der Build ist ein Wegwerfverzeichnis
@@ -15,8 +16,10 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from "nod
 import { tmpdir } from "node:os";
 import path from "node:path";
 import {
-  leseRegeln, leseAltliste, trifft, ersteRegel, beurteile, REGELDATEI, ALTLISTE,
+  leseRegeln, leseAltliste, trifft, ersteRegel, beurteile, ALTLISTE,
 } from "./check-weiterleitungen";
+import { automatischeRegeln, slugForm, schluessel, alsText, ZUORDNUNG } from "./schreibe-weiterleitungen";
+import { ladeAlle } from "./_laden";
 
 let bestanden = 0;
 const fehler: string[] = [];
@@ -91,16 +94,80 @@ schlaegtAn("Regel, die hinter einer früheren Regel verschwindet, ist tot",
   "/c/* /404.html 410\n/c/korsett /lexikon/korsett/ 301", /\/c\/korsett\): trifft keinen alten Pfad/);
 rmSync(dist, { recursive: true, force: true });
 
-/* --- Lebenszeichen: die echten Dateien ------------------------------- */
-const echt = leseRegeln(readFileSync(REGELDATEI, "utf8"));
+/* --- automatische 301: die Namensregel ------------------------------ */
+gleich("Slug-Form schreibt Umlaute aus", slugForm("Strumpfhaltergürtel"), "strumpfhaltergaertel".replace("aertel", "uertel"));
+gleich("Slug-Form macht Leerzeichen zu Strichen", slugForm("Pork Pie Hat"), "pork-pie-hat");
+gleich("Schlüssel einer Kategorie", schluessel("/c/korsett/"), "korsett");
+gleich("Schlüssel einer Unterkategorie", schluessel("/c/hosen/capri/"), "capri");
+gleich("Schlüssel einer Themenseite", schluessel("/thema/pin-up/"), "pin-up");
+gleich("Kombination hat keinen Schlüssel", schluessel("/c/hemd/ctag/rot/"), null);
+gleich("Folgeseite hat keinen Schlüssel", schluessel("/jahrzehnt/50s/page/2/"), null);
+gleich("fremder Bereich hat keinen Schlüssel", schluessel("/brand/normani"), null);
+
+const begriffe = [
+  { slug: "korsett", aliases: ["Corset"] },
+  { slug: "pork-pie", aliases: ["Pork Pie Hat"] },
+  { slug: "neu", aliases: [] },
+  { slug: "a", aliases: ["Doppelt"] },
+  { slug: "b", aliases: ["Doppelt"] },
+];
+const gebautFix = new Set(["/lexikon/korsett/", "/lexikon/pork-pie/", "/lexikon/a/", "/lexikon/b/", "/lexikon/bleistiftrock/"]);
+const auto = automatischeRegeln(
+  ["/c/korsett/", "/thema/corset/", "/c/pork-pie/jahrz/40s/", "/c/neu/", "/thema/doppelt/", "/thema/pencil/", "/c/petticoats/", "/c/korsett"],
+  begriffe,
+  (p) => gebautFix.has(p),
+);
+gleich("gleicher Slug und gleicher Alias leiten weiter, Zuordnung auch", auto.regeln.map((r) => [r.von, r.nach]), [
+  ["/c/korsett", "/lexikon/korsett/"],
+  ["/thema/corset", "/lexikon/korsett/"],
+  ["/thema/pencil", "/lexikon/bleistiftrock/"],
+]);
+pruefe("Kombination leitet nie weiter, auch bei passendem Namen", !auto.regeln.some((r) => r.von.includes("jahrz")));
+pruefe("nicht gebautes Ziel leitet nicht weiter (bleibt 404)", !auto.regeln.some((r) => r.von === "/c/neu"));
+gleich("Zuordnung ohne gebautes Ziel wartet", auto.wartend, ["/c/petticoats → /lexikon/petticoat/"]);
+gleich("mehrdeutiger Name leitet nicht weiter", auto.mehrdeutig, ["/thema/doppelt → a, b"]);
+pruefe("derselbe Pfad mit und ohne Schrägstrich gibt eine Regel", auto.regeln.filter((r) => r.von === "/c/korsett").length === 1);
+const text = alsText(auto.regeln);
+gleich("der Text ist als Regeldatei lesbar", leseRegeln(text).map((r) => [r.von, r.status]), [
+  ["/c/korsett", 301], ["/thema/corset", 301], ["/thema/pencil", 301],
+]);
+for (const [von, slug] of Object.entries(ZUORDNUNG)) {
+  pruefe(`Zuordnung ${von} ist ein alter Pfad`, leseAltliste(readFileSync(ALTLISTE, "utf8")).some((p) => p.replace(/\/$/, "") === von));
+  pruefe(`Zuordnung ${von} zeigt auf einen Lexikoneintrag`, ladeAlle({ collection: "lexikon" }).some((e) => e.slug === slug));
+}
+
+/* --- Lebenszeichen: die echten Daten ---------------------------------- */
+// Gebaut ist in der Produktion, was freigegeben ist. Gegen diesen Stand
+// muss die Namensregel genau die Weiterleitungen ergeben, die bis zum
+// 2026-09-29 von Hand in public/_redirects standen — plus thema/pencil
+// (Entscheidung Markus) und c/huete/pork-pie (Unterkategorie, von Hand
+// übersehen, von der Namensregel gefunden). Kommt ein freigegebener Begriff hinzu, dessen Name
+// ein alter Pfad ist, wächst die Liste; dann hier nachtragen.
 const echtAlt = leseAltliste(readFileSync(ALTLISTE, "utf8"));
+const lexikon = ladeAlle({ collection: "lexikon" }).filter((e) => !e.slug.startsWith("_"));
+const frei = new Set(lexikon.filter((e) => e.roh.status === "veroeffentlicht").map((e) => `/lexikon/${e.slug}/`));
+const echt = automatischeRegeln(
+  echtAlt,
+  lexikon.map((e) => ({ slug: e.slug, aliases: ((e.roh.aliases as string[] | undefined) ?? []).map(String) })),
+  (p) => frei.has(p),
+);
 pruefe("Altliste ist gelesen (mindestens 1000 Pfade)", echtAlt.length >= 1000, String(echtAlt.length));
-pruefe("die echte Regeldatei hat 301-Regeln", echt.some((r) => r.status === 301));
-pruefe("die echte Regeldatei hat 410-Regeln", echt.some((r) => r.status === 410));
-pruefe("eine echte 301 trifft einen alten Pfad",
-  echtAlt.some((p) => ersteRegel(echt, p)?.status === 301));
-pruefe("eine echte 410 trifft einen alten Pfad",
-  echtAlt.some((p) => ersteRegel(echt, p)?.status === 410));
+gleich("echte Daten: die erwarteten automatischen 301", echt.regeln.map((r) => `${r.von} → ${r.nach}`).sort(), [
+  "/c/bleistiftrock → /lexikon/bleistiftrock/",
+  "/c/huete/pork-pie → /lexikon/pork-pie/",
+  "/c/korsett → /lexikon/korsett/",
+  "/c/petticoats → /lexikon/petticoat/",
+  "/c/pomade → /lexikon/pomade/",
+  "/c/strapsguertel → /lexikon/strapsguertel/",
+  "/c/taillenmieder → /lexikon/taillenmieder/",
+  "/thema/pencil → /lexikon/bleistiftrock/",
+  "/thema/rockabilly → /lexikon/rockabilly/",
+]);
+gleich("echte Daten: nichts mehrdeutig", echt.mehrdeutig, []);
+const statisch = leseRegeln(readFileSync(path.join(path.dirname(ALTLISTE), "../../public/_redirects"), "utf8"));
+pruefe("public/_redirects hat 410-Regeln", statisch.some((r) => r.status === 410));
+pruefe("public/_redirects hat keine 301 mehr (die schreibt der Build)", !statisch.some((r) => r.status === 301));
+pruefe("eine echte 410 trifft einen alten Pfad", echtAlt.some((p) => ersteRegel(statisch, p)?.status === 410));
 
 console.log(`${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);
 for (const f of fehler) console.log(`  FEHLER  ${f}`);
