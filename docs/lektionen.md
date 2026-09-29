@@ -787,6 +787,13 @@ harmloses Wort. Die schlichtere Fassung ist die richtigere.
 Werkzeug. Wer nach Zeichen sucht, sucht nach dem falschen Ding und findet
 dabei zu viel und zu wenig.
 
+**Nachtrag 2026-09-29:** Die Korrektur vom 2026-09-23 band nur die
+Umleitung an ihr Ziel. Verben und das Statuswort wurden weiter im ganzen
+Befehl gesucht — und schlugen an zwei Lesebefehlen an: ein `git checkout`
+zwei Teilbefehle vor einer Statussuche, ein Suchwort in Anführungszeichen,
+das zufällig wie ein Schreibverb hieß. Dieselbe Lektion, eine Ebene
+tiefer: Auch ein Verb gehört zu dem Teilbefehl, in dem es steht.
+
 
 ## 30. Eine zweite Konfigurationsdatei ist eine stille Sicherungskopie, die niemand liest
 
