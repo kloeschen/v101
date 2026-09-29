@@ -297,6 +297,25 @@ function maskiere(s: string): string {
  * gehört nur dem Tanzeintrag. Mehrdeutige Stellen verlinkt, wer schreibt,
  * von Hand auf den gemeinten Eintrag; bestehende Links sind geschützt.
  */
+/**
+ * NUR VON HAND (seit dem 2026-09-29, Entscheidung Markus). Wörter, die der
+ * Autolink nie selbst setzt, obwohl genau ein Eintrag sie trägt.
+ *
+ * „Swing" ist das erste: Gemessen am Bestand vom 2026-09-29 hätte der
+ * Autolink das Wort neunmal verlinkt, fünfmal falsch — dreimal meinte es
+ * den Tanz („Finest Boogie & Swing", „Boogie Woogie, Swing und
+ * Standard-Latein", „Familie der Swing-Tänze"), einmal war es ein Verb im
+ * Veranstaltungsnamen („Swing this Christmas"), einmal ein Teil von
+ * „Western Swing". Die Mehrdeutigkeit oben hilft nicht, weil es keinen
+ * Tanzeintrag gibt, der das Wort mitträgt. Kommt einer, wird der Eintrag
+ * hier überflüssig — die Regel oben greift dann von selbst.
+ *
+ * Verglichen wird das ganze Wort in Kleinschreibung. Andere Formen desselben
+ * Eintrags (Aliase) bleiben verlinkbar. Die richtigen Stellen verlinkt, wer
+ * schreibt, von Hand; bestehende Links sind geschützt.
+ */
+export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing"]);
+
 function baueBegriffe(eintraege: Map<string, EintragMeta>): {
   muster: BegriffMuster[];
   mehrdeutig: Map<string, string[]>;
@@ -324,6 +343,7 @@ function baueBegriffe(eintraege: Map<string, EintragMeta>): {
   const muster: BegriffMuster[] = [];
   const mehrdeutig = new Map<string, string[]>();
   for (const [norm, { begriff, slugs }] of traeger) {
+    if (NUR_VON_HAND.has(norm)) continue;
     if (slugs.size > 1) {
       mehrdeutig.set(norm, [...slugs].sort());
       continue;
@@ -428,15 +448,40 @@ export function autolink(
     // Wer im Text zuerst steht, wird verlinkt — nicht wer im Musterindex
     // zufällig vorn liegt. Bei gleicher Position gewinnt der längere Begriff
     // ("Neo-Rockabilly" schlägt "Rockabilly").
+    //
+    // Sperrbereiche (seit dem 2026-09-29): Vorkommen von Begriffen, die hier
+    // nicht mehr verlinkt werden — der eigene Eintrag und schon verlinkte.
+    // Sie nehmen nicht mehr am Wettbewerb unten teil und schützten deshalb
+    // bis dahin ihren Text nicht: Auf der Seite „Western Swing" hätte ein
+    // Eintrag „Swing" mitten in den eigenen Namen gegriffen, ebenso in jedes
+    // zweite „Western Swing" einer anderen Seite. Ein Sperrbereich hält nur
+    // KÜRZERE Treffer ab; ein längerer Begriff, der einen schon verlinkten
+    // kurzen enthält, bleibt verlinkbar.
+    const alle = (muster: BegriffMuster) => segment.text.matchAll(new RegExp(muster.regex.source, "giu"));
+    const sperren: { start: number; laenge: number }[] = [];
+    for (const muster of registry.begriffe) {
+      const eigen = aktuell?.collection === "lexikon" && aktuell.slug === muster.slug;
+      if (!eigen && !erledigt.has(muster.slug)) continue;
+      for (const t of alle(muster)) sperren.push({ start: t.index!, laenge: t[1].length });
+    }
+    const gesperrtDurch = (start: number, laenge: number) =>
+      sperren.some((s) => s.laenge > laenge && start < s.start + s.laenge && s.start < start + laenge);
+
     const kandidaten: { start: number; laenge: number; slug: string; wort: string }[] = [];
     for (const muster of registry.begriffe) {
       if (erledigt.has(muster.slug)) continue;
       if (gesperrt.has(muster.begriff.toLowerCase())) continue;
       if (aktuell?.collection === "lexikon" && aktuell.slug === muster.slug) continue;
-      const treffer = muster.regex.exec(segment.text);
+      let treffer: RegExpMatchArray | undefined;
+      for (const t of alle(muster)) {
+        if (!gesperrtDurch(t.index!, t[1].length)) {
+          treffer = t;
+          break;
+        }
+      }
       if (!treffer) continue;
       kandidaten.push({
-        start: treffer.index,
+        start: treffer.index!,
         laenge: treffer[1].length,
         slug: muster.slug,
         wort: treffer[1],
