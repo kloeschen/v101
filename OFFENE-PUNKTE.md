@@ -32,7 +32,7 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **BWC Rock Dock Teddys: Herbstparty am 20.11.2026 anlegen (Burg Perchtoldsdorf).**
+`mensch` **BWC Rock Dock Teddys: Herbstparty am 20.11.2026 anlegen (Burg Perchtoldsdorf).**
 Entscheidung Markus, 2026-09-29: Es gilt der Terminkalender der
 Vereinsseite. Dort steht „HERBSTPARTY", Fr., 20.11.2026, Burg
 Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, Motto
@@ -51,6 +51,24 @@ Gelingt beides nicht, Posten mit diesem Befund zurück auf `mensch`, nicht
 nach boogie.at bauen. Ort `burg-perchtoldsdorf` gibt es; Zeitzone `+01:00`;
 Reihe wie beim Weihnachtsabend `rock-this-christmas-perchtoldsdorf-2026-12-18`
 prüfen.
+**Zurückgegeben vom täglichen Lauf, 2026-09-29 nachmittags: keine
+Wayback-Kopie erreichbar.** Aus der Cloud-Umgebung brach jeder Abruf von
+`web.archive.org` ab (curl: „Connection reset by peer", auch
+`/save/…`; WebFetch: „unable to fetch from web.archive.org"), die
+Verfügbarkeits-API `archive.org/wayback/available` antwortete mit 429,
+auch nach 30, 60 und 90 Sekunden Wartezeit. `archive.ph` brach ebenso ab.
+`archive.org` selbst, boogie.at und die Vereinsseite (http, Last-Modified
+weiterhin 30.08.2026, „HERBSTPARTY … Musikspende: €10,00/Person" steht
+dort unverändert) waren erreichbar. Ob es eine Kopie schon gibt, ist
+damit offen. **Zu entscheiden:** (a) Markus legt die Kopie im eigenen
+Browser an (`https://web.archive.org/save/http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html`,
+zwei Minuten), trägt die entstandene Adresse hier ein und setzt den
+Posten zurück auf `frei` — empfohlen, der nächste Lauf baut dann ohne
+Archivabruf. (b) Posten ohne Änderung auf `frei` zurück und auf einen
+späteren Lauf hoffen — billig, aber falls die Sperre an der Umgebung
+liegt und nicht am Zeitpunkt, scheitert jeder Lauf gleich. (c) Nach
+boogie.at bauen — schließt der Posten ausdrücklich aus. Die Zeit drängt
+mäßig: Termin in 52 Tagen.
 
 `frei` **Haslinger Hof Kirchham, Boogie Mix: 2 Termine anlegen (13.11.2026, 11.12.2026).**
 Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten 0 bis 2) und der
