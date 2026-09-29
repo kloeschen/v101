@@ -56,13 +56,17 @@ const eintrag = (slug: string, status: string) => {
  * setzt: Eine Variable, die zufällig in der Umgebung des Testlaufs steht,
  * bestätigte sonst Fälle, die hier als unbestätigt geprüft werden — und der
  * Test bestünde aus dem falschen Grund.
+ *
+ * Dasselbe gilt seit dem 2026-09-29 für `GITHUB_HEAD_REF`: Läuft dieser Test
+ * in der CI auf einem Freigabe-PR, stünde dort `freigabe/<Lauf-ID>`, und die
+ * Prüfung holte sich die echte Bestätigung dieses Laufs (_freigabelauf.ts).
  */
 const lauf = (...args: string[]) => laufMit({}, ...args);
 const laufMit = (umgebung: Record<string, string>, ...args: string[]) => {
   const r = spawnSync("npx", ["tsx", SKRIPT, ...args], {
     cwd: wurzel,
     encoding: "utf8",
-    env: { ...process.env, FREIGABE_BESTAETIGT: "", ...umgebung },
+    env: { ...process.env, FREIGABE_BESTAETIGT: "", GITHUB_HEAD_REF: "", ...umgebung },
   });
   return { code: r.status ?? -1, stdout: r.stdout ?? "", stderr: r.stderr ?? "" };
 };
@@ -198,6 +202,61 @@ try {
       JSON.stringify(r.stderr.slice(0, 200)),
     );
     pruefe("Hinweis verweist auf M10", r.stderr.includes("M10"), JSON.stringify(r.stderr.slice(0, 200)));
+  }
+
+  /* --- Bestätigung aus dem Freigabelauf (seit 2026-09-29) -------- */
+  /*
+   * Auf einem Freigabe-PR holt die Prüfung die Slugs aus dem Lauf, der den
+   * PR geöffnet hat. Hier mit einem nachgebauten `gh` im PATH: `gh api`
+   * liefert Workflow und Ereignis aus FAKE_GH_LAUF, `gh run download`
+   * schreibt FAKE_GH_SLUGS als Artefaktdatei. Stand: petticoat, tellerrock
+   * und der neu angelegte bolero stehen auf live.
+   */
+  {
+    const bin = path.join(wurzel, ".fake-bin");
+    mkdirSync(bin, { recursive: true });
+    writeFileSync(
+      path.join(bin, "gh"),
+      [
+        "#!/bin/sh",
+        'if [ "$1" = "api" ]; then printf \'%s\' "$FAKE_GH_LAUF"; exit 0; fi',
+        'if [ "$1" = "run" ] && [ "$2" = "download" ]; then',
+        '  while [ $# -gt 0 ]; do if [ "$1" = "--dir" ]; then ziel="$2"; fi; shift; done',
+        '  printf \'%s\' "$FAKE_GH_SLUGS" > "$ziel/freigabe-slugs.txt"; exit 0',
+        "fi",
+        "exit 1",
+        "",
+      ].join("\n"),
+      { mode: 0o755 },
+    );
+    const pr = (lauf: string, slugs = "petticoat,tellerrock,bolero") => ({
+      PATH: `${bin}${path.delimiter}${process.env.PATH}`,
+      GITHUB_HEAD_REF: "freigabe/42",
+      GITHUB_REPOSITORY: "o/r",
+      GH_TOKEN: "x",
+      FAKE_GH_LAUF: lauf,
+      FAKE_GH_SLUGS: slugs,
+    });
+    const ECHT = ".github/workflows/freigeben.yml\tworkflow_dispatch";
+
+    const gut = laufMit(pr(ECHT), "--basis", basis);
+    gleich("Freigabe-PR mit echtem Lauf ergibt Exit 0", gut.code, 0);
+    pruefe("Bericht nennt die Herkunft der Bestätigung", gut.stdout.includes("aus Freigabelauf 42"), gut.stdout);
+
+    const teil = laufMit(pr(ECHT, "petticoat"), "--basis", basis);
+    gleich("der Lauf deckt nur, was er freigegeben hat", teil.code, 1);
+    pruefe("…und der Bericht nennt die ungedeckte Datei", /FEHLER.*tellerrock\.md/.test(teil.stdout), teil.stdout);
+
+    const fremd = laufMit(pr(".github/workflows/ci.yml\tworkflow_dispatch"), "--basis", basis);
+    gleich("Lauf eines fremden Workflows bestätigt nichts", fremd.code, 1);
+    pruefe("…und der Bericht sagt warum", fremd.stdout.includes("keine Bestätigung"), fremd.stdout);
+
+    const push = laufMit(pr(".github/workflows/freigeben.yml\tpush"), "--basis", basis);
+    gleich("nicht von Hand gestarteter Lauf bestätigt nichts", push.code, 1);
+
+    const kein = laufMit({ ...pr(ECHT), GITHUB_HEAD_REF: "claude/irgendwas" }, "--basis", basis);
+    gleich("ohne Freigabe-Zweig fragt die Prüfung keinen Lauf", kein.code, 1);
+    pruefe("…und erwähnt keinen", !kein.stdout.includes("Freigabelauf"), kein.stdout);
   }
 
   /* --- ... und mit --basis-pflicht doch rot --------------------- */

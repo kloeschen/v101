@@ -17,6 +17,65 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-29 — Freigabe-PR: Bestätigung aus dem Lauf, der ihn geöffnet hat
+
+**Anlass:** Die CI am Freigabe-PR endete planmäßig rot an Schritt 3
+(`freigabe:ci`) — zweimal an einem Tag hat Markus das für einen Fehlschlag
+der Freigabe gehalten (#87, #101). Ein Rot, das man jedes Mal wegerklären
+muss, verdeckt das Rot, das zählt; Tests und Build liefen auf dem PR nie.
+
+**Gebaut (Code, wirksam):** `scripts/_freigabelauf.ts`. Auf einem Zweig
+`freigabe/<Lauf-ID>` liest `check-freigabe.ts` über `gh` die Slugs aus dem
+Artefakt `freigabe-slugs` genau dieses Laufs — nur, wenn der Lauf
+`freigeben.yml` war und von Hand gestartet wurde (`workflow_dispatch`).
+Jeder weitere Statuswechsel im PR bleibt ein Fehler. Fehlt Token, `gh`,
+Artefakt oder stimmt der Workflow nicht, gibt es keine Bestätigung, und die
+Meldung nennt den Grund: Die Prüfung schließt bei Fehlern, sie öffnet nie.
+
+**Vorgeschlagen (Workflows, einzusetzen von Markus):**
+`docs/vorschlaege/freigeben.yml` legt die Slugs als Artefakt ab, bevor der
+Pull Request entsteht; `docs/vorschlaege/ci.yml` gibt der Kette ein Token
+mit `contents: read` und `actions: read`. `test-pruefkette.ts` prüft beide
+über `V101_WORKFLOWS=docs/vorschlaege` (79/79); am echten Stand meldet es bis
+zum Einsetzen einen Hinweis statt eines Fehlers.
+
+**Verworfen:** (a) Ein Shell-Schritt in `ci.yml`, der das Artefakt holt —
+bricht die M10-Regel „ci.yml ruft nur die Kette auf" (W5 unten zeigt es).
+(b) Die Bestätigung aus der Commit-Nachricht oder der PR-Beschreibung lesen —
+beides kann jeder mit Schreibrecht verfassen; der Lauf dagegen ist an ein
+Workflow-Ereignis gebunden. (c) Den Freigabe-PR nicht mehr prüfen lassen —
+dann liefe auf ihm nie etwas, auch nicht nach einer Nachbesserung von Hand.
+
+**Nebenfund:** Die Testvorrichtung von `test-freigabe.ts` reicht
+`process.env` durch. Auf einem Freigabe-PR hätte sie `GITHUB_HEAD_REF` geerbt
+und die echte Bestätigung gezogen; sie leert die Variable jetzt wie
+`FREIGABE_BESTAETIGT`.
+
+**Mutationsbelege** (je zurückgebaut): im Code
+`test-freigabelauf.ts` 46/46 und `test-freigabe.ts` 39/39 —
+
+| Mutation | fällt |
+|---|---|
+| M1 Workflow-Pfad nicht geprüft | 6 + 2 |
+| M2 Ereignis nicht geprüft | 3 + 1 |
+| M3 Zweigmuster ohne Anker | 6 |
+| M4 kein Slug-Filter | 1 |
+| M5 Bestätigung nicht verdrahtet | 1 |
+
+und an Kopien der Vorschläge (`test-pruefkette.ts`):
+
+| Mutation | fällt |
+|---|---|
+| W1 Artefakt erst nach dem Pull Request | 1 |
+| W2 ohne `actions: read` | 1 |
+| W3 ohne `GH_TOKEN` | 1 |
+| W4 Datei aus der Eingabe statt aus dem Lauf | 2 |
+| W5 Shell-Schritt in `ci.yml` | 1 |
+
+**Offen:** Erst ein echter Freigabe-PR nach dem Einsetzen beweist die Kette
+(Regel 6). Posten in OFFENE-PUNKTE, samt dem Schritt, der den Hinweis danach
+zum Fehler macht.
+
 ## 2026-09-29 — Autolink: „Swing" nur von Hand, und kein kurzer Begriff in einem längeren
 
 **Anlass:** Vor dem Lexikoneintrag „Swing" gemessen, wohin der Autolink

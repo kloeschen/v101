@@ -238,6 +238,17 @@ Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
 Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
 würde „50er" sehr oft verlinken).
 
+**Freigabe-CI grün machen — sobald die beiden Workflow-Vorschläge
+eingesetzt sind.** `docs/vorschlaege/ci.yml` und `docs/vorschlaege/freigeben.yml`
+von Markus nach `.github/workflows/` kopieren (Agentensperre). Danach, in
+dieser Reihenfolge: (1) eine echte Freigabe starten und die CI am PR
+freigeben — die Freigabeprüfung muss „Bestätigung aus Freigabelauf <ID>"
+melden und die Kette grün durchlaufen (Regel 6: erst der echte Lauf beweist
+es); (2) in `scripts/test-pruefkette.ts` den Übergangshinweis zum Fehler
+machen, damit ein späteres Entfernen des Artefakt-Schritts auffällt;
+(3) `docs/vorschlaege/ci.yml` und `freigeben.yml` löschen und den Absatz in
+BETRIEB.md („Vorgeschlagen, noch nicht eingesetzt") umschreiben.
+
 **Swing von Hand verlinken — sobald `lexikon/swing` freigegeben ist.** Der
 Autolink setzt „Swing" nie selbst (`NUR_VON_HAND` in `src/lib/links.ts`,
 Entscheidung Markus 2026-09-29). Gemessen am selben Tag meinen diese
