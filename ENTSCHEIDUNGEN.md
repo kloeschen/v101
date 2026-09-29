@@ -17,6 +17,57 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-29 — Autolink: „Swing" nur von Hand, und kein kurzer Begriff in einem längeren
+
+**Anlass:** Vor dem Lexikoneintrag „Swing" gemessen, wohin der Autolink
+das Wort nach der Freigabe setzen würde (Simulation im Speicher, nichts
+geschrieben): neun Links, davon fünf falsch. Dreimal meinte „Swing" den
+Tanz (Bella Italia „Finest Boogie & Swing", Herbstparty „Boogie Woogie,
+Swing und Standard-Latein", Boogie-Woogie „Familie der Swing-Tänze"),
+einmal war es ein Verb im Namen („Swing this Christmas"), einmal griff es
+auf der Seite „Western Swing" mitten in den eigenen Namen. Richtig wären
+vier gewesen: Swing-Ära, Swing-Big-Bands, eine Swing-Band, die
+Tanzmusik-Aufzählung der Boogie-Party. Zum Vergleich „Kontrabass": sieben
+Links, alle richtig.
+
+**Entscheidung Markus: nur von Hand.** `NUR_VON_HAND` in `src/lib/links.ts`
+— Wörter, die der Autolink nie selbst setzt, obwohl genau ein Eintrag sie
+trägt. Erster und einziger Eintrag: „swing". Aliase desselben Eintrags
+bleiben verlinkbar. Die vier richtigen Stellen werden nach der Freigabe
+von Hand verlinkt (Posten in OFFENE-PUNKTE, mit dem Lexikoneintrag).
+
+**Verworfen:** (a) Autolink wie immer und die Tanzstellen umformulieren —
+bei Bella Italia und Rock this Christmas ist der Wortlaut ein Reihen- bzw.
+Veranstaltungsname und nicht umformulierbar. (b) Swing zurückstellen, bis
+ein Tanzeintrag „Swing-Tänze" das Wort mitträgt; dann griffe die
+bestehende Mehrdeutigkeitsregel von selbst. Das bleibt der saubere
+Endzustand: Kommt der Tanzeintrag, ist die Liste für „swing" überflüssig.
+(c) Die Option `ausnahmen` des Autolinks je Seite zu verdrahten — sie ist
+seit jeher da, aber an kein Feld angeschlossen, und bräuchte eines im
+Datenvertrag.
+
+**Nebenbefund, unabhängig behoben: Sperrbereiche.** Der eigene Begriff und
+schon verlinkte Begriffe nahmen am Wettbewerb um die längste Fundstelle
+nicht mehr teil und schützten deshalb ihren Text nicht. „Swing" hätte in
+„Western Swing" gegriffen — auf dessen eigener Seite und in jedem zweiten
+Vorkommen auf anderen. Jetzt sperren solche Vorkommen kürzere Treffer;
+längere, die einen schon verlinkten kurzen Begriff enthalten, bleiben
+verlinkbar, und ein gesperrter erster Treffer gibt den Weg zum nächsten
+frei. Am heutigen Bestand ändert das keinen Link (`autolink:check` ohne
+Drift) — der Fehler war latent und wäre mit dem ersten Begriff
+aufgebrochen, der in einem längeren steckt.
+
+**Mutationsbeleg** (`scripts/test-links.ts`, 78/78 grün; jede Mutation
+zurückgebaut):
+
+| Mutation | fällt |
+|---|---|
+| M1 Liste leer | 2 |
+| M2 Liste nicht angewandt | 1 |
+| M3 keine Sperrbereiche | 3 |
+| M4 Sperre auch gegen längere Begriffe | 1 |
+| M5 nur der erste Treffer zählt (alter Stand) | 1 |
+
 ## 2026-09-29 — Weg A: drei Läufe am Tag, Obergrenze zwölf, Lexikon rückt nach
 
 **Anlass:** Markus will zügig genug Daten für die Plattform. Stand heute

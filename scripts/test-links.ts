@@ -20,6 +20,7 @@ import {
   eingehendeVerweise,
   interneLinks,
   pfadZuEintrag,
+  NUR_VON_HAND,
   type RegistryEingabe,
 } from "../src/lib/links";
 import { ladeAlle, alsRegistryEingaben } from "./_laden";
@@ -229,6 +230,39 @@ const registry = buildRegistry([
   gleich("gleichrangige englische Bezeichnungen sind mehrdeutig", nurEn.mehrdeutig.get("swingout"), ["a-eintrag", "b-eintrag"]);
   const allein = buildRegistry([lex("unterrock", "Unterrock", { bezeichnungEn: "Petticoat" })]);
   gleich("englische Bezeichnung ohne Konkurrenz verlinkt weiter", autolink("Ein Petticoat.", allein).verlinkt, ["unterrock"]);
+}
+
+/* --- Sperrbereiche (2026-09-29) ------------------------------------ *
+ * Ein schon verlinkter oder der eigene Begriff schützt seinen Text vor
+ * kürzeren Begriffen. Anlass: „Swing" hätte in „Western Swing" gegriffen.
+ * Hier mit Blues/Jump Blues, weil „Swing" inzwischen nur von Hand geht. */
+{
+  const reg = buildRegistry([lex("blues", "Blues"), lex("jump-blues", "Jump Blues"), lex("petticoat", "Petticoat")]);
+  const eigen = autolink("Jump Blues ist ein Blues-Stil.", reg, { aktuell: { collection: "lexikon", slug: "jump-blues" } });
+  pruefe(
+    "eigene Seite: der kurze Begriff greift nicht in den eigenen Namen, wohl aber danach",
+    eigen.markdown === "Jump Blues ist ein [Blues](/lexikon/blues/)-Stil.",
+    eigen.markdown,
+  );
+  const zweit = autolink("[Jump Blues](/lexikon/jump-blues/) und wieder Jump Blues zum Petticoat.", reg);
+  gleich("zweites Vorkommen eines verlinkten Begriffs: kein kurzer Begriff darin", zweit.verlinkt, ["petticoat"]);
+  pruefe("…und der Text dort bleibt unangetastet", zweit.markdown.includes("wieder Jump Blues zum"), zweit.markdown);
+  const lang = autolink("[Blues](/lexikon/blues/) und Jump Blues.", reg);
+  gleich("ein verlinkter kurzer Begriff sperrt den längeren nicht", lang.verlinkt, ["jump-blues"]);
+}
+
+/* --- Nur von Hand (2026-09-29) --------------------------------------- *
+ * „Swing" meint im Bestand oft den Tanz oder ist ein Verb im Titel. Der
+ * Autolink setzt es deshalb nie selbst; Gegenprobe ist der Petticoat im
+ * selben Satz, und ein Alias desselben Eintrags bleibt verlinkbar. */
+{
+  const reg = buildRegistry([lex("swing", "Swing", { aliases: ["Swingmusik"] }), lex("petticoat", "Petticoat")]);
+  pruefe("„swing\" steht auf der Liste", NUR_VON_HAND.has("swing"));
+  gleich("Swing wird nicht verlinkt, der Petticoat daneben schon", autolink("Swing zum Petticoat, dazu Swing-Ära.", reg).verlinkt, ["petticoat"]);
+  gleich("ein Alias desselben Eintrags bleibt verlinkbar", autolink("Swingmusik der 1930er.", reg).verlinkt, ["swing"]);
+  const hand = autolink("Die [Swing](/lexikon/swing/)-Ära und Swing.", reg);
+  pruefe("ein Handlink bleibt stehen", hand.markdown === "Die [Swing](/lexikon/swing/)-Ära und Swing.", hand.markdown);
+  gleich("und das Wort ist dadurch nicht mehrdeutig", [...reg.mehrdeutig.keys()], []);
 }
 
 {
