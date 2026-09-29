@@ -13,6 +13,48 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-29 — Alte Pfade leiten automatisch weiter, sobald ihre Sache da ist
+
+**Anlass:** Entscheidung Markus zu den 387 offenen alten Pfaden von
+v101.de: „jetzt 404, dann automatisch richtig weiterleiten", und
+`thema/pencil` auf `lexikon/bleistiftrock`.
+
+**Gebaut:** Die 301-Regeln stehen nicht mehr von Hand in
+`public/_redirects`. `scripts/schreibe-weiterleitungen.ts` läuft als Teil
+von `npm run build` und setzt sie vor die Datei in `dist/`. Ein alter
+Kategorie-, Unterkategorie-, Themen- oder Jahrzehntpfad bekommt 301 auf
+`/lexikon/<slug>/`, wenn sein letzter Abschnitt Slug oder Alias genau eines
+Lexikoneintrags ist (oder in `ZUORDNUNG` steht) und der Build die Seite
+hat. Die Produktion baut nur Freigegebenes: Die Weiterleitung entsteht mit
+der Freigabe, ohne dass jemand daran denken muss. Kombinationen und
+Folgeseiten leiten nie weiter, sie tragen weiter 410.
+
+**Gleicher Name heißt gleiche Sache** — die Annahme, auf der schon die
+sieben Handregeln beruhten. Für Ausnahmen gibt es `AUSGESCHLOSSEN` (leer),
+für gleiche Sache mit anderem Namen `ZUORDNUNG` (`c/petticoats`, der
+Eintrag führt den Plural nicht als Alias; `thema/pencil`). Trifft ein Name
+mehrere Einträge, entsteht keine Regel, und der Build meldet es.
+
+**Fund:** Gegen den freigegebenen Bestand ergibt die Regel die sieben
+bisherigen Weiterleitungen, `thema/pencil` und eine achte, die von Hand
+übersehen war: `c/huete/pork-pie` → `lexikon/pork-pie` (Unterkategorie
+„Hüte > Pork Pie"). Offen bleiben 385 Pfade.
+
+**Verworfen:** eine Prüfung, die fällige Weiterleitungen nur meldet. Sie
+hätte dieselbe Namensregel gebraucht und die Arbeit trotzdem einem
+Menschen oder Lauf überlassen. Eine Astro-Integration statt des
+nachgelagerten Skripts: gleiche Wirkung, aber schwerer zu testen und an
+die Astro-API gebunden.
+
+**Belege:** `test-weiterleitungen` (49 Prüfungen) mit Fixtures für Slug,
+Alias, Zuordnung, Mehrdeutigkeit, nicht gebautes Ziel und Kombination,
+dazu die erwartete Liste gegen die echten Daten. Mutationen: Aliase
+ignoriert → 3 Behauptungen fallen; Kombinationen bekommen einen Schlüssel
+→ 5; Build nicht gefragt → 4. `check-weiterleitungen` liest jetzt
+`dist/_redirects`, also das, was ausgeliefert wird.
+
+---
+
 ## 2026-09-29 — BWC Rock Dock Teddys: einer von zwei Terminen, Verein und Kalender widersprechen sich
 
 **Anlass:** Bündel-Posten aus dem Suchlauf vom 2026-09-27 (zwei Termine

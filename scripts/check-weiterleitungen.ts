@@ -1,13 +1,14 @@
 #!/usr/bin/env -S npx tsx
 /**
  * check-weiterleitungen.ts — bekommt jeder alte Pfad von v101.de das
- * Schicksal, das `public/_redirects` ihm zuschreibt, und stimmt es?
+ * Schicksal, das `dist/_redirects` ihm zuschreibt, und stimmt es?
  *
  * ANLASS: Die Domain trug bis 2024 einen Preisvergleich; 1434 Pfade stehen
  * in der Wayback Machine (`docs/daten/v101-alte-urls.txt`). Sie landen seit
- * dem Umzug auf dieser Site. `public/_redirects` ordnet ihnen 301 (gleiche
- * Sache, anderes Zuhause) oder 410 (gibt es nicht mehr) zu; was keine Regel
- * trifft, bleibt offen und bekommt Netlifys 404.
+ * dem Umzug auf dieser Site. `dist/_redirects` ordnet ihnen 301 (gleiche
+ * Sache, anderes Zuhause; geschrieben von `schreibe-weiterleitungen.ts`)
+ * oder 410 (gibt es nicht mehr; aus `public/_redirects`) zu; was keine
+ * Regel trifft, bleibt offen und bekommt Netlifys 404.
  *
  * Läuft nach dem Build über `dist/`, weil nur der Build weiß, welche Seiten
  * es gibt. Fehler sind:
@@ -28,7 +29,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-export const REGELDATEI = path.join(PROJEKT, "public/_redirects");
 export const ALTLISTE = path.join(PROJEKT, "docs/daten/v101-alte-urls.txt");
 
 export interface Regel {
@@ -96,7 +96,7 @@ export function beurteile(regeln: Regel[], alt: string[], dist: string): Urteil 
   const genutzt = new Set<Regel>();
 
   for (const r of regeln) {
-    const wo = `public/_redirects:${r.zeile} (${r.von})`;
+    const wo = `_redirects:${r.zeile} (${r.von})`;
     if (r.status !== 301 && r.status !== 410) {
       fehler.push(`${wo}: Status ${r.status} — erlaubt sind 301 und 410`);
       continue;
@@ -120,7 +120,7 @@ export function beurteile(regeln: Regel[], alt: string[], dist: string): Urteil 
     const gebaut = imBuild(dist, pfad);
     if (r) genutzt.add(r);
     if (r && gebaut) {
-      fehler.push(`public/_redirects:${r.zeile} (${r.von}) trifft ${pfad}, und den gibt es im Build`);
+      fehler.push(`_redirects:${r.zeile} (${r.von}) trifft ${pfad}, und den gibt es im Build`);
     } else if (gebaut) {
       zaehlung.neu++;
     } else if (!r) {
@@ -134,14 +134,14 @@ export function beurteile(regeln: Regel[], alt: string[], dist: string): Urteil 
   }
 
   for (const r of regeln) {
-    if (!genutzt.has(r)) fehler.push(`public/_redirects:${r.zeile} (${r.von}): trifft keinen alten Pfad — tote Regel`);
+    if (!genutzt.has(r)) fehler.push(`_redirects:${r.zeile} (${r.von}): trifft keinen alten Pfad — tote Regel`);
   }
   return { fehler, zaehlung, offen };
 }
 
 function main() {
   const dist = path.resolve(process.argv[2] ?? "dist");
-  const regeln = leseRegeln(readFileSync(REGELDATEI, "utf8"));
+  const regeln = leseRegeln(readFileSync(path.join(dist, "_redirects"), "utf8"));
   const alt = leseAltliste(readFileSync(ALTLISTE, "utf8"));
   const u = beurteile(regeln, alt, dist);
 
