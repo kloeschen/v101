@@ -11,6 +11,35 @@ Hinein gehören: geänderte Regeln, Felder im Datenvertrag, verworfene
 Alternativen, Funde mit Folgen. Nicht hinein gehören: normale Commits,
 Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
+Berichte der täglichen Läufe („fünf Termine gebaut, einer zurück") stehen
+in ihrem PR, neue Fallen im Ablauf. Hierher kommt ein Lauf nur mit einer
+geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
+
+---
+
+## 2026-09-29 — Tägliche Läufe schreiben keine Inhaltsberichte mehr hierher
+
+**Anlass:** Gemessen über die 13 Merges von `main` in offene Zweige seit
+dem 2026-09-20: 9 hatten Konflikte, davon 8 in dieser Datei (dazu 3 in
+`OFFENE-PUNKTE.md`, 2 in `termin-recherche.md`). Jeder Lauf setzt seinen
+Eintrag an dieselbe Stelle oben; wer neben einem Lauf offen ist, bekommt
+einen Konflikt. Rund ein Drittel der Einträge seit dem 2026-09-24 waren
+Inhaltsberichte, die der Kopf dieser Datei ausschließt — der Prompt des
+täglichen Laufs verlangte trotzdem immer einen Eintrag.
+
+**Entscheidung Markus:** Inhaltsläufe schreiben keinen Eintrag mehr. Der
+Bericht steht im PR, eine neue Falle im Abschnitt „Fallen" des Ablaufs;
+hierher nur eine geänderte Regel oder ein Fund mit Folgen über den Posten
+hinaus. Geändert: Prompt des täglichen Laufs, `BETRIEB.md` 2.5, Kopf
+dieser Datei.
+
+**Verworfen:** ein Eintrag je Datei unter `docs/entscheidungen/` — hätte
+die Konflikte hier ganz beseitigt, aber das Protokoll an zwei Orte
+verteilt und eine Lesefassung für den Strategie-Chat gebraucht. Beides
+zusammen: am gründlichsten, am meisten Umbau. Die verbleibenden,
+selteneren Konflikte in `OFFENE-PUNKTE.md` bleiben; ein PR, der länger
+offen steht, wird nachgezogen.
+
 ---
 
 ## 2026-09-29 — Alte Pfade leiten automatisch weiter, sobald ihre Sache da ist

@@ -221,7 +221,10 @@ bearbeitet.
    vorhandenen Refs und nicht das Netz.
 2. Ist keiner frei: den dringendsten Posten aus `npm run stale`.
 3. Baut ihn vollständig nach den Regeln aus `CLAUDE.md` — `npm run verify`
-   grün, Mutationsbeleg für jede neue Regel, Eintrag in `ENTSCHEIDUNGEN.md`.
+   grün, Mutationsbeleg für jede neue Regel. Der Bericht steht im PR, neue
+   Fallen im Ablauf; in `ENTSCHEIDUNGEN.md` nur, was eine Regel ändert oder
+   ein Fund mit Folgen über den Posten hinaus ist (seit dem 2026-09-29 —
+   Inhaltsberichte dort erzeugten 8 von 9 Merge-Konflikten).
 4. Öffnet einen Pull Request. **Nie direkt auf `main`.**
 5. Merged selbst, wenn `npm run automerge:erlaubt` es erlaubt und die CI
    grün ist. Sonst bleibt der PR liegen.
