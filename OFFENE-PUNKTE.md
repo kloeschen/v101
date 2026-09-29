@@ -32,22 +32,25 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **BWC Rock Dock Teddys, Perchtoldsdorf: 2 Termine anlegen (06.11.2026, 18.12.2026).**
-Folgetermine des Vereins hinter `events/bella-italia-perchtoldsdorf-2026-09-11`
-(Vorlage). Gesehen am 2026-09-27 auf https://boogie.at/ (`?page=1`,
-`?page=2`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
-steht: „Boogie-Herbstparty", Fr., 06.11.2026, 18:30, Kulturzentrum
-Perchtoldsdorf, Beatrixgasse 5A, 2380 Perchtoldsdorf, in Kooperation mit
-der Tanzschule Schmid, DJane Edith & DJ Andreas, „Musikspende pro Person:
-EUR 10,--", Dresscode Tracht/After-Halloween/Pre-Fasching
-(/event/boogie-herbstparty); „Rock this Christmas! Swing this Christmas!",
-Fr., 18.12.2026, 18:30, gleicher Ort, gleiche DJs, gleiche Musikspende,
-Platzreservierung „erforderlich" (/event/rock-christmas-swing-christmas-2).
-Beim Bauen: Vereinsseite http://www.rockdockteddys.at gegenlesen.
-Achtung: anderer Ort als die Vorlage — Kulturzentrum Perchtoldsdorf ist
-neu, nicht `locations/burg-perchtoldsdorf`. Ob „Musikspende" als Eintritt
-gilt, wie beim Bella-Italia-Eintrag entscheiden. Reservierungsnummer ist
-eine Handynummer, nicht in den Text. Zeitzone `+01:00`.
+`mensch` **BWC Rock Dock Teddys, Boogie-Herbstparty: Datum strittig (06.11. oder 20.11.2026).**
+Rest des Postens vom 2026-09-27; der Weihnachtsabend am 18.12.2026 ist
+gebaut (`events/rock-this-christmas-perchtoldsdorf-2026-12-18`). Befund
+vom 2026-09-29: boogie.at (/event/boogie-herbstparty, vom Verein selbst
+eingetragen) nennt Fr., 06.11.2026, 18:30, Kulturzentrum Perchtoldsdorf.
+Der Terminkalender der Vereinsseite
+(http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html, nur http,
+Last-Modified 30.08.2026) nennt „HERBSTPARTY", Fr., 20.11.2026, Burg
+Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, gleiches Motto
+(Tracht/After Halloween/Pre Fasching), gleiche Musikspende 10 Euro. Keine
+dritte Quelle (Tanzschule Schmid und Gemeinde führen den Abend nicht).
+**Zu entscheiden:** (a) Markus fragt beim Verein nach (Kontakt im
+Impressum der Vereinsseite) und trägt das Datum hier ein — dann wird der
+Posten wieder `frei`, zwei Minuten plus eine Antwort; (b) liegen lassen und
+ab dem 2026-10-20 erneut beide Seiten prüfen lassen — kostet einen Lauf,
+löst sich nur, wenn der Verein eine Seite nachzieht; (c) streichen —
+kostet einen Termin, der Weihnachtsabend steht ohnehin. Nicht nach boogie.at
+allein bauen: Beim Ort gab der Abgleich mit dem Oktober-Ball einen Grund
+zur Gewichtung, beim Datum gibt es keinen.
 
 `frei` **Haslinger Hof Kirchham, Boogie Mix: 2 Termine anlegen (13.11.2026, 11.12.2026).**
 Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten 0 bis 2) und der
