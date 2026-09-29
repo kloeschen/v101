@@ -32,25 +32,25 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **BWC Rock Dock Teddys, Boogie-Herbstparty: Datum strittig (06.11. oder 20.11.2026).**
-Rest des Postens vom 2026-09-27; der Weihnachtsabend am 18.12.2026 ist
-gebaut (`events/rock-this-christmas-perchtoldsdorf-2026-12-18`). Befund
-vom 2026-09-29: boogie.at (/event/boogie-herbstparty, vom Verein selbst
-eingetragen) nennt Fr., 06.11.2026, 18:30, Kulturzentrum Perchtoldsdorf.
-Der Terminkalender der Vereinsseite
-(http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html, nur http,
-Last-Modified 30.08.2026) nennt „HERBSTPARTY", Fr., 20.11.2026, Burg
-Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, gleiches Motto
-(Tracht/After Halloween/Pre Fasching), gleiche Musikspende 10 Euro. Keine
-dritte Quelle (Tanzschule Schmid und Gemeinde führen den Abend nicht).
-**Zu entscheiden:** (a) Markus fragt beim Verein nach (Kontakt im
-Impressum der Vereinsseite) und trägt das Datum hier ein — dann wird der
-Posten wieder `frei`, zwei Minuten plus eine Antwort; (b) liegen lassen und
-ab dem 2026-10-20 erneut beide Seiten prüfen lassen — kostet einen Lauf,
-löst sich nur, wenn der Verein eine Seite nachzieht; (c) streichen —
-kostet einen Termin, der Weihnachtsabend steht ohnehin. Nicht nach boogie.at
-allein bauen: Beim Ort gab der Abgleich mit dem Oktober-Ball einen Grund
-zur Gewichtung, beim Datum gibt es keinen.
+`frei` **BWC Rock Dock Teddys: Herbstparty am 20.11.2026 anlegen (Burg Perchtoldsdorf).**
+Entscheidung Markus, 2026-09-29: Es gilt der Terminkalender der
+Vereinsseite. Dort steht „HERBSTPARTY", Fr., 20.11.2026, Burg
+Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, Motto
+Tracht/After Halloween/Pre Fasching, Musikspende 10 Euro
+(http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html, Last-Modified
+30.08.2026). boogie.at (/event/boogie-herbstparty, vom Verein eingetragen)
+nennt abweichend Fr., 06.11.2026, 18:30, Kulturzentrum Perchtoldsdorf —
+der Widerspruch gehört benannt und zugeordnet in den Text (Lektion 20),
+das Datum folgt der Vereinsseite. **Zitierbarkeit:** Die Vereinsseite
+liefert über https ein falsches Zertifikat; das Schema nimmt nur
+https-Quellen. Eine Wayback-Kopie ist https und zitierfähig
+(`https://web.archive.org/web/<Zeitstempel>/http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html`,
+`art: offiziell`); gibt es keine, eine anlegen
+(`https://web.archive.org/save/…`) und die entstandene Adresse zitieren.
+Gelingt beides nicht, Posten mit diesem Befund zurück auf `mensch`, nicht
+nach boogie.at bauen. Ort `burg-perchtoldsdorf` gibt es; Zeitzone `+01:00`;
+Reihe wie beim Weihnachtsabend `rock-this-christmas-perchtoldsdorf-2026-12-18`
+prüfen.
 
 `frei` **Haslinger Hof Kirchham, Boogie Mix: 2 Termine anlegen (13.11.2026, 11.12.2026).**
 Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten 0 bis 2) und der
@@ -99,6 +99,45 @@ Tanzkursen in Ganderkesee, und hat keinen Eintrag. Jive ist ein Tanz ohne
 gleichnamige Musikrichtung, das Wort ist also nicht mehrdeutig. `kategorie: tanz`. Die Abgrenzung gegen den
 Lindy Hop und gegen den Rock'n'Roll-Tanz gehört in den Text, mit Quelle;
 steht der Eintrag `rocknroll-tanz` schon, dorthin verlinken.
+
+`frei` **Lexikon, Bündel Bildwelt: Pin-up, Burlesque.** Zwei Einträge in
+einem PR. Beide Wörter waren Themenseiten der früheren Domain
+(`/thema/pin-up`, `/thema/burlesque`); mit der Freigabe leiten diese alten
+Pfade automatisch auf die Einträge weiter (`schreibe-weiterleitungen.ts`,
+gleicher Slug). Einzelheiten:
+
+- **Pin-up.** Slug `pin-up`, `kategorie: szene` (Bildgattung und Stil, auf
+den sich die Szene bezieht; trägt keine der Quellen den Begriff als
+Szene, im PR begründen). `abgrenzung`: das Modell gegen die Illustration
+(Elvgren, Vargas) und gegen Glamourfotografie. Quellen öffnen: Britannica,
+DWDS („Pin-up-Girl"), ein Museum mit Pin-up-Sammlung.
+- **Burlesque.** Slug `burlesque`. `abgrenzung`: die Burleske als
+literarische und musikalische Gattung, Striptease, Varieté. „Burleske"
+darf **kein** Alias werden — es ist eine andere Sache mit eigenem Wort;
+der Autolink würde sonst Texte über die Gattung falsch verlinken. Quellen:
+Britannica („burlesque show"), DWDS.
+
+Danach `npm run autolink`.
+
+`frei` **Lexikon, Bündel Muster: Polka Dots, Hahnentritt, Gingham, Nadelstreifen.**
+Vier Einträge, `kategorie: mode`, in einem PR; sie grenzen sich
+gegeneinander ab. Alle vier waren Themenseiten der früheren Domain und
+leiten nach der Freigabe automatisch weiter (`/thema/polka-dots`,
+`/thema/hahnentritt`, `/thema/gingham`, `/thema/nadelstreifen`;
+`/thema/houndstooth` über den Alias „Houndstooth"). Einzelheiten:
+
+- **Polka Dots** (`polka-dots`), Alias „Tupfen". `abgrenzung`: Streumuster;
+der Name kommt vom Tanz, gemeint ist kein Tanz. „Punkte" ist ein
+Allerweltswort und kein Alias (`/thema/punkte` bleibt 404).
+- **Hahnentritt** (`hahnentritt`), Alias „Houndstooth". `abgrenzung`:
+Pepita, Glencheck.
+- **Gingham** (`gingham`), Alias „Vichykaro" nur mit Quelle. `abgrenzung`:
+Madras, Tartan.
+- **Nadelstreifen** (`nadelstreifen`). `abgrenzung`: Kreidestreifen — und
+Pinstriping am Auto, das trotz des englischen Namens etwas anderes ist.
+
+Quellen öffnen: DWDS, Britannica, eine Textil- oder Modesammlung (V&A,
+Loschek). Danach `npm run autolink`.
 
 `frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
 (unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
@@ -157,15 +196,74 @@ Solange ein Punkt offen ist, bricht der Build mit `PUBLIC_INDEXIERBAR=true`
 ab. Vor dem Go-Live gehört ein fachkundiger Blick auf beide Texte. Sie sind
 ein Entwurf, keine Rechtsberatung.
 
-**Analytics ohne Einwilligungsbanner.** Netlify Analytics (serverseitig,
-keine Cookies) oder Plausible. Ein Cookie-Banner auf einem Register kostet
-Nutzer und bringt nichts.
+**Analytics ohne Einwilligungsbanner — Empfehlung: Netlify Web
+Analytics, zum Go-Live einschalten.** Verglichen am 2026-09-29 mit
+Primärquellen (Preisseiten, Doku, DSK-Orientierungshilfe Digitale Dienste,
+EDSA-Leitlinien 2/2023):
+- *Netlify Web Analytics:* aus den Server-Logs, kein Code im Browser, kein
+  Cookie — § 25 TDDDG ist nicht berührt, kein neuer Empfänger. Misst
+  Aufrufe, Besucher, Top-Seiten, Referrer und die häufigsten 404 (nützlich
+  für die alten Pfade von v101.de). Füllt 30 Tage rückwirkend, zeigt
+  höchstens 30 Tage. Kosten je nach Kontoart: Legacy-Plan $9 je Site und
+  Monat; auf den Credit-Plänen zeigt Free nur einen Tag, Pro ab $20.
+- *Plausible:* 9 im Monat, Server in Deutschland, drei Jahre Rückblick —
+  aber ein Skript im Browser. Nach EDSA 2/2023 fällt das unter die
+  Endgeräte-Regel, und die DSK sieht bloße Reichweitenmessung nicht per se
+  als ausgenommen. Ohne Banner vertretbar, aber angreifbar; über einen
+  Netlify-Proxy ungeprüft, ob die IP-Adresse durchgereicht wird.
+- *Pirsch* ($6, Hetzner): dieselbe Skript-Frage, ohne Skript nur über eine
+  Edge Function, die die Seite bisher nicht hat.
+Zu klären, bevor es losgeht: Ist das Netlify-Konto ein Legacy- oder ein
+Credit-Plan (davon hängen $9 oder $20 ab; ein Wechsel ist nicht
+umkehrbar)? Reichen 30 Tage Rückblick? Die Datenschutzerklärung sagt
+heute „misst keine Reichweite" — der Satz fällt dann weg, ein Absatz zur
+Auswertung der Server-Logs kommt dazu, `DATENSCHUTZ_STAND` neu.
 
 **Startschwelle prüfen.** Vor `PUBLIC_INDEXIERBAR=true`: 80+
 Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Lexikon-Vorrat — ein Bündel nach oben ziehen, sobald keiner der
+Lexikon-Posten unter „Als Nächstes" mehr frei ist.** Recherchiert am
+2026-09-29 (Startschwelle: 80 Begriffe; Stand 23). Nicht alle auf einmal:
+Der Suchlauf füllt nur bis zehn freie Posten auf, und Termine gehen vor.
+Je Bündel gleiche Kategorie, Abgrenzung in Klammern:
+- *Genres:* Rhythm and Blues (heutiges R&B), Swing (Rhythmusgefühl,
+  Western Swing, Swing-Tänze; fehlt laut ENTSCHEIDUNGEN 2026-09-23),
+  Hillbilly (Country, Schimpfwort, Bluegrass).
+- *Schuhe:* Saddle Shoes (Two-Tone, Budapester), Peep Toe (Slingback),
+  Stiletto (Kitten Heel, das Messer), Keilabsatz (Plateausohle). Alte
+  Pfade: `/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
+  Unterkategorie `…/saddle-shoes`.
+- *Rock- und Kleidformen:* Tellerrock (Glockenrock, Petticoat), Etuikleid
+  (Bleistiftrock, Wiggle Dress), Neckholder (Racerback). Alte Pfade vorhanden.
+- *Wäsche:* Corsage (Korsett, Bustier, die Ansteckblume), Hüfthalter
+  (vorher gegen die Aliases von `strapsguertel` prüfen), Nahtstrümpfe.
+- *Frisuren:* Pompadour (Quiff, Tolle, die Tasche), Ducktail, Flat Top
+  (Crew Cut, Bürstenschnitt).
+- *Instrument und Klang:* Kontrabass (E-Bass), Slap-Bass (Slap am E-Bass),
+  Slapback-Echo (Hall, Tape Delay).
+- *Autos:* Pinstriping (Nadelstreifen am Stoff), Lowrider, Lead Sled.
+- *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an den
+  Posten „Teddy Boy" anschließen.
+Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
+`/thema/country` (meinte Landhausmode). Ob `/jahrzehnt/50s` einen
+Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
+würde „50er" sehr oft verlinken).
+
+**Idee: Themen und Regionen abonnieren (Markus, 2026-09-29).** Leser
+abonnieren eine Region, einen Begriff oder eine Sammlung und bekommen eine
+Mail bei neuen Terminen, neuen Läden oder geänderten Einträgen. Was es
+schon gibt: je Region ein Kalenderabo (`/kalender/<region>.ics`) und
+`/rss.xml`. Naheliegender Weg: Feeds je Region und Sammlung erzeugen und
+einen RSS-zu-Mail-Dienst daran hängen, statt selbst Mails zu verschicken.
+Offen: Dienst und Kosten, Double-Opt-in und Datenschutzerklärung (eine
+Mailadresse ist das erste personenbezogene Datum, das die Seite dauerhaft
+hält), wie „geändert" definiert ist (Freigabe? `geprueftAm`?), Taktung
+(sofort oder wöchentlich gebündelt). Voraussetzung: Go-Live und genug
+Termine je Region, dass sich ein Abo lohnt.
 
 **Oberösterreich-Texte nachziehen — sobald die BWC-Gmunden-Einträge freigegeben sind.**
 Drei freigegebene Texte sagen „bisher": `locations/zorba-der-grieche-sierning`
