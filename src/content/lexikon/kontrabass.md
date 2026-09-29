@@ -2,7 +2,7 @@
 name: Kontrabass
 aliases: [Bassgeige, Upright Bass]
 kurzbeschreibung: Der Kontrabass ist das tiefste und größte gebräuchliche Streichinstrument und war in den frühen 1950er Jahren das Standard-Bassinstrument des Rock'n'Roll; im Rockabilly wird er bis heute gezupft und geslappt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
 autor: markus

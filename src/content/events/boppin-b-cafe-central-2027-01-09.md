@@ -78,7 +78,7 @@ Die Seite des Hauses, die Ticketseite und der Tourkalender der Band nennen über
 
 ## Die Musik von Boppin'B
 
-Das Haus beschreibt die Band als Combo, die seit vier Jahrzehnten ohne Pause und ohne große Entourage unterwegs ist und nach dieser Angabe mehr als 6.000 Auftritte gespielt hat. Zur Besetzung gehören Gesang, Gitarre, Kontrabass, Schlagzeug und einer von vier Saxofonisten.
+Das Haus beschreibt die Band als Combo, die seit vier Jahrzehnten ohne Pause und ohne große Entourage unterwegs ist und nach dieser Angabe mehr als 6.000 Auftritte gespielt hat. Zur Besetzung gehören Gesang, Gitarre, [Kontrabass](/lexikon/kontrabass/), Schlagzeug und einer von vier Saxofonisten.
 
 ## Einordnung des Konzerts in Weinheim
 

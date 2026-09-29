@@ -2,7 +2,7 @@
 name: Swing
 aliases: [Swing-Musik]
 kurzbeschreibung: Swing ist eine Stilrichtung des Jazz, die Ende der 1920er Jahre in den USA entstand, von der Big Band getragen wurde und in den 1930er und 1940er Jahren die populäre Tanzmusik prägte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
 autor: markus
@@ -78,7 +78,7 @@ Swing ist eine Stilrichtung des Jazz, die gegen Ende der 1920er Jahre in den USA
 
 ## Merkmale von Swing
 
-Das Instrument des Swing ist die Big Band. In ihrer späteren Standardbesetzung zählt sie nach beiden Quellen siebzehn Musiker; die deutsche Wikipedia rechnet den Bandleader noch hinzu und teilt die Band in drei Gruppen: die Saxofone, die Blechbläser mit Trompeten und Posaunen, und die Rhythmusgruppe aus Klavier, Bass, Schlagzeug und oft Gitarre. In der Rhythmusgruppe übernahm der Kontrabass den Platz, den in der älteren Jazzband Tuba oder Sousaphon hatten. Weil so viele Musiker ohne Absprache nicht mehr zusammenfanden, wurde das ausgeschriebene Arrangement zur Regel; improvisiert wurde in den Soli.
+Das Instrument des Swing ist die Big Band. In ihrer späteren Standardbesetzung zählt sie nach beiden Quellen siebzehn Musiker; die deutsche Wikipedia rechnet den Bandleader noch hinzu und teilt die Band in drei Gruppen: die Saxofone, die Blechbläser mit Trompeten und Posaunen, und die Rhythmusgruppe aus Klavier, Bass, Schlagzeug und oft Gitarre. In der Rhythmusgruppe übernahm der [Kontrabass](/lexikon/kontrabass/) den Platz, den in der älteren Jazzband Tuba oder Sousaphon hatten. Weil so viele Musiker ohne Absprache nicht mehr zusammenfanden, wurde das ausgeschriebene Arrangement zur Regel; improvisiert wurde in den Soli.
 
 Rhythmisch hebt das Musiklexikon die gleichmäßige Betonung aller vier Viertel hervor, die sich um 1930 durchsetzte, gegenüber der Betonung von erster und dritter Zählzeit in den älteren Stilen. Dazu kommt das Rhythmusgefühl, dem der Stil seinen Namen verdankt: Zwei notierte Achtel werden nicht gleich lang gespielt, die erste etwas länger als die zweite. Die deutsche Wikipedia beschreibt das als „Triolen-Feeling"; das Musiklexikon warnt, dieses Modell tauge vor allem für den Unterricht und nähere sich bei schnellem Tempo wieder geraden Achteln.
 
