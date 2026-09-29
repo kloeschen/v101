@@ -175,6 +175,7 @@ Stale-Report liefert die Warteschlange.
 | montags 05:00 | Termine archivieren, Autolinks, Bericht → PR | `pflege.yml` (fertig) |
 | montags 06:00 | Externe Links, Issue bei Funden | `linkcheck.yml` (fertig) |
 | sonntags und mittwochs 04:30 | Suchlauf: zuerst Vorschläge aus dem Formular (`npm run vorschlaege`), dann die Quellenliste nach neuen Terminen absuchen, dazu höchstens zwei Adressen-Posten, Warteschlange auf höchstens zehn `frei`-Posten auffüllen, Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` und `docs/ablaeufe/adressen-recherche.md` |
+| täglich 17:50 (deutsche Zeit) | Freigabe-Erinnerung: Trockenlauf über alle Entwürfe, Slug-Liste zum Einfügen, wartende Inhalts-PRs — als Push-Nachricht, ohne selbst etwas freizugeben | Routine „v101 — Freigabe-Erinnerung", `npm run freigeben -- --alle --dry-run` |
 | monatlich | Zitations-Check gegen ein festes Prompt-Set | noch zu bauen |
 | monatlich | Bot-Log-Auswertung aus den Netlify-Logs | noch zu bauen |
 | laufend | Recherche neuer Entitäten | Cowork, aus dem Stale-Report gesteuert |
@@ -443,6 +444,22 @@ also erst jetzt verlinkt, und zwar im selben Pull Request.
 Bereits freigegebene Einträge werden übersprungen, nicht erneut angefasst.
 Sonst wanderte `geprueftAm` bei jedem Lauf weiter und behauptete eine
 Prüfung, die niemand vorgenommen hat.
+
+**Die abendliche Erinnerung** (seit dem 2026-09-29). Eine Routine meldet
+jeden Abend gegen 17:50, was freigabefähig ist: Sie lässt
+
+    npm run freigeben -- --alle --dry-run
+
+über den ganzen Bestand laufen — derselbe Prüfweg wie der echte Lauf, nur
+zurückgerollt — und schickt die Zeile „Slug-Liste für den
+Freigeben-Workflow" als Push-Nachricht, dazu die Inhalts-PRs, die noch auf
+einen Merge warten. Die Liste enthält nur Einträge, die die Prüfung
+bestanden haben; Abgelehnte stehen mit Grund daneben. Einfügen, Collection
+leer lassen, starten. **Die Routine startet den Workflow nie selbst**: Die
+Liste ist ein Vorschlag, die Freigabe bleibt ein Klick des Menschen.
+Gesehen werden nur Entwürfe auf `main` — was in einem offenen PR steckt,
+wird erst nach dessen Merge freigabefähig und steht deshalb unter den
+wartenden PRs.
 
 **Der Prüfzettel** (`npm run pruefzettel`, seit dem 2026-09-25) ist für
 genau diesen Blick gebaut. Er steht in der Beschreibung jedes Inhalts-PR des

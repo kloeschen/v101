@@ -184,6 +184,13 @@ try {
 
     gleich("Eintrag mit Regelverstoß bleibt Entwurf", statusVon("kaputt"), "entwurf");
     gleich("geprueftAm des abgelehnten Eintrags bleibt stehen", geprueftAmVon("kaputt"), "2026-09-02");
+    // Die Slug-Liste gehört zum Trockenlauf (3a). Im echten Lauf ist nichts
+    // mehr einzufügen; das Lebenszeichen, dass hier freigegeben wurde, steht
+    // in der Bestätigungszeile für check-freigabe.ts.
+    pruefe(
+      "der echte Lauf nennt keine Slug-Liste, wohl aber die Bestätigungszeile",
+      !/Slug-Liste/.test(r.out) && /--freigabe sauber/.test(r.out),
+    );
 
     // Positives Lebenszeichen: Der Bericht muss den Eintrag namentlich
     // führen UND den Befund nennen. Ohne das wäre "blieb Entwurf" auch dann
@@ -259,6 +266,32 @@ try {
       /WÜRDEN FREIGEGEBEN[\s\S]*lexikon\/trocken/.test(r.out) && /je zwei Läufe/.test(r.out),
       JSON.stringify(r.out.slice(0, 400)),
     );
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* 3a. Trockenlauf nennt die Slug-Liste — nur die bestandenen        */
+  /* ---------------------------------------------------------------- */
+  /*
+   * Die abendliche Erinnerung (2026-09-29) reicht diese Zeile an den
+   * Menschen weiter. Ein abgelehnter Eintrag darin wäre eine Einladung,
+   * ihn trotzdem einzufügen; die Zeile muss ihn also auslassen, und sie
+   * darf im echten Lauf nicht erscheinen (dort ist nichts mehr einzufügen).
+   */
+  {
+    writeFileSync(datei("liste-gut"), eintrag("Listengut", ziele));
+    writeFileSync(datei("liste-schlecht"), eintrag("Listenschlecht", ziele, { autor: undefined }));
+    const r = lauf(temp, ["--slugs", "liste-gut,trocken,liste-schlecht", "--dry-run"]);
+    const zeile = r.out.match(/Slug-Liste für den Freigeben-Workflow[^\n]*\n\s*(\S+)/)?.[1];
+    pruefe("Trockenlauf nennt eine Slug-Liste", zeile !== undefined, JSON.stringify(r.out.slice(-500)));
+    gleich(
+      "die Liste enthält genau die Bestandenen",
+      (zeile ?? "").split(",").sort(),
+      ["liste-gut", "trocken"],
+    );
+    pruefe("der Abgelehnte steht nicht in der Liste", !(zeile ?? "").includes("liste-schlecht"));
+    pruefe("…wohl aber unter ABGELEHNT", /ABGELEHNT[\s\S]*liste-schlecht/.test(r.out));
+    rmSync(datei("liste-gut"));
+    rmSync(datei("liste-schlecht"));
   }
 
   /* ---------------------------------------------------------------- */

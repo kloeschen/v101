@@ -9,6 +9,7 @@
  *   npx tsx scripts/freigeben.ts --slugs petticoat,korsett
  *   npx tsx scripts/freigeben.ts --collection lexikon --alle
  *   npx tsx scripts/freigeben.ts --slugs petticoat --dry-run
+ *   npx tsx scripts/freigeben.ts --alle --dry-run     # Vorschlag für heute
  *
  * WARUM GEGEN DEN ZUSTAND NACH DER ÄNDERUNG GEPRÜFT WIRD
  *
@@ -317,6 +318,19 @@ function main() {
       `${unveraendert.length} unverändert${unbekannt.length ? `, ${unbekannt.length} nicht gefunden` : ""}.`,
   );
   if (autolinkBericht) console.log(`Autolink nach der Freigabe: ${autolinkBericht}`);
+
+  // Für die abendliche Freigabe-Erinnerung (seit dem 2026-09-29): Der
+  // Trockenlauf über alles nennt die Slugs, die den echten Lauf bestehen
+  // würden, als eine Zeile zum Einfügen ins Feld „slugs" des Workflows.
+  // Die Entscheidung bleibt beim Menschen — die Liste spart nur das Abtippen.
+  // Nur die geprüften Kandidaten, nie die Eingabe: Abgelehnte gehören nicht
+  // hinein, genau wie beim GITHUB_OUTPUT unten.
+  if (trocken && freigegeben.length > 0) {
+    console.log(
+      `\nSlug-Liste für den Freigeben-Workflow (Feld „slugs", Collection leer lassen):\n` +
+        `  ${freigegeben.map((z) => z.slug).join(",")}`,
+    );
+  }
 
   if (freigegeben.length > 0 && !trocken) {
     // check-freigabe.ts meldet jeden Statuswechsel gegen die Basis, solange
