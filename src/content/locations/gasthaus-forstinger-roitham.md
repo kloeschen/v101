@@ -2,9 +2,9 @@
 name: Gasthaus Forstinger
 aliases: [Gasthaus Forstinger Roitham, Forstinger Roitham am Traunfall]
 kurzbeschreibung: Das Gasthaus Forstinger in Roitham am Traunfall ist ein Wirtshaus im Bezirk Gmunden, in dem der BWC Gmunden seine Frühjahrs- und Herbst-Boogie-Partys ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: sonstiges
 adresse:

@@ -2,9 +2,9 @@
 name: Roadrunner's Rock & Motor Club
 aliases: [Roadrunner's Berlin, Roadrunners Rock & Motor Club, Roadrunner's Club]
 kurzbeschreibung: Der Roadrunner's Rock & Motor Club in der Saarbrücker Straße in Berlin-Prenzlauer Berg ist ein Club, in dem Rockabilly- und Rock'n'Roll-Konzerte der Berliner Szene stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-27
-geprueftAm: 2026-09-27
+geprueftAm: 2026-09-29
 autor: markus
 typ: club
 adresse:

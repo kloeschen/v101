@@ -2,9 +2,9 @@
 name: Gmundner Sommer Boogie Party 2027
 aliases: [Sommer Boogie Party BWC Gmunden 2027, BWC Gmunden Sommer Boogie Party 2027, Gmundner Boogie Party Juni 2027]
 kurzbeschreibung: Boogie-Party des Boogie-Vereins BWC Gmunden am Samstag, 5. Juni 2027, ab 20 Uhr im Gasthaus Kölblinger in Eberstalzell, mit DJ Klaus.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: tanzabend
 reihe: gmundner-boogie-party

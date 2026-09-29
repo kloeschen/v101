@@ -2,9 +2,9 @@
 name: Gmundner Silvester Boogie Party 2026
 aliases: [BWC Gmunden Silvester Boogie Party 2026, BWC Gmuden Silvester Boogie Party, Silvester Boogie Party Fischlham 2026]
 kurzbeschreibung: Silvesterparty des Boogie-Vereins BWC Gmunden am Donnerstag, 31. Dezember 2026, im Dorfwirt Fischlham, mit Buffet, Sekt und DJ Klaus, Eintritt 55 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: tanzabend
 reihe: gmundner-boogie-party

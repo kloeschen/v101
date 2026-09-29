@@ -2,9 +2,9 @@
 name: The Jets und Smokestack Lightnin' im Roadrunner's
 aliases: [Jets / Smokestack Lightnin', 40 Jahre Louisiana Rebs, The Jets Berlin 2026]
 kurzbeschreibung: Konzert von The Jets und Smokestack Lightnin' zum 40-jährigen Bestehen der Louisiana Rebs am Samstag, 3. Oktober 2026, im Roadrunner's Rock & Motor Club in Berlin-Prenzlauer Berg, mit Record Hop.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-27
-geprueftAm: 2026-09-27
+geprueftAm: 2026-09-29
 autor: markus
 typ: konzert
 beginn: 2026-10-03T20:00:00+02:00

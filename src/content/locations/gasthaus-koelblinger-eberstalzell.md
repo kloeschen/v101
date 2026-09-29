@@ -2,9 +2,9 @@
 name: Gasthaus Kölblinger
 aliases: [Gasthaus Kölblinger Eberstalzell, Gasthaus Fleischerei Kölblinger, Kölblinger]
 kurzbeschreibung: Das Gasthaus Kölblinger in Eberstalzell ist ein Familienbetrieb mit Gasthaus und Fleischerei im Bezirk Wels-Land, in dem der BWC Gmunden seine Sommer-Boogie-Party ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: sonstiges
 adresse:

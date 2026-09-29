@@ -2,9 +2,9 @@
 name: Boppin'B im Colos-Saal Aschaffenburg
 aliases: [Boppin'B Rockabilly X-Mas Wipe-Out 2026, Rockabilly X-Mas Wipe-Out, Boppin B Aschaffenburg 2026]
 kurzbeschreibung: Weihnachtskonzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B mit Sons Of A Gun am Samstag, 26. Dezember 2026, im Colos-Saal Aschaffenburg.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-27
-geprueftAm: 2026-09-27
+geprueftAm: 2026-09-29
 autor: markus
 typ: konzert
 beginn: 2026-12-26T20:00:00+01:00

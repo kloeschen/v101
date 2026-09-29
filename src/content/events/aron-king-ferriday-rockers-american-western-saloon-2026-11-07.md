@@ -2,9 +2,9 @@
 name: Aron King & his Ferriday Rockers im American Western Saloon
 aliases: [Aron King Berlin 2026, Aron King Western Saloon, Aron King & his Ferriday Rockers]
 kurzbeschreibung: Konzert von Aron King & his Ferriday Rockers am Samstag, 7. November 2026, im American Western Saloon in Berlin-Reinickendorf, mit 50s Rock'n'Roll und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-27
-geprueftAm: 2026-09-27
+geprueftAm: 2026-09-29
 autor: markus
 typ: konzert
 beginn: 2026-11-07T20:00:00+01:00

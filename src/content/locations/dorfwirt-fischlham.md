@@ -2,9 +2,9 @@
 name: Dorfwirt Fischlham
 aliases: [Dorfwirt, Dorfwirt Fischlham Thalheimerstraße]
 kurzbeschreibung: Der Dorfwirt Fischlham ist ein italienisches Restaurant im Ortszentrum von Fischlham im Bezirk Wels-Land, in dem der BWC Gmunden seine Silvester-Boogie-Party 2026 ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: sonstiges
 adresse:

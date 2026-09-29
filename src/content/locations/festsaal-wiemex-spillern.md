@@ -2,9 +2,9 @@
 name: Festsaal WieMex
 aliases: [Festsaal WieMex Spillern, Festsaal Spillern, Festsaal im Gemeindezentrum Spillern, WieMex Spillern]
 kurzbeschreibung: Der Festsaal WieMex ist der Saal im Gemeindezentrum von Spillern im Bezirk Korneuburg, den der Gastronomiebetrieb WieMex führt und in dem der Boogie-Verein Boogie Lions seine Tanzabende ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: gemeindehaus
 adresse:

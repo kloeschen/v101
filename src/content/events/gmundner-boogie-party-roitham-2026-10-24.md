@@ -2,9 +2,9 @@
 name: Gmundner Herbst Boogie Party 2026
 aliases: [BWC Gmunden Herbst Boogie Party 2026, Herbst Boogie Party Roitham Oktober 2026, Gmundner Boogie Party Oktober 2026]
 kurzbeschreibung: Boogie-Party des Boogie-Vereins BWC Gmunden am Samstag, 24. Oktober 2026, ab 20 Uhr im Gasthaus Forstinger in Roitham am Traunfall, mit DJ Klaus.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: tanzabend
 reihe: gmundner-boogie-party
