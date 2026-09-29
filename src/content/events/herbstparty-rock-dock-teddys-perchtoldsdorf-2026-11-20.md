@@ -2,7 +2,7 @@
 name: Herbstparty der Rock Dock Teddys 2026
 aliases: [Herbstparty Welcome everyone 2026, Boogie-Herbstparty Perchtoldsdorf 2026, Rock Dock Teddys Herbstparty 2026]
 kurzbeschreibung: Herbstlicher Tanzabend des Boogie-Vereins BWC Rock Dock Teddys am Freitag, 20. November 2026, auf der Burg Perchtoldsdorf, Beginn 19 Uhr; Musikspende 10 Euro pro Person. Der Szenekalender boogie.at nennt abweichend den 6. November im Kulturzentrum.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
 autor: markus
