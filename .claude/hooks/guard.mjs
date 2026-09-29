@@ -98,9 +98,9 @@ if (datei) {
 
 if (befehl) {
   // Schreibende Verben, die einen Pfad als Argument nehmen. Bewusst grob:
-  // Der Befehlstext wird als Ganzes betrachtet, nicht geparst. Lieber eine
-  // Meldung zu viel — ein Lesezugriff lässt sich anders formulieren, ein
-  // übersehener Schreibzugriff nicht zurücknehmen.
+  // Der Befehlstext wird nicht geparst. Lieber eine Meldung zu viel — ein
+  // Lesezugriff lässt sich anders formulieren, ein übersehener
+  // Schreibzugriff nicht zurücknehmen.
   //
   // Umleitungen stehen seit dem 2026-09-23 NICHT mehr in dieser Liste,
   // sondern werden unten nach ihrem Ziel beurteilt. Das nackte Zeichen `>`
@@ -121,7 +121,58 @@ if (befehl) {
     /\bgit\s+(checkout|restore|apply)\b/,
     /\bperl\b[^|;&]*\s-[a-zA-Z]*i/, //  perl -pi -e
   ];
-  const verbSchreibt = schreibverben.some((r) => r.test(befehl));
+
+  // Seit dem 2026-09-29: Verb, Pfad und Statuswort zählen nur zusammen,
+  // wenn sie im SELBEN Teilbefehl stehen. Zwei belegte Fehlalarme, beide an
+  // einem Tag, beide dieselbe Ursache wie in Lektion 29 — Zeichen und Ziel
+  // getrennt gesucht und nie zusammengebracht:
+  //
+  //   - `git checkout -q main && … grep -l "^status: …" src/content/…`:
+  //     Das Verb gehörte zum Branchwechsel, das Statuswort zu einer
+  //     lesenden Suche zwei Teilbefehle weiter.
+  //   - `grep -n "…\|patch\|…" .claude/hooks/guard.mjs`: „patch" war ein
+  //     Suchwort in Anführungszeichen, der Pfad das Ziel eines Lesebefehls.
+  //
+  // Deshalb: Der Befehl wird an `|`, `;`, `&` und Zeilenumbrüchen außerhalb
+  // von Anführungszeichen in Teilbefehle zerlegt, und Verben werden nur
+  // außerhalb von Anführungszeichen gesucht. Ausnahmen, die grob bleiben:
+  //   - Ein Heredoc liefert Text über mehrere Zeilen; dann bleibt der Befehl
+  //     ein einziger Teil wie bisher.
+  //   - Übergibt ein Teilbefehl seinen Text an eine Shell (`sh -c`,
+  //     `bash -c`, `eval`), steht das Verb in Anführungszeichen und wird
+  //     trotzdem ausgeführt; dort wird nicht ausgeblendet.
+  const heredoc = /<<-?\s*['"]?\w+/.test(befehl);
+
+  /** Teilbefehle, getrennt an Steuerzeichen außerhalb von Anführungszeichen. */
+  const zerlege = (text) => {
+    const teile = [];
+    let aktuell = "";
+    let zitat = "";
+    for (const z of text) {
+      if (zitat) {
+        if (z === zitat) zitat = "";
+        aktuell += z;
+      } else if (z === "'" || z === '"') {
+        zitat = z;
+        aktuell += z;
+      } else if (z === "|" || z === ";" || z === "&" || z === "\n") {
+        teile.push(aktuell);
+        aktuell = "";
+      } else {
+        aktuell += z;
+      }
+    }
+    teile.push(aktuell);
+    return teile.filter((t) => t.trim());
+  };
+  const teile = heredoc ? [befehl] : zerlege(befehl);
+
+  const reichtWeiter = (teil) => /\b(ba|z|da)?sh\s+-[a-z]*c\b|\beval\b/.test(teil);
+  const ohneZitate = (teil) => teil.replace(/'[^']*'|"(?:[^"\\]|\\.)*"/g, " ");
+  const verbIn = (teil) => {
+    const sicht = heredoc || reichtWeiter(teil) ? teil : ohneZitate(teil);
+    return schreibverben.some((r) => r.test(sicht));
+  };
 
   // Umleitungen werden nach ihrem Ziel beurteilt, nicht nach ihrem Zeichen.
   // Jedes `>` liefert ein Kandidatenziel: das Wort dahinter. Ob es wirklich
@@ -130,18 +181,13 @@ if (befehl) {
   // „Ziel" ein Wort wie `console.log`, bei `>=` ein `=`, bei `2>&1` gibt es
   // keines, und `/dev/null` ist harmlos. Sperren kann nur ein Ziel, das ein
   // gesperrter Pfad ist oder (für den Status) in src/content/ liegt.
-  //
-  // Die erste Fassung dieses Vorschlags unterschied die Fälle mit
-  // Look-arounds und filterte /dev/null. Der Mutationsbeleg hat alle drei
-  // Bausteine als wirkungslos gezeigt — sie sind deshalb weg.
-  const umleitungsZiele = [...befehl.matchAll(/>>?\s*(["']?)([^\s"'|;&()<>]+)\1/g)].map((m) => m[2]);
+  const umleitungsZiele = (text) => [...text.matchAll(/>>?\s*(["']?)([^\s"'|;&()<>]+)\1/g)].map((m) => m[2]);
 
   for (const { imBefehl, grund } of gesperrt) {
-    // Verben nehmen ihren Pfad als Argument irgendwo im Befehl — dort bleibt
-    // es beim groben Blick auf den ganzen Text. Eine Umleitung dagegen
-    // schreibt genau in ihr Ziel, und nur das Ziel entscheidet.
-    const perVerb = verbSchreibt && imBefehl.test(befehl);
-    const perUmleitung = umleitungsZiele.some((ziel) => imBefehl.test(ziel));
+    // Ein Verb nimmt seinen Pfad als Argument im eigenen Teilbefehl. Eine
+    // Umleitung schreibt genau in ihr Ziel, und nur das Ziel entscheidet.
+    const perVerb = teile.some((t) => verbIn(t) && imBefehl.test(t));
+    const perUmleitung = umleitungsZiele(befehl).some((ziel) => imBefehl.test(ziel));
     if (perVerb || perUmleitung) {
       verweigern(
         `${grund}\n\nDieser Pfad ist auch über die Shell gesperrt: Der Befehl enthält einen Schreibzugriff (Umleitung, sed -i, tee, cp, mv, git checkout/restore o. ä.) auf einen gesperrten Pfad. Der Hook prüft Write, Edit und Bash gleichermaßen.`,
@@ -167,24 +213,24 @@ if (befehl) {
   // den Befehl wieder durch, der beim ersten Probelauf durchging;
   // `scripts/test-hooks.ts` hält diesen Fall seit damals fest.
   //
-  // Geschrieben wird hier, wenn ein Verb im Befehl steht, eine Umleitung in
-  // src/content/ zielt oder ein Heredoc Text liefert. Eine Umleitung nach
-  // /tmp oder /dev/null neben einem lesenden `grep` auf das Statuswort ist
-  // kein Schreibzugriff auf das Register — sie wurde bis zum 2026-09-23
-  // trotzdem blockiert.
+  // Geschrieben wird in einem Teilbefehl, wenn dort ein Verb steht, eine
+  // Umleitung in src/content/ zielt oder (Heredoc) der Befehl Text liefert.
+  // Statuswort, Pfad und Schreibweg müssen im selben Teilbefehl stehen.
   //
   // Bewusst NICHT gelockert: Eine Ersetzung per `sed -i` in einer
   // Statuszeile bleibt gesperrt, auch rückwärts (`veroeffentlicht` zu
   // `entwurf`). Die Richtung aus dem Befehlstext zu lesen, wäre fehleranfällig,
   // und der seltene Rückweg lässt sich über ein Skript gehen.
-  const heredoc = /<<-?\s*['"]?\w+/.test(befehl);
   const WORT = String.raw`\bveroeffentlicht\b`;
   const freigabeMuster = [
     new RegExp(String.raw`status:\s*["']?\s*` + WORT),
     new RegExp(String.raw`["'/|,#]\s*` + WORT + String.raw`\s*["'/|,#]`),
   ];
-  const schreibtInsRegister = verbSchreibt || heredoc || umleitungsZiele.some((ziel) => /src\/content\//.test(ziel));
-  if (freigabeMuster.some((r) => r.test(befehl)) && /src\/content\//.test(befehl) && schreibtInsRegister) {
+  const setztStatus = (t) =>
+    freigabeMuster.some((r) => r.test(t)) &&
+    /src\/content\//.test(t) &&
+    (heredoc || verbIn(t) || umleitungsZiele(t).some((ziel) => /src\/content\//.test(ziel)));
+  if (teile.some(setztStatus)) {
     verweigern(
       "status: veroeffentlicht darf nur ein Mensch setzen. Lege den Eintrag mit status: entwurf an; die Freigabe läuft über die Review-Warteschlange (npm run stale).\n\nDieser Befehl setzt den Status über die Shell. Die Sperre gilt für Write, Edit und Bash gleichermaßen — und `scripts/check-freigabe.ts` prüft den Statuswechsel zusätzlich im Build gegen die Basis, unabhängig davon, welches Werkzeug geschrieben hat.",
     );
