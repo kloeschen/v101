@@ -2,9 +2,9 @@
 name: Colos-Saal Aschaffenburg
 aliases: [Colos-Saal, Colos Saal]
 kurzbeschreibung: Der Colos-Saal ist ein Live-Musik-Club am Roßmarkt in Aschaffenburg, in dem ganzjährig Konzerte vieler Genres stattfinden, darunter Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-27
-geprueftAm: 2026-09-27
+geprueftAm: 2026-09-29
 autor: markus
 typ: club
 adresse:

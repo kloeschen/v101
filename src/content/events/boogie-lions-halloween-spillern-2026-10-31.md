@@ -2,9 +2,9 @@
 name: Boogieparty Halloween 2026 der Boogie Lions
 aliases: [Boogie Halloween 2026, Happy Halloween Boogie Party Spillern 2026, Boogie Lions Halloween 2026]
 kurzbeschreibung: Halloween-Tanzabend des Boogie-Vereins Boogie Lions am Samstag, 31. Oktober 2026, ab 20 Uhr im Festsaal WieMex in Spillern, mit DJ Chris de Play; 5 Euro für Gäste, Mitglieder frei.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: tanzabend
 reihe: boogie-lions-boogie-party

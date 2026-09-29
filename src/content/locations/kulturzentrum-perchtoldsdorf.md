@@ -2,7 +2,7 @@
 name: Kulturzentrum Perchtoldsdorf
 aliases: [Kulturzentrum Beatrixgasse, Festsaal Kulturzentrum Perchtoldsdorf]
 kurzbeschreibung: Das Kulturzentrum Perchtoldsdorf in der Beatrixgasse 5a ist ein Mehrzweckbau der Marktgemeinde Perchtoldsdorf aus dem Jahr 1976, dessen Festsaal für Tanz- und Ballveranstaltungen vermietet wird.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
 autor: markus

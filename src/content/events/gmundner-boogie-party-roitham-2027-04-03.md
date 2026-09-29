@@ -2,9 +2,9 @@
 name: Gmundner Frühjahrs Boogie Party 2027
 aliases: [Frühjahrs Boogie Party BWC Gmunden 2027, BWC Gmunden Frühjahrs Boogie Party 2027, Gmundner Boogie Party April 2027]
 kurzbeschreibung: Boogie-Party des Boogie-Vereins BWC Gmunden am Samstag, 3. April 2027, ab 20 Uhr im Gasthaus Forstinger in Roitham am Traunfall, mit DJ Klaus.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-28
-geprueftAm: 2026-09-28
+geprueftAm: 2026-09-29
 autor: markus
 typ: tanzabend
 reihe: gmundner-boogie-party

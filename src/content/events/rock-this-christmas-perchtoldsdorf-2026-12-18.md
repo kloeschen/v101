@@ -2,7 +2,7 @@
 name: Rock this Christmas! Swing this Christmas! 2026
 aliases: [Rock this Christmas Swing this Christmas Perchtoldsdorf 2026, Rock Dock Teddys Weihnachtsparty 2026]
 kurzbeschreibung: Weihnachtlicher Tanzabend des Boogie-Vereins BWC Rock Dock Teddys am Freitag, 18. Dezember 2026, ab 18:30 Uhr in Perchtoldsdorf, mit DJane Edith und DJ Andreas; Musikspende 10 Euro pro Person. Der Ort ist zwischen den Quellen strittig.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
 autor: markus

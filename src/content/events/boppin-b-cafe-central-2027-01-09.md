@@ -2,9 +2,9 @@
 name: Boppin'B im Café Central Weinheim
 aliases: [Boppin B Weinheim 2027, Boppin'B Weinheim]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Samstag, 9. Januar 2027, im Café Central in Weinheim.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-27
-geprueftAm: 2026-09-27
+geprueftAm: 2026-09-29
 autor: markus
 typ: konzert
 beginn: 2027-01-09T20:00:00+01:00
