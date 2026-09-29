@@ -219,6 +219,12 @@ bearbeitet.
    offener Zweig bereits bearbeitet, überspringt das Skript von selbst —
    Voraussetzung ist ein `git fetch origin` davor, denn gelesen werden die
    vorhandenen Refs und nicht das Netz.
+   **Seit dem 2026-09-29 abwechselnd** (Entscheidung Markus): Der Lauf am
+   Morgen nimmt den obersten freien Posten, der *kein* Lexikon-Bündel ist,
+   der Lauf am Nachmittag den obersten Lexikon-Posten. Gibt es in der
+   bevorzugten Sorte nichts Freies, nimmt er den obersten freien Posten
+   überhaupt — kein Lauf bleibt leer, weil eine Sorte fehlt. Die Grenze ist
+   12 Uhr UTC; zum Nachstellen `--stunde <0–23>`.
 2. Ist keiner frei: den dringendsten Posten aus `npm run stale`.
 3. Baut ihn vollständig nach den Regeln aus `CLAUDE.md` — `npm run verify`
    grün, Mutationsbeleg für jede neue Regel. Der Bericht steht im PR, neue
@@ -268,8 +274,8 @@ durch Zufall. Code kann sich selbst beweisen, ein recherchierter Fakt nicht.
 
 Beide Regeln stehen in Code und nicht im Prompt der Routine. Im Prompt wären
 sie eine Bitte an ein Modell; als Skript sind sie ein Exitcode, und
-`scripts/test-warteschlange.ts` belegt beide Richtungen (58 Prüfungen,
-14 Mutationen).
+`scripts/test-warteschlange.ts` belegt beide Richtungen (68 Prüfungen,
+18 Mutationen).
 
 #### Was der Lauf nicht darf
 

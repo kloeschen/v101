@@ -17,6 +17,45 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-29 — Warteschlange: Termine morgens, Lexikon nachmittags
+
+**Anlass:** Die Lexikon-Bündel standen unter den Terminen und kamen erst
+dran, wenn keiner mehr frei war — bei zwei Läufen am Tag und ständig
+nachrückenden Terminen also praktisch nie. Frage von Markus: Wie wird das
+schneller? Entscheidung Markus: Weg B, die Sorten wechseln sich ab.
+
+**Regel:** `warteschlange:naechster` bevorzugt vor 12 Uhr UTC den obersten
+freien Posten, der kein Lexikon-Posten ist, ab 12 Uhr UTC den obersten
+Lexikon-Posten. Ist die bevorzugte Sorte leer, gilt wieder der oberste
+freie Posten überhaupt. Lexikon-Posten ist, wessen Titel mit dem Wort
+„Lexikon" beginnt — dieselbe Konvention, unter der die Bündel schon stehen.
+
+**Warum die Uhrzeit und nicht ein Zähler:** Ein Zähler bräuchte Zustand,
+der zwischen zwei Läufen irgendwo liegen müsste — im Repo erzeugte er
+Konflikte, außerhalb wäre er unprüfbar. Die Uhrzeit ist schon da. Die
+Läufe starten tatsächlich gegen 04:40 und 15:30 UTC; 12 Uhr liegt
+weit genug von beiden entfernt, dass eine verspätete Ausführung nicht
+die Seite wechselt.
+
+**Verworfen:** Weg A (mehr Läufe, höhere Obergrenze) vorerst — der
+Engpass ist die Prüfung durch Markus, nicht die Erzeugung; erst messen
+(„Durchsatz messen — ab dem 2026-10-09" in OFFENE-PUNKTE). Weg C
+(Lexikon ohne Prüfung veröffentlichen) — widerspricht der Grenze
+„Prüfkette beweist Struktur, nicht Wahrheit".
+
+**Mutationsbeleg** (`scripts/test-warteschlange.ts`, Abschnitt 7, 68/68
+grün; jede Mutation zurückgebaut):
+
+| Mutation | fällt |
+|---|---|
+| M1 Vorzug abgeschaltet (immer `offen[0]`) | 2 |
+| M2 kein Rückfall (leere Sorte ergibt `undefined`) | 2 |
+| M3 Grenze auf 13 Uhr verschoben | 1 |
+| M4 Wortgrenze in `istLexikon` entfernt | 1 |
+
+Gegenprobe an der echten Warteschlange: `--stunde 4` wählt die Rock-Dock-
+Herbstparty, `--stunde 15` das Bündel Tanz.
+
 ## 2026-09-29 — guard.mjs: Verb, Pfad und Statuswort nur im selben Teilbefehl
 
 **Anlass:** Zwei Fehlalarme an einem Tag, beide auf reinen Lesebefehlen.
