@@ -179,6 +179,12 @@ Fehler verursacht oder beinahe verursacht.
   https-Quelle. Fall: Roadrunner's Rock & Motor Club, Berlin
   (2026-09-27), dessen https-Fassung ein selbstsigniertes Zertifikat
   liefert.
+- **Die Wayback Machine ist aus der Cloud-Umgebung nicht verlässlich
+  erreichbar.** Am 2026-09-29 nachmittags brach jeder Abruf von
+  `web.archive.org` ab, auch `/save/`, und die Verfügbarkeits-API
+  antwortete mit 429; `archive.ph` ebenso. Ein Posten, der an einer
+  Archivkopie hängt, sollte deren Adresse schon mitbringen — angelegt
+  von einem Menschen im Browser —, statt sie vom Lauf erzeugen zu lassen.
 - **Eine Zusammenfassung ist keine Quelle** (Lektion 28). Abrufwerkzeuge,
   die eine Seite zusammenfassen, haben hier schon Jahreszahlen und
   Zuschreibungen erfunden. Den Rohtext prüfen.
