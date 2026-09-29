@@ -17,6 +17,37 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-29 — Abendliche Freigabe-Erinnerung, ohne Freigabe
+
+**Anlass:** Der Durchsatz hängt nicht am Bauen, sondern an der Freigabe:
+Entwürfe lagen bis zu 30 Stunden, bevor jemand den Workflow startete, und
+das Zusammensuchen der Slugs war Handarbeit. Entscheidung Markus: täglich
+erinnern, mit fertiger Liste.
+
+**Gebaut:** `freigeben.ts --dry-run` schreibt am Ende eine Zeile mit den
+Slugs, die den echten Lauf bestehen würden, kommagetrennt fürs Feld
+„slugs". Nur die Bestandenen — nie die Eingabe. Eine Routine
+(`CRON_TZ=Europe/Berlin 50 17 * * *`, frische Sitzung, Push-Nachricht)
+ruft `--alle --dry-run` und meldet Liste, Abgelehnte und wartende
+Inhalts-PRs.
+
+**Verworfen:** Die Routine startet den Freigeben-Workflow selbst. Das
+Werkzeug dafür wäre da, aber dann setzte ein Agent den freigegebenen
+Status, und der Mensch sähe erst den fertigen PR — die Grenze aus
+CLAUDE.md („veroeffentlicht setzt ausschließlich ein Mensch") wäre auf
+einen Merge-Klick geschrumpft. Die Liste spart das Abtippen, nicht die
+Entscheidung.
+
+**Mutationsbeleg** (`scripts/test-freigeben.ts`, 42/42 grün; jede
+Mutation zurückgebaut):
+
+| Mutation | fällt |
+|---|---|
+| M1 Liste aus der Eingabe statt aus den Bestandenen | 2 |
+| M2 Zeile entfällt | 2 |
+| M3 Abgelehnte mit in der Liste | 2 |
+| M4 Zeile auch im echten Lauf | 1 |
+
 ## 2026-09-29 — Warteschlange: Termine morgens, Lexikon nachmittags
 
 **Anlass:** Die Lexikon-Bündel standen unter den Terminen und kamen erst

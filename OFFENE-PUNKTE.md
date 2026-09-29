@@ -266,7 +266,12 @@ verlinken (ENTSCHEIDUNGEN, 2026-09-27).
 Tag und Bündel-Posten (bis sechs Termine, vier Begriffe). Nach zwei Wochen
 zählen: freigegebene Einträge pro Woche, Inhalts-PRs pro Woche, wie viele
 Bündel ganz, teilweise oder gar nicht durchkamen, Kosten pro Lauf. Daran
-entscheidet sich, ob Bündelgröße oder Laufzahl nachjustiert wird.
+entscheidet sich, ob Bündelgröße oder Laufzahl nachjustiert wird. Seit dem
+2026-09-29 laufen außerdem Termine morgens und Lexikon nachmittags (Weg B)
+und die abendliche Freigabe-Erinnerung. Deshalb zusätzlich zählen:
+Lexikon-Einträge pro Woche und die Liegezeit vom Entwurf bis zur Freigabe.
+Erst danach entscheiden, ob Weg A nötig ist (drei Läufe am Tag, Suchlauf
+dreimal die Woche, Obergrenze 12).
 
 **Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
 Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen
