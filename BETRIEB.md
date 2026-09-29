@@ -174,7 +174,7 @@ Stale-Report liefert die Warteschlange.
 |---|---|---|
 | montags 05:00 | Termine archivieren, Autolinks, Bericht → PR | `pflege.yml` (fertig) |
 | montags 06:00 | Externe Links, Issue bei Funden | `linkcheck.yml` (fertig) |
-| sonntags und mittwochs 04:30 | Suchlauf: zuerst Vorschläge aus dem Formular (`npm run vorschlaege`), dann die Quellenliste nach neuen Terminen absuchen, dazu höchstens zwei Adressen-Posten, Warteschlange auf höchstens zehn `frei`-Posten auffüllen, Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` und `docs/ablaeufe/adressen-recherche.md` |
+| sonntags, dienstags und donnerstags 04:30 | Suchlauf: zuerst Vorschläge aus dem Formular (`npm run vorschlaege`), dann Lexikon-Bündel aus dem Vorrat nachziehen (bis drei frei), dann die Quellenliste nach neuen Terminen absuchen, dazu höchstens zwei Adressen-Posten, Warteschlange auf höchstens zwölf `frei`-Posten auffüllen (`npm run warteschlange:platz`), Posten-PR selbst mergen | Routine, Ablauf in `docs/ablaeufe/termin-recherche.md` und `docs/ablaeufe/adressen-recherche.md` |
 | täglich 17:50 (deutsche Zeit) | Freigabe-Erinnerung: Trockenlauf über alle Entwürfe, Slug-Liste zum Einfügen, wartende Inhalts-PRs — als Push-Nachricht, ohne selbst etwas freizugeben | Routine „v101 — Freigabe-Erinnerung", `npm run freigeben -- --alle --dry-run` |
 | monatlich | Zitations-Check gegen ein festes Prompt-Set | noch zu bauen |
 | monatlich | Bot-Log-Auswertung aus den Netlify-Logs | noch zu bauen |
@@ -183,10 +183,11 @@ Stale-Report liefert die Warteschlange.
 ### 2.5 Der tägliche unbeaufsichtigte Lauf
 
 Eingerichtet am 2026-09-20. Entstanden aus einer Messung, nicht aus einem
-Wunsch. **Seit dem 2026-09-25 zweimal am Tag** (06:30 und 16:30 deutscher
-Sommerzeit, dieselbe Routine mit zwei Zeitpunkten) und mit **gebündelten
+Wunsch. **Seit dem 2026-09-25 zweimal am Tag, seit dem 2026-09-29
+dreimal** (06:30, 11:30 und 16:30 deutscher Sommerzeit, dieselbe Routine
+mit drei Zeitpunkten; Weg A, Entscheidung Markus) und mit **gebündelten
 Posten** — bis zu sechs Termine, vier Begriffe oder vier Läden & Studios
-pro Posten und PR (Entscheidung Markus, ENTSCHEIDUNGEN.md). Zwei Läufe kollidieren nicht:
+pro Posten und PR (Entscheidung Markus, ENTSCHEIDUNGEN.md). Die Läufe kollidieren nicht:
 `warteschlange:naechster` überspringt Posten, die ein offener Zweig schon
 bearbeitet.
 
@@ -221,8 +222,8 @@ bearbeitet.
    Voraussetzung ist ein `git fetch origin` davor, denn gelesen werden die
    vorhandenen Refs und nicht das Netz.
    **Seit dem 2026-09-29 abwechselnd** (Entscheidung Markus): Der Lauf am
-   Morgen nimmt den obersten freien Posten, der *kein* Lexikon-Bündel ist,
-   der Lauf am Nachmittag den obersten Lexikon-Posten. Gibt es in der
+   Morgen und der am Mittag nehmen den obersten freien Posten, der *kein*
+   Lexikon-Bündel ist, der Lauf am Nachmittag den obersten Lexikon-Posten. Gibt es in der
    bevorzugten Sorte nichts Freies, nimmt er den obersten freien Posten
    überhaupt — kein Lauf bleibt leer, weil eine Sorte fehlt. Die Grenze ist
    12 Uhr UTC; zum Nachstellen `--stunde <0–23>`.
@@ -275,8 +276,8 @@ durch Zufall. Code kann sich selbst beweisen, ein recherchierter Fakt nicht.
 
 Beide Regeln stehen in Code und nicht im Prompt der Routine. Im Prompt wären
 sie eine Bitte an ein Modell; als Skript sind sie ein Exitcode, und
-`scripts/test-warteschlange.ts` belegt beide Richtungen (68 Prüfungen,
-18 Mutationen).
+`scripts/test-warteschlange.ts` belegt beide Richtungen (77 Prüfungen,
+23 Mutationen).
 
 #### Was der Lauf nicht darf
 
@@ -382,7 +383,7 @@ Recherche mit Subagenten ist der teuerste Teil. Was hilft:
   eine ihre Termine maschinenlesbar (Rockin' Wildcat, JSON-LD), und auch
   die lag bei einer Anfangszeit falsch. Der Suchlauf liest die Seiten
   deshalb vorerst mit dem Modell, begrenzt durch die Quellenliste und die
-  Obergrenze von zehn Posten.
+  Obergrenze von zwölf Posten (bis zum 2026-09-29 zehn).
 - Der Stale-Report begrenzt den Umfang: Ein Agent bekommt die zehn
   dringendsten Posten, nicht den Auftrag „finde alles".
 

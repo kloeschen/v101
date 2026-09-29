@@ -17,6 +17,55 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-29 — Weg A: drei Läufe am Tag, Obergrenze zwölf, Lexikon rückt nach
+
+**Anlass:** Markus will zügig genug Daten für die Plattform. Stand heute
+29 Termine und 23 Begriffe, die Startschwelle verlangt je 80. Am Vormittag
+war Weg A noch auf die Messung ab dem 2026-10-09 gelegt; Markus hat ihn
+vorgezogen.
+
+**Entschieden (Markus):**
+- Der tägliche Lauf kommt dreimal: 04:30, 09:30 und 14:30 UTC (06:30,
+  11:30 und 16:30 deutscher Sommerzeit). Der Mittagslauf bevorzugt
+  **Termine** — die Regel aus Weg B bleibt unverändert (vor 12 Uhr UTC
+  Termine). Termine verfallen, Begriffe nicht; und fehlen Termin-Posten,
+  nimmt der Mittagslauf über den Rückfall von selbst Lexikon.
+- Der Suchlauf kommt dreimal die Woche (sonntags, dienstags, donnerstags)
+  und füllt auf höchstens **zwölf** `frei`-Posten auf statt auf zehn.
+- **Lexikon rückt nach:** Stehen weniger als zwei Lexikon-Posten auf
+  `frei`, zieht der Suchlauf Bündel aus dem Lexikon-Vorrat nach oben, bis
+  drei dastehen, nie über die Obergrenze. Bis dahin zog niemand nach, und
+  der Nachmittagslauf hätte die vier Bündel in drei, vier Tagen verbraucht.
+
+**In Code statt im Prompt:** `OBERGRENZE`, `LEXIKON_NACHZIEHEN_UNTER` und
+`LEXIKON_AUFFUELLEN_AUF` in `scripts/warteschlange.ts`. `--platz` rechnet
+dem Suchlauf vor, wie viel er schreiben darf und wie viel davon Lexikon
+ist; `--check` scheitert an einer dreizehnten `frei`-Zeile. Die drei für
+Lexikon erzwingt `--check` bewusst nicht — von Hand dürfen mehr
+dastehen (heute vier).
+
+**Was es kostet:** ein Lauf mehr am Tag und ein Suchlauf mehr die Woche,
+und bis zu drei Inhalts-PRs täglich, die auf Markus warten. Der Engpass
+wandert damit zur Prüfung — die abendliche Erinnerung nennt die
+wartenden PRs, und die Messung ab dem 2026-10-09 zählt jetzt auch, wie
+viele gleichzeitig offen sind. Staut es sich, fällt der dritte Lauf
+zuerst wieder weg.
+
+**Mutationsbeleg** (`scripts/test-warteschlange.ts`, Abschnitt 8, 77/77
+grün; jede Mutation zurückgebaut):
+
+| Mutation | fällt |
+|---|---|
+| M1 Obergrenze zurück auf zehn | 6 |
+| M2 Nachschub ohne Schwelle „unter zwei" | 2 |
+| M3 Nachschub ohne Platzgrenze | 2 |
+| M4 nur ein Bündel statt auf drei | 2 |
+| M5 Überschreitung nie gemeldet | 1 |
+
+Verdrahtung an der echten Datei: sechs Probeposten dazu, `warteschlange:check`
+endet mit Exitcode 1 („13 `frei`-Posten … 1 über der Obergrenze von 12"),
+danach zeichengenau zurück.
+
 ## 2026-09-29 — Abendliche Freigabe-Erinnerung, ohne Freigabe
 
 **Anlass:** Der Durchsatz hängt nicht am Bauen, sondern an der Freigabe:

@@ -25,7 +25,7 @@
  *   npx tsx scripts/test-warteschlange.ts
  */
 
-import { lies, belegte, waehle, istLexikon, type Zweigstand } from "./warteschlange";
+import { lies, belegte, waehle, istLexikon, platz, OBERGRENZE, type Zweigstand } from "./warteschlange";
 import { beurteile, MENSCHENPFLICHTIG } from "./automerge-erlaubt";
 
 let bestanden = 0;
@@ -416,6 +416,30 @@ const basis = lies(BASIS);
   pruefe("„Lexikon, Bündel …\" gilt als Lexikon", istLexikon({ titel: "Lexikon, Bündel Tanz: Jive" }));
   pruefe("„Lexikon: …\" gilt als Lexikon", istLexikon({ titel: "Lexikon: Teddy Boy." }));
   pruefe("ein Termin, der das Wort nur im Text trägt, gilt nicht als Lexikon", !istLexikon({ titel: "Lexikonabend im Café Central" }));
+}
+
+/* ------------------------------------------------------------------ */
+/* 8. Obergrenze und Lexikon-Nachschub (Weg A, 2026-09-29)             */
+/* ------------------------------------------------------------------ */
+{
+  const t = (n: number) => Array.from({ length: n }, (_, i) => ({ titel: `Termin ${i + 1} anlegen` }));
+  const l = (n: number) => Array.from({ length: n }, (_, i) => ({ titel: `Lexikon, Bündel ${i + 1}: X` }));
+
+  gleich("die Obergrenze ist zwölf", OBERGRENZE, 12);
+  gleich("leere Warteschlange: zwölf Plätze, drei davon Lexikon", platz([]), {
+    frei: 0, lexikon: 0, platz: 12, lexikonNachziehen: 3, ueber: 0,
+  });
+  gleich("ein Lexikon-Posten: auf drei auffüllen, also zwei", platz([...t(5), ...l(1)]).lexikonNachziehen, 2);
+  gleich("zwei Lexikon-Posten: noch genug, nichts nachziehen", platz([...t(5), ...l(2)]).lexikonNachziehen, 0);
+  gleich("vier Lexikon-Posten (von Hand): nichts nachziehen, kein Fehler", platz([...t(3), ...l(4)]), {
+    frei: 7, lexikon: 4, platz: 5, lexikonNachziehen: 0, ueber: 0,
+  });
+  gleich("Nachschub nie über die Obergrenze: elf Termine, ein Platz", platz(t(11)).lexikonNachziehen, 1);
+  gleich("zwölf frei: kein Platz, kein Nachschub, kein Fehler", platz(t(12)), {
+    frei: 12, lexikon: 0, platz: 0, lexikonNachziehen: 0, ueber: 0,
+  });
+  gleich("dreizehn frei: einer über der Grenze", platz(t(13)).ueber, 1);
+  gleich("und kein negativer Platz", platz(t(13)).platz, 0);
 }
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);

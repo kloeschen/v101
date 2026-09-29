@@ -205,10 +205,14 @@ Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
 
-**Lexikon-Vorrat — ein Bündel nach oben ziehen, sobald keiner der
-Lexikon-Posten unter „Als Nächstes" mehr frei ist.** Recherchiert am
-2026-09-29 (Startschwelle: 80 Begriffe; Stand 23). Nicht alle auf einmal:
-Der Suchlauf füllt nur bis zehn freie Posten auf, und Termine gehen vor.
+**Lexikon-Vorrat — der Suchlauf zieht von oben nach, sobald weniger als
+zwei Lexikon-Posten frei sind.** Recherchiert am 2026-09-29
+(Startschwelle: 80 Begriffe; Stand 23). Seit Weg A (2026-09-29) zieht der
+Suchlauf Bündel von oben nach unten nach, bis drei Lexikon-Posten frei
+sind, innerhalb der Obergrenze von zwölf (`npm run warteschlange:platz`,
+Ablauf in `docs/ablaeufe/termin-recherche.md`, Schritt 1a). Ein
+nachgezogenes Bündel wird hier gestrichen. Ist der Vorrat leer, wählt der
+Mensch die nächsten Begriffe aus.
 Je Bündel gleiche Kategorie, Abgrenzung in Klammern:
 - *Genres:* Rhythm and Blues (heutiges R&B), Swing (Rhythmusgefühl,
   Western Swing, Swing-Tänze; fehlt laut ENTSCHEIDUNGEN 2026-09-23),
@@ -267,11 +271,13 @@ Tag und Bündel-Posten (bis sechs Termine, vier Begriffe). Nach zwei Wochen
 zählen: freigegebene Einträge pro Woche, Inhalts-PRs pro Woche, wie viele
 Bündel ganz, teilweise oder gar nicht durchkamen, Kosten pro Lauf. Daran
 entscheidet sich, ob Bündelgröße oder Laufzahl nachjustiert wird. Seit dem
-2026-09-29 laufen außerdem Termine morgens und Lexikon nachmittags (Weg B)
-und die abendliche Freigabe-Erinnerung. Deshalb zusätzlich zählen:
-Lexikon-Einträge pro Woche und die Liegezeit vom Entwurf bis zur Freigabe.
-Erst danach entscheiden, ob Weg A nötig ist (drei Läufe am Tag, Suchlauf
-dreimal die Woche, Obergrenze 12).
+2026-09-29 gelten Weg B (Termine morgens und mittags, Lexikon nachmittags),
+Weg A (drei Läufe am Tag, Suchlauf dreimal die Woche, Obergrenze 12,
+Lexikon-Nachschub aus dem Vorrat) und die abendliche Freigabe-Erinnerung.
+Deshalb zusätzlich zählen: Lexikon-Einträge pro Woche, die Liegezeit vom
+Entwurf bis zur Freigabe und wie viele Inhalts-PRs gleichzeitig auf Markus
+warten. Staut es sich dort, ist der dritte Lauf der erste, der wieder
+wegfällt.
 
 **Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
 Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen
@@ -290,12 +296,13 @@ Rockabilly Convention. Einfach als `frei`-Posten nach oben ziehen, wenn
 die Bedingung erfüllt ist.
 
 **Suchlauf auswerten — ab dem 2026-10-21.** Seit dem 2026-09-23 füllt ein
-wöchentlicher Suchlauf die Warteschlange auf höchstens zehn `frei`-Posten
-auf (`docs/ablaeufe/termin-recherche.md`). Nach vier Wochen zählen: Wie
+Suchlauf die Warteschlange auf, seit dem 2026-09-29 dreimal die Woche und
+auf höchstens zwölf `frei`-Posten (`docs/ablaeufe/termin-recherche.md`).
+Nach vier Wochen zählen: Wie
 viele Posten tragen „Herkunft: Suchlauf", wie viele wurden zu einem
 Eintrag, wie viele kamen zurück und warum. Führt weniger als die Hälfte zu
 einem Eintrag, wird der Suchlauf abgestellt oder umgebaut (Routine
-„v101 — wöchentlicher Suchlauf"), Begründung nach ENTSCHEIDUNGEN.md.
+„v101 — Suchlauf"), Begründung nach ENTSCHEIDUNGEN.md.
 
 **Genres für das Ganderkesee-Festival — sobald das Line-up 2027 steht.**
 Am 2026-09-23 bewusst leer gelassen: Die Seite nennt Rock 'n' Roll als

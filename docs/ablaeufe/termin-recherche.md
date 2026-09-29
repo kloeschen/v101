@@ -19,8 +19,8 @@ aufgegebenen Vorgängerprojekt und gelten hier nicht. Was aus ihnen
 
 | Lauf | Wann | Tut | Tut nicht |
 |---|---|---|---|
-| **Suchlauf** | wöchentlich | Quellen unten absuchen, Funde als `frei`-Posten in `OFFENE-PUNKTE.md` schreiben | Inhalte anlegen. Ein Fund ist ein Hinweis, kein Beleg. |
-| **Täglicher Lauf** | täglich | genau einen Posten bauen (`BETRIEB.md`, 2.5) | suchen, was nicht im Posten steht |
+| **Suchlauf** | sonntags, dienstags, donnerstags | Quellen unten absuchen, Funde als `frei`-Posten in `OFFENE-PUNKTE.md` schreiben | Inhalte anlegen. Ein Fund ist ein Hinweis, kein Beleg. |
+| **Täglicher Lauf** | dreimal am Tag | je Lauf genau einen Posten bauen (`BETRIEB.md`, 2.5) | suchen, was nicht im Posten steht |
 
 Die Trennung ist Absicht. Der Suchlauf darf großzügig sein, weil er nur
 Arbeitsaufträge erzeugt; ein Posten-PR berührt nur `OFFENE-PUNKTE.md` und
@@ -54,19 +54,33 @@ ist mehr wert als ein einzelner Termin.
 
 ## Der Suchlauf
 
-1. **Platz in der Warteschlange ermitteln.** `npm run warteschlange` zählt
-   die `frei`-Posten. Der Suchlauf füllt auf **höchstens zehn** auf; stehen
-   schon zehn da, meldet er das und hört auf. Er läuft sonntags und
-   mittwochs: Seit dem 2026-09-25 baut der tägliche Lauf zweimal am Tag
-   (Entscheidung Markus), braucht also rund vierzehn Posten pro Woche. **Die
-   Vorschläge aus dem Formular kommen zuerst** (Abschnitt „Vorschläge aus
-   der Szene"); die eigene Suche füllt nur, was danach frei ist.
+1. **Platz in der Warteschlange ermitteln.** `npm run warteschlange:platz`
+   zählt die `frei`-Posten und rechnet aus, wie viele dazukommen dürfen.
+   Der Suchlauf füllt auf **höchstens zwölf** auf; stehen schon zwölf da,
+   meldet er das und hört auf. `npm run warteschlange:check` scheitert an
+   einer dreizehnten. Er läuft sonntags, dienstags und donnerstags: Seit
+   dem 2026-09-29 baut der tägliche Lauf dreimal am Tag, morgens und mittags
+   bevorzugt Termine, nachmittags Lexikon (Weg A, Entscheidung Markus),
+   braucht also rund einundzwanzig Posten pro Woche. **Die Vorschläge aus
+   dem Formular kommen zuerst** (Abschnitt „Vorschläge aus der Szene"),
+   **danach der Lexikon-Nachschub** (Schritt 1a); die eigene Suche füllt
+   nur, was danach frei ist.
+1a. **Lexikon nachziehen** (seit dem 2026-09-29). `warteschlange:platz`
+   nennt die Zahl: Stehen weniger als zwei Lexikon-Posten auf `frei`,
+   zieht der Suchlauf Bündel aus dem Abschnitt „Lexikon-Vorrat" in
+   `OFFENE-PUNKTE.md` nach oben, bis drei dastehen — von oben nach unten,
+   nie über die Obergrenze. Jedes Bündel wird ein `frei`-Posten
+   „Lexikon, Bündel <Kategorie>: <Begriffe>." mit den Abgrenzungen aus
+   dem Vorrat, den alten Pfaden, falls genannt, und der Zeile „Herkunft:
+   Lexikon-Vorrat JJJJ-MM-TT"; im Vorrat wird es gestrichen. Recherchiert
+   wird dabei nichts. Ist der Vorrat leer, steht das im Bericht — neue
+   Begriffe auszuwählen ist eine Ermessensfrage und bleibt beim Menschen.
 2. **Quellen abgehen.** Jede Kalenderseite öffnen, kommende Termine mit
    Szenebezug notieren. Szenebezug heißt: ein Genre, Tanz oder Stil, für
    den es einen Lexikoneintrag gibt oder geben sollte.
 3. **Nicht zu früh.** Nur Termine, die **mindestens 21 Tage** nach dem
-   Suchlauf beginnen. Die Rechnung: Bei zehn Posten und einem Posten pro
-   Tag wird der letzte nach zehn Tagen gebaut; dazu kommen Prüfung und
+   Suchlauf beginnen. Die Rechnung: Bei zwölf Posten und zwei Termin-Läufen
+   am Tag wird der letzte nach sechs Tagen gebaut; dazu kommen Prüfung und
    Freigabe. Ein Termin, der bis dahin vorbei ist, kostet einen Lauf und
    bringt nichts.
 4. **Duplikate ausschließen**, dreifach: gegen `src/content/events/` (Name,
@@ -138,7 +152,8 @@ Einsender werden nicht genannt und nicht angeschrieben.
 3. Jede entschiedene Einsendung vermerken:
    `npm run vorschlaege -- --vermerke <id> posten` bzw. `verworfen`.
 4. **Vorschläge zuerst:** Sie belegen die Plätze bis zur Obergrenze von
-   zehn `frei`-Posten vor den eigenen Funden (Markus, 2026-09-24). Für die
+   zwölf `frei`-Posten vor den eigenen Funden (Markus, 2026-09-24;
+   Obergrenze seit dem 2026-09-29). Für die
    21-Tage-Regel gilt dasselbe wie beim Suchlauf; eine Korrektur zu einem
    bestehenden Eintrag ist davon ausgenommen.
 
