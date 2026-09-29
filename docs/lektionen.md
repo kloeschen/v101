@@ -787,3 +787,33 @@ harmloses Wort. Die schlichtere Fassung ist die richtigere.
 Werkzeug. Wer nach Zeichen sucht, sucht nach dem falschen Ding und findet
 dabei zu viel und zu wenig.
 
+
+## 30. Eine zweite Konfigurationsdatei ist eine stille Sicherungskopie, die niemand liest
+
+**Was passiert ist:** Am 2026-09-03 wurde `netlify.toml` über die
+GitHub-Oberfläche bearbeitet, um `PUBLIC_ENTWUERFE` einzutragen. Übrig
+blieben nur die Umgebungsschalter; Build-Befehl, Node-Pin, alle Header und
+die einzige Weiterleitung waren weg. Die Produktion lieferte danach
+`/api/events.json` ohne `Access-Control-Allow-Origin` aus — die als offen
+dokumentierte Schnittstelle war aus dem Browser zu (Lektion 8, genau der
+Fall, vor dem sie warnt). `nosniff` und die Referrer-Policy fehlten ebenso.
+Gebaut wurde weiter, weil der Build-Befehl auch in der Netlify-Oberfläche
+steht.
+
+**Warum es 25 Tage niemand bemerkt hat:** Unter `src/netlify.toml` lag seit
+dem Grundgerüst eine vollständige Kopie. Wer nach den Headern suchte, fand
+sie — in einer Datei, die Netlify nie gelesen hat (Basisverzeichnis der
+Site: leer). Die Doku stimmte mit dem Repo überein, nur nicht mit dem, was
+ausgeliefert wurde. Aufgefallen ist es beim Bau der Weiterleitungen, weil
+die Frage „wohin gehören Redirects?" beide Dateien auf den Tisch legte.
+
+**Was jetzt gilt (seit dem 2026-09-28):** Es gibt genau eine
+`netlify.toml`. `scripts/test-netlify.ts` hält jede Zusage fest, die README
+und Lektion 8 über sie machen, und scheitert an einer zweiten Datei. Gegen
+die gekürzte Fassung vom 2026-09-03 fallen genau die acht erwarteten
+Prüfungen.
+
+**Regel:** Konfiguration, von der ein Dienst nur eine Stelle liest, gibt es
+nur an dieser Stelle. Eine Kopie daneben beruhigt jeden, der nachsieht, und
+schützt nichts. Und: Nach einer Änderung über eine Weboberfläche den Diff
+lesen, nicht die Absicht.

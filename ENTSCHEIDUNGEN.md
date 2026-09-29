@@ -86,6 +86,69 @@ Nachmittagslauf vom 2026-09-28. Angelegt: der Termin am 31.10.2026
 Teddys, Haslinger Hof) hängen ebenfalls an boogie.at. Die Falle steht
 in `docs/ablaeufe/termin-recherche.md`.
 
+---
+
+## 2026-09-28 — Weiterleitungen für die Altlasten von v101.de; `netlify.toml` wiederhergestellt
+
+**Anlass:** Posten „Alte URLs von v101.de" (Vor dem Go-Live), Auftrag
+Markus. Gemessen vor dem Bau: `v101.de` hängt schon an dieser Site, die
+alten Pfade landen also heute hier und bekommen 404.
+
+**Fund mit Folgen: Die wirksame `netlify.toml` war seit dem 2026-09-03
+gekürzt.** Eine Bearbeitung über die GitHub-Oberfläche hatte Build,
+Node-Pin, alle Header und die Weiterleitung entfernt; eine vollständige
+Kopie unter `src/netlify.toml` las Netlify nie (Basisverzeichnis leer, per
+API geprüft). Gemessen auf der Produktion: `/api/events.json` ohne CORS,
+kein `nosniff`, keine Referrer-Policy. Wiederhergestellt aus der Kopie,
+die Schalter von Markus wortgleich; die Kopie ist gelöscht.
+`scripts/test-netlify.ts` hält den Inhalt fest (Lektion 30).
+
+**Nicht wiederhergestellt:** die Weiterleitung `/events/:jahr` →
+`/events/jahr/:jahr/`. Ihr Block `[redirects.conditions]` war leer — der
+Kommentar „greift nur für vierstellige Jahre" beschrieb eine Bedingung,
+die nie dastand. Netlify kennt keine Muster für Platzhalter; die Regel
+hätte jeden Pfad unter `/events/` getroffen. Verlinkt war die Form nie.
+
+**Die Weiterleitungen:** `public/_redirects` statt `netlify.toml`, weil
+Astro `public/` unverändert nach `dist/` kopiert und die Regeln dort gegen
+den Build prüfbar sind. Von 1434 alten Pfaden (Wayback-CDX, als
+`docs/daten/v101-alte-urls.txt` im Repo):
+- **7 × 301** — nur wo die alte Kategorie genau einen freigegebenen
+  Lexikonbegriff meinte (korsett, petticoats → petticoat, …,
+  thema/rockabilly).
+- **1037 × 410** — alles, was schon der Form nach keine Entsprechung haben
+  kann: Kategorie-mal-Schlagwort und -mal-Jahrzehnt (auch unter
+  Unterkategorien), Folgeseiten, Produkt-, Marken-, Suchseiten, WordPress.
+- **3 neu belegt** (`/`, `/impressum/`, `/robots.txt`).
+- **387 offen (404):** Kategorien, Unterkategorien, Themen- und
+  Jahrzehntseiten selbst. Das ist Ermessen und liegt bei Markus
+  (OFFENE-PUNKTE). Die frühere Schätzung „rund 75 Weiterleitungen" setzte
+  Ziele voraus, die es noch nicht gibt; eine Weiterleitung auf eine
+  Übersicht statt auf dieselbe Sache wäre ein Soft-404.
+
+**Verworfen:** `/c/pork-pie/jahrz/40s/` auf `lexikon/pork-pie` — sachlich
+nah, aber eine Kombinationsseite; die Strukturregel bleibt ohne Ausnahme.
+`thema/pencil` auf `lexikon/bleistiftrock` — wahrscheinlich dieselbe
+Sache, aber das Schlagwort trug auch Kleider; als Frage an Markus.
+
+**Ob Netlify 410 kann,** sagt die Doku nicht (sie nennt 200, 301, 302,
+404). Gemessen an der Vorschau von PR #83: Es kann. 410 für
+`/c/hemd/ctag/rot/`, `/c/kleider/jahrz/70s/`, `/wp-json/` (der Stern trifft
+auch den leeren Rest), 301 für `/c/korsett` mit und ohne Schrägstrich,
+404 für offene Pfade, 200 für `/impressum/`. Dort auch wieder da:
+`Access-Control-Allow-Origin: *` an `/api/events.json` und `/kalender/`,
+`nosniff` und Referrer-Policy an jeder Seite.
+
+**Belege:** `check-weiterleitungen` hängt nach dem Build in `verify` und
+`verify:ci` (Schritt 10/11): Jedes 301-Ziel ist eine gebaute Seite, keine
+Regel trifft eine Seite des Builds, keine Regel ist tot, Lebenszeichen für
+beide Status. `test-weiterleitungen` (29 Prüfungen) hat für jede Fehlerart
+Fall und Gegenfall. Mutationen: falsches Ziel in der echten Datei → genau
+diese Zeile als Fehler; Konfliktprüfung abgeschaltet → 1 Behauptung fällt;
+Stern als reines Präfix → 5 fallen; zweite `netlify.toml` → 1 fällt.
+
+---
+
 ## 2026-09-28 — BWC Gmunden: fünf Termine, Flyer schlägt Datumszeile
 
 **Anlass:** Posten aus dem Suchlauf vom 2026-09-27, gebaut im Lauf vom
