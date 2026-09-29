@@ -54,7 +54,8 @@
  * derselben Datei angewandt.
  *
  *   npx tsx scripts/warteschlange.ts            # alle Posten mit Marke
- *   npx tsx scripts/warteschlange.ts --naechster # der oberste freie Posten
+ *   npx tsx scripts/warteschlange.ts --naechster # der nächste freie Posten (Termine
+ *                                                  morgens, Lexikon nachmittags zuerst)
  *   npx tsx scripts/warteschlange.ts --check     # Exitcode 1 bei fehlender Marke
  *   npx tsx scripts/warteschlange.ts --belegt    # was offene Zweige schon bearbeiten
  *   npx tsx scripts/warteschlange.ts --json
@@ -314,6 +315,37 @@ export function offeneZweige(basis = "origin/main", fern = "origin"): Zweigstand
 }
 
 /* ------------------------------------------------------------------ */
+/* Welcher freie Posten zuerst? Termine und Lexikon abwechselnd        */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Lexikon-Posten erkennt man am Titel: „Lexikon: …" oder „Lexikon, Bündel …".
+ */
+export const istLexikon = (p: Pick<Posten, "titel">) => /^Lexikon\b/.test(p.titel);
+
+/**
+ * Entscheidung Markus, 2026-09-29: Lexikon und Termine abwechselnd, statt
+ * Termine immer zuerst. Lexikon-Posten bringen bis zu vier Einträge je Lauf,
+ * kommen kaum zurück und hängen nicht an erreichbaren Kalendern; sie
+ * standen aber stets hinter den Terminen, weil der Suchlauf neue Posten oben
+ * einfügt — eine bloße Umsortierung der Datei hätte der nächste Suchlauf
+ * wieder aufgehoben.
+ *
+ * Abgewechselt wird nach der Tageszeit, nicht nach dem letzten Lauf: Der
+ * Morgenlauf (vor 12 Uhr UTC) nimmt zuerst einen Posten, der kein Lexikon
+ * ist, der Nachmittagslauf zuerst einen Lexikon-Posten. Das braucht keinen
+ * gespeicherten Zustand und ist aus der Uhrzeit nachvollziehbar. Gibt es
+ * von der bevorzugten Sorte keinen freien Posten, nimmt der Lauf den
+ * obersten der anderen — ein leerer Vorzug darf keinen Lauf verschenken.
+ * Innerhalb einer Sorte bleibt die Reihenfolge der Datei.
+ */
+export function waehle(offen: Posten[], stundeUtc: number): Posten | undefined {
+  const lexikonZuerst = stundeUtc >= 12;
+  const bevorzugt = offen.find((p) => istLexikon(p) === lexikonZuerst);
+  return bevorzugt ?? offen[0];
+}
+
+/* ------------------------------------------------------------------ */
 
 function main() {
   const argv = process.argv.slice(2);
@@ -379,7 +411,13 @@ function main() {
     for (const b of belegt) {
       console.error(`Übersprungen, wird schon bearbeitet (${b.zweig}): ${b.titel}`);
     }
-    console.log(offen[0].text);
+    // `--stunde N` ersetzt die Uhrzeit — für einen Lauf außer der Reihe,
+    // der bewusst die andere Sorte nehmen soll, und für den Testharnisch.
+    const i = argv.indexOf("--stunde");
+    const stunde = i >= 0 ? Number(argv[i + 1]) : new Date().getUTCHours();
+    const gewaehlt = waehle(offen, stunde)!;
+    console.error(`Vorzug: ${stunde >= 12 ? "Lexikon" : "Termine und Übriges"} (${stunde} Uhr UTC).`);
+    console.log(gewaehlt.text);
     process.exit(0);
   }
 

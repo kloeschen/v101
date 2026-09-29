@@ -25,7 +25,7 @@
  *   npx tsx scripts/test-warteschlange.ts
  */
 
-import { lies, belegte, type Zweigstand } from "./warteschlange";
+import { lies, belegte, waehle, istLexikon, type Zweigstand } from "./warteschlange";
 import { beurteile, MENSCHENPFLICHTIG } from "./automerge-erlaubt";
 
 let bestanden = 0;
@@ -388,6 +388,35 @@ const basis = lies(BASIS);
 }
 
 /* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+/* 7. Termine und Lexikon abwechselnd (2026-09-29)                     */
+/* ------------------------------------------------------------------ */
+{
+  const w = lies(`## Als Nächstes
+
+\`frei\` **Termin A anlegen.** Text A.
+
+\`frei\` **Termin B anlegen.** Text B.
+
+\`frei\` **Lexikon, Bündel Muster: X, Y.** Text L1.
+
+\`frei\` **Lexikon: Teddy Boy.** Text L2.
+`);
+  const titel = (p?: { titel: string }) => p?.titel ?? "(keiner)";
+  gleich("morgens: der oberste Posten, der kein Lexikon ist", titel(waehle(w.posten, 4)), "Termin A anlegen");
+  gleich("nachmittags: der oberste Lexikon-Posten, auch wenn Termine darüber stehen", titel(waehle(w.posten, 14)), "Lexikon, Bündel Muster: X, Y");
+  gleich("die Grenze liegt bei 12 Uhr UTC (11 Uhr noch morgens)", titel(waehle(w.posten, 11)), "Termin A anlegen");
+  gleich("die Grenze liegt bei 12 Uhr UTC (12 Uhr schon nachmittags)", titel(waehle(w.posten, 12)), "Lexikon, Bündel Muster: X, Y");
+  const nurTermine = w.posten.filter((p) => !istLexikon(p));
+  gleich("nachmittags ohne Lexikon-Posten: der oberste Termin statt nichts", titel(waehle(nurTermine, 14)), "Termin A anlegen");
+  const nurLexikon = w.posten.filter(istLexikon);
+  gleich("morgens ohne Termin-Posten: der oberste Lexikon-Posten statt nichts", titel(waehle(nurLexikon, 4)), "Lexikon, Bündel Muster: X, Y");
+  gleich("leere Warteschlange: kein Posten", waehle([], 14), undefined);
+  pruefe("„Lexikon, Bündel …\" gilt als Lexikon", istLexikon({ titel: "Lexikon, Bündel Tanz: Jive" }));
+  pruefe("„Lexikon: …\" gilt als Lexikon", istLexikon({ titel: "Lexikon: Teddy Boy." }));
+  pruefe("ein Termin, der das Wort nur im Text trägt, gilt nicht als Lexikon", !istLexikon({ titel: "Lexikonabend im Café Central" }));
+}
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);
 for (const f of fehler) console.log(`  FEHLER  ${f}`);
