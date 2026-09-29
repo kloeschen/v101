@@ -52,8 +52,14 @@ Vorschlag (`V101_GUARD=docs/vorschlaege/guard.mjs`) bestehen alle 145.
 | auch bei `sh -c` ausblenden | beide `-c`-Fälle (6 Behauptungen) |
 | zerlegen ohne Rücksicht auf Anführungszeichen | Ersetzung mit `|`, Ersetzung vor Pipe, Fall 8 |
 
-Bis der Block eingesetzt ist, ist die Prüfkette dieses Zweigs rot, an
-genau den zwei Fehlalarmen — wie beim Vorschlag vom 2026-09-23 gewollt.
+Bis der Block eingesetzt war, war die Prüfkette des Zweigs rot, an genau
+den zwei Fehlalarmen — wie beim Vorschlag vom 2026-09-23 gewollt.
+
+**Eingesetzt** von Markus am 2026-09-29 (Commit `0bf7e6f`). Nachweis am
+eingesetzten Hook: byte-gleich mit dem Vorschlag (`cmp`), `test-hooks.ts`
+gegen den echten Hook 145 von 145. Live in der Sitzung: `git status`
+zusammen mit einem `grep` nach „patch" auf den Hook in einem Befehl, vorher
+blockiert, lief durch. Die Vorschlagsdatei ist danach gelöscht.
 
 ---
 
