@@ -32,25 +32,25 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **BWC Rock Dock Teddys, Boogie-Herbstparty: Datum strittig (06.11. oder 20.11.2026).**
-Rest des Postens vom 2026-09-27; der Weihnachtsabend am 18.12.2026 ist
-gebaut (`events/rock-this-christmas-perchtoldsdorf-2026-12-18`). Befund
-vom 2026-09-29: boogie.at (/event/boogie-herbstparty, vom Verein selbst
-eingetragen) nennt Fr., 06.11.2026, 18:30, Kulturzentrum Perchtoldsdorf.
-Der Terminkalender der Vereinsseite
-(http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html, nur http,
-Last-Modified 30.08.2026) nennt „HERBSTPARTY", Fr., 20.11.2026, Burg
-Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, gleiches Motto
-(Tracht/After Halloween/Pre Fasching), gleiche Musikspende 10 Euro. Keine
-dritte Quelle (Tanzschule Schmid und Gemeinde führen den Abend nicht).
-**Zu entscheiden:** (a) Markus fragt beim Verein nach (Kontakt im
-Impressum der Vereinsseite) und trägt das Datum hier ein — dann wird der
-Posten wieder `frei`, zwei Minuten plus eine Antwort; (b) liegen lassen und
-ab dem 2026-10-20 erneut beide Seiten prüfen lassen — kostet einen Lauf,
-löst sich nur, wenn der Verein eine Seite nachzieht; (c) streichen —
-kostet einen Termin, der Weihnachtsabend steht ohnehin. Nicht nach boogie.at
-allein bauen: Beim Ort gab der Abgleich mit dem Oktober-Ball einen Grund
-zur Gewichtung, beim Datum gibt es keinen.
+`frei` **BWC Rock Dock Teddys: Herbstparty am 20.11.2026 anlegen (Burg Perchtoldsdorf).**
+Entscheidung Markus, 2026-09-29: Es gilt der Terminkalender der
+Vereinsseite. Dort steht „HERBSTPARTY", Fr., 20.11.2026, Burg
+Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, Motto
+Tracht/After Halloween/Pre Fasching, Musikspende 10 Euro
+(http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html, Last-Modified
+30.08.2026). boogie.at (/event/boogie-herbstparty, vom Verein eingetragen)
+nennt abweichend Fr., 06.11.2026, 18:30, Kulturzentrum Perchtoldsdorf —
+der Widerspruch gehört benannt und zugeordnet in den Text (Lektion 20),
+das Datum folgt der Vereinsseite. **Zitierbarkeit:** Die Vereinsseite
+liefert über https ein falsches Zertifikat; das Schema nimmt nur
+https-Quellen. Eine Wayback-Kopie ist https und zitierfähig
+(`https://web.archive.org/web/<Zeitstempel>/http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html`,
+`art: offiziell`); gibt es keine, eine anlegen
+(`https://web.archive.org/save/…`) und die entstandene Adresse zitieren.
+Gelingt beides nicht, Posten mit diesem Befund zurück auf `mensch`, nicht
+nach boogie.at bauen. Ort `burg-perchtoldsdorf` gibt es; Zeitzone `+01:00`;
+Reihe wie beim Weihnachtsabend `rock-this-christmas-perchtoldsdorf-2026-12-18`
+prüfen.
 
 `frei` **Haslinger Hof Kirchham, Boogie Mix: 2 Termine anlegen (13.11.2026, 11.12.2026).**
 Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten 0 bis 2) und der
@@ -166,6 +166,18 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Idee: Themen und Regionen abonnieren (Markus, 2026-09-29).** Leser
+abonnieren eine Region, einen Begriff oder eine Sammlung und bekommen eine
+Mail bei neuen Terminen, neuen Läden oder geänderten Einträgen. Was es
+schon gibt: je Region ein Kalenderabo (`/kalender/<region>.ics`) und
+`/rss.xml`. Naheliegender Weg: Feeds je Region und Sammlung erzeugen und
+einen RSS-zu-Mail-Dienst daran hängen, statt selbst Mails zu verschicken.
+Offen: Dienst und Kosten, Double-Opt-in und Datenschutzerklärung (eine
+Mailadresse ist das erste personenbezogene Datum, das die Seite dauerhaft
+hält), wie „geändert" definiert ist (Freigabe? `geprueftAm`?), Taktung
+(sofort oder wöchentlich gebündelt). Voraussetzung: Go-Live und genug
+Termine je Region, dass sich ein Abo lohnt.
 
 **Oberösterreich-Texte nachziehen — sobald die BWC-Gmunden-Einträge freigegeben sind.**
 Drei freigegebene Texte sagen „bisher": `locations/zorba-der-grieche-sierning`
