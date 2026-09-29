@@ -57,7 +57,7 @@ Western Swing ist eine Musikrichtung, die Anfang der 1930er Jahre im Südwesten 
 
 ## Merkmale von Western Swing
 
-Die Besetzung ist der Kern des Genres, weil sie zwei Welten zusammenbringt. Auf der einen Seite die Streichinstrumente der ländlichen Tanzkapelle: Fiddle, Gitarre, Kontrabass, Mandoline, Banjo — und, als klanglich auffälligstes Merkmal, die Steel Guitar. Auf der anderen Seite das Instrumentarium der Jazzband: Saxofon, Trompete, Posaune, Klavier und Schlagzeug. Die englische Wikipedia hebt außerdem die frühe elektrische Verstärkung hervor, die dem Stil seinen Klang gab. Milton Brown setzte nach Angaben der deutschen Wikipedia als Erster einen Pianisten ein.
+Die Besetzung ist der Kern des Genres, weil sie zwei Welten zusammenbringt. Auf der einen Seite die Streichinstrumente der ländlichen Tanzkapelle: Fiddle, Gitarre, [Kontrabass](/lexikon/kontrabass/), Mandoline, Banjo — und, als klanglich auffälligstes Merkmal, die Steel Guitar. Auf der anderen Seite das Instrumentarium der Jazzband: Saxofon, Trompete, Posaune, Klavier und Schlagzeug. Die englische Wikipedia hebt außerdem die frühe elektrische Verstärkung hervor, die dem Stil seinen Klang gab. Milton Brown setzte nach Angaben der deutschen Wikipedia als Erster einen Pianisten ein.
 
 ## Entstehung von Western Swing
 

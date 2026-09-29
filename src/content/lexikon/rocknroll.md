@@ -103,7 +103,7 @@ Rock'n'Roll ist ein Sammelbegriff für eine US-amerikanische Musikrichtung der 1
 
 ## Merkmale des Rock'n'Roll
 
-Die typische Besetzung ist ein Sänger als Frontmann, begleitet von Gitarre und/oder Klavier, Kontrabass oder E-Bass und Schlagzeug, gelegentlich ergänzt durch Saxofon. Der Gesang ist oft kehlig-rau. Ein wiederholtes Riff liegt über einem harten Beat, in der Regel im 4/4-Takt und mit deutlichem Backbeat. Die Stücke sind vergleichsweise kurz und folgen häufig dem zwölftaktigen Bluesschema; die rollende Basslinie, die dem Stil seinen Bewegungseindruck gibt, stammt aus dem [Boogie-Woogie](/lexikon/boogie-woogie/).
+Die typische Besetzung ist ein Sänger als Frontmann, begleitet von Gitarre und/oder Klavier, [Kontrabass](/lexikon/kontrabass/) oder E-Bass und Schlagzeug, gelegentlich ergänzt durch Saxofon. Der Gesang ist oft kehlig-rau. Ein wiederholtes Riff liegt über einem harten Beat, in der Regel im 4/4-Takt und mit deutlichem Backbeat. Die Stücke sind vergleichsweise kurz und folgen häufig dem zwölftaktigen Bluesschema; die rollende Basslinie, die dem Stil seinen Bewegungseindruck gibt, stammt aus dem [Boogie-Woogie](/lexikon/boogie-woogie/).
 
 Der Duden nennt als dritte Zutat neben Rhythm and Blues und Country auch „Elemente des Dixieland". Diese Zuschreibung steht nur dort und bei keiner der drei übrigen geöffneten Quellen; sie ist deshalb hier als Angabe des Duden festgehalten und nicht in die Definition übernommen.
 

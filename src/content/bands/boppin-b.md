@@ -224,7 +224,7 @@ quellen:
     art: aggregator
 ---
 
-Boppin'B ist eine Rock'n'Roll- und Rockabilly-Band aus Aschaffenburg, die 1985 als Schulband entstand und seitdem ohne Unterbrechung spielt. Nach eigener Zählung hat sie mehr als 6.000 Konzerte gegeben, überwiegend in Deutschland und den Nachbarländern. Zur Besetzung gehört neben Gitarre, Kontrabass und Schlagzeug ein Saxofon.
+Boppin'B ist eine Rock'n'Roll- und Rockabilly-Band aus Aschaffenburg, die 1985 als Schulband entstand und seitdem ohne Unterbrechung spielt. Nach eigener Zählung hat sie mehr als 6.000 Konzerte gegeben, überwiegend in Deutschland und den Nachbarländern. Zur Besetzung gehört neben Gitarre, [Kontrabass](/lexikon/kontrabass/) und Schlagzeug ein Saxofon.
 
 ## Sound
 

@@ -52,7 +52,7 @@ Psychobilly ist eine Musikrichtung, die Rhythmik und Melodik des [Rockabilly](/l
 
 ## Merkmale von Psychobilly
 
-Die klassische Besetzung ist ein Trio aus Gitarre, Kontrabass und Schlagzeug, gelegentlich um Saxofon oder Klavier erweitert. Der Kontrabass wird wie im Rockabilly im Slap-Stil gespielt; die englische Wikipedia hebt hervor, dass es der stehende Bass ist und nicht der E-Bass, der das Genre klanglich kennzeichnet. Was hinzukommt, kommt aus dem Punk: höheres Tempo, härtere Gitarren und eine Motivik aus Horrorfilmen, B-Movies und Psychopathengeschichten.
+Die klassische Besetzung ist ein Trio aus Gitarre, [Kontrabass](/lexikon/kontrabass/) und Schlagzeug, gelegentlich um Saxofon oder Klavier erweitert. Der Kontrabass wird wie im Rockabilly im Slap-Stil gespielt; die englische Wikipedia hebt hervor, dass es der stehende Bass ist und nicht der E-Bass, der das Genre klanglich kennzeichnet. Was hinzukommt, kommt aus dem Punk: höheres Tempo, härtere Gitarren und eine Motivik aus Horrorfilmen, B-Movies und Psychopathengeschichten.
 
 ## Entstehung von Psychobilly
 
