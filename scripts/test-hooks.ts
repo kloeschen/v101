@@ -196,6 +196,13 @@ const bashGesperrt: Array<[string, string]> = [
   ["stdout und stderr in die Site-Konfiguration", `npm run build &> ${SITE}`],
   ["Umleitung neben 2>&1", `node gen.mjs > ${SCHEMA} 2>&1`],
   ["Umleitung ohne Leerzeichen", `echo x >${AGENT}`],
+  // Seit 2026-09-29 zählen Verb und Pfad nur im selben Teilbefehl, und
+  // Verben in Anführungszeichen zählen nicht. Diese Fälle halten fest, was
+  // dabei nicht verloren gehen darf.
+  ["cp hinter xargs in einer Pipe", `ls /tmp/*.json | xargs cp -t ${AGENT.split("/")[0]}/`],
+  ["cp nach einem harmlosen Teilbefehl", `echo start && cp /tmp/neu.ts ${SCHEMA}`],
+  ["Verb in Anführungszeichen, ausgeführt von bash -c", `bash -c "cp /tmp/neu.ts ${SITE}"`],
+  ["Verb in Anführungszeichen, ausgeführt von sh -c hinter xargs", `echo x | xargs sh -c 'tee ${HOOKDATEI}'`],
 ];
 
 for (const [was, command] of bashGesperrt) {
@@ -235,6 +242,11 @@ const bashStatus: Array<[string, string]> = [
   // Befehlstext zu lesen waere fehleranfaellig (fuenfter Fall im guard-Posten).
   ["Statuszeile rückwärts per sed", `sed -i 's/^status: ${LIVE}$/status: entwurf/' ${EINTRAG}`],
   ["Ersetzung mit Umleitung nach /dev/null", `sed -i 's/entwurf/${LIVE}/' ${EINTRAG} 2>/dev/null`],
+  // Seit 2026-09-29 zählt der Teilbefehl. Ein harmloser Teil davor oder
+  // danach darf die Sperre nicht aufheben.
+  ["Ersetzung nach einem Branchwechsel", `git checkout -q main && sed -i 's/entwurf/${LIVE}/' ${EINTRAG}`],
+  ["Ersetzung vor einer Pipe", `sed -i 's|entwurf|${LIVE}|' ${EINTRAG} | cat`],
+  ["Statuszeile per bash -c", `bash -c "echo 'status: ${LIVE}' >> ${EINTRAG}"`],
 ];
 
 for (const [was, command] of bashStatus) {
@@ -347,6 +359,17 @@ const bashFehlalarm: Array<[string, string]> = [
   // Sechster belegter Fall, am 2026-09-23 beim Bau dieses Vorschlags selbst:
   // eine Suche ueber mehrere Verzeichnisse, darunter die CI-Konfiguration.
   ["Fall 6: Suche mit 2>/dev/null über die CI-Konfiguration", `grep -rn golden scripts/ ${CI.split("/")[0]}/ 2>/dev/null`],
+  // Zwei weitere Fälle vom 2026-09-29, beide dieselbe Ursache wie Lektion
+  // 29: Verb, Pfad und Statuswort wurden im ganzen Befehl gesucht statt im
+  // selben Teilbefehl. Gegen den Hook vom 2026-09-23 schlagen sie fehl.
+  [
+    "Fall 7: Branchwechsel neben lesender Statussuche",
+    `git checkout -q main && git pull -q origin main && ls src/content/events/*.md | xargs grep -l "^status: ${LIVE}" | wc -l`,
+  ],
+  [
+    "Fall 8: Suchwort in Anführungszeichen neben lesendem grep auf den Hook",
+    `grep -n "${LIVE}\\|function\\|patch" ${HOOKDATEI} | head -50; wc -l ${HOOKDATEI}`,
+  ],
 ];
 
 for (const [was, command] of bashFehlalarm) {

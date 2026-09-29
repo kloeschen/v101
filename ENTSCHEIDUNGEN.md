@@ -17,6 +17,46 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-29 — guard.mjs: Verb, Pfad und Statuswort nur im selben Teilbefehl
+
+**Anlass:** Zwei Fehlalarme an einem Tag, beide auf reinen Lesebefehlen.
+(1) `git checkout -q main && … | xargs grep -l "^status: …"` — das Verb
+gehörte zum Branchwechsel, das Statuswort zu einer Suche zwei Teilbefehle
+weiter. (2) Ein `grep -n` auf den Hook selbst, dessen Suchmuster das Wort
+„patch" in Anführungszeichen enthielt. Dieselbe Ursache wie in Lektion 29:
+Zeichen und Ziel werden getrennt gesucht und nie zusammengebracht. Ein
+dritter Fall kam beim Schreiben dieses Eintrags: ein Heredoc, dessen Text
+über den Fehlalarm den gesperrten Pfad und das Wort „patch" enthielt.
+
+**Vorschlag** (`docs/vorschlaege/guard.mjs`, einzusetzen von Markus, weil
+die Agenten-Konfiguration gesperrt ist): Der Befehl wird an `|`, `;`, `&`
+und Zeilenumbrüchen außerhalb von Anführungszeichen zerlegt; Verb und
+Pfad, Statuswort und Schreibweg zählen nur im selben Teil. Verben in
+Anführungszeichen zählen nicht — außer der Teil reicht seinen Text an eine
+Shell weiter (`sh -c`, `bash -c`, `eval`). Heredocs bleiben ein einziger
+Teil wie bisher; den dritten Fall behebt der Vorschlag deshalb nicht, und
+das ist gewollt: Ein Heredoc liefert Text, den ein Verb davor schreiben
+kann. Umleitungen werden unverändert nach ihrem Ziel beurteilt.
+
+**Belege:** `test-hooks.ts` hat neun neue Fälle — zwei Fehlalarme, die
+durchgehen müssen, sieben Schreibwege, die weiter sperren müssen (`xargs
+cp`, `cp` nach `&&`, `bash -c "cp …"`, `xargs sh -c 'tee …'`, `sed -i` nach
+Branchwechsel, `sed -i 's|…|…|'` vor einer Pipe, Statuszeile per `bash -c`).
+Gegen den geltenden Hook fallen genau die zwei Fehlalarme; gegen den
+Vorschlag (`V101_GUARD=docs/vorschlaege/guard.mjs`) bestehen alle 145.
+
+| Mutation am Vorschlag | fällt |
+|---|---|
+| nicht zerlegen | Fall 7 |
+| Anführungszeichen nicht ausblenden | Fall 8 |
+| auch bei `sh -c` ausblenden | beide `-c`-Fälle (6 Behauptungen) |
+| zerlegen ohne Rücksicht auf Anführungszeichen | Ersetzung mit `|`, Ersetzung vor Pipe, Fall 8 |
+
+Bis der Block eingesetzt ist, ist die Prüfkette dieses Zweigs rot, an
+genau den zwei Fehlalarmen — wie beim Vorschlag vom 2026-09-23 gewollt.
+
+---
+
 ## 2026-09-29 — Tägliche Läufe schreiben keine Inhaltsberichte mehr hierher
 
 **Anlass:** Gemessen über die 13 Merges von `main` in offene Zweige seit
