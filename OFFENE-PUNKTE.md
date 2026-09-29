@@ -32,30 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **BWC Rock Dock Teddys: Herbstparty am 20.11.2026 anlegen (Burg Perchtoldsdorf).**
-Entscheidung Markus, 2026-09-29: Es gilt der Terminkalender der
-Vereinsseite. Dort steht „HERBSTPARTY", Fr., 20.11.2026, Burg
-Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, Motto
-Tracht/After Halloween/Pre Fasching, Musikspende 10 Euro. boogie.at
-(/event/boogie-herbstparty, vom Verein eingetragen) nennt abweichend
-Fr., 06.11.2026, 18:30, Kulturzentrum Perchtoldsdorf — der Widerspruch
-gehört benannt und zugeordnet in den Text (Lektion 20), das Datum folgt
-der Vereinsseite.
-**Quelle, die zitiert wird:** die Archivkopie der Vereinsseite, von Markus
-am 2026-09-29 angelegt:
-`https://web.archive.org/web/20260929183302/http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html`
-(`art: offiziell`). Die Vereinsseite selbst ist nur über http erreichbar
-und damit nicht zitierfähig; die Wayback Machine ist aus der
-Cloud-Umgebung nicht erreichbar (Befund des Laufs vom 2026-09-29
-nachmittags). Deshalb: **Inhalt an der http-Seite gegenlesen**
-(`http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html`, erreichbar),
-die Archivadresse zitieren, und in der Redaktionsnotiz festhalten, dass
-die Kopie nicht aus der Umgebung geöffnet werden konnte und der Inhalt
-über die http-Seite desselben Tages geprüft ist. Weicht die http-Seite
-inzwischen ab (Datum, Ort), nicht bauen, sondern mit Befund zurück.
-Ort `burg-perchtoldsdorf` gibt es; Zeitzone `+01:00`; Reihe wie beim
-Weihnachtsabend `rock-this-christmas-perchtoldsdorf-2026-12-18` prüfen.
-
 `frei` **Haslinger Hof Kirchham, Boogie Mix: 2 Termine anlegen (13.11.2026, 11.12.2026).**
 Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten 0 bis 2) und der
 Sammelseite https://boogie.at/event/boogie-mix-3 (Herkunft: Suchlauf
