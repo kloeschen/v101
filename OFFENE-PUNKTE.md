@@ -214,9 +214,9 @@ Ablauf in `docs/ablaeufe/termin-recherche.md`, Schritt 1a). Ein
 nachgezogenes Bündel wird hier gestrichen. Ist der Vorrat leer, wählt der
 Mensch die nächsten Begriffe aus.
 Je Bündel gleiche Kategorie, Abgrenzung in Klammern:
-- *Genres:* Rhythm and Blues (heutiges R&B), Swing (Rhythmusgefühl,
-  Western Swing, Swing-Tänze; fehlt laut ENTSCHEIDUNGEN 2026-09-23),
-  Hillbilly (Country, Schimpfwort, Bluegrass).
+- *Genres:* Rhythm and Blues (heutiges R&B), Hillbilly (Country,
+  Schimpfwort, Bluegrass). Swing ist seit dem 2026-09-29 ein Entwurf
+  (`lexikon/swing`).
 - *Schuhe:* Saddle Shoes (Two-Tone, Budapester), Peep Toe (Slingback),
   Stiletto (Kitten Heel, das Messer), Keilabsatz (Plateausohle). Alte
   Pfade: `/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
@@ -227,8 +227,9 @@ Je Bündel gleiche Kategorie, Abgrenzung in Klammern:
   (vorher gegen die Aliases von `strapsguertel` prüfen), Nahtstrümpfe.
 - *Frisuren:* Pompadour (Quiff, Tolle, die Tasche), Ducktail, Flat Top
   (Crew Cut, Bürstenschnitt).
-- *Instrument und Klang:* Kontrabass (E-Bass), Slap-Bass (Slap am E-Bass),
-  Slapback-Echo (Hall, Tape Delay).
+- *Instrument und Klang:* Slap-Bass (Slap am E-Bass; gegen `kontrabass`
+  abgrenzen, seit dem 2026-09-29 ein Entwurf), Slapback-Echo (Hall, Tape
+  Delay).
 - *Autos:* Pinstriping (Nadelstreifen am Stoff), Lowrider, Lead Sled.
 - *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an den
   Posten „Teddy Boy" anschließen.
@@ -236,6 +237,19 @@ Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
 `/thema/country` (meinte Landhausmode). Ob `/jahrzehnt/50s` einen
 Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
 würde „50er" sehr oft verlinken).
+
+**Swing von Hand verlinken — sobald `lexikon/swing` freigegeben ist.** Der
+Autolink setzt „Swing" nie selbst (`NUR_VON_HAND` in `src/lib/links.ts`,
+Entscheidung Markus 2026-09-29). Gemessen am selben Tag meinen diese
+Stellen die Musik und bekommen einen Handlink auf `/lexikon/swing/`:
+`lexikon/jump-blues` („Saxofonspiels der Swing-Ära"), `lexikon/lindy-hop`
+(„Musik der Swing-Big-Bands"), `adressen/rockin-barber-koepenick` („in der
+Swing- und Rock'n'Roll-Band"), `events/boogie-party-sonntagnachmittag-2026-09-20`
+(„Jump Blues und Swing" als getanzte Musik) und `lexikon/kontrabass`
+(„traditionellen Jazz und Swing"). Nicht verlinken: Bella Italia, die
+Herbstparty, Rock this Christmas und „Familie der Swing-Tänze" im
+Boogie-Woogie-Eintrag — dort ist der Tanz oder ein Name gemeint. Vorher
+mit `grep -rn "Swing" src/content` auf neue Stellen prüfen.
 
 **Idee: Themen und Regionen abonnieren (Markus, 2026-09-29).** Leser
 abonnieren eine Region, einen Begriff oder eine Sammlung und bekommen eine
