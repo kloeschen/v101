@@ -231,6 +231,24 @@ Fehler verursacht oder beinahe verursacht.
   `/sites/default/files/medien/event/<Jahr>/<Datei>.jpg`, ohne
   `styles/olivero_hero/public/`. Der Uploadpfad sagt nichts über das
   Termindatum: Der Flyer zum 24.10.2026 liegt unter `2025/`.
+- **boogie.at gegen die Vereinsseite: Datum und Ort je Termin
+  abgleichen.** Beim BWC Rock Dock Teddys (2026-09-29) nannte boogie.at
+  für die Herbstparty den 06.11.2026 im Kulturzentrum Perchtoldsdorf,
+  der Terminkalender des Vereins den 20.11.2026 in der Burg — zwei
+  Gebäude derselben Gemeinde. Auch beim Weihnachtsabend wich der Ort ab.
+  Die boogie.at-Einträge stammen vom Verein selbst, seine eigene Seite
+  kann also älter oder schlampiger sein, aber das ist im Einzelfall zu
+  zeigen, nicht anzunehmen. Ein strittiger Ort lässt sich mit Gründen
+  gewichten und im Text benennen; ein strittiges Datum nicht, weil
+  `beginn` nicht leer bleiben kann — dann zurück an den Menschen.
+- **boogie.at kann ganz ausfallen.** Am 2026-09-28 nachmittags brach
+  jeder Abruf ab (curl: Verbindungsabbruch, WebFetch: 503); die
+  Gmunden-Einträge vom selben Tag hatten boogie.at noch abgerufen.
+  Dann trägt nur die Vereinsseite — bei
+  den Boogie Lions steht dort eine Liste aller Termine bis Ende 2027,
+  aber ohne Uhrzeit und Ort; beides gibt es erst in der Ankündigung etwa
+  einen Monat vorher. Ohne Uhrzeit und Ort kein Termin: bauen, was der
+  Verein vollständig nennt, den Rest mit Befund zurückgeben.
 - **Die verlinkte Vereinsseite kann tot sein.** Kalender und Flyer
   verweisen oft auf eine alte Domain. Nicht aufgeben, sondern nach dem
   Vereinsnamen suchen; der BWC Gmunden hat seine Seite bei Jimdo, samt

@@ -32,40 +32,25 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Boogie Lions Spillern: 6 Termine anlegen (31.10.2026, 28.11.2026, 09.01.2027, 20.02.2027, 06.03.2027, 01.05.2027).**
-Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten `?page=1` bis
-`?page=3`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
-steht: „‚HAPPY HALLOWEEN' Boogie Party", Sa., 31.10.2026, 20:00, Festsaal
-Wiemex Spillern, Schulgasse 1, 2104 Spillern (/event/happy-halloween-boogie-party-0,
-Beschreibung „Infos folgen"); „Boogie Party" am Sa., 28.11.2026
-(/event/boogie-party-44), Sa., 09.01.2027 (/event/boogie-party-53),
-Sa., 20.02.2027 und Sa., 06.03.2027 (Liste), Sa., 01.05.2027
-(/event/boogie-party-56, eine Sammelseite mit weiteren Terminen bis
-27.11.2027), jeweils 20:00, gleicher Saal, Veranstalter „Boogie Lions".
-Kein Preis, keine Musikangabe. Beim Bauen: Vereinsseite
-https://www.boogielions.at (laut boogie.at) und die Saalseite
-https://www.wiemex.at/ öffnen; boogie.at ist nur Kalender. Neue Location
-Festsaal Wiemex (Region `niederoesterreich`). Eine Reihe mit `reihe`
-bietet sich an, der erste Termin ist die Vorlage für die übrigen.
-Zeitzone: alle Termine `+01:00` (31.10. liegt nach der Umstellung am
-25.10.), außer 01.05.2027 `+02:00`.
-
-`frei` **BWC Rock Dock Teddys, Perchtoldsdorf: 2 Termine anlegen (06.11.2026, 18.12.2026).**
-Folgetermine des Vereins hinter `events/bella-italia-perchtoldsdorf-2026-09-11`
-(Vorlage). Gesehen am 2026-09-27 auf https://boogie.at/ (`?page=1`,
-`?page=2`) und den Detailseiten dort (Herkunft: Suchlauf 2026-09-27). Dort
-steht: „Boogie-Herbstparty", Fr., 06.11.2026, 18:30, Kulturzentrum
-Perchtoldsdorf, Beatrixgasse 5A, 2380 Perchtoldsdorf, in Kooperation mit
-der Tanzschule Schmid, DJane Edith & DJ Andreas, „Musikspende pro Person:
-EUR 10,--", Dresscode Tracht/After-Halloween/Pre-Fasching
-(/event/boogie-herbstparty); „Rock this Christmas! Swing this Christmas!",
-Fr., 18.12.2026, 18:30, gleicher Ort, gleiche DJs, gleiche Musikspende,
-Platzreservierung „erforderlich" (/event/rock-christmas-swing-christmas-2).
-Beim Bauen: Vereinsseite http://www.rockdockteddys.at gegenlesen.
-Achtung: anderer Ort als die Vorlage — Kulturzentrum Perchtoldsdorf ist
-neu, nicht `locations/burg-perchtoldsdorf`. Ob „Musikspende" als Eintritt
-gilt, wie beim Bella-Italia-Eintrag entscheiden. Reservierungsnummer ist
-eine Handynummer, nicht in den Text. Zeitzone `+01:00`.
+`mensch` **BWC Rock Dock Teddys, Boogie-Herbstparty: Datum strittig (06.11. oder 20.11.2026).**
+Rest des Postens vom 2026-09-27; der Weihnachtsabend am 18.12.2026 ist
+gebaut (`events/rock-this-christmas-perchtoldsdorf-2026-12-18`). Befund
+vom 2026-09-29: boogie.at (/event/boogie-herbstparty, vom Verein selbst
+eingetragen) nennt Fr., 06.11.2026, 18:30, Kulturzentrum Perchtoldsdorf.
+Der Terminkalender der Vereinsseite
+(http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html, nur http,
+Last-Modified 30.08.2026) nennt „HERBSTPARTY", Fr., 20.11.2026, Burg
+Perchtoldsdorf, Einlass 18:30, Beginn 19:00, Ende 23:30, gleiches Motto
+(Tracht/After Halloween/Pre Fasching), gleiche Musikspende 10 Euro. Keine
+dritte Quelle (Tanzschule Schmid und Gemeinde führen den Abend nicht).
+**Zu entscheiden:** (a) Markus fragt beim Verein nach (Kontakt im
+Impressum der Vereinsseite) und trägt das Datum hier ein — dann wird der
+Posten wieder `frei`, zwei Minuten plus eine Antwort; (b) liegen lassen und
+ab dem 2026-10-20 erneut beide Seiten prüfen lassen — kostet einen Lauf,
+löst sich nur, wenn der Verein eine Seite nachzieht; (c) streichen —
+kostet einen Termin, der Weihnachtsabend steht ohnehin. Nicht nach boogie.at
+allein bauen: Beim Ort gab der Abgleich mit dem Oktober-Ball einen Grund
+zur Gewichtung, beim Datum gibt es keinen.
 
 `frei` **Haslinger Hof Kirchham, Boogie Mix: 2 Termine anlegen (13.11.2026, 11.12.2026).**
 Gesehen am 2026-09-27 auf https://boogie.at/ (Seiten 0 bis 2) und der
@@ -130,6 +115,26 @@ Go, So 28.03." ohne Jahr (Detailseiten /konzert/frenzy/ und
 Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
 zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
 Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
+
+`frei` **Boogie Lions Spillern: 5 Termine anlegen (28.11.2026, 09.01.2027, 20.02.2027, 06.03.2027, 01.05.2027).**
+Rest des Bündels vom 2026-09-28; der Halloween-Termin am 31.10.2026 ist
+gebaut (`events/boogie-lions-halloween-spillern-2026-10-31`, Vorlage für
+diese fünf, samt Reihe `boogie-lions-boogie-party` und Location
+`festsaal-wiemex-spillern`). **Befund, warum sie fehlen:** Die
+Veranstaltungsliste des Vereins (https://www.boogielions.at/veranstaltungen)
+nennt nur Datum und Titel: „28.11.2026 - Boogie Abend mit DJ Sascha",
+„09.01.2027 - Happy New Year", „20.02.2027", „06.03.2027", „01.05.2027 -
+Boogieabend". Uhrzeit und Ort nennt für diese Termine nur boogie.at
+(/event/boogie-party-44, /event/boogie-party-53, /event/boogie-party-56),
+und jeder Abruf von boogie.at brach am 2026-09-28 aus der Arbeitsumgebung
+ab (Verbindungsabbruch, WebFetch 503). 20:00 und „gleicher Saal" aus der
+Gewohnheit zu übernehmen wäre geschätzt. Beim Bauen: boogie.at zuerst
+öffnen; ist es wieder nicht erreichbar, den Posten liegen lassen, bis der
+Verein eigene Ankündigungen veröffentlicht (er tut das etwa einen Monat
+vorher). Dieselbe Hürde trifft die beiden anderen boogie.at-Posten oben.
+Nebenbei gesehen, nicht im Posten: Die Vereinsliste führt am 19.12.2026
+eine „Weihnachtsfeier" — ob die öffentlich ist, sagt sie nicht.
+Zeitzone: alle `+01:00`, außer 01.05.2027 `+02:00`.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.

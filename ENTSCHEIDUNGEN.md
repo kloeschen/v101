@@ -13,6 +13,81 @@ Inhalte, Formulierungsarbeit. Zehn Zeilen pro Woche sind genug.
 
 ---
 
+## 2026-09-29 — BWC Rock Dock Teddys: einer von zwei Terminen, Verein und Kalender widersprechen sich
+
+**Anlass:** Bündel-Posten aus dem Suchlauf vom 2026-09-27 (zwei Termine
+des BWC Rock Dock Teddys in Perchtoldsdorf), gebaut im Morgenlauf vom
+2026-09-29. Angelegt: der Weihnachtsabend am 18.12.2026 und die Location
+`kulturzentrum-perchtoldsdorf`, beide `entwurf`. Gebaut: 1 von 2.
+
+**Befund:** boogie.at und der Terminkalender auf der Vereinsseite
+(nur http, Last-Modified 30.08.2026) stimmen bei keinem der beiden
+Abende überein. Weihnachten: gleiches Datum, aber Kulturzentrum gegen
+Burg Perchtoldsdorf — laut Gemeinde zwei Gebäude. Herbstparty: 06.11.
+im Kulturzentrum gegen 20.11. in der Burg.
+
+**Entschieden:**
+- **Weihnachten gebaut, `ort` nach boogie.at, Widerspruch im Text
+  (Regel 5).** Gewichtung statt Münzwurf: Der Verein hat die
+  boogie.at-Einträge selbst angelegt und dort für den Ball am 02.10.
+  ausdrücklich die Burg, für Dezember das Kulturzentrum gesetzt; die
+  eigene Seite nennt für den 02.10. „Burg" mit der Anschrift des
+  Kulturzentrums, verwechselt die Häuser also nachweislich. Dazu kann
+  die http-Seite nicht in `quellen` (Falle aus dem Roadrunner-Fall).
+  Kurzbeschreibung, Text und Notiz sagen, dass der Ort strittig ist.
+- **Herbstparty nicht gebaut, zurück als `mensch`.** Beim Datum gibt es
+  keinen Gewichtungsgrund wie beim Ort, und `beginn` kann nicht leer
+  bleiben. Eine dritte Quelle (Tanzschule Schmid, Gemeinde) führt den
+  Abend nicht. Klären kann das nur eine Nachfrage beim Verein — deshalb
+  Mensch, mit drei Alternativen samt Kosten im Posten.
+- **„Musikspende pro Person: 10 Euro" als `beziffert`.** Ein fester
+  Betrag je Person für den Abend ist ein Eintritt, wie der Verein ihn
+  nennt, ist Bezeichnung des Preises. Der Bella-Italia-Eintrag hatte
+  keinen Preis, weil seine Quelle keinen nannte — kein Präzedenzfall
+  dagegen.
+- **`beginn` 18:30, nicht 19:00.** 19 Uhr („Beginn" nach „Einlass
+  18:30") steht nur auf der http-Seite; der Text nennt beides.
+- **Location-Typ `sonstiges`** wie bei der Burg: Die Gemeinde nennt ein
+  öffentliches Mehrzweckgebäude mit vermietbarem Festsaal, kein
+  Gemeindeamt.
+
+**Folge:** Neue Falle in `docs/ablaeufe/termin-recherche.md`: Bei
+boogie.at-Terminen die Vereinsseite nicht nur „gegenlesen", sondern
+Datum *und* Ort je Termin abgleichen — beides kann abweichen.
+
+## 2026-09-28 — Boogie Lions Spillern: einer von sechs Terminen, boogie.at nicht erreichbar
+
+**Anlass:** Bündel-Posten aus dem Suchlauf vom 2026-09-27 (sechs Termine
+der Boogie Lions im Festsaal WieMex, Spillern), gebaut im
+Nachmittagslauf vom 2026-09-28. Angelegt: der Termin am 31.10.2026
+(Halloween) und die Location `festsaal-wiemex-spillern`, beide
+`entwurf`. Gebaut: 1 von 6.
+
+**Entschieden:**
+- **Fünf Termine zurück in die Warteschlange, nicht geschätzt.** Die
+  Veranstaltungsliste des Vereins bestätigt alle sechs Daten, nennt für
+  die fünf späteren aber weder Uhrzeit noch Ort. Beides steht nur bei
+  boogie.at, und boogie.at war aus der Arbeitsumgebung nicht abrufbar
+  (curl: Verbindungsabbruch; WebFetch: 503). „20 Uhr im selben Saal wie
+  immer" wäre eine Schätzung aus Gewohnheit. Der Rest steht als eigener
+  Posten mit diesem Befund in OFFENE-PUNKTE.
+- **Halloween allein aus Vereinsquellen gebaut.** Ankündigung, Flyer und
+  Veranstaltungsliste des Vereins tragen Datum, 20 Uhr, Saal, DJ und
+  Preis; boogie.at hätte nur „Infos folgen" beigesteuert und steht nicht
+  in `quellen`, weil es nicht geöffnet wurde.
+- **„Mitglieder frei" als Preis 0.** Neben „Gäste 5 Euro" als zweiter
+  Eintrag in `preise`, damit die Staffel vollständig ist; `eintritt`
+  bleibt `beziffert`.
+- **Location-Typ `gemeindehaus`.** Verein und Betreiber verorten den
+  Saal im Gemeindezentrum; geführt wird er vom Gastronomen WieMex.
+  Kapazität 250 ist die Angabe des Betreibers für Feiern.
+
+**Folge für die Warteschlange:** Die nächsten beiden Posten (BWC Rock Dock
+Teddys, Haslinger Hof) hängen ebenfalls an boogie.at. Die Falle steht
+in `docs/ablaeufe/termin-recherche.md`.
+
+---
+
 ## 2026-09-28 — Weiterleitungen für die Altlasten von v101.de; `netlify.toml` wiederhergestellt
 
 **Anlass:** Posten „Alte URLs von v101.de" (Vor dem Go-Live), Auftrag
