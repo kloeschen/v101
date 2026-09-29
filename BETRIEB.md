@@ -498,6 +498,17 @@ Kette gelaufen. Der CI-Eintrag am PR bleibt leer bzw. „failure ohne Jobs" —
 das ist kein Befund. Die Prüfung, die zählt, steht im Lauf des Workflows
 „Freigeben".
 
+Wird der wartende CI-Lauf am PR doch freigegeben, läuft er — und ist nach
+wenigen Sekunden rot, an Schritt 3 (`freigabe:ci`), mit „status entwurf →
+veroeffentlicht" für jeden freigegebenen Eintrag. Auch das ist kein Befund,
+sondern Grund 2 von oben: Dieser Lauf kennt die Bestätigung aus dem
+Workflow nicht. GitHub führt den PR dann als „unstable", nicht als
+gesperrt; Mergen geht normal. Ein Befund wäre es nur, wenn Schritt 1 oder
+2 rot ist (die laufen davor) oder Schritt 3 etwas anderes meldet als die
+freigegebenen Einträge. Alles hinter Schritt 3 läuft hier nie; das hat der
+Workflow-Lauf geprüft. Am 2026-09-29 so bei PR #87: Schritt 3, genau die
+20 freigegebenen Einträge, sonst nichts.
+
 Von Hand geht es wie bisher: `freigeben.ts` gibt am Ende die
 Bestätigungszeile aus.
 
