@@ -80,6 +80,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { bestaetigungAusFreigabelauf, ghCli } from "./_freigabelauf";
 
 const argv = process.argv.slice(2);
 const flag = (n: string) => argv.includes(n);
@@ -98,7 +99,11 @@ const ausUmgebung = new Set(
     // für alles, und genau die soll es nicht geben.
     .filter((s) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s)),
 );
-const freigegeben = new Set([...ausAufruf, ...ausUmgebung]);
+// Seit dem 2026-09-29: Auf einem Freigabe-PR (Zweig `freigabe/<Lauf-ID>`)
+// kommt die Bestätigung aus dem Lauf, der ihn geöffnet hat. Kopf von
+// _freigabelauf.ts; ohne Freigabe-PR ist die Menge leer und die Meldung null.
+const ausLauf = bestaetigungAusFreigabelauf(process.env, ghCli);
+const freigegeben = new Set([...ausAufruf, ...ausUmgebung, ...ausLauf.slugs]);
 const basisPflicht = flag("--basis-pflicht");
 
 /** git ohne Rauschen. Gibt null zurück, statt zu werfen. */
@@ -184,6 +189,7 @@ for (const datei of geaendert) {
   gewechselt.add(slug);
   if (ausAufruf.has(slug)) bestaetigt.push(`${datei} (Freigabe: ${slug})`);
   else if (ausUmgebung.has(slug)) bestaetigt.push(`${datei} (Freigabe: ${slug}, aus FREIGABE_BESTAETIGT)`);
+  else if (ausLauf.slugs.has(slug)) bestaetigt.push(`${datei} (Freigabe: ${slug}, aus Freigabelauf ${ausLauf.lauf})`);
   else befunde.push(`${datei}: status ${vorher ?? "(neu)"} → veroeffentlicht`);
 }
 
@@ -202,6 +208,7 @@ if (leerlauf.length > 0) {
 /* ------------------------------------------------------------------ */
 
 console.log(`Freigabeprüfung gegen ${basis}: ${geaendert.length} geänderte Inhaltsdatei(en).`);
+if (ausLauf.meldung) console.log(ausLauf.meldung);
 for (const b of bestaetigt) console.log(`  bestätigt  ${b}`);
 
 if (befunde.length === 0) {

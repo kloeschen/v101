@@ -533,6 +533,20 @@ freigegebenen Einträge. Alles hinter Schritt 3 läuft hier nie; das hat der
 Workflow-Lauf geprüft. Am 2026-09-29 so bei PR #87: Schritt 3, genau die
 20 freigegebenen Einträge, sonst nichts.
 
+**Vorgeschlagen, noch nicht eingesetzt (2026-09-29): Die CI am Freigabe-PR
+wird grün.** Die Prüfung kennt die Bestätigung jetzt doch — sie liest sie
+aus dem Lauf, der den PR geöffnet hat (`scripts/_freigabelauf.ts`): Der
+Zweig heißt `freigabe/<Lauf-ID>`, und ist dieser Lauf wirklich
+`freigeben.yml`, von Hand gestartet, gelten genau die Slugs aus seinem
+Artefakt `freigabe-slugs` als bestätigt. Jeder weitere Statuswechsel im PR
+bleibt ein Fehler, und fehlt irgendetwas davon, bleibt es beim Rot von oben.
+Wirksam wird das erst mit zwei Workflow-Änderungen, die ein Mensch einsetzt,
+weil `.github/` hinter der Agentensperre liegt: `docs/vorschlaege/ci.yml`
+(Token mit `actions: read` für die Kette) und
+`docs/vorschlaege/freigeben.yml` (Artefakt vor dem Pull Request). Beide sind
+geprüft: `V101_WORKFLOWS=docs/vorschlaege npx tsx scripts/test-pruefkette.ts`.
+Den CI-Lauf am PR musst du weiterhin selbst freigeben (Bot-Token).
+
 Von Hand geht es wie bisher: `freigeben.ts` gibt am Ende die
 Bestätigungszeile aus.
 

@@ -34,8 +34,21 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { ARTEFAKT, ARTEFAKT_DATEI } from "./_freigabelauf";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+/**
+ * Wo die Workflows liegen. `V101_WORKFLOWS` zeigt auf ein anderes
+ * Verzeichnis — für Vorschläge unter docs/vorschlaege/, die ein Mensch erst
+ * nach .github/ kopiert. So lässt sich ein Vorschlag gegen dieselben
+ * Behauptungen prüfen wie das Original, bevor er eingesetzt ist (dasselbe
+ * Muster wie V101_GUARD in test-hooks.ts).
+ */
+const WORKFLOWS = process.env.V101_WORKFLOWS
+  ? path.resolve(PROJEKT, process.env.V101_WORKFLOWS)
+  : path.join(PROJEKT, ".github", "workflows");
+if (process.env.V101_WORKFLOWS) console.log(`Workflows aus ${path.relative(PROJEKT, WORKFLOWS)}`);
 
 let bestanden = 0;
 const fehler: string[] = [];
@@ -169,7 +182,7 @@ for (const [streng, milde] of Object.entries(NACHSICHTIG)) {
 /* ci.yml ruft die Kette auf, statt Schritte aufzuzählen               */
 /* ------------------------------------------------------------------ */
 
-const ci = readFileSync(path.join(PROJEKT, ".github", "workflows", "ci.yml"), "utf8");
+const ci = readFileSync(path.join(WORKFLOWS, "ci.yml"), "utf8");
 
 /** Alle Kommandozeilen aus `run:`-Schritten, ein- und mehrzeilig. */
 function runBefehle(yaml: string): string[] {
@@ -232,7 +245,7 @@ pruefe(
  * geprüft wurde, ist wirkungslos, bis das Gegenteil gezeigt ist (Regel 6).
  */
 
-const freigabeWorkflow = readFileSync(path.join(PROJEKT, ".github", "workflows", "freigeben.yml"), "utf8");
+const freigabeWorkflow = readFileSync(path.join(WORKFLOWS, "freigeben.yml"), "utf8");
 
 /** Die Schritte eines Jobs, je als Textblock ab dem `- `, das ihn beginnt. */
 function schritte(yaml: string): string[] {
@@ -284,6 +297,51 @@ pruefe(
   /fetch-depth:\s*0/.test(freigabeWorkflow),
   "Ohne sie findet freigabe:ci mit --basis-pflicht keine Basis.",
 );
+
+/* ------------------------------------------------------------------ */
+/* Die Bestätigung für den Freigabe-PR (seit dem 2026-09-29)           */
+/* ------------------------------------------------------------------ */
+/*
+ * Die CI auf einem Freigabe-PR liest die freigegebenen Slugs aus dem
+ * Artefakt des Laufs, der ihn geöffnet hat (scripts/_freigabelauf.ts). Das
+ * trägt nur, wenn drei Dinge zusammenpassen: freigeben.yml legt das Artefakt
+ * VOR dem Pull Request ab und füllt es aus steps.lauf.outputs.slugs, und
+ * ci.yml gibt der Kette ein Token mit `actions: read`.
+ *
+ * ÜBERGANG: Die beiden Workflows setzt ein Mensch ein (Vorschlag unter
+ * docs/vorschlaege/). Bis dahin legt freigeben.yml kein Artefakt ab, und
+ * diese Prüfungen melden das als Hinweis statt als Fehler — sonst wäre die
+ * Kette rot, bevor jemand einfügen kann. Sobald das Artefakt dasteht, gelten
+ * sie voll. Der Posten in OFFENE-PUNKTE macht den Hinweis danach zum Fehler.
+ */
+const iArtefakt = fSchritte.findIndex((b) => new RegExp(`name:\\s*${ARTEFAKT}\\s*$`, "m").test(b));
+if (iArtefakt < 0) {
+  console.log(
+    `Hinweis: freigeben.yml legt das Artefakt „${ARTEFAKT}" noch nicht ab — ` +
+      `die Freigabe-PRs bleiben an Schritt 3 rot. Vorschlag: docs/vorschlaege/freigeben.yml und ci.yml.`,
+  );
+} else {
+  const iDatei = fSchritte.findIndex(
+    (b) => b.includes(ARTEFAKT_DATEI) && /steps\.lauf\.outputs\.slugs/.test(b) && !/uses:\s*actions\/upload-artifact/.test(b),
+  );
+  pruefe(
+    `freigeben.yml schreibt ${ARTEFAKT_DATEI} aus steps.lauf.outputs.slugs`,
+    iDatei >= 0 && iDatei > iLauf,
+    `datei=${iDatei}, lauf=${iLauf}`,
+  );
+  pruefe("…bevor es als Artefakt abgelegt wird", iDatei >= 0 && iDatei < iArtefakt, `datei=${iDatei}, artefakt=${iArtefakt}`);
+  pruefe(
+    "…und das Artefakt liegt vor dem Pull Request bereit",
+    iPr >= 0 && iArtefakt < iPr,
+    `artefakt=${iArtefakt}, pr=${iPr}`,
+  );
+  pruefe("ci.yml darf Artefakte lesen (actions: read)", /^\s*actions:\s*read\s*$/m.test(ci), "permissions fehlen");
+  pruefe(
+    "ci.yml gibt der Kette ein Token (GH_TOKEN: github.token)",
+    /GH_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/.test(ci),
+    "ohne Token liest check-freigabe.ts den Lauf nicht",
+  );
+}
 
 /* ------------------------------------------------------------------ */
 
