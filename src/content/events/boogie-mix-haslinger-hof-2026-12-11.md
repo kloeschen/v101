@@ -108,4 +108,4 @@ Der Flyer nennt vier Stile: [Boogie Woogie](/lexikon/boogie-woogie/), [Rock'n'Ro
 
 ## Der Boogie Mix als Reihe
 
-Der Boogie Mix findet laut Flyer jeden zweiten Freitag im Monat statt, 2026 an zwölf Terminen vom 16. Januar bis 11. Dezember; das Programm des Hauses führt ihn auch im Januar 2027 weiter. Die vorige Ausgabe im Register ist der [Boogie Mix am 13. November 2026](/events/boogie-mix-haslinger-hof-2026-11-13/); weitere Termine für 2027 stehen noch nicht im Register. Der Haslinger Hof liegt in [Bayern](/regionen/bayern/).
+Der Boogie Mix findet laut Flyer jeden zweiten Freitag im Monat statt, 2026 an zwölf Terminen vom 16. Januar bis 11. Dezember; das Programm des Hauses führt ihn auch im Januar 2027 weiter. Die vorige Ausgabe im Register ist der [Boogie Mix am 13. November 2026](/events/boogie-mix-haslinger-hof-2026-11-13/), die nächste der [Boogie Mix am 8. Januar 2027](/events/boogie-mix-haslinger-hof-2027-01-08/). Der Haslinger Hof liegt in [Bayern](/regionen/bayern/).
