@@ -85,26 +85,6 @@ Britannica („burlesque show"), DWDS.
 
 Danach `npm run autolink`.
 
-`frei` **Lexikon, Bündel Muster: Polka Dots, Hahnentritt, Gingham, Nadelstreifen.**
-Vier Einträge, `kategorie: mode`, in einem PR; sie grenzen sich
-gegeneinander ab. Alle vier waren Themenseiten der früheren Domain und
-leiten nach der Freigabe automatisch weiter (`/thema/polka-dots`,
-`/thema/hahnentritt`, `/thema/gingham`, `/thema/nadelstreifen`;
-`/thema/houndstooth` über den Alias „Houndstooth"). Einzelheiten:
-
-- **Polka Dots** (`polka-dots`), Alias „Tupfen". `abgrenzung`: Streumuster;
-der Name kommt vom Tanz, gemeint ist kein Tanz. „Punkte" ist ein
-Allerweltswort und kein Alias (`/thema/punkte` bleibt 404).
-- **Hahnentritt** (`hahnentritt`), Alias „Houndstooth". `abgrenzung`:
-Pepita, Glencheck.
-- **Gingham** (`gingham`), Alias „Vichykaro" nur mit Quelle. `abgrenzung`:
-Madras, Tartan.
-- **Nadelstreifen** (`nadelstreifen`). `abgrenzung`: Kreidestreifen — und
-Pinstriping am Auto, das trotz des englischen Namens etwas anderes ist.
-
-Quellen öffnen: DWDS, Britannica, eine Textil- oder Modesammlung (V&A,
-Loschek). Danach `npm run autolink`.
-
 `frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
 (unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
 britische Jugendkultur der 1950er, auf die sich die Rockabilly-Szene in
