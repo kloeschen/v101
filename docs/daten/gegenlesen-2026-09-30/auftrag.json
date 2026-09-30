@@ -1,0 +1,197 @@
+{
+  "anleitung": "docs/ablaeufe/gegenlesen.md",
+  "pruefpunkte": [
+    {
+      "id": "events/gmundner-boogie-party-roitham-2026-10-24#beginn",
+      "pfad": "events/gmundner-boogie-party-roitham-2026-10-24",
+      "name": "Gmundner Herbst Boogie Party 2026",
+      "feld": "beginn",
+      "frage": "Wann beginnt der Termin laut Quelle? wert: {\"datum\":\"JJJJ-MM-TT\",\"uhrzeit\":\"HH:MM\" oder null,\"einlass\":\"HH:MM\" oder null} — Ortszeit, wie die Quelle sie nennt.",
+      "termin": {
+        "name": "Gmundner Herbst Boogie Party 2026",
+        "datum": "2026-10-24"
+      },
+      "quellen": [
+        "https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg",
+        "https://boogie.at/event/bwc-gmunden-herbst-boogie-party-0"
+      ]
+    },
+    {
+      "id": "events/gmundner-boogie-party-roitham-2026-10-24#preise",
+      "pfad": "events/gmundner-boogie-party-roitham-2026-10-24",
+      "name": "Gmundner Herbst Boogie Party 2026",
+      "feld": "preise",
+      "frage": "Welche Eintrittspreise nennt die Quelle? wert: {\"betraege\":[Zahl, …],\"waehrung\":\"EUR\"} oder {\"frei\":true}. Nennt sie keinen Preis: ergebnis \"nicht-gefunden\".",
+      "termin": {
+        "name": "Gmundner Herbst Boogie Party 2026",
+        "datum": "2026-10-24"
+      },
+      "quellen": [
+        "https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg",
+        "https://boogie.at/event/bwc-gmunden-herbst-boogie-party-0"
+      ]
+    },
+    {
+      "id": "events/gmundner-boogie-party-roitham-2026-10-24#ort",
+      "pfad": "events/gmundner-boogie-party-roitham-2026-10-24",
+      "name": "Gmundner Herbst Boogie Party 2026",
+      "feld": "ort",
+      "frage": "Wo findet der Termin statt? wert: {\"name\":\"Name des Hauses\",\"stadt\":\"Ort\"}.",
+      "termin": {
+        "name": "Gmundner Herbst Boogie Party 2026",
+        "datum": "2026-10-24"
+      },
+      "quellen": [
+        "https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg",
+        "https://boogie.at/event/bwc-gmunden-herbst-boogie-party-0"
+      ]
+    },
+    {
+      "id": "events/gmundner-boogie-party-roitham-2026-10-24#durchfuehrung",
+      "pfad": "events/gmundner-boogie-party-roitham-2026-10-24",
+      "name": "Gmundner Herbst Boogie Party 2026",
+      "feld": "durchfuehrung",
+      "frage": "Nennt die Quelle eine Absage, Verschiebung oder „ausverkauft\"? wert: {\"status\":\"geplant\"|\"abgesagt\"|\"verschoben\"|\"ausverkauft\"} — ohne solchen Hinweis \"geplant\".",
+      "termin": {
+        "name": "Gmundner Herbst Boogie Party 2026",
+        "datum": "2026-10-24"
+      },
+      "quellen": [
+        "https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg",
+        "https://boogie.at/event/bwc-gmunden-herbst-boogie-party-0"
+      ]
+    },
+    {
+      "id": "events/long-tall-texans-cafe-central-2026-11-20#beginn",
+      "pfad": "events/long-tall-texans-cafe-central-2026-11-20",
+      "name": "Long Tall Texans im Café Central Weinheim",
+      "feld": "beginn",
+      "frage": "Wann beginnt der Termin laut Quelle? wert: {\"datum\":\"JJJJ-MM-TT\",\"uhrzeit\":\"HH:MM\" oder null,\"einlass\":\"HH:MM\" oder null} — Ortszeit, wie die Quelle sie nennt.",
+      "termin": {
+        "name": "Long Tall Texans im Café Central Weinheim",
+        "datum": "2026-11-20"
+      },
+      "quellen": [
+        "https://cafecentral.de/konzert/long-tall-texans/",
+        "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH"
+      ]
+    },
+    {
+      "id": "events/long-tall-texans-cafe-central-2026-11-20#preise",
+      "pfad": "events/long-tall-texans-cafe-central-2026-11-20",
+      "name": "Long Tall Texans im Café Central Weinheim",
+      "feld": "preise",
+      "frage": "Welche Eintrittspreise nennt die Quelle? wert: {\"betraege\":[Zahl, …],\"waehrung\":\"EUR\"} oder {\"frei\":true}. Nennt sie keinen Preis: ergebnis \"nicht-gefunden\".",
+      "termin": {
+        "name": "Long Tall Texans im Café Central Weinheim",
+        "datum": "2026-11-20"
+      },
+      "quellen": [
+        "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH"
+      ]
+    },
+    {
+      "id": "events/long-tall-texans-cafe-central-2026-11-20#ticketUrl",
+      "pfad": "events/long-tall-texans-cafe-central-2026-11-20",
+      "name": "Long Tall Texans im Café Central Weinheim",
+      "feld": "ticketUrl",
+      "frage": "Wo gibt es laut Quelle Tickets? wert: {\"url\":\"https://…\"}.",
+      "termin": {
+        "name": "Long Tall Texans im Café Central Weinheim",
+        "datum": "2026-11-20"
+      },
+      "quellen": [
+        "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH"
+      ]
+    },
+    {
+      "id": "events/long-tall-texans-cafe-central-2026-11-20#ort",
+      "pfad": "events/long-tall-texans-cafe-central-2026-11-20",
+      "name": "Long Tall Texans im Café Central Weinheim",
+      "feld": "ort",
+      "frage": "Wo findet der Termin statt? wert: {\"name\":\"Name des Hauses\",\"stadt\":\"Ort\"}.",
+      "termin": {
+        "name": "Long Tall Texans im Café Central Weinheim",
+        "datum": "2026-11-20"
+      },
+      "quellen": [
+        "https://cafecentral.de/konzert/long-tall-texans/",
+        "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH"
+      ]
+    },
+    {
+      "id": "events/long-tall-texans-cafe-central-2026-11-20#durchfuehrung",
+      "pfad": "events/long-tall-texans-cafe-central-2026-11-20",
+      "name": "Long Tall Texans im Café Central Weinheim",
+      "feld": "durchfuehrung",
+      "frage": "Nennt die Quelle eine Absage, Verschiebung oder „ausverkauft\"? wert: {\"status\":\"geplant\"|\"abgesagt\"|\"verschoben\"|\"ausverkauft\"} — ohne solchen Hinweis \"geplant\".",
+      "termin": {
+        "name": "Long Tall Texans im Café Central Weinheim",
+        "datum": "2026-11-20"
+      },
+      "quellen": [
+        "https://cafecentral.de/konzert/long-tall-texans/",
+        "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH"
+      ]
+    },
+    {
+      "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#beginn",
+      "pfad": "events/record-hop-rathaus-friedrichshagen-2026-10-18",
+      "name": "Record Hop im Rathaus Friedrichshagen",
+      "feld": "beginn",
+      "frage": "Wann beginnt der Termin laut Quelle? wert: {\"datum\":\"JJJJ-MM-TT\",\"uhrzeit\":\"HH:MM\" oder null,\"einlass\":\"HH:MM\" oder null} — Ortszeit, wie die Quelle sie nennt.",
+      "termin": {
+        "name": "Record Hop im Rathaus Friedrichshagen",
+        "datum": "2026-10-18"
+      },
+      "quellen": [
+        "https://www.rockin-wildcat.com/rwc/events/record-hop-63",
+        "https://www.rockin-wildcat.com/rwc/guide"
+      ]
+    },
+    {
+      "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#preise",
+      "pfad": "events/record-hop-rathaus-friedrichshagen-2026-10-18",
+      "name": "Record Hop im Rathaus Friedrichshagen",
+      "feld": "preise",
+      "frage": "Welche Eintrittspreise nennt die Quelle? wert: {\"betraege\":[Zahl, …],\"waehrung\":\"EUR\"} oder {\"frei\":true}. Nennt sie keinen Preis: ergebnis \"nicht-gefunden\".",
+      "termin": {
+        "name": "Record Hop im Rathaus Friedrichshagen",
+        "datum": "2026-10-18"
+      },
+      "quellen": [
+        "https://www.rockin-wildcat.com/rwc/events/record-hop-63"
+      ]
+    },
+    {
+      "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#ort",
+      "pfad": "events/record-hop-rathaus-friedrichshagen-2026-10-18",
+      "name": "Record Hop im Rathaus Friedrichshagen",
+      "feld": "ort",
+      "frage": "Wo findet der Termin statt? wert: {\"name\":\"Name des Hauses\",\"stadt\":\"Ort\"}.",
+      "termin": {
+        "name": "Record Hop im Rathaus Friedrichshagen",
+        "datum": "2026-10-18"
+      },
+      "quellen": [
+        "https://www.rockin-wildcat.com/rwc/events/record-hop-63",
+        "https://www.rockin-wildcat.com/rwc/guide",
+        "https://www.rathaus-friedrichshagen.de/veranstaltungen.php"
+      ]
+    },
+    {
+      "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#durchfuehrung",
+      "pfad": "events/record-hop-rathaus-friedrichshagen-2026-10-18",
+      "name": "Record Hop im Rathaus Friedrichshagen",
+      "feld": "durchfuehrung",
+      "frage": "Nennt die Quelle eine Absage, Verschiebung oder „ausverkauft\"? wert: {\"status\":\"geplant\"|\"abgesagt\"|\"verschoben\"|\"ausverkauft\"} — ohne solchen Hinweis \"geplant\".",
+      "termin": {
+        "name": "Record Hop im Rathaus Friedrichshagen",
+        "datum": "2026-10-18"
+      },
+      "quellen": [
+        "https://www.rockin-wildcat.com/rwc/events/record-hop-63"
+      ]
+    }
+  ]
+}

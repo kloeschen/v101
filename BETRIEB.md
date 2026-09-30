@@ -233,7 +233,15 @@ bearbeitet.
    Fallen im Ablauf; in `ENTSCHEIDUNGEN.md` nur, was eine Regel ändert oder
    ein Fund mit Folgen über den Posten hinaus ist (seit dem 2026-09-29 —
    Inhaltsberichte dort erzeugten 8 von 9 Merge-Konflikten).
-4. Öffnet einen Pull Request. **Nie direkt auf `main`.**
+4. Öffnet einen Pull Request. **Nie direkt auf `main`.** Berührt er
+   `src/content/`, liest **der Gegenleser** gegen (seit dem 2026-09-30,
+   Entscheidung Markus): `npm run gegenlesen -- --auftrag --basis
+   origin/main` schreibt die Prüfpunkte — die belegpflichtigen Felder, ohne
+   die eingetragenen Werte —, ein Subagent liest sie nach
+   `docs/ablaeufe/gegenlesen.md` blind gegen die Quellen, und
+   `--vergleich` vergleicht im Code. Der Abschnitt „Gegenleser" steht über
+   dem Prüfzettel; bei einer Abweichung beginnt der PR-Titel mit
+   „[Abweichung]". Der Lauf **meldet nur** und ändert den Eintrag nicht.
 5. Merged selbst, wenn `npm run automerge:erlaubt` es erlaubt und die CI
    grün ist. Sonst bleibt der PR liegen.
 6. Stößt er auf eine **Ermessensfrage**, baut er nicht: Er markiert den

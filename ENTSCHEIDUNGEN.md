@@ -17,6 +17,66 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-30 — Der Gegenleser: belegpflichtige Felder blind gegen die Quelle
+
+**Anlass:** Die Prüfkette beweist Struktur, nicht Wahrheit (Record Hop:
+falsche Anfangszeit, alles grün). Und der Engpass ist Markus' Prüfzeit,
+nicht das Erzeugen. Statt eines Plugins mit Agenten-Team (oh-my-claudecode,
+verworfen: wirkt in der Cloud nicht und verstärkt den falschen Engpass) ein
+einzelner, unabhängiger Gegenleser genau an dieser Stelle.
+
+**Entschieden (Markus):** Er **meldet nur** — ändert der Autor nach dem
+Befund selbst, urteilt am Ende wieder er über seinen eigenen Fehler. Er
+prüft die **belegpflichtigen Felder** aus dem Datenvertrag, nicht
+Kurzbeschreibung und Abgrenzung (eindeutig prüfbar, niedrige
+Fehlalarmquote). Er läuft mit **demselben Modell** wie der Tageslauf — ein
+schwächerer Prüfer, der den Autor durchwinkt, wäre schlimmer als keiner.
+
+**Gebaut:** `scripts/gegenlesen.ts` und `docs/ablaeufe/gegenlesen.md`.
+Drei Schritte, Skripte rechnen und Agenten urteilen: `--auftrag` schreibt
+die Prüfpunkte **ohne die eingetragenen Werte** — ein Prüfer, dem man
+„19:00" vorlegt, findet gern 19:00. Ausnahme: Name und Datum eines
+Termins, sonst findet er auf einer Kalenderseite den richtigen nicht;
+fehlt der Termin an dem Tag, ist das der Befund. Der Subagent antwortet je
+Prüfpunkt mit Wert, Zitat und URL; eine Antwort mit Lücken wird
+zurückgewiesen. `--vergleich` urteilt im Code: bestätigt, Abweichung,
+Sichtprüfung, nicht prüfbar. Termine werden feldgenau verglichen (Beginn
+samt Einlass, Preise, Ort, Line-up, Ticket-Link, Kapazität, Status); die
+belegpflichtigen Felder der übrigen Sammlungen stehen vorerst zur
+Sichtprüfung neben der Quelle.
+
+**Gemessen am 2026-09-30** (`docs/daten/gegenlesen-2026-09-30/`): drei
+kommende Termine, 13 Prüfpunkte, darunter ein Flyer als Bild und eine
+Quelle hinter einer Bot-Prüfseite. Ergebnis: 13 bestätigt, 0 nicht
+erreichbar; 2 min 20 s, rund 77 000 Tokens für den Subagenten. Gegenprobe
+mit derselben Antwort und drei eingebauten Fehlern in den Einträgen — der
+Record-Hop-Fall (19:00 statt 16:00), ein Preis (20 statt 22 €), ein
+falscher Ort: genau diese drei als Abweichung, die übrigen 10 weiter
+bestätigt. Einträge danach zeichengenau zurück.
+
+**Mutationsbeleg** (`scripts/test-gegenlesen.ts`, 50/50; je zurückgebaut):
+
+| Mutation | fällt |
+|---|---|
+| G1 Uhrzeit im Auftrag (Blindheit gebrochen) | 2 |
+| G2 fehlende Antworten nicht gemeldet | 1 |
+| G3 Quelle ohne Uhrzeit gilt als Bestätigung | 1 |
+| G4 Einlass gilt als Beginn | 1 |
+| G5 Beträge nicht verglichen | 2 |
+| G6 Stadt nicht geprüft | 1 |
+| G7 Line-up immer bestätigt | 1 |
+| G8 UTC statt Ortszeit | 5 |
+
+**Verworfen:** den Gegenleser die eingetragenen Werte bestätigen lassen
+(nicht blind — Bestätigungsfehler); den Vergleich dem Modell überlassen
+(nicht prüfbar, nicht mutierbar); Kurzbeschreibung und Abgrenzung
+mitprüfen (weiches Urteil, Fehlalarme — eine Prüfung, die zu oft anschlägt,
+wird nach zwei Wochen ignoriert).
+
+**Offen:** Wirkung messen (Posten in OFFENE-PUNKTE): Wie viele Abweichungen
+waren echt, wie viele Fehlalarm, was kostet es je Lauf — und ob die
+übrigen Sammlungen eigene Vergleiche brauchen.
+
 ## 2026-09-29 — Freigabe-PR: Bestätigung aus dem Lauf, der ihn geöffnet hat
 
 **Anlass:** Die CI am Freigabe-PR endete planmäßig rot an Schritt 3

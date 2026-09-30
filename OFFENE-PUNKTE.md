@@ -241,6 +241,14 @@ Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
 Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
 würde „50er" sehr oft verlinken).
 
+**Gegenleser auswerten — ab dem 2026-10-14.** Seit dem 2026-09-30 liest
+ein Subagent jeden Inhalts-PR des Tageslaufs blind gegen die Quellen
+(`scripts/gegenlesen.ts`, `docs/ablaeufe/gegenlesen.md`). Nach zwei
+Wochen zählen: gemeldete Abweichungen, davon echt und Fehlalarm (Markus'
+Urteil am PR), Sichtprüfungen, nicht prüfbare Punkte und warum, Kosten je
+Lauf. Danach entscheiden: Bleibt er, werden Sichtprüfungen zu Vergleichen
+(Adressen, Bands, Lexikon-Jahre), oder fällt er weg.
+
 **Freigabe-CI grün machen — sobald die beiden Workflow-Vorschläge
 eingesetzt sind.** `docs/vorschlaege/ci.yml` und `docs/vorschlaege/freigeben.yml`
 von Markus nach `.github/workflows/` kopieren (Agentensperre). Danach, in
