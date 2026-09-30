@@ -17,6 +17,34 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-30 — Duplikatprüfung: Ausnahme für Musik und Tanz desselben Namens
+
+**Fund beim Bau der Tanzeinträge:** Die Entscheidung vom 2026-09-25
+(„Musik oder Tanz“) lässt den Tanz die kurzen Schreibweisen der Musik als
+Alias tragen, damit der Autolink das Wort als mehrdeutig erkennt. Die
+globale Duplikatprüfung in `validate-content.ts` kannte das nicht und wies
+jede solche Kollision als Fehler ab. `rocknroll-tanz` und
+`boogie-woogie-tanz` wären so nie grün geworden.
+
+**Gebaut (eng geführte Ausnahme, täglicher Lauf):** Keine Lockerung der
+Regel. Eine Kollision ist nur dann ein Hinweis statt ein Fehler, wenn alle
+vier Bedingungen gelten:
+- genau zwei Einträge teilen das Wort,
+- genau einer davon hat `kategorie: tanz` (die gibt es nur im Lexikon),
+- der andere hat eine andere Kategorie,
+- und der Tanz trägt das Wort nur als Alias, nicht als eigenen Namen.
+
+Jede andere Kollision bleibt ein Fehler. Der Hinweis steht am Tanzeintrag,
+damit die Kollision sichtbar bleibt.
+
+**Belege:** `test-validate` hat 9 neue Fälle, darunter die Gegenproben „zwei
+Tänze“, „Tanz mit gleichem Namen“ und „drei Träger“. 5 Mutationen, jede
+lässt genau die erwarteten Behauptungen fallen (2 bis 3). Eine erste
+Fassung prüfte die Anzahl doppelt; die Mutation daran fiel nicht, deshalb
+ist die redundante Abfrage gestrichen.
+
+---
+
 ## 2026-09-30 — Der Gegenleser: belegpflichtige Felder blind gegen die Quelle
 
 **Anlass:** Die Prüfkette beweist Struktur, nicht Wahrheit (Record Hop:

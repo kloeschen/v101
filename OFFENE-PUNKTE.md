@@ -49,40 +49,6 @@ Zeitzone `+01:00`. Nebenfund aus dem Suchlauf vom 2026-09-27, nicht Teil
 dieses Postens: DJ Rockin' Daddy legt auch bei der Rockabilly Night in
 Pullman City (27.12.2026) auf.
 
-`frei` **Lexikon, Bündel Tanz: Rock'n'Roll-Tanz, Boogie-Woogie-Tanz, Jive.** Drei
-Einträge in einem PR (Bündel-Posten seit dem 2026-09-25). Die drei gehören
-zusammen: Sie grenzen sich gegeneinander und gegen Lindy Hop ab, und das
-geht am besten in einem Zug. Einzelheiten je Begriff:
-
-- **Rock'n'Roll-Tanz.** Entscheidung Markus 2026-09-25: Der Tanz
-bekommt einen eigenen Eintrag neben der Musik (`lexikon/rocknroll`), nach dem
-Vorbild von `lexikon/lindy-hop`. Slug `rocknroll-tanz`, Name
-„Rock'n'Roll-Tanz", `kategorie: tanz`; erster Satz „Der Rock'n'Roll-Tanz
-ist ein …". **Aliases:** die Schreibweisen, die auch der Musikeintrag trägt
-(„Rock'n'Roll", „Rock-'n'-Roll", „Rock 'n' Roll", „Rock ’n’ Roll") — daran
-erkennt der Autolink seit dem 2026-09-25 das Wort als mehrdeutig und
-verlinkt es nicht mehr automatisch; weitere Namen wie „Akrobatischer
-Rock'n'Roll" nur mit Quelle. `abgrenzung` gegen die Musik, gegen Lindy Hop
-und gegen Boogie-Woogie als Tanz; Turnierwesen (World Rock'n'Roll
-Confederation, im Musikeintrag schon genannt) mit Quelle. Im Musikeintrag
-den Abgrenzungsabschnitt auf den neuen Eintrag verlinken.
-
-- **Boogie-Woogie-Tanz.** Wie der Posten davor: Slug
-`boogie-woogie-tanz`, Name „Boogie-Woogie-Tanz", `kategorie: tanz`, erster
-Satz „Der Boogie-Woogie-Tanz ist ein …". Aliases „Boogie-Woogie" und
-„Boogie Woogie" (die Schreibweisen des Musikeintrags). Der Musikeintrag
-`lexikon/boogie-woogie` beschreibt den Tanz bisher in einem eigenen
-Abschnitt samt Quellen — die dortigen Belege sind der Ausgangspunkt, der
-Abschnitt wird danach auf einen Verweis gekürzt. Abgrenzung gegen die
-Musik, gegen Lindy Hop und gegen den Rock'n'Roll-Tanz. Im
-deutschsprachigen Raum meint das Wort fast immer den Tanz — das gehört mit
-Quelle in den Text, nicht als Behauptung.
-- **Jive.** Steht in fünf Texten, unter anderem bei den
-Tanzkursen in Ganderkesee, und hat keinen Eintrag. Jive ist ein Tanz ohne
-gleichnamige Musikrichtung, das Wort ist also nicht mehrdeutig. `kategorie: tanz`. Die Abgrenzung gegen den
-Lindy Hop und gegen den Rock'n'Roll-Tanz gehört in den Text, mit Quelle;
-steht der Eintrag `rocknroll-tanz` schon, dorthin verlinken.
-
 `frei` **Lexikon, Bündel Bildwelt: Pin-up, Burlesque.** Zwei Einträge in
 einem PR. Beide Wörter waren Themenseiten der früheren Domain
 (`/thema/pin-up`, `/thema/burlesque`); mit der Freigabe leiten diese alten
@@ -314,6 +280,21 @@ Deshalb zusätzlich zählen: Lexikon-Einträge pro Woche, die Liegezeit vom
 Entwurf bis zur Freigabe und wie viele Inhalts-PRs gleichzeitig auf Markus
 warten. Staut es sich dort, ist der dritte Lauf der erste, der wieder
 wegfällt.
+
+**Tanzeinträge nachziehen — sobald `rocknroll-tanz`,
+`boogie-woogie-tanz` und `jive` freigegeben sind.** Angelegt als Entwürfe
+am 2026-09-30. Drei Dinge, die bis dahin nicht gehen, weil ein
+freigegebener Eintrag nicht auf einen Entwurf verlinken darf
+(`link-auf-entwurf`): (1) im Abgrenzungsabschnitt von `lexikon/rocknroll`
+auf `/lexikon/rocknroll-tanz/` verlinken; (2) den Abschnitt „Boogie-Woogie
+als Tanz“ in `lexikon/boogie-woogie` auf einen Verweis auf
+`/lexikon/boogie-woogie-tanz/` kürzen — erst dann, sonst verliert die
+öffentliche Seite Inhalt ohne öffentlichen Ersatz; (3) „Jump & Jive“: Nach
+der Freigabe von `jive` verlinkt der Autolink „Jive“ in den
+Record-Hop-Terminen (Alte Feuerwache, Rathaus Friedrichshagen) auf den
+Tanz, obwohl dort die Musikangabe eines DJs steht. Vor der Freigabe
+prüfen, ob der Autolink die Stellen trifft, und sie dann von Hand
+entlinken oder umformulieren. Zusammen mit dem folgenden Posten erledigen.
 
 **Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
 Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen

@@ -1208,6 +1208,46 @@ const REGELN: Regel[] = [
 /* Globale Prüfungen (über alle Einträge)                              */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Die eine gewollte Namenskollision: Musik und Tanz desselben Namens.
+ *
+ * Entscheidung von Markus vom 2026-09-25 (ENTSCHEIDUNGEN.md, "Musik oder
+ * Tanz"): Der Tanz bekommt einen eigenen Lexikoneintrag und traegt die kurzen
+ * Schreibweisen des Musikeintrags als Alias. Daran erkennt der Autolink das
+ * Wort als mehrdeutig (`baueBegriffe` in src/lib/links.ts) und verlinkt es
+ * nicht mehr automatisch. Die Duplikatpruefung darunter kannte diese
+ * Entscheidung nicht und haette jeden solchen Eintrag als Fehler abgewiesen
+ * -- gefunden beim Bau von `rocknroll-tanz` und `boogie-woogie-tanz`.
+ *
+ * ENG GEFUEHRT, damit die Ausnahme keine allgemeine Lockerung wird:
+ *   - nur im Lexikon -- ohne eigene Abfrage, weil `kategorie` nur das
+ *     Lexikon kennt; ohne Tanz greift die Ausnahme nie,
+ *   - genau zwei Eintraege teilen das Wort, nicht drei,
+ *   - genau einer davon hat `kategorie: tanz`, der andere nicht,
+ *   - und der Tanz traegt das Wort nur als Alias, nicht als Namen. Heisst
+ *     der Tanzeintrag selbst wie ein anderer Eintrag, ist das eine echte
+ *     Dublette.
+ * Alles andere bleibt ein Fehler. Gemeldet wird ein Hinweis am Tanzeintrag,
+ * damit die Kollision sichtbar bleibt, statt still zu verschwinden.
+ */
+function musikTanzPaar(
+  norm: string,
+  refs: string[],
+  ctx: Kontext,
+): { tanz: Eintrag; anderer: string } | null {
+  const eintraege = refs
+    .map((r) => ctx.eintraege.find((e) => `${e.collection}/${e.slug}` === r))
+    .filter((e): e is Eintrag => Boolean(e?.daten));
+  if (eintraege.length !== 2) return null;
+  const taenze = eintraege.filter((e) => e.daten?.kategorie === "tanz");
+  if (taenze.length !== 1) return null;
+  const tanz = taenze[0];
+  const wort = norm.split(":").slice(1).join(":");
+  if (normalisiere(String(tanz.daten?.name ?? "")) === wort) return null;
+  const anderer = eintraege.find((e) => e !== tanz)!;
+  return { tanz, anderer: `${anderer.collection}/${anderer.slug}` };
+}
+
 function globalePruefungen(ctx: Kontext): Map<string, Befund[]> {
   const ergebnis = new Map<string, Befund[]>();
   const add = (datei: string, b: Befund) => {
@@ -1220,6 +1260,15 @@ function globalePruefungen(ctx: Kontext): Map<string, Befund[]> {
     if (refs.length < 2) continue;
     const eindeutig = [...new Set(refs)];
     if (eindeutig.length < 2) continue;
+    const paar = musikTanzPaar(norm, eindeutig, ctx);
+    if (paar) {
+      add(paar.tanz.datei, {
+        ebene: "hinweis",
+        code: "duplikat",
+        nachricht: `Den Alias "${norm.split(":").slice(1).join(":")}" teilt dieser Tanz gewollt mit ${paar.anderer}: Musik und Tanz desselben Namens. Der Autolink verlinkt das Wort deshalb nicht automatisch.`,
+      });
+      continue;
+    }
     for (const ref of eindeutig) {
       const eintrag = ctx.eintraege.find((e) => `${e.collection}/${e.slug}` === ref);
       if (eintrag) {
