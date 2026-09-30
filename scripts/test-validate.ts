@@ -89,6 +89,8 @@ interface Fall {
   erwartet?: Record<string, "fehler" | "warnung" | "hinweis">;
   /** Codes, die NICHT vorkommen dürfen. */
   verboten?: string[];
+  /** Codes, die vorkommen dürfen, aber nicht als Fehler. */
+  keinFehler?: string[];
 }
 
 const faelle: Fall[] = [];
@@ -606,6 +608,81 @@ fall({
   name: "duplikat: zwei Eintraege mit gleichem Namen kollidieren (b)",
   datei: "lexikon/dublette-b.md",
   inhalt: md(lexFelder("Zwillingsrock", { aliases: "[]" }), lexKoerper("Zwillingsrock")),
+  erwartet: { duplikat: "fehler" },
+});
+
+/*
+ * Musik und Tanz desselben Namens (Entscheidung Markus 2026-09-25): Der
+ * Tanz traegt das Wort der Musik als Alias, damit der Autolink es als
+ * mehrdeutig erkennt. Das ist die einzige gewollte Kollision; jede Nachbar-
+ * konstellation bleibt ein Fehler. Die Faelle belegen beide Seiten.
+ */
+const tanzFelder = (name: string, aliases: string) =>
+  lexFelder(name, { aliases, kategorie: "tanz" });
+
+fall({
+  name: "duplikat: Musikeintrag teilt sein Wort mit dem gleichnamigen Tanz (Musik)",
+  datei: "lexikon/schwingrock.md",
+  inhalt: md(lexFelder("Schwingrock", { aliases: "[]", kategorie: "genre" }), lexKoerper("Schwingrock")),
+  verboten: ["duplikat"],
+});
+
+fall({
+  name: "duplikat: Tanz traegt das Wort der Musik als Alias (Tanz)",
+  datei: "lexikon/schwingrock-tanz.md",
+  inhalt: md(tanzFelder("Schwingrock-Tanz", "[Schwingrock]"), lexKoerper("Schwingrock-Tanz")),
+  erwartet: { duplikat: "hinweis" },
+  keinFehler: ["duplikat"],
+});
+
+fall({
+  name: "duplikat: zwei Taenze teilen ein Wort — kein Musik/Tanz-Paar (a)",
+  datei: "lexikon/kreiselschritt.md",
+  // Beide tragen das Wort nur als Alias, sonst finge schon die Namensregel
+  // den Fall ab, und die Mutation am Tanz-Zaehler fiele nicht.
+  inhalt: md(tanzFelder("Kreiselschritt-Walzer", "[Kreiselschritt]"), lexKoerper("Kreiselschritt-Walzer")),
+  erwartet: { duplikat: "fehler" },
+});
+
+fall({
+  name: "duplikat: zwei Taenze teilen ein Wort — kein Musik/Tanz-Paar (b)",
+  datei: "lexikon/kreiselschritt-tanz.md",
+  inhalt: md(tanzFelder("Kreiselschritt-Tanz", "[Kreiselschritt]"), lexKoerper("Kreiselschritt-Tanz")),
+  erwartet: { duplikat: "fehler" },
+});
+
+fall({
+  name: "duplikat: Tanz heisst selbst wie der Musikeintrag — echte Dublette (Musik)",
+  datei: "lexikon/hopser.md",
+  inhalt: md(lexFelder("Hopser", { aliases: "[]", kategorie: "genre" }), lexKoerper("Hopser")),
+  erwartet: { duplikat: "fehler" },
+});
+
+fall({
+  name: "duplikat: Tanz heisst selbst wie der Musikeintrag — echte Dublette (Tanz)",
+  datei: "lexikon/hopser-tanz.md",
+  inhalt: md(tanzFelder("Hopser", "[]"), lexKoerper("Hopser")),
+  erwartet: { duplikat: "fehler" },
+});
+
+fall({
+  name: "duplikat: drei Eintraege teilen ein Wort — kein Paar (Musik)",
+  datei: "lexikon/dreher.md",
+  inhalt: md(lexFelder("Dreher", { aliases: "[]", kategorie: "genre" }), lexKoerper("Dreher")),
+  erwartet: { duplikat: "fehler" },
+});
+
+fall({
+  name: "duplikat: drei Eintraege teilen ein Wort — kein Paar (Tanz)",
+  datei: "lexikon/dreher-tanz.md",
+  inhalt: md(tanzFelder("Dreher-Tanz", "[Dreher]"), lexKoerper("Dreher-Tanz")),
+  erwartet: { duplikat: "fehler" },
+});
+
+fall({
+  name: "duplikat: drei Eintraege teilen ein Wort — kein Paar (Mode)",
+  datei: "lexikon/dreher-rock.md",
+  inhalt: md(lexFelder("Dreher-Rock", { aliases: "[Dreher]" }), lexKoerper("Dreher-Rock")),
   erwartet: { duplikat: "fehler" },
 });
 
@@ -1670,6 +1747,14 @@ try {
             `gemeldet: ${treffer.map((b) => b.ebene).join(", ")}`,
           );
         }
+      }
+
+      for (const code of f.keinFehler ?? []) {
+        pruefe(
+          `${f.name}: Regel "${code}" meldet keinen Fehler`,
+          !befunde.some((b) => b.code === code && b.ebene === "fehler"),
+          befunde.filter((b) => b.code === code).map((b) => `${b.ebene}: ${b.nachricht}`).join(" | "),
+        );
       }
 
       for (const code of f.verboten ?? []) {
