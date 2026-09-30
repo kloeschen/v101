@@ -32,23 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Haslinger Hof Kirchham, Boogie Mix: 1 Termin anlegen (08.01.2027).**
-Gesehen am 2026-09-30 beim Bauen der Termine vom 13.11. und 11.12.2026
-(Herkunft: täglicher Lauf 2026-09-30) im Musikprogramm des Hauses,
-https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html
-(„eingetragen bis So, 14.2.2027"). Dort steht: „Fr - 08.01.", „Eintritt
-5 € inkl. Zutritt zu allen Musikbereichen", „BoogieMix", „DJ
-Rockin´Daddy", „ab 19 Uhr", „GartenStadl". Der 12.02.2027 steht dort
-ohne Boogie Mix. Vorlage: `events/boogie-mix-haslinger-hof-2026-12-11`
-(Reihe `boogie-mix-haslinger-hof`, Ort `haslinger-hof-kirchham`). Beim
-Bauen: Jahreszahl über den Zeitraum der Tabelle und den Wochentag
-belegen; der Flyer auf boogie.at gilt nur für 2026, auf boogie.at stand
-am 2026-09-30 noch kein Termin 2027. Den Folgelink im Dezember-Eintrag
-(„weitere Termine für 2027 stehen noch nicht im Register") nachziehen.
-Zeitzone `+01:00`. Nebenfund aus dem Suchlauf vom 2026-09-27, nicht Teil
-dieses Postens: DJ Rockin' Daddy legt auch bei der Rockabilly Night in
-Pullman City (27.12.2026) auf.
-
 `frei` **Lexikon, Bündel Tanz: Rock'n'Roll-Tanz, Boogie-Woogie-Tanz, Jive.** Drei
 Einträge in einem PR (Bündel-Posten seit dem 2026-09-25). Die drei gehören
 zusammen: Sie grenzen sich gegeneinander und gegen Lindy Hop ab, und das
