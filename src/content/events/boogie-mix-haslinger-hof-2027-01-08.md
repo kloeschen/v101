@@ -22,9 +22,6 @@ preise:
     betrag: 5
     waehrung: EUR
     hinweis: gilt für alle Musikbereiche des Hauses an diesem Abend
-  - bezeichnung: Hotelgäste des Haslinger Hofs
-    betrag: 0
-    waehrung: EUR
 durchfuehrung: geplant
 links:
   website: https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html
@@ -52,9 +49,9 @@ redaktionsnotiz: >-
   DJ-Sound nach 23 Uhr zusaetzlich in den GartenStadl uebertragen
   werde); ein Ende des Boogie Mix selbst steht nirgends.
   PREISE: 5 Euro ist der Tageseintritt des Hauses fuer freitags, kein
-  Sonderpreis des Boogie Mix. Hotelgaeste haben laut Programmseite
-  "freien Zutritt zum jeweiligen Abendprogramm"; deshalb der zweite
-  Eintrag mit 0.
+  Sonderpreis des Boogie Mix. Den freien Zutritt fuer Hotelgaeste, den die
+  Programmseite nennt, erfasst das Register nicht (Entscheidung Markus,
+  2026-09-30: Sonderkonditionen fuer Hotelgaeste werden nicht gelistet).
   ZEITZONE +01:00: Winterzeit; die Sommerzeit beginnt erst am
   28. Maerz 2027.
   GENRES LEER, anders als im November- und Dezembereintrag: Dort tragen
@@ -93,7 +90,7 @@ Datum, Beginn, DJ und Saal nennt bisher nur das Musikprogramm des Hauses. Es fü
 
 ## Eintritt zum Boogie Mix
 
-Die 5 Euro sind der Freitagseintritt des Hauses und gelten laut Programm für alle Musikbereiche an diesem Abend, nicht nur für den GartenStadl. Wer im Hotel des Haslinger Hofs wohnt, kommt nach Angabe des Hauses ohne Eintritt zum Abendprogramm.
+Die 5 Euro sind der Freitagseintritt des Hauses und gelten laut Programm für alle Musikbereiche an diesem Abend, nicht nur für den GartenStadl.
 
 ## Der Boogie Mix als Reihe
 

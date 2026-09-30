@@ -17,6 +17,22 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-30 — Hotelgast-Preise werden nicht gelistet
+
+**Anlass:** Der erste Befund des Gegenlesers (PR #105): Bei drei Boogie-Mix-
+Terminen im Haslinger Hof stand neben dem Eintritt von 5 € eine Zeile
+„Hotelgäste des Haslinger Hofs 0 EUR", belegt aus dem Kopftext der
+Programmseite. Der Gegenleser las nur die 5 € und meldete eine Abweichung
+— kein Fehlalarm, sondern eine echte Frage.
+
+**Entscheidung Markus:** Hotelgast-Preise listen wir nicht. Bereinigt in
+allen drei Einträgen (`preise`, Fließtext, Redaktionsnotiz mit Begründung).
+Als Regel in `event-preise`: Ein Preis, dessen Bezeichnung oder Hinweis
+Hotelgäste nennt (auch „Hotelgaeste", „Hotel-Gäste"), ist ein Fehler.
+Negativtest in `test-validate.ts` (zwei Fälle), Gegenprobe: Regel
+abgeschaltet → beide fallen; nur die Umlaut-Schreibweise geprüft → der
+„Hotelgaeste"-Fall fällt; am alten November-Eintrag schlägt sie an.
+
 ## 2026-09-30 — Der Gegenleser: belegpflichtige Felder blind gegen die Quelle
 
 **Anlass:** Die Prüfkette beweist Struktur, nicht Wahrheit (Record Hop:
