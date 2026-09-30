@@ -258,6 +258,13 @@ Record-Hop-Terminen (Alte Feuerwache, Rathaus Friedrichshagen) auf den
 Tanz, obwohl dort die Musikangabe eines DJs steht. Vor der Freigabe
 prüfen, ob der Autolink die Stellen trifft, und sie dann von Hand
 entlinken oder umformulieren. Zusammen mit dem folgenden Posten erledigen.
+**Nachgewiesen am 2026-09-30** (simulierte Freigabe im Worktree): Der
+Freigabelauf selbst setzt beim Autolink `[Jive](/lexikon/jive/)` in vier
+Terminen (`record-hop-alte-feuerwache-2026-09-25`,
+`record-hop-rathaus-friedrichshagen-2026-10-18`, `-11-08`, `-12-06`). Punkt
+(3) muss deshalb **vor** der Freigabe von `jive` gelöst sein, nicht danach —
+etwa „jive" auf `NUR_VON_HAND` wie „swing" (Entscheidung Markus). Die
+Prüfkette selbst besteht die Tanz-Freigabe.
 
 **Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
 Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen

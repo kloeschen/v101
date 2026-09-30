@@ -17,6 +17,50 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-09-30 — Weiterleitungstest vertrug keine Freigabe
+
+**Fund:** Der Freigeben-Workflow für Gingham, Hahnentritt, Nadelstreifen
+und Polka Dots (Lauf 11) scheiterte in der Prüfkette, nicht an den
+Einträgen. `test-weiterleitungen.ts` verglich die automatischen 301 des
+*freigegebenen* Stands mit einer festen Liste. Jede Freigabe eines Begriffs,
+dessen Name oder Alias ein alter Pfad ist (`/thema/gingham`,
+`/thema/houndstooth` …), ließ die Liste wachsen — und nachtragen konnte sie
+nur ein Mensch, nicht der Workflow. Die Weiterleitungen selbst waren
+richtig; falsch war, woran der Test sie maß.
+
+**Geändert:** Zwei Blicke statt einer Liste. (1) Das *Gesamtbild* — alle
+Einträge, als wären sie freigegeben — steht fest im Test; es ändert sich
+nur, wenn ein Eintrag entsteht oder einen Alias bekommt, also in einem PR,
+der die Liste mitändern kann. (2) Der freigegebene Stand muss *genau* der
+Teil des Gesamtbilds sein, dessen Ziel freigegeben ist — statusabhängig,
+aber an keiner Liste. Die Schärfe bleibt: Jede unerwartete Weiterleitung
+fällt weiterhin auf, nur beim Anlegen statt bei der Freigabe.
+
+**Belege:** Fehler zuerst reproduziert (Worktree, echter `freigeben.ts`
+auf die vier Slugs, alter Test: 1 fehlgeschlagen), danach derselbe Stand
+mit neuem Test grün und `verify:ci` komplett grün. Vorausschau: auch die
+Freigabe der drei Tanzeinträge besteht die Kette. Vier Mutationen, jede
+lässt genau eine Prüfung fallen (Gesamtbild statusabhängig; freigegebener
+Stand ignoriert den Status; Ausschnitt ohne Filter; Liste ohne
+houndstooth-Alias), zeichengenau zurückgebaut.
+
+**Lehre:** Ein Test gegen den veröffentlichten Stand ist ein Test gegen
+die Freigabe selbst. Was ein Mensch per Workflow ändert, darf keine Liste
+brauchen, die nur ein Mensch im Code nachtragen kann.
+
+---
+
+## 2026-09-30 — Gingham: unbelegte KZ-Angabe bleibt draußen
+
+**Entscheidung Markus:** Die Angabe der deutschen Wikipedia, das
+ursprüngliche Vichy-Muster sei durch die Häftlingskleidung in
+Konzentrationslagern bekannt geworden, steht nicht im Eintrag — auch nicht
+als zugeordnete Einzelangabe nach Regel 5. Sie hat dort keinen
+Einzelnachweis, keine weitere Quelle stützt sie, und eine so gewichtige
+Aussage gewinnt durch Wiederholung an Gewicht, das ihr nicht zusteht.
+Aufnehmen nur mit einer fachlichen Quelle zur Häftlingskleidung. Begründung
+steht auch in der Redaktionsnotiz von `lexikon/gingham`.
+
 ## 2026-09-30 — Duplikatprüfung: Ausnahme für Musik und Tanz desselben Namens
 
 **Fund beim Bau der Tanzeinträge:** Die Entscheidung vom 2026-09-25
