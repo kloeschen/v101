@@ -1,0 +1,103 @@
+[
+  {
+    "id": "events/gmundner-boogie-party-roitham-2026-10-24#beginn",
+    "ergebnis": "gefunden",
+    "wert": { "datum": "2026-10-24", "uhrzeit": "20:00", "einlass": "19:30" },
+    "zitat": "Samstag 24. Oktober 2026 … Einlass: 19.30 Uhr Beginn: 20.00 Uhr",
+    "quelle": "https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg",
+    "grund": "boogie.at bestätigt Datum und Beginn („Sa., 24.10.2026 - 20:00“), nennt keinen Einlass."
+  },
+  {
+    "id": "events/gmundner-boogie-party-roitham-2026-10-24#preise",
+    "ergebnis": "nicht-gefunden",
+    "grund": "Weder Flyer noch boogie.at nennen einen Eintrittspreis oder freien Eintritt. Der Flyer nennt nur „Anmeldung und Reservierung“ per E-Mail/Telefon, boogie.at „Anmeldung unter Diana Gattinger“."
+  },
+  {
+    "id": "events/gmundner-boogie-party-roitham-2026-10-24#ort",
+    "ergebnis": "gefunden",
+    "wert": { "name": "Gasthaus Forstinger", "stadt": "Roitham" },
+    "zitat": "Gasthaus Forstinger Raiffeisenpl. 2 4661 Roitham",
+    "quelle": "https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg",
+    "grund": "boogie.at gleichlautend: „Gasthaus Forstinger, Raiffeisenplatz 2, 4661 Roitham, Österreich“."
+  },
+  {
+    "id": "events/gmundner-boogie-party-roitham-2026-10-24#durchfuehrung",
+    "ergebnis": "gefunden",
+    "wert": { "status": "geplant" },
+    "zitat": "Samstag 24. Oktober 2026",
+    "quelle": "https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg",
+    "grund": "Weder Flyer noch boogie.at enthalten einen Hinweis auf Absage, Verschiebung oder Ausverkauf."
+  },
+  {
+    "id": "events/long-tall-texans-cafe-central-2026-11-20#beginn",
+    "ergebnis": "gefunden",
+    "wert": { "datum": "2026-11-20", "uhrzeit": "20:00", "einlass": "19:00" },
+    "zitat": "Fr 20.11.2026 … Einlass: 19.00 Uhr Beginn: 20.00 Uhr",
+    "quelle": "https://cafecentral.de/konzert/long-tall-texans/",
+    "grund": "loveyourartist.com gleichlautend: „20. November 2026 - 20:00 Uhr, Einlass 19:00 Uhr“. Nebenbefund: Der Beschreibungstext auf cafecentral.de erwähnt noch eine „Deutschlandtour im Februar 2023“ (veralteter Fließtext; Datum im Kopf der Seite ist 20.11.2026)."
+  },
+  {
+    "id": "events/long-tall-texans-cafe-central-2026-11-20#preise",
+    "ergebnis": "gefunden",
+    "wert": { "betraege": [22], "waehrung": "EUR" },
+    "zitat": "Tickets für 22,00 €",
+    "quelle": "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH",
+    "grund": "Seitentitel sagt „ab 22,00 €“, JSON-LD „lowPrice: 22“ (AggregateOffer ohne highPrice). Keine Abendkassen- oder weiteren Preisstufen genannt."
+  },
+  {
+    "id": "events/long-tall-texans-cafe-central-2026-11-20#ticketUrl",
+    "ergebnis": "gefunden",
+    "wert": { "url": "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH" },
+    "zitat": "Tickets für 22,00 € Jetzt kaufen",
+    "quelle": "https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH",
+    "grund": "Die Quellseite ist selbst die Verkaufsseite (Kauf-Button ohne eigenen Link). Ihre canonical-URL lautet https://loveyourartist.com/de/events/long-tall-texans-cobra-weinheim-ECGPRXH."
+  },
+  {
+    "id": "events/long-tall-texans-cafe-central-2026-11-20#ort",
+    "ergebnis": "gefunden",
+    "wert": { "name": "Café Central Weinheim", "stadt": "Weinheim" },
+    "zitat": "Café Central Weinheim",
+    "quelle": "https://cafecentral.de/konzert/long-tall-texans/",
+    "grund": "loveyourartist.com ergänzt die Adresse: „Café Central Weinheim, Bahnhofstraße 19, 69469 Weinheim, Deutschland“."
+  },
+  {
+    "id": "events/long-tall-texans-cafe-central-2026-11-20#durchfuehrung",
+    "ergebnis": "gefunden",
+    "wert": { "status": "geplant" },
+    "zitat": "Karten verfügbar",
+    "quelle": "https://cafecentral.de/konzert/long-tall-texans/",
+    "grund": "loveyourartist.com: Tickets kaufbar, JSON-LD eventStatus EventScheduled, availability InStock. Kein Hinweis auf Absage, Verschiebung oder Ausverkauf."
+  },
+  {
+    "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#beginn",
+    "ergebnis": "gefunden",
+    "wert": { "datum": "2026-10-18", "uhrzeit": "16:00", "einlass": null },
+    "zitat": "So., 18. Oktober 2026 Uhrzeit 16:00",
+    "quelle": "https://www.rockin-wildcat.com/rwc/events/record-hop-63",
+    "grund": "Guide-Seite gleichlautend („18 Okt. 16:00 Rathaus Friedrichshagen Record Hop“); der auf der Eventseite eingebundene Flyer nennt „16 - 20 Uhr“. Widerspruch innerhalb der Eventseite: deren JSON-LD nennt \"startDate\": \"2026-10-18T18:00:00+02:00\" (18:00 statt 16:00; Differenz entspricht genau dem UTC-Versatz, vermutlich Zeitzonenfehler des Plugins). Hinweis: rockin-wildcat.com liefert ohne Browser-User-Agent nur eine Bot-Prüfseite („One moment, please...“)."
+  },
+  {
+    "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#preise",
+    "ergebnis": "gefunden",
+    "wert": { "betraege": [10], "waehrung": "EUR" },
+    "zitat": "Kosten 10,00 €",
+    "quelle": "https://www.rockin-wildcat.com/rwc/events/record-hop-63",
+    "grund": "Der auf der Seite eingebundene Flyer (TT__18terOkt__online.jpg) bestätigt: „Eintritt: 10,- €“."
+  },
+  {
+    "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#ort",
+    "ergebnis": "gefunden",
+    "wert": { "name": "Rathaus Friedrichshagen", "stadt": "Berlin" },
+    "zitat": "Standort Rathaus Friedrichshagen Bölschestr. 87, 12587 Berlin-Friedrichshagen",
+    "quelle": "https://www.rockin-wildcat.com/rwc/events/record-hop-63",
+    "grund": "Flyer auf der Eventseite: „Historisches Rathaus Friedrichshagen, Ratssaal, Bölschestraße 87/88, 12587 Berlin“. Guide nennt „Rathaus Friedrichshagen“. rathaus-friedrichshagen.de/veranstaltungen.php bestätigt nur Haus und Adresse („Bölschestraße 87/88, 12587 Berlin“), listet den Record Hop am 18.10.2026 aber nicht (nächste Termine dort: 10.10.2026 Dolle Party, 26.11.2026 Escape-Dinner, 15.01.2027 Varieté-Dinner)."
+  },
+  {
+    "id": "events/record-hop-rathaus-friedrichshagen-2026-10-18#durchfuehrung",
+    "ergebnis": "gefunden",
+    "wert": { "status": "geplant" },
+    "zitat": "So., 18. Oktober 2026",
+    "quelle": "https://www.rockin-wildcat.com/rwc/events/record-hop-63",
+    "grund": "Kein Hinweis auf Absage, Verschiebung oder Ausverkauf; JSON-LD eventStatus EventScheduled."
+  }
+]

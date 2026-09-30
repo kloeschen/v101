@@ -72,5 +72,14 @@ dem Pfad, den dein Auftrag nennt:
 - **Lass keinen Prüfpunkt aus.** Eine Antwort mit Lücken weist das Skript
   als unvollständig zurück — dann gilt der ganze Lauf als nicht gegengelesen.
 
+## Fallen
+
+- **rockin-wildcat.com** liefert ohne Browser-Kennung nur eine
+  Bot-Prüfseite. Mit `curl -sSL -A "Mozilla/5.0" <url>` kommt der Inhalt
+  (gefunden beim ersten Lauf, 2026-09-30). Eine Prüfseite ist nicht
+  „nicht erreichbar", solange der zweite Versuch mit Kennung hilft.
+- **Flyer als Bild** (z. B. `image.jimcdn.com/…jpg`): Uhrzeit, Einlass und
+  Adresse stehen oft nur dort. Herunterladen und mit Read ansehen.
+
 Am Ende meldest du in zwei Zeilen: wie viele Prüfpunkte, wie viele Quellen
 nicht erreichbar waren. Nicht mehr — das Urteil fällt das Skript.
