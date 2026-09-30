@@ -45,6 +45,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [Rock'n'Roll Festival Ganderkesee](https://rocknroll-festival.de) | Niedersachsen | Festival | nein (am 2026-09-23 Timeout, am 2026-09-24 erreichbar, kein `Event` im JSON-LD) | einmal im Jahr, Ausgabe über die Seite prüfen |
 | [Crazy Boogiefreaks, Termine](https://crazy-boogiefreaks.at/termine/) | Oberösterreich (Steyr, Sierning) | Verein | ja, iCal/XML-Export des Kalender-Plugins | Terminseiten nennen oft keinen Ort; Trainings und Partys im selben Kalender. `x-cost-type` im Export ist ein Vorgabewert (siehe Fallen) |
 | [BWC Gmunden, Aktivitätenkalender](https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/) | Oberösterreich (Roitham, Eberstalzell, Fischlham) | Verein | nein, nur Flyer als Bilder | die auf boogie.at und den Flyern genannte `www.bwc-gmunden.com` löst nicht auf (2026-09-28); Kalender je Jahr, am 2026-09-28 nur bis Ende 2026 |
+| [Haslinger Hof, Musikprogramm](https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html) | Bayern (Kirchham bei Bad Füssing) | Haus | nein | Tagesprogramm aller Säle, rund viereinhalb Monate im Voraus; Szenebezug nur beim „BoogieMix" (zweiter Freitag). Tabelle ohne Jahreszahl (siehe Fallen) |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
@@ -207,6 +208,12 @@ Fehler verursacht oder beinahe verursacht.
   Startseite Termine ohne Jahr, und seine `/konzert/`-Seiten sehen für
   jedes Jahr gleich aus (eine davon ist von 2021). Ohne Jahr kein Termin —
   den Posten mit genau diesem Befund zurückgeben, nicht schätzen.
+- **Programmtabellen ohne Jahreszahl.** Das Musikprogramm des Haslinger
+  Hofs nennt je Tag nur „Fr - 13.11."; das Jahr steht allein im Kopftext
+  („eingetragen bis So, 14.2.2027"), die Tabelle beginnt mit dem heutigen
+  Tag. Das Jahr ist damit über den Zeitraum der Tabelle plus Wochentag
+  belegt, nicht über die Zeile selbst — beides in die `redaktionsnotiz`
+  (2026-09-30). Ein Flyer mit „Alle Termine 2026" trägt nur für 2026.
 - **Das Datum im Seitenkopf ist nicht das Termindatum.** Nachrichten- und
   Stadtportale zeigen oben das heutige Datum, darunter liegen oft Artikel
   aus früheren Jahren. Die erste Testeinsendung über das Formular
