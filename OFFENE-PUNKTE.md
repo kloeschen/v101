@@ -32,23 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Haslinger Hof Kirchham, Boogie Mix: 1 Termin anlegen (08.01.2027).**
-Gesehen am 2026-09-30 beim Bauen der Termine vom 13.11. und 11.12.2026
-(Herkunft: täglicher Lauf 2026-09-30) im Musikprogramm des Hauses,
-https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html
-(„eingetragen bis So, 14.2.2027"). Dort steht: „Fr - 08.01.", „Eintritt
-5 € inkl. Zutritt zu allen Musikbereichen", „BoogieMix", „DJ
-Rockin´Daddy", „ab 19 Uhr", „GartenStadl". Der 12.02.2027 steht dort
-ohne Boogie Mix. Vorlage: `events/boogie-mix-haslinger-hof-2026-12-11`
-(Reihe `boogie-mix-haslinger-hof`, Ort `haslinger-hof-kirchham`). Beim
-Bauen: Jahreszahl über den Zeitraum der Tabelle und den Wochentag
-belegen; der Flyer auf boogie.at gilt nur für 2026, auf boogie.at stand
-am 2026-09-30 noch kein Termin 2027. Den Folgelink im Dezember-Eintrag
-(„weitere Termine für 2027 stehen noch nicht im Register") nachziehen.
-Zeitzone `+01:00`. Nebenfund aus dem Suchlauf vom 2026-09-27, nicht Teil
-dieses Postens: DJ Rockin' Daddy legt auch bei der Rockabilly Night in
-Pullman City (27.12.2026) auf.
-
 `frei` **Lexikon, Bündel Bildwelt: Pin-up, Burlesque.** Zwei Einträge in
 einem PR. Beide Wörter waren Themenseiten der früheren Domain
 (`/thema/pin-up`, `/thema/burlesque`); mit der Freigabe leiten diese alten
@@ -67,26 +50,6 @@ der Autolink würde sonst Texte über die Gattung falsch verlinken. Quellen:
 Britannica („burlesque show"), DWDS.
 
 Danach `npm run autolink`.
-
-`frei` **Lexikon, Bündel Muster: Polka Dots, Hahnentritt, Gingham, Nadelstreifen.**
-Vier Einträge, `kategorie: mode`, in einem PR; sie grenzen sich
-gegeneinander ab. Alle vier waren Themenseiten der früheren Domain und
-leiten nach der Freigabe automatisch weiter (`/thema/polka-dots`,
-`/thema/hahnentritt`, `/thema/gingham`, `/thema/nadelstreifen`;
-`/thema/houndstooth` über den Alias „Houndstooth"). Einzelheiten:
-
-- **Polka Dots** (`polka-dots`), Alias „Tupfen". `abgrenzung`: Streumuster;
-der Name kommt vom Tanz, gemeint ist kein Tanz. „Punkte" ist ein
-Allerweltswort und kein Alias (`/thema/punkte` bleibt 404).
-- **Hahnentritt** (`hahnentritt`), Alias „Houndstooth". `abgrenzung`:
-Pepita, Glencheck.
-- **Gingham** (`gingham`), Alias „Vichykaro" nur mit Quelle. `abgrenzung`:
-Madras, Tartan.
-- **Nadelstreifen** (`nadelstreifen`). `abgrenzung`: Kreidestreifen — und
-Pinstriping am Auto, das trotz des englischen Namens etwas anderes ist.
-
-Quellen öffnen: DWDS, Britannica, eine Textil- oder Modesammlung (V&A,
-Loschek). Danach `npm run autolink`.
 
 `frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
 (unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die

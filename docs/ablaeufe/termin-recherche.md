@@ -168,6 +168,13 @@ versucht wird.
 
 ## Fallen beim Bauen eines Termin-Postens
 
+- **Sonderkonditionen für Hotelgäste werden nicht gelistet** (Entscheidung
+  Markus, 2026-09-30, an PR #105). Ein Haus wie der Haslinger Hof gibt
+  Hotelgästen freien Zutritt; das gehört weder in `preise` noch in den
+  Text. Es gilt nicht für das Publikum, für das der Termin eingetragen ist,
+  und „0 EUR" in der Preisliste läse sich als freier Eintritt.
+  `validate-content` (`event-preise`) meldet es als Fehler.
+
 Gesammelt aus den bisherigen Einträgen. Jede hat mindestens einmal einen
 Fehler verursacht oder beinahe verursacht.
 

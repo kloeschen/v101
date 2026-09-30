@@ -763,6 +763,22 @@ const REGELN: Regel[] = [
       if (eintritt === "beziffert" && !hatPreise) {
         b.push({ ebene: "fehler", code: "", feld: "preise", nachricht: 'eintritt: beziffert, aber keine Preise hinterlegt.' });
       }
+      // Sonderkonditionen für Hotelgäste listet das Register nicht
+      // (Entscheidung Markus, 2026-09-30, an PR #105): Sie gelten nicht für
+      // das Publikum, für das der Termin eingetragen ist, und ein „0 EUR"
+      // in der Preisliste läse sich als freier Eintritt. Geprüft werden
+      // Bezeichnung und Hinweis jedes Preises.
+      for (const [i, p] of (preise ?? []).entries()) {
+        const text = `${p?.bezeichnung ?? ""} ${p?.hinweis ?? ""}`;
+        if (/hotel\s*-?\s*g(ä|ae)st/i.test(text)) {
+          b.push({
+            ebene: "fehler",
+            code: "",
+            feld: `preise[${i}]`,
+            nachricht: `Preis für Hotelgäste („${p.bezeichnung}") — solche Sonderkonditionen listet das Register nicht (Entscheidung 2026-09-30).`,
+          });
+        }
+      }
       if (eintritt === "unveroeffentlicht" && hatPreise) {
         b.push({ ebene: "fehler", code: "", feld: "eintritt", nachricht: 'eintritt: unveroeffentlicht, aber Preise hinterlegt.' });
       }

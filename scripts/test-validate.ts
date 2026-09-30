@@ -903,6 +903,37 @@ fall({
   verboten: ["event-preise"],
 });
 
+/* Hotelgast-Preise listet das Register nicht (Entscheidung 2026-09-30,
+ * PR #105). Positives Lebenszeichen ist der saubere Fall direkt darüber:
+ * dieselbe Vorrichtung mit einem gewöhnlichen Preis schlägt nicht an. */
+fall({
+  name: "event-preise: Preis für Hotelgäste",
+  datei: "events/preis-hotelgast.md",
+  inhalt: md(
+    evFelder("Hotel Weekender", {
+      eintritt: "beziffert",
+      preise: PREIS + "\n  - bezeichnung: Hotelgäste des Hauses\n    betrag: 0\n    waehrung: EUR",
+      quellen: quelle("beginn, ort, preise"),
+    }),
+    evKoerper("Hotel Weekender"),
+  ),
+  erwartet: { "event-preise": "fehler" },
+});
+
+fall({
+  name: "event-preise: Hotelgast nur im Hinweis, andere Schreibweise",
+  datei: "events/preis-hotelgast-hinweis.md",
+  inhalt: md(
+    evFelder("Hinweis Weekender", {
+      eintritt: "beziffert",
+      preise: PREIS + "\n    hinweis: frei fuer Hotelgaeste",
+      quellen: quelle("beginn, ort, preise"),
+    }),
+    evKoerper("Hinweis Weekender"),
+  ),
+  erwartet: { "event-preise": "fehler" },
+});
+
 fall({
   name: "event-preise: eintritt beziffert ohne Preise",
   datei: "events/preis-beziffert-leer.md",

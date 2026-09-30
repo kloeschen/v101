@@ -22,9 +22,6 @@ preise:
     betrag: 5
     waehrung: EUR
     hinweis: gilt für alle Musikbereiche des Hauses an diesem Abend
-  - bezeichnung: Hotelgäste des Haslinger Hofs
-    betrag: 0
-    waehrung: EUR
 genres: [boogie-woogie, rocknroll, rockabilly, swing]
 durchfuehrung: geplant
 links:
@@ -49,9 +46,9 @@ redaktionsnotiz: >-
   werde); ein Ende des Boogie Mix selbst steht nirgends.
   PREISE: 5 Euro ist der Tageseintritt des Hauses fuer freitags, kein
   Sonderpreis des Boogie Mix; Programmseite und Flyer sagen beide, er
-  gelte fuer alle Musikbereiche. Hotelgaeste haben laut Programmseite
-  "freien Zutritt zum jeweiligen Abendprogramm"; deshalb der zweite
-  Eintrag mit 0.
+  gelte fuer alle Musikbereiche. Den freien Zutritt fuer Hotelgaeste, den die
+  Programmseite nennt, erfasst das Register nicht (Entscheidung Markus,
+  2026-09-30: Sonderkonditionen fuer Hotelgaeste werden nicht gelistet).
   ZEITZONE +01:00: Winterzeit, die Sommerzeit endet am 25. Oktober 2026.
   VERANSTALTER: Das Haus, das das Programm fuehrt und den Eintritt
   erhebt. boogie.at nennt unter "Person/Organisation" DJ Rockin' Daddy;
@@ -100,7 +97,7 @@ Datum, Beginn und Saal stehen gleichlautend im Musikprogramm des Hauses, auf dem
 
 ## Eintritt zum Boogie Mix
 
-Die 5 Euro sind der Freitagseintritt des Hauses und gelten laut Programm und Flyer für alle Musikbereiche an diesem Abend, nicht nur für den GartenStadl. Wer im Hotel des Haslinger Hofs wohnt, kommt nach Angabe des Hauses ohne Eintritt zum Abendprogramm.
+Die 5 Euro sind der Freitagseintritt des Hauses und gelten laut Programm und Flyer für alle Musikbereiche an diesem Abend, nicht nur für den GartenStadl.
 
 ## Musik beim Boogie Mix
 
@@ -108,4 +105,4 @@ Der Flyer nennt vier Stile: [Boogie Woogie](/lexikon/boogie-woogie/), [Rock'n'Ro
 
 ## Der Boogie Mix als Reihe
 
-Der Boogie Mix findet laut Flyer jeden zweiten Freitag im Monat statt, 2026 an zwölf Terminen vom 16. Januar bis 11. Dezember; das Programm des Hauses führt ihn auch im Januar 2027 weiter. Die vorige Ausgabe im Register ist der [Boogie Mix am 13. November 2026](/events/boogie-mix-haslinger-hof-2026-11-13/); weitere Termine für 2027 stehen noch nicht im Register. Der Haslinger Hof liegt in [Bayern](/regionen/bayern/).
+Der Boogie Mix findet laut Flyer jeden zweiten Freitag im Monat statt, 2026 an zwölf Terminen vom 16. Januar bis 11. Dezember; das Programm des Hauses führt ihn auch im Januar 2027 weiter. Die vorige Ausgabe im Register ist der [Boogie Mix am 13. November 2026](/events/boogie-mix-haslinger-hof-2026-11-13/), die nächste der [Boogie Mix am 8. Januar 2027](/events/boogie-mix-haslinger-hof-2027-01-08/). Der Haslinger Hof liegt in [Bayern](/regionen/bayern/).
