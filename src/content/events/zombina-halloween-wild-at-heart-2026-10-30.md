@@ -2,7 +2,7 @@
 name: Halloween mit Zombina and the Skeletones im Wild at Heart
 aliases: [Zombina and the Skeletons Berlin 2026, The Real Halloween Deal, Halloween Pt. 1 Wild at Heart, Feral Halloween III]
 kurzbeschreibung: Halloween-Konzert mit Zombina and the Skeletones, Thee Flanders und The Real Deal am Freitag, 30. Oktober 2026, im Wild at Heart in Berlin-Kreuzberg, mit Psychobilly, Horrorpunk und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

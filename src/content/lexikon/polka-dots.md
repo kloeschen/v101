@@ -2,9 +2,9 @@
 name: Polka Dots
 aliases: [Polka Dot, Polkadot]
 kurzbeschreibung: Polka Dots sind ein Muster aus gleich großen, gefüllten und regelmäßig angeordneten Punkten, vor allem auf Stoff; der englische Name ist seit der Mitte des 19. Jahrhunderts belegt und wird meist auf den Polka-Tanz zurückgeführt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 kategorie: mode
 bezeichnungEn: Polka dot

@@ -2,7 +2,7 @@
 name: Wild at Heart
 aliases: [Wild at Heart Berlin, Wild At Heart Kreuzberg]
 kurzbeschreibung: Das Wild at Heart in der Wiener Straße in Berlin-Kreuzberg ist ein Konzertclub mit Live-Musik von Punk über Rock'n'Roll bis Psychobilly, der für Konzerte und Veranstaltungen abends öffnet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

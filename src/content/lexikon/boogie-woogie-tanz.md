@@ -2,9 +2,9 @@
 name: Boogie-Woogie-Tanz
 aliases: [Boogie-Woogie, Boogie Woogie]
 kurzbeschreibung: Der Boogie-Woogie-Tanz ist ein Paartanz aus der Familie der Swing-Tänze, der als Gesellschafts- und Turniertanz frei geführt zur Musik getanzt wird und als Vorgänger des akrobatischen Rock'n'Roll-Tanzes gilt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 kategorie: tanz
 definition: Der Boogie-Woogie-Tanz ist ein paarweise getanzter Gesellschafts- und Turniertanz aus der Familie der Swing-Tänze, der auf einem Sechser- und Achter-Grundschritt aufbaut und frei geführt wird.

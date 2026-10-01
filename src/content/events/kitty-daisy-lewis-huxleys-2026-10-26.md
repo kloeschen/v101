@@ -2,7 +2,7 @@
 name: Kitty, Daisy & Lewis in Huxleys Neue Welt
 aliases: [Kitty Daisy and Lewis Berlin 2026, Kitty, Daisy & Lewis Huxleys]
 kurzbeschreibung: Konzert der Londoner Retro-Geschwisterband Kitty, Daisy & Lewis am Montag, 26. Oktober 2026, in Huxleys Neue Welt in Berlin-Neukölln, verlegt aus dem Metropol.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

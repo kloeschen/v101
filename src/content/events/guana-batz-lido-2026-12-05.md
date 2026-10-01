@@ -2,7 +2,7 @@
 name: Guana Batz im Lido
 aliases: [Guana Batz Berlin 2026, Guana Batz Lido]
 kurzbeschreibung: Konzert der britischen Psychobilly-Band Guana Batz am Samstag, 5. Dezember 2026, im Lido in Berlin-Kreuzberg, präsentiert von 36 Concerts.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

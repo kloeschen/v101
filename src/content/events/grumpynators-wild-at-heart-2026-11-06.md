@@ -2,7 +2,7 @@
 name: Grumpynators im Wild at Heart
 aliases: [Grumpynators Berlin 2026, Grumpynators Wild at Heart]
 kurzbeschreibung: Konzert der dänischen Band Grumpynators mit Kollision und Aftershow von DJ Skalex am Freitag, 6. November 2026, im Wild at Heart in Berlin-Kreuzberg, angekündigt als Psychobilly und Motorbilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

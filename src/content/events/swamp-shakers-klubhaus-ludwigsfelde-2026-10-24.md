@@ -15,10 +15,6 @@ veranstalter: MusikLeben e.V.
 lineupWeitere: [Swamp Shakers]
 eintritt: beziffert
 preise:
-  - bezeichnung: Ticket laut Klubhaus
-    betrag: 20
-    waehrung: EUR
-    hinweis: „ab 20 €“
   - bezeichnung: Online-Ticket bei Reservix
     betrag: 25.4
     waehrung: EUR
@@ -41,12 +37,14 @@ redaktionsnotiz: >-
   2026-10-24T20:00:00+02:00). Nach der Falle "Rockin' Wildcat gegen das
   Haus" folgt der Eintrag dem Haus; der Widerspruch steht im Text.
   ZEITZONE +02:00: vor dem Ende der Sommerzeit am 25.10.
-  PREIS -- ZWEI ANGABEN: Das Haus schreibt "ab 20 EUR", Reservix
+  PREIS -- ENTSCHEIDUNG MARKUS 2026-10-01: In `preise` steht nur der
+  Reservix-Betrag 25,40 EUR, der genauere der beiden; die "ab 20 EUR" des
+  Hauses bleiben als Angabe des Hauses im Text (Regel 5). ZWEI ANGABEN: Das Haus schreibt "ab 20 EUR", Reservix
   "Tickets ab 25,40 EUR" (offers.price 25.40, Kategorie presale,
   "Online Ticket"), dazu "Ermaessigung verfuegbar". Woraus die
   Differenz besteht, sagt keine Quelle; Reservix nennt Preise "inkl.
-  MwSt." mit moeglicher Servicegebuehr. Beide stehen getrennt in
-  `preise`, nicht als Auswahl. Rockin' Wildcat hat kein Feld "Kosten"
+  MwSt." mit moeglicher Servicegebuehr. Bis zur Entscheidung standen
+  beide getrennt in `preise`. Rockin' Wildcat hat kein Feld "Kosten"
   (offers.price "0" heisst dort nur "kein Preis hinterlegt").
   ORT: die Lounge des Hauses, laut Programmseite ("ORT Lounge") und
   Reservix ("Klubhaus Ludwigsfelde - Lounge"); deshalb `ortHinweis`.

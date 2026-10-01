@@ -2,9 +2,9 @@
 name: Rock'n'Roll-Tanz
 aliases: [Rock'n'Roll, Rock-'n'-Roll, Rock 'n' Roll, "Rock ’n’ Roll"]
 kurzbeschreibung: Der Rock'n'Roll-Tanz ist ein akrobatischer Paartanz aus den USA, der um 1955 aus dem Boogie-Woogie-Tanz hervorging und heute vor allem als Turniersport mit Sprungschritt und Würfen getanzt wird.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 kategorie: tanz
 bezeichnungEn: Acrobatic Rock'n'Roll

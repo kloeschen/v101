@@ -32,6 +32,17 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Rock'n'Roll & Boogie Woogie Weekend 2027: ein Satz und die
+Genres.** Gefunden am 2026-10-01 beim Umbiegen der Tanz-Links. Im Lead von
+`events/rocknroll-boogie-woogie-weekend-2027-01-15` steht „Rockabilly und
+Boogie-Woogie stehen schon im Titel" — Rockabilly steht aber nicht im Titel
+(„Rock'n'Roll & Boogie Woogie Weekend 2027"). Und `genres:
+[rockabilly, boogie-woogie]` verweist auf den Klavierstil, während der Titel
+bei einem Tanzwochenende mit Tanzkursen eher den Tanz meint. Der Link im
+Satz zeigt seit dem 2026-10-01 auf den Tanz. Zu entscheiden: Satz
+umformulieren (gegen die Quelle prüfen, was im Titel und was im Programm
+steht) und ob `boogie-woogie` in `genres` bleibt.
+
 `frei` **Linz, DJ Daddy C im Gasthaus Keferfeld: 2 Termine anlegen (06.11.2026, 05.12.2026).**
 Gesehen am 2026-10-01 auf https://boogie.at/?page=1 und ?page=2 (Herkunft:
 Suchlauf 2026-10-01). Dort steht: „November Jive Night", Fr., 06.11.2026,
@@ -321,49 +332,6 @@ Deshalb zusätzlich zählen: Lexikon-Einträge pro Woche, die Liegezeit vom
 Entwurf bis zur Freigabe und wie viele Inhalts-PRs gleichzeitig auf Markus
 warten. Staut es sich dort, ist der dritte Lauf der erste, der wieder
 wegfällt.
-
-**Tanzeinträge nachziehen — sobald `rocknroll-tanz`,
-`boogie-woogie-tanz` und `jive` freigegeben sind.** Angelegt als Entwürfe
-am 2026-09-30. Drei Dinge, die bis dahin nicht gehen, weil ein
-freigegebener Eintrag nicht auf einen Entwurf verlinken darf
-(`link-auf-entwurf`): (1) im Abgrenzungsabschnitt von `lexikon/rocknroll`
-auf `/lexikon/rocknroll-tanz/` verlinken; (2) den Abschnitt „Boogie-Woogie
-als Tanz“ in `lexikon/boogie-woogie` auf einen Verweis auf
-`/lexikon/boogie-woogie-tanz/` kürzen — erst dann, sonst verliert die
-öffentliche Seite Inhalt ohne öffentlichen Ersatz; (3) „Jump & Jive“: Nach
-der Freigabe von `jive` verlinkt der Autolink „Jive“ in den
-Record-Hop-Terminen (Alte Feuerwache, Rathaus Friedrichshagen) auf den
-Tanz, obwohl dort die Musikangabe eines DJs steht. Vor der Freigabe
-prüfen, ob der Autolink die Stellen trifft, und sie dann von Hand
-entlinken oder umformulieren. Zusammen mit dem folgenden Posten erledigen.
-**Nachgewiesen am 2026-09-30** (simulierte Freigabe im Worktree): Der
-Freigabelauf selbst setzt beim Autolink `[Jive](/lexikon/jive/)` in vier
-Terminen (`record-hop-alte-feuerwache-2026-09-25`,
-`record-hop-rathaus-friedrichshagen-2026-10-18`, `-11-08`, `-12-06`). Punkt
-(3) muss deshalb **vor** der Freigabe von `jive` gelöst sein, nicht danach.
-**Gelöst am 2026-10-01** (Entscheidung Markus): „jive" steht auf
-`NUR_VON_HAND`. Nachmessung auf dem Stand vom 2026-10-01: 7 Treffer, davon
-6 falsch (dazu kamen Killer Dillers und „Jive-Talk" beim Jump Blues). Nach
-der Freigabe bleibt von Hand zu tun: in `lexikon/lindy-hop` „Jive" auf
-`/lexikon/jive/` verlinken — die einzige Stelle, die den Tanz meint. Die
-Termine („Jump & Jive", „Rhythm & Blues und Jive") und „Jive-Talk" bleiben
-unverlinkt. Die Prüfkette selbst besteht die Tanz-Freigabe.
-
-**Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
-Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen
-aber den Tanz. Sie sind geschützt und ändern sich nicht von selbst.
-`lexikon/petticoat` und `artikel/petticoat-reifrock-unterrock`
-(„Rock-'n'-Roll-Tanzes"), `lexikon/lindy-hop` (Boogie-Woogie und
-akrobatischer Rock'n'Roll als Nachfolgetänze, zwei Links),
-`lexikon/boogie-woogie` („World Rock'n'Roll Confederation"),
-`events/bella-italia-perchtoldsdorf-2026-09-11` („Boogie-Woogie-Club"),
-`events/rocknroll-boogie-woogie-weekend-2027-01-15` (Tanzwochenende, zwei
-Links), `regionen/niederoesterreich` („Boogie- und Rock-'n'-Roll-Abende"
-der Tanzszene). Mehrdeutig und bewusst beim Musikeintrag belassen: die
-Festivalnamen Ganderkesee und Walldorf, `regionen/niedersachsen`,
-`locations/asb-bahnhof-barsinghausen`, der Boogie-Woogie-Link der
-Rockabilly Convention. Einfach als `frei`-Posten nach oben ziehen, wenn
-die Bedingung erfüllt ist.
 
 **Suchlauf auswerten — ab dem 2026-10-21.** Seit dem 2026-09-23 füllt ein
 Suchlauf die Warteschlange auf, seit dem 2026-09-29 dreimal die Woche und

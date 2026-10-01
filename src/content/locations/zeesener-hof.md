@@ -10,7 +10,7 @@ typ: sonstiges
 adresse:
   strasse: Karl-Liebknecht-Straße 106
   plz: "15711"
-  ort: Königs Wusterhausen
+  ort: Zeesen
   land: DE
 region: brandenburg
 links:
@@ -22,8 +22,12 @@ redaktionsnotiz: >-
   "Karl-Liebknecht-Strasse 106-109", in der Fusszeile "Karl-Liebknecht-Str.
   106, 15711 Zeesen"; Rockin' Wildcat schreibt "Karl-Liebknecht-Str. 106,
   15711 Zeesen (bei Koenigs Wusterhausen)". `strasse` folgt dem
-  Impressum (Hausnummer 106), `ort` dem amtlichen Gemeindenamen;
-  Zeesen ist laut Wikipedia seit 2003 Ortsteil von Koenigs Wusterhausen.
+  Impressum (Hausnummer 106). `ort` ist Zeesen, wie es Rockin' Wildcat
+  und die Fusszeile des Hauses schreiben (Entscheidung Markus
+  2026-10-01, nach der Ort-Abweichung des Gegenlesers in #113; zuvor
+  stand dort der Gemeindename Koenigs Wusterhausen aus dem Impressum).
+  Zeesen ist laut Wikipedia seit 2003 Ortsteil von Koenigs Wusterhausen;
+  so steht es auch im Text.
   TYP `sonstiges` wie bei den Gasthaeusern in Oberoesterreich: Die
   eigene Seite beschreibt Restaurant, Hotel und Party-Service, das Schema
   hat dafuer keinen Wert; `kneipe` waere eine Behauptung ohne Beleg.
