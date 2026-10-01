@@ -17,6 +17,24 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-01 — „Jive" nur von Hand verlinken
+
+**Entscheidung Markus:** „Jive" kommt wie „Swing" auf `NUR_VON_HAND`
+(`src/lib/links.ts`). Anlass war die Vorausschau vom 2026-09-30, gemessen
+durch eine simulierte Freigabe der drei Tanzeinträge im Wegwerf-Worktree
+(echter `freigeben.ts`, der den Autolink selbst ausführt): 7 Links, 6 davon
+falsch — fünfmal Musik („Jump & Jive" in vier Record-Hop-Terminen, „Rhythm
+& Blues und Jive" bei den Killer Dillers), einmal Slang („Jive-Talk" beim
+Jump Blues). Richtig wäre nur der Lindy Hop gewesen. Verworfen: die Stellen
+nach der Freigabe von Hand entlinken — der Freigabelauf setzt die Links
+selbst, sie wären also mit der Freigabe öffentlich gewesen.
+
+**Belege:** Drei neue Prüfungen in `test-links.ts` (Liste, nicht verlinkt
+mit Petticoat als Gegenprobe, Handlink bleibt). Mutation „jive" von der
+Liste genommen → genau zwei davon fallen; zeichengenau zurückgebaut.
+Nachmessung nach der Änderung: dieselbe simulierte Freigabe setzt keinen
+Jive-Link mehr.
+
 ## 2026-09-30 — Weiterleitungstest vertrug keine Freigabe
 
 **Fund:** Der Freigeben-Workflow für Gingham, Hahnentritt, Nadelstreifen

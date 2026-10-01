@@ -265,6 +265,17 @@ const registry = buildRegistry([
   gleich("und das Wort ist dadurch nicht mehrdeutig", [...reg.mehrdeutig.keys()], []);
 }
 
+/* „Jive" (2026-10-01) meint im Bestand meist die Musik („Jump & Jive")
+ * oder Slang („Jive-Talk"). Gegenprobe wie bei Swing: der Petticoat im
+ * selben Satz wird verlinkt, ein Handlink auf den Tanz bleibt stehen. */
+{
+  const reg = buildRegistry([lex("jive", "Jive"), lex("petticoat", "Petticoat")]);
+  pruefe("„jive\" steht auf der Liste", NUR_VON_HAND.has("jive"));
+  gleich("Jive wird nicht verlinkt, der Petticoat daneben schon", autolink("Jump & Jive im Petticoat, dazu Jive-Talk.", reg).verlinkt, ["petticoat"]);
+  const hand = autolink("Den [Jive](/lexikon/jive/) tanzen, zu Jump & Jive.", reg);
+  pruefe("ein Handlink auf den Jive bleibt stehen", hand.markdown === "Den [Jive](/lexikon/jive/) tanzen, zu Jump & Jive.", hand.markdown);
+}
+
 {
   const gross = buildRegistry([lex("boogie-woogie", "Boogie-Woogie"), lex("boogie-woogie-tanz", "Boogie-Woogie-Tanz", { aliases: ["boogie-woogie"] })]);
   gleich("Mehrdeutigkeit unabhängig von Groß-/Kleinschreibung", [...gross.mehrdeutig.keys()], ["boogie-woogie"]);
