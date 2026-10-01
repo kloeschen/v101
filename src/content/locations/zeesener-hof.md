@@ -2,7 +2,7 @@
 name: Zeesener Hof
 aliases: [Zeesener Gasthof, Zeesenerhof, Zeesener Hof Königs Wusterhausen]
 kurzbeschreibung: Der Zeesener Hof in der Karl-Liebknecht-Straße in Zeesen, einem Ortsteil von Königs Wusterhausen in Brandenburg, ist ein Gasthof mit Restaurant, Zimmern und Saal für Feiern, in dem sonntags Record Hops stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

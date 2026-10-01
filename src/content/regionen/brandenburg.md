@@ -2,7 +2,7 @@
 name: Brandenburg
 aliases: [Land Brandenburg]
 kurzbeschreibung: Brandenburg ist ein Land im Nordosten Deutschlands, das Berlin umschließt; für die Szene liegen hier einzelne Konzerte und Tanznachmittage im Umland, die der Berliner Gig Guide mitführt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

@@ -2,7 +2,7 @@
 name: Klubhaus Ludwigsfelde
 aliases: [Kulturhaus Arthur Ladwig, Klubhaus Ludwigsfelde Lounge]
 kurzbeschreibung: Das Klubhaus Ludwigsfelde in der Theodor-Fontane-Straße ist ein 1959 als Kulturhaus eröffnetes städtisches Veranstaltungshaus südlich von Berlin, mit großem Saal und einer kleineren Lounge für Konzerte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

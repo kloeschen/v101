@@ -2,7 +2,7 @@
 name: Pin-up
 aliases: [Pin-up-Girl]
 kurzbeschreibung: Ein Pin-up ist ein Bild einer erotisch anziehenden Person, meist einer Frau, das zum Anheften an die Wand gedacht ist — gemalt, gezeichnet oder fotografiert —, und zugleich die Bezeichnung für das Modell, das dafür posiert.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus
