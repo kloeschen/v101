@@ -1,0 +1,129 @@
+cluster,relevanz,treffer,frage
+bands-festivals,core,16,Welche deutsche Band spielt Rockabilly?
+bands-festivals,core,10,Welche Rockabilly-Bands sind aktuell aktiv?
+bands-festivals,core,2,Gibt es 2026 ein Rockabilly-Festival in Deutschland?
+bands-festivals,core,2,Wann findet die Rockabilly Convention 2026 statt?
+bands-festivals,core,1,Welche Rockabilly-Bands gibt es in Bayern?
+bands-festivals,core,1,Welche Rockabilly-Festivals gibt es?
+bands-festivals,adjacent,1,Gibt es ein 50-er Jahre-Festival?
+bands-festivals,core,1,Gibt es in Essen einen Rockabilly-Shop?
+frisur,core,8,Was heißt Pompadour?
+frisur,core,4,Wie sieht ein Pompadour aus?
+frisur,core,2,Wie nennt man die Rockabilly-Frisur?
+frisur,core,2,Wie style ich meine Haare mit Pompadour-Frisur?
+frisur,core,1,Was ist eine Rockabilly-Frisur?
+frisur,adjacent,1,Welche Frisur trug man in den 50er Jahren?
+frisur,adjacent,1,Wie nennt man Elvis Frisur?
+frisur,core,1,Wie sieht eine Pompadour-Frisur bei Männern aus?
+fuenfziger-allgemein,adjacent,2,Was war typisches Essen in den 50er Jahren?
+fuenfziger-allgemein,adjacent,2,Was ist typisch für die 50er Jahre?
+fuenfziger-allgemein,adjacent,1,Welche Verhaltensregeln für Frauen in den 1950er Jahren gelten?
+fuenfziger-allgemein,adjacent,1,Was durften Frauen 1950 nicht?
+fuenfziger-allgemein,adjacent,1,Was gehört zu einer 50er Jahre Party?
+fuenfziger-allgemein,adjacent,1,Was war typisches Essen in den 1950er Jahren?
+fuenfziger-allgemein,adjacent,1,Was war in den 50er Jahren angesagt?
+petticoat-unterrock,core,7,Wie trägt man einen Petticoat richtig?
+petticoat-unterrock,core,4,Was ist ein Petticoat Kleid?
+petticoat-unterrock,core,4,Darf der Petticoat unter dem Kleid hervorschauen?
+petticoat-unterrock,core,3,Was heißt Petticoat auf Deutsch?
+petticoat-unterrock,core,3,In welcher Zeit trug man Petticoat?
+petticoat-unterrock,core,2,In welchem Jahr war das Petticoat-Kleid beliebt?
+petticoat-unterrock,core,2,Welches Jahr ist das Petticoat?
+petticoat-unterrock,adjacent,2,Wie nennt man einen Unterrock jetzt?
+petticoat-unterrock,core,1,Wann war der Petticoat modern?
+petticoat-unterrock,core,1,Wann trug man Petticoat?
+petticoat-unterrock,adjacent,1,Für was braucht man einen Unterrock?
+petticoat-unterrock,core,1,Was bedeutet der Name Petticoat?
+petticoat-unterrock,core,1,Wie nennt man die Zeit mit Petticoat?
+pin-up,core,4,"Was bedeutet ""Pin-up""?"
+pin-up,core,3,Was sind Pin-up-Models?
+pin-up,core,3,Was sind Pin-up-Fotos?
+pin-up,core,2,"Was bedeutet ""Pin-up-Girl""?"
+pin-up,core,2,Welche Bedeutung hat ein Pin Up Girl Tattoo?
+pin-up,core,2,Was heißt Pin Up Girl?
+pin-up,core,1,Was ist ein Pin-up-Magazin?
+polka-dots,core,6,Was ist Dresscode Polka Dots?
+polka-dots,core,6,Warum sagt man Polka Dots?
+polka-dots,core,5,Was heißt Polka Dots auf Deutsch?
+polka-dots,core,5,Sind Polka Dots noch modern?
+polka-dots,core,4,Wann waren Polka Dots modern?
+polka-dots,core,2,Was versteht man unter Polka Dots?
+polka-dots,core,2,Sind Polka Dots im Trend?
+polka-dots,core,2,Wie kann ich Polka Dots kombinieren?
+polka-dots,core,2,Was ist ein Polka Dot Kleid?
+polka-dots,core,2,Sind Polka Dots noch in?
+polka-dots,core,1,Was sind Polka Dots in der Mode?
+polka-dots,core,1,Woher kommt der Polka Dot Trend?
+polka-dots,core,1,Was haben Polka Dots mit polka zu tun?
+polka-dots,core,1,"Wie heißt ""polka dot"" auf Deutsch?"
+psychobilly,core,4,Welche deutschen Psychobilly-Bands gibt es?
+psychobilly,core,1,Welche Psychobilly-Konzerte finden 2026 statt?
+psychobilly,core,1,Was ist der Unterschied zwischen Rockabilly und Psychobilly?
+psychobilly,core,1,Welche Musikrichtung ist Psychobilly?
+rockabilly-grundlagen,core,31,Was ist typisch für Rockabilly?
+rockabilly-grundlagen,core,16,Was heißt Rockabilly auf Deutsch?
+rockabilly-grundlagen,core,2,Was ist die Rockabilly-Szene?
+songs-musik,core,18,Was ist der Unterschied zwischen Rock'n'Roll und Rockabilly?
+songs-musik,core,17,Welche bekannten Rockabilly-Songs gibt es?
+songs-musik,core,13,Welche Musikrichtung ist Rockabilly?
+songs-musik,core,8,Welcher Jahrgang ist Rockabilly?
+songs-musik,adjacent,1,Wie erkennt man rock 'n' Roll?
+songs-musik,adjacent,1,Was heißt Rock 'n Roll auf Deutsch?
+songs-musik,adjacent,1,Welche sind die bekanntesten Oldies?
+songs-musik,core,1,Ist Rockabilly 70er Jahre?
+songs-musik,adjacent,1,Wie hieß der Kontrabass früher?
+songs-musik,adjacent,1,Was ist das besondere am Kontrabass?
+stil-kleidung,core,23,Welcher Rock gehört zur Rockabilly-Szene?
+stil-kleidung,adjacent,6,Was trug die Frau in den 50er Jahren?
+stil-kleidung,core,5,Was sollte man im Rockabilly-Stil anziehen?
+stil-kleidung,core,3,Was ist ein Rockabilly-Style?
+stil-kleidung,core,3,Was ist ein Rockabilly Look?
+stil-kleidung,adjacent,2,Welche Mode war typisch für die 50er Jahre?
+stil-kleidung,adjacent,2,Wie heißt der Stil der 50er Jahre?
+stil-kleidung,adjacent,2,Was trug man in den 50er Jahren?
+stil-kleidung,adjacent,1,Was zieht man zum Rock 'n' Roll an?
+stil-kleidung,adjacent,1,Welche Schuhe hat man in den 50er Jahren getragen?
+stil-kleidung,adjacent,1,Was hatten Männer in den 50er Jahren an?
+stil-kleidung,adjacent,1,Was trug man in den 60er Jahren als Frau?
+stil-kleidung,adjacent,1,Wie haben sich Frauen 1950 gekleidet?
+stil-kleidung,adjacent,1,Welche Farben waren typisch für die 50er Jahre?
+tanz,core,2,Wie heißt der Rockabilly Tanz?
+tanz,adjacent,1,Was ist der Unterschied zwischen Boogie und Jive?
+tanz,adjacent,1,Was heißt Boogie auf Deutsch?
+tanz,adjacent,1,Was für ein Tanz ist Lindy Hop?
+tanz,adjacent,1,Wie tanzt man Boogie?
+tanz,adjacent,1,Wie hieß ein DDR-Tanz der 1960er Jahre?
+teddy-boys,core,4,"Was bedeutet ""Teddy Boy""?"
+teddy-boys,core,2,Wer waren die Teddy Boys?
+vintage,core,15,Ist Vintage noch modern?
+vintage,core,14,Ab welchem Alter gilt Kleidung als Vintage?
+vintage,core,13,Wie erkennt man Vintage-Kleidung?
+vintage,core,12,Was heißt Vintage auf Deutsch übersetzt?
+vintage,core,11,Wie zieht man sich Vintage an?
+vintage,core,10,Was ist der Unterschied zwischen Retro und Vintage?
+vintage,core,8,Wann darf man Vintage sagen?
+vintage,core,8,Sind Vintage Klamotten teuer?
+vintage,core,6,Was bedeutet Dresscode Vintage?
+vintage,core,5,Wie sieht ein Vintage-Stil aus?
+vintage,core,4,Was ist der Unterschied zwischen Vintage und Secondhand?
+vintage,core,4,Warum ist Vintage so teuer?
+vintage,core,4,Was ist typisch Vintage?
+vintage,core,3,Welche Marken sind besonders bekannt für Vintage-Mode?
+vintage,core,3,Sind Vintage Klamotten original?
+vintage,core,3,Was ist der Vintage-Kleidungsstil?
+vintage,core,3,"Wie alt muss etwas sein, damit es Vintage ist?"
+vintage,core,2,Welche sind die besten Vintage-Online-Shops?
+vintage,core,2,Was sind Vintage Jeans?
+vintage,core,2,Was ist der Unterschied zwischen Vinted und Vintage?
+vintage,core,2,Was ist der Vintage Look?
+vintage,core,1,Welche Ideen gibt es für eine Vintage-Hochzeit?
+vintage,core,1,Gibt es ein anderes Wort für Vintage?
+vintage,core,1,Was heißt Vintage look auf Deutsch?
+vintage,core,1,"Was bedeutet ""vintage"" laut Duden?"
+vintage,core,1,Welche Jahre sind Vintage?
+vintage,core,1,Ist Vintage gleich Second Hand?
+vintage,core,1,Was bedeutet bei Kleidung Vintage?
+vintage,core,1,Was ist ein Vintage-Kleid?
+vintage,adjacent,1,Wann gilt etwas als Retro?
+vintage,core,1,Wann ist etwas Vintage-Kleidung?
+vintage,core,1,Was sind Vintage-Marken?

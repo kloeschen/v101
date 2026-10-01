@@ -17,6 +17,32 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-01 — Erster PAA-Lauf: Vintage fehlt, Vorrat umgestellt
+
+**Anlass:** Markus hat einen PAA-Lauf verlangt (Rockabilly, Deutschland/de,
+2 $), dann Vintage, Polka Dots und Petticoat dazu, als Inspiration für
+Inhalte. 95 Abfragen, 0,31 $. Ablage samt Auswertung:
+`docs/daten/paa-rockabilly-2026-10-01/`.
+
+**Funde mit Folgen:** (1) Der größte Fragenblock ohne Lexikoneintrag ist
+„Vintage" (32 Fragen), daraus wurde ein `frei`-Posten. (2) Im
+Lexikon-Vorrat stehen Frisuren (Pompadour) und Rock- und Kleidformen
+(Tellerrock) jetzt oben: „Welcher Rock gehört zur Rockabilly-Szene?" ist
+mit 23 Treffern die meistgestellte Frage zum Look. (3) Die Artikel sind
+nur vorgeschlagen, nicht freigegeben (`mensch`-Posten). Säulen und
+Pillars sind Sache der Themenkarte.
+
+**Gelernt für weitere Läufe:** Der Skill macht nur beim Einlesen eines
+Ergebnisses neue Seeds aus den Kernfragen. Ein Pilotlauf mit
+`--max-generation 0` legt deshalb keine nach, das muss man von Hand tun.
+„Polkadot" ist auch eine Kryptowährung, „Pin" die Geheimzahl, „Teddy"
+das Stofftier: Die Relevanzregeln in `paa.config.json` fangen das ab.
+Trendfragen („noch modern?") ergeben keinen belegbaren Text. Und
+`treffer` ist kein Suchvolumen, sondern zählt, wie oft eine Frage in den
+abgerufenen Suchergebnissen auftauchte.
+
+---
+
 ## 2026-10-01 — PAA-Recherche: Skill im Konto, Abfragen nur auf Zuruf
 
 **Anlass:** Markus bringt den Skill `paa-research` (DataForSEO SERP-API,

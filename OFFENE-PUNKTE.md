@@ -32,6 +32,37 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Artikel aus der PAA-Recherche: auswählen und Säulen zuordnen.**
+Die PAA-Recherche vom 2026-10-01 (95 Abfragen, 0,31 $) hat acht
+Artikelvorschläge ergeben, mit Typ, Säule, Hauptentität und den Fragen, die
+sie beantworten (`docs/daten/paa-rockabilly-2026-10-01/README.md`,
+Abschnitt „Artikelvorschläge"). Keiner ist angelegt. Zu entscheiden:
+(1) welche Vorschläge `frei` werden — ohne Voraussetzung baubar sind A3
+„Petticoat tragen" (howto) und A4 „Rockabilly oder Rock'n'Roll?"
+(vergleich), A1 und A2 hängen am Lexikon Vintage; (2) ob A6 „Der
+Rockabilly-Look" der Pillar der Säule `mode` wird (Themenkarte);
+(3) ob A8 „Rockabilly und Politik" überhaupt entsteht — die verwandten
+Suchen „Rockabilly politische einstellung" und „Psychobilly rechts" zeigen
+Interesse, das Thema ist heikel; (4) ob Lexikoneinträge FAQs bekommen
+(Polka Dots, Pin-up, Petticoat, Rockabilly; das Schema erlaubt es, bisher
+hat keiner eine). Die Fragen sind Themenideen, keine Quelle.
+
+`frei` **Lexikon: Vintage.** Der größte Fragenblock der PAA-Recherche vom
+2026-10-01 ohne eigenen Eintrag: 32 Fragen, darunter „Ab welchem Alter gilt
+Kleidung als Vintage?" (14 Treffer), „Wie erkennt man Vintage-Kleidung?"
+(13), „Was heißt Vintage auf Deutsch übersetzt?" (12), „Was ist der
+Unterschied zwischen Retro und Vintage?" (10)
+(`docs/daten/paa-rockabilly-2026-10-01/fragen.csv`). Der Begriff kommt in
+23 Texten des Registers vor (48 Stellen). Quellen öffnen (Duden,
+DWDS, Wikipedia de/en, ein Nachschlagewerk zur Mode). Die Altersgrenze
+(„20 Jahre", „vor 1980" …) schwankt vermutlich zwischen den Quellen: Die
+Widersprüche gehören in den Text (Regel 5), es wird keine Zahl ausgewählt.
+`abgrenzung` gegen Retro (neu im alten Stil), Secondhand (gebraucht,
+gleich welchen Alters), Antiquität, Vintage beim Wein (Jahrgang) und
+Shabby Chic. Duplikatprüfung: Bisher hat kein Eintrag „Vintage" als Name
+oder Alias. Danach `npm run autolink` — Vorsicht, „Vintage" kommt sehr
+oft vor; die Drift-Prüfung zeigt, ob das tragbar ist.
+
 `mensch` **Rock'n'Roll & Boogie Woogie Weekend 2027: ein Satz und die
 Genres.** Gefunden am 2026-10-01 beim Umbiegen der Tanz-Links. Im Lead von
 `events/rocknroll-boogie-woogie-weekend-2027-01-15` steht „Rockabilly und
@@ -216,6 +247,15 @@ Ablauf in `docs/ablaeufe/termin-recherche.md`, Schritt 1a). Ein
 nachgezogenes Bündel wird hier gestrichen. Ist der Vorrat leer, wählt der
 Mensch die nächsten Begriffe aus.
 Je Bündel gleiche Kategorie, Abgrenzung in Klammern:
+Reihenfolge am 2026-10-01 nach der PAA-Recherche umgestellt: Frisuren und
+Rock- und Kleidformen nach oben. „Was heißt Pompadour?" und „Wie sieht ein
+Pompadour aus?" kamen auf zusammen 12 Treffer, „Welcher Rock gehört zur
+Rockabilly-Szene?" auf 23 — die meistgestellte Frage zum Look
+(`docs/daten/paa-rockabilly-2026-10-01/`).
+- *Frisuren:* Pompadour (Quiff, Tolle, die Tasche), Ducktail, Flat Top
+  (Crew Cut, Bürstenschnitt).
+- *Rock- und Kleidformen:* Tellerrock (Glockenrock, Petticoat), Etuikleid
+  (Bleistiftrock, Wiggle Dress), Neckholder (Racerback). Alte Pfade vorhanden.
 - *Genres:* Rhythm and Blues (heutiges R&B), Hillbilly (Country,
   Schimpfwort, Bluegrass). Swing ist seit dem 2026-09-29 ein Entwurf
   (`lexikon/swing`).
@@ -223,12 +263,8 @@ Je Bündel gleiche Kategorie, Abgrenzung in Klammern:
   Stiletto (Kitten Heel, das Messer), Keilabsatz (Plateausohle). Alte
   Pfade: `/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
   Unterkategorie `…/saddle-shoes`.
-- *Rock- und Kleidformen:* Tellerrock (Glockenrock, Petticoat), Etuikleid
-  (Bleistiftrock, Wiggle Dress), Neckholder (Racerback). Alte Pfade vorhanden.
 - *Wäsche:* Corsage (Korsett, Bustier, die Ansteckblume), Hüfthalter
   (vorher gegen die Aliases von `strapsguertel` prüfen), Nahtstrümpfe.
-- *Frisuren:* Pompadour (Quiff, Tolle, die Tasche), Ducktail, Flat Top
-  (Crew Cut, Bürstenschnitt).
 - *Instrument und Klang:* Slap-Bass (Slap am E-Bass; gegen `kontrabass`
   abgrenzen, seit dem 2026-09-29 ein Entwurf), Slapback-Echo (Hall, Tape
   Delay).
