@@ -32,33 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Berlin, Rockin' Wildcat: 6 Termine anlegen (23.10.2026, 26.10.2026, 30.10.2026, 06.11.2026, 05.12.2026, 27.12.2026).**
-Gesehen am 2026-10-01 auf https://www.rockin-wildcat.com/rwc/guide
-(Herkunft: Suchlauf 2026-10-01). Dort steht, je Detailseite (sichtbare
-Angaben): Killer Dillers, Fr., 23. Oktober 2026, 20:00, Kosten 12,00 €,
-KulturMarktHalle, Hanns-Eisler-Str. 93, Berlin-Prenzlauer Berg, dazu
-Record Hop mit DJ Capt'n K. (/rwc/events/killer-dillers-5); Kitty, Daisy
-& Lewis, Mo., 26. Oktober 2026, 20:00, Huxley's Neue Welt, Hasenheide
-107–113, Berlin-Neukölln (/rwc/events/kitty-daisy-lewis-2); Zombina and
-the Skeletons, Thee Flanders, The Real Halloween Deal, Fr., 30. Oktober
-2026, 20:00, Wild at Heart, Wiener Str. 20, Berlin-Kreuzberg
-(/rwc/events/zombina-and-the-skeletons-thee-flanders-the-real-halloween-deal);
-Grumpynators, Fr., 6. November 2026, 20:00, Wild at Heart
-(/rwc/events/grumpynators); Guana Batz, Sa., 5. Dezember 2026, 19:00,
-Lido (/rwc/events/guana-batz-3); Boppin' B, So., 27. Dezember 2026,
-19:00, Kosten 25,00 €, Privatclub, Skalitzer Str. 85–86, Berlin-Kreuzberg
-(/rwc/events/boppin-b-5). Beim Bauen: die drei Leseregeln für Rockin'
-Wildcat (sichtbare Uhrzeit, sichtbares Feld „Kosten", kein `ende`) und
-jede Seite des Hauses gegenlesen (Falle „Rockin' Wildcat gegen das
-Haus"). Spielorte außer Lido sind neu (Wild at Heart, Huxley's,
-KulturMarktHalle, Privatclub), Adresse nur aus einer Quelle, die sie
-nennt. Boppin' B hat eine Bandseite (`bands/boppin-b`, `lineupBands`),
-die übrigen Bands gehören in `lineupWeitere`. Zeitzone: 23.10. `+02:00`,
-alle übrigen `+01:00` (Sommerzeit endet am 25.10.). Bewusst nicht im
-Posten: Reverend Peyton's Big Damn Band (22.10., Genres laut Gig Guide
-Blues/Country/Roots) und Monsters (27.10., Garage/Trash) — kein Genre mit
-Lexikoneintrag.
-
 `frei` **Brandenburg, Rockin' Wildcat: 3 Termine anlegen (24.10.2026, 25.10.2026, 22.11.2026).**
 Gesehen am 2026-10-01 auf https://www.rockin-wildcat.com/rwc/guide
 (Herkunft: Suchlauf 2026-10-01). Dort steht: Swamp Shakers, Sa., 24.
