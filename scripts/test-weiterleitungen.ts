@@ -170,11 +170,13 @@ gleich("echte Daten, alle Einträge als freigegeben gedacht: die erwarteten auto
   "/c/pomade → /lexikon/pomade/",
   "/c/strapsguertel → /lexikon/strapsguertel/",
   "/c/taillenmieder → /lexikon/taillenmieder/",
+  "/thema/burlesque → /lexikon/burlesque/",
   "/thema/gingham → /lexikon/gingham/",
   "/thema/hahnentritt → /lexikon/hahnentritt/",
   "/thema/houndstooth → /lexikon/hahnentritt/",
   "/thema/nadelstreifen → /lexikon/nadelstreifen/",
   "/thema/pencil → /lexikon/bleistiftrock/",
+  "/thema/pin-up → /lexikon/pin-up/",
   "/thema/polka-dots → /lexikon/polka-dots/",
   "/thema/rockabilly → /lexikon/rockabilly/",
 ]);

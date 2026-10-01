@@ -136,25 +136,6 @@ deutsch-niederländisches Boogie-Woogie-Trio. Beim Bauen: Vorlage
 `events/boppin-b-asb-bahnhof-2026-10-03` (gleicher Ort). Reservix ist
 `aggregator`. Band in `lineupWeitere`. Zeitzone `+01:00`.
 
-`frei` **Lexikon, Bündel Bildwelt: Pin-up, Burlesque.** Zwei Einträge in
-einem PR. Beide Wörter waren Themenseiten der früheren Domain
-(`/thema/pin-up`, `/thema/burlesque`); mit der Freigabe leiten diese alten
-Pfade automatisch auf die Einträge weiter (`schreibe-weiterleitungen.ts`,
-gleicher Slug). Einzelheiten:
-
-- **Pin-up.** Slug `pin-up`, `kategorie: szene` (Bildgattung und Stil, auf
-den sich die Szene bezieht; trägt keine der Quellen den Begriff als
-Szene, im PR begründen). `abgrenzung`: das Modell gegen die Illustration
-(Elvgren, Vargas) und gegen Glamourfotografie. Quellen öffnen: Britannica,
-DWDS („Pin-up-Girl"), ein Museum mit Pin-up-Sammlung.
-- **Burlesque.** Slug `burlesque`. `abgrenzung`: die Burleske als
-literarische und musikalische Gattung, Striptease, Varieté. „Burleske"
-darf **kein** Alias werden — es ist eine andere Sache mit eigenem Wort;
-der Autolink würde sonst Texte über die Gattung falsch verlinken. Quellen:
-Britannica („burlesque show"), DWDS.
-
-Danach `npm run autolink`.
-
 `frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
 (unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
 britische Jugendkultur der 1950er, auf die sich die Rockabilly-Szene in
