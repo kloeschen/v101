@@ -40,8 +40,9 @@ API-Antworten enthalten komplette Google-Ergebnisseiten, also Snippets
 fremder Seiten und KI-Übersichtstexte. In einem öffentlichen Repo wären
 sie weiterverbreitet. Sie liegen deshalb in `kloeschen/v101alpha` (privat),
 Branch `daten/paa`. Im öffentlichen xlsx sind diese Texte entfernt. Der
-erste Commit dieses Branches (`docs/daten/paa-rockabilly-2026-10-01/`)
-enthält das vollständige xlsx noch in der Historie. **Verworfen:**
+erste Commit des Arbeitszweigs enthielt noch das vollständige xlsx. Der PR
+wird deshalb per Squash gemergt, damit es nicht in die Historie von `main`
+gelangt; den Zweig danach löschen. **Verworfen:**
 gepackt ins öffentliche Repo, nur als Download an Markus.
 
 **Lexikoneinträge bekommen FAQs (Entscheidung Markus).** Das Feld kommt
