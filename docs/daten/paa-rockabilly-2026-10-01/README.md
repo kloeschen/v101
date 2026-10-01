@@ -54,7 +54,8 @@ darauf, wie zentral die Frage im Themenfeld ist.
 
 Aus den verwandten Suchen ein Befund ohne Frage: **„Rockabilly politische
 einstellung" und „Psychobilly rechts".** Das Thema wird gesucht, und das
-Register hat dazu nichts. Heikel, deshalb Ermessensfrage (siehe unten).
+Register hat dazu nichts. Entschieden am 2026-10-01: Das bleibt so, das
+Register hält sich aus dem Thema heraus.
 
 ## Eingeplant
 
@@ -69,7 +70,12 @@ In `OFFENE-PUNKTE.md`, Stand 2026-10-01 nach Markus' Auswahl:
    und Rockabilly (Entscheidung: Lexikon bekommt FAQs).
 5. **A1 „Vintage, Retro oder Secondhand?"** unter „Später, mit
    Bedingung": Er kommt, sobald `lexikon/vintage` steht.
-6. `mensch` Pillar Mode (A6), Politik (A8), die übrigen Vorschläge.
+6. **A6 „Der Rockabilly-Look" wird Pillar der Säule `mode`** (Entscheidung
+   Markus). Er steht unter „Später, mit Bedingung" und kommt als Erster
+   nach oben, sobald die Warteschlange Platz hat.
+7. **A8 „Rockabilly und Politik" entfällt.** Das Register hält sich aus
+   dem Thema heraus (Entscheidung Markus).
+8. A2, A4, A5 und A7 stehen im Artikel-Vorrat zur Auswahl.
 
 ## Artikelvorschläge
 
@@ -85,7 +91,7 @@ Keiner ist angelegt.
 | A5 | Bekannte Rockabilly-Songs | liste | musik | `lexikon/rockabilly` | bekannte Songs (17) | Titel und Jahre belegen, **keine Songtexte** |
 | A6 | Der Rockabilly-Look: was dazugehört | pillar oder praxis | mode | — | Welcher Rock (23), Was anziehen (5), Look/Style (3+3), Dresscode Vintage (6), Dresscode Polka Dots (6), Wie zieht man sich Vintage an (11) | Tellerrock; ob Pillar, entscheidet die Themenkarte |
 | A7 | Rockabilly-Frisuren | liste | frisur | — | Rockabilly-Frisur (2+1), Pompadour (8+4+2+1), Elvis-Frisur | Lexikon Pompadour |
-| A8 | Rockabilly und Politik | report | szene | `lexikon/rockabilly` | verwandte Suchen „politische Einstellung", „Psychobilly rechts" | heikel; Quellenlage vorher prüfen |
+| A8 | ~~Rockabilly und Politik~~ | — | — | — | verwandte Suchen „politische Einstellung", „Psychobilly rechts" | **entfällt** (Entscheidung Markus: das Register hält sich heraus) |
 
 **FAQ statt Artikel:** Für Polka Dots (deutscher Name, Herkunft des Namens,
 Dresscode, kombinieren), Pin-up (Models, Fotos, Magazin), Petticoat

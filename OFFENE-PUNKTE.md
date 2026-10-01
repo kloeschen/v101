@@ -32,17 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **Artikel aus der PAA-Recherche: Pillar Mode und Politik.**
-Von den acht Vorschlägen der PAA-Recherche vom 2026-10-01
-(`docs/daten/paa-rockabilly-2026-10-01/README.md`, „Artikelvorschläge")
-sind am 2026-10-01 A3 und die Lexikon-FAQs auf `frei` gegangen, A1 wartet
-unter „Später, mit Bedingung" auf `lexikon/vintage`. Offen: (1) ob A6
-„Der Rockabilly-Look" der Pillar der Säule `mode` wird (Themenkarte);
-(2) ob A8 „Rockabilly und Politik" entsteht — die verwandten Suchen
-„Rockabilly politische einstellung" und „Psychobilly rechts" zeigen
-Interesse, das Thema ist heikel; (3) die übrigen Vorschläge A2, A4, A5,
-A7 — nicht abgelehnt, nur noch nicht gewählt.
-
 `frei` **Artikel: Petticoat tragen (howto, Säule `mode`).** Vorschlag A3
 der PAA-Recherche vom 2026-10-01. Beantwortet „Wie trägt man einen
 Petticoat richtig?" (7 Treffer), „Darf der Petticoat unter dem Kleid
@@ -292,6 +281,34 @@ Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
 `/thema/country` (meinte Landhausmode). Ob `/jahrzehnt/50s` einen
 Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
 würde „50er" sehr oft verlinken).
+
+**Pillar „Der Rockabilly-Look" (Säule `mode`) — als Erstes nach oben
+holen, sobald die Obergrenze Platz hat.** Entscheidung Markus, 2026-10-01:
+Vorschlag A6 der PAA-Recherche wird der Pillar der Säule `mode`
+(`typ: pillar`, Vorlage `src/content/artikel/_golden-example.md` und der
+Pillar `artikel/hot-rod-und-kustom-kulture`). Er beantwortet die
+meistgestellte Frage zum Look, „Welcher Rock gehört zur Rockabilly-Szene?"
+(23 Treffer), dazu „Was sollte man im Rockabilly-Stil anziehen?" (5),
+Rockabilly-Look/-Style (3+3), Dresscode Polka Dots (6), Dresscode Vintage
+(6), „Wie zieht man sich Vintage an?" (11)
+(`docs/daten/paa-rockabilly-2026-10-01/fragen.csv`). Spokes, die schon
+stehen oder geplant sind und per `gehoertZu` darunter gehören:
+`artikel/petticoat-reifrock-unterrock` (deren Redaktionsnotiz wartet
+darauf), A3 „Petticoat tragen". Verlinkt die Lexikoneinträge der Säule
+(Petticoat, Bleistiftrock, Polka Dots, Gingham, Creepers, Pin-up,
+Taillenmieder …). Hilfreich, aber keine Bedingung: Tellerrock und
+Pompadour aus dem Lexikon-Vorrat. Wartet nur, weil am 2026-10-01 zwölf
+von zwölf Posten `frei` sind. Ein Pillar beschreibt, er schreibt nichts
+vor: Was „dazugehört", wird über Quellen zur Szene belegt, nicht gesetzt.
+
+**Artikel-Vorrat aus der PAA-Recherche — Auswahl Markus.** Noch nicht
+gewählt, nicht abgelehnt (Einzelheiten in
+`docs/daten/paa-rockabilly-2026-10-01/README.md`): A2 „Vintage-Kleidung
+erkennen" (howto, `sammeln`, nach `lexikon/vintage`), A4 „Rockabilly oder
+Rock'n'Roll?" (vergleich, `musik`), A5 „Bekannte Rockabilly-Songs" (liste,
+`musik`, keine Songtexte), A7 „Rockabilly-Frisuren" (liste, `frisur`,
+nach Pompadour). Ein Lauf baut davon nichts, solange Markus keinen auf
+`frei` setzt.
 
 **Artikel A1 „Vintage, Retro oder Secondhand?" — sobald
 `lexikon/vintage` als Entwurf steht.** Gewählt von Markus am 2026-10-01

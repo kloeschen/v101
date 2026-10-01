@@ -17,6 +17,22 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-01 — Kein Politik-Artikel; Rockabilly-Look wird Pillar Mode
+
+**Politik: Das Register hält sich heraus (Entscheidung Markus).** Die
+PAA-Recherche fand die verwandten Suchen „Rockabilly politische
+einstellung" und „Psychobilly rechts". Ein Artikel dazu (Vorschlag A8)
+entsteht nicht. Das gilt auch für künftige Vorschläge aus Suchdaten: Das
+Interesse am Thema allein ist kein Auftrag.
+
+**Pillar der Säule `mode`: „Der Rockabilly-Look" (Entscheidung Markus).**
+Damit ist die Frage beantwortet, die beim ersten Artikel
+(`petticoat-reifrock-unterrock`, bewusst `vergleich` statt `pillar`) offen
+blieb. Der Pillar steht unter „Später, mit Bedingung", weil die
+Warteschlange voll ist, und kommt als Erster nach oben, sobald Platz ist.
+
+---
+
 ## 2026-10-01 — PAA-Folgen: Rohdaten privat, Lexikon bekommt FAQs, Weekend korrigiert
 
 **Rohdaten nicht ins öffentliche Repo (Entscheidung Markus).** Die
