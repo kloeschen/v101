@@ -2,9 +2,9 @@
 name: Hahnentritt
 aliases: [Hahnentrittmuster, Houndstooth]
 kurzbeschreibung: Hahnentritt ist ein zweifarbiges Stoffmuster aus kleinen Karos, deren Ecken in geraden Zacken auslaufen und an die Fußspur eines Hahns erinnern; klassisch ist es schwarz-weiß und gewebt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 kategorie: mode
 bezeichnungEn: Houndstooth

@@ -2,9 +2,9 @@
 name: Gingham
 aliases: [Gingan, Vichy-Muster]
 kurzbeschreibung: Gingham ist ein leichter bis mittelschwerer Baumwollstoff in Leinwandbindung, heute meist mit einem Karo aus Weiß und einer Farbe; der Name steht auch für das Karo selbst, das im Deutschen oft ebenso Vichy heißt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 kategorie: mode
 bezeichnungEn: Gingham

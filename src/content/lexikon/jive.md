@@ -1,9 +1,9 @@
 ---
 name: Jive
 kurzbeschreibung: Jive ist ein Gesellschafts- und Turniertanz aus der Gruppe der lateinamerikanischen Tänze, der auf die Swing-Tänze der 1930er und 1940er Jahre zurückgeht und von englischen Tanzlehrern zu einer eigenen Form geglättet wurde.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 kategorie: tanz
 definition: Jive ist ein Gesellschafts- und Turniertanz im Viervierteltakt, der zu den fünf lateinamerikanischen Tänzen des Welttanzprogramms zählt und auf afroamerikanische Swing-Tänze zurückgeht.

@@ -2,9 +2,9 @@
 name: Boogie Mix im Haslinger Hof, Dezember 2026
 aliases: [Boogie Mix Dezember 2026, BOOGIE MIX Haslinger Hof 11.12.2026, BoogieMix Haslinger Hof Dezember 2026]
 kurzbeschreibung: Tanzabend mit Boogie Woogie, Rock'n'Roll, Rockabilly und Swing von DJ Rockin' Daddy am Freitag, 11. Dezember 2026, ab 19 Uhr im GartenStadl des Haslinger Hofs in Kirchham; Eintritt 5 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 typ: tanzabend
 reihe: boogie-mix-haslinger-hof

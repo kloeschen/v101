@@ -2,7 +2,7 @@
 name: Huxleys Neue Welt
 aliases: [Huxley's Neue Welt, Huxleys, Huxleys Berlin]
 kurzbeschreibung: Huxleys Neue Welt in der Hasenheide in Berlin-Neukölln ist eine historische Veranstaltungshalle am Volkspark Hasenheide, die heute als Konzert- und Eventhalle mit breitem Programm betrieben wird.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

@@ -2,9 +2,9 @@
 name: Boogie Mix im Haslinger Hof, Januar 2027
 aliases: [Boogie Mix Januar 2027, BOOGIE MIX Haslinger Hof 08.01.2027, BoogieMix Haslinger Hof Januar 2027]
 kurzbeschreibung: Tanzabend der Reihe Boogie Mix mit DJ Rockin' Daddy am Freitag, 8. Januar 2027, ab 19 Uhr im GartenStadl des Haslinger Hofs in Kirchham; Eintritt 5 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 typ: tanzabend
 reihe: boogie-mix-haslinger-hof

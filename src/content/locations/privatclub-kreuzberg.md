@@ -2,7 +2,7 @@
 name: Privatclub
 aliases: [Privatclub Berlin, Privatclub Kreuzberg]
 kurzbeschreibung: Der Privatclub in der Skalitzer Straße in Berlin-Kreuzberg ist ein Konzertclub der Milchmädchen Musikkultur GmbH mit wechselndem Programm, in dem auch Rock'n'Roll- und Rockabilly-Bands gastieren.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

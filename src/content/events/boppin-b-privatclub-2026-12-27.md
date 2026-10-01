@@ -2,7 +2,7 @@
 name: Boppin'B im Privatclub
 aliases: [Boppin' B Christmas is over Show, Boppin B Berlin 2026, Boppin'B Privatclub]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B als „Christmas is over Show" am Sonntag, 27. Dezember 2026, im Privatclub in Berlin-Kreuzberg.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

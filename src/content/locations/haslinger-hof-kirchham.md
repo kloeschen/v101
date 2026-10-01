@@ -2,9 +2,9 @@
 name: Haslinger Hof
 aliases: [Haslinger Hof Kirchham, Haslinger Hof Bad Füssing, Tanzhotel Haslinger Hof, Erlebnispark Haslinger Hof]
 kurzbeschreibung: Der Haslinger Hof ist ein Hotel mit Erlebnispark im Gemeindeteil Ed von Kirchham im Landkreis Passau, dessen Stadl täglich Tanzprogramm bieten, darunter einmal im Monat den Boogie Mix mit DJ Rockin' Daddy.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 typ: sonstiges
 adresse:
