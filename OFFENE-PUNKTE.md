@@ -356,9 +356,14 @@ entlinken oder umformulieren. Zusammen mit dem folgenden Posten erledigen.
 Freigabelauf selbst setzt beim Autolink `[Jive](/lexikon/jive/)` in vier
 Terminen (`record-hop-alte-feuerwache-2026-09-25`,
 `record-hop-rathaus-friedrichshagen-2026-10-18`, `-11-08`, `-12-06`). Punkt
-(3) muss deshalb **vor** der Freigabe von `jive` gelöst sein, nicht danach —
-etwa „jive" auf `NUR_VON_HAND` wie „swing" (Entscheidung Markus). Die
-Prüfkette selbst besteht die Tanz-Freigabe.
+(3) muss deshalb **vor** der Freigabe von `jive` gelöst sein, nicht danach.
+**Gelöst am 2026-10-01** (Entscheidung Markus): „jive" steht auf
+`NUR_VON_HAND`. Nachmessung auf dem Stand vom 2026-10-01: 7 Treffer, davon
+6 falsch (dazu kamen Killer Dillers und „Jive-Talk" beim Jump Blues). Nach
+der Freigabe bleibt von Hand zu tun: in `lexikon/lindy-hop` „Jive" auf
+`/lexikon/jive/` verlinken — die einzige Stelle, die den Tanz meint. Die
+Termine („Jump & Jive", „Rhythm & Blues und Jive") und „Jive-Talk" bleiben
+unverlinkt. Die Prüfkette selbst besteht die Tanz-Freigabe.
 
 **Neun Tanz-Links umbiegen — sobald beide Tanzeinträge freigegeben sind.**
 Gezählt am 2026-09-25: Diese Links zeigen auf einen Musikeintrag, meinen

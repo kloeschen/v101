@@ -310,11 +310,19 @@ function maskiere(s: string): string {
  * Tanzeintrag gibt, der das Wort mitträgt. Kommt einer, wird der Eintrag
  * hier überflüssig — die Regel oben greift dann von selbst.
  *
+ * „Jive" ist das zweite (2026-10-01, Entscheidung Markus): Bei einer
+ * simulierten Freigabe der Tanzeinträge hätte der Autolink das Wort
+ * siebenmal gesetzt, sechsmal falsch — fünfmal stand es für Musik („Jump &
+ * Jive" bei den Record Hops, „Rhythm & Blues und Jive" bei den Killer
+ * Dillers), einmal für Slang („Jive-Talk" beim Jump Blues). Nur der Lindy
+ * Hop meinte den Tanz. Anders als bei „Swing" hilft hier auch kein zweiter
+ * Eintrag: Ein Musikgenre „Jive" nennt keine der geöffneten Quellen.
+ *
  * Verglichen wird das ganze Wort in Kleinschreibung. Andere Formen desselben
  * Eintrags (Aliase) bleiben verlinkbar. Die richtigen Stellen verlinkt, wer
  * schreibt, von Hand; bestehende Links sind geschützt.
  */
-export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing"]);
+export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing", "jive"]);
 
 function baueBegriffe(eintraege: Map<string, EintragMeta>): {
   muster: BegriffMuster[];
