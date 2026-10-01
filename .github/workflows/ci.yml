@@ -28,6 +28,13 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # Seit dem 2026-09-29: `actions: read`, damit die Freigabeprüfung auf
+    # einem Freigabe-PR die freigegebenen Slugs aus dem Lauf lesen kann, der
+    # ihn geöffnet hat (scripts/_freigabelauf.ts). Mehr braucht die Kette
+    # nicht; alles andere bleibt ohne Recht.
+    permissions:
+      contents: read
+      actions: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -44,4 +51,9 @@ jobs:
       - run: npm ci
 
       - name: Prüfkette
+        env:
+          # Nur auf einem Zweig `freigabe/<Lauf-ID>` benutzt: Dann holt
+          # check-freigabe.ts mit `gh` die Slugs aus dem Artefakt dieses
+          # Laufs. Ohne Token bleibt die Prüfung dort rot wie bisher.
+          GH_TOKEN: ${{ github.token }}
         run: npm run verify:ci
