@@ -15,7 +15,7 @@ eintritt: beziffert
 veranstalter: Pullman City Westernstadt
 veranstalterUrl: https://www.pullmancity.de
 lineupWeitere: [The Scotty Bullock Trio]
-genres: [rockabilly, boogie-woogie]
+genres: [rocknroll]
 preise:
   - bezeichnung: Tageskarte Erwachsener
     betrag: 13
@@ -53,14 +53,24 @@ redaktionsnotiz: >-
   fuer den Samstag keine Endzeit nennt.
   BAND NICHT ANGELEGT: The Scotty Bullock Trio steht in `lineupWeitere`.
   Ob daraus eine Bandseite wird, entscheidet ein Mensch.
-  GENRES: Hier ausnahmsweise beide. `rockabilly` und `boogie-woogie`
-  stehen im Titel der Veranstaltung selbst und im Kursprogramm, und
-  anders als bei einem blossen Boogie-Tanzabend ist hier auch die
-  Musikrichtung benannt und nicht nur der Tanz.
+  GENRES (korrigiert 2026-10-01, Entscheidung Markus): nur `rocknroll`.
+  Vorher standen `rockabilly` und `boogie-woogie` hier mit der
+  Begruendung, beide stuenden im Titel -- das stimmte nicht. Der Titel
+  nennt Rock'n'Roll und Boogie Woogie, "Rockabilly" kommt auf der
+  Eventseite gar nicht vor (nur bei der Convention im Juni in der
+  Jahresuebersicht). Titel und Kurse meinen die Taenze; als Musik nennt
+  die Seite "Rock'n'Roll & Boogie-Woogie nonstop!". `rocknroll` traegt
+  das, `boogie-woogie` (der Klavierstil) nicht eindeutig genug.
+  KURSE (korrigiert 2026-10-01): Beide Boogie-Woogie-Kurse stehen im
+  Samstagsprogramm (11:00-13:00 und 14:30-17:15); der Text hatte den
+  ersten auf den Freitag gelegt. Das Freitagsprogramm beginnt mit dem
+  Einlass um 14:00 und hat keinen Kurs. Der Einleitungstext der Seite
+  verspricht "Rock'n'Roll- und Boogie-Woogie-Tanzkurse", das
+  Tagesprogramm nennt beide Kurse "Boogie Woogie Tanzkurs".
 quellen:
   - url: https://www.pullmancity.de/events-shows-musik/events/rocknroll-boogie-woogie
     titel: Rock 'n' Roll & Boogie Woogie Weekend, 15.–16. Januar 2027 (Pullman City)
-    abgerufenAm: 2026-09-10
+    abgerufenAm: 2026-10-01
     felder: [beginn, ende, ort, eintritt, preise, veranstalter, veranstalterUrl, genres, lineupWeitere, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
     art: offiziell
   - url: https://www.pullmancity.de/events-shows-musik/events
@@ -70,7 +80,7 @@ quellen:
     art: offiziell
 ---
 
-Das [Rock'n'Roll](/lexikon/rocknroll-tanz/) & Boogie Woogie Weekend ist ein zweitägiges Tanzwochenende am 15. und 16. Januar 2027 in der Westernstadt Pullman City in Eging am See. Der Betreiber richtet es selbst aus und verbindet Tanzkurse mit einem Livekonzert und DJ-Programm; [Rockabilly](/lexikon/rockabilly/) und [Boogie-Woogie](/lexikon/boogie-woogie-tanz/) stehen schon im Titel.
+Das Rock'n'Roll & Boogie Woogie Weekend ist ein zweitägiges Tanzwochenende am 15. und 16. Januar 2027 in der Westernstadt Pullman City in Eging am See. Der Betreiber richtet es selbst aus und verbindet Tanzkurse mit einem Livekonzert und DJ-Programm; die beiden Tänze [Rock'n'Roll](/lexikon/rocknroll-tanz/) und [Boogie-Woogie](/lexikon/boogie-woogie-tanz/) stehen schon im Titel.
 
 ## Der Termin
 
@@ -80,7 +90,7 @@ Der Termin liegt im Winterbetrieb der Anlage und damit in einer Zeit, in der ein
 
 ## Programm
 
-Angeboten werden Tanzkurse in Rock'n'Roll und Boogie Woogie, am Freitag von 11 bis 13 Uhr und am Samstag von 14:30 bis 17:15 Uhr. Live spielt am Freitag um 20:30 Uhr das Scotty Bullock Trio; daneben nennt der Betreiber DJ-Programm an mehreren Orten des Geländes. Wer im Vintage-Outfit anreist, ist ausdrücklich eingeladen — die Ankündigung wirbt mit Fünfziger-Jahre-Atmosphäre.
+Die Ankündigung verspricht Tanzkurse in Rock'n'Roll und Boogie Woogie; im Tagesprogramm stehen zwei Boogie-Woogie-Kurse, beide am Samstag, von 11 bis 13 Uhr und von 14:30 bis 17:15 Uhr. Live spielt am Freitag um 20:30 Uhr das Scotty Bullock Trio; daneben nennt der Betreiber DJ-Programm an mehreren Orten des Geländes. Wer im Vintage-Outfit anreist, ist ausdrücklich eingeladen — die Ankündigung wirbt mit Fünfziger-Jahre-Atmosphäre.
 
 Das übrige Winterprogramm der Anlage läuft parallel weiter: Wild-West-Show, Lichtershow und Schauschmieden gehören dazu, ebenso Angebote für Kinder. Wer wegen des Tanzens kommt, teilt sich das Gelände also mit einem Familienpublikum.
 

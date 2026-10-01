@@ -17,6 +17,79 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-01 — Kein Politik-Artikel; Rockabilly-Look wird Pillar Mode
+
+**Politik: Das Register hält sich heraus (Entscheidung Markus).** Die
+PAA-Recherche fand die verwandten Suchen „Rockabilly politische
+einstellung" und „Psychobilly rechts". Ein Artikel dazu (Vorschlag A8)
+entsteht nicht. Das gilt auch für künftige Vorschläge aus Suchdaten: Das
+Interesse am Thema allein ist kein Auftrag.
+
+**Pillar der Säule `mode`: „Der Rockabilly-Look" (Entscheidung Markus).**
+Damit ist die Frage beantwortet, die beim ersten Artikel
+(`petticoat-reifrock-unterrock`, bewusst `vergleich` statt `pillar`) offen
+blieb. Der Pillar steht unter „Später, mit Bedingung", weil die
+Warteschlange voll ist, und kommt als Erster nach oben, sobald Platz ist.
+
+---
+
+## 2026-10-01 — PAA-Folgen: Rohdaten privat, Lexikon bekommt FAQs, Weekend korrigiert
+
+**Rohdaten nicht ins öffentliche Repo (Entscheidung Markus).** Die
+API-Antworten enthalten komplette Google-Ergebnisseiten, also Snippets
+fremder Seiten und KI-Übersichtstexte. In einem öffentlichen Repo wären
+sie weiterverbreitet. Sie liegen deshalb in `kloeschen/v101alpha` (privat),
+Branch `daten/paa`. Im öffentlichen xlsx sind diese Texte entfernt. Der
+erste Commit des Arbeitszweigs enthielt noch das vollständige xlsx. Der PR
+wird deshalb per Squash gemergt, damit es nicht in die Historie von `main`
+gelangt; den Zweig danach löschen. **Verworfen:**
+gepackt ins öffentliche Repo, nur als Download an Markus.
+
+**Lexikoneinträge bekommen FAQs (Entscheidung Markus).** Das Feld kommt
+aus `basis` und wird für jede Collection gerendert, samt FAQPage. Bisher
+nutzten es nur Artikel. Erster Einsatz: Polka Dots, Pin-up, Petticoat,
+Rockabilly (`frei`-Posten). **Verworfen:** erst an einem Eintrag testen.
+
+**Rock'n'Roll & Boogie Woogie Weekend 2027 korrigiert (Entscheidung
+Markus, `genres: [rocknroll]`).** Gegen die Quelle geprüft: „Rockabilly"
+kommt auf der Eventseite nicht vor, die Redaktionsnotiz behauptete das
+Gegenteil. Titel und Kurse meinen die Tänze. Dabei aufgefallen: Der Text
+legte einen der beiden Boogie-Kurse auf den Freitag, laut Tagesprogramm
+laufen beide am Samstag. **Verworfen:** `boogie-woogie` behalten (als
+Musik nicht eindeutig belegt), nur den Satz ändern.
+
+**Obergrenze:** Mit A3 und den FAQs stehen zwölf `frei`-Posten in der
+Warteschlange, die Grenze ist erreicht. Der Suchlauf legt bis zum
+nächsten erledigten Posten keine neuen an.
+
+---
+
+## 2026-10-01 — Erster PAA-Lauf: Vintage fehlt, Vorrat umgestellt
+
+**Anlass:** Markus hat einen PAA-Lauf verlangt (Rockabilly, Deutschland/de,
+2 $), dann Vintage, Polka Dots und Petticoat dazu, als Inspiration für
+Inhalte. 95 Abfragen, 0,31 $. Ablage samt Auswertung:
+`docs/daten/paa-rockabilly-2026-10-01/`.
+
+**Funde mit Folgen:** (1) Der größte Fragenblock ohne Lexikoneintrag ist
+„Vintage" (32 Fragen), daraus wurde ein `frei`-Posten. (2) Im
+Lexikon-Vorrat stehen Frisuren (Pompadour) und Rock- und Kleidformen
+(Tellerrock) jetzt oben: „Welcher Rock gehört zur Rockabilly-Szene?" ist
+mit 23 Treffern die meistgestellte Frage zum Look. (3) Die Artikel sind
+nur vorgeschlagen, nicht freigegeben (`mensch`-Posten). Säulen und
+Pillars sind Sache der Themenkarte.
+
+**Gelernt für weitere Läufe:** Der Skill macht nur beim Einlesen eines
+Ergebnisses neue Seeds aus den Kernfragen. Ein Pilotlauf mit
+`--max-generation 0` legt deshalb keine nach, das muss man von Hand tun.
+„Polkadot" ist auch eine Kryptowährung, „Pin" die Geheimzahl, „Teddy"
+das Stofftier: Die Relevanzregeln in `paa.config.json` fangen das ab.
+Trendfragen („noch modern?") ergeben keinen belegbaren Text. Und
+`treffer` ist kein Suchvolumen, sondern zählt, wie oft eine Frage in den
+abgerufenen Suchergebnissen auftauchte.
+
+---
+
 ## 2026-10-01 — PAA-Recherche: Skill im Konto, Abfragen nur auf Zuruf
 
 **Anlass:** Markus bringt den Skill `paa-research` (DataForSEO SERP-API,

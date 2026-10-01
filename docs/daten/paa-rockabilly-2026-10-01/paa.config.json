@@ -1,0 +1,85 @@
+{
+  "topic": "Rockabilly",
+  "location_code": 2276,
+  "language_code": "de",
+  "device": "desktop",
+  "relevance": {
+    "_help": "Regex lists, matched case-insensitively against each question. core = clearly about the topic; adjacent = related usage context; block = off-topic even if other words match. ambiguous = term that is only core together with context_for_ambiguous and none of off_for_ambiguous.",
+    "core": [
+      "\\brockabill(y|ies)\\b",
+      "\\brockabella",
+      "\\bpsychobilly",
+      "\\bteddy\\s*boys?\\b",
+      "\\bpetticoat",
+      "\\bpin-?\\s*up",
+      "\\bpettycoat",
+      "\\bpompadour",
+      "\\bvictory\\s*rolls?\\b",
+      "\\bsun\\s*records\\b",
+      "\\bbrian\\s*setzer|\\bstray\\s*cats\\b",
+      "\\bslap\\s*bass",
+      "\\bhillbilly\\b",
+      "\\bwanda\\s*jackson\\b",
+      "\\bcarl\\s*perkins\\b",
+      "\\bgene\\s*vincent\\b",
+      "\\bcreepers?\\b",
+      "\\bbrothel\\s*creepers?\\b",
+      "\\bgreaser",
+      "\\bteds?\\b.*\\b50",
+      "\\bpünktchen",
+      "\\bgepunktet",
+      "\\bpetticoat",
+      "\\bpettycoat",
+      "\\bpolka[\\s-]+dots?\\b"
+    ],
+    "adjacent": [
+      "\\brock\\s*('|’)?\\s*n\\s*('|’)?\\s*roll\\b",
+      "\\brock\\s*and\\s*roll\\b",
+      "\\b50er\\b",
+      "\\b1950er\\b",
+      "\\bfünfziger",
+      "\\bretro\\b",
+      "\\belvis\\b",
+      "\\bjohnny\\s*cash\\b",
+      "\\bswing\\b",
+      "\\bjive\\b",
+      "\\bboogie",
+      "\\blindy\\s*hop\\b",
+      "\\bhillbilly\\b",
+      "\\bcountry\\b",
+      "\\bkontrabass\\b",
+      "\\btolle\\b",
+      "\\bentenschwanz\\b",
+      "\\b50iger",
+      "\\b50ies\\b",
+      "\\bfifties\\b",
+      "\\boldies?\\b",
+      "\\b19[56]0(er)?\\b",
+      "\\b[56]0-?er\\b",
+      "\\bunterrock"
+    ],
+    "block": [
+      "\\brezept",
+      "\\baktie"
+    ],
+    "ambiguous": [
+      "\\bvintage\\b",
+      "\\bpolkadots?\\b"
+    ],
+    "context_for_ambiguous": [
+      "."
+    ],
+    "off_for_ambiguous": [
+      "\\b(wein|möbel|einrichtung|shabby|holz|auto|uhr|uhren|gitarre|kamera|foto|filter|wohnung|küche|deko|lampe|krypto|coin|kurs|prognose|20[2-4]\\d|blockchain|token|erfunden|steht)"
+    ]
+  },
+  "normalize": {
+    "_help": "Optional regex -> replacement pairs applied before duplicate detection (e.g. plural/synonym unification).",
+    "replacements": []
+  },
+  "reseed_relevance": [
+    "core"
+  ],
+  "embedding_model": "",
+  "dedupe_threshold": 0.0
+}
