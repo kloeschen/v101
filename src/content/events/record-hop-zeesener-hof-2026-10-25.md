@@ -2,7 +2,7 @@
 name: Record Hop im Zeesener Hof am 25. Oktober
 aliases: [Record Hop Zeesen Oktober 2026, Tanztee im Zeesener Hof Oktober 2026]
 kurzbeschreibung: Tanznachmittag mit DJ Capt'n K. im Zeesener Hof in Zeesen bei Königs Wusterhausen am 25. Oktober 2026, mit 50s Rock'n'Roll, Jump & Jive, Rhythm'n'Blues und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus
