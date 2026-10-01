@@ -92,14 +92,30 @@ jobs:
       - name: Prüfkette auf dem Freigabe-Ergebnis
         if: steps.diff.outputs.geaendert == 'ja'
         # Die ganze Kette auf dem, was gleich als Pull Request erscheint.
-        # Auf dem PR selbst läuft die CI nicht (Bot-Token), und selbst wenn,
-        # endete sie an der Freigabeprüfung, bevor Tests und Build laufen.
+        # Auf dem PR selbst läuft die CI erst, wenn ein Mensch den Lauf
+        # freigibt (Bot-Token); seit dem 2026-09-29 bestätigt sie die Slugs
+        # dann aus dem Artefakt unten und endet nicht mehr an Schritt 3.
         # FREIGABE_BESTAETIGT: nur die Slugs, die freigeben.ts eben wirklich
         # freigegeben hat (siehe Kopf von scripts/check-freigabe.ts).
         env:
           FREIGABE_BESTAETIGT: ${{ steps.lauf.outputs.slugs }}
         run: npm run verify:ci
 
+      - name: Freigegebene Slugs für die CI des Pull Requests ablegen
+        if: steps.diff.outputs.geaendert == 'ja'
+        # Die CI auf dem Freigabe-PR liest diese Datei über den Lauf, dessen
+        # Nummer im Zweignamen steht (scripts/_freigabelauf.ts). Sie steht vor
+        # dem Pull Request, damit sie da ist, sobald dessen CI startet.
+        env:
+          SLUGS: ${{ steps.lauf.outputs.slugs }}
+        run: printf '%s\n' "$SLUGS" > freigabe-slugs.txt
+      - uses: actions/upload-artifact@v4
+        if: steps.diff.outputs.geaendert == 'ja'
+        with:
+          name: freigabe-slugs
+          path: freigabe-slugs.txt
+          if-no-files-found: error
+          retention-days: 90
 
       - name: Pull Request öffnen
         if: steps.diff.outputs.geaendert == 'ja'
@@ -140,9 +156,10 @@ jobs:
             echo "Das Skript hat nur verhindert, dass etwas Fehlerhaftes freigegeben wird."
             echo "Ob die Einträge inhaltlich richtig sind, sieht keine Regel."
             echo
-            echo "Die Freigabeprüfung \`check-freigabe.ts\` wird diesen PR als unbestätigt"
-            echo "melden — das ist ihr Zweck und kein Fehler. Siehe BETRIEB.md,"
-            echo "Abschnitt \"Vorschau und Freigabe\"."
+            echo "Die CI dieses PRs startet erst, wenn du den Lauf freigibst. Die"
+            echo "Freigabeprüfung bestätigt die Slugs dann aus diesem Freigabelauf"
+            echo "(Artefakt \`freigabe-slugs\`). Bleibt sie rot, steht der Grund im Log."
+            echo "Siehe BETRIEB.md, Abschnitt \"Vorschau und Freigabe\"."
           } > pr.md
 
           gh pr create \
