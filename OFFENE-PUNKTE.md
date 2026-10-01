@@ -32,22 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Brandenburg, Rockin' Wildcat: 3 Termine anlegen (24.10.2026, 25.10.2026, 22.11.2026).**
-Gesehen am 2026-10-01 auf https://www.rockin-wildcat.com/rwc/guide
-(Herkunft: Suchlauf 2026-10-01). Dort steht: Swamp Shakers, Sa., 24.
-Oktober 2026, 19:00, Klubhaus Ludwigsfelde, Theodor-Fontane-Str. 42,
-14974 Ludwigsfelde, Genre Rockabilly (/rwc/events/swamp-shakers); Record
-Hop mit DJ Capt'n K., So., 25. Oktober 2026, 16:00, Zeesener Hof,
-Karl-Liebknecht-Str. 106, 15711 Zeesen (/rwc/events/record-hop-62); Record
-Hop, So., 22. November 2026, 16:00, gleicher Ort (/rwc/events/record-hop-67).
-Keine Kosten angegeben. Beim Bauen: Die Region Brandenburg gibt es noch
-nicht, sie ist nach dem Muster der vorhandenen anzulegen (`entwurf`);
-daran scheiterte der Zeesener Record Hop am 2026-09-24 (ENTSCHEIDUNGEN).
-Die Häuser gegenlesen (www.klubhaus-ludwigsfelde.de, www.zeesenerhof.de).
-Vorlage für die Record Hops: `events/record-hop-rathaus-friedrichshagen-2026-11-08`
-(gleicher DJ). Zeitzone: 24.10. `+02:00`, 25.10. ist der Tag der
-Umstellung — 16:00 liegt danach, also `+01:00`; 22.11. `+01:00`.
-
 `frei` **Linz, DJ Daddy C im Gasthaus Keferfeld: 2 Termine anlegen (06.11.2026, 05.12.2026).**
 Gesehen am 2026-10-01 auf https://boogie.at/?page=1 und ?page=2 (Herkunft:
 Suchlauf 2026-10-01). Dort steht: „November Jive Night", Fr., 06.11.2026,

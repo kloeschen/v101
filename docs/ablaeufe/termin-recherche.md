@@ -193,7 +193,14 @@ Fehler verursacht oder beinahe verursacht.
   7.11.2026 nennt der Gig Guide 21 Uhr, der Flyer des American Western
   Saloon und dessen allgemeine Angabe 20 Uhr (2026-09-27). Gibt es eine
   Seite des Hauses, immer gegenlesen; bei Abweichung folgt der Eintrag
-  dem Haus und nennt den Widerspruch im Text (Regel 5).
+  dem Haus und nennt den Widerspruch im Text (Regel 5). Zweiter Fall:
+  Swamp Shakers im Klubhaus Ludwigsfelde am 24.10.2026 — Gig Guide 19
+  Uhr, Haus und Reservix „Einlass 19:30, Beginn 20:00" (2026-10-01).
+- **Haus und Ticketportal nennen verschiedene „ab"-Preise.** Beim
+  Klubhaus Ludwigsfelde steht „ab 20 €", bei Reservix „ab 25,40 €" für
+  das Online-Ticket (2026-10-01). Woraus die Differenz besteht, sagt
+  keine Seite; nicht verrechnen, sondern beide getrennt in `preise`
+  führen und im Text benennen.
 - **Seiten, die nur über http erreichbar sind**, gehören nicht in
   `quellen[]`: Das Schema verlangt https, und eine https-Adresse
   einzutragen, deren Abruf gescheitert ist, behauptete einen Beleg, den
