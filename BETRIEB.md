@@ -491,7 +491,7 @@ Preis stimmt, ob die Quelle trägt —, sieht keine Regel. Das bleibt beim
 Menschen, und deshalb steht am Ende ein Pull Request und kein Push auf
 `main`.
 
-### Wo die Prüfkette läuft, und warum nicht auf dem Pull Request
+### Wo die Prüfkette läuft: im Freigabelauf und auf dem Pull Request
 
 **Seit dem 2026-09-23 prüft der Freigabe-Workflow sein Ergebnis selbst**,
 bevor er den Pull Request öffnet: Nach `freigeben.ts` läuft `npm run
@@ -504,56 +504,28 @@ Die Bestätigung, die `check-freigabe.ts` verlangt, kommt dabei aus
 tatsächlich freigegeben hat, nicht die Eingabe des Workflows. Abgelehnte
 Einträge stehen nicht darin.
 
-**Warum nicht einfach die CI auf dem Pull Request?** Aus zwei Gründen, die
-beide am 2026-09-22 beim ersten echten Lauf sichtbar wurden:
+**Seit dem 2026-10-01 läuft die Kette auch auf dem Freigabe-PR grün.**
+Vorher endete sie dort planmäßig an Schritt 3 („status entwurf →
+veroeffentlicht" ohne Bestätigung), und mit dem Schutz von `main` ließ sich
+ein solcher PR nicht mehr mergen (PR #116). Jetzt liest die Prüfung die
+Bestätigung aus dem Lauf, der den PR geöffnet hat
+(`scripts/_freigabelauf.ts`): Der Zweig heißt `freigabe/<Lauf-ID>`, und ist
+dieser Lauf wirklich `freigeben.yml`, von Hand gestartet, gelten genau die
+Slugs aus seinem Artefakt `freigabe-slugs` als bestätigt. Jeder weitere
+Statuswechsel im PR bleibt ein Fehler. Dafür braucht `ci.yml` ein Token mit
+`actions: read`, und `freigeben.yml` legt das Artefakt vor dem Pull Request
+ab. Beides prüft `test-pruefkette.ts`, seit dem 2026-10-01 als Fehler statt
+als Hinweis. Bewiesen am echten Lauf: PR #120, Schritt 3 meldete
+„Bestätigung aus Freigabelauf 36928878836" für alle acht Einträge, die
+Kette lief bis zu den Tests grün durch.
 
-1. **Sie läuft dort gar nicht.** Ein Pull Request, den ein Workflow mit
-   seinem Bot-Token öffnet, bekommt einen CI-Lauf, der auf eine manuelle
-   Freigabe wartet — und nach dem Merge als „failure" ohne einen einzigen
-   Job stehen bleibt. Ein fehlender Haken sieht auf den ersten Blick aus wie
-   einer ohne Befund.
-2. **Liefe sie, endete sie zu früh.** `verify:ci` ist eine `&&`-Kette, die
-   Freigabeprüfung ist Schritt 3 von 9, und auf einem Freigabe-Ergebnis
-   schlägt sie planmäßig an. Tests und Build stehen dahinter und liefen nie.
-   Genau dort lag beim ersten Mal der echte Fehler — hinter dem erwarteten
-   Rot versteckt (Lektion 25).
-
-Dass der Workflow-Schritt noch dasteht, prüft `test-pruefkette.ts`: Er muss
-`npm run verify:ci` aufrufen, die Slugs aus `steps.lauf.outputs.slugs`
-weiterreichen, nach dem Freigabelauf und vor `gh pr create` stehen.
-`.github/` liegt hinter der Agentensperre — ohne diese Prüfung wüsste
-niemand, ob ein Mensch den Schritt beim nächsten Umbau versehentlich
-entfernt.
-
-**Was das für dich beim Mergen heißt:** Ist der Freigabe-PR da, ist die
-Kette gelaufen. Der CI-Eintrag am PR bleibt leer bzw. „failure ohne Jobs" —
-das ist kein Befund. Die Prüfung, die zählt, steht im Lauf des Workflows
-„Freigeben".
-
-Wird der wartende CI-Lauf am PR doch freigegeben, läuft er — und ist nach
-wenigen Sekunden rot, an Schritt 3 (`freigabe:ci`), mit „status entwurf →
-veroeffentlicht" für jeden freigegebenen Eintrag. Auch das ist kein Befund,
-sondern Grund 2 von oben: Dieser Lauf kennt die Bestätigung aus dem
-Workflow nicht. GitHub führt den PR dann als „unstable", nicht als
-gesperrt; Mergen geht normal. Ein Befund wäre es nur, wenn Schritt 1 oder
-2 rot ist (die laufen davor) oder Schritt 3 etwas anderes meldet als die
-freigegebenen Einträge. Alles hinter Schritt 3 läuft hier nie; das hat der
-Workflow-Lauf geprüft. Am 2026-09-29 so bei PR #87: Schritt 3, genau die
-20 freigegebenen Einträge, sonst nichts.
-
-**Vorgeschlagen, noch nicht eingesetzt (2026-09-29): Die CI am Freigabe-PR
-wird grün.** Die Prüfung kennt die Bestätigung jetzt doch — sie liest sie
-aus dem Lauf, der den PR geöffnet hat (`scripts/_freigabelauf.ts`): Der
-Zweig heißt `freigabe/<Lauf-ID>`, und ist dieser Lauf wirklich
-`freigeben.yml`, von Hand gestartet, gelten genau die Slugs aus seinem
-Artefakt `freigabe-slugs` als bestätigt. Jeder weitere Statuswechsel im PR
-bleibt ein Fehler, und fehlt irgendetwas davon, bleibt es beim Rot von oben.
-Wirksam wird das erst mit zwei Workflow-Änderungen, die ein Mensch einsetzt,
-weil `.github/` hinter der Agentensperre liegt: `docs/vorschlaege/ci.yml`
-(Token mit `actions: read` für die Kette) und
-`docs/vorschlaege/freigeben.yml` (Artefakt vor dem Pull Request). Beide sind
-geprüft: `V101_WORKFLOWS=docs/vorschlaege npx tsx scripts/test-pruefkette.ts`.
-Den CI-Lauf am PR musst du weiterhin selbst freigeben (Bot-Token).
+**Was das für dich beim Mergen heißt:** Der PR kommt vom Bot, deshalb
+wartet seine CI auf dich — **Approve and run workflows** am PR klicken.
+Danach muss `verify` grün sein; erst dann lässt sich mergen. Ist Schritt 3
+rot, steht der Grund im Log: ein Eintrag, der nicht aus diesem Lauf stammt,
+oder ein Artefakt, das fehlt. Ein Freigabe-PR aus einem Lauf vor dem
+2026-10-01 hat kein Artefakt und wird nie grün — schließen und die Freigabe
+neu starten.
 
 Von Hand geht es wie bisher: `freigeben.ts` gibt am Ende die
 Bestätigungszeile aus.

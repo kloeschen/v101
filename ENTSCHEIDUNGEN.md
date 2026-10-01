@@ -17,6 +17,36 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-01 — Freigabe-CI eingesetzt und am echten Lauf bewiesen
+
+**Anlass:** Der Freigabe-PR #116 ließ sich nicht mergen. `verify` war an
+Schritt 3 rot („kein Token (GH_TOKEN) in der Umgebung", danach acht
+unbestätigte Statuswechsel). Das war das erwartete Rot aus BETRIEB.md:
+Seit dem 2026-09-22 hieß es dort, Mergen gehe trotzdem normal. Inzwischen
+ist `main` geschützt, und aus dem erwarteten Rot wurde ein Blocker. Die
+Lösung lag seit dem 2026-09-29 als Vorschlag in `docs/vorschlaege/`.
+
+**Eingesetzt (Markus, PR #119):** `ci.yml` bekommt `actions: read` und
+`GH_TOKEN`, `freigeben.yml` legt das Artefakt `freigabe-slugs` vor dem
+Pull Request ab. Beide Dateien sind Zeichen für Zeichen die geprüften
+Vorschläge. #116 wurde geschlossen, nicht gemergt, weil sein Lauf noch kein
+Artefakt hatte. Die Freigabe derselben acht Einträge lief neu.
+
+**Bewiesen (Regel 6):** Freigabelauf 36928878836 → PR #120. Die CI am PR
+meldete an Schritt 3 „Bestätigung aus Freigabelauf 36928878836", alle acht
+Einträge „bestätigt", danach liefen die Schritte 4–11 grün (Build und alle
+Tests). Das Log ist vollständig gelesen.
+
+**Nachgezogen:** In `test-pruefkette.ts` ist das fehlende Artefakt jetzt ein
+Fehler statt ein Hinweis. Mutationsbeleg an Kopien der Workflows:
+Artefakt-Upload entfernt → genau die drei Artefakt-Prüfungen fallen;
+`actions: read` entfernt → genau diese eine Prüfung fällt. Vorher hätte die
+erste Mutation nur einen Hinweis gedruckt und 0 Fehler gemeldet. Die
+Vorschläge in `docs/vorschlaege/` sind gelöscht, BETRIEB.md beschreibt den
+neuen Ablauf (Approve and run am PR, dann muss `verify` grün sein).
+
+---
+
 ## 2026-10-01 — Kein Politik-Artikel; Rockabilly-Look wird Pillar Mode
 
 **Politik: Das Register hält sich heraus (Entscheidung Markus).** Die

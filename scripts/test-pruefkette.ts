@@ -308,40 +308,39 @@ pruefe(
  * VOR dem Pull Request ab und füllt es aus steps.lauf.outputs.slugs, und
  * ci.yml gibt der Kette ein Token mit `actions: read`.
  *
- * ÜBERGANG: Die beiden Workflows setzt ein Mensch ein (Vorschlag unter
- * docs/vorschlaege/). Bis dahin legt freigeben.yml kein Artefakt ab, und
- * diese Prüfungen melden das als Hinweis statt als Fehler — sonst wäre die
- * Kette rot, bevor jemand einfügen kann. Sobald das Artefakt dasteht, gelten
- * sie voll. Der Posten in OFFENE-PUNKTE macht den Hinweis danach zum Fehler.
+ * Seit dem 2026-10-01 eingesetzt und am echten Lauf bewiesen (Freigabe-PR
+ * #120: Schritt 3 meldete „Bestätigung aus Freigabelauf 36928878836", die
+ * Kette lief grün durch). Bis dahin stand hier ein Übergang, der ein
+ * fehlendes Artefakt nur als Hinweis meldete. Jetzt ist es ein Fehler:
+ * Wer den Artefakt-Schritt beim nächsten Umbau entfernt, bekommt die
+ * Freigabe-PRs wieder rot, ohne dass ein grüner Lauf es zeigt.
  */
 const iArtefakt = fSchritte.findIndex((b) => new RegExp(`name:\\s*${ARTEFAKT}\\s*$`, "m").test(b));
-if (iArtefakt < 0) {
-  console.log(
-    `Hinweis: freigeben.yml legt das Artefakt „${ARTEFAKT}" noch nicht ab — ` +
-      `die Freigabe-PRs bleiben an Schritt 3 rot. Vorschlag: docs/vorschlaege/freigeben.yml und ci.yml.`,
-  );
-} else {
-  const iDatei = fSchritte.findIndex(
-    (b) => b.includes(ARTEFAKT_DATEI) && /steps\.lauf\.outputs\.slugs/.test(b) && !/uses:\s*actions\/upload-artifact/.test(b),
-  );
-  pruefe(
-    `freigeben.yml schreibt ${ARTEFAKT_DATEI} aus steps.lauf.outputs.slugs`,
-    iDatei >= 0 && iDatei > iLauf,
-    `datei=${iDatei}, lauf=${iLauf}`,
-  );
-  pruefe("…bevor es als Artefakt abgelegt wird", iDatei >= 0 && iDatei < iArtefakt, `datei=${iDatei}, artefakt=${iArtefakt}`);
-  pruefe(
-    "…und das Artefakt liegt vor dem Pull Request bereit",
-    iPr >= 0 && iArtefakt < iPr,
-    `artefakt=${iArtefakt}, pr=${iPr}`,
-  );
-  pruefe("ci.yml darf Artefakte lesen (actions: read)", /^\s*actions:\s*read\s*$/m.test(ci), "permissions fehlen");
-  pruefe(
-    "ci.yml gibt der Kette ein Token (GH_TOKEN: github.token)",
-    /GH_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/.test(ci),
-    "ohne Token liest check-freigabe.ts den Lauf nicht",
-  );
-}
+pruefe(
+  `freigeben.yml legt das Artefakt „${ARTEFAKT}" ab`,
+  iArtefakt >= 0,
+  "ohne Artefakt bleibt jeder Freigabe-PR an Schritt 3 rot",
+);
+const iDatei = fSchritte.findIndex(
+  (b) => b.includes(ARTEFAKT_DATEI) && /steps\.lauf\.outputs\.slugs/.test(b) && !/uses:\s*actions\/upload-artifact/.test(b),
+);
+pruefe(
+  `freigeben.yml schreibt ${ARTEFAKT_DATEI} aus steps.lauf.outputs.slugs`,
+  iDatei >= 0 && iDatei > iLauf,
+  `datei=${iDatei}, lauf=${iLauf}`,
+);
+pruefe("…bevor es als Artefakt abgelegt wird", iDatei >= 0 && iDatei < iArtefakt, `datei=${iDatei}, artefakt=${iArtefakt}`);
+pruefe(
+  "…und das Artefakt liegt vor dem Pull Request bereit",
+  iArtefakt >= 0 && iPr >= 0 && iArtefakt < iPr,
+  `artefakt=${iArtefakt}, pr=${iPr}`,
+);
+pruefe("ci.yml darf Artefakte lesen (actions: read)", /^\s*actions:\s*read\s*$/m.test(ci), "permissions fehlen");
+pruefe(
+  "ci.yml gibt der Kette ein Token (GH_TOKEN: github.token)",
+  /GH_TOKEN:\s*\$\{\{\s*github\.token\s*\}\}/.test(ci),
+  "ohne Token liest check-freigabe.ts den Lauf nicht",
+);
 
 /* ------------------------------------------------------------------ */
 
