@@ -128,7 +128,7 @@ Den Niedergang führt die Britannica auf Zensur, Razzien und die Konkurrenz des 
 
 Wiederbelebt wurde die Burlesque in den 1990er Jahren in New York und Los Angeles, unter anderem mit Michelle Carrs Truppe „The Velvet Hammer" und Ami Goodhearts „Dutch Weismann's Follies". Wann genau, geben die Quellen verschieden an: Der englische Artikel zur amerikanischen Burlesque nennt die frühen 1990er Jahre, der zur Neo-Burlesque die Mitte des Jahrzehnts, die deutsche Wikipedia schlicht die 1990er Jahre. Die Neo-Burlesque verbindet nach der englischen Wikipedia klassischen Striptease mit Kabarett, Zirkus und Komik und betont den Stil — „sexy statt sexuell"; Kostüme und Requisiten kosten die Darstellerinnen oft mehr, als sie verdienen.
 
-Seit den 2000er Jahren gibt es die Burlesque nach der deutschen Wikipedia auch in Europa, etwa in Berlin, München und Wien, und dort heißt sie meist wieder einfach „Burlesque". Die bekannteste Darstellerin ist Dita Von Teese, die nach der englischen Wikipedia oft zugleich ein modernes Pin-up genannt wird.
+Seit den 2000er Jahren gibt es die Burlesque nach der deutschen Wikipedia auch in Europa, etwa in [Berlin](/regionen/berlin/), München und Wien, und dort heißt sie meist wieder einfach „Burlesque". Die bekannteste Darstellerin ist Dita Von Teese, die nach der englischen Wikipedia oft zugleich ein modernes Pin-up genannt wird.
 
 ## Abgrenzung der Burlesque
 
