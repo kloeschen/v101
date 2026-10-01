@@ -2,7 +2,7 @@
 name: KulturMarktHalle
 aliases: [KulturMarktHalle Berlin, KulturMarktHalle Prenzlauer Berg]
 kurzbeschreibung: Die KulturMarktHalle in der Hanns-Eisler-Straße in Berlin-Prenzlauer Berg ist ein 2017 gegründetes Stadtteil- und Kulturzentrum eines Vereins im Mühlenkiez, in dem gelegentlich auch Rock'n'Roll-Tanzabende stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

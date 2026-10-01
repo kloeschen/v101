@@ -2,9 +2,9 @@
 name: Nadelstreifen
 aliases: [Nadelstreif]
 kurzbeschreibung: Nadelstreifen sind sehr schmale, in mäßig breitem Abstand parallel laufende Längsstreifen in Anzug- und Kostümstoffen, die sich scharf von der meist dunklen Grundfarbe abheben; so heißt auch der Anzug aus solchem Stoff.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-09-30
-geprueftAm: 2026-09-30
+geprueftAm: 2026-10-01
 autor: markus
 kategorie: mode
 bezeichnungEn: Pinstripe

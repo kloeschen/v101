@@ -2,7 +2,7 @@
 name: Killer Dillers in der KulturMarktHalle
 aliases: [Killer Dillers Berlin 2026, The Killer Dillers KulturMarktHalle]
 kurzbeschreibung: Konzert der Berliner Rhythm-and-Blues- und Jive-Band Killer Dillers mit Record Hop von DJ Capt'n K. am Freitag, 23. Oktober 2026, in der KulturMarktHalle in Berlin-Prenzlauer Berg.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus
