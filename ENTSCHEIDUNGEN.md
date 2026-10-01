@@ -17,6 +17,36 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-01 — PAA-Folgen: Rohdaten privat, Lexikon bekommt FAQs, Weekend korrigiert
+
+**Rohdaten nicht ins öffentliche Repo (Entscheidung Markus).** Die
+API-Antworten enthalten komplette Google-Ergebnisseiten, also Snippets
+fremder Seiten und KI-Übersichtstexte. In einem öffentlichen Repo wären
+sie weiterverbreitet. Sie liegen deshalb in `kloeschen/v101alpha` (privat),
+Branch `daten/paa`. Im öffentlichen xlsx sind diese Texte entfernt. Der
+erste Commit dieses Branches (`docs/daten/paa-rockabilly-2026-10-01/`)
+enthält das vollständige xlsx noch in der Historie. **Verworfen:**
+gepackt ins öffentliche Repo, nur als Download an Markus.
+
+**Lexikoneinträge bekommen FAQs (Entscheidung Markus).** Das Feld kommt
+aus `basis` und wird für jede Collection gerendert, samt FAQPage. Bisher
+nutzten es nur Artikel. Erster Einsatz: Polka Dots, Pin-up, Petticoat,
+Rockabilly (`frei`-Posten). **Verworfen:** erst an einem Eintrag testen.
+
+**Rock'n'Roll & Boogie Woogie Weekend 2027 korrigiert (Entscheidung
+Markus, `genres: [rocknroll]`).** Gegen die Quelle geprüft: „Rockabilly"
+kommt auf der Eventseite nicht vor, die Redaktionsnotiz behauptete das
+Gegenteil. Titel und Kurse meinen die Tänze. Dabei aufgefallen: Der Text
+legte einen der beiden Boogie-Kurse auf den Freitag, laut Tagesprogramm
+laufen beide am Samstag. **Verworfen:** `boogie-woogie` behalten (als
+Musik nicht eindeutig belegt), nur den Satz ändern.
+
+**Obergrenze:** Mit A3 und den FAQs stehen zwölf `frei`-Posten in der
+Warteschlange, die Grenze ist erreicht. Der Suchlauf legt bis zum
+nächsten erledigten Posten keine neuen an.
+
+---
+
 ## 2026-10-01 — Erster PAA-Lauf: Vintage fehlt, Vorrat umgestellt
 
 **Anlass:** Markus hat einen PAA-Lauf verlangt (Rockabilly, Deutschland/de,

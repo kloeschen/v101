@@ -32,20 +32,48 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **Artikel aus der PAA-Recherche: auswählen und Säulen zuordnen.**
-Die PAA-Recherche vom 2026-10-01 (95 Abfragen, 0,31 $) hat acht
-Artikelvorschläge ergeben, mit Typ, Säule, Hauptentität und den Fragen, die
-sie beantworten (`docs/daten/paa-rockabilly-2026-10-01/README.md`,
-Abschnitt „Artikelvorschläge"). Keiner ist angelegt. Zu entscheiden:
-(1) welche Vorschläge `frei` werden — ohne Voraussetzung baubar sind A3
-„Petticoat tragen" (howto) und A4 „Rockabilly oder Rock'n'Roll?"
-(vergleich), A1 und A2 hängen am Lexikon Vintage; (2) ob A6 „Der
-Rockabilly-Look" der Pillar der Säule `mode` wird (Themenkarte);
-(3) ob A8 „Rockabilly und Politik" überhaupt entsteht — die verwandten
-Suchen „Rockabilly politische einstellung" und „Psychobilly rechts" zeigen
-Interesse, das Thema ist heikel; (4) ob Lexikoneinträge FAQs bekommen
-(Polka Dots, Pin-up, Petticoat, Rockabilly; das Schema erlaubt es, bisher
-hat keiner eine). Die Fragen sind Themenideen, keine Quelle.
+`mensch` **Artikel aus der PAA-Recherche: Pillar Mode und Politik.**
+Von den acht Vorschlägen der PAA-Recherche vom 2026-10-01
+(`docs/daten/paa-rockabilly-2026-10-01/README.md`, „Artikelvorschläge")
+sind am 2026-10-01 A3 und die Lexikon-FAQs auf `frei` gegangen, A1 wartet
+unter „Später, mit Bedingung" auf `lexikon/vintage`. Offen: (1) ob A6
+„Der Rockabilly-Look" der Pillar der Säule `mode` wird (Themenkarte);
+(2) ob A8 „Rockabilly und Politik" entsteht — die verwandten Suchen
+„Rockabilly politische einstellung" und „Psychobilly rechts" zeigen
+Interesse, das Thema ist heikel; (3) die übrigen Vorschläge A2, A4, A5,
+A7 — nicht abgelehnt, nur noch nicht gewählt.
+
+`frei` **Artikel: Petticoat tragen (howto, Säule `mode`).** Vorschlag A3
+der PAA-Recherche vom 2026-10-01. Beantwortet „Wie trägt man einen
+Petticoat richtig?" (7 Treffer), „Darf der Petticoat unter dem Kleid
+hervorschauen?" (4), „Was ist ein Petticoat-Kleid?" (4)
+(`docs/daten/paa-rockabilly-2026-10-01/fragen.csv`). `typ: howto`,
+`hauptentitaet: lexikon/petticoat`, Vorlage
+`src/content/artikel/_golden-example.md`. Abgrenzung zum Vergleich
+`artikel/petticoat-reifrock-unterrock`: Der beantwortet, welches Stück man
+braucht, dieser, wie man es trägt (Länge, Lagen, Kleid darüber, Pflege) —
+keine zweite Fassung, Geschichte bleibt beim Lexikon. Jede Trageregel
+braucht eine Quelle; Händler-Ratgeber sind Belege für die Praxis, nicht
+für Geschichte. Die PAA-Fragen sind Themen, keine Quelle.
+
+`frei` **Lexikon: FAQ für Polka Dots, Pin-up, Petticoat und Rockabilly.**
+Entscheidung Markus, 2026-10-01: Lexikoneinträge bekommen FAQs (Feld `faq`
+aus `basis`, bisher bei keinem Lexikoneintrag gesetzt). Technisch ist nichts
+zu bauen: `[typ]/[slug].astro` rendert `FaqBlock` für jede Collection, und
+das JSON-LD hängt eine FAQPage an — nach dem Build an einer Lexikonseite
+nachsehen, dass beides erscheint. Fragen aus der
+PAA-Recherche (`fragen.csv`): *Polka Dots* — Warum sagt man Polka Dots?,
+Was heißt Polka Dots auf Deutsch?, Was ist Dresscode Polka Dots?, Wann
+waren Polka Dots modern?; *Pin-up* — Was sind Pin-up-Models?, Was sind
+Pin-up-Fotos?, Was ist ein Pin-up-Magazin?; *Petticoat* — Was heißt
+Petticoat auf Deutsch?, In welcher Zeit trug man Petticoat?; *Rockabilly*
+— Was heißt Rockabilly auf Deutsch?, Welcher Jahrgang ist Rockabilly?,
+Ist Rockabilly 70er Jahre?. Nur Fragen aufnehmen, deren Antwort eine
+Quelle in `quellen[]` deckt (`felder: [faq, …]`, wie in
+`artikel/petticoat-reifrock-unterrock`); Trendfragen („noch modern?") nicht. Die
+Antwort wiederholt den Text nicht wörtlich, sondern antwortet kurz.
+Status bleibt, wie er ist; veröffentlichte Einträge gehen über die
+normale Freigabe.
 
 `frei` **Lexikon: Vintage.** Der größte Fragenblock der PAA-Recherche vom
 2026-10-01 ohne eigenen Eintrag: 32 Fragen, darunter „Ab welchem Alter gilt
@@ -62,17 +90,6 @@ gleich welchen Alters), Antiquität, Vintage beim Wein (Jahrgang) und
 Shabby Chic. Duplikatprüfung: Bisher hat kein Eintrag „Vintage" als Name
 oder Alias. Danach `npm run autolink` — Vorsicht, „Vintage" kommt sehr
 oft vor; die Drift-Prüfung zeigt, ob das tragbar ist.
-
-`mensch` **Rock'n'Roll & Boogie Woogie Weekend 2027: ein Satz und die
-Genres.** Gefunden am 2026-10-01 beim Umbiegen der Tanz-Links. Im Lead von
-`events/rocknroll-boogie-woogie-weekend-2027-01-15` steht „Rockabilly und
-Boogie-Woogie stehen schon im Titel" — Rockabilly steht aber nicht im Titel
-(„Rock'n'Roll & Boogie Woogie Weekend 2027"). Und `genres:
-[rockabilly, boogie-woogie]` verweist auf den Klavierstil, während der Titel
-bei einem Tanzwochenende mit Tanzkursen eher den Tanz meint. Der Link im
-Satz zeigt seit dem 2026-10-01 auf den Tanz. Zu entscheiden: Satz
-umformulieren (gegen die Quelle prüfen, was im Titel und was im Programm
-steht) und ob `boogie-woogie` in `genres` bleibt.
 
 `frei` **Linz, DJ Daddy C im Gasthaus Keferfeld: 2 Termine anlegen (06.11.2026, 05.12.2026).**
 Gesehen am 2026-10-01 auf https://boogie.at/?page=1 und ?page=2 (Herkunft:
@@ -275,6 +292,17 @@ Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
 `/thema/country` (meinte Landhausmode). Ob `/jahrzehnt/50s` einen
 Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
 würde „50er" sehr oft verlinken).
+
+**Artikel A1 „Vintage, Retro oder Secondhand?" — sobald
+`lexikon/vintage` als Entwurf steht.** Gewählt von Markus am 2026-10-01
+(PAA-Recherche, `docs/daten/paa-rockabilly-2026-10-01/README.md`).
+`typ: vergleich`, Säule `sammeln`, `hauptentitaet: lexikon/vintage`.
+Beantwortet „Was ist der Unterschied zwischen Retro und Vintage?" (10
+Treffer), „Ab welchem Alter gilt Kleidung als Vintage?" (14), „Wann darf
+man Vintage sagen?" (8), Vintage und Secondhand (4+1), Vinted. Wartet,
+weil der Vergleich auf der Abgrenzung des Lexikoneintrags aufbaut und
+nicht vorher eine eigene Altersgrenze setzen darf. Dann als `frei`-Posten
+nach oben holen, wenn die Obergrenze Platz hat.
 
 **Gegenleser auswerten — ab dem 2026-10-14.** Seit dem 2026-09-30 liest
 ein Subagent jeden Inhalts-PR des Tageslaufs blind gegen die Quellen

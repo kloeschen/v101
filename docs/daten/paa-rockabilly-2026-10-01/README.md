@@ -58,14 +58,18 @@ Register hat dazu nichts. Heikel, deshalb Ermessensfrage (siehe unten).
 
 ## Eingeplant
 
-In `OFFENE-PUNKTE.md` stehen seit dem 2026-10-01:
+In `OFFENE-PUNKTE.md`, Stand 2026-10-01 nach Markus' Auswahl:
 
 1. `frei` **Lexikon: Vintage**: der größte Block ohne Eintrag.
 2. **Lexikon-Vorrat umgestellt:** Frisuren (Pompadour) und Rock- und
    Kleidformen (Tellerrock) stehen jetzt oben, der Suchlauf zieht sie als
    Nächstes nach.
-3. `mensch` **Artikel aus der PAA-Recherche**: die Artikelvorschläge
-   unten, zur Auswahl. Säulen und Pillars sind Strategiefragen.
+3. `frei` **A3 „Petticoat tragen"** (howto).
+4. `frei` **FAQ für die Lexikoneinträge** Polka Dots, Pin-up, Petticoat
+   und Rockabilly (Entscheidung: Lexikon bekommt FAQs).
+5. **A1 „Vintage, Retro oder Secondhand?"** unter „Später, mit
+   Bedingung": Er kommt, sobald `lexikon/vintage` steht.
+6. `mensch` Pillar Mode (A6), Politik (A8), die übrigen Vorschläge.
 
 ## Artikelvorschläge
 
@@ -99,8 +103,17 @@ die Säule `tattoo`.
 ## Dateien
 
 - `fragen.csv`: 128 brauchbare Fragen, nach Bereich und Treffern sortiert.
-- `paa-export.xlsx`: vollständiger Export (alle Fragen, KI-Übersichten
-  samt Quellen, verwandte Suchen, Seeds, Abfragen mit Kosten).
+- `paa-export.xlsx`: der Export **ohne fremde Texte**. Die Antwort-Snippets,
+  die KI-Übersichtstexte und die KI-Antworten je Frage sind entfernt, weil
+  dieses Repo öffentlich ist. Fragen, Domains, URLs, Titel, verwandte
+  Suchen und Kosten sind vollständig.
 - `paa.config.json`: die Relevanzregeln des Laufs, als Vorlage für einen
-  weiteren. Die Rohdaten (JSON je Abfrage) lagen nur in der Sitzung und
-  sind nicht im Repo.
+  weiteren.
+
+**Rohdaten und der vollständige Export** liegen im privaten Repo
+`kloeschen/v101alpha`, Branch `daten/paa`, Ordner
+`paa/rockabilly-de-2026-10-01/`: 95 JSON-Antworten der API, `paa.db`,
+Konfiguration und das xlsx mit allen Texten. Von dort lässt sich ohne
+neue Kosten neu auswerten (`paa.py --project <ordner> reparse`, dann
+`export`; getestet am 2026-10-01). `reparse` braucht `paa.db` neben
+`raw/`, denn aus den JSON-Dateien allein baut das Skript nichts auf.
