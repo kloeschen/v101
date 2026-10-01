@@ -32,6 +32,126 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **Berlin, Rockin' Wildcat: 6 Termine anlegen (23.10.2026, 26.10.2026, 30.10.2026, 06.11.2026, 05.12.2026, 27.12.2026).**
+Gesehen am 2026-10-01 auf https://www.rockin-wildcat.com/rwc/guide
+(Herkunft: Suchlauf 2026-10-01). Dort steht, je Detailseite (sichtbare
+Angaben): Killer Dillers, Fr., 23. Oktober 2026, 20:00, Kosten 12,00 €,
+KulturMarktHalle, Hanns-Eisler-Str. 93, Berlin-Prenzlauer Berg, dazu
+Record Hop mit DJ Capt'n K. (/rwc/events/killer-dillers-5); Kitty, Daisy
+& Lewis, Mo., 26. Oktober 2026, 20:00, Huxley's Neue Welt, Hasenheide
+107–113, Berlin-Neukölln (/rwc/events/kitty-daisy-lewis-2); Zombina and
+the Skeletons, Thee Flanders, The Real Halloween Deal, Fr., 30. Oktober
+2026, 20:00, Wild at Heart, Wiener Str. 20, Berlin-Kreuzberg
+(/rwc/events/zombina-and-the-skeletons-thee-flanders-the-real-halloween-deal);
+Grumpynators, Fr., 6. November 2026, 20:00, Wild at Heart
+(/rwc/events/grumpynators); Guana Batz, Sa., 5. Dezember 2026, 19:00,
+Lido (/rwc/events/guana-batz-3); Boppin' B, So., 27. Dezember 2026,
+19:00, Kosten 25,00 €, Privatclub, Skalitzer Str. 85–86, Berlin-Kreuzberg
+(/rwc/events/boppin-b-5). Beim Bauen: die drei Leseregeln für Rockin'
+Wildcat (sichtbare Uhrzeit, sichtbares Feld „Kosten", kein `ende`) und
+jede Seite des Hauses gegenlesen (Falle „Rockin' Wildcat gegen das
+Haus"). Spielorte außer Lido sind neu (Wild at Heart, Huxley's,
+KulturMarktHalle, Privatclub), Adresse nur aus einer Quelle, die sie
+nennt. Boppin' B hat eine Bandseite (`bands/boppin-b`, `lineupBands`),
+die übrigen Bands gehören in `lineupWeitere`. Zeitzone: 23.10. `+02:00`,
+alle übrigen `+01:00` (Sommerzeit endet am 25.10.). Bewusst nicht im
+Posten: Reverend Peyton's Big Damn Band (22.10., Genres laut Gig Guide
+Blues/Country/Roots) und Monsters (27.10., Garage/Trash) — kein Genre mit
+Lexikoneintrag.
+
+`frei` **Brandenburg, Rockin' Wildcat: 3 Termine anlegen (24.10.2026, 25.10.2026, 22.11.2026).**
+Gesehen am 2026-10-01 auf https://www.rockin-wildcat.com/rwc/guide
+(Herkunft: Suchlauf 2026-10-01). Dort steht: Swamp Shakers, Sa., 24.
+Oktober 2026, 19:00, Klubhaus Ludwigsfelde, Theodor-Fontane-Str. 42,
+14974 Ludwigsfelde, Genre Rockabilly (/rwc/events/swamp-shakers); Record
+Hop mit DJ Capt'n K., So., 25. Oktober 2026, 16:00, Zeesener Hof,
+Karl-Liebknecht-Str. 106, 15711 Zeesen (/rwc/events/record-hop-62); Record
+Hop, So., 22. November 2026, 16:00, gleicher Ort (/rwc/events/record-hop-67).
+Keine Kosten angegeben. Beim Bauen: Die Region Brandenburg gibt es noch
+nicht, sie ist nach dem Muster der vorhandenen anzulegen (`entwurf`);
+daran scheiterte der Zeesener Record Hop am 2026-09-24 (ENTSCHEIDUNGEN).
+Die Häuser gegenlesen (www.klubhaus-ludwigsfelde.de, www.zeesenerhof.de).
+Vorlage für die Record Hops: `events/record-hop-rathaus-friedrichshagen-2026-11-08`
+(gleicher DJ). Zeitzone: 24.10. `+02:00`, 25.10. ist der Tag der
+Umstellung — 16:00 liegt danach, also `+01:00`; 22.11. `+01:00`.
+
+`frei` **Linz, DJ Daddy C im Gasthaus Keferfeld: 2 Termine anlegen (06.11.2026, 05.12.2026).**
+Gesehen am 2026-10-01 auf https://boogie.at/?page=1 und ?page=2 (Herkunft:
+Suchlauf 2026-10-01). Dort steht: „November Jive Night", Fr., 06.11.2026,
+20:00, Gasthaus Keferfeld, Landwiedstrasse 65, 4020 Linz, „Einlass: 19:00
+Uhr, Beginn: 20:00 Uhr, Eintritt: freiwillige Unterstützung", DJ Daddy C
+(/event/november-jive-night); „Christmas Boogie & Swing Night", Sa.,
+05.12.2026, 20:00, gleicher Ort, gleiche Angaben zu Einlass, Beginn und
+Eintritt (/event/christmas-boogie-swing-night). Beim Bauen: Spielort neu;
+eine eigene Seite von DJ Daddy C oder des Gasthauses suchen (boogie.at ist
+Kalender, nicht Veranstalter). „Freiwillige Unterstützung" ist kein
+bezifferter Preis. Region `oberoesterreich`. Zeitzone `+01:00`.
+
+`frei` **Bad Blumau, Swinging Wellness Tanzwochenende: 1 Termin anlegen (06.–08.11.2026).**
+Gesehen am 2026-10-01 auf https://boogie.at/?page=1 (Herkunft: Suchlauf
+2026-10-01). Dort steht (/event/swinging-wellness-tanzwochenende-10-jaehriges-jubilaeum):
+Fr. 06.11., Sa. 07.11., So. 08.11.2026, je 09:00, Rogner Bad Blumau, Bad
+Blumau 100, 8283 Bad Blumau; „10 Jahre"; Boogie Woogie, Lindy Hop, West
+Coast Swing, Balboa; 18 Tanzeinheiten; Freitag Dinner & Dance Party mit
+Robert Shumy, Samstag Party mit Live-Musik von The Ridin Dudes; Anmeldung
+über https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/.
+Beim Bauen: die Veranstalterseite öffnen (Preis, Ablauf, Veranstalter);
+Early-Bird-Angaben auf boogie.at beziehen sich auf eine Frist im März 2026.
+Typ Workshop-Wochenende. Region Steiermark gibt es noch nicht (nach Muster
+anlegen, `entwurf`). Zeitzone `+01:00`.
+
+`frei` **Stadtgalerie Mödling: Boogieball am 13.11.2026 anlegen (Folgetermin der Rock'n' Boogie Tanzparty).**
+Gesehen am 2026-10-01 auf https://www.stadtgaleriekultur.info/events/kalender/
+(Herkunft: Suchlauf 2026-10-01). Dort steht: „Boogieball '26",
+„Tanzabend", „Freitag, 13. November 2026", „20:00 Uhr". boogie.at
+(/event/boogieball-0) nennt dazu: Stadtgalerie Mödling, live Junior and
+the Mad Cats („vormals The Juke Joint Royals"), Hannes Otahal, DJ Sascha;
+Tickets über Kartenbüro und Ticketshop. Beim Bauen: Vorlage
+`events/rockn-boogie-tanzparty-moedling-2026-10-16`; dessen
+Redaktionsnotiz sagt, `reihe` gehöre gesetzt, sobald eine zweite Ausgabe
+angelegt wird — das ist sie. Preis und Dresscode laut Vorlage eigens
+angekündigt, auf der Detailseite des Hauses prüfen. „Parkett" auf
+boogie.at ist eine Redewendung (Falle). Zeitzone `+01:00`.
+
+`frei` **Tanzschule Hippmann, Wels und Regau: 4 Termine anlegen (14.11.2026, 05.12.2026, 16.01.2027, 13.03.2027).**
+Gesehen am 2026-10-01 auf https://boogie.at/ (Seiten 1 bis 3) (Herkunft:
+Suchlauf 2026-10-01). Dort steht: „BIG BOOGIE & SWING PARTY + FOX", Sa.,
+14.11.2026, Tanzschule Hippmann, Pollheimerstraße 7, 4600 Wels, „Einlass
+ab 19.30 Uhr - Musikbeginn 20.15 Uhr", Boogie-, Lindy-Hop- und
+Swing-Floor live mit The 6 Fireballs (Tschechien) und DJ Rockin' Daddy,
+Discofox-Floor, Tickets über https://www.tanzschule.at/newsbeitrag/boogiefox2026/
+(/event/big-boogie-swing-party-fox); „Chrismas Big Boogie und Discofox
+Party", Sa., 05.12.2026, 20:00, Hippmann Starmovie Regau, Betriebsstrasse
+15, 4844 Regau, „2 Dj's 2 Floors" (/event/chrismas-big-boogie-und-discofox-party);
+„BOOGIE & SWINGBALL 2027", Sa., 16.01.2027, 20:00, Tanzschule Hippmann
+Wels, live Ray Collins Hot Club, DJ Rockin' Daddy, „Tickets: ab 35 €"
+(/event/boogie-swingball-2027); „Big Boogie und Discofox Party", Sa.,
+13.03.2027, 20:00, Regau, DJ.K. am Boogie-Floor (/event/big-boogie-und-discofox-party-2).
+Beim Bauen: die Seiten der Tanzschule (tanzschule.at) öffnen — ob Regau
+derselbe Veranstalter ist, sagt boogie.at nicht ausdrücklich. Zwei
+Spielorte neu. Region `oberoesterreich`. Zeitzone überall `+01:00`.
+
+`frei` **Kammgarnsaal Traiskirchen: Boogie-Party am 21.11.2026 anlegen (Folgetermin der Reihe).**
+Gesehen am 2026-10-01 auf https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
+(Herkunft: Suchlauf 2026-10-01). Dort steht in der Datumszeile „Sa.,
+21.11.2026 - 17:00" als letzter von sechs Terminen, Kammgarnsaal,
+Wolfstraße 18d, 2514 Traiskirchen; der Beschreibungstext nennt derzeit
+nur die Halloween-Ausgabe („Beginn 17.00, Einlass 16.30"). Beim Bauen:
+Vorlage `events/boogie-party-sonntagnachmittag-2026-10-31` (Reihe
+`boogie-party-sonntagnachmittag`). Preise und DJs der Vorlage nicht
+übernehmen, wenn die Seite sie für diesen Termin nicht nennt. Der 21.11.
+ist wieder ein Samstag. Zeitzone `+01:00`.
+
+`frei` **ASB-Bahnhof Barsinghausen: Boogielicious am 12.12.2026 anlegen.**
+Gesehen am 2026-10-01 auf https://www.asb-bahnhof-barsinghausen.de/
+(Herkunft: Suchlauf 2026-10-01). Dort steht
+(/2026/05/19/12-12-2026-boogielicious/): „Samstag, 12. Dezember 2026, um
+20:15 Uhr (Einlass ab 19:15 Uhr)", Vorverkauf 20 Euro direkt im
+ASB-Bahnhof, Abendkasse 25 Euro, Reservix (asb-bahnhof.reservix.de);
+deutsch-niederländisches Boogie-Woogie-Trio. Beim Bauen: Vorlage
+`events/boppin-b-asb-bahnhof-2026-10-03` (gleicher Ort). Reservix ist
+`aggregator`. Band in `lineupWeitere`. Zeitzone `+01:00`.
+
 `frei` **Lexikon, Bündel Bildwelt: Pin-up, Burlesque.** Zwei Einträge in
 einem PR. Beide Wörter waren Themenseiten der früheren Domain
 (`/thema/pin-up`, `/thema/burlesque`); mit der Freigabe leiten diese alten
@@ -82,7 +202,8 @@ ab (Verbindungsabbruch, WebFetch 503). 20:00 und „gleicher Saal" aus der
 Gewohnheit zu übernehmen wäre geschätzt. Beim Bauen: boogie.at zuerst
 öffnen; ist es wieder nicht erreichbar, den Posten liegen lassen, bis der
 Verein eigene Ankündigungen veröffentlicht (er tut das etwa einen Monat
-vorher). Dieselbe Hürde trifft die beiden anderen boogie.at-Posten oben.
+vorher). Dieselbe Hürde trifft die beiden anderen boogie.at-Posten oben. Am 2026-10-01 war
+boogie.at wieder erreichbar, alle fünf Seiten der Liste (Suchlauf).
 Nebenbei gesehen, nicht im Posten: Die Vereinsliste führt am 19.12.2026
 eine „Weihnachtsfeier" — ob die öffentlich ist, sagt sie nicht.
 Zeitzone: alle `+01:00`, außer 01.05.2027 `+02:00`.

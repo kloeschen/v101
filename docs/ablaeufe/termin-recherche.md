@@ -288,6 +288,11 @@ Fehler verursacht oder beinahe verursacht.
   verweisen oft auf eine alte Domain. Nicht aufgeben, sondern nach dem
   Vereinsnamen suchen; der BWC Gmunden hat seine Seite bei Jimdo, samt
   Impressum und Flyern (2026-09-28).
+- **Der Berliner Gig Guide reicht über Berlin hinaus.** Rockin' Wildcat
+  führt auch Termine in Brandenburg (Zeesener Hof in Zeesen, Klubhaus
+  Ludwigsfelde; 2026-10-01). Solche Termine brauchen die Region
+  Brandenburg, die es bis dahin nicht gab; der Suchlauf schreibt sie
+  deshalb als eigenen Posten, nicht im Berliner Bündel.
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
   `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'
