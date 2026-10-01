@@ -17,6 +17,35 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-01 — PAA-Recherche: Skill im Konto, Abfragen nur auf Zuruf
+
+**Anlass:** Markus bringt den Skill `paa-research` (DataForSEO SERP-API,
+„People also ask", AI-Overview-Quellen, verwandte Suchen) mit, um Themen
+für Inhalte zu finden.
+
+**Entschieden (Markus):** Der Skill kommt ins claude.ai-Konto, nicht ins
+Repo — `.claude/` ist gesperrt, und im Repo eingetragene Plugins werden in
+Cloud-Sitzungen nicht installiert. Echte Abfragen kosten Geld (laut Skill
+etwa 0,002–0,004 $ je Abfrage) und laufen **nur auf ausdrücklichen Zuruf**
+mit Budget; Tagesläufe und Suchlauf rufen ihn nie auf. Festgehalten in
+CLAUDE.md, weil sich die Regel nicht im Code erzwingen lässt: Der Skill
+liegt außerhalb des Repos.
+
+**Geprüft vor der Empfehlung:** alle Dateien des Plugins gelesen. Das
+Skript spricht nur `api.dataforseo.com` und die Sandbox an, liest die
+Zugangsdaten aus Umgebung oder `.env` und gibt sie nicht aus. Aus der
+Cloud-Umgebung sind beide Hosts erreichbar (ohne Zugangsdaten HTTP 401).
+`numpy` und `openpyxl` fehlen im Container und müssen pro Sitzung
+nachinstalliert werden; `fastembed` (Zusammenfassen umformulierter Fragen)
+lädt zusätzlich ein Modell nach. Für den Skill-Upload ist der Skriptpfad
+in `SKILL.md` angepasst (`scripts/paa.py` im Skill-Ordner statt
+`${CLAUDE_PLUGIN_ROOT}`, das es außerhalb eines Plugins nicht gibt).
+
+**Verworfen:** Skript als Werkzeug ins Repo (`tools/paa/`) — versioniert
+und geprüft, aber Markus will es kontoweit nutzen.
+
+---
+
 ## 2026-10-01 — „Jive" nur von Hand verlinken
 
 **Entscheidung Markus:** „Jive" kommt wie „Swing" auf `NUR_VON_HAND`

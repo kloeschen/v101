@@ -163,6 +163,14 @@ und winzer-event-discovery aus der Weinmesse. Keiner davon gilt hier, auch
 wenn sein Auslöser passt: fremdes Frontmatter, keine Belegpflicht, Push auf
 `main`. Termine laufen über `docs/ablaeufe/termin-recherche.md`.
 
+**Ausnahme: paa-research, nur auf Zuruf.** Der Skill fragt über die
+DataForSEO-API „People also ask"-Fragen ab und kostet pro Abfrage Geld.
+Echte Abfragen nur, wenn Markus sie in der Sitzung ausdrücklich mit Budget
+verlangt; Tagesläufe und Suchlauf rufen ihn nie auf. Die Fragen sind
+Themenideen, keine Quelle: Was daraus entsteht, wird belegt wie jeder
+andere Eintrag. Zugangsdaten nur als Umgebungsvariablen
+(`DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`), nie im Chat oder im Repo.
+
 **Warum diese beiden Verzeichnisse.** Dort liegt die Mechanik der
 Absicherung: Hooks, Berechtigungen, Agentendefinitionen, CI-Schritte. Was
 sich selbst absichert, darf sich nicht selbst ändern — sonst ist die Sperre
