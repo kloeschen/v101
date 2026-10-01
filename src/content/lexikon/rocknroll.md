@@ -5,12 +5,13 @@ kurzbeschreibung: Rock'n'Roll ist eine US-amerikanische Musikrichtung der 1950er
 status: veroeffentlicht
 erstelltAm: 2026-09-23
 geprueftAm: 2026-09-23
+geaendertAm: 2026-10-01
 autor: markus
 kategorie: genre
 bezeichnungDe: Rock and Roll
 bezeichnungEn: rock and roll
 definition: Rock'n'Roll ist eine in den 1950er Jahren in den USA entstandene Musikrichtung, die Rhythm and Blues mit Country-Musik verbindet.
-verwandt: [rockabilly, doo-wop, boogie-woogie, jump-blues, lindy-hop]
+verwandt: [rockabilly, doo-wop, boogie-woogie, jump-blues, lindy-hop, rocknroll-tanz]
 herkunftsland: US
 abgrenzung: >-
   Drei Verwechslungen, und die erste ist in einem Terminkalender die
@@ -133,7 +134,7 @@ Gemeinsam ist ihnen laut Wikipedia zweierlei: Sie sind Ausdruck gesellschaftlich
 
 ## Abgrenzung des Rock'n'Roll
 
-Die erste und in der Praxis wichtigste Abgrenzung ist die zum gleichnamigen Tanz. Der Turniertanz Rock'n'Roll ist aus dem [Lindy Hop](/lexikon/lindy-hop/) hervorgegangen und für seine akrobatischen Einlagen bekannt; wer in einem Terminkalender der Szene auf das Wort stößt, muss aus dem Zusammenhang schließen, ob Musik oder Tanz gemeint ist. Derselbe Fallstrick liegt beim Boogie-Woogie, der ebenfalls beides bezeichnet.
+Die erste und in der Praxis wichtigste Abgrenzung ist die zum gleichnamigen Tanz, der im Register einen eigenen Eintrag hat: Der [Rock'n'Roll-Tanz](/lexikon/rocknroll-tanz/) ist als Turniertanz aus dem [Lindy Hop](/lexikon/lindy-hop/) hervorgegangen und für seine akrobatischen Einlagen bekannt; wer in einem Terminkalender der Szene auf das Wort stößt, muss aus dem Zusammenhang schließen, ob Musik oder Tanz gemeint ist. Derselbe Fallstrick liegt beim Boogie-Woogie, der ebenfalls beides bezeichnet — als Tanz beschrieben im Eintrag [Boogie-Woogie-Tanz](/lexikon/boogie-woogie-tanz/).
 
 Die zweite Abgrenzung ist die zum Rockabilly. Rock'n'Roll ist der Oberbegriff; Rockabilly ist die um 1953 in den Südstaaten entstandene, country-geprägte Spielart mit geslapptem Kontrabass, E-Gitarre und Gesang. Die Wikipedia warnt zusätzlich davor, den Rockabilly mit dem Northern Band Style zu verwechseln, der den geslappten Bass teilt, aber dominanteres Schlagzeug und Bläser einsetzt.
 
