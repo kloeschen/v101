@@ -2,7 +2,7 @@
 name: Burlesque
 aliases: [Burlesque-Show]
 kurzbeschreibung: Burlesque ist eine Form des Unterhaltungstheaters aus Komik, Gesang, Tanz und angedeutetem Striptease, die ihre Blüte in den USA vor dem Zweiten Weltkrieg hatte und seit den 1990er Jahren als Neo-Burlesque wiederbelebt wird.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus

@@ -2,7 +2,7 @@
 name: Swamp Shakers im Klubhaus Ludwigsfelde
 aliases: [Swamp Shakers Ludwigsfelde 2026, The Swamp Shakers Klubhaus Ludwigsfelde, Live in Lu Swamp Shakers]
 kurzbeschreibung: Konzert der lettischen Rockabilly-Band Swamp Shakers am Samstag, 24. Oktober 2026, in der Lounge des Klubhauses Ludwigsfelde südlich von Berlin, Beginn laut Haus 20 Uhr.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
 autor: markus
