@@ -154,14 +154,6 @@ deutsch-niederländisches Boogie-Woogie-Trio. Beim Bauen: Vorlage
 `events/boppin-b-asb-bahnhof-2026-10-03` (gleicher Ort). Reservix ist
 `aggregator`. Band in `lineupWeitere`. Zeitzone `+01:00`.
 
-`frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
-(unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
-britische Jugendkultur der 1950er, auf die sich die Rockabilly-Szene in
-Großbritannien bis heute bezieht. Quellen öffnen (Wikipedia de/en,
-Vintage Rock, ein Nachschlagewerk zur Mode), Widersprüche in den Text.
-`abgrenzung` gegen Rockabilly als Musik und gegen die Mods. Danach
-`npm run autolink`.
-
 `frei` **Psychobilly-Osterfestival im Café Central Weinheim.** Die Startseite
 nennt „Frenzy — Psychobilly Oster Festival, Sa 27.03." und „Demented Are
 Go, So 28.03." ohne Jahr (Detailseiten /konzert/frenzy/ und
@@ -190,6 +182,23 @@ boogie.at wieder erreichbar, alle fünf Seiten der Liste (Suchlauf).
 Nebenbei gesehen, nicht im Posten: Die Vereinsliste führt am 19.12.2026
 eine „Weihnachtsfeier" — ob die öffentlich ist, sagt sie nicht.
 Zeitzone: alle `+01:00`, außer 01.05.2027 `+02:00`.
+
+`mensch` **Creepers und Pomade: zwei ungeprüfte Teddy-Boy-Angaben aus der
+deutschen Wikipedia.** Gefunden am 2026-10-02 beim Entwurf
+`lexikon/teddy-boy`. Die veröffentlichten Einträge `lexikon/creepers`
+(Abschnitt „Creepers in der Szene") und `lexikon/pomade` (Abschnitt
+„Pomade in der Szene") übernehmen aus der deutschen Wikipedia, dass die
+Teds der 1950er „die Elvis-Tolle" trugen, `creepers` außerdem, dass das
+Revival Mitte der 1970er Jahre „unter anderem die Stray Cats" trugen.
+Beides widerspricht den Quellen, die `lexikon/teddy-boy` geöffnet hat:
+Die ersten Teds gab es vor Elvis und vor dem Rock 'n' Roll (englische
+Wikipedia „Teddy Boys", Vintage Rock 2021), die Stray Cats wurden 1979
+gegründet (englische Wikipedia), und Teds rissen ihre Aufnäher ab, weil
+die Band als Punk galt (Vintage Rock 2022). Zu entscheiden: die beiden
+Stellen nach Regel 5 umschreiben (Angabe der Wikipedia benennen, das
+Gesicherte daneben) — Änderung an Freigegebenem, also über die normale
+Freigabe — oder bis zur Freigabe von `teddy-boy` warten und dann in
+einem Zug.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
@@ -268,9 +277,9 @@ Reihenfolge am 2026-10-01 nach der PAA-Recherche umgestellt: Frisuren und
 Rock- und Kleidformen nach oben. „Was heißt Pompadour?" und „Wie sieht ein
 Pompadour aus?" kamen auf zusammen 12 Treffer, „Welcher Rock gehört zur
 Rockabilly-Szene?" auf 23 — die meistgestellte Frage zum Look
-(`docs/daten/paa-rockabilly-2026-10-01/`).
-- *Frisuren:* Pompadour (Quiff, Tolle, die Tasche), Ducktail, Flat Top
-  (Crew Cut, Bürstenschnitt).
+(`docs/daten/paa-rockabilly-2026-10-01/`). Das Frisuren-Bündel ist seit
+dem 2026-10-02 als Entwurf angelegt (`lexikon/pompadour`,
+`lexikon/ducktail`, `lexikon/flat-top`) und hier gestrichen.
 - *Rock- und Kleidformen:* Tellerrock (Glockenrock, Petticoat), Etuikleid
   (Bleistiftrock, Wiggle Dress), Neckholder (Racerback). Alte Pfade vorhanden.
 - *Genres:* Rhythm and Blues (heutiges R&B), Hillbilly (Country,
@@ -286,8 +295,8 @@ Rockabilly-Szene?" auf 23 — die meistgestellte Frage zum Look
   abgrenzen, seit dem 2026-09-29 ein Entwurf), Slapback-Echo (Hall, Tape
   Delay).
 - *Autos:* Pinstriping (Nadelstreifen am Stoff), Lowrider, Lead Sled.
-- *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an den
-  Posten „Teddy Boy" anschließen.
+- *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an
+  `lexikon/teddy-boy` anschließen (Entwurf seit dem 2026-10-02).
 Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
 `/thema/country` (meinte Landhausmode). Ob `/jahrzehnt/50s` einen
 Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
@@ -321,8 +330,8 @@ stehen oder geplant sind und per `gehoertZu` darunter gehören:
 `artikel/petticoat-reifrock-unterrock` (deren Redaktionsnotiz wartet
 darauf), A3 „Petticoat tragen". Verlinkt die Lexikoneinträge der Säule
 (Petticoat, Bleistiftrock, Polka Dots, Gingham, Creepers, Pin-up,
-Taillenmieder …). Hilfreich, aber keine Bedingung: Tellerrock und
-Pompadour aus dem Lexikon-Vorrat. Wartet nur, weil am 2026-10-01 zwölf
+Taillenmieder …). Hilfreich, aber keine Bedingung: Tellerrock aus dem
+Lexikon-Vorrat und `lexikon/pompadour` (Entwurf seit dem 2026-10-02). Wartet nur, weil am 2026-10-01 zwölf
 von zwölf Posten `frei` sind. Ein Pillar beschreibt, er schreibt nichts
 vor: Was „dazugehört", wird über Quellen zur Szene belegt, nicht gesetzt.
 
@@ -332,7 +341,8 @@ gewählt, nicht abgelehnt (Einzelheiten in
 erkennen" (howto, `sammeln`, nach `lexikon/vintage`), A4 „Rockabilly oder
 Rock'n'Roll?" (vergleich, `musik`), A5 „Bekannte Rockabilly-Songs" (liste,
 `musik`, keine Songtexte), A7 „Rockabilly-Frisuren" (liste, `frisur`,
-nach Pompadour). Ein Lauf baut davon nichts, solange Markus keinen auf
+nach Pompadour; Pompadour, Ducktail und Flat Top stehen seit dem
+2026-10-02 als Entwurf). Ein Lauf baut davon nichts, solange Markus keinen auf
 `frei` setzt.
 
 **Artikel A1 „Vintage, Retro oder Secondhand?" — sobald
