@@ -5,6 +5,7 @@ kurzbeschreibung: Rockabilly ist eine Spielart des Rock'n'Roll, die Mitte der 19
 status: veroeffentlicht
 erstelltAm: 2026-09-09
 geprueftAm: 2026-09-10
+geaendertAm: 2026-10-02
 autor: markus
 kategorie: genre
 bezeichnungDe: Rockabilly
@@ -23,6 +24,13 @@ abgrenzung: >-
   auf ihn beruft, nicht zum Genre. Und Rockabilly ist nicht der
   Psychobilly, der ab 1980 daraus mit den Mitteln des Punk etwas anderes
   gemacht hat.
+faq:
+  - frage: Was heißt Rockabilly auf Deutsch?
+    antwort: Übersetzt wird das Wort nicht; das DWDS führt Rockabilly als deutsches Substantiv. Es ist aus „rock" und „hillbilly" zusammengesetzt, nach der Britannica wörtlich Rock'n'Roll, gespielt von Hillbillys. Hillbilly gibt die deutsche Wikipedia mit „Landei" oder „Hinterwäldler" wieder, und genau dieser Beiklang hat nach ihr lange verhindert, dass sich der Name durchsetzte.
+  - frage: Welcher Jahrgang ist Rockabilly?
+    antwort: Rockabilly gehört in die 1950er Jahre. Die Britannica nennt ihn populär von der Mitte der 1950er Jahre bis 1960, die deutsche Wikipedia setzt die Blütezeit auf 1954/55 bis 1958 und das Ende auf 1960. Die englische Wikipedia lässt die Wurzeln schon in den frühen 1950er Jahren beginnen und sieht den Höhepunkt 1956 und 1957. Als Ausgangspunkt gelten Elvis Presleys erste Aufnahmen bei Sun Records 1954.
+  - frage: Ist Rockabilly 70er Jahre?
+    antwort: Nein, entstanden ist er in den 1950er Jahren. In den späten 1970er Jahren kam er aber zurück; nach der Britannica begann dieses Revival in Europa, unter anderem ausgelöst durch Elvis Presleys Tod 1977, und brachte junge Bands wie die Stray Cats hervor. Die deutsche Wikipedia knüpft das Revival ebenfalls an Presleys Tod, lässt es an anderer Stelle aber erst in den 1980er Jahren von England aus starten; erst im Revival Anfang der 1980er Jahre sei das Wort Rockabilly einem breiten Publikum bekannt geworden.
 redaktionsnotiz: >-
   Quellen am 2026-09-09 einzeln geöffnet. Zur Herkunft des Wortes
   widersprechen sich die beiden Wikipedia-Fassungen in der Sache nicht,
@@ -39,21 +47,40 @@ redaktionsnotiz: >-
   Keine aliases eingetragen: "Rock-a-billy" und "Hillbilly Rock" sind mir
   in den geöffneten Quellen nicht als gebräuchliche Nebenformen begegnet,
   und erfundene Aliases sind schlechter als keine.
+  FAQ am 2026-10-02 ergänzt (Fragen aus der PAA-Recherche vom 2026-10-01,
+  docs/daten/paa-rockabilly-2026-10-01/fragen.csv — Themen, keine Quelle).
+  Dafür erneut geöffnet: DWDS, deutsche und englische Wikipedia; neu
+  geöffnet: Britannica „rockabilly" (Craig Morrison). Alle drei Fragen aus
+  dem Posten sind gedeckt. Widersprüche in den Antworten benannt: Beginn
+  (englische Wikipedia frühe 1950er, Britannica und deutsche Wikipedia
+  Mitte der 1950er) und Revival (Britannica späte 1970er; die deutsche
+  Wikipedia nennt an einer Stelle Presleys Tod 1977 als Auslöser, an einer
+  anderen den Start in den 1980er Jahren von England aus). Beim erneuten Öffnen aufgefallen, nicht übernommen:
+  Die englische Wikipedia nennt inzwischen Bill Flagg, der das Wort schon
+  1953 benutzt habe (Beleg: Rockabilly Hall of Fame, toter Link). Das
+  widerspricht dem Abschnitt „Der Name Rockabilly" (Billboard 1956 als
+  früher Beleg) nicht direkt, gehört aber bei der nächsten Prüfung in den
+  Text — benannt und zugeordnet, nicht stillschweigend weggelassen.
 quellen:
   - url: https://de.wikipedia.org/wiki/Rockabilly
     titel: Rockabilly (Wikipedia)
     abgerufenAm: 2026-09-09
-    felder: [aeraVon, aeraBis, herkunftsland, kurzbeschreibung, abgrenzung, body:merkmale, body:entstehung, body:name]
+    felder: [aeraVon, aeraBis, herkunftsland, kurzbeschreibung, abgrenzung, faq, body:merkmale, body:entstehung, body:name]
     art: nachschlagewerk
   - url: https://en.wikipedia.org/wiki/Rockabilly
     titel: Rockabilly (English Wikipedia)
     abgerufenAm: 2026-09-09
-    felder: [bezeichnungEn, body:merkmale, body:entstehung, body:name]
+    felder: [bezeichnungEn, faq, body:merkmale, body:entstehung, body:name]
     art: nachschlagewerk
   - url: https://www.dwds.de/wb/Rockabilly
     titel: Rockabilly (DWDS)
     abgerufenAm: 2026-09-09
-    felder: [definition, bezeichnungDe]
+    felder: [definition, bezeichnungDe, faq]
+    art: nachschlagewerk
+  - url: https://www.britannica.com/art/rockabilly
+    titel: rockabilly (Encyclopaedia Britannica, Craig Morrison)
+    abgerufenAm: 2026-10-02
+    felder: [faq]
     art: nachschlagewerk
 ---
 

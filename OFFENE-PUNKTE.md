@@ -54,6 +54,17 @@ zehn Szene-Links zeigen auf einen Eintrag über Stil und Altersgrenze, nicht
 Vintage-Kleidung?" (13 Treffer) ist unbeantwortet, weil keine geöffnete
 Quelle Kriterien gibt — Kandidat für einen eigenen Artikel.
 
+`mensch` **Belegpflicht für `faq` ist nirgends maschinell geprüft.** Fund
+vom 2026-10-02 beim Bau der Lexikon-FAQs: `faq` steht in keiner Liste von
+`belegpflichtigeFelder` (`_schemas.ts`), und `belegpflicht` prüft nur
+diese. Eine FAQ ohne Quelle mit `felder: [faq]` fällt also weder im
+Lexikon noch bei Artikeln auf; die Regel „nur Fragen, die eine Quelle
+deckt" steht bisher nur in Prosa (Regel 3). Zu entscheiden: `faq` in die
+Liste für lexikon und artikel aufnehmen (Schemaänderung, gesperrt) — mit
+Negativtest — oder bewusst lassen, weil eine Antwort mehrere Quellen
+mischt und die Prüfung nur das Vorhandensein irgendeiner `faq`-Quelle
+sähe.
+
 `mensch` **„Boogie Woogie" in Terminen: Klavierstil oder Tanz?** Gefunden
 am 2026-10-02 beim Entwurf der Eventseite; derselbe Fall wie beim
 Rock'n'Roll & Boogie Woogie Weekend (am 2026-10-01 auf `genres:
@@ -76,126 +87,25 @@ ein Tanzeintrag) oder `genres` dann ohne Boogie bleibt; (3) die
 Convention einzeln, gegen die Quelle. Danach baut ein Lauf die Stellen um
 und prüft jede gegen ihre Quelle.
 
-`frei` **Lexikon: FAQ für Polka Dots, Pin-up, Petticoat und Rockabilly.**
-Entscheidung Markus, 2026-10-01: Lexikoneinträge bekommen FAQs (Feld `faq`
-aus `basis`, bisher bei keinem Lexikoneintrag gesetzt). Technisch ist nichts
-zu bauen: `[typ]/[slug].astro` rendert `FaqBlock` für jede Collection, und
-das JSON-LD hängt eine FAQPage an — nach dem Build an einer Lexikonseite
-nachsehen, dass beides erscheint. Fragen aus der
-PAA-Recherche (`fragen.csv`): *Polka Dots* — Warum sagt man Polka Dots?,
-Was heißt Polka Dots auf Deutsch?, Was ist Dresscode Polka Dots?, Wann
-waren Polka Dots modern?; *Pin-up* — Was sind Pin-up-Models?, Was sind
-Pin-up-Fotos?, Was ist ein Pin-up-Magazin?; *Petticoat* — Was heißt
-Petticoat auf Deutsch?, In welcher Zeit trug man Petticoat?; *Rockabilly*
-— Was heißt Rockabilly auf Deutsch?, Welcher Jahrgang ist Rockabilly?,
-Ist Rockabilly 70er Jahre?. Nur Fragen aufnehmen, deren Antwort eine
-Quelle in `quellen[]` deckt (`felder: [faq, …]`, wie in
-`artikel/petticoat-reifrock-unterrock`); Trendfragen („noch modern?") nicht. Die
-Antwort wiederholt den Text nicht wörtlich, sondern antwortet kurz.
-Status bleibt, wie er ist; veröffentlichte Einträge gehen über die
-normale Freigabe.
 
-`frei` **Bad Blumau, Swinging Wellness Tanzwochenende: 1 Termin anlegen (06.–08.11.2026).**
-Gesehen am 2026-10-01 auf https://boogie.at/?page=1 (Herkunft: Suchlauf
-2026-10-01). Dort steht (/event/swinging-wellness-tanzwochenende-10-jaehriges-jubilaeum):
-Fr. 06.11., Sa. 07.11., So. 08.11.2026, je 09:00, Rogner Bad Blumau, Bad
-Blumau 100, 8283 Bad Blumau; „10 Jahre"; Boogie Woogie, Lindy Hop, West
-Coast Swing, Balboa; 18 Tanzeinheiten; Freitag Dinner & Dance Party mit
-Robert Shumy, Samstag Party mit Live-Musik von The Ridin Dudes; Anmeldung
-über https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/.
-Beim Bauen: die Veranstalterseite öffnen (Preis, Ablauf, Veranstalter);
-Early-Bird-Angaben auf boogie.at beziehen sich auf eine Frist im März 2026.
-Typ Workshop-Wochenende. Region Steiermark gibt es noch nicht (nach Muster
-anlegen, `entwurf`). Zeitzone `+01:00`.
 
-`frei` **Stadtgalerie Mödling: Boogieball am 13.11.2026 anlegen (Folgetermin der Rock'n' Boogie Tanzparty).**
-Gesehen am 2026-10-01 auf https://www.stadtgaleriekultur.info/events/kalender/
-(Herkunft: Suchlauf 2026-10-01). Dort steht: „Boogieball '26",
-„Tanzabend", „Freitag, 13. November 2026", „20:00 Uhr". boogie.at
-(/event/boogieball-0) nennt dazu: Stadtgalerie Mödling, live Junior and
-the Mad Cats („vormals The Juke Joint Royals"), Hannes Otahal, DJ Sascha;
-Tickets über Kartenbüro und Ticketshop. Beim Bauen: Vorlage
-`events/rockn-boogie-tanzparty-moedling-2026-10-16`; dessen
-Redaktionsnotiz sagt, `reihe` gehöre gesetzt, sobald eine zweite Ausgabe
-angelegt wird — das ist sie. Preis und Dresscode laut Vorlage eigens
-angekündigt, auf der Detailseite des Hauses prüfen. „Parkett" auf
-boogie.at ist eine Redewendung (Falle). Zeitzone `+01:00`.
 
-`frei` **Tanzschule Hippmann, Wels und Regau: 4 Termine anlegen (14.11.2026, 05.12.2026, 16.01.2027, 13.03.2027).**
-Gesehen am 2026-10-01 auf https://boogie.at/ (Seiten 1 bis 3) (Herkunft:
-Suchlauf 2026-10-01). Dort steht: „BIG BOOGIE & SWING PARTY + FOX", Sa.,
-14.11.2026, Tanzschule Hippmann, Pollheimerstraße 7, 4600 Wels, „Einlass
-ab 19.30 Uhr - Musikbeginn 20.15 Uhr", Boogie-, Lindy-Hop- und
-Swing-Floor live mit The 6 Fireballs (Tschechien) und DJ Rockin' Daddy,
-Discofox-Floor, Tickets über https://www.tanzschule.at/newsbeitrag/boogiefox2026/
-(/event/big-boogie-swing-party-fox); „Chrismas Big Boogie und Discofox
-Party", Sa., 05.12.2026, 20:00, Hippmann Starmovie Regau, Betriebsstrasse
-15, 4844 Regau, „2 Dj's 2 Floors" (/event/chrismas-big-boogie-und-discofox-party);
-„BOOGIE & SWINGBALL 2027", Sa., 16.01.2027, 20:00, Tanzschule Hippmann
-Wels, live Ray Collins Hot Club, DJ Rockin' Daddy, „Tickets: ab 35 €"
-(/event/boogie-swingball-2027); „Big Boogie und Discofox Party", Sa.,
-13.03.2027, 20:00, Regau, DJ.K. am Boogie-Floor (/event/big-boogie-und-discofox-party-2).
-Beim Bauen: die Seiten der Tanzschule (tanzschule.at) öffnen — ob Regau
-derselbe Veranstalter ist, sagt boogie.at nicht ausdrücklich. Zwei
-Spielorte neu. Region `oberoesterreich`. Zeitzone überall `+01:00`.
-
-`frei` **Kammgarnsaal Traiskirchen: Boogie-Party am 21.11.2026 anlegen (Folgetermin der Reihe).**
-Gesehen am 2026-10-01 auf https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
-(Herkunft: Suchlauf 2026-10-01). Dort steht in der Datumszeile „Sa.,
-21.11.2026 - 17:00" als letzter von sechs Terminen, Kammgarnsaal,
-Wolfstraße 18d, 2514 Traiskirchen; der Beschreibungstext nennt derzeit
-nur die Halloween-Ausgabe („Beginn 17.00, Einlass 16.30"). Beim Bauen:
-Vorlage `events/boogie-party-sonntagnachmittag-2026-10-31` (Reihe
-`boogie-party-sonntagnachmittag`). Preise und DJs der Vorlage nicht
-übernehmen, wenn die Seite sie für diesen Termin nicht nennt. Der 21.11.
-ist wieder ein Samstag. Zeitzone `+01:00`.
-
-`frei` **ASB-Bahnhof Barsinghausen: Boogielicious am 12.12.2026 anlegen.**
-Gesehen am 2026-10-01 auf https://www.asb-bahnhof-barsinghausen.de/
-(Herkunft: Suchlauf 2026-10-01). Dort steht
-(/2026/05/19/12-12-2026-boogielicious/): „Samstag, 12. Dezember 2026, um
-20:15 Uhr (Einlass ab 19:15 Uhr)", Vorverkauf 20 Euro direkt im
-ASB-Bahnhof, Abendkasse 25 Euro, Reservix (asb-bahnhof.reservix.de);
-deutsch-niederländisches Boogie-Woogie-Trio. Beim Bauen: Vorlage
-`events/boppin-b-asb-bahnhof-2026-10-03` (gleicher Ort). Reservix ist
-`aggregator`. Band in `lineupWeitere`. Zeitzone `+01:00`.
-
-`frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
-(unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
-britische Jugendkultur der 1950er, auf die sich die Rockabilly-Szene in
-Großbritannien bis heute bezieht. Quellen öffnen (Wikipedia de/en,
-Vintage Rock, ein Nachschlagewerk zur Mode), Widersprüche in den Text.
-`abgrenzung` gegen Rockabilly als Musik und gegen die Mods. Danach
-`npm run autolink`.
-
-`frei` **Psychobilly-Osterfestival im Café Central Weinheim.** Die Startseite
-nennt „Frenzy — Psychobilly Oster Festival, Sa 27.03." und „Demented Are
-Go, So 28.03." ohne Jahr (Detailseiten /konzert/frenzy/ und
-/konzert/demented-are-go/). Nur anlegen, wenn eine Detailseite oder der
-Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
-zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
-Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
-
-`frei` **Boogie Lions Spillern: 5 Termine anlegen (28.11.2026, 09.01.2027, 20.02.2027, 06.03.2027, 01.05.2027).**
-Rest des Bündels vom 2026-09-28; der Halloween-Termin am 31.10.2026 ist
-gebaut (`events/boogie-lions-halloween-spillern-2026-10-31`, Vorlage für
-diese fünf, samt Reihe `boogie-lions-boogie-party` und Location
-`festsaal-wiemex-spillern`). **Befund, warum sie fehlen:** Die
-Veranstaltungsliste des Vereins (https://www.boogielions.at/veranstaltungen)
-nennt nur Datum und Titel: „28.11.2026 - Boogie Abend mit DJ Sascha",
-„09.01.2027 - Happy New Year", „20.02.2027", „06.03.2027", „01.05.2027 -
-Boogieabend". Uhrzeit und Ort nennt für diese Termine nur boogie.at
-(/event/boogie-party-44, /event/boogie-party-53, /event/boogie-party-56),
-und jeder Abruf von boogie.at brach am 2026-09-28 aus der Arbeitsumgebung
-ab (Verbindungsabbruch, WebFetch 503). 20:00 und „gleicher Saal" aus der
-Gewohnheit zu übernehmen wäre geschätzt. Beim Bauen: boogie.at zuerst
-öffnen; ist es wieder nicht erreichbar, den Posten liegen lassen, bis der
-Verein eigene Ankündigungen veröffentlicht (er tut das etwa einen Monat
-vorher). Dieselbe Hürde trifft die beiden anderen boogie.at-Posten oben. Am 2026-10-01 war
-boogie.at wieder erreichbar, alle fünf Seiten der Liste (Suchlauf).
-Nebenbei gesehen, nicht im Posten: Die Vereinsliste führt am 19.12.2026
-eine „Weihnachtsfeier" — ob die öffentlich ist, sagt sie nicht.
-Zeitzone: alle `+01:00`, außer 01.05.2027 `+02:00`.
+`mensch` **Creepers und Pomade: zwei ungeprüfte Teddy-Boy-Angaben aus der
+deutschen Wikipedia.** Gefunden am 2026-10-02 beim Entwurf
+`lexikon/teddy-boy`. Die veröffentlichten Einträge `lexikon/creepers`
+(Abschnitt „Creepers in der Szene") und `lexikon/pomade` (Abschnitt
+„Pomade in der Szene") übernehmen aus der deutschen Wikipedia, dass die
+Teds der 1950er „die Elvis-Tolle" trugen, `creepers` außerdem, dass das
+Revival Mitte der 1970er Jahre „unter anderem die Stray Cats" trugen.
+Beides widerspricht den Quellen, die `lexikon/teddy-boy` geöffnet hat:
+Die ersten Teds gab es vor Elvis und vor dem Rock 'n' Roll (englische
+Wikipedia „Teddy Boys", Vintage Rock 2021), die Stray Cats wurden 1979
+gegründet (englische Wikipedia), und Teds rissen ihre Aufnäher ab, weil
+die Band als Punk galt (Vintage Rock 2022). Zu entscheiden: die beiden
+Stellen nach Regel 5 umschreiben (Angabe der Wikipedia benennen, das
+Gesicherte daneben) — Änderung an Freigegebenem, also über die normale
+Freigabe — oder bis zur Freigabe von `teddy-boy` warten und dann in
+einem Zug.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
@@ -274,9 +184,9 @@ Reihenfolge am 2026-10-01 nach der PAA-Recherche umgestellt: Frisuren und
 Rock- und Kleidformen nach oben. „Was heißt Pompadour?" und „Wie sieht ein
 Pompadour aus?" kamen auf zusammen 12 Treffer, „Welcher Rock gehört zur
 Rockabilly-Szene?" auf 23 — die meistgestellte Frage zum Look
-(`docs/daten/paa-rockabilly-2026-10-01/`).
-- *Frisuren:* Pompadour (Quiff, Tolle, die Tasche), Ducktail, Flat Top
-  (Crew Cut, Bürstenschnitt).
+(`docs/daten/paa-rockabilly-2026-10-01/`). Das Frisuren-Bündel ist seit
+dem 2026-10-02 als Entwurf angelegt (`lexikon/pompadour`,
+`lexikon/ducktail`, `lexikon/flat-top`) und hier gestrichen.
 - *Rock- und Kleidformen:* Tellerrock (Glockenrock, Petticoat), Etuikleid
   (Bleistiftrock, Wiggle Dress), Neckholder (Racerback). Alte Pfade vorhanden.
 - *Genres:* Rhythm and Blues (heutiges R&B), Hillbilly (Country,
@@ -292,8 +202,8 @@ Rockabilly-Szene?" auf 23 — die meistgestellte Frage zum Look
   abgrenzen, seit dem 2026-09-29 ein Entwurf), Slapback-Echo (Hall, Tape
   Delay).
 - *Autos:* Pinstriping (Nadelstreifen am Stoff), Lowrider, Lead Sled.
-- *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an den
-  Posten „Teddy Boy" anschließen.
+- *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an
+  `lexikon/teddy-boy` anschließen (Entwurf seit dem 2026-10-02).
 Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
 `/thema/country` (meinte Landhausmode). Ob `/jahrzehnt/50s` einen
 Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
@@ -327,8 +237,8 @@ stehen oder geplant sind und per `gehoertZu` darunter gehören:
 `artikel/petticoat-reifrock-unterrock` (deren Redaktionsnotiz wartet
 darauf), A3 „Petticoat tragen". Verlinkt die Lexikoneinträge der Säule
 (Petticoat, Bleistiftrock, Polka Dots, Gingham, Creepers, Pin-up,
-Taillenmieder …). Hilfreich, aber keine Bedingung: Tellerrock und
-Pompadour aus dem Lexikon-Vorrat. Wartet nur, weil am 2026-10-01 zwölf
+Taillenmieder …). Hilfreich, aber keine Bedingung: Tellerrock aus dem
+Lexikon-Vorrat und `lexikon/pompadour` (Entwurf seit dem 2026-10-02). Wartet nur, weil am 2026-10-01 zwölf
 von zwölf Posten `frei` sind. Ein Pillar beschreibt, er schreibt nichts
 vor: Was „dazugehört", wird über Quellen zur Szene belegt, nicht gesetzt.
 
@@ -338,7 +248,8 @@ gewählt, nicht abgelehnt (Einzelheiten in
 erkennen" (howto, `sammeln`, nach `lexikon/vintage`), A4 „Rockabilly oder
 Rock'n'Roll?" (vergleich, `musik`), A5 „Bekannte Rockabilly-Songs" (liste,
 `musik`, keine Songtexte), A7 „Rockabilly-Frisuren" (liste, `frisur`,
-nach Pompadour). Ein Lauf baut davon nichts, solange Markus keinen auf
+nach Pompadour; Pompadour, Ducktail und Flat Top stehen seit dem
+2026-10-02 als Entwurf). Ein Lauf baut davon nichts, solange Markus keinen auf
 `frei` setzt.
 
 **Artikel A1 „Vintage, Retro oder Secondhand?" — sobald

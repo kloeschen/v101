@@ -46,6 +46,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [Crazy Boogiefreaks, Termine](https://crazy-boogiefreaks.at/termine/) | Oberösterreich (Steyr, Sierning) | Verein | ja, iCal/XML-Export des Kalender-Plugins | Terminseiten nennen oft keinen Ort; Trainings und Partys im selben Kalender. `x-cost-type` im Export ist ein Vorgabewert (siehe Fallen) |
 | [BWC Gmunden, Aktivitätenkalender](https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/) | Oberösterreich (Roitham, Eberstalzell, Fischlham) | Verein | nein, nur Flyer als Bilder | die auf boogie.at und den Flyern genannte `www.bwc-gmunden.com` löst nicht auf (2026-09-28); Kalender je Jahr, am 2026-09-28 nur bis Ende 2026 |
 | [Haslinger Hof, Musikprogramm](https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html) | Bayern (Kirchham bei Bad Füssing) | Haus | nein | Tagesprogramm aller Säle, rund viereinhalb Monate im Voraus; Szenebezug nur beim „BoogieMix" (zweiter Freitag). Tabelle ohne Jahreszahl (siehe Fallen) |
+| [Tanzschule Hippmann, Events](https://www.tanzschule.at/events/) | Oberösterreich (Wels, Regau) | Haus | nein | Ankündigungen je Party mit Preis; Uhrzeit beim Ball oft erst spät. Termine in Regau teils nur auf der Seite der Fox & Boogie Nacht oder nur als Flyer auf boogie.at (2026-10-02) |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
@@ -196,6 +197,14 @@ Fehler verursacht oder beinahe verursacht.
   dem Haus und nennt den Widerspruch im Text (Regel 5). Zweiter Fall:
   Swamp Shakers im Klubhaus Ludwigsfelde am 24.10.2026 — Gig Guide 19
   Uhr, Haus und Reservix „Einlass 19:30, Beginn 20:00" (2026-10-01).
+- **Ticketseite gegen das Haus, auch beim hauseigenen Anbieter.** Beim
+  Psychobilly-Osterfestival im Café Central Weinheim (27.3.2027) nennt
+  die loveyourartist-Seite des Einzeltickets „19:00 Uhr, Einlass 18:00",
+  das Haus und die Seite des Zweitagestickets beim selben Anbieter 19:30
+  und 18:30 (2026-10-02). Gleiches Vorgehen wie beim Gig Guide: dem Haus
+  folgen, den Widerspruch im Text nennen. Gibt es ein Kombiticket,
+  dessen Seite mit öffnen — sie ist ein zweiter Datensatz desselben
+  Anbieters.
 - **Haus und Ticketportal nennen verschiedene „ab"-Preise.** Beim
   Klubhaus Ludwigsfelde steht „ab 20 €", bei Reservix „ab 25,40 €" für
   das Online-Ticket (2026-10-01). Woraus die Differenz besteht, sagt
@@ -283,6 +292,19 @@ Fehler verursacht oder beinahe verursacht.
   zeigen, nicht anzunehmen. Ein strittiger Ort lässt sich mit Gründen
   gewichten und im Text benennen; ein strittiges Datum nicht, weil
   `beginn` nicht leer bleiben kann — dann zurück an den Menschen.
+- **boogie.at: die Übersichtsliste kann Termine auslassen.** Am
+  2026-10-02 stand die Boogie Party der Boogie Lions am 06.03.2027 auf
+  keiner der Listenseiten (`?page=2` endete mit dem 20.02., `?page=3`
+  begann mit dem 13.03.), die Detailseite `/event/boogie-party-55` war
+  aber da und vollständig. Fehlt ein Termin, den die Vereinsseite nennt,
+  in der Liste: die benachbarten Detail-URLs (`…-54`, `…-55`) öffnen,
+  bevor er als unbestätigt zurückgeht.
+- **Flyer auf boogie.at sind oft die einzige Stelle mit Uhrzeit und
+  Logo.** Bei den Partys der Tanzschule Hippmann in Regau (2026-10-02)
+  nannte nur der Flyer Einlass und Beginn; für den 13.03.2027 kündigte
+  die Tanzschule selbst nichts an. Ein Logo auf dem Flyer ist ein
+  Hinweis auf den Veranstalter, kein Beleg — `veranstalter` blieb dort
+  leer, beim 05.12.2026, den die Tanzschule auf ihrer Seite nennt, nicht.
 - **boogie.at kann ganz ausfallen.** Am 2026-09-28 nachmittags brach
   jeder Abruf ab (curl: Verbindungsabbruch, WebFetch: 503); die
   Gmunden-Einträge vom selben Tag hatten boogie.at noch abgerufen.
