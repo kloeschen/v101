@@ -17,6 +17,25 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+
+## 2026-10-02 — „Vintage" wird nur von Hand verlinkt
+
+**Entscheidung Markus:** `vintage` steht in `NUR_VON_HAND`
+(`src/lib/links.ts`), wie „Swing" und „Jive". Grundlage war eine simulierte
+Freigabe von `lexikon/vintage`, die 20 automatische Links ergeben hätte:
+- 3 in Eigennamen: „Vintage Rock", „Peggy Sue Vintage"
+- 10 mit der Bedeutung Szene, nicht der Stil mit seiner Altersfrage
+- 7 passende
+
+Verworfen: automatisch verlinken und die Eigennamen anders absichern.
+Dafür gibt es keinen Mechanismus; `sync-autolinks.ts` reicht keine
+Ausnahmen durch.
+
+**Beleg:** `scripts/test-links.ts` prüft, dass Vintage weder frei noch im
+Eigennamen noch vor dem Bindestrich verlinkt wird, ein Handlink aber
+stehen bleibt. Mutationsbeleg: Ohne den Listeneintrag fallen genau diese
+zwei Prüfungen.
+
 ## 2026-10-02 — Vintage: keine Altersgrenze, Autolink erst nach Entscheidung
 
 **Fund beim Bau von `lexikon/vintage`:** Die Altersgrenze, nach der die

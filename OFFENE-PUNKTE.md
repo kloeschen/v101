@@ -32,27 +32,17 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`mensch` **Vintage freigeben: Autolink vorher entscheiden.** Der Eintrag
-`lexikon/vintage` liegt seit dem 2026-10-02 als Entwurf vor. Links auf ihn
-setzt der Autolink erst mit der Freigabe, `npm run autolink` ergab deshalb
-0. Simuliert (Eintrag als freigegeben behandelt, Bestand vom 2026-10-02):
-**20 Links in 20 Dateien, 19 davon freigegeben.** Davon passen 7
-(Vintage-Mode, -Garderobe, -Ästhetik, -Outfit, dreimal Vintage-Markt), 10
-meinen die Szene („Vintage-Szene", sechsmal die Formel „Für die Vintage-
-und Rockabilly-Szene" in Regionen, Locations und Pomade), und 3 sind
-falsch, weil das Wort Teil eines Eigennamens ist: das Magazin „Vintage
-Rock" (`lexikon/neo-rockabilly`) und der Laden „Peggy Sue Vintage"
-(`lexikon/petticoat`, `artikel/petticoat-tragen`). Zu entscheiden: (a)
-`vintage` in `NUR_VON_HAND` (`src/lib/links.ts`) aufnehmen und die
-passenden Stellen von Hand verlinken — wie bei „Swing" und „Jive"; (b)
-automatisch verlinken lassen und die drei Eigennamen anders absichern
-(dafür gibt es heute keinen Mechanismus; `ausnahmen` kennt `autolink()`,
-`sync-autolinks.ts` reicht sie nicht durch); (c) so lassen. Empfehlung des
-Laufs: (a) — drei Fehllinks auf Eigennamen sind sichtbar falsch, und die
-zehn Szene-Links zeigen auf einen Eintrag über Stil und Altersgrenze, nicht
-über die Szene. Außerdem offen am Eintrag: Die Frage „Wie erkennt man
-Vintage-Kleidung?" (13 Treffer) ist unbeantwortet, weil keine geöffnete
-Quelle Kriterien gibt — Kandidat für einen eigenen Artikel.
+`mensch` **Vintage freigeben.** Der Eintrag `lexikon/vintage` liegt seit
+dem 2026-10-02 als Entwurf vor. Die Autolink-Frage ist entschieden
+(Markus, 2026-10-02): „Vintage" wird nur von Hand verlinkt
+(`NUR_VON_HAND` in `src/lib/links.ts`, ENTSCHEIDUNGEN.md). Nach der Freigabe
+setzt ein Lauf die passenden Handlinks. Das sind die sieben Stellen, die in
+der Simulation den Stil meinten (Vintage-Mode, -Garderobe, -Ästhetik,
+-Outfit, dreimal Vintage-Markt). Nicht verlinkt werden Eigennamen
+(„Vintage Rock", „Peggy Sue Vintage") und die Formel „Vintage- und
+Rockabilly-Szene". Offen am Eintrag: „Wie erkennt man Vintage-Kleidung?"
+(13 Treffer) bleibt unbeantwortet, weil keine geöffnete Quelle Kriterien
+nennt. Das ist ein Kandidat für Artikel A2.
 
 `mensch` **Belegpflicht für `faq` ist nirgends maschinell geprüft.** Fund
 vom 2026-10-02 beim Bau der Lexikon-FAQs: `faq` steht in keiner Liste von

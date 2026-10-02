@@ -276,6 +276,22 @@ const registry = buildRegistry([
   pruefe("ein Handlink auf den Jive bleibt stehen", hand.markdown === "Den [Jive](/lexikon/jive/) tanzen, zu Jump & Jive.", hand.markdown);
 }
 
+/* „Vintage" (2026-10-02) steht im Bestand in Eigennamen („Vintage Rock",
+ * „Peggy Sue Vintage") und meint meist die Szene. Gegenprobe wie oben;
+ * dazu die Zusammensetzung, die der Autolink sonst über den Bindestrich
+ * hinweg getroffen hätte. */
+{
+  const reg = buildRegistry([lex("vintage", "Vintage", { bezeichnungEn: "Vintage" }), lex("petticoat", "Petticoat")]);
+  pruefe("„vintage\" steht auf der Liste", NUR_VON_HAND.has("vintage"));
+  gleich(
+    "Vintage wird nicht verlinkt, auch nicht im Eigennamen oder vor dem Bindestrich; der Petticoat daneben schon",
+    autolink("Laut Vintage Rock trägt man zum Vintage-Kleid einen Petticoat, ganz Vintage.", reg).verlinkt,
+    ["petticoat"],
+  );
+  const hand = autolink("Ein [Vintage](/lexikon/vintage/)-Kleid aus dem Laden Peggy Sue Vintage.", reg);
+  pruefe("ein Handlink auf Vintage bleibt stehen", hand.markdown === "Ein [Vintage](/lexikon/vintage/)-Kleid aus dem Laden Peggy Sue Vintage.", hand.markdown);
+}
+
 {
   const gross = buildRegistry([lex("boogie-woogie", "Boogie-Woogie"), lex("boogie-woogie-tanz", "Boogie-Woogie-Tanz", { aliases: ["boogie-woogie"] })]);
   gleich("Mehrdeutigkeit unabhängig von Groß-/Kleinschreibung", [...gross.mehrdeutig.keys()], ["boogie-woogie"]);
