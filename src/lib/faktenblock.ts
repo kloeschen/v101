@@ -14,6 +14,7 @@ import { faktenblockFelder, istNurDerName } from "./jsonld";
 import { referenzFelder, urlPrefix, type CollectionName } from "../content/_schemas";
 import { aufloesen, type Registry } from "./links";
 import { site } from "../site.config";
+import { KATEGORIE, SAEULE } from "./facetten";
 
 export interface FaktStueck {
   text: string;
@@ -253,6 +254,14 @@ function formatiere(
       return text(wert ? "Ja" : "Nein");
     case "schwerpunkt":
       return text("Ja");
+    // Kategorie und Themenbereich mit eigenem Namen und als Link auf ihre
+    // Facettenseite. Bis zum 2026-10-02 liefen sie durch ENUM_TEXT, der für
+    // alle Felder gilt: „mode" stand roh da, und „tattoo" wäre als
+    // „Tattoo-Studio" erschienen — der Wert aus den Läden.
+    case "kategorie":
+      return [{ text: KATEGORIE[wert] ?? wert, href: `${urlPrefix.lexikon}/kategorie/${wert}/` }];
+    case "saeule":
+      return [{ text: SAEULE[wert] ?? wert, href: `${urlPrefix.artikel}/saeule/${wert}/` }];
     case "ticketUrl":
       return [{ text: "Zum Ticketshop", href: wert, extern: true }];
     case "herkunftLand":

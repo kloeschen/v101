@@ -17,6 +17,46 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Plattenhülle, Rest aus Etappe 3: Katalognummer, Werte, kein Zeitplan
+
+**Katalognummer über der H1.** Lexikoneinträge und Artikel eines Ressorts
+tragen über der H1 ein Etikett wie „V101-02 · Mode". Es verlinkt die
+Ressortseite, wenn sie sichtbar ist.
+- Lexikon: Das Ressort ergibt sich aus der Kategorie.
+- Artikel: Das Ressort ergibt sich aus dem Themenbereich (`saeule`).
+  Musik, Mode, Tanz, Frisur und Szene laufen unter ihrem Ressort.
+- **Kustom Kulture → V101-04 Autos.** Das ist eine Zuordnung, die ich
+  getroffen habe; der Artikel nennt sich „die Autoseite der Szene".
+- Geschichte, Sammeln, Tattoo und Einstieg haben kein Ressort und deshalb
+  keine Nummer.
+- Logik in `ressortVon` (`src/lib/ressorts.ts`), Test in
+  `scripts/test-ressorts.ts`.
+- Mutationsbelege: Ohne die Kustom-Zuordnung fallen genau 2 Prüfungen.
+  Ignoriert die Funktion die Sammlung, fallen genau die 2 Prüfungen zu
+  Fremdsammlungen.
+
+**Werte im Faktenblock.** Kategorie und Themenbereich erscheinen jetzt mit
+Namen und verlinken ihre Facettenseite. Der Fund war größer als vermerkt:
+- Alle Auswahlwerte laufen durch eine gemeinsame Tabelle `ENUM_TEXT`.
+- Dadurch standen 19 Werte roh da, nicht nur „mode".
+- Die Kategorie `tattoo` wäre als „Tattoo-Studio" erschienen, ein Wert aus
+  den Läden.
+
+`test-beschriftung.ts` rendert deshalb jetzt jeden Wert jedes Auswahlfelds
+im Faktenblock über `faktZeilen` und verlangt Text statt Schlüssel. Mit
+der alten Fassung fallen genau die 19 Werte und der Tattoo-Fall.
+
+**Line-up als Zeitplan: nicht gebaut.** Der Brief nimmt an, der Zeitplan
+ließe sich „aus Feldern, die es schon gibt" bauen. Das stimmt nicht:
+- `lineupBands`, `lineupWeitere` und `djs` sind reine Namenslisten.
+- Tag, Uhrzeit und Bühne je Act stehen in keinem Feld, sondern höchstens
+  im Fließtext.
+
+Ein Zeitplan bräuchte eine Erweiterung des Datenvertrags, etwa ein Feld je
+Act mit Tag, Uhrzeit und Bühne, jeweils belegt durch eine Quelle. Der
+Vertrag ändert sich nur auf ausdrückliche Anweisung. Bis dahin bleibt es
+beim Line-up im Faktenblock.
+
 ## 2026-10-02 — Plattenhülle, Etappe 4: die Startseite
 
 **Gebaut:** Aufmacher, „Dieses Wochenende" (Rosé), „Als Nächstes",

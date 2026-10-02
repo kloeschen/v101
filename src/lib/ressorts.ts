@@ -41,3 +41,29 @@ export function sichtbareRessorts(registry: Registry): Ressort[] {
   }
   return RESSORTS.filter((r) => kategorien.has(r.kategorie));
 }
+
+/**
+ * Themenbereiche der Artikel, die zu einem Ressort gehören. Der Rest
+ * (Geschichte, Sammeln, Tattoo, Einstieg) hat kein eigenes Ressort und
+ * trägt deshalb keine Katalognummer. Kustom Kulture ist die Autoseite der
+ * Szene und läuft unter V101-04 Autos.
+ */
+const SAEULE_RESSORT: Record<string, string> = {
+  musik: "genre",
+  mode: "mode",
+  tanz: "tanz",
+  "kustom-kulture": "auto",
+  frisur: "frisur",
+  szene: "szene",
+};
+
+/**
+ * Das Ressort eines Eintrags, dessen Katalognummer über der H1 steht
+ * (DESIGN-BRIEF.md, „Katalognummern": über Artikeln und Lexikoneinträgen
+ * des Ressorts). Andere Sammlungen und Werte ohne Ressort: keins.
+ */
+export function ressortVon(collection: string, daten: Record<string, any>): Ressort | undefined {
+  const kategorie =
+    collection === "lexikon" ? daten.kategorie : collection === "artikel" ? SAEULE_RESSORT[daten.saeule] : undefined;
+  return RESSORTS.find((r) => r.kategorie === kategorie);
+}

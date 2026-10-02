@@ -310,9 +310,11 @@ nicht im Tageslauf.** Vorfragen entschieden am 2026-10-02
 (Farben, Dunkelmodus, Schriften, H1 als Plakatzeile) und Etappe 2
 (Seitenkopf mit Logo, Ressortleiste, „Termin melden", Suche mit Pagefind).
 Etappe 3 (Entitätsseiten über CSS) und Etappe 4 (Startseite) sind gebaut.
-Offen, weil es Markup braucht: Line-up als Zeitplan, die Katalognummer über
-der H1, der rohe Wert der Lexikon-Kategorie im Faktenblock („mode" statt
-„Mode"). Offen auf der Startseite: das Monogramm im Block „Jede Angabe
+Katalognummer und Kategoriewerte sind nachgebaut. **Für Markus:** Das
+Line-up als Zeitplan braucht eine Erweiterung des Datenvertrags (Tag,
+Uhrzeit und Bühne je Act gibt es in keinem Feld, siehe ENTSCHEIDUNGEN.md
+vom 2026-10-02). Ob es die geben soll, entscheidest du. Bis dahin wird
+nichts gebaut. Offen auf der Startseite: das Monogramm im Block „Jede Angabe
 belegt" (wartet auf das Original-Logo). **Für Markus:** Die Antwortkapsel
 der Startseite kommt aus `site.kurzbeschreibung` und sagt noch „das
 Register der Vintage- und Rockabilly-Szene" — `site.config.ts` ist für
