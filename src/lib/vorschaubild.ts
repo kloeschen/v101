@@ -32,7 +32,7 @@ export const BREITE = 1200;
 export const HOEHE = 630;
 
 /** Die Farben aus src/styles/tokens.css — das Bild soll aussehen wie die Seite. */
-const FARBE = { grund: "#fbfaf7", text: "#1c1a17", leise: "#5a544c", linie: "#ddd8cf", akzent: "#8c2f24" };
+const FARBE = { grund: "#f5f4ef", text: "#1c1c1e", leise: "#4a4f59", linie: "#d6d3ca", akzent: "#9a4a53" };
 
 export interface Vorschau {
   sammlung: string;

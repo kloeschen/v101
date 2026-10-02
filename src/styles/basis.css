@@ -26,13 +26,28 @@ main {
 
 article, .inhalt { max-width: var(--zeilenlaenge); }
 
-h1, h2, h3 { font-family: var(--schrift-titel); line-height: var(--zeilenhoehe-titel); text-wrap: balance; }
-h1 { font-size: var(--groesse-h1); margin: 0 0 var(--raum-3); }
+h1, h2, h3 { font-family: var(--schrift-titel); font-weight: 600; line-height: var(--zeilenhoehe-titel); text-wrap: balance; }
+/* Plattenhülle: Die H1 ist die Plakatzeile — schmal, fett, Versalien. Sie
+   passt sich der Breite an und darf trennen, damit auch „Taillenmieder"
+   oder ein langer Terminname auf ein Handy passt. Die übrigen Überschriften
+   bleiben ruhig in der Textschrift: je Abschnitt nur ein lautes Element. */
+h1 {
+  font-family: var(--schrift-plakat);
+  font-weight: 800;
+  font-size: var(--groesse-h1);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  margin: 0 0 var(--raum-4);
+}
 h2 { font-size: var(--groesse-h2); margin: var(--raum-5) 0 var(--raum-2); }
 h3 { font-size: var(--groesse-h3); margin: var(--raum-4) 0 var(--raum-1); }
 p { margin: 0 0 var(--raum-3); }
 
-a { color: var(--farbe-link); text-underline-offset: 0.15em; }
+a { color: var(--farbe-link); text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
 a:visited { color: var(--farbe-link-besucht); }
 a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
 
@@ -44,7 +59,7 @@ a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
    darunter — die dt/dd-Beziehung bleibt in beiden Fällen erhalten. */
 .fakten { margin: var(--raum-4) 0; border-top: var(--linie); }
 .fakten__zeile { display: grid; gap: var(--raum-1); padding: var(--raum-2) 0; border-bottom: var(--linie); }
-.fakten dt { font-family: var(--schrift-ui); font-size: var(--groesse-klein); color: var(--farbe-text-leise); }
+.fakten dt { font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text-leise); }
 .fakten dd { margin: 0; }
 @media (min-width: 40rem) {
   .fakten__zeile { grid-template-columns: minmax(9rem, 14rem) 1fr; gap: var(--raum-3); align-items: baseline; }
@@ -56,7 +71,7 @@ a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
 .liste__beschreibung { color: var(--farbe-text-leise); font-size: var(--groesse-klein); }
 /* Das Datum der Terminliste: eine Angabe, kein Titel -- deshalb leise und
    in der Oberflaechenschrift, wie die Kurzbeschreibung daneben. */
-.liste__datum { color: var(--farbe-text-leise); font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
+.liste__datum { color: var(--farbe-akzent); font-family: var(--schrift-etikett); font-weight: 700; font-size: var(--groesse-klein); }
 
 /* Die Sammlungen auf der Startseite. Gleiche Abstufung wie in den Listen:
    der Name traegt, Zahl und Satz ordnen ein. */
