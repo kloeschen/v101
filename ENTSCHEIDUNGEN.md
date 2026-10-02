@@ -17,6 +17,33 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Lexikon-FAQs: elf von zwölf Fragen, eine ohne Quelle
+
+**Auftrag:** `frei`-Posten „FAQ für Polka Dots, Pin-up, Petticoat und
+Rockabilly" (Entscheidung Markus vom 2026-10-01). Gebaut: elf FAQs, jede
+von Quellen mit `felder: [faq]` gedeckt, die dafür am 2026-10-02 geöffnet
+wurden; neu hinzugekommen sind PONS und Langenscheidt (Polka Dots auf
+Deutsch) und die Britannica (Rockabilly). Status unverändert, gesetzt ist
+nur `geaendertAm`; `geprueftAm` bleibt, die Freigabe macht ein Mensch.
+
+**Weggelassen:** „Was ist Dresscode Polka Dots?" — keine Quelle beschreibt
+einen solchen Dresscode; die Antwort wäre Stilberatung ohne Beleg.
+
+**Fund mit Folgen:** `faq` ist in keiner Collection belegpflichtig im
+Sinne des Validators (`belegpflichtigeFelder`). Dass jede FAQ eine Quelle
+hat, prüft niemand. Als `mensch`-Posten eingetragen, weil die Abhilfe eine
+Schemaänderung wäre.
+
+**Widersprüche in den Antworten benannt, nicht ausgewählt:** Herkunft des
+Namens Polka Dots, Beginn der Polka-Dot-Mode, Übersetzung von *coat* in
+Petticoat (Duden/DWDS „Rock", Wikipedia „Umhang, Mantel"), Beginn und
+Revival des Rockabilly. Nebenbei gefunden: Die englische Wikipedia nennt
+inzwischen 1953 als frühesten Gebrauch des Wortes Rockabilly (Bill Flagg);
+steht in der Redaktionsnotiz von `lexikon/rockabilly` für die nächste
+Prüfung.
+
+---
+
 ## 2026-10-02 — Line-up als Zeitplan: neues Feld `programm`
 
 **Auftrag Markus:** den Zeitplan planen und bauen. Entschieden in der

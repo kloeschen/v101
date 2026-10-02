@@ -32,6 +32,17 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Belegpflicht für `faq` ist nirgends maschinell geprüft.** Fund
+vom 2026-10-02 beim Bau der Lexikon-FAQs: `faq` steht in keiner Liste von
+`belegpflichtigeFelder` (`_schemas.ts`), und `belegpflicht` prüft nur
+diese. Eine FAQ ohne Quelle mit `felder: [faq]` fällt also weder im
+Lexikon noch bei Artikeln auf; die Regel „nur Fragen, die eine Quelle
+deckt" steht bisher nur in Prosa (Regel 3). Zu entscheiden: `faq` in die
+Liste für lexikon und artikel aufnehmen (Schemaänderung, gesperrt) — mit
+Negativtest — oder bewusst lassen, weil eine Antwort mehrere Quellen
+mischt und die Prüfung nur das Vorhandensein irgendeiner `faq`-Quelle
+sähe.
+
 `mensch` **„Boogie Woogie" in Terminen: Klavierstil oder Tanz?** Gefunden
 am 2026-10-02 beim Entwurf der Eventseite; derselbe Fall wie beim
 Rock'n'Roll & Boogie Woogie Weekend (am 2026-10-01 auf `genres:
@@ -53,25 +64,6 @@ Klavier?; (2) ob der Tanz in `genres` stehen darf (bisher steht dort nie
 ein Tanzeintrag) oder `genres` dann ohne Boogie bleibt; (3) die
 Convention einzeln, gegen die Quelle. Danach baut ein Lauf die Stellen um
 und prüft jede gegen ihre Quelle.
-
-`frei` **Lexikon: FAQ für Polka Dots, Pin-up, Petticoat und Rockabilly.**
-Entscheidung Markus, 2026-10-01: Lexikoneinträge bekommen FAQs (Feld `faq`
-aus `basis`, bisher bei keinem Lexikoneintrag gesetzt). Technisch ist nichts
-zu bauen: `[typ]/[slug].astro` rendert `FaqBlock` für jede Collection, und
-das JSON-LD hängt eine FAQPage an — nach dem Build an einer Lexikonseite
-nachsehen, dass beides erscheint. Fragen aus der
-PAA-Recherche (`fragen.csv`): *Polka Dots* — Warum sagt man Polka Dots?,
-Was heißt Polka Dots auf Deutsch?, Was ist Dresscode Polka Dots?, Wann
-waren Polka Dots modern?; *Pin-up* — Was sind Pin-up-Models?, Was sind
-Pin-up-Fotos?, Was ist ein Pin-up-Magazin?; *Petticoat* — Was heißt
-Petticoat auf Deutsch?, In welcher Zeit trug man Petticoat?; *Rockabilly*
-— Was heißt Rockabilly auf Deutsch?, Welcher Jahrgang ist Rockabilly?,
-Ist Rockabilly 70er Jahre?. Nur Fragen aufnehmen, deren Antwort eine
-Quelle in `quellen[]` deckt (`felder: [faq, …]`, wie in
-`artikel/petticoat-reifrock-unterrock`); Trendfragen („noch modern?") nicht. Die
-Antwort wiederholt den Text nicht wörtlich, sondern antwortet kurz.
-Status bleibt, wie er ist; veröffentlichte Einträge gehen über die
-normale Freigabe.
 
 `frei` **Lexikon: Vintage.** Der größte Fragenblock der PAA-Recherche vom
 2026-10-01 ohne eigenen Eintrag: 32 Fragen, darunter „Ab welchem Alter gilt

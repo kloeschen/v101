@@ -5,6 +5,7 @@ kurzbeschreibung: Polka Dots sind ein Muster aus gleich großen, gefüllten und 
 status: veroeffentlicht
 erstelltAm: 2026-09-30
 geprueftAm: 2026-10-01
+geaendertAm: 2026-10-02
 autor: markus
 kategorie: mode
 bezeichnungEn: Polka dot
@@ -19,6 +20,13 @@ abgrenzung: >-
   entsteht das Muster nach der deutschen Wikipedia nicht beim Weben, sondern
   wird aufgedruckt oder gestickt. Und mit dem Tanz Polka teilt es nur den
   Namen.
+faq:
+  - frage: Warum sagt man Polka Dots?
+    antwort: Nach den Wörterbüchern wegen des Tanzes, nicht wegen einer Ähnlichkeit. Als die Polka Mitte des 19. Jahrhunderts in Mode war, trugen viele Waren ihren Namen, und das gepunktete Muster behielt ihn; so erklären es das Online Etymology Dictionary und das englische Wiktionary. Die deutsche Wikipedia hält die Herkunft dagegen für ungeklärt, nennt dafür aber keinen Beleg.
+  - frage: Was heißt Polka Dots auf Deutsch?
+    antwort: Ein festes deutsches Wort gibt es nicht, auch die deutsche Wikipedia bleibt beim englischen Namen. Zweisprachige Wörterbücher übersetzen mit „Tupfen" (PONS) oder „Tupfen-, Punktmuster" (Langenscheidt), das englische Wiktionary mit „Punktmuster". Für ein gepunktetes Stück nennt PONS das Adjektiv „getupft".
+  - frage: Wann waren Polka Dots modern?
+    antwort: Zuerst um die Mitte des 19. Jahrhunderts. Das Online Etymology Dictionary setzt die Mode auf 1851 und ein Revival auf etwa 1873, die Fashion History Timeline des FIT New York zitiert Modezeitschriften von 1880, nach denen Punktstoffe damals der letzte Schrei waren. Die deutsche Wikipedia lässt das Muster erst Ende des 19. Jahrhunderts in die allgemeine Mode eingehen. Dass es in den 1950er Jahren eine besondere Blüte hatte, sagt keine der geöffneten Quellen.
 redaktionsnotiz: >-
   Quellen am 2026-09-30 einzeln geöffnet. Kein aeraVon, aeraBis und
   herkunftsland: Das Muster ist nicht erloschen, und ein Ursprungsland nennt
@@ -51,11 +59,23 @@ redaktionsnotiz: >-
   Nicht übernommen: Minnie Maus (die beiden Wikipedias widersprechen sich,
   und es trägt zum Muster nichts bei) und die Polka-Clubs als eigener Befund
   (nur eine Magazinquelle; im Text als solche benannt).
+  FAQ am 2026-10-02 ergänzt (Fragen aus der PAA-Recherche vom 2026-10-01,
+  docs/daten/paa-rockabilly-2026-10-01/fragen.csv — Themen, keine Quelle).
+  Dafür erneut geöffnet: Wikipedia „Rapport (Textil)", Etymonline
+  „polka-dot", englisches Wiktionary, FIT 1880; neu geöffnet: PONS und
+  Langenscheidt (Übersetzung). Weggelassen: „Was ist Dresscode Polka
+  Dots?" — keine Quelle beschreibt einen solchen Dresscode, die Antwort
+  wäre Stilberatung ohne Beleg; Trendfragen („noch modern?", „im Trend?")
+  nach Auftrag nicht. Widersprüche in den Antworten benannt: Herleitung
+  vom Tanz (Wörterbücher gegen deutsche Wikipedia), Eintritt in die Mode
+  (1851/1880 gegen „Ende des 19. Jahrhunderts"). „Tupfen" steht nur in der
+  FAQ-Antwort als Wörterbuchübersetzung, nicht als Alias (Begründung oben
+  gilt weiter).
 quellen:
   - url: https://de.wikipedia.org/wiki/Rapport_(Textil)#Polka_Dots
     titel: Rapport (Textil), Abschnitt Polka Dots (Wikipedia)
     abgerufenAm: 2026-09-30
-    felder: [kurzbeschreibung, definition, verwandt, abgrenzung, body:merkmale, body:name, body:mode]
+    felder: [kurzbeschreibung, definition, verwandt, abgrenzung, faq, body:merkmale, body:name, body:mode]
     art: nachschlagewerk
   - url: https://en.wikipedia.org/wiki/Polka_dot
     titel: Polka dot (English Wikipedia)
@@ -70,7 +90,7 @@ quellen:
   - url: https://www.etymonline.com/word/polka-dot
     titel: polka-dot (Online Etymology Dictionary)
     abgerufenAm: 2026-09-30
-    felder: [kurzbeschreibung, definition, body:name, body:mode]
+    felder: [kurzbeschreibung, definition, faq, body:name, body:mode]
     art: nachschlagewerk
   - url: https://www.etymonline.com/word/polka
     titel: polka (Online Etymology Dictionary)
@@ -90,7 +110,7 @@ quellen:
   - url: https://en.wiktionary.org/wiki/polka_dot
     titel: polka dot (English Wiktionary)
     abgerufenAm: 2026-09-30
-    felder: [aliases, definition, body:name]
+    felder: [aliases, definition, faq, body:name]
     art: nachschlagewerk
   - url: https://www.duden.de/rechtschreibung/Polka
     titel: Polka (Duden)
@@ -102,10 +122,20 @@ quellen:
     abgerufenAm: 2026-09-30
     felder: [body:name]
     art: nachschlagewerk
+  - url: https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/polka%20dot
+    titel: polka dot (PONS Englisch-Deutsch)
+    abgerufenAm: 2026-10-02
+    felder: [faq]
+    art: nachschlagewerk
+  - url: https://de.langenscheidt.com/englisch-deutsch/polka-dot
+    titel: polka dot (Langenscheidt Englisch-Deutsch)
+    abgerufenAm: 2026-10-02
+    felder: [faq]
+    art: nachschlagewerk
   - url: https://fashionhistory.fitnyc.edu/1880-2/
     titel: 1880 (Fashion History Timeline, FIT New York)
     abgerufenAm: 2026-09-30
-    felder: [body:merkmale, body:mode]
+    felder: [faq, body:merkmale, body:mode]
     art: nachschlagewerk
   - url: https://fashionhistory.fitnyc.edu/1953-sophie-gimbel-cocktail-dress/
     titel: 1953 Sophie Gimbel Cocktail Dress (Fashion History Timeline, FIT New York)
