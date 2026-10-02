@@ -18,6 +18,46 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Nur für Screenreader sichtbar (Beschriftung des Suchfelds im Kopf). */
+.nurleser { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* --- Seitenkopf (Plattenhülle, Etappe 2) ---------------------------- */
+.kopf { border-bottom: var(--linie-kraeftig); }
+.kopf__zeile,
+.kopf__ressorts { max-width: var(--inhalt-breite); margin: 0 auto; padding-inline: var(--raum-4); }
+.kopf__zeile { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--raum-3) var(--raum-5); padding-block: var(--raum-3) 0; }
+.kopf__logo { display: block; line-height: 0; }
+.kopf__logo img { width: 200px; height: auto; }
+.kopf__suche { flex: 1 1 min(18rem, 100%); max-width: 32rem; min-width: 0; display: flex; }
+.kopf__suche input,
+.suche input { flex: 1; min-width: 0; min-height: 48px; padding: 0 var(--raum-3); border: 2px solid var(--farbe-text); border-right: 0; border-radius: 0; background: var(--farbe-flaeche); color: var(--farbe-text); font: inherit; }
+.kopf__suche button,
+.suche button { min-height: 48px; padding: 0 var(--raum-4); border: 2px solid var(--farbe-text); border-radius: 0; background: var(--farbe-text); color: var(--farbe-grund); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+.kopf__melden { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--raum-3); border: 2px solid var(--farbe-text); color: var(--farbe-text); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
+.kopf__melden:visited { color: var(--farbe-text); }
+nav.kopf__ressorts { display: flex; flex-wrap: wrap; gap: var(--raum-1) var(--raum-4); padding-block: var(--raum-2); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--farbe-text); }
+.kopf__ressorts a { display: inline-flex; align-items: center; min-height: 44px; color: var(--farbe-text); text-decoration: none; border-bottom: 3px solid transparent; }
+.kopf__ressorts a:visited { color: var(--farbe-text); }
+.kopf__ressorts a:hover { border-bottom-color: var(--farbe-linie); }
+.kopf__ressorts a[aria-current="page"] { border-bottom-color: var(--farbe-text); }
+/* Auf dem Handy enger, damit die Leiste in zwei Zeilen passt; die Ziele
+   bleiben 44 px hoch. */
+@media (max-width: 30rem) {
+  nav.kopf__ressorts { gap: 0 var(--raum-3); font-size: 0.82rem; letter-spacing: 0.04em; }
+  .kopf__logo img { width: 160px; }
+  .kopf__melden { min-height: 44px; }
+}
+
+/* --- Suchseite ------------------------------------------------------ */
+.suche label { display: block; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text-leise); margin-bottom: var(--raum-1); }
+.suche__zeile { display: flex; max-width: 36rem; }
+.suche__stand { color: var(--farbe-text-leise); margin-top: var(--raum-4); }
+.suche__treffer { list-style: none; margin: 0; padding: 0; }
+.suche__treffer li { padding: var(--raum-3) 0; border-bottom: var(--linie); }
+.suche__treffer a { font-weight: 600; font-size: 1.1em; }
+.suche__treffer p { margin: var(--raum-1) 0 0; color: var(--farbe-text-leise); }
+.suche__treffer mark { background: none; color: var(--farbe-text); font-weight: 600; }
+
 main {
   max-width: var(--inhalt-breite);
   margin: 0 auto;

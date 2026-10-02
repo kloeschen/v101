@@ -17,6 +17,37 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Plattenhülle, Etappe 2: Seitenkopf und Suche
+
+**Gebaut:** Seitenkopf vor `<main>` mit Logo (Hell/Dunkel über `<picture>`),
+Suchformular, „Termin melden" (→ `/vorschlagen/`) und Ressortleiste. Die
+Ressorts stehen in `src/lib/ressorts.ts` mit Katalognummer und
+Lexikon-Kategorie; angezeigt wird nur, was einen sichtbaren Eintrag hat.
+Die vollständige Hauptnavigation bleibt nach `</main>`. Suche mit
+Pagefind: Index im npm-Skript `build`, Seite `/suche/` (noindex, selbst
+nicht im Index), Treffer per JavaScript, ohne JavaScript Wege ins Portal.
+Indexiert wird nur `<main>` (`data-pagefind-body`), die Feldnamen des
+Faktenblocks nicht (`data-pagefind-ignore`) — sonst klebten sie an den
+Werten („DefinitionEin Petticoat …"). Vorschaubilder jetzt mit Newsreader
+und Archivo; Libre Baskerville und Source Sans sind aus den Abhängigkeiten
+entfernt. Logo-PNGs auf 64 Farben reduziert: 24 → 7 KB je Datei.
+
+**Gemessen im gebauten Ergebnis:** 153 Seiten im Index; Startseite,
+Lexikon und Terminliste stellen null Anfragen an Pagefind, `/suche/`
+findet für „petticoat" 16 Treffer und meldet einen leeren Treffer sauber.
+
+**Neu als Regel in Code:** `scripts/check-suche.ts`, in `verify` und
+`verify:ci` nach dem Build (die CI-Kette hat jetzt 12 Schritte). Prüft
+Index vorhanden, Index = markierte Seiten, Stichproben drin bzw. draußen,
+Formular-Ziel und dass nur `/suche/` Pagefind lädt. Mutationsbeleg an
+einer Kopie von `dist/` mit fünf Fehlern, jeder trifft. **Fund dabei:** Die
+erste Fassung der letzten Prüfung suchte das Wort „pagefind" und schlug
+nach dem Einbau von `data-pagefind-ignore` auf 30 Seiten falsch an. Jetzt
+sucht sie Verweise auf das Verzeichnis `/pagefind/` — beide Varianten der
+Mutation (Skript, Stylesheet) fallen weiterhin.
+
+---
+
 ## 2026-10-02 — Plattenhülle, Etappe 1: Farben, Dunkelmodus, Schriften
 
 **Gebaut:** `tokens.css` mit der Palette der Plattenhülle samt Dunkelmodus
