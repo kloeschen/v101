@@ -17,6 +17,39 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Portal statt Register: Gestaltung „Plattenhülle"
+
+**Entschieden (Markus):** Die Site tritt als Portal auf, nicht als
+Verzeichnis. Inhaltlich bleibt sie so klar und belegt wie bisher; die
+Gestaltung darf mehr hermachen. Von drei Richtungen (Plattenhülle,
+Programmheft, Nachtausgabe) ist die **Plattenhülle** gewählt, mit dem
+bestehenden Logo „Vintage 101 – Das neue Vintage Portal" und seinem Rosé
+als Akzent. Die sechs Ressorts bleiben, auch Frisur mit einem Begriff: Die
+Lücken werden vor dem Go-Live geschlossen, sonst wird nachgesteuert.
+
+**Was sich damit ändert:** Das Briefing vom 2026-09-16 sagte „kein Magazin"
+und „HTML nicht verhandelbar, nur Tokens und CSS". Für Startseite und
+Seitenkopf gilt das nicht mehr, dort entstehen neue Bausteine (Suche,
+Ressortleiste, Wochenende, Ressort-Kacheln, Orte/Bands/Läden, Begriff im
+Fokus). Für Entitätsseiten gilt es weiter. Unverändert bleiben: Text früh
+im DOM, Faktenblock als `<dl>` vor dem Fließtext, kein Inhalt aus
+JavaScript. Ausgeschrieben in `DESIGN-BRIEF.md`.
+
+**Regeln, die aus der Kritik der ersten Runde kamen:** Rosé bedeutet nur
+„jetzt / demnächst". Je Abschnitt ein lautes Element. Das Logo ist die
+einzige Schwungschrift. „Dieses Wochenende" zeigt nur Samstag und Sonntag,
+und der Kalender darunter wiederholt nichts. Zählungen sind überall
+dieselben (kommende Termine, nicht alle Dateien).
+
+**Verworfen:** Programmheft (Kalender als Mittelpunkt, Grün/Senf) und
+Nachtausgabe (dunkel, Plakatkarten). Beide liegen auf der Zeichenfläche
+unter „Frühere Richtungen".
+
+**Offen:** Suche (Index beim Build), Rotationsregel für den Begriff im
+Fokus, Zahl der Schriftschnitte, Logo als SVG. Posten in OFFENE-PUNKTE.
+
+---
+
 ## 2026-10-01 — Freigabe-CI eingesetzt und am echten Lauf bewiesen
 
 **Anlass:** Der Freigabe-PR #116 ließ sich nicht mergen. `verify` war an
