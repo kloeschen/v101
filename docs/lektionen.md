@@ -824,3 +824,46 @@ Prüfungen.
 nur an dieser Stelle. Eine Kopie daneben beruhigt jeden, der nachsieht, und
 schützt nichts. Und: Nach einer Änderung über eine Weboberfläche den Diff
 lesen, nicht die Absicht.
+
+
+## 31. Ein Arbeitsplatz unter einem gesperrten Pfad ist kein Arbeitsplatz
+
+**Was passiert ist:** Am 2026-10-02 liefen fünf Recherche-Agenten parallel,
+jeder mit eigener Arbeitskopie (`isolation: worktree` im Agent-Werkzeug).
+Das Werkzeug legt diese Kopien unter `.claude/worktrees/` an. Genau dort
+greift `Edit(/.claude/**)` aus `permissions.deny`: Edit, Write, `sed`,
+Umleitungen und `git apply` wurden alle abgewiesen. Alle fünf Agenten sind
+in selbst angelegte Kopien im Scratchpad ausgewichen. Die ersten beiden
+benutzten dafür dasselbe Verzeichnis, bis eine Nachricht jedem ein eigenes
+zuwies. Übernommen hat die Ergebnisse die Hauptsitzung, Patch für Patch.
+
+**Der zweite Befund:** Ein Agent hatte vor dem Ausweichen mit
+Python-Skripten über Bash in seine Arbeitskopie geschrieben. Das ging
+durch. `guard.mjs` dokumentiert Interpreter-Skripte seit jeher als Lücke
+seiner Schicht 2 (Kopf der Datei). Neu ist eine Verschärfung: Die Sitzung
+stand mit ihrem Arbeitsverzeichnis *innerhalb* von `.claude/`. Relative
+Pfade wie `src/content/…` tragen dann kein `.claude/` im Befehlstext, und
+die Textprüfung sieht nichts. Das ist Lektion 29 noch einmal: Die Sperre
+urteilt nach dem Text, nicht nach dem aufgelösten Ziel. Geschützt hat am
+Ende das, wofür die Schichten gestaffelt sind. Keine `status`-Zeile wurde
+geändert, und `check-freigabe.ts` hätte eine unbestätigte Freigabe im Build
+gestoppt.
+
+Derselbe Fehler zeigte sich beim Aufschreiben dieser Lektion in der
+Gegenrichtung: Ein Befehl, der nur diesen Text an eine Datei unter
+`docs/` anhängen sollte, wurde blockiert, weil im Text `.claude/` stand und
+der Befehl eine Umleitung enthielt.
+
+**Was jetzt gilt:** Agenten für Inhalte bekommen keine Arbeitskopie über
+`isolation: worktree`, solange sie unter `.claude/` liegt. Sie arbeiten in
+einem eigenen Klon im Scratchpad, je Agent ein eigenes Verzeichnis, und
+liefern einen Patch (`git diff`, Präfixe a/ b/). Die Hauptsitzung wendet
+ihn auf einem eigenen Branch an, lässt `npm run verify` laufen und öffnet
+den PR. Ob die Sperre Ziele aufgelöst gegen das Arbeitsverzeichnis prüfen
+soll, entscheidet Markus. `.claude/` ist für Agenten gesperrt, der Posten
+steht in OFFENE-PUNKTE.md.
+
+**Regel:** Bevor Arbeit verteilt wird, prüfen, ob der Ort, an dem sie
+entstehen soll, beschreibbar ist. Eine Sperre, die ihren eigenen
+Arbeitsbereich mitsperrt, erzeugt Umwege, und Umwege sind die Stellen, an
+denen eine Textprüfung nichts mehr sieht.
