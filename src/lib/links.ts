@@ -318,11 +318,19 @@ function maskiere(s: string): string {
  * Hop meinte den Tanz. Anders als bei „Swing" hilft hier auch kein zweiter
  * Eintrag: Ein Musikgenre „Jive" nennt keine der geöffneten Quellen.
  *
+ * „Vintage" ist das dritte (2026-10-02, Entscheidung Markus): Bei einer
+ * simulierten Freigabe von `lexikon/vintage` hätte der Autolink das Wort
+ * zwanzigmal gesetzt. Dreimal stand es in einem Eigennamen (das Magazin
+ * „Vintage Rock", der Laden „Peggy Sue Vintage"), zehnmal meinte es die
+ * Szene („Für die Vintage- und Rockabilly-Szene") und nicht den Stil mit
+ * seiner Altersfrage, über den der Eintrag schreibt. Nur sieben Stellen
+ * passten.
+ *
  * Verglichen wird das ganze Wort in Kleinschreibung. Andere Formen desselben
  * Eintrags (Aliase) bleiben verlinkbar. Die richtigen Stellen verlinkt, wer
  * schreibt, von Hand; bestehende Links sind geschützt.
  */
-export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing", "jive"]);
+export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing", "jive", "vintage"]);
 
 function baueBegriffe(eintraege: Map<string, EintragMeta>): {
   muster: BegriffMuster[];
