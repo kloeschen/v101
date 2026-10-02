@@ -15,6 +15,29 @@ eintritt: beziffert
 veranstalter: Pullman City Westernstadt
 veranstalterUrl: https://www.pullmancity.de
 lineupWeitere: [The Scotty Bullock Trio]
+programm:
+  - beginn: 2027-01-15T20:30:00+01:00
+    art: auftritt
+    titel: The Scotty Bullock Trio
+    buehne: Music Hall
+  - beginn: 2027-01-15T21:00:00+01:00
+    art: dj
+    titel: DJ-Party
+    buehne: Pina Colada Bar
+  - beginn: 2027-01-16T11:00:00+01:00
+    ende: 2027-01-16T13:00:00+01:00
+    art: kurs
+    titel: Boogie-Woogie-Tanzkurs
+    buehne: Music Hall
+  - beginn: 2027-01-16T14:30:00+01:00
+    ende: 2027-01-16T17:15:00+01:00
+    art: kurs
+    titel: Boogie-Woogie-Tanzkurs
+    buehne: Music Hall
+  - beginn: 2027-01-16T21:00:00+01:00
+    art: dj
+    titel: DJ-Party
+    buehne: Pina Colada Bar
 genres: [rocknroll]
 preise:
   - bezeichnung: Tageskarte Erwachsener
@@ -67,11 +90,26 @@ redaktionsnotiz: >-
   Einlass um 14:00 und hat keinen Kurs. Der Einleitungstext der Seite
   verspricht "Rock'n'Roll- und Boogie-Woogie-Tanzkurse", das
   Tagesprogramm nennt beide Kurse "Boogie Woogie Tanzkurs".
+  PROGRAMM (angelegt 2026-10-02, Feld neu seit diesem Tag): aus dem
+  Tagesprogramm der Eventseite, am 2026-10-02 erneut abgerufen. Freitag:
+  "20:30 Uhr The Scotty Bullock Trio (GER) Music Hall", "21:00 Uhr
+  Partystimmung mit DJ Pina Colada Bar". Samstag: beide Kurse in der
+  Music Hall, "21:00 Uhr Partystimmung mit DJ Pina Colada Bar". Der
+  Name des DJ steht nicht da, deshalb der Titel "DJ-Party". NICHT
+  EINGETRAGEN: Samstag "20:30 Uhr To be continued! Music Hall" -- ein
+  noch nicht angekuendigter Programmpunkt, kein Fakt. Ebenfalls nicht:
+  die Shows der Westernstadt (Wild West Show, Lichtershow, Schmieden,
+  Kinderprogramm), die zum Parkbetrieb gehoeren und nicht zum
+  Tanzwochenende; der Text erwaehnt sie. Preise und Oeffnungszeiten
+  (Freitag ab 14:00, Samstag ab 10:30) beim selben Abruf unveraendert.
+  TEXT ANGEPASST: Bisher stand "DJ-Programm an mehreren Orten des
+  Gelaendes"; die Seite nennt an beiden Abenden einen DJ in der Pina
+  Colada Bar und keinen weiteren Ort.
 quellen:
   - url: https://www.pullmancity.de/events-shows-musik/events/rocknroll-boogie-woogie
     titel: Rock 'n' Roll & Boogie Woogie Weekend, 15.–16. Januar 2027 (Pullman City)
-    abgerufenAm: 2026-10-01
-    felder: [beginn, ende, ort, eintritt, preise, veranstalter, veranstalterUrl, genres, lineupWeitere, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
+    abgerufenAm: 2026-10-02
+    felder: [beginn, ende, ort, eintritt, preise, veranstalter, veranstalterUrl, genres, lineupWeitere, programm, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
     art: offiziell
   - url: https://www.pullmancity.de/events-shows-musik/events
     titel: Veranstaltungsübersicht (Pullman City)
@@ -90,7 +128,7 @@ Der Termin liegt im Winterbetrieb der Anlage und damit in einer Zeit, in der ein
 
 ## Programm
 
-Die Ankündigung verspricht Tanzkurse in Rock'n'Roll und Boogie Woogie; im Tagesprogramm stehen zwei Boogie-Woogie-Kurse, beide am Samstag, von 11 bis 13 Uhr und von 14:30 bis 17:15 Uhr. Live spielt am Freitag um 20:30 Uhr das Scotty Bullock Trio; daneben nennt der Betreiber DJ-Programm an mehreren Orten des Geländes. Wer im Vintage-Outfit anreist, ist ausdrücklich eingeladen — die Ankündigung wirbt mit Fünfziger-Jahre-Atmosphäre.
+Die Ankündigung verspricht Tanzkurse in Rock'n'Roll und Boogie Woogie; im Tagesprogramm stehen zwei Boogie-Woogie-Kurse, beide am Samstag, von 11 bis 13 Uhr und von 14:30 bis 17:15 Uhr. Live spielt am Freitag um 20:30 Uhr das Scotty Bullock Trio in der Music Hall; an beiden Abenden legt ab 21 Uhr ein DJ in der Pina Colada Bar auf. Wer im Vintage-Outfit anreist, ist ausdrücklich eingeladen — die Ankündigung wirbt mit Fünfziger-Jahre-Atmosphäre.
 
 Das übrige Winterprogramm der Anlage läuft parallel weiter: Wild-West-Show, Lichtershow und Schauschmieden gehören dazu, ebenso Angebote für Kinder. Wer wegen des Tanzens kommt, teilt sich das Gelände also mit einem Familienpublikum.
 

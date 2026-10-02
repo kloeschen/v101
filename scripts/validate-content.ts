@@ -23,6 +23,7 @@ import { ladeAlle, WURZEL, liegtImRegister, type GeladenerEintrag } from "./_lad
 import { RESERVIERTE_SEGMENTE } from "../src/lib/facetten";
 import { istVorbei, jahrIn } from "../src/lib/datum";
 import { segmentiere } from "../src/lib/links";
+import { programmBefunde } from "../src/lib/programm";
 import {
   collectionSchemas,
   collectionNames,
@@ -716,6 +717,41 @@ const REGELN: Regel[] = [
       }
       if (["abgesagt", "verschoben"].includes(durchfuehrung) && !e.daten.durchfuehrungHinweis) {
         b.push({ ebene: "warnung", code: "", nachricht: "Abgesagt oder verschoben ohne durchfuehrungHinweis — Besucher brauchen die Begründung." });
+      }
+      return b;
+    },
+  },
+
+  {
+    /**
+     * Das Programm eines Termins (Feld `programm`, Entscheidung 2026-10-02).
+     * Die Rechnung steht in src/lib/programm.ts und ist dort getestet: jeder
+     * Punkt im Zeitraum des Termins (plus Nacht bis 06:00), Ende nicht vor
+     * Beginn, `band` im Line-up.
+     *
+     * Hier dazu, was nur der Text zeigt: ein Programmpunkt ohne Uhrzeit.
+     * `beginn: 2027-01-16` wird Mitternacht UTC und erschiene als „01:00".
+     * Gesucht wird im Block unter `programm:` jede Zeile `beginn:`/`ende:`
+     * mit reinem Datum.
+     */
+    code: "event-programm",
+    collections: ["events"],
+    pruefe(e) {
+      const b: Befund[] = [];
+      const zeilen = e.frontmatter.split("\n");
+      const start = zeilen.findIndex((z) => /^programm\s*:/.test(z));
+      if (start >= 0) {
+        for (const z of zeilen.slice(start + 1)) {
+          if (/^\S/.test(z)) break; // nächstes Feld auf oberster Ebene
+          const m = /^\s*(?:-\s+)?(beginn|ende)\s*:\s*["']?(\d{4}-\d{2}-\d{2})["']?\s*(?:#.*)?$/.exec(z);
+          if (m) {
+            b.push({ ebene: "fehler", code: "", feld: "programm", nachricht: `Programmpunkt mit ${m[1]} ${m[2]} ohne Uhrzeit — ein Programm braucht die Zeit samt Offset.` });
+          }
+        }
+      }
+      if (!e.daten) return b;
+      for (const f of programmBefunde(e.daten)) {
+        b.push({ ebene: "fehler", code: "", feld: `programm[${f.index}]`, nachricht: f.nachricht });
       }
       return b;
     },

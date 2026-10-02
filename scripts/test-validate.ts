@@ -765,6 +765,72 @@ fall({
   verboten: ["event-zeitraum", "reihe-name", "event-preise", "referenzen"],
 });
 
+/* --- event-programm: das Programm eines Termins (seit 2026-10-02) ------
+ * Die Rechnung selbst prüft scripts/test-programm.ts mit Grenzfällen und
+ * fremden Zeitzonen. Hier geht es um die Verdrahtung: Die Regel sieht das
+ * Feld, meldet einen Punkt außerhalb, ohne Uhrzeit und mit fremder Band,
+ * und `programm` ist belegpflichtig. Die Uhrzeiten stehen in UTC (`Z`),
+ * mittags — so liegen sie an jedem Tag des Jahres sicher auf demselben
+ * Kalendertag in Berlin, Sommer- wie Winterzeit.
+ */
+
+const punktYaml = (beginn: string, titel = "Testband", extra = "") =>
+  `\n  - beginn: ${beginn}\n    art: auftritt\n    titel: ${titel}${extra}`;
+
+fall({
+  name: "event-programm: Punkt am Termin, belegt, ist sauber (Lebenszeichen über belegpflicht)",
+  datei: "events/programm-gut.md",
+  inhalt: md(
+    evFelder("Programm Weekender", { programm: punktYaml(`${inTagen(60)}T12:00:00Z`), quellen: quelle("beginn, ort, programm") }),
+    evKoerper("Programm Weekender"),
+  ),
+  verboten: ["event-programm", "belegpflicht", "zeit-ohne-offset"],
+});
+
+fall({
+  name: "event-programm: Punkt am Vortag schlaegt an",
+  datei: "events/programm-vortag.md",
+  inhalt: md(
+    evFelder("Vortag Weekender", { programm: punktYaml(`${inTagen(59)}T12:00:00Z`), quellen: quelle("beginn, ort, programm") }),
+    evKoerper("Vortag Weekender"),
+  ),
+  erwartet: { "event-programm": "fehler" },
+});
+
+fall({
+  name: "event-programm: Punkt ohne Uhrzeit schlaegt an",
+  datei: "events/programm-ohne-zeit.md",
+  inhalt: md(
+    evFelder("Ohnezeit Weekender", { programm: punktYaml(inTagen(60)), quellen: quelle("beginn, ort, programm") }),
+    evKoerper("Ohnezeit Weekender"),
+  ),
+  erwartet: { "event-programm": "fehler" },
+});
+
+fall({
+  name: "event-programm: Band, die nicht im Line-up steht, schlaegt an",
+  datei: "events/programm-fremde-band.md",
+  inhalt: md(
+    evFelder("Fremdband Weekender", {
+      programm: punktYaml(`${inTagen(60)}T12:00:00Z`, "Testband", "\n    band: testband"),
+      quellen: quelle("beginn, ort, programm"),
+    }),
+    evKoerper("Fremdband Weekender"),
+  ),
+  erwartet: { "event-programm": "fehler" },
+});
+
+fall({
+  name: "belegpflicht: programm ohne Quellendeckung warnt im Entwurf",
+  datei: "events/programm-unbelegt.md",
+  inhalt: md(
+    evFelder("Unbelegt Weekender", { programm: punktYaml(`${inTagen(60)}T12:00:00Z`) }),
+    evKoerper("Unbelegt Weekender"),
+  ),
+  erwartet: { belegpflicht: "warnung" },
+  verboten: ["event-programm"],
+});
+
 /* --- zeit-ohne-offset: Uhrzeit ohne Zeitzone im Frontmatter ----------
  * Die drei Schreibweisen, die js-yaml unterschiedlich liest (unquotiert →
  * Date in UTC, quotiert oder ohne Sekunden → String in der Prozesszone),

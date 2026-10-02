@@ -1,0 +1,54 @@
+---
+/**
+ * Das Programm eines Termins als Tabelle (Feld `programm`, Entscheidung
+ * 2026-10-02). Die Zeilen rechnet src/lib/programm.ts, sortiert und in
+ * site.zeitzone formatiert. Die Tagesspalte erscheint nur bei mehrtägigen
+ * Programmen, die Bühnenspalte nur, wenn eine Quelle eine Bühne nennt.
+ * Auf schmalen Bildschirmen steht die Bühne hinter dem Titel statt in
+ * einer eigenen Spalte (die Zelle trägt sie für beide Fälle, CSS wählt).
+ *
+ * Die Überschrift trägt den Namen des Termins: Der Abschnitt kann einzeln
+ * extrahiert werden und hätte sonst keine Zuordnung.
+ */
+import { programmZeilen, type Programmpunkt } from "../lib/programm";
+import type { Registry } from "../lib/links";
+
+interface Props {
+  name: string;
+  programm?: Programmpunkt[];
+  registry: Registry;
+}
+const { name, programm, registry } = Astro.props;
+const zeilen = programmZeilen(programm, registry);
+const mehrtaegig = new Set(zeilen.map((z) => z.tagNr)).size > 1;
+const mitBuehne = zeilen.some((z) => z.buehne);
+---
+{zeilen.length > 0 && (
+  <section class="programm">
+    <h2>Programm von {name}</h2>
+    <table>
+      <thead>
+        <tr>
+          {mehrtaegig && <th scope="col">Tag</th>}
+          <th scope="col">Zeit</th>
+          <th scope="col">Programmpunkt</th>
+          {mitBuehne && <th scope="col" class="programm__buehne">Bühne</th>}
+        </tr>
+      </thead>
+      <tbody>
+        {zeilen.map((z, i) => (
+          <tr class={mehrtaegig && i > 0 && zeilen[i - 1].tagNr !== z.tagNr ? "programm__neuer-tag" : undefined}>
+            {mehrtaegig && <td class="programm__tag">{i === 0 || zeilen[i - 1].tagNr !== z.tagNr ? z.tag : ""}</td>}
+            <td class="programm__zeit"><time datetime={z.datetime}>{z.zeit}</time></td>
+            <td>
+              <span class="programm__art">{z.art}</span>{" "}
+              {z.href ? <a href={z.href}>{z.titel}</a> : z.titel}
+              {z.buehne && <span class="programm__buehne-schmal"> · {z.buehne}</span>}
+            </td>
+            {mitBuehne && <td class="programm__buehne">{z.buehne ?? ""}</td>}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+)}

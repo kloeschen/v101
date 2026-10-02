@@ -30,6 +30,7 @@ import { vorschauPfad } from "../lib/vorschaubild";
 import { ressortVon, sichtbareRessorts, ressortPfad } from "../lib/ressorts";
 import Faktenblock from "../components/Faktenblock.astro";
 import FaqBlock from "../components/FaqBlock.astro";
+import Programm from "../components/Programm.astro";
 import Quellen from "../components/Quellen.astro";
 import EintragsListe from "../components/EintragsListe.astro";
 import { buildGraph } from "../lib/jsonld";
@@ -98,6 +99,8 @@ const ressortVerlinkt = ressort && sichtbareRessorts(registry).includes(ressort)
     <Faktenblock collection={collection} daten={daten} registry={registry} />
 
     <div class="inhalt"><slot /></div>
+
+    {collection === "events" && <Programm name={daten.name} programm={daten.programm} registry={registry} />}
 
     <FaqBlock faq={daten.faq ?? []} />
 

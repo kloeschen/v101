@@ -308,6 +308,12 @@ Fehler verursacht oder beinahe verursacht.
   ebenfalls `aggregator`.
 - **Bands aus dem Line-up** stehen in `lineupWeitere`, solange sie keine
   eigene Seite haben. Ob eine entsteht, entscheidet Markus.
+- **Programm (`programm`) nur, wenn die Quelle Uhrzeiten je Punkt nennt**
+  (seit dem 2026-10-02). Ein Punkt je Auftritt, DJ-Set, Kurs oder
+  Sonstigem, `beginn` immer mit Uhrzeit und Offset, `band` nur für Acts aus
+  `lineupBands`, `buehne` nur, wenn die Quelle sie nennt. Belegpflichtig:
+  Die Quelle braucht `programm` in `felder`. Steht nur „ab 20 Uhr" für den
+  ganzen Abend da, ist das `beginn` des Termins und kein Programm.
 - **Neue Orte und Regionen legt der Lauf selbst an**, wenn ein Termin sie
   braucht (Markus, 2026-09-24). Ort mit Adresse nur aus einer Quelle, die
   sie nennt. Eine neue Region nach dem Muster der vorhandenen (Bundesland:

@@ -17,6 +17,64 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Line-up als Zeitplan: neues Feld `programm`
+
+**Auftrag Markus:** den Zeitplan planen und bauen. Entschieden in der
+Sitzung:
+- Ein Feld `programm` mit einer Art je Punkt: Auftritt, DJ, Kurs,
+  Sonstiges. Damit sind auch Kurse abgedeckt. Verworfen wurde „nur
+  Auftritte".
+- Nur auf der Seite, nicht im JSON-LD (`subEvent`). Eine falsche Uhrzeit
+  soll nicht auch noch an Suchmaschinen gehen; ergänzen lässt es sich
+  später.
+
+**Gemessen vor dem Bau:** Von 43 Terminen nennt genau einer Uhrzeiten je
+Programmpunkt, das Rock'n'Roll & Boogie Woogie Weekend (Liveband Freitag
+20:30, zwei Kurse am Samstag). Sonst gibt es Einlass und Beginn, und das
+ist schon `beginn` des Termins. Das Feld ist also für Festivals und
+Weekender gebaut, nicht für den Konzertabend.
+
+**Form:** je Punkt `beginn` (Pflicht, mit Uhrzeit und Offset), `ende`,
+`art`, `titel`, `band` (Slug, muss in `lineupBands` stehen) und `buehne`.
+`programm` ist belegpflichtig.
+
+**Die Schemaänderung lag als Patch vor** (`docs/vorschlaege/programm.patch`,
+nach dem Einspielen entfernt). Der Guard sperrt `_schemas.ts` für Agenten
+auch mit Auftrag, wie bei den Läden & Studios. Markus hat die Änderung
+über den GitHub-Editor eingespielt, ohne lokalen Checkout.
+
+**Schon gebaut, ohne Schema lauffähig:**
+- `src/lib/programm.ts`: Zeilen und Befunde. Ein Punkt muss im Zeitraum
+  liegen, dazu gilt die Nacht nach dem letzten Tag bis 06:00. Eine
+  Aftershow um 01:00 gehört zum Samstag.
+- Regel `event-programm` in validate-content.ts. Sie meldet auch Punkte
+  ohne Uhrzeit; das prüft sie am Text, weil man einem Date die fehlende
+  Uhrzeit nicht mehr ansieht.
+- Tabelle `src/components/Programm.astro`. Die Spalte „Tag" erscheint nur
+  bei mehreren Tagen, die Spalte „Bühne" nur, wenn eine Quelle eine nennt.
+- `scripts/test-programm.ts`, auch unter vier Prozesszeitzonen. Vier
+  Mutationen, jede schlägt an:
+  - Tag in UTC
+  - ohne Nachtprogramm
+  - ohne Line-up-Abgleich
+  - unsortiert
+
+**Nach dem Einspielen (Commit von Markus über den GitHub-Editor):**
+- Fünf Fälle für `event-programm` und `belegpflicht` in test-validate.ts.
+  Mutationsbelege: Werden die Befunde abgeschaltet, fallen genau die
+  Fälle „Vortag" und „fremde Band". Wird die Textprüfung abgeschaltet,
+  fällt genau „ohne Uhrzeit".
+- Das Programm des Rock'n'Roll & Boogie Woogie Weekend, aus der am
+  2026-10-02 erneut abgerufenen Eventseite. Eingetragen sind fünf Punkte:
+  Liveband, zwei DJ-Abende und zwei Kurse, jeweils mit Bühne.
+- Nicht eingetragen sind die Shows der Westernstadt und das „To be
+  continued!" am Samstag. Begründung in der Redaktionsnotiz.
+- Dabei korrigiert: Der Text sprach von „DJ-Programm an mehreren Orten".
+  Die Seite nennt einen Ort.
+- Auf dem Handy steht die Bühne hinter dem Titel statt in einer eigenen
+  Spalte. Sonst lief die Tabelle über den Rand. Gemessen bei 390 und
+  1280 px, ohne seitliches Scrollen.
+
 ## 2026-10-02 — Plattenhülle, Rest aus Etappe 3: Katalognummer, Werte, kein Zeitplan
 
 **Katalognummer über der H1.** Lexikoneinträge und Artikel eines Ressorts
