@@ -17,6 +17,29 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Portal-Umsetzung: Suche, Begriff im Fokus, Schriften, Logo
+
+**Entschieden (Markus), nach Messung:** (1) Suche mit Pagefind — Probelauf
+über den heutigen Build: 154 Seiten in 0,3 s; das Suchfeld führt als
+Formular auf `/suche/`, alle anderen Seiten laden nichts zusätzlich, erst
+`/suche/` rund 45 KB Skript plus WebAssembly und Indexstücke. (2) Begriff
+im Fokus rotiert je Kalenderwoche durch die veröffentlichten
+Lexikonbegriffe. (3) Vier statische Schriftschnitte, 94 KB. (4) Logo
+vorerst als vorhandene PNG.
+
+**Verworfen:** Suche später oder gar nicht; Begriff an das Wochenende
+gebunden (oft immer wieder Rockabilly, leere Wochenenden brauchen eine
+Ersatzregel) oder von Hand gesetzt (Pflege jede Woche); fünf Schnitte
+(107 KB) und Archivo variabel (131 KB mit Newsreader).
+
+**Folge:** Die Grenze „höchstens drei Schnitte" aus dem alten Briefing gilt
+nicht mehr, es sind vier. Pagefind ist ein neues Werkzeug im Build — es
+läuft nach `astro build` über `dist/` und gehört damit in die Prüfkette
+(`npm run verify`). Ausgeschrieben in `DESIGN-BRIEF.md`, Abschnitt
+„Entschieden am 2026-10-02".
+
+---
+
 ## 2026-10-02 — Portal statt Register: Gestaltung „Plattenhülle"
 
 **Entschieden (Markus):** Die Site tritt als Portal auf, nicht als
