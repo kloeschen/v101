@@ -49,14 +49,21 @@ const DATUM = new Intl.DateTimeFormat("de-DE", { dateStyle: "medium", timeZone: 
  * wird, und genau deshalb kann kein Entwurf irgendwo unmarkiert auftauchen.
  * Eine zweite Terminliste anderswo hieße, diese Zusage aufzugeben.
  */
+/**
+ * `zusatz` hängt einzelnen Einträgen eine kurze Angabe an, nach Pfad
+ * zugeordnet — etwa „3 kommende Termine" an eine Region auf der Startseite.
+ * Auch das ein Parameter statt eigenen Markups im Aufrufer, aus demselben
+ * Grund wie oben.
+ */
 interface Props {
   titel?: string;
+  zusatz?: Record<string, string>;
   eintraege: EintragMeta[];
   ebene?: 2 | 3;
   knapp?: boolean;
   datum?: boolean;
 }
-const { titel, eintraege, ebene = 2, knapp = false, datum = false } = Astro.props;
+const { titel, eintraege, ebene = 2, knapp = false, datum = false, zusatz = {} } = Astro.props;
 const Ueberschrift = `h${ebene}` as "h2" | "h3";
 ---
 {eintraege.length > 0 && (
@@ -72,6 +79,7 @@ const Ueberschrift = `h${ebene}` as "h2" | "h3";
           {istEntwurf(e.daten) && (
             <span class="liste__entwurf" title="Noch nicht redaktionell freigegeben"> [Entwurf]</span>
           )}
+          {zusatz[e.pfad] && <span class="liste__zusatz"> · {zusatz[e.pfad]}</span>}
           {!knapp && e.kurzbeschreibung && <span class="liste__beschreibung"> — {e.kurzbeschreibung}</span>}
         </li>
       ))}

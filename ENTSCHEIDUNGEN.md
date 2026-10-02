@@ -17,6 +17,57 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Plattenhülle, Etappe 4: die Startseite
+
+**Gebaut:** Aufmacher, „Dieses Wochenende" (Rosé), „Als Nächstes",
+sechs Ressort-Kacheln im Schachbrett, „Wohin, mit wem, zu wem" (Orte,
+Bands, Läden), Begriff im Fokus (Tinte), Termine je Region, Artikel,
+„Jede Angabe belegt". Die H1 „Vintage 101" ist nur noch für Vorleser
+sichtbar, weil das Logo direkt darüber denselben Namen zeigt. Die `.kapsel`
+bleibt sichtbar.
+
+**Die Rechnungen stehen in `src/lib/startseite.ts`, aus Node getestet**
+(`scripts/test-startseite.ts`, auch unter vier fremden Prozesszeitzonen):
+
+- *Wochenende* heißt Samstag und Sonntag in `site.zeitzone`. Von Montag
+  bis Freitag ist es das kommende, am Samstag und Sonntag das laufende.
+- Ein Termin gehört zum Wochenende, wenn er sich mit ihm *überlappt*. Ein
+  Weekender von Freitag bis Sonntag gehört also dazu, ein Termin nur am
+  Freitag nicht. Verworfen wurde „Beginn liegt am Wochenende": Damit fiele
+  der Weekender heraus, und genau er ist der typische Wochenendtermin der
+  Szene.
+- Der *Kalender* zeigt nichts, was schon im Wochenende steht.
+- Der *Begriff im Fokus* zählt Wochen seit 1970, nicht Kalenderwochen.
+  Sonst stünde an der Jahresgrenze (52 oder 53 Wochen) derselbe Begriff
+  zweimal oder einer fiele aus.
+- `datum.ts` exportiert dafür neu `tagesnummer`.
+
+**Aufmacher und Begriff im Fokus kommen aus der freigegebenen Registry.**
+Sie sind die einzigen Stellen mit eigenem Markup statt `EintragsListe`.
+Damit kann dort kein Entwurf unmarkiert stehen, und beworben wird nur, was
+geprüft ist. `EintragsListe` hat für die Zählung je Region den Parameter
+`zusatz` bekommen, statt dass die Startseite eine eigene Liste baut.
+
+**Mutationsbelege:** Fünf Mutationen gegen eine Kopie der Logik:
+
+1. Nur der Beginn statt Überlappung: 4 Prüfungen fallen.
+2. Wochentag in UTC: Die Montagsgrenze fällt.
+3. Kalender ohne Ausschluss: 2 fallen.
+4. Täglich statt wöchentlich: 2 fallen.
+5. Terminbeginn in UTC gelesen: Diese Mutation fiel zuerst durch keine
+   Prüfung. „Samstag 00:30" unterscheidet bei Überlappung nichts. Ergänzt
+   wurde deshalb der Fall „Montag 00:30 Ortszeit gehört nicht dazu", in UTC
+   ist das noch Sonntag. Danach fällt genau dieser Fall.
+
+**Band ↔ Termin** war schon da: „Kommende Auftritte von …" auf der
+Bandseite und „Bands im Line-up von …" auf der Eventseite.
+
+**Gefunden beim Screenshot:** Das Schachbrett der Kacheln hängt an der
+Spaltenzahl. Bei zwei Spalten ergäben die ungeraden Felder Streifen. Die
+Spaltenzahlen sind deshalb fest (2 / 3 / 6), und jede hat ihre eigene
+Regel für die Felder. Gemessen wurde bei 390, 800 und 1280 px, hell und
+dunkel.
+
 ## 2026-10-02 — Plattenhülle, Etappe 3: Entitätsseiten über CSS
 
 **Gebaut, nur CSS gegen das vorhandene Markup:** Ab 64rem Breite steht der

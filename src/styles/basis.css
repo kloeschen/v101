@@ -195,6 +195,78 @@ nav[aria-label="Brotkrumen"] { margin-bottom: var(--raum-3); }
    nicht Farbe allein; nimmt keinen Platz, den die Produktion freiließe. */
 .liste__entwurf { display: inline-block; margin-left: var(--raum-2); padding: 0 var(--raum-2); border: 1px solid var(--farbe-hinweis-linie); background: var(--farbe-hinweis-grund); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 0.1em; }
 
+/* --- Startseite (Plattenhülle, Etappe 4) ---------------------------
+   Flächen nur hier und nur, wie der Brief sie vergibt: Rosé für das
+   Wochenende (jetzt / demnächst), Tinte für den Begriff im Fokus,
+   Schachbrett für die Ressorts. Alles andere bleibt Linie auf Papier. */
+.etikett { margin: 0 0 var(--raum-1); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--farbe-text-leise); }
+.start > section, .start > div { margin: var(--raum-5) 0; }
+.start h2 { margin-top: var(--raum-2); }
+.start > div .liste { margin: 0; }
+.start__mehr { margin: var(--raum-2) 0 0; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.start__aufmacher { border-top: var(--linie-kraeftig); padding-top: var(--raum-2); max-width: 52rem; }
+.start__aufmacher h2 { font-family: var(--schrift-plakat); font-weight: 800; font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3rem); line-height: 1; text-transform: uppercase; hyphens: auto; overflow-wrap: break-word; }
+.start__aufmacher h2 a { text-decoration: none; color: var(--farbe-text); }
+.start__aufmacher h2 a:hover { text-decoration: underline; }
+.start__aufmacher p:last-child { font-size: 1.1em; max-width: var(--zeilenlaenge); }
+
+/* Termine: Wochenende als rosé Fläche, der Kalender daneben als Liste. */
+.start__termine { display: grid; gap: var(--raum-5); }
+@media (min-width: 56rem) {
+  .start__termine:has(> .start__wochenende) { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+}
+.start__wochenende { background: var(--farbe-akzent); color: var(--farbe-akzent-text); padding: var(--raum-3) var(--raum-4) var(--raum-4); }
+.start__wochenende .liste { border-top: 0; padding-top: 0; }
+.start__wochenende h2 { font-family: var(--schrift-plakat); font-weight: 800; text-transform: uppercase; line-height: 1; }
+.start__wochenende a,
+.start__wochenende a:visited,
+.start__wochenende .liste__datum { color: inherit; }
+.start__wochenende a:focus-visible { outline-color: var(--farbe-akzent-text); }
+.start__wochenende .liste li { border-bottom-color: currentColor; }
+.start__kalender .liste--knapp ul,
+.start__wochenende .liste--knapp ul { display: block; }
+.start__kalender .liste--knapp li,
+.start__wochenende .liste--knapp li { border-bottom: var(--linie); padding: var(--raum-2) 0; }
+.liste__entwurf { color: var(--farbe-text); }
+.liste__zusatz { color: var(--farbe-text-leise); font-size: var(--groesse-klein); }
+
+/* Ressorts: sechs Kacheln, Schachbrett Tinte/Papier. Die Nummer ist die
+   Katalognummer wie auf einem Plattenlabel. */
+/* Feste Spaltenzahlen (2 / 3 / 6), weil das Schachbrett davon abhängt:
+   Bei zwei Spalten sind die dunklen Felder 1, 4, 5, 8 …, bei drei und
+   sechs die ungeraden. */
+.kacheln { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 2px solid var(--farbe-text); }
+.kacheln a { display: flex; flex-direction: column; gap: var(--raum-1); min-height: 7rem; height: 100%; padding: var(--raum-3); text-decoration: none; background: var(--farbe-flaeche); color: var(--farbe-text); }
+@media (max-width: 39.99rem) {
+  .kacheln li:nth-child(4n+1) a,
+  .kacheln li:nth-child(4n) a { background: var(--farbe-text); color: var(--farbe-grund); }
+}
+@media (min-width: 40rem) {
+  .kacheln { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .kacheln li:nth-child(odd) a { background: var(--farbe-text); color: var(--farbe-grund); }
+}
+@media (min-width: 64rem) {
+  .kacheln { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .kacheln a { min-height: 8rem; }
+}
+.kacheln a:hover .kacheln__name { text-decoration: underline; }
+.kacheln a:focus-visible { outline: 3px solid var(--farbe-akzent); outline-offset: -3px; }
+.kacheln__nummer,
+.kacheln__anzahl { font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.kacheln__name { font-family: var(--schrift-plakat); font-weight: 800; font-size: clamp(1.6rem, 1.3rem + 1vw, 2rem); overflow-wrap: break-word; line-height: 1; text-transform: uppercase; margin-top: auto; }
+
+/* Begriff im Fokus: Tintenfläche. */
+.start__fokus { background: var(--farbe-text); color: var(--farbe-grund); padding: var(--raum-4); max-width: 52rem; }
+.start__fokus .etikett { color: inherit; }
+.start__fokus a, .start__fokus a:visited { color: inherit; }
+.start__fokus a:focus-visible { outline-color: var(--farbe-grund); }
+.start__fokus h2 { font-family: var(--schrift-plakat); font-weight: 800; font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem); line-height: 1; text-transform: uppercase; hyphens: auto; overflow-wrap: break-word; }
+.start__fokus h2 a { text-decoration: none; }
+.start__fokus h2 a:hover { text-decoration: underline; }
+
+.start__belegt { border-top: var(--linie-kraeftig); padding-top: var(--raum-2); max-width: var(--zeilenlaenge); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
