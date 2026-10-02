@@ -32,6 +32,16 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Portal-Gestaltung „Plattenhülle": vier Fragen vor dem Umbau.**
+Richtung entschieden am 2026-10-02 (ENTSCHEIDUNGEN, `DESIGN-BRIEF.md`,
+Abschnitte „Das Gestaltungssystem", „Neue Bausteine", „Offene Fragen").
+Vor dem Bauen zu klären: (1) Suche — Index beim Build (z. B. Pagefind) ja
+oder nein; (2) Begriff im Fokus — feste Auswahl je Woche oder an die
+Termine des Wochenendes gebunden; (3) Schriftschnitte — fünf statische
+oder Archivo variabel, vorher Ladegewicht messen; (4) Logo als SVG oder in
+doppelter Auflösung, dazu die helle Fassung vom Original. Die Entwürfe
+liegen auf der Zeichenfläche „Vintage 101 – Portal-Entwürfe" (claude.ai).
+
 `frei` **Artikel: Petticoat tragen (howto, Säule `mode`).** Vorschlag A3
 der PAA-Recherche vom 2026-10-01. Beantwortet „Wie trägt man einen
 Petticoat richtig?" (7 Treffer), „Darf der Petticoat unter dem Kleid
