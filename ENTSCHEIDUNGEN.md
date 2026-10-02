@@ -38,9 +38,10 @@ Weekender gebaut, nicht für den Konzertabend.
 `art`, `titel`, `band` (Slug, muss in `lineupBands` stehen) und `buehne`.
 `programm` ist belegpflichtig.
 
-**Die Schemaänderung liegt als Patch vor:** `docs/vorschlaege/programm.patch`.
-Der Guard sperrt `_schemas.ts` für Agenten auch mit Auftrag, wie bei den
-Läden & Studios. Markus spielt ihn mit `git apply` ein.
+**Die Schemaänderung lag als Patch vor** (`docs/vorschlaege/programm.patch`,
+nach dem Einspielen entfernt). Der Guard sperrt `_schemas.ts` für Agenten
+auch mit Auftrag, wie bei den Läden & Studios. Markus hat die Änderung
+über den GitHub-Editor eingespielt, ohne lokalen Checkout.
 
 **Schon gebaut, ohne Schema lauffähig:**
 - `src/lib/programm.ts`: Zeilen und Befunde. Ein Punkt muss im Zeitraum
@@ -58,10 +59,21 @@ Läden & Studios. Markus spielt ihn mit `git apply` ein.
   - ohne Line-up-Abgleich
   - unsortiert
 
-**Erst nach dem Einspielen möglich:**
-- Fälle für `event-programm` in test-validate.ts. Bis dahin streicht der
-  strikte Vertrag das Feld nicht, er lehnt es ab.
-- Das Programm des Weekenders aus seinen vorhandenen Quellen.
+**Nach dem Einspielen (Commit von Markus über den GitHub-Editor):**
+- Fünf Fälle für `event-programm` und `belegpflicht` in test-validate.ts.
+  Mutationsbelege: Werden die Befunde abgeschaltet, fallen genau die
+  Fälle „Vortag" und „fremde Band". Wird die Textprüfung abgeschaltet,
+  fällt genau „ohne Uhrzeit".
+- Das Programm des Rock'n'Roll & Boogie Woogie Weekend, aus der am
+  2026-10-02 erneut abgerufenen Eventseite. Eingetragen sind fünf Punkte:
+  Liveband, zwei DJ-Abende und zwei Kurse, jeweils mit Bühne.
+- Nicht eingetragen sind die Shows der Westernstadt und das „To be
+  continued!" am Samstag. Begründung in der Redaktionsnotiz.
+- Dabei korrigiert: Der Text sprach von „DJ-Programm an mehreren Orten".
+  Die Seite nennt einen Ort.
+- Auf dem Handy steht die Bühne hinter dem Titel statt in einer eigenen
+  Spalte. Sonst lief die Tabelle über den Rand. Gemessen bei 390 und
+  1280 px, ohne seitliches Scrollen.
 
 ## 2026-10-02 — Plattenhülle, Rest aus Etappe 3: Katalognummer, Werte, kein Zeitplan
 

@@ -300,11 +300,8 @@ nicht im Tageslauf.** Vorfragen entschieden am 2026-10-02
 (Seitenkopf mit Logo, Ressortleiste, „Termin melden", Suche mit Pagefind).
 Etappe 3 (Entitätsseiten über CSS) und Etappe 4 (Startseite) sind gebaut.
 Katalognummer und Kategoriewerte sind nachgebaut. Das Line-up als
-Zeitplan ist entschieden und bis auf das Schema gebaut (Feld `programm`,
-ENTSCHEIDUNGEN.md vom 2026-10-02). **Für Markus:**
-`docs/vorschlaege/programm.patch` mit `git apply` einspielen. Danach baut
-ein Lauf die Validatorfälle und das Programm des Rock'n'Roll & Boogie
-Woogie Weekend. Offen auf der Startseite: das Monogramm im Block „Jede Angabe
+Zeitplan ist gebaut (Feld `programm`, ENTSCHEIDUNGEN.md vom 2026-10-02),
+das erste Programm trägt das Rock'n'Roll & Boogie Woogie Weekend. Offen auf der Startseite: das Monogramm im Block „Jede Angabe
 belegt" (wartet auf das Original-Logo). **Für Markus:** Die Antwortkapsel
 der Startseite kommt aus `site.kurzbeschreibung` und sagt noch „das
 Register der Vintage- und Rockabilly-Szene" — `site.config.ts` ist für
