@@ -2,7 +2,7 @@
 name: Gasthaus Keferfeld
 aliases: [Gasthaus Keferfeld Linz, GH Keferfeld]
 kurzbeschreibung: Das Gasthaus Keferfeld ist ein Wirtshaus mit Saal an der Landwiedstraße in Linz, in dem DJ Daddy C Tanzabende mit Jive, Boogie und Swing ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
 geprueftAm: 2026-10-02
 autor: markus

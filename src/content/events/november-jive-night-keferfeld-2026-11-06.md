@@ -2,7 +2,7 @@
 name: November Jive Night im Gasthaus Keferfeld 2026
 aliases: [November Jive Night 2026, November Jive Night Linz, Jive Night GH Keferfeld November 2026]
 kurzbeschreibung: Tanzabend mit Jive, Boogie und Swing am Freitag, 6. November 2026, ab 20 Uhr im Gasthaus Keferfeld in Linz, mit DJ Daddy C; Eintritt gegen freiwillige Unterstützung.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
 geprueftAm: 2026-10-02
 autor: markus

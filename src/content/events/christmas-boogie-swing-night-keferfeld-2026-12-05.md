@@ -2,7 +2,7 @@
 name: Christmas Boogie & Swing Night im Gasthaus Keferfeld 2026
 aliases: [Christmas Boogie & Swing Night 2026, Christmas Boogie and Swing Night Linz, Adventparty GH Keferfeld 2026]
 kurzbeschreibung: Vorweihnachtlicher Tanzabend mit Boogie und Swing am Samstag, 5. Dezember 2026, ab 20 Uhr im Gasthaus Keferfeld in Linz, mit DJ Daddy C; Eintritt gegen freiwillige Unterstützung.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
 geprueftAm: 2026-10-02
 autor: markus
