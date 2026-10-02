@@ -32,19 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Artikel: Petticoat tragen (howto, Säule `mode`).** Vorschlag A3
-der PAA-Recherche vom 2026-10-01. Beantwortet „Wie trägt man einen
-Petticoat richtig?" (7 Treffer), „Darf der Petticoat unter dem Kleid
-hervorschauen?" (4), „Was ist ein Petticoat-Kleid?" (4)
-(`docs/daten/paa-rockabilly-2026-10-01/fragen.csv`). `typ: howto`,
-`hauptentitaet: lexikon/petticoat`, Vorlage
-`src/content/artikel/_golden-example.md`. Abgrenzung zum Vergleich
-`artikel/petticoat-reifrock-unterrock`: Der beantwortet, welches Stück man
-braucht, dieser, wie man es trägt (Länge, Lagen, Kleid darüber, Pflege) —
-keine zweite Fassung, Geschichte bleibt beim Lexikon. Jede Trageregel
-braucht eine Quelle; Händler-Ratgeber sind Belege für die Praxis, nicht
-für Geschichte. Die PAA-Fragen sind Themen, keine Quelle.
-
 `frei` **Lexikon: FAQ für Polka Dots, Pin-up, Petticoat und Rockabilly.**
 Entscheidung Markus, 2026-10-01: Lexikoneinträge bekommen FAQs (Feld `faq`
 aus `basis`, bisher bei keinem Lexikoneintrag gesetzt). Technisch ist nichts
