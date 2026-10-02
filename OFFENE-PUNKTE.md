@@ -81,82 +81,8 @@ Shabby Chic. Duplikatprüfung: Bisher hat kein Eintrag „Vintage" als Name
 oder Alias. Danach `npm run autolink` — Vorsicht, „Vintage" kommt sehr
 oft vor; die Drift-Prüfung zeigt, ob das tragbar ist.
 
-`frei` **Bad Blumau, Swinging Wellness Tanzwochenende: 1 Termin anlegen (06.–08.11.2026).**
-Gesehen am 2026-10-01 auf https://boogie.at/?page=1 (Herkunft: Suchlauf
-2026-10-01). Dort steht (/event/swinging-wellness-tanzwochenende-10-jaehriges-jubilaeum):
-Fr. 06.11., Sa. 07.11., So. 08.11.2026, je 09:00, Rogner Bad Blumau, Bad
-Blumau 100, 8283 Bad Blumau; „10 Jahre"; Boogie Woogie, Lindy Hop, West
-Coast Swing, Balboa; 18 Tanzeinheiten; Freitag Dinner & Dance Party mit
-Robert Shumy, Samstag Party mit Live-Musik von The Ridin Dudes; Anmeldung
-über https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/.
-Beim Bauen: die Veranstalterseite öffnen (Preis, Ablauf, Veranstalter);
-Early-Bird-Angaben auf boogie.at beziehen sich auf eine Frist im März 2026.
-Typ Workshop-Wochenende. Region Steiermark gibt es noch nicht (nach Muster
-anlegen, `entwurf`). Zeitzone `+01:00`.
-
-`frei` **Stadtgalerie Mödling: Boogieball am 13.11.2026 anlegen (Folgetermin der Rock'n' Boogie Tanzparty).**
-Gesehen am 2026-10-01 auf https://www.stadtgaleriekultur.info/events/kalender/
-(Herkunft: Suchlauf 2026-10-01). Dort steht: „Boogieball '26",
-„Tanzabend", „Freitag, 13. November 2026", „20:00 Uhr". boogie.at
-(/event/boogieball-0) nennt dazu: Stadtgalerie Mödling, live Junior and
-the Mad Cats („vormals The Juke Joint Royals"), Hannes Otahal, DJ Sascha;
-Tickets über Kartenbüro und Ticketshop. Beim Bauen: Vorlage
-`events/rockn-boogie-tanzparty-moedling-2026-10-16`; dessen
-Redaktionsnotiz sagt, `reihe` gehöre gesetzt, sobald eine zweite Ausgabe
-angelegt wird — das ist sie. Preis und Dresscode laut Vorlage eigens
-angekündigt, auf der Detailseite des Hauses prüfen. „Parkett" auf
-boogie.at ist eine Redewendung (Falle). Zeitzone `+01:00`.
-
-`frei` **Tanzschule Hippmann, Wels und Regau: 4 Termine anlegen (14.11.2026, 05.12.2026, 16.01.2027, 13.03.2027).**
-Gesehen am 2026-10-01 auf https://boogie.at/ (Seiten 1 bis 3) (Herkunft:
-Suchlauf 2026-10-01). Dort steht: „BIG BOOGIE & SWING PARTY + FOX", Sa.,
-14.11.2026, Tanzschule Hippmann, Pollheimerstraße 7, 4600 Wels, „Einlass
-ab 19.30 Uhr - Musikbeginn 20.15 Uhr", Boogie-, Lindy-Hop- und
-Swing-Floor live mit The 6 Fireballs (Tschechien) und DJ Rockin' Daddy,
-Discofox-Floor, Tickets über https://www.tanzschule.at/newsbeitrag/boogiefox2026/
-(/event/big-boogie-swing-party-fox); „Chrismas Big Boogie und Discofox
-Party", Sa., 05.12.2026, 20:00, Hippmann Starmovie Regau, Betriebsstrasse
-15, 4844 Regau, „2 Dj's 2 Floors" (/event/chrismas-big-boogie-und-discofox-party);
-„BOOGIE & SWINGBALL 2027", Sa., 16.01.2027, 20:00, Tanzschule Hippmann
-Wels, live Ray Collins Hot Club, DJ Rockin' Daddy, „Tickets: ab 35 €"
-(/event/boogie-swingball-2027); „Big Boogie und Discofox Party", Sa.,
-13.03.2027, 20:00, Regau, DJ.K. am Boogie-Floor (/event/big-boogie-und-discofox-party-2).
-Beim Bauen: die Seiten der Tanzschule (tanzschule.at) öffnen — ob Regau
-derselbe Veranstalter ist, sagt boogie.at nicht ausdrücklich. Zwei
-Spielorte neu. Region `oberoesterreich`. Zeitzone überall `+01:00`.
-
-`frei` **Kammgarnsaal Traiskirchen: Boogie-Party am 21.11.2026 anlegen (Folgetermin der Reihe).**
-Gesehen am 2026-10-01 auf https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
-(Herkunft: Suchlauf 2026-10-01). Dort steht in der Datumszeile „Sa.,
-21.11.2026 - 17:00" als letzter von sechs Terminen, Kammgarnsaal,
-Wolfstraße 18d, 2514 Traiskirchen; der Beschreibungstext nennt derzeit
-nur die Halloween-Ausgabe („Beginn 17.00, Einlass 16.30"). Beim Bauen:
-Vorlage `events/boogie-party-sonntagnachmittag-2026-10-31` (Reihe
-`boogie-party-sonntagnachmittag`). Preise und DJs der Vorlage nicht
-übernehmen, wenn die Seite sie für diesen Termin nicht nennt. Der 21.11.
-ist wieder ein Samstag. Zeitzone `+01:00`.
 
 
-`frei` **Boogie Lions Spillern: 5 Termine anlegen (28.11.2026, 09.01.2027, 20.02.2027, 06.03.2027, 01.05.2027).**
-Rest des Bündels vom 2026-09-28; der Halloween-Termin am 31.10.2026 ist
-gebaut (`events/boogie-lions-halloween-spillern-2026-10-31`, Vorlage für
-diese fünf, samt Reihe `boogie-lions-boogie-party` und Location
-`festsaal-wiemex-spillern`). **Befund, warum sie fehlen:** Die
-Veranstaltungsliste des Vereins (https://www.boogielions.at/veranstaltungen)
-nennt nur Datum und Titel: „28.11.2026 - Boogie Abend mit DJ Sascha",
-„09.01.2027 - Happy New Year", „20.02.2027", „06.03.2027", „01.05.2027 -
-Boogieabend". Uhrzeit und Ort nennt für diese Termine nur boogie.at
-(/event/boogie-party-44, /event/boogie-party-53, /event/boogie-party-56),
-und jeder Abruf von boogie.at brach am 2026-09-28 aus der Arbeitsumgebung
-ab (Verbindungsabbruch, WebFetch 503). 20:00 und „gleicher Saal" aus der
-Gewohnheit zu übernehmen wäre geschätzt. Beim Bauen: boogie.at zuerst
-öffnen; ist es wieder nicht erreichbar, den Posten liegen lassen, bis der
-Verein eigene Ankündigungen veröffentlicht (er tut das etwa einen Monat
-vorher). Dieselbe Hürde trifft die beiden anderen boogie.at-Posten oben. Am 2026-10-01 war
-boogie.at wieder erreichbar, alle fünf Seiten der Liste (Suchlauf).
-Nebenbei gesehen, nicht im Posten: Die Vereinsliste führt am 19.12.2026
-eine „Weihnachtsfeier" — ob die öffentlich ist, sagt sie nicht.
-Zeitzone: alle `+01:00`, außer 01.05.2027 `+02:00`.
 
 `mensch` **Creepers und Pomade: zwei ungeprüfte Teddy-Boy-Angaben aus der
 deutschen Wikipedia.** Gefunden am 2026-10-02 beim Entwurf
