@@ -27,6 +27,7 @@
  */
 import BasisLayout from "./BasisLayout.astro";
 import { vorschauPfad } from "../lib/vorschaubild";
+import { ressortVon, sichtbareRessorts, ressortPfad } from "../lib/ressorts";
 import Faktenblock from "../components/Faktenblock.astro";
 import FaqBlock from "../components/FaqBlock.astro";
 import Quellen from "../components/Quellen.astro";
@@ -58,6 +59,10 @@ const graph = buildGraph(collection, slug, daten);
 const pfad = `${sammlungsPfad(collection)}${slug}/`;
 const verwandt = verwandtes(registry, collection, slug);
 const entwurf = daten.status !== "veroeffentlicht";
+// Katalognummer über der H1. Verlinkt nur, wenn die Ressortseite sichtbar
+// ist — sonst zeigte sie auf eine leere Seite (Regel aus ressorts.ts).
+const ressort = ressortVon(collection, daten);
+const ressortVerlinkt = ressort && sichtbareRessorts(registry).includes(ressort);
 ---
 <BasisLayout
   titel={daten.name}
@@ -72,6 +77,16 @@ const entwurf = daten.status !== "veroeffentlicht";
     <a href={sammlungsPfad(collection)}>{SAMMLUNGSNAME[collection]}</a> ›
     <span aria-current="page">{daten.name}</span>
   </nav>
+
+  {ressort && (
+    <p class="katalognummer">
+      {ressortVerlinkt ? (
+        <a href={ressortPfad(ressort)}>{ressort.nummer} · {ressort.name}</a>
+      ) : (
+        <>{ressort.nummer} · {ressort.name}</>
+      )}
+    </p>
+  )}
 
   <article>
     <h1>{daten.name}</h1>

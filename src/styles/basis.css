@@ -139,6 +139,15 @@ body > footer { max-width: var(--inhalt-breite); margin: 0 auto; padding: 0 var(
    dem Fließtext (Extrahierbarkeit); auf breiten Bildschirmen steht er
    optisch als Spalte daneben. Unterhalb von 64rem bleibt alles gestapelt. */
 nav[aria-label="Brotkrumen"] { margin-bottom: var(--raum-3); }
+/* Katalognummer über der H1 (V101-02 · Mode): ein Etikett wie auf einem
+   Plattenlabel, Tinte auf Papier umgekehrt. Kein Rosé — das heißt „jetzt". */
+.katalognummer { margin: 0 0 var(--raum-2); }
+.katalognummer,
+.katalognummer a { display: inline-block; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.katalognummer { padding: var(--raum-1) var(--raum-2); background: var(--farbe-text); color: var(--farbe-grund); }
+.katalognummer a, .katalognummer a:visited { color: inherit; text-decoration: none; min-height: 24px; }
+.katalognummer a:hover { text-decoration: underline; }
+.katalognummer a:focus-visible { outline-color: var(--farbe-akzent); }
 
 /* Antwortkapsel: der erste Absatz des Fließtexts trägt die Antwort. */
 .inhalt > p:first-child { font-size: 1.2em; line-height: 1.5; padding-top: var(--raum-3); border-top: var(--linie-kraeftig); }
