@@ -5,7 +5,7 @@ kurzbeschreibung: Ein Petticoat ist ein versteifter, in der Taille ansetzender U
 status: veroeffentlicht
 erstelltAm: 2026-09-02
 geprueftAm: 2026-09-10
-geaendertAm: 2026-09-09
+geaendertAm: 2026-10-02
 autor: markus
 kategorie: mode
 bezeichnungEn: Petticoat
@@ -22,6 +22,11 @@ abgrenzung: >-
   Silhouette; er kann als Trägerkleid von der Schulter hängen, während der
   Petticoat in der Taille ansetzt und deshalb in den Wörterbüchern als
   Halbunterrock geführt wird.
+faq:
+  - frage: Was heißt Petticoat auf Deutsch?
+    antwort: Wörtlich „kleiner Rock", so jedenfalls Duden und DWDS. Das englische petticoat steht für älteres petty coat, aus petty (von französisch petit, klein) und coat; das DWDS übersetzt coat mit „Rock", die deutsche Wikipedia dagegen mit „Umhang, Mantel". Ein eigenes deutsches Wort gibt es nicht. Der Duden nennt Unterrock und Halbrock als sinnverwandt, das DWDS umschreibt den Petticoat als versteiften Halbunterrock.
+  - frage: In welcher Zeit trug man Petticoat?
+    antwort: Vor allem in den 1950er und frühen 1960er Jahren, unter den weiten, taillenbetonten Röcken dieser Zeit; nach der deutschen Wikipedia verschwand er ab 1966 mit dem Minirock aus der Alltagsmode. Das Wörterbuch der deutschen Gegenwartssprache, das das DWDS zitiert, beschrieb ihn 1974 noch als Unterrock, den vor allem junge Mädchen trugen. Heute gehört er zur Tanzkleidung beim Square Dance und zur Rockabilly-Szene.
 redaktionsnotiz: >-
   Quellen am 2026-09-02 einzeln geöffnet und gegen die Behauptungen geprüft.
   aeraVon, aeraBis und herkunftsland bleiben ungesetzt: Der Petticoat ist
@@ -53,21 +58,29 @@ redaktionsnotiz: >-
   belastbarsten verfügbaren Belege. Die Pflegeempfehlungen von Dance-Fit und
   Peggy Sue Vintage widersprechen sich bei Waschart und Lagerung; das steht
   so im Text und wird nicht geglättet.
+  FAQ am 2026-10-02 ergänzt (Fragen aus der PAA-Recherche vom 2026-10-01,
+  docs/daten/paa-rockabilly-2026-10-01/fragen.csv — Themen, keine Quelle).
+  Dafür erneut geöffnet: Duden, DWDS, deutsche Wikipedia „Petticoat". Beide
+  Fragen aus dem Posten sind gedeckt. Widerspruch in der Antwort benannt:
+  Duden und DWDS geben das Wort als „kleiner Rock" wieder (DWDS: coat
+  „Rock"), die deutsche Wikipedia übersetzt coat mit „Umhang, Mantel". Die Zeitfrage ist bewusst anders beantwortet als die
+  FAQ „Wann wurde der Petticoat in Deutschland populär?" im Artikel
+  petticoat-reifrock-unterrock, damit beide Seiten nicht dasselbe sagen.
 quellen:
   - url: https://de.wikipedia.org/wiki/Petticoat
     titel: Petticoat (Wikipedia)
     abgerufenAm: 2026-09-02
-    felder: [definition, kurzbeschreibung, body:aufbau, body:geschichte, body:szene]
+    felder: [definition, kurzbeschreibung, faq, body:aufbau, body:geschichte, body:szene]
     art: nachschlagewerk
   - url: https://www.duden.de/rechtschreibung/Petticoat
     titel: Petticoat (Duden online)
     abgerufenAm: 2026-09-02
-    felder: [definition, kurzbeschreibung, abgrenzung]
+    felder: [definition, kurzbeschreibung, abgrenzung, faq]
     art: nachschlagewerk
   - url: https://www.dwds.de/wb/Petticoat
     titel: Petticoat (DWDS, mit Etymologischem Wörterbuch nach Pfeifer)
     abgerufenAm: 2026-09-02
-    felder: [definition, bezeichnungEn, abgrenzung, body:geschichte]
+    felder: [definition, bezeichnungEn, abgrenzung, faq, body:geschichte]
     art: nachschlagewerk
   - url: https://nat.museum-digital.de/object/1287756
     titel: Petticoat beige Tüll, Freilichtmuseum Roscheider Hof (museum-digital)

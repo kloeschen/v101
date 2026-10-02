@@ -5,6 +5,7 @@ kurzbeschreibung: Ein Pin-up ist ein Bild einer erotisch anziehenden Person, mei
 status: veroeffentlicht
 erstelltAm: 2026-10-01
 geprueftAm: 2026-10-01
+geaendertAm: 2026-10-02
 autor: markus
 kategorie: szene
 bezeichnungDe: Pin-up
@@ -24,6 +25,13 @@ abgrenzung: >-
   Unterform davon, die deutsche trennt bei den Illustrationen das Pin-up
   als Ganzfigur mit erzählerischem Element vom Glamour-Girl im
   Abendkleid.
+faq:
+  - frage: Was sind Pin-up-Models?
+    antwort: Menschen, meist Frauen, die für Pin-ups posieren, also für Bilder, die massenhaft verbreitet und an die Wand geheftet werden. Das DWDS führt diese Bedeutung beim „Pin-up-Girl" eigens auf, die englische Wikipedia nennt als typische Pin-up-Models Glamourmodelle, Schauspielerinnen und Fotomodelle. Bekannte Namen sind nach der deutschen Wikipedia Betty Grable im Zweiten Weltkrieg und Bettie Page in den 1950er Jahren.
+  - frage: Was sind Pin-up-Fotos?
+    antwort: Fotografien, die dieselbe Aufgabe haben wie die gemalten Pin-ups, nämlich als Bild an der Wand zu hängen, meist mit einer Frau in andeutend erotischer Pose. Im Zweiten Weltkrieg waren sie bei amerikanischen Soldaten begehrt; das Armeemagazin „Yank" war nach der deutschen Wikipedia vor allem wegen seiner Pin-up-Fotos beliebt, und das Badeanzugfoto von Betty Grable aus dem Jahr 1943 war das beliebteste unter den Soldaten.
+  - frage: Was ist ein Pin-up-Magazin?
+    antwort: Ein fester Fachbegriff ist das in keiner der geöffneten Quellen. Gemeint sind zum einen Zeitschriften, die Pin-ups druckten, oft als ausfaltbares Poster in der Heftmitte, im Zweiten Weltkrieg etwa Esquire mit den gezeichneten „Vargas Girls" und Yank mit Fotos. Zum anderen nennt die englische Wikipedia heutige Magazine der Pin-up-Szene, darunter „Delicious Dolls" (seit 2011) und „Retro Lovely".
 redaktionsnotiz: >-
   Quellen am 2026-10-01 einzeln geöffnet. Einen Britannica-Artikel zum
   Pin-up gibt es unter den naheliegenden Adressen nicht (/art/pinup HTTP 404,
@@ -57,6 +65,15 @@ redaktionsnotiz: >-
   „Pinup" (im DWDS als ungewöhnliche Schreibung markiert, „Pin-Up" als
   ungültige), „Pin-up-Boy" (das männliche Gegenstück, eigenes Stichwort)
   und „Glamour-Girl" (nach der deutschen Wikipedia eine andere Kategorie).
+  FAQ am 2026-10-02 ergänzt (Fragen aus der PAA-Recherche vom 2026-10-01,
+  docs/daten/paa-rockabilly-2026-10-01/fragen.csv — Themen, keine Quelle).
+  Dafür erneut geöffnet: DWDS „Pin-up-Girl", deutsche Wikipedia „Pin-up",
+  englische Wikipedia „Pin-up model". Alle drei Fragen aus dem Posten sind
+  gedeckt. „Pin-up-Magazin" definiert keine Quelle als Begriff; die Antwort
+  sagt das und nennt nur, welche Zeitschriften die Quellen mit Pin-ups
+  verbinden. Die Auflage von Yank (2,6 Millionen) steht in der deutschen
+  Wikipedia nur in einer Bildunterschrift ohne Beleg und ist deshalb nicht
+  übernommen.
 quellen:
   - url: https://www.duden.de/rechtschreibung/Pin_up
     titel: Pin-up (Duden)
@@ -71,17 +88,17 @@ quellen:
   - url: https://www.dwds.de/wb/Pin-up-Girl
     titel: Pin-up-Girl (DWDS)
     abgerufenAm: 2026-10-01
-    felder: [aliases, definition, abgrenzung, body:name, body:abgrenzung]
+    felder: [aliases, definition, abgrenzung, faq, body:name, body:abgrenzung]
     art: nachschlagewerk
   - url: https://de.wikipedia.org/wiki/Pin-up
     titel: Pin-up (Wikipedia)
     abgerufenAm: 2026-10-01
-    felder: [kurzbeschreibung, definition, abgrenzung, body:merkmale, body:geschichte, body:abgrenzung]
+    felder: [kurzbeschreibung, definition, abgrenzung, faq, body:merkmale, body:geschichte, body:abgrenzung]
     art: nachschlagewerk
   - url: https://en.wikipedia.org/wiki/Pin-up_model
     titel: Pin-up model (English Wikipedia)
     abgerufenAm: 2026-10-01
-    felder: [bezeichnungEn, verwandt, abgrenzung, body:name, body:geschichte, body:szene, body:abgrenzung]
+    felder: [bezeichnungEn, verwandt, abgrenzung, faq, body:name, body:geschichte, body:szene, body:abgrenzung]
     art: nachschlagewerk
   - url: https://en.wikipedia.org/wiki/Glamour_photography
     titel: Glamour photography (English Wikipedia)
