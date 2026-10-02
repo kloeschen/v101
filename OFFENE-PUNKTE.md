@@ -32,6 +32,22 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Nachprüfung kurz vor dem Termin löscht den Stale-Posten nicht.**
+Fund vom 2026-10-02: Boppin'B Barsinghausen (03.10.) wurde um 11:58 UTC
+gegen die Quelle nachgeprüft (Redaktionsnotiz, `abgerufenAm` 2026-10-02),
+`geprueftAm` blieb aber auf 2026-09-23 — auf freigegebenen Einträgen hat
+das Feld bisher nur die Freigabe geändert. `stale` meldet den Termin
+deshalb weiter als dringendsten Posten, und der Nachmittagslauf hat die
+Quelle ein zweites Mal geöffnet (unverändert). Das trifft jeden Lauf mit
+leerer Warteschlange, solange ein nachgeprüfter Termin im
+14-Tage-Fenster liegt. Zu entscheiden: (1) Ein Lauf darf `geprueftAm`
+eines freigegebenen Termins bei einer Nachprüfung setzen — einfach, aber
+das Feld hieße dann nicht mehr „von Markus geprüft"; (2) `stale-report`
+rechnet „termin-naht" vom jüngsten `abgerufenAm` einer `offiziell`-Quelle
+mit `beginn` in `felder` — kein Schemaeingriff, ein Test plus Mutation,
+die Freigabesemantik bleibt; (3) lassen — kostet höchstens einen leeren
+Lauf pro Termin, solange die Warteschlange leer ist. Empfehlung: (2).
+
 `mensch` **Vintage freigeben.** Der Eintrag `lexikon/vintage` liegt seit
 dem 2026-10-02 als Entwurf vor. Die Autolink-Frage ist entschieden
 (Markus, 2026-10-02): „Vintage" wird nur von Hand verlinkt
