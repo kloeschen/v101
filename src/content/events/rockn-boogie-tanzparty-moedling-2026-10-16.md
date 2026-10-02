@@ -5,8 +5,11 @@ kurzbeschreibung: Boogie-Tanzabend am Freitag, 16. Oktober 2026, ab 20 Uhr in de
 status: veroeffentlicht
 erstelltAm: 2026-09-25
 geprueftAm: 2026-09-25
+geaendertAm: 2026-10-02
 autor: markus
 typ: tanzabend
+reihe: rockn-boogie-moedling
+reiheName: Rock'n' Boogie in der Stadtgalerie Mödling
 beginn: 2026-10-16T20:00:00+02:00
 ort: stadtgalerie-moedling
 region: niederoesterreich
@@ -32,7 +35,10 @@ redaktionsnotiz: >-
   Abweichung zwischen den Quellen bei Datum, Uhrzeit und Preis.
   ZEITZONE +02:00: Der 16. Oktober liegt vor dem Ende der Sommerzeit am
   25. Oktober 2026. Die Folgeausgabe am 13. November braeuchte +01:00.
-  REIHE NICHT GESETZT, wie im Posten vorgegeben: Das Haus nennt eine
+  REIHE NACHGEZOGEN am 2026-10-02 mit der zweiten erfassten Ausgabe
+  (Boogieball '26 am 13.11.2026), Name nach dem Seitentitel des Hauses
+  "ROCK'N'BOOGIE". Urspruenglich: REIHE NICHT GESETZT, wie im Posten
+  vorgegeben: Das Haus nennt eine
   monatliche Folge (13.11.2026 als Boogieball '26 mit eigenem Preis von
   28 Euro inkl. Tischreservierung, danach 22.01., 26.02., 19.03., 23.04.
   und 14.05.2027; boogie.at fuehrt die Liste bis 19.11.2027 fort). Eine
@@ -67,7 +73,7 @@ quellen:
   - url: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
     titel: ROCK'N'BOOGIE (KulturQuadrat in der Stadtgalerie)
     abgerufenAm: 2026-09-25
-    felder: [beginn, ort, eintritt, preise, ticketUrl, drinnenDraussen, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
+    felder: [beginn, ort, eintritt, preise, ticketUrl, drinnenDraussen, reihe, reiheName, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://www.stadtgaleriekultur.info/events/kalender/
     titel: Kalender (KulturQuadrat in der Stadtgalerie)
