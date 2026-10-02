@@ -127,6 +127,21 @@ möglich; (c) den Gegenleser `body:`-Abschnitte prüfen lassen — deckt den
 Fließtext ab, ist aber das größte Stück Arbeit. Empfehlung: (a) sofort,
 (b) danach.
 
+`mensch` **Agenten-Arbeitskopien liegen unter dem gesperrten `.claude/`.**
+Befund vom 2026-10-02, ausführlich in `docs/lektionen.md`, Lektion 31.
+Das Agent-Werkzeug legt Arbeitskopien unter `.claude/worktrees/` an, und
+`permissions.deny` sperrt dort jedes Schreiben. Zu entscheiden, beides in
+`.claude/` und damit nur von Markus änderbar:
+(1) die Arbeitskopien woanders anlegen lassen oder `.claude/worktrees/`
+von der Sperre ausnehmen; (2) `guard.mjs` Schreibziele gegen das
+Arbeitsverzeichnis auflösen lassen. Bisher sieht er relative Pfade nicht,
+wenn die Sitzung selbst unter `.claude/` steht, und er blockiert Befehle,
+die den Text `.claude/` nur als Inhalt in eine andere Datei schreiben.
+Bis dahin gilt der Umweg: eigener Klon je Agent im Scratchpad, Patch,
+Übernahme durch die Hauptsitzung. `.claude/worktrees/` steht seit dem
+2026-10-02 in `.gitignore`, damit der Stop-Hook die Kopien nicht als
+unversionierte Dateien meldet.
+
 ## Vor dem Go-Live
 
 **Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht

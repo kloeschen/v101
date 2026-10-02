@@ -3,3 +3,5 @@ node_modules/
 .astro/
 # Cache des externen Linkchecks — reproduzierbar, gehört nicht ins Repo.
 .cache/
+# Arbeitskopien des Agent-Werkzeugs (Lektion 31) — temporär, nie Teil des Repos.
+.claude/worktrees/
