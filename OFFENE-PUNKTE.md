@@ -305,18 +305,16 @@ Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
 würde „50er" sehr oft verlinken).
 
 **Portal-Gestaltung „Plattenhülle" umsetzen — in der Sitzung mit Markus,
-nicht im Tageslauf.** Alle Vorfragen sind seit dem 2026-10-02 entschieden
-(`DESIGN-BRIEF.md`, Abschnitt „Entschieden am 2026-10-02"). Vier
-Etappen, je ein PR mit Prüfung an der Vorschau: (1) Grundlage — seit dem
-2026-10-02 gebaut (Farben, Dunkelmodus, vier Schriften, H1 als
-Plakatzeile; das Logo kommt mit dem Seitenkopf); (2) Seitenkopf mit Ressortleiste, „Termin melden" und
-Suchformular, dazu `/suche/` mit Pagefind im Build und in `verify`;
-(3) Entitätsseiten nur über CSS (Faktenblock als Seitenspalte,
-Datumsfläche, Line-up als Zeitplan, Katalognummern); (4) Startseite neu
-(Wochenende, Kalender ohne Doppelungen, Ressorts, Orte/Bands/Läden,
-Begriff der Woche, Regionen). Jede neue Regel mit Negativtest, etwa:
-ein Freitagstermin erscheint nicht unter „Dieses Wochenende". Bedingung
-für den Start: keine — es wartet auf die Sitzung.
+nicht im Tageslauf.** Vorfragen entschieden am 2026-10-02
+(`DESIGN-BRIEF.md`, „Entschieden am 2026-10-02"). Gebaut sind Etappe 1
+(Farben, Dunkelmodus, Schriften, H1 als Plakatzeile) und Etappe 2
+(Seitenkopf mit Logo, Ressortleiste, „Termin melden", Suche mit Pagefind).
+Offen: (3) Entitätsseiten nur über CSS — Faktenblock als Seitenspalte,
+Datumsfläche, Line-up als Zeitplan, Katalognummern, Abstand Brotkrumen/H1;
+(4) Startseite neu — Wochenende, Kalender ohne Doppelungen, Ressorts,
+Orte/Bands/Läden, Begriff der Woche, Regionen; die H1 „Vintage 101"
+doppelt dort das Logo. Jede neue Regel mit Negativtest, etwa: ein
+Freitagstermin erscheint nicht unter „Dieses Wochenende".
 
 **Pillar „Der Rockabilly-Look" (Säule `mode`) — als Erstes nach oben
 holen, sobald die Obergrenze Platz hat.** Entscheidung Markus, 2026-10-01:

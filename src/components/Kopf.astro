@@ -1,0 +1,51 @@
+---
+/**
+ * Seitenkopf des Portals (Plattenhülle, Etappe 2; DESIGN-BRIEF.md, „Neue
+ * Bausteine"): Logo, Suche, „Termin melden", Ressortleiste.
+ *
+ * Er steht vor <main> und muss deshalb kurz bleiben — der Textinhalt soll
+ * weiter früh im DOM stehen. Die vollständige Hauptnavigation bleibt nach
+ * </main> im BasisLayout. Hier stehen nur die Ressorts und zwei Einstiege.
+ *
+ * Die Suche ist ein gewöhnliches Formular: Es führt auf /suche/ und braucht
+ * auf keiner anderen Seite JavaScript. Erst /suche/ lädt Pagefind.
+ */
+import { holeRegistry } from "../lib/registry";
+import { sichtbareRessorts, ressortPfad } from "../lib/ressorts";
+
+interface Props {
+  /** Pfad der aktuellen Seite, für aria-current in der Ressortleiste. */
+  pfad: string;
+}
+const { pfad } = Astro.props;
+
+const ressorts = sichtbareRessorts(await holeRegistry());
+const eintraege = [
+  { name: "Termine", href: "/events/" },
+  ...ressorts.map((r) => ({ name: r.name, href: ressortPfad(r) })),
+  { name: "Orte", href: "/locations/" },
+  { name: "Regionen", href: "/regionen/" },
+];
+const aktuell = (href: string) => pfad === href || (href !== "/" && pfad.startsWith(href));
+---
+<header class="kopf">
+  <div class="kopf__zeile">
+    <a class="kopf__logo" href="/">
+      <picture>
+        <source srcset="/logo/vintage101-hell.png" media="(prefers-color-scheme: dark)" />
+        <img src="/logo/vintage101.png" width="200" height="80" alt="Vintage 101 – Das neue Vintage-Portal" />
+      </picture>
+    </a>
+    <form class="kopf__suche" role="search" action="/suche/" method="get">
+      <label for="kopf-suche" class="nurleser">Suchen</label>
+      <input id="kopf-suche" type="search" name="q" placeholder="Termin, Ort, Band oder Begriff" autocomplete="off" />
+      <button type="submit">Suchen</button>
+    </form>
+    <a class="kopf__melden" href="/vorschlagen/">Termin melden</a>
+  </div>
+  <nav aria-label="Ressorts" class="kopf__ressorts">
+    {eintraege.map((e) => (
+      <a href={e.href} aria-current={aktuell(e.href) ? "page" : undefined}>{e.name}</a>
+    ))}
+  </nav>
+</header>

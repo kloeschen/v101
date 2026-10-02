@@ -1,0 +1,75 @@
+---
+/**
+ * /suche/ — die Suche des Portals (Entscheidung 2026-10-02: Pagefind).
+ *
+ * Der Index entsteht beim Build (`pagefind --site dist`, im npm-Skript
+ * `build`). Nur diese Seite lädt ihn; alle anderen Seiten schicken über das
+ * Formular im Kopf nur `?q=…` hierher.
+ *
+ * Die Treffer entstehen per JavaScript. Das ist mit der Regel „kein Inhalt
+ * aus JavaScript" vereinbar: Die Treffer sind kein Inhalt, sondern Verweise
+ * auf Seiten, die ohne JavaScript vollständig sind. Ohne JavaScript zeigt die
+ * Seite deshalb die Wege ins Portal statt eines leeren Kastens.
+ *
+ * Die Seite selbst ist `noindex` und nicht im Suchindex (`suchbar=false`).
+ */
+import BasisLayout from "../layouts/BasisLayout.astro";
+---
+<BasisLayout
+  titel="Suche"
+  beschreibung="Termine, Orte, Bands und Begriffe im Portal durchsuchen."
+  kanonisch="/suche/"
+  noindex={true}
+  suchbar={false}
+>
+  <h1>Suche</h1>
+  <form class="suche" role="search" action="/suche/" method="get">
+    <label for="suche-feld">Suchbegriff</label>
+    <div class="suche__zeile">
+      <input id="suche-feld" type="search" name="q" autocomplete="off" />
+      <button type="submit">Suchen</button>
+    </div>
+  </form>
+  <p class="suche__stand" aria-live="polite" id="suche-stand"></p>
+  <ol class="suche__treffer" id="suche-treffer"></ol>
+  <noscript>
+    <p>
+      Die Suche braucht JavaScript. Ohne geht es über die
+      <a href="/events/">Termine</a>, das <a href="/lexikon/">Lexikon</a>,
+      die <a href="/locations/">Orte</a> und die <a href="/regionen/">Regionen</a>.
+    </p>
+  </noscript>
+  <script is:inline type="module">
+    // Pagefind wird erst hier geladen — nicht im Seitenkopf, nicht anderswo.
+    const feld = document.getElementById("suche-feld");
+    const stand = document.getElementById("suche-stand");
+    const liste = document.getElementById("suche-treffer");
+    const q = (new URLSearchParams(location.search).get("q") || "").trim();
+    feld.value = q;
+    if (q) {
+      stand.textContent = "Suche läuft …";
+      try {
+        const pagefind = await import("/pagefind/pagefind.js");
+        const ergebnis = await pagefind.search(q);
+        const daten = await Promise.all(ergebnis.results.slice(0, 20).map((r) => r.data()));
+        stand.textContent = daten.length
+          ? `${ergebnis.results.length} Treffer für „${q}"`
+          : `Nichts gefunden für „${q}".`;
+        for (const d of daten) {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = d.url;
+          a.textContent = d.meta.title || d.url;
+          const p = document.createElement("p");
+          // Der Auszug kommt von Pagefind mit <mark> um den Treffer; sonst
+          // nur Text aus unseren eigenen Seiten.
+          p.innerHTML = d.excerpt;
+          li.append(a, p);
+          liste.append(li);
+        }
+      } catch (e) {
+        stand.textContent = "Die Suche ist gerade nicht verfügbar.";
+      }
+    }
+  </script>
+</BasisLayout>
