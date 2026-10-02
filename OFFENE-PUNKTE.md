@@ -102,18 +102,6 @@ Shabby Chic. Duplikatprüfung: Bisher hat kein Eintrag „Vintage" als Name
 oder Alias. Danach `npm run autolink` — Vorsicht, „Vintage" kommt sehr
 oft vor; die Drift-Prüfung zeigt, ob das tragbar ist.
 
-`frei` **Linz, DJ Daddy C im Gasthaus Keferfeld: 2 Termine anlegen (06.11.2026, 05.12.2026).**
-Gesehen am 2026-10-01 auf https://boogie.at/?page=1 und ?page=2 (Herkunft:
-Suchlauf 2026-10-01). Dort steht: „November Jive Night", Fr., 06.11.2026,
-20:00, Gasthaus Keferfeld, Landwiedstrasse 65, 4020 Linz, „Einlass: 19:00
-Uhr, Beginn: 20:00 Uhr, Eintritt: freiwillige Unterstützung", DJ Daddy C
-(/event/november-jive-night); „Christmas Boogie & Swing Night", Sa.,
-05.12.2026, 20:00, gleicher Ort, gleiche Angaben zu Einlass, Beginn und
-Eintritt (/event/christmas-boogie-swing-night). Beim Bauen: Spielort neu;
-eine eigene Seite von DJ Daddy C oder des Gasthauses suchen (boogie.at ist
-Kalender, nicht Veranstalter). „Freiwillige Unterstützung" ist kein
-bezifferter Preis. Region `oberoesterreich`. Zeitzone `+01:00`.
-
 `frei` **Bad Blumau, Swinging Wellness Tanzwochenende: 1 Termin anlegen (06.–08.11.2026).**
 Gesehen am 2026-10-01 auf https://boogie.at/?page=1 (Herkunft: Suchlauf
 2026-10-01). Dort steht (/event/swinging-wellness-tanzwochenende-10-jaehriges-jubilaeum):
