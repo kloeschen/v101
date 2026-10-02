@@ -175,13 +175,19 @@ Farbe    --farbe-grund --farbe-flaeche --farbe-text --farbe-text-leise
          --farbe-linie --farbe-akzent --farbe-akzent-text --farbe-link
          --farbe-link-besucht --farbe-hinweis-grund --farbe-hinweis-linie
 Schrift  --schrift-text --schrift-titel --schrift-ui
+         --schrift-plakat --schrift-etikett            (neu 2026-10-02)
          --groesse-basis --groesse-klein --groesse-h1 --groesse-h2
          --groesse-h3 --zeilenhoehe --zeilenhoehe-titel
 Raum     --raum-1 … --raum-6 --zeilenlaenge --inhalt-breite
-Form     --radius --linie --schatten
+Form     --radius --linie --linie-kraeftig --schatten  (--linie-kraeftig neu)
 ```
 
-**Gegen `src/styles/tokens.css` abgeglichen: 32 zu 32, keine Abweichung.**
+**Gegen `src/styles/tokens.css` abgeglichen: 32 zu 32, keine Abweichung**
+(Stand 2026-09-16). Seit dem 2026-10-02 sind es 35: `--schrift-plakat`
+(Archivo Schmal 800, nur für die H1 und Plakatzeilen), `--schrift-etikett`
+(Archivo 700, nur für Feldnamen und Kennzeilen) und `--linie-kraeftig`
+(3 px Tinte als Abschnittskante). Beide Schriften gibt es in genau einem
+Gewicht; für Fließtext sind sie nicht gedacht.
 Der Vertrag ist als einziger Teil des alten Briefs unverändert gültig. Drei
 Anmerkungen, die man beim Belegen braucht:
 
@@ -451,7 +457,10 @@ Gemessen, dann von Markus entschieden:
    nächste veröffentlichte Lexikonbegriff in fester Reihenfolge; die Woche
    wird in der Zeitzone der Site berechnet (`src/lib/datum.ts`). Er wechselt
    mit dem ersten Build der Woche — die Tagesläufe bauen ohnehin täglich.
-3. **Schriften: vier statische Schnitte, zusammen 94 KB** (westeuropäischer
+3. **Schriften: vier statische Schnitte, gemessen 94 KB — gebaut 76 KB**
+   (die schmale Archivo kommt bei Google als variable Datei und ist mit
+   fontTools auf einen festen Schnitt gebracht; `scripts/test-schriften.ts`
+   hält Dateien, Lizenzen und ein Budget von 90 KB fest) (westeuropäischer
    Zeichensatz, gemessen an der Auslieferung von Google Fonts): Archivo
    schmal/800 (36 KB), Archivo 700 (14 KB), Newsreader 400 (21 KB),
    Newsreader 600 (23 KB). Archivo 600 entfällt, 700 übernimmt. Kursiv

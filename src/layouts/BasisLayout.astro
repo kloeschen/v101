@@ -8,6 +8,7 @@ import { site, indexierbar } from "../site.config";
 // Reihenfolge zählt: erst der Token-Vertrag, dann die Gestaltung, die ihn
 // benutzt. Eine neue Gestaltung tauscht basis.css und ergänzt tokens.css —
 // das Markup bleibt unangetastet.
+import "../styles/schriften.css";
 import "../styles/tokens.css";
 import "../styles/basis.css";
 import { jsonldSicher } from "../lib/jsonld";
@@ -53,6 +54,9 @@ const sammlungen = collectionNames.filter((typ: CollectionName) =>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Nur die Fließtextschrift vorladen: Sie steht auf jeder Seite über dem
+         Falz. Die übrigen drei Schnitte kommen bei Bedarf. -->
+    <link rel="preload" href="/schriften/newsreader-400.woff2" as="font" type="font/woff2" crossorigin />
     <title>{titel} — {site.name}</title>
     <meta name="description" content={beschreibung} />
     <link rel="canonical" href={`${site.url}${kanonisch}`} />

@@ -17,6 +17,35 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Plattenhülle, Etappe 1: Farben, Dunkelmodus, Schriften
+
+**Gebaut:** `tokens.css` mit der Palette der Plattenhülle samt Dunkelmodus
+(Kontraste gemessen, kleinster Wert 5,5:1 für Rosé auf Papier), vier
+selbst gehostete Schriftschnitte, die H1 als schmale Plakatzeile in
+Versalien, Feldnamen im Faktenblock als Etikett. Am Markup ändert sich
+nichts.
+
+**Zwei Abweichungen vom Plan:** (1) Die Schriften wiegen 76 KB statt der
+gemessenen 94 — Google liefert die schmale Archivo als variable Datei mit
+Breitenachse aus; mit fontTools auf Breite 66 und Gewicht 800 festgelegt,
+bleibt ein statischer Schnitt. (2) Das Logo kommt erst mit Etappe 2: Ohne
+Seitenkopf hätte es keinen Platz, und eine Datei, die nichts benutzt, ist
+keine Grundlage.
+
+**Neu als Regel in Code:** `scripts/test-schriften.ts` (in `npm run test`)
+prüft eingebundene Dateien, `@font-face` für jede genannte Familie,
+Lizenztexte, die vorgeladene Datei, ein Budget von 90 KB und dass unter
+`src/` nichts Google Fonts abruft. Mutationsbeleg an einer Kopie: sechs
+absichtlich eingebaute Fehler, jeder lässt genau die erwartete Prüfung
+fallen. **Links sind Tinte, nicht Rosé** — Rosé bleibt „jetzt / demnächst"
+vorbehalten; die Terminliste zeigt ihr Datum deshalb in Rosé.
+
+**Offen:** Die Vorschaubilder für geteilte Links haben die neuen Farben,
+aber noch die alten Schriften (Libre Baskerville, Source Sans aus
+`@fontsource`). Umstellen, wenn der Seitenkopf steht.
+
+---
+
 ## 2026-10-02 — Portal-Umsetzung: Suche, Begriff im Fokus, Schriften, Logo
 
 **Entschieden (Markus), nach Messung:** (1) Suche mit Pagefind — Probelauf

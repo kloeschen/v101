@@ -307,9 +307,9 @@ würde „50er" sehr oft verlinken).
 **Portal-Gestaltung „Plattenhülle" umsetzen — in der Sitzung mit Markus,
 nicht im Tageslauf.** Alle Vorfragen sind seit dem 2026-10-02 entschieden
 (`DESIGN-BRIEF.md`, Abschnitt „Entschieden am 2026-10-02"). Vier
-Etappen, je ein PR mit Prüfung an der Vorschau: (1) Grundlage —
-`tokens.css` mit Farben und Dunkelmodus, vier Schriftschnitte und Logo
-selbst gehostet; (2) Seitenkopf mit Ressortleiste, „Termin melden" und
+Etappen, je ein PR mit Prüfung an der Vorschau: (1) Grundlage — seit dem
+2026-10-02 gebaut (Farben, Dunkelmodus, vier Schriften, H1 als
+Plakatzeile; das Logo kommt mit dem Seitenkopf); (2) Seitenkopf mit Ressortleiste, „Termin melden" und
 Suchformular, dazu `/suche/` mit Pagefind im Build und in `verify`;
 (3) Entitätsseiten nur über CSS (Faktenblock als Seitenspalte,
 Datumsfläche, Line-up als Zeitplan, Katalognummern); (4) Startseite neu
