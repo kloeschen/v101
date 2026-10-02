@@ -43,6 +43,10 @@ redaktionsnotiz: >-
   EUR 10" bei den Rock Dock Teddys, die ein fester Betrag ist) noch
   unveroeffentlicht, denn die Quelle sagt etwas zum Eintritt. Der Text
   nennt die Bitte um Unterstuetzung ausdruecklich.
+  ENTSCHIEDEN 2026-10-02 (Markus, zu PR #129): Freiwillige Spende heisst
+  `eintritt: frei`, die Erklaerung steht im Text. Einen eigenen Wert fuer
+  Spenden kennt der Datenvertrag nicht. Die Abweichung des Gegenlesers
+  ("nennt keinen Preis") ist damit beantwortet.
   ZEITZONE +01:00: Die Sommerzeit endet am 25. Oktober 2026.
   ENDE LEER: Keine Quelle nennt ein Ende.
   GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich: Die
