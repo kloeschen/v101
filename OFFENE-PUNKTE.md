@@ -309,14 +309,14 @@ nicht im Tageslauf.** Vorfragen entschieden am 2026-10-02
 (`DESIGN-BRIEF.md`, „Entschieden am 2026-10-02"). Gebaut sind Etappe 1
 (Farben, Dunkelmodus, Schriften, H1 als Plakatzeile) und Etappe 2
 (Seitenkopf mit Logo, Ressortleiste, „Termin melden", Suche mit Pagefind).
-Etappe 3 (Entitätsseiten über CSS: Faktenblock als Seitenspalte,
-Datumsfläche, Kapsel, Listen, Belege, Entwurfsmarker) ist gebaut. Offen:
-aus Etappe 3, weil es Markup braucht, Line-up als Zeitplan und die
-Katalognummer über der H1; der Wert der Lexikon-Kategorie erscheint im
-Faktenblock roh („mode" statt „Mode"); (4) Startseite neu — Wochenende, Kalender ohne Doppelungen, Ressorts,
-Orte/Bands/Läden, Begriff der Woche, Regionen; die H1 „Vintage 101"
-doppelt dort das Logo. Jede neue Regel mit Negativtest, etwa: ein
-Freitagstermin erscheint nicht unter „Dieses Wochenende".
+Etappe 3 (Entitätsseiten über CSS) und Etappe 4 (Startseite) sind gebaut.
+Offen, weil es Markup braucht: Line-up als Zeitplan, die Katalognummer über
+der H1, der rohe Wert der Lexikon-Kategorie im Faktenblock („mode" statt
+„Mode"). Offen auf der Startseite: das Monogramm im Block „Jede Angabe
+belegt" (wartet auf das Original-Logo). **Für Markus:** Die Antwortkapsel
+der Startseite kommt aus `site.kurzbeschreibung` und sagt noch „das
+Register der Vintage- und Rockabilly-Szene" — `site.config.ts` ist für
+Agenten gesperrt; ob dort „Portal" stehen soll, entscheidest du.
 
 **Pillar „Der Rockabilly-Look" (Säule `mode`) — als Erstes nach oben
 holen, sobald die Obergrenze Platz hat.** Entscheidung Markus, 2026-10-01:
