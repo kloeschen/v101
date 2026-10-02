@@ -187,6 +187,20 @@ Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 
+`mensch` **Gegenleser ist für Artikel blind.** Gefunden am 2026-10-02 beim
+ersten Artikel seit Einführung des Gegenlesers (`artikel/petticoat-tragen`,
+PR #122): `belegpflichtigeFelder.artikel` ist leer, also erzeugt
+`gegenlesen --auftrag` 0 Prüfpunkte, und der Abschnitt meldet „0
+Abweichungen", obwohl nichts gelesen wurde. Lexikon trifft es fast genauso
+(nur Ära und Herkunftsland). Zu entscheiden: (a) so lassen und den Abschnitt
+bei 0 Prüfpunkten „nicht anwendbar" statt „0 Abweichungen" melden lassen —
+klein, ehrlich, prüft aber weiter nichts; (b) `kurzbeschreibung` und `faq`
+für Artikel belegpflichtig machen — Schemaänderung, der Gegenleser prüft
+dann die Kernaussagen, Belegpflicht-Warnungen an bestehenden Artikeln
+möglich; (c) den Gegenleser `body:`-Abschnitte prüfen lassen — deckt den
+Fließtext ab, ist aber das größte Stück Arbeit. Empfehlung: (a) sofort,
+(b) danach.
+
 ## Vor dem Go-Live
 
 **Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht
