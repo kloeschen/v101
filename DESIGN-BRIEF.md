@@ -435,20 +435,32 @@ sie mit.
 
 ---
 
-## Offene Fragen (Stand 2026-10-02)
+## Entschieden am 2026-10-02 (vormals „Offene Fragen")
 
-Nicht entschieden, vor dem Umbau zu klären:
+Gemessen, dann von Markus entschieden:
 
-1. **Suche auf einer statischen Site.** Ein Suchfeld braucht einen Index
-   (etwa Pagefind, beim Build erzeugt). Die Ergebnisse entstehen per
-   JavaScript — das ist kein Inhalt, also mit der JS-Regel vereinbar, aber
-   ein neues Werkzeug im Build.
-2. **Begriff im Fokus.** Die Seite wird beim Build erzeugt; der Begriff
-   wechselt also nur mit einem Build. Feste Auswahl je Kalenderwoche, oder
-   an die Termine gebunden (Genre des Wochenendes)?
-3. **Schriftschnitte.** Fünf Schnitte statt drei, oder Archivo als eine
-   variable Datei (größer, aber eine Anfrage)? Erst messen.
-4. **Logo-Dateien** als SVG oder in doppelter Auflösung, dazu eine
-   offizielle helle Fassung.
-5. **Ressort Frisur** hat einen Begriff. Entschieden: bleibt; die Lücken
-   werden vor dem Go-Live geschlossen, sonst wird nachgesteuert.
+1. **Suche: ja, mit Pagefind.** Der Index entsteht beim Build (Probelauf
+   über den Build vom 2026-10-02: 154 Seiten in 0,3 s), kein Server, kein
+   Drittanbieter. Das Suchfeld im Kopf ist ein einfaches Formular, das auf
+   `/suche/` führt — **alle anderen Seiten laden dafür nichts.** Erst
+   `/suche/` lädt beim Benutzen rund 45 KB Skript, den WebAssembly-Teil und
+   kleine Indexstücke. Ohne JavaScript zeigt `/suche/` einen Hinweis auf
+   Termine und Lexikon. Die Ergebnisse sind kein Inhalt, die JS-Regel ist
+   damit nicht berührt.
+2. **Begriff im Fokus: wöchentlich rotierend.** Je Kalenderwoche der
+   nächste veröffentlichte Lexikonbegriff in fester Reihenfolge; die Woche
+   wird in der Zeitzone der Site berechnet (`src/lib/datum.ts`). Er wechselt
+   mit dem ersten Build der Woche — die Tagesläufe bauen ohnehin täglich.
+3. **Schriften: vier statische Schnitte, zusammen 94 KB** (westeuropäischer
+   Zeichensatz, gemessen an der Auslieferung von Google Fonts): Archivo
+   schmal/800 (36 KB), Archivo 700 (14 KB), Newsreader 400 (21 KB),
+   Newsreader 600 (23 KB). Archivo 600 entfällt, 700 übernimmt. Kursiv
+   stellt der Browser schräg, es gibt keine eigene Datei. Verworfen:
+   fünf Schnitte (107 KB), Archivo variabel (87 KB allein, mit Newsreader
+   131 KB). Zum Vergleich: Die Startseite wiegt heute 1,6 KB (gzip) — die
+   Schriften sind beim ersten Besuch das Schwerste, danach im Cache.
+   `font-display: swap`, vorgeladen wird nur Newsreader 400.
+4. **Logo: vorerst die vorhandene PNG** (300 × 120 px), später durch ein
+   Original ersetzt. Die helle Fassung bleibt bis dahin die umgefärbte.
+5. **Ressort Frisur** bleibt mit einem Begriff; die Lücken werden vor dem
+   Go-Live geschlossen, sonst wird nachgesteuert.
