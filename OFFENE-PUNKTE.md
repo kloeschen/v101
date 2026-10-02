@@ -144,23 +144,6 @@ Vorlage `events/boogie-party-sonntagnachmittag-2026-10-31` (Reihe
 übernehmen, wenn die Seite sie für diesen Termin nicht nennt. Der 21.11.
 ist wieder ein Samstag. Zeitzone `+01:00`.
 
-`frei` **ASB-Bahnhof Barsinghausen: Boogielicious am 12.12.2026 anlegen.**
-Gesehen am 2026-10-01 auf https://www.asb-bahnhof-barsinghausen.de/
-(Herkunft: Suchlauf 2026-10-01). Dort steht
-(/2026/05/19/12-12-2026-boogielicious/): „Samstag, 12. Dezember 2026, um
-20:15 Uhr (Einlass ab 19:15 Uhr)", Vorverkauf 20 Euro direkt im
-ASB-Bahnhof, Abendkasse 25 Euro, Reservix (asb-bahnhof.reservix.de);
-deutsch-niederländisches Boogie-Woogie-Trio. Beim Bauen: Vorlage
-`events/boppin-b-asb-bahnhof-2026-10-03` (gleicher Ort). Reservix ist
-`aggregator`. Band in `lineupWeitere`. Zeitzone `+01:00`.
-
-`frei` **Psychobilly-Osterfestival im Café Central Weinheim.** Die Startseite
-nennt „Frenzy — Psychobilly Oster Festival, Sa 27.03." und „Demented Are
-Go, So 28.03." ohne Jahr (Detailseiten /konzert/frenzy/ und
-/konzert/demented-are-go/). Nur anlegen, wenn eine Detailseite oder der
-Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
-zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
-Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
 
 `frei` **Boogie Lions Spillern: 5 Termine anlegen (28.11.2026, 09.01.2027, 20.02.2027, 06.03.2027, 01.05.2027).**
 Rest des Bündels vom 2026-09-28; der Halloween-Termin am 31.10.2026 ist
