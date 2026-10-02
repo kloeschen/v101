@@ -54,19 +54,6 @@ ein Tanzeintrag) oder `genres` dann ohne Boogie bleibt; (3) die
 Convention einzeln, gegen die Quelle. Danach baut ein Lauf die Stellen um
 und prüft jede gegen ihre Quelle.
 
-`frei` **Artikel: Petticoat tragen (howto, Säule `mode`).** Vorschlag A3
-der PAA-Recherche vom 2026-10-01. Beantwortet „Wie trägt man einen
-Petticoat richtig?" (7 Treffer), „Darf der Petticoat unter dem Kleid
-hervorschauen?" (4), „Was ist ein Petticoat-Kleid?" (4)
-(`docs/daten/paa-rockabilly-2026-10-01/fragen.csv`). `typ: howto`,
-`hauptentitaet: lexikon/petticoat`, Vorlage
-`src/content/artikel/_golden-example.md`. Abgrenzung zum Vergleich
-`artikel/petticoat-reifrock-unterrock`: Der beantwortet, welches Stück man
-braucht, dieser, wie man es trägt (Länge, Lagen, Kleid darüber, Pflege) —
-keine zweite Fassung, Geschichte bleibt beim Lexikon. Jede Trageregel
-braucht eine Quelle; Händler-Ratgeber sind Belege für die Praxis, nicht
-für Geschichte. Die PAA-Fragen sind Themen, keine Quelle.
-
 `frei` **Lexikon: FAQ für Polka Dots, Pin-up, Petticoat und Rockabilly.**
 Entscheidung Markus, 2026-10-01: Lexikoneinträge bekommen FAQs (Feld `faq`
 aus `basis`, bisher bei keinem Lexikoneintrag gesetzt). Technisch ist nichts
@@ -221,6 +208,20 @@ geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
 Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
 Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
+
+`mensch` **Gegenleser ist für Artikel blind.** Gefunden am 2026-10-02 beim
+ersten Artikel seit Einführung des Gegenlesers (`artikel/petticoat-tragen`,
+PR #122): `belegpflichtigeFelder.artikel` ist leer, also erzeugt
+`gegenlesen --auftrag` 0 Prüfpunkte, und der Abschnitt meldet „0
+Abweichungen", obwohl nichts gelesen wurde. Lexikon trifft es fast genauso
+(nur Ära und Herkunftsland). Zu entscheiden: (a) so lassen und den Abschnitt
+bei 0 Prüfpunkten „nicht anwendbar" statt „0 Abweichungen" melden lassen —
+klein, ehrlich, prüft aber weiter nichts; (b) `kurzbeschreibung` und `faq`
+für Artikel belegpflichtig machen — Schemaänderung, der Gegenleser prüft
+dann die Kernaussagen, Belegpflicht-Warnungen an bestehenden Artikeln
+möglich; (c) den Gegenleser `body:`-Abschnitte prüfen lassen — deckt den
+Fließtext ab, ist aber das größte Stück Arbeit. Empfehlung: (a) sofort,
+(b) danach.
 
 ## Vor dem Go-Live
 
