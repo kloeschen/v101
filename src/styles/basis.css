@@ -134,6 +134,67 @@ nav[aria-label="Hauptnavigation"] { max-width: var(--inhalt-breite); margin: 0 a
 /* Impressum und Datenschutz unter der Navigation: gleiche Breite und Schrift, ohne eigene Linie. */
 body > footer { max-width: var(--inhalt-breite); margin: 0 auto; padding: 0 var(--raum-4) var(--raum-4); display: flex; gap: var(--raum-3); flex-wrap: wrap; font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
 
+/* --- Entitätsseiten (Plattenhülle, Etappe 3) ------------------------
+   Nur CSS gegen das vorhandene Markup. Im DOM bleibt der Faktenblock vor
+   dem Fließtext (Extrahierbarkeit); auf breiten Bildschirmen steht er
+   optisch als Spalte daneben. Unterhalb von 64rem bleibt alles gestapelt. */
+nav[aria-label="Brotkrumen"] { margin-bottom: var(--raum-3); }
+
+/* Antwortkapsel: der erste Absatz des Fließtexts trägt die Antwort. */
+.inhalt > p:first-child { font-size: 1.2em; line-height: 1.5; padding-top: var(--raum-3); border-top: var(--linie-kraeftig); }
+
+@media (min-width: 64rem) {
+  main:has(> article > .fakten) { max-width: var(--inhalt-breite); }
+  article:has(> .fakten) {
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, var(--zeilenlaenge)) minmax(17rem, 23rem);
+    column-gap: var(--raum-6);
+    align-items: start;
+  }
+  article:has(> .fakten) > * { grid-column: 1; }
+  article:has(> .fakten) > h1 { grid-column: 1 / -1; }
+  article > .fakten {
+    grid-column: 2;
+    grid-row: 2 / span 40;
+    margin-top: 0;
+    /* Bewusst nicht `position: sticky`: Lange Faktenblöcke (Abgrenzung im
+       Lexikon) sind höher als der Bildschirm, ihr Ende wäre dann nicht
+       lesbar. */
+  }
+  /* In der schmalen Spalte stehen Feldname und Wert untereinander. */
+  article > .fakten .fakten__zeile { grid-template-columns: 1fr; gap: var(--raum-1); }
+}
+
+/* Der Faktenblock als Karteikarte: kräftiger Rahmen, Fläche, Zeilen. */
+.fakten { border: 2px solid var(--farbe-text); background: var(--farbe-flaeche); }
+.fakten__zeile { padding: var(--raum-2) var(--raum-3); }
+.fakten__zeile:last-child { border-bottom: 0; }
+
+/* Datumsfläche: Rosé heißt „jetzt / demnächst" — der Beginn eines
+   Termins ist genau das. Nur diese Zeile, sonst nichts. */
+.fakten__zeile[data-feld="beginn"] { background: var(--farbe-akzent); color: var(--farbe-akzent-text); }
+.fakten__zeile[data-feld="beginn"] dt { color: inherit; }
+.fakten__zeile[data-feld="beginn"] dd { font-family: var(--schrift-plakat); font-weight: 800; font-size: 2rem; line-height: 1; text-transform: uppercase; }
+
+/* Abgeleitete Listen: Abschnittskante statt Kasten. */
+.liste { border-top: var(--linie-kraeftig); padding-top: var(--raum-2); }
+.liste h2 { margin-top: var(--raum-2); }
+.liste--knapp ul { display: flex; flex-wrap: wrap; gap: var(--raum-1) var(--raum-4); }
+.liste--knapp li { border-bottom: 0; padding: var(--raum-1) 0; }
+
+/* Belege: Prüfvermerk und Quellen in der Etikettschrift. */
+.belege__stand { margin-bottom: var(--raum-2); }
+.belege__quellen summary { display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text); }
+.belege__quellen ul { margin: var(--raum-2) 0 0; padding-left: var(--raum-4); }
+.belege__quellen li { margin-bottom: var(--raum-2); }
+.melden { font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
+
+/* Entwurfsmarker in Listen (nur Vorschau, DESIGN-BRIEF „Was ein Entwurf
+   gestalterisch braucht"): ein Etikett, das mitliest — Text und Rahmen,
+   nicht Farbe allein; nimmt keinen Platz, den die Produktion freiließe. */
+.liste__entwurf { display: inline-block; margin-left: var(--raum-2); padding: 0 var(--raum-2); border: 1px solid var(--farbe-hinweis-linie); background: var(--farbe-hinweis-grund); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 0.1em; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

@@ -17,6 +17,37 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Plattenhülle, Etappe 3: Entitätsseiten über CSS
+
+**Gebaut, nur CSS gegen das vorhandene Markup:** Ab 64rem Breite steht der
+Faktenblock als Karteikarte in einer Spalte neben dem Fließtext — im DOM
+weiter davor. Die Zeile „Beginn" ist die Datumsfläche in Rosé (das
+einzige Rosé der Seite, weil es „jetzt / demnächst" bedeutet). Die
+Antwortkapsel (`.inhalt > p:first-child`) ist größer gesetzt, abgeleitete
+Listen haben eine Abschnittskante statt eines Kastens, die Verwandt-Liste
+läuft als Zeile, Belege und Quellen in der Etikettschrift. Der Marker
+`.liste__entwurf` hat zum ersten Mal eine Regel: ein Etikett mit Rahmen und
+Text, nicht Farbe allein (DESIGN-BRIEF, „Was ein Entwurf gestalterisch
+braucht").
+
+**Verworfen:** Den Faktenblock beim Scrollen mitlaufen zu lassen
+(`position: sticky`). Lange Blöcke wie die Abgrenzung im Lexikon sind
+höher als der Bildschirm, ihr Ende wäre dann nicht lesbar.
+
+**Nicht über CSS machbar, verschoben:** Line-up als Zeitplan (Uhrzeit und
+Bühne stehen nur im Fließtext, nicht in Feldern) und die Katalognummer über
+der H1 (braucht ein Element). Beides braucht Markup.
+
+**Fund dabei:** Jede Eventseite mit Veranstalter-Website zeigte als
+Feldnamen „veranstalterUrl" — `LABEL` hatte keinen Eintrag, und die
+Beschriftung fiel still auf den Schlüssel zurück. Behoben und als Regel in
+Code: `scripts/test-beschriftung.ts` (in `npm run test`) prüft, dass jedes
+anzeigbare Feld beschriftet ist; Mutationsbeleg: Beschriftung entfernt →
+genau dieses Feld wird gemeldet. Verwandter Fund, nicht behoben: Der
+**Wert** der Lexikon-Kategorie erscheint roh („mode").
+
+---
+
 ## 2026-10-02 — Plattenhülle, Etappe 2: Seitenkopf und Suche
 
 **Gebaut:** Seitenkopf vor `<main>` mit Logo (Hell/Dunkel über `<picture>`),

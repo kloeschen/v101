@@ -38,6 +38,7 @@ const LABEL: Record<string, string> = {
   ortHinweis: "Hinweis zum Ort",
   region: "Region",
   veranstalter: "Veranstalter",
+  veranstalterUrl: "Website des Veranstalters",
   lineupBands: "Line-up",
   lineupWeitere: "Weitere Acts",
   djs: "DJs",
@@ -148,6 +149,28 @@ function text(t: string): FaktStueck[] {
 function beschriftung(feld: string): string {
   return LABEL[feld] ?? feld;
 }
+
+/**
+ * Felder, die der Faktenblock anzeigen kann, aber nicht beschriften würde —
+ * sie erschienen mit ihrem Schlüssel („veranstalterUrl"). Am 2026-10-02 so
+ * auf jeder Eventseite mit Veranstalter-Website gefunden; geprüft in
+ * scripts/test-beschriftung.ts. Die Beschriftungen sind als Parameter
+ * übergebbar, damit der Test die Prüfung auch scheitern sehen kann.
+ */
+export function fehlendeBeschriftungen(
+  beschriftungen: Record<string, string> = LABEL,
+): { collection: CollectionName; feld: string }[] {
+  const fehlend: { collection: CollectionName; feld: string }[] = [];
+  for (const collection of Object.keys(faktenblockFelder) as CollectionName[]) {
+    for (const feld of faktenblockFelder[collection]) {
+      if (!UEBERSPRINGEN.has(feld) && !(feld in beschriftungen)) fehlend.push({ collection, feld });
+    }
+  }
+  return fehlend;
+}
+
+/** Die Beschriftungen selbst — nur für den Test. */
+export const BESCHRIFTUNGEN: Readonly<Record<string, string>> = LABEL;
 
 /* ------------------------------------------------------------------ */
 

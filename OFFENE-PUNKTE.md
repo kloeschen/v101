@@ -309,9 +309,11 @@ nicht im Tageslauf.** Vorfragen entschieden am 2026-10-02
 (`DESIGN-BRIEF.md`, „Entschieden am 2026-10-02"). Gebaut sind Etappe 1
 (Farben, Dunkelmodus, Schriften, H1 als Plakatzeile) und Etappe 2
 (Seitenkopf mit Logo, Ressortleiste, „Termin melden", Suche mit Pagefind).
-Offen: (3) Entitätsseiten nur über CSS — Faktenblock als Seitenspalte,
-Datumsfläche, Line-up als Zeitplan, Katalognummern, Abstand Brotkrumen/H1;
-(4) Startseite neu — Wochenende, Kalender ohne Doppelungen, Ressorts,
+Etappe 3 (Entitätsseiten über CSS: Faktenblock als Seitenspalte,
+Datumsfläche, Kapsel, Listen, Belege, Entwurfsmarker) ist gebaut. Offen:
+aus Etappe 3, weil es Markup braucht, Line-up als Zeitplan und die
+Katalognummer über der H1; der Wert der Lexikon-Kategorie erscheint im
+Faktenblock roh („mode" statt „Mode"); (4) Startseite neu — Wochenende, Kalender ohne Doppelungen, Ressorts,
 Orte/Bands/Läden, Begriff der Woche, Regionen; die H1 „Vintage 101"
 doppelt dort das Logo. Jede neue Regel mit Negativtest, etwa: ein
 Freitagstermin erscheint nicht unter „Dieses Wochenende".
