@@ -17,6 +17,25 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Vintage: keine Altersgrenze, Autolink erst nach Entscheidung
+
+**Fund beim Bau von `lexikon/vintage`:** Die Altersgrenze, nach der die
+PAA-Recherche am häufigsten fragt, gibt es nicht als gesicherten Wert.
+Fünf Quellen, fünf Antworten (de-Wikipedia 1920–1980 mit totem Beleg,
+en-Wikipedia einmal 30–100, einmal 20–100 Jahre, Vintage-Fashion-Guild-
+Forum 25 Jahre, Duden und DWDS ohne Zahl). Nach Regel 5 stehen alle im
+Text, zugeordnet; das Register wählt keine aus. Ebenso benannt statt
+geglättet: Das DWDS definiert Vintage als „Reproduktion" — näher an Retro
+als jede andere Quelle.
+
+**Autolink:** Weil Links erst mit der Freigabe entstehen, ergab der Lauf 0.
+Simuliert hätte er 20 Stellen verlinkt, 3 davon in Eigennamen („Vintage
+Rock", „Peggy Sue Vintage"), 10 in der Bedeutung „Szene". Nicht
+entschieden — liegt als `mensch`-Posten in OFFENE-PUNKTE.md, mit
+Empfehlung `NUR_VON_HAND`.
+
+---
+
 ## 2026-10-02 — Line-up als Zeitplan: neues Feld `programm`
 
 **Auftrag Markus:** den Zeitplan planen und bauen. Entschieden in der

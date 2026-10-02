@@ -32,6 +32,28 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Vintage freigeben: Autolink vorher entscheiden.** Der Eintrag
+`lexikon/vintage` liegt seit dem 2026-10-02 als Entwurf vor. Links auf ihn
+setzt der Autolink erst mit der Freigabe, `npm run autolink` ergab deshalb
+0. Simuliert (Eintrag als freigegeben behandelt, Bestand vom 2026-10-02):
+**20 Links in 20 Dateien, 19 davon freigegeben.** Davon passen 7
+(Vintage-Mode, -Garderobe, -Ästhetik, -Outfit, dreimal Vintage-Markt), 10
+meinen die Szene („Vintage-Szene", sechsmal die Formel „Für die Vintage-
+und Rockabilly-Szene" in Regionen, Locations und Pomade), und 3 sind
+falsch, weil das Wort Teil eines Eigennamens ist: das Magazin „Vintage
+Rock" (`lexikon/neo-rockabilly`) und der Laden „Peggy Sue Vintage"
+(`lexikon/petticoat`, `artikel/petticoat-tragen`). Zu entscheiden: (a)
+`vintage` in `NUR_VON_HAND` (`src/lib/links.ts`) aufnehmen und die
+passenden Stellen von Hand verlinken — wie bei „Swing" und „Jive"; (b)
+automatisch verlinken lassen und die drei Eigennamen anders absichern
+(dafür gibt es heute keinen Mechanismus; `ausnahmen` kennt `autolink()`,
+`sync-autolinks.ts` reicht sie nicht durch); (c) so lassen. Empfehlung des
+Laufs: (a) — drei Fehllinks auf Eigennamen sind sichtbar falsch, und die
+zehn Szene-Links zeigen auf einen Eintrag über Stil und Altersgrenze, nicht
+über die Szene. Außerdem offen am Eintrag: Die Frage „Wie erkennt man
+Vintage-Kleidung?" (13 Treffer) ist unbeantwortet, weil keine geöffnete
+Quelle Kriterien gibt — Kandidat für einen eigenen Artikel.
+
 `mensch` **„Boogie Woogie" in Terminen: Klavierstil oder Tanz?** Gefunden
 am 2026-10-02 beim Entwurf der Eventseite; derselbe Fall wie beim
 Rock'n'Roll & Boogie Woogie Weekend (am 2026-10-01 auf `genres:
@@ -72,22 +94,6 @@ Quelle in `quellen[]` deckt (`felder: [faq, …]`, wie in
 Antwort wiederholt den Text nicht wörtlich, sondern antwortet kurz.
 Status bleibt, wie er ist; veröffentlichte Einträge gehen über die
 normale Freigabe.
-
-`frei` **Lexikon: Vintage.** Der größte Fragenblock der PAA-Recherche vom
-2026-10-01 ohne eigenen Eintrag: 32 Fragen, darunter „Ab welchem Alter gilt
-Kleidung als Vintage?" (14 Treffer), „Wie erkennt man Vintage-Kleidung?"
-(13), „Was heißt Vintage auf Deutsch übersetzt?" (12), „Was ist der
-Unterschied zwischen Retro und Vintage?" (10)
-(`docs/daten/paa-rockabilly-2026-10-01/fragen.csv`). Der Begriff kommt in
-23 Texten des Registers vor (48 Stellen). Quellen öffnen (Duden,
-DWDS, Wikipedia de/en, ein Nachschlagewerk zur Mode). Die Altersgrenze
-(„20 Jahre", „vor 1980" …) schwankt vermutlich zwischen den Quellen: Die
-Widersprüche gehören in den Text (Regel 5), es wird keine Zahl ausgewählt.
-`abgrenzung` gegen Retro (neu im alten Stil), Secondhand (gebraucht,
-gleich welchen Alters), Antiquität, Vintage beim Wein (Jahrgang) und
-Shabby Chic. Duplikatprüfung: Bisher hat kein Eintrag „Vintage" als Name
-oder Alias. Danach `npm run autolink` — Vorsicht, „Vintage" kommt sehr
-oft vor; die Drift-Prüfung zeigt, ob das tragbar ist.
 
 `frei` **Bad Blumau, Swinging Wellness Tanzwochenende: 1 Termin anlegen (06.–08.11.2026).**
 Gesehen am 2026-10-01 auf https://boogie.at/?page=1 (Herkunft: Suchlauf
