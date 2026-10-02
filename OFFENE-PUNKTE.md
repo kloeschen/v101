@@ -89,15 +89,6 @@ Shabby Chic. Duplikatprüfung: Bisher hat kein Eintrag „Vintage" als Name
 oder Alias. Danach `npm run autolink` — Vorsicht, „Vintage" kommt sehr
 oft vor; die Drift-Prüfung zeigt, ob das tragbar ist.
 
-`frei` **ASB-Bahnhof Barsinghausen: Boogielicious am 12.12.2026 anlegen.**
-Gesehen am 2026-10-01 auf https://www.asb-bahnhof-barsinghausen.de/
-(Herkunft: Suchlauf 2026-10-01). Dort steht
-(/2026/05/19/12-12-2026-boogielicious/): „Samstag, 12. Dezember 2026, um
-20:15 Uhr (Einlass ab 19:15 Uhr)", Vorverkauf 20 Euro direkt im
-ASB-Bahnhof, Abendkasse 25 Euro, Reservix (asb-bahnhof.reservix.de);
-deutsch-niederländisches Boogie-Woogie-Trio. Beim Bauen: Vorlage
-`events/boppin-b-asb-bahnhof-2026-10-03` (gleicher Ort). Reservix ist
-`aggregator`. Band in `lineupWeitere`. Zeitzone `+01:00`.
 
 `frei` **Lexikon: Teddy Boy.** Der Begriff steht in vier Texten des Registers
 (unter anderem Neo-Rockabilly) und hat keinen Eintrag. Es geht um die
@@ -107,13 +98,6 @@ Vintage Rock, ein Nachschlagewerk zur Mode), Widersprüche in den Text.
 `abgrenzung` gegen Rockabilly als Musik und gegen die Mods. Danach
 `npm run autolink`.
 
-`frei` **Psychobilly-Osterfestival im Café Central Weinheim.** Die Startseite
-nennt „Frenzy — Psychobilly Oster Festival, Sa 27.03." und „Demented Are
-Go, So 28.03." ohne Jahr (Detailseiten /konzert/frenzy/ und
-/konzert/demented-are-go/). Nur anlegen, wenn eine Detailseite oder der
-Ticketshop das Jahr nennt. Sonst den Posten mit genau diesem Befund
-zurückgeben, nicht schätzen. Achtung Zeitzone: Am 28.03.2027 beginnt die
-Sommerzeit, der Samstag hat `+01:00`, der Sonntagabend `+02:00`.
 
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.

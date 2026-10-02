@@ -54,10 +54,19 @@ redaktionsnotiz: >-
   haben Lexikoneintraege.
   Nicht gefuellt: veranstalter (die Seite nennt keinen eigenen
   Veranstalter neben dem Haus), kapazitaet, barrierefrei, camping.
+  NACHPRUEFUNG 2026-10-02 (Vortag des Konzerts): Ankuendigung des Hauses
+  unveraendert -- "Samstag, 03. Oktober 2026, um 20:15 Uhr (Einlass ab
+  19:15 Uhr)", 20 Euro Vorverkauf im Haus, 25 Euro Abendkasse; kein
+  Hinweis auf Absage, Verlegung oder Ausverkauf; der Termin steht weiter
+  unter "Demnaechst im ASB-Bahnhof". Reservix fuehrt "Sa. 03.10.2026 um
+  20:15 Uhr", ASB-Bahnhof Barsinghausen, "ab 20,00 €". Hildesheim
+  (25.9.) steht als vergangener Termin nicht mehr in der Reservix-Liste;
+  die Angabe im Abschnitt Einordnung stammt aus dem Abruf vom 2026-09-23,
+  deshalb behaelt die Reservix-Quelle dieses Abrufdatum.
 quellen:
   - url: https://www.asb-bahnhof-barsinghausen.de/2026/05/29/03-10-2026-boppin-b/
     titel: 03.10.2026 – Boppin' B (ASB-Bahnhof Barsinghausen)
-    abgerufenAm: 2026-09-23
+    abgerufenAm: 2026-10-02
     felder: [beginn, ort, preise, eintritt, ticketUrl, lineupBands, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.reservix.de/tickets-boppinb/t3454

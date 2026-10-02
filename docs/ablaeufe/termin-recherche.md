@@ -197,6 +197,14 @@ Fehler verursacht oder beinahe verursacht.
   dem Haus und nennt den Widerspruch im Text (Regel 5). Zweiter Fall:
   Swamp Shakers im Klubhaus Ludwigsfelde am 24.10.2026 — Gig Guide 19
   Uhr, Haus und Reservix „Einlass 19:30, Beginn 20:00" (2026-10-01).
+- **Ticketseite gegen das Haus, auch beim hauseigenen Anbieter.** Beim
+  Psychobilly-Osterfestival im Café Central Weinheim (27.3.2027) nennt
+  die loveyourartist-Seite des Einzeltickets „19:00 Uhr, Einlass 18:00",
+  das Haus und die Seite des Zweitagestickets beim selben Anbieter 19:30
+  und 18:30 (2026-10-02). Gleiches Vorgehen wie beim Gig Guide: dem Haus
+  folgen, den Widerspruch im Text nennen. Gibt es ein Kombiticket,
+  dessen Seite mit öffnen — sie ist ein zweiter Datensatz desselben
+  Anbieters.
 - **Haus und Ticketportal nennen verschiedene „ab"-Preise.** Beim
   Klubhaus Ludwigsfelde steht „ab 20 €", bei Reservix „ab 25,40 €" für
   das Online-Ticket (2026-10-01). Woraus die Differenz besteht, sagt
