@@ -32,6 +32,28 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **Vintage freigeben: Autolink vorher entscheiden.** Der Eintrag
+`lexikon/vintage` liegt seit dem 2026-10-02 als Entwurf vor. Links auf ihn
+setzt der Autolink erst mit der Freigabe, `npm run autolink` ergab deshalb
+0. Simuliert (Eintrag als freigegeben behandelt, Bestand vom 2026-10-02):
+**20 Links in 20 Dateien, 19 davon freigegeben.** Davon passen 7
+(Vintage-Mode, -Garderobe, -Ästhetik, -Outfit, dreimal Vintage-Markt), 10
+meinen die Szene („Vintage-Szene", sechsmal die Formel „Für die Vintage-
+und Rockabilly-Szene" in Regionen, Locations und Pomade), und 3 sind
+falsch, weil das Wort Teil eines Eigennamens ist: das Magazin „Vintage
+Rock" (`lexikon/neo-rockabilly`) und der Laden „Peggy Sue Vintage"
+(`lexikon/petticoat`, `artikel/petticoat-tragen`). Zu entscheiden: (a)
+`vintage` in `NUR_VON_HAND` (`src/lib/links.ts`) aufnehmen und die
+passenden Stellen von Hand verlinken — wie bei „Swing" und „Jive"; (b)
+automatisch verlinken lassen und die drei Eigennamen anders absichern
+(dafür gibt es heute keinen Mechanismus; `ausnahmen` kennt `autolink()`,
+`sync-autolinks.ts` reicht sie nicht durch); (c) so lassen. Empfehlung des
+Laufs: (a) — drei Fehllinks auf Eigennamen sind sichtbar falsch, und die
+zehn Szene-Links zeigen auf einen Eintrag über Stil und Altersgrenze, nicht
+über die Szene. Außerdem offen am Eintrag: Die Frage „Wie erkennt man
+Vintage-Kleidung?" (13 Treffer) ist unbeantwortet, weil keine geöffnete
+Quelle Kriterien gibt — Kandidat für einen eigenen Artikel.
+
 `mensch` **Belegpflicht für `faq` ist nirgends maschinell geprüft.** Fund
 vom 2026-10-02 beim Bau der Lexikon-FAQs: `faq` steht in keiner Liste von
 `belegpflichtigeFelder` (`_schemas.ts`), und `belegpflicht` prüft nur
@@ -64,22 +86,6 @@ Klavier?; (2) ob der Tanz in `genres` stehen darf (bisher steht dort nie
 ein Tanzeintrag) oder `genres` dann ohne Boogie bleibt; (3) die
 Convention einzeln, gegen die Quelle. Danach baut ein Lauf die Stellen um
 und prüft jede gegen ihre Quelle.
-
-`frei` **Lexikon: Vintage.** Der größte Fragenblock der PAA-Recherche vom
-2026-10-01 ohne eigenen Eintrag: 32 Fragen, darunter „Ab welchem Alter gilt
-Kleidung als Vintage?" (14 Treffer), „Wie erkennt man Vintage-Kleidung?"
-(13), „Was heißt Vintage auf Deutsch übersetzt?" (12), „Was ist der
-Unterschied zwischen Retro und Vintage?" (10)
-(`docs/daten/paa-rockabilly-2026-10-01/fragen.csv`). Der Begriff kommt in
-23 Texten des Registers vor (48 Stellen). Quellen öffnen (Duden,
-DWDS, Wikipedia de/en, ein Nachschlagewerk zur Mode). Die Altersgrenze
-(„20 Jahre", „vor 1980" …) schwankt vermutlich zwischen den Quellen: Die
-Widersprüche gehören in den Text (Regel 5), es wird keine Zahl ausgewählt.
-`abgrenzung` gegen Retro (neu im alten Stil), Secondhand (gebraucht,
-gleich welchen Alters), Antiquität, Vintage beim Wein (Jahrgang) und
-Shabby Chic. Duplikatprüfung: Bisher hat kein Eintrag „Vintage" als Name
-oder Alias. Danach `npm run autolink` — Vorsicht, „Vintage" kommt sehr
-oft vor; die Drift-Prüfung zeigt, ob das tragbar ist.
 
 
 
