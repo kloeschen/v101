@@ -1,77 +1,177 @@
 ---
 /**
- * Die Startseite.
+ * Die Startseite (Plattenhülle, Etappe 4; DESIGN-BRIEF.md, „Neue Bausteine").
  *
- * Sie beantwortet die eine Frage, mit der jemand auf ein Terminregister
- * kommt: Was ist als Nächstes? Darunter die Sammlungen als Einstiege.
+ * Sie führt durch die Szene statt nur das Register aufzuzählen: Aufmacher,
+ * dieses Wochenende, der Kalender danach, die Ressorts, Orte, Bands und
+ * Läden, der Begriff im Fokus, Termine je Region, Artikel und der Hinweis,
+ * dass jede Angabe belegt ist.
  *
- * Vorher stand hier ein Satz und eine Zahl — „Aktuell 38 Einträge im
- * Register" — und kein einziger Link außer der Navigation. Das war die
- * schwächste Seite der Site und zugleich die, auf der die meisten landen.
+ * Die Rechnungen (Wochenende, Kalender ohne Doppelungen, Begriff der Woche,
+ * Termine je Region) stehen in lib/startseite.ts und sind dort aus Node
+ * getestet (scripts/test-startseite.ts). Hier wird nur angeordnet.
  *
- * Die Terminliste rendert `EintragsListe` und nicht eigenes Markup. Diese
- * Komponente ist die einzige Stelle, an der ein Eintrag in einer Liste
- * gezeigt wird, und nur solange das stimmt, kann kein Entwurf irgendwo
- * unmarkiert auftauchen.
+ * Listen rendert weiter ausschließlich `EintragsListe`. Diese Komponente ist
+ * die einzige Stelle, an der ein Eintrag in einer Liste gezeigt wird, und nur
+ * solange das stimmt, kann kein Entwurf irgendwo unmarkiert auftauchen.
+ * Die zwei Einzelstücke mit eigenem Markup — Aufmacher und Begriff im Fokus —
+ * stammen deshalb aus der freigegebenen Registry: Was beworben wird, ist
+ * geprüft, und ein Entwurf kann dort gar nicht erst stehen.
+ *
+ * Die H1 ist nur für Vorleser sichtbar: Der Name steht im Logo direkt
+ * darüber, zweimal untereinander sagte er nichts. Die `.kapsel` bleibt
+ * sichtbar — sie ist die Antwort auf „Was ist das hier?", auch für
+ * Sprachmodelle.
  */
 import BasisLayout from "../layouts/BasisLayout.astro";
 import EintragsListe from "../components/EintragsListe.astro";
-import { holeRegistry } from "../lib/registry";
+import { holeRegistry, holeFreigegebeneRegistry } from "../lib/registry";
 import { site } from "../site.config";
-import { istVorbei } from "../lib/datum";
-import { collectionNames, type CollectionName } from "../content/_schemas";
+import { terminbloecke, begriffDerWoche, termineJeRegion, wochenende } from "../lib/startseite";
+import { sichtbareRessorts, ressortPfad } from "../lib/ressorts";
 import { SAMMLUNGSNAME, SAMMLUNGSKAPSEL, sammlungsPfad } from "../lib/faktenblock";
+import type { CollectionName } from "../content/_schemas";
 
 const registry = await holeRegistry();
 const alle = [...registry.eintraege.values()];
-
-/**
- * Kommende Termine, chronologisch. `istVorbei` statt `beginn >= jetzt`:
- * Ein Termin heute Abend gehört unter „kommend", auch wenn seine Uhrzeit
- * schon vorbei ist, und ein dreitägiges Festival bleibt bis zum letzten Tag
- * aktuell (M9, siehe lib/datum.ts).
- */
+const freigegeben = [...(await holeFreigegebeneRegistry()).eintraege.values()];
 const jetzt = new Date();
-const kommend = alle
-  .filter((e) => e.collection === "events" && !istVorbei(e.daten.ende ?? e.daten.beginn, jetzt))
-  .sort((a, b) => +new Date(a.daten.beginn) - +new Date(b.daten.beginn))
-  .slice(0, 6);
 
-/**
- * Nur Sammlungen mit Inhalt. Ein Einstieg, der auf eine leere Seite führt,
- * ist kein Einstieg — dieselbe Überlegung wie bei `uebersichtIndexierbar`,
- * nur für den Leser statt für den Crawler.
- */
-const sammlungen = collectionNames
-  .map((typ: CollectionName) => ({
-    typ,
-    anzahl: alle.filter((e) => e.collection === typ).length,
-  }))
+/* --- Termine --------------------------------------------------------- */
+const { wochenende: amWochenende, kalender } = terminbloecke(alle, jetzt, 8);
+const { samstag, sonntag } = wochenende(jetzt);
+// Tagesnummern sind Kalendertage in site.zeitzone; als UTC-Mitternacht
+// gelesen und in UTC formatiert, ergeben sie genau diesen Tag.
+const TAG = new Intl.DateTimeFormat("de-DE", { day: "numeric", month: "long", timeZone: "UTC" });
+const NUR_TAG = new Intl.DateTimeFormat("de-DE", { day: "numeric", timeZone: "UTC" });
+const sa = new Date(samstag * 86_400_000);
+const so = new Date(sonntag * 86_400_000);
+// „3. und 4. Oktober", über die Monatsgrenze „31. Oktober und 1. November".
+const gleicherMonat = sa.getUTCMonth() === so.getUTCMonth();
+const wochenendTitel = `Dieses Wochenende, ${gleicherMonat ? `${NUR_TAG.format(sa)}.` : TAG.format(sa)} und ${TAG.format(so)}`;
+
+/* --- Aufmacher und Artikel ------------------------------------------- */
+const nachVeroeffentlichung = (a: { daten: Record<string, any> }, b: { daten: Record<string, any> }) =>
+  +new Date(b.daten.veroeffentlichtAm ?? b.daten.erstelltAm ?? 0) - +new Date(a.daten.veroeffentlichtAm ?? a.daten.erstelltAm ?? 0);
+const aufmacher = freigegeben.filter((e) => e.collection === "artikel").sort(nachVeroeffentlichung)[0];
+const artikel = alle
+  .filter((e) => e.collection === "artikel" && e.pfad !== aufmacher?.pfad)
+  .sort(nachVeroeffentlichung);
+
+/* --- Ressorts -------------------------------------------------------- */
+const ressorts = sichtbareRessorts(registry).map((r) => ({
+  ...r,
+  anzahl: alle.filter((e) => e.collection === "lexikon" && e.daten.kategorie === r.kategorie).length,
+}));
+
+/* --- Wohin, mit wem, zu wem ------------------------------------------ */
+const anlaufstellen = (["locations", "bands", "adressen"] as CollectionName[])
+  .map((typ) => ({ typ, anzahl: alle.filter((e) => e.collection === typ).length }))
   .filter((s) => s.anzahl > 0);
+
+/* --- Begriff im Fokus ------------------------------------------------ */
+const fokus = begriffDerWoche(freigegeben, jetzt);
+
+/* --- Termine je Region ----------------------------------------------- */
+const jeRegion = termineJeRegion(alle, jetzt);
+const regionen = alle
+  .filter((e) => e.collection === "regionen" && jeRegion.has(e.slug))
+  .sort((a, b) => jeRegion.get(b.slug)! - jeRegion.get(a.slug)! || a.name.localeCompare(b.name, "de"));
+const regionsZusatz = Object.fromEntries(
+  regionen.map((r) => {
+    const n = jeRegion.get(r.slug)!;
+    return [r.pfad, `${n} ${n === 1 ? "kommender Termin" : "kommende Termine"}`];
+  }),
+);
 ---
 <BasisLayout titel="Start" beschreibung={site.kurzbeschreibung} kanonisch="/">
-  <h1>{site.name}</h1>
+  <h1 class="nurleser">{site.name}</h1>
   <p class="kapsel">{site.kurzbeschreibung}</p>
 
-  {kommend.length > 0 ? (
-    <EintragsListe titel="Als Nächstes" eintraege={kommend} datum knapp />
-  ) : (
-    <section class="liste">
-      <h2>Als Nächstes</h2>
-      <p>Zurzeit ist kein kommender Termin erfasst.</p>
-    </section>
-  )}
+  <div class="start">
+    {aufmacher && (
+      <section class="start__aufmacher">
+        <p class="etikett">Aufmacher</p>
+        <h2><a href={aufmacher.pfad}>{aufmacher.name}</a></h2>
+        {aufmacher.kurzbeschreibung && <p>{aufmacher.kurzbeschreibung}</p>}
+      </section>
+    )}
 
-  <section class="sammlungen">
-    <h2>Im Register</h2>
-    <ul>
-      {sammlungen.map((s) => (
-        <li>
-          <a href={sammlungsPfad(s.typ)}>{SAMMLUNGSNAME[s.typ]}</a>
-          <span class="sammlungen__anzahl"> ({s.anzahl})</span>
-          <span class="sammlungen__beschreibung"> — {SAMMLUNGSKAPSEL[s.typ]}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
+    <div class="start__termine">
+      {amWochenende.length > 0 && (
+        <div class="start__wochenende">
+          <EintragsListe titel={wochenendTitel} eintraege={amWochenende} datum knapp />
+        </div>
+      )}
+      {kalender.length > 0 ? (
+        <div class="start__kalender">
+          <EintragsListe titel="Als Nächstes" eintraege={kalender} datum knapp />
+          <p class="start__mehr"><a href="/events/">Alle Termine</a></p>
+        </div>
+      ) : (
+        <section class="liste">
+          <h2>Als Nächstes</h2>
+          <p>Zurzeit ist kein weiterer Termin erfasst.</p>
+        </section>
+      )}
+    </div>
+
+    {ressorts.length > 0 && (
+      <section class="start__ressorts">
+        <h2>Ressorts</h2>
+        <ul class="kacheln">
+          {ressorts.map((r) => (
+            <li>
+              <a href={ressortPfad(r)}>
+                <span class="kacheln__nummer">{r.nummer}</span>
+                <span class="kacheln__name">{r.name}</span>
+                <span class="kacheln__anzahl">{r.anzahl} {r.anzahl === 1 ? "Begriff" : "Begriffe"}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {anlaufstellen.length > 0 && (
+      <section class="sammlungen">
+        <h2>Wohin, mit wem, zu wem</h2>
+        <ul>
+          {anlaufstellen.map((s) => (
+            <li>
+              <a href={sammlungsPfad(s.typ)}>{SAMMLUNGSNAME[s.typ]}</a>
+              <span class="sammlungen__anzahl"> ({s.anzahl})</span>
+              <span class="sammlungen__beschreibung"> — {SAMMLUNGSKAPSEL[s.typ]}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {fokus && (
+      <section class="start__fokus">
+        <p class="etikett">Begriff im Fokus</p>
+        <h2><a href={fokus.pfad}>{fokus.name}</a></h2>
+        {fokus.kurzbeschreibung && <p>{fokus.kurzbeschreibung}</p>}
+        <p class="start__mehr"><a href="/lexikon/">Alle Begriffe im Lexikon</a></p>
+      </section>
+    )}
+
+    <div class="start__regionen">
+      <EintragsListe titel="Termine je Region" eintraege={regionen} zusatz={regionsZusatz} knapp />
+    </div>
+
+    <EintragsListe titel="Artikel" eintraege={artikel} knapp />
+
+    <section class="start__belegt">
+      <h2>Jede Angabe belegt</h2>
+      <p>
+        Jeder Termin, jeder Ort und jeder Begriff in {site.name} trägt seine Quellen.
+        Was keine Quelle hat, steht hier nicht. <a href="/methodik/">So wird geprüft</a>.
+      </p>
+      <p>
+        Ein Termin fehlt oder hat sich geändert? <a href="/vorschlagen/">Termin melden</a>.
+      </p>
+    </section>
+  </div>
 </BasisLayout>

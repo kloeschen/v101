@@ -12,10 +12,10 @@
  * Keine Fotos: Bilder brauchen dokumentierte Rechte (CLAUDE.md), Schrift
  * und Farbe nicht.
  *
- * SCHRIFTEN: Libre Baskerville und Source Sans 3, beide unter der SIL Open
- * Font License, aus den @fontsource-Paketen. Die Seite selbst nutzt
- * Systemschriften; ins Bild müssen die Schriften eingebettet werden, und
- * Georgia darf das nicht.
+ * SCHRIFTEN: dieselben wie auf der Seite (seit 2026-10-02, Plattenhülle) —
+ * Newsreader für den Titel, Archivo für die Kennzeilen, beide unter der SIL
+ * Open Font License. Sie kommen hier aus den @fontsource-Paketen und nicht
+ * aus public/schriften/, weil satori kein woff2 lesen kann.
  *
  * Kein `import.meta` hier: `scripts/test-vorschaubild.ts` lädt das Modul in
  * Node (Lektion 2). Die Schriftdateien werden über `process.cwd()`
@@ -32,7 +32,7 @@ export const BREITE = 1200;
 export const HOEHE = 630;
 
 /** Die Farben aus src/styles/tokens.css — das Bild soll aussehen wie die Seite. */
-const FARBE = { grund: "#fbfaf7", text: "#1c1a17", leise: "#5a544c", linie: "#ddd8cf", akzent: "#8c2f24" };
+const FARBE = { grund: "#f5f4ef", text: "#1c1c1e", leise: "#4a4f59", linie: "#d6d3ca", akzent: "#9a4a53" };
 
 export interface Vorschau {
   sammlung: string;
@@ -121,9 +121,9 @@ function ladeSchriften() {
   const datei = (paket: string, name: string) =>
     readFileSync(path.join(process.cwd(), "node_modules", "@fontsource", paket, "files", name));
   schriften ??= [
-    { name: "Serif", data: datei("libre-baskerville", "libre-baskerville-latin-700-normal.woff"), weight: 700, style: "normal" },
-    { name: "Sans", data: datei("source-sans-3", "source-sans-3-latin-400-normal.woff"), weight: 400, style: "normal" },
-    { name: "Sans", data: datei("source-sans-3", "source-sans-3-latin-600-normal.woff"), weight: 600, style: "normal" },
+    { name: "Serif", data: datei("newsreader", "newsreader-latin-600-normal.woff"), weight: 600, style: "normal" },
+    { name: "Sans", data: datei("archivo", "archivo-latin-400-normal.woff"), weight: 400, style: "normal" },
+    { name: "Sans", data: datei("archivo", "archivo-latin-700-normal.woff"), weight: 600, style: "normal" },
   ];
   return schriften;
 }

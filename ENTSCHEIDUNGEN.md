@@ -17,6 +17,244 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Plattenhülle, Rest aus Etappe 3: Katalognummer, Werte, kein Zeitplan
+
+**Katalognummer über der H1.** Lexikoneinträge und Artikel eines Ressorts
+tragen über der H1 ein Etikett wie „V101-02 · Mode". Es verlinkt die
+Ressortseite, wenn sie sichtbar ist.
+- Lexikon: Das Ressort ergibt sich aus der Kategorie.
+- Artikel: Das Ressort ergibt sich aus dem Themenbereich (`saeule`).
+  Musik, Mode, Tanz, Frisur und Szene laufen unter ihrem Ressort.
+- **Kustom Kulture → V101-04 Autos.** Das ist eine Zuordnung, die ich
+  getroffen habe; der Artikel nennt sich „die Autoseite der Szene".
+- Geschichte, Sammeln, Tattoo und Einstieg haben kein Ressort und deshalb
+  keine Nummer.
+- Logik in `ressortVon` (`src/lib/ressorts.ts`), Test in
+  `scripts/test-ressorts.ts`.
+- Mutationsbelege: Ohne die Kustom-Zuordnung fallen genau 2 Prüfungen.
+  Ignoriert die Funktion die Sammlung, fallen genau die 2 Prüfungen zu
+  Fremdsammlungen.
+
+**Werte im Faktenblock.** Kategorie und Themenbereich erscheinen jetzt mit
+Namen und verlinken ihre Facettenseite. Der Fund war größer als vermerkt:
+- Alle Auswahlwerte laufen durch eine gemeinsame Tabelle `ENUM_TEXT`.
+- Dadurch standen 19 Werte roh da, nicht nur „mode".
+- Die Kategorie `tattoo` wäre als „Tattoo-Studio" erschienen, ein Wert aus
+  den Läden.
+
+`test-beschriftung.ts` rendert deshalb jetzt jeden Wert jedes Auswahlfelds
+im Faktenblock über `faktZeilen` und verlangt Text statt Schlüssel. Mit
+der alten Fassung fallen genau die 19 Werte und der Tattoo-Fall.
+
+**Line-up als Zeitplan: nicht gebaut.** Der Brief nimmt an, der Zeitplan
+ließe sich „aus Feldern, die es schon gibt" bauen. Das stimmt nicht:
+- `lineupBands`, `lineupWeitere` und `djs` sind reine Namenslisten.
+- Tag, Uhrzeit und Bühne je Act stehen in keinem Feld, sondern höchstens
+  im Fließtext.
+
+Ein Zeitplan bräuchte eine Erweiterung des Datenvertrags, etwa ein Feld je
+Act mit Tag, Uhrzeit und Bühne, jeweils belegt durch eine Quelle. Der
+Vertrag ändert sich nur auf ausdrückliche Anweisung. Bis dahin bleibt es
+beim Line-up im Faktenblock.
+
+## 2026-10-02 — Plattenhülle, Etappe 4: die Startseite
+
+**Gebaut:** Aufmacher, „Dieses Wochenende" (Rosé), „Als Nächstes",
+sechs Ressort-Kacheln im Schachbrett, „Wohin, mit wem, zu wem" (Orte,
+Bands, Läden), Begriff im Fokus (Tinte), Termine je Region, Artikel,
+„Jede Angabe belegt". Die H1 „Vintage 101" ist nur noch für Vorleser
+sichtbar, weil das Logo direkt darüber denselben Namen zeigt. Die `.kapsel`
+bleibt sichtbar.
+
+**Die Rechnungen stehen in `src/lib/startseite.ts`, aus Node getestet**
+(`scripts/test-startseite.ts`, auch unter vier fremden Prozesszeitzonen):
+
+- *Wochenende* heißt Samstag und Sonntag in `site.zeitzone`. Von Montag
+  bis Freitag ist es das kommende, am Samstag und Sonntag das laufende.
+- Ein Termin gehört zum Wochenende, wenn er sich mit ihm *überlappt*. Ein
+  Weekender von Freitag bis Sonntag gehört also dazu, ein Termin nur am
+  Freitag nicht. Verworfen wurde „Beginn liegt am Wochenende": Damit fiele
+  der Weekender heraus, und genau er ist der typische Wochenendtermin der
+  Szene.
+- Der *Kalender* zeigt nichts, was schon im Wochenende steht.
+- Der *Begriff im Fokus* zählt Wochen seit 1970, nicht Kalenderwochen.
+  Sonst stünde an der Jahresgrenze (52 oder 53 Wochen) derselbe Begriff
+  zweimal oder einer fiele aus.
+- `datum.ts` exportiert dafür neu `tagesnummer`.
+
+**Aufmacher und Begriff im Fokus kommen aus der freigegebenen Registry.**
+Sie sind die einzigen Stellen mit eigenem Markup statt `EintragsListe`.
+Damit kann dort kein Entwurf unmarkiert stehen, und beworben wird nur, was
+geprüft ist. `EintragsListe` hat für die Zählung je Region den Parameter
+`zusatz` bekommen, statt dass die Startseite eine eigene Liste baut.
+
+**Mutationsbelege:** Fünf Mutationen gegen eine Kopie der Logik:
+
+1. Nur der Beginn statt Überlappung: 4 Prüfungen fallen.
+2. Wochentag in UTC: Die Montagsgrenze fällt.
+3. Kalender ohne Ausschluss: 2 fallen.
+4. Täglich statt wöchentlich: 2 fallen.
+5. Terminbeginn in UTC gelesen: Diese Mutation fiel zuerst durch keine
+   Prüfung. „Samstag 00:30" unterscheidet bei Überlappung nichts. Ergänzt
+   wurde deshalb der Fall „Montag 00:30 Ortszeit gehört nicht dazu", in UTC
+   ist das noch Sonntag. Danach fällt genau dieser Fall.
+
+**Band ↔ Termin** war schon da: „Kommende Auftritte von …" auf der
+Bandseite und „Bands im Line-up von …" auf der Eventseite.
+
+**Gefunden beim Screenshot:** Das Schachbrett der Kacheln hängt an der
+Spaltenzahl. Bei zwei Spalten ergäben die ungeraden Felder Streifen. Die
+Spaltenzahlen sind deshalb fest (2 / 3 / 6), und jede hat ihre eigene
+Regel für die Felder. Gemessen wurde bei 390, 800 und 1280 px, hell und
+dunkel.
+
+## 2026-10-02 — Plattenhülle, Etappe 3: Entitätsseiten über CSS
+
+**Gebaut, nur CSS gegen das vorhandene Markup:** Ab 64rem Breite steht der
+Faktenblock als Karteikarte in einer Spalte neben dem Fließtext — im DOM
+weiter davor. Die Zeile „Beginn" ist die Datumsfläche in Rosé (das
+einzige Rosé der Seite, weil es „jetzt / demnächst" bedeutet). Die
+Antwortkapsel (`.inhalt > p:first-child`) ist größer gesetzt, abgeleitete
+Listen haben eine Abschnittskante statt eines Kastens, die Verwandt-Liste
+läuft als Zeile, Belege und Quellen in der Etikettschrift. Der Marker
+`.liste__entwurf` hat zum ersten Mal eine Regel: ein Etikett mit Rahmen und
+Text, nicht Farbe allein (DESIGN-BRIEF, „Was ein Entwurf gestalterisch
+braucht").
+
+**Verworfen:** Den Faktenblock beim Scrollen mitlaufen zu lassen
+(`position: sticky`). Lange Blöcke wie die Abgrenzung im Lexikon sind
+höher als der Bildschirm, ihr Ende wäre dann nicht lesbar.
+
+**Nicht über CSS machbar, verschoben:** Line-up als Zeitplan (Uhrzeit und
+Bühne stehen nur im Fließtext, nicht in Feldern) und die Katalognummer über
+der H1 (braucht ein Element). Beides braucht Markup.
+
+**Fund dabei:** Jede Eventseite mit Veranstalter-Website zeigte als
+Feldnamen „veranstalterUrl" — `LABEL` hatte keinen Eintrag, und die
+Beschriftung fiel still auf den Schlüssel zurück. Behoben und als Regel in
+Code: `scripts/test-beschriftung.ts` (in `npm run test`) prüft, dass jedes
+anzeigbare Feld beschriftet ist; Mutationsbeleg: Beschriftung entfernt →
+genau dieses Feld wird gemeldet. Verwandter Fund, nicht behoben: Der
+**Wert** der Lexikon-Kategorie erscheint roh („mode").
+
+---
+
+## 2026-10-02 — Plattenhülle, Etappe 2: Seitenkopf und Suche
+
+**Gebaut:** Seitenkopf vor `<main>` mit Logo (Hell/Dunkel über `<picture>`),
+Suchformular, „Termin melden" (→ `/vorschlagen/`) und Ressortleiste. Die
+Ressorts stehen in `src/lib/ressorts.ts` mit Katalognummer und
+Lexikon-Kategorie; angezeigt wird nur, was einen sichtbaren Eintrag hat.
+Die vollständige Hauptnavigation bleibt nach `</main>`. Suche mit
+Pagefind: Index im npm-Skript `build`, Seite `/suche/` (noindex, selbst
+nicht im Index), Treffer per JavaScript, ohne JavaScript Wege ins Portal.
+Indexiert wird nur `<main>` (`data-pagefind-body`), die Feldnamen des
+Faktenblocks nicht (`data-pagefind-ignore`) — sonst klebten sie an den
+Werten („DefinitionEin Petticoat …"). Vorschaubilder jetzt mit Newsreader
+und Archivo; Libre Baskerville und Source Sans sind aus den Abhängigkeiten
+entfernt. Logo-PNGs auf 64 Farben reduziert: 24 → 7 KB je Datei.
+
+**Gemessen im gebauten Ergebnis:** 153 Seiten im Index; Startseite,
+Lexikon und Terminliste stellen null Anfragen an Pagefind, `/suche/`
+findet für „petticoat" 16 Treffer und meldet einen leeren Treffer sauber.
+
+**Neu als Regel in Code:** `scripts/check-suche.ts`, in `verify` und
+`verify:ci` nach dem Build (die CI-Kette hat jetzt 12 Schritte). Prüft
+Index vorhanden, Index = markierte Seiten, Stichproben drin bzw. draußen,
+Formular-Ziel und dass nur `/suche/` Pagefind lädt. Mutationsbeleg an
+einer Kopie von `dist/` mit fünf Fehlern, jeder trifft. **Fund dabei:** Die
+erste Fassung der letzten Prüfung suchte das Wort „pagefind" und schlug
+nach dem Einbau von `data-pagefind-ignore` auf 30 Seiten falsch an. Jetzt
+sucht sie Verweise auf das Verzeichnis `/pagefind/` — beide Varianten der
+Mutation (Skript, Stylesheet) fallen weiterhin.
+
+---
+
+## 2026-10-02 — Plattenhülle, Etappe 1: Farben, Dunkelmodus, Schriften
+
+**Gebaut:** `tokens.css` mit der Palette der Plattenhülle samt Dunkelmodus
+(Kontraste gemessen, kleinster Wert 5,5:1 für Rosé auf Papier), vier
+selbst gehostete Schriftschnitte, die H1 als schmale Plakatzeile in
+Versalien, Feldnamen im Faktenblock als Etikett. Am Markup ändert sich
+nichts.
+
+**Zwei Abweichungen vom Plan:** (1) Die Schriften wiegen 76 KB statt der
+gemessenen 94 — Google liefert die schmale Archivo als variable Datei mit
+Breitenachse aus; mit fontTools auf Breite 66 und Gewicht 800 festgelegt,
+bleibt ein statischer Schnitt. (2) Das Logo kommt erst mit Etappe 2: Ohne
+Seitenkopf hätte es keinen Platz, und eine Datei, die nichts benutzt, ist
+keine Grundlage.
+
+**Neu als Regel in Code:** `scripts/test-schriften.ts` (in `npm run test`)
+prüft eingebundene Dateien, `@font-face` für jede genannte Familie,
+Lizenztexte, die vorgeladene Datei, ein Budget von 90 KB und dass unter
+`src/` nichts Google Fonts abruft. Mutationsbeleg an einer Kopie: sechs
+absichtlich eingebaute Fehler, jeder lässt genau die erwartete Prüfung
+fallen. **Links sind Tinte, nicht Rosé** — Rosé bleibt „jetzt / demnächst"
+vorbehalten; die Terminliste zeigt ihr Datum deshalb in Rosé.
+
+**Offen:** Die Vorschaubilder für geteilte Links haben die neuen Farben,
+aber noch die alten Schriften (Libre Baskerville, Source Sans aus
+`@fontsource`). Umstellen, wenn der Seitenkopf steht.
+
+---
+
+## 2026-10-02 — Portal-Umsetzung: Suche, Begriff im Fokus, Schriften, Logo
+
+**Entschieden (Markus), nach Messung:** (1) Suche mit Pagefind — Probelauf
+über den heutigen Build: 154 Seiten in 0,3 s; das Suchfeld führt als
+Formular auf `/suche/`, alle anderen Seiten laden nichts zusätzlich, erst
+`/suche/` rund 45 KB Skript plus WebAssembly und Indexstücke. (2) Begriff
+im Fokus rotiert je Kalenderwoche durch die veröffentlichten
+Lexikonbegriffe. (3) Vier statische Schriftschnitte, 94 KB. (4) Logo
+vorerst als vorhandene PNG.
+
+**Verworfen:** Suche später oder gar nicht; Begriff an das Wochenende
+gebunden (oft immer wieder Rockabilly, leere Wochenenden brauchen eine
+Ersatzregel) oder von Hand gesetzt (Pflege jede Woche); fünf Schnitte
+(107 KB) und Archivo variabel (131 KB mit Newsreader).
+
+**Folge:** Die Grenze „höchstens drei Schnitte" aus dem alten Briefing gilt
+nicht mehr, es sind vier. Pagefind ist ein neues Werkzeug im Build — es
+läuft nach `astro build` über `dist/` und gehört damit in die Prüfkette
+(`npm run verify`). Ausgeschrieben in `DESIGN-BRIEF.md`, Abschnitt
+„Entschieden am 2026-10-02".
+
+---
+
+## 2026-10-02 — Portal statt Register: Gestaltung „Plattenhülle"
+
+**Entschieden (Markus):** Die Site tritt als Portal auf, nicht als
+Verzeichnis. Inhaltlich bleibt sie so klar und belegt wie bisher; die
+Gestaltung darf mehr hermachen. Von drei Richtungen (Plattenhülle,
+Programmheft, Nachtausgabe) ist die **Plattenhülle** gewählt, mit dem
+bestehenden Logo „Vintage 101 – Das neue Vintage Portal" und seinem Rosé
+als Akzent. Die sechs Ressorts bleiben, auch Frisur mit einem Begriff: Die
+Lücken werden vor dem Go-Live geschlossen, sonst wird nachgesteuert.
+
+**Was sich damit ändert:** Das Briefing vom 2026-09-16 sagte „kein Magazin"
+und „HTML nicht verhandelbar, nur Tokens und CSS". Für Startseite und
+Seitenkopf gilt das nicht mehr, dort entstehen neue Bausteine (Suche,
+Ressortleiste, Wochenende, Ressort-Kacheln, Orte/Bands/Läden, Begriff im
+Fokus). Für Entitätsseiten gilt es weiter. Unverändert bleiben: Text früh
+im DOM, Faktenblock als `<dl>` vor dem Fließtext, kein Inhalt aus
+JavaScript. Ausgeschrieben in `DESIGN-BRIEF.md`.
+
+**Regeln, die aus der Kritik der ersten Runde kamen:** Rosé bedeutet nur
+„jetzt / demnächst". Je Abschnitt ein lautes Element. Das Logo ist die
+einzige Schwungschrift. „Dieses Wochenende" zeigt nur Samstag und Sonntag,
+und der Kalender darunter wiederholt nichts. Zählungen sind überall
+dieselben (kommende Termine, nicht alle Dateien).
+
+**Verworfen:** Programmheft (Kalender als Mittelpunkt, Grün/Senf) und
+Nachtausgabe (dunkel, Plakatkarten). Beide liegen auf der Zeichenfläche
+unter „Frühere Richtungen".
+
+**Offen:** Suche (Index beim Build), Rotationsregel für den Begriff im
+Fokus, Zahl der Schriftschnitte, Logo als SVG. Posten in OFFENE-PUNKTE.
+
+---
+
 ## 2026-10-01 — Freigabe-CI eingesetzt und am echten Lauf bewiesen
 
 **Anlass:** Der Freigabe-PR #116 ließ sich nicht mergen. `verify` war an

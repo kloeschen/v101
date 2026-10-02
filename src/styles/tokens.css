@@ -8,38 +8,46 @@
  * das Markup trägt die SEO- und Barrierefreiheitsentscheidungen, die nicht
  * verhandelbar sind.
  *
- * Die Werte hier sind bewusst nüchtern gehalten: ein funktionierender,
- * lesbarer Ausgangszustand, kein Gestaltungsvorschlag.
+ * Seit dem 2026-10-02 belegt mit der Gestaltung „Plattenhülle"
+ * (DESIGN-BRIEF.md, Abschnitt „Das Gestaltungssystem"). Kontraste gemessen:
+ * Weiß auf Rosé 6,0:1, Rosé auf Papier 5,5:1, leise auf Papier 7,4:1.
+ * Rosé bedeutet „jetzt / demnächst" — nicht für Links oder Schmuck.
  */
 
 :root {
   /* --- Farbe ------------------------------------------------------ */
-  --farbe-grund: #fbfaf7;
+  --farbe-grund: #f5f4ef;        /* Papier */
   --farbe-flaeche: #ffffff;
-  --farbe-text: #1c1a17;
-  --farbe-text-leise: #5a544c;
-  --farbe-linie: #ddd8cf;
-  --farbe-akzent: #8c2f24;
+  --farbe-text: #1c1c1e;         /* Tinte, wie im Logo */
+  --farbe-text-leise: #4a4f59;
+  --farbe-linie: #d6d3ca;
+  --farbe-akzent: #9a4a53;       /* Rosé aus dem Logo */
   --farbe-akzent-text: #ffffff;
-  --farbe-link: #8c2f24;
-  --farbe-link-besucht: #6b2a3e;
+  --farbe-link: #1c1c1e;         /* Links sind Tinte mit Unterstrich, kein Rosé */
+  --farbe-link-besucht: #4a4f59;
   --farbe-hinweis-grund: #fdf6e3;
   --farbe-hinweis-linie: #d9c9a3;
 
   /* --- Schrift ---------------------------------------------------- */
-  /* Systemschriften als Standard: kein Netzwerkabruf, kein CLS, keine
-     Drittanbieter im Datenschutzhinweis. Wer ersetzt, hostet selbst. */
-  --schrift-text: ui-serif, Georgia, "Iowan Old Style", serif;
+  /* Selbst gehostet (src/styles/schriften.css, public/schriften/), vier
+     statische Schnitte, zusammen 76 KB. Die Systemschriften dahinter
+     tragen, bis die Datei geladen ist, und für Zeichen außerhalb des
+     westeuropäischen Satzes. */
+  --schrift-text: "Newsreader", Georgia, "Iowan Old Style", serif;
   --schrift-titel: var(--schrift-text);
   --schrift-ui: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Neu 2026-10-02: Plakatzeile (H1, Datumsziffern) und Etikett (Feldnamen,
+     Kennzeilen). Beide gibt es nur in EINEM Gewicht — nie für Fließtext. */
+  --schrift-plakat: "Archivo Schmal", "Arial Narrow", "Roboto Condensed", sans-serif-condensed, sans-serif;
+  --schrift-etikett: "Archivo", ui-sans-serif, system-ui, sans-serif;
 
-  --groesse-basis: 1.0625rem;   /* Publikum skaliert älter — nicht kleiner */
+  --groesse-basis: 1.125rem;    /* 18 px — das Publikum skaliert älter */
   --groesse-klein: 0.9375rem;
-  --groesse-h1: clamp(1.9rem, 1.3rem + 2.4vw, 2.9rem);
-  --groesse-h2: clamp(1.35rem, 1.1rem + 1.1vw, 1.75rem);
-  --groesse-h3: 1.15rem;
-  --zeilenhoehe: 1.65;
-  --zeilenhoehe-titel: 1.18;
+  --groesse-h1: clamp(2.4rem, 1.5rem + 3.4vw, 4.5rem);
+  --groesse-h2: clamp(1.45rem, 1.2rem + 1.1vw, 1.95rem);
+  --groesse-h3: 1.2rem;
+  --zeilenhoehe: 1.62;
+  --zeilenhoehe-titel: 1.15;
 
   /* --- Raum ------------------------------------------------------- */
   --raum-1: 0.25rem;
@@ -49,24 +57,26 @@
   --raum-5: 2.5rem;
   --raum-6: 4rem;
   --zeilenlaenge: 68ch;   /* Lesbarkeit schlägt Bildschirmbreite */
-  --inhalt-breite: 76rem;
+  --inhalt-breite: 75rem;
 
   /* --- Form ------------------------------------------------------- */
-  --radius: 2px;
+  --radius: 0;
   --linie: 1px solid var(--farbe-linie);
+  --linie-kraeftig: 3px solid var(--farbe-text);  /* Abschnittskante */
   --schatten: none;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --farbe-grund: #16140f;
-    --farbe-flaeche: #1e1b16;
-    --farbe-text: #efe9df;
-    --farbe-text-leise: #a9a094;
-    --farbe-linie: #383229;
-    --farbe-akzent: #e0705f;
-    --farbe-link: #e0705f;
-    --farbe-link-besucht: #c98fa4;
+    --farbe-grund: #16151a;
+    --farbe-flaeche: #1f1e24;
+    --farbe-text: #eeebe4;
+    --farbe-text-leise: #b3aea4;
+    --farbe-linie: #38363e;
+    --farbe-akzent: #d68c94;       /* Rosé hell: als Schrift und als Fläche mit dunkler Schrift */
+    --farbe-akzent-text: #16151a;  /* dunkle Schrift auf hellem Rosé, 6,9:1 */
+    --farbe-link: #eeebe4;
+    --farbe-link-besucht: #b3aea4;
     --farbe-hinweis-grund: #2a2418;
     --farbe-hinweis-linie: #4d4331;
   }

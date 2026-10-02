@@ -8,6 +8,7 @@ import { site, indexierbar } from "../site.config";
 // Reihenfolge zählt: erst der Token-Vertrag, dann die Gestaltung, die ihn
 // benutzt. Eine neue Gestaltung tauscht basis.css und ergänzt tokens.css —
 // das Markup bleibt unangetastet.
+import "../styles/schriften.css";
 import "../styles/tokens.css";
 import "../styles/basis.css";
 import { jsonldSicher } from "../lib/jsonld";
@@ -15,6 +16,7 @@ import { holeRegistry } from "../lib/registry";
 import { collectionNames, type CollectionName } from "../content/_schemas";
 import { SAMMLUNGSNAME, sammlungsPfad } from "../lib/faktenblock";
 import { vorschauPfad, BREITE, HOEHE } from "../lib/vorschaubild";
+import Kopf from "../components/Kopf.astro";
 
 interface Props {
   titel: string;
@@ -24,8 +26,13 @@ interface Props {
   jsonld?: unknown;
   /** Pfad des Vorschaubilds für geteilte Links; ohne Angabe das Standardbild. */
   vorschaubild?: string;
+  /**
+   * Kommt die Seite in den Suchindex? Standard ja. Nein für Seiten, die
+   * selbst keine Antwort sind (die Suche selbst, die 404).
+   */
+  suchbar?: boolean;
 }
-const { titel, beschreibung, kanonisch, noindex = false, jsonld, vorschaubild = vorschauPfad() } = Astro.props;
+const { titel, beschreibung, kanonisch, noindex = false, jsonld, vorschaubild = vorschauPfad(), suchbar = true } = Astro.props;
 
 // Der globale Schalter sticht jede Einzelentscheidung: Solange die Site
 // nicht freigegeben ist, wird nichts indexiert.
@@ -53,6 +60,9 @@ const sammlungen = collectionNames.filter((typ: CollectionName) =>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Nur die Fließtextschrift vorladen: Sie steht auf jeder Seite über dem
+         Falz. Die übrigen drei Schnitte kommen bei Bedarf. -->
+    <link rel="preload" href="/schriften/newsreader-400.woff2" as="font" type="font/woff2" crossorigin />
     <title>{titel} — {site.name}</title>
     <meta name="description" content={beschreibung} />
     <link rel="canonical" href={`${site.url}${kanonisch}`} />
@@ -71,7 +81,11 @@ const sammlungen = collectionNames.filter((typ: CollectionName) =>
     {jsonld && <script is:inline type="application/ld+json" set:html={jsonldSicher(jsonld)} />}
   </head>
   <body>
-    <main><slot /></main>
+    <Kopf pfad={Astro.url.pathname} />
+    {/* data-pagefind-body: Nur der Inhalt von <main> kommt in den Suchindex,
+        nicht Kopf und Navigation — sonst fände jede Suche nach „Termine"
+        jede Seite. Fehlt das Attribut, bleibt die Seite ganz draußen. */}
+    <main data-pagefind-body={suchbar ? "" : undefined}><slot /></main>
     <nav aria-label="Hauptnavigation">
       <a href="/">Start</a>
       {sammlungen.map((typ) => <a href={sammlungsPfad(typ)}>{SAMMLUNGSNAME[typ]}</a>)}

@@ -14,6 +14,7 @@ import { faktenblockFelder, istNurDerName } from "./jsonld";
 import { referenzFelder, urlPrefix, type CollectionName } from "../content/_schemas";
 import { aufloesen, type Registry } from "./links";
 import { site } from "../site.config";
+import { KATEGORIE, SAEULE } from "./facetten";
 
 export interface FaktStueck {
   text: string;
@@ -38,6 +39,7 @@ const LABEL: Record<string, string> = {
   ortHinweis: "Hinweis zum Ort",
   region: "Region",
   veranstalter: "Veranstalter",
+  veranstalterUrl: "Website des Veranstalters",
   lineupBands: "Line-up",
   lineupWeitere: "Weitere Acts",
   djs: "DJs",
@@ -149,6 +151,28 @@ function beschriftung(feld: string): string {
   return LABEL[feld] ?? feld;
 }
 
+/**
+ * Felder, die der Faktenblock anzeigen kann, aber nicht beschriften würde —
+ * sie erschienen mit ihrem Schlüssel („veranstalterUrl"). Am 2026-10-02 so
+ * auf jeder Eventseite mit Veranstalter-Website gefunden; geprüft in
+ * scripts/test-beschriftung.ts. Die Beschriftungen sind als Parameter
+ * übergebbar, damit der Test die Prüfung auch scheitern sehen kann.
+ */
+export function fehlendeBeschriftungen(
+  beschriftungen: Record<string, string> = LABEL,
+): { collection: CollectionName; feld: string }[] {
+  const fehlend: { collection: CollectionName; feld: string }[] = [];
+  for (const collection of Object.keys(faktenblockFelder) as CollectionName[]) {
+    for (const feld of faktenblockFelder[collection]) {
+      if (!UEBERSPRINGEN.has(feld) && !(feld in beschriftungen)) fehlend.push({ collection, feld });
+    }
+  }
+  return fehlend;
+}
+
+/** Die Beschriftungen selbst — nur für den Test. */
+export const BESCHRIFTUNGEN: Readonly<Record<string, string>> = LABEL;
+
 /* ------------------------------------------------------------------ */
 
 export function faktZeilen(
@@ -230,6 +254,14 @@ function formatiere(
       return text(wert ? "Ja" : "Nein");
     case "schwerpunkt":
       return text("Ja");
+    // Kategorie und Themenbereich mit eigenem Namen und als Link auf ihre
+    // Facettenseite. Bis zum 2026-10-02 liefen sie durch ENUM_TEXT, der für
+    // alle Felder gilt: „mode" stand roh da, und „tattoo" wäre als
+    // „Tattoo-Studio" erschienen — der Wert aus den Läden.
+    case "kategorie":
+      return [{ text: KATEGORIE[wert] ?? wert, href: `${urlPrefix.lexikon}/kategorie/${wert}/` }];
+    case "saeule":
+      return [{ text: SAEULE[wert] ?? wert, href: `${urlPrefix.artikel}/saeule/${wert}/` }];
     case "ticketUrl":
       return [{ text: "Zum Ticketshop", href: wert, extern: true }];
     case "herkunftLand":

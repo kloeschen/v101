@@ -94,7 +94,8 @@ const ART: Record<string, string> = {
   tanzabend: "Tanzabende", workshop: "Workshops", stammtisch: "Stammtische",
 };
 
-const KATEGORIE: Record<string, string> = {
+/** Anzeigenamen der Lexikon-Kategorien; auch der Faktenblock nutzt sie. */
+export const KATEGORIE: Record<string, string> = {
   genre: "Genres", mode: "Mode", frisur: "Frisuren", tanz: "Tänze",
   musiktechnik: "Musiktechnik", instrument: "Instrumente", auto: "Autos",
   tattoo: "Tattoo", szene: "Szene", medium: "Medien", epoche: "Epochen",
@@ -105,7 +106,8 @@ const ADRESSEN_TYP: Record<string, string> = {
   "vintage-laden": "Vintage-Läden", "oldtimer-verleih": "Oldtimer-Verleih",
 };
 
-const SAEULE: Record<string, string> = {
+/** Anzeigenamen der Themenbereiche; auch der Faktenblock nutzt sie. */
+export const SAEULE: Record<string, string> = {
   musik: "Musik", geschichte: "Geschichte", mode: "Mode", frisur: "Frisur",
   tanz: "Tanz", "kustom-kulture": "Kustom Kulture", szene: "Szene",
   sammeln: "Sammeln", tattoo: "Tattoo", einstieg: "Einstieg",

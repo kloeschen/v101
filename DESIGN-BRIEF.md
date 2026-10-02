@@ -1,8 +1,18 @@
-# Design-Briefing — Vintage & Rockabilly Szenen-Guide
+# Design-Briefing — Vintage 101, das Vintage-Portal
 
 *Dieses Dokument in Claude Design hochladen oder in den ersten Prompt einfügen.*
 
-> **Stand: 2026-09-16.** Alle Zahlen und Selektoren in diesem Dokument sind
+> **Neu seit 2026-10-02: Portal statt Register.** Markus hat die Richtung
+> geändert: Die Site bleibt inhaltlich so klar und belegt wie bisher, soll
+> aber als **Portal** auftreten, nicht als Verzeichnis. Gewählt ist die
+> Richtung **„Plattenhülle"** (Abschnitt „Das Gestaltungssystem"). Die
+> Entwürfe liegen auf der Zeichenfläche „Vintage 101 – Portal-Entwürfe"
+> (claude.ai, privat): Startseite, Startseite auf dem Handy,
+> Lexikoneintrag Petticoat, Eventseite Rockabilly Convention 2027 hell und
+> dunkel. Was sich daraus für Markup und Regeln ändert, steht in den
+> Abschnitten unten; was noch offen ist, in „Offene Fragen".
+>
+> **Stand der Messungen: 2026-09-16.** Alle Zahlen und Selektoren in diesem Dokument sind
 > aus dem **tatsächlich erzeugten HTML** gezogen (`astro build`, einmal mit
 > `PUBLIC_ENTWUERFE=false`, einmal mit `true`), nicht aus den Komponenten
 > abgelesen. Wer es nachzieht, misst wieder — die erste Fassung entstand, als
@@ -16,19 +26,29 @@
 
 ## Was gestaltet wird
 
-Ein deutschsprachiges **Nachschlagewerk und Register** der Vintage- und
-Rockabilly-Szene im DACH-Raum: Veranstaltungen, Bands, Locations, Regionen,
-ein Lexikon und Erklärartikel. Statische Astro-Site, sechs Seitentypen.
+Ein deutschsprachiges **Portal** der Vintage- und Rockabilly-Szene im
+DACH-Raum: Termine, Bands, Orte und Läden, Regionen, ein Lexikon und
+Artikel. Statische Astro-Site. Das Logo trägt den Anspruch schon im Namen:
+„Vintage 101 – Das neue Vintage Portal".
 
-Es ist **kein Magazin und kein Shop.** Der häufigste Besuch dauert vierzig
-Sekunden und beantwortet eine Frage: Wann ist das Festival, wo finde ich
-einen Barber in Bochum, was heißt Psychobilly. Der zweithäufigste ist ein
-Sprachmodell, das eine Teilantwort sucht.
+**Portal heißt nicht Magazin.** Es gibt keine Meldungen, die veralten, und
+keinen Text, der nur der Stimmung dient. Was sich ändert, ist der Auftritt:
+Die Startseite führt durch die Szene (Ressorts, Wochenende, Orte, Begriff
+im Fokus), statt Sammlungen aufzuzählen, und die Seiten dürfen mehr
+hermachen. Die inhaltliche Klarheit bleibt: Der häufigste Besuch dauert
+vierzig Sekunden und beantwortet eine Frage — wann ist das Festival, wo
+finde ich einen Barber in Bochum, was heißt Psychobilly. Der zweithäufigste
+ist ein Sprachmodell, das eine Teilantwort sucht. Beides muss das Portal
+weiterhin schneller bedienen als jedes Magazin.
 
-## Was **nicht** gestaltet wird
+## Was **nicht** verhandelbar ist
 
-Das HTML steht bereits und ist nicht verhandelbar. Es trägt Entscheidungen,
-die an Struktur hängen, nicht an Optik:
+Bis zum 2026-10-01 galt: Das HTML steht, gestaltet wird nur über Tokens und
+CSS. Für den Portal-Auftritt reicht das auf der **Startseite und im
+Seitenkopf** nicht mehr — dort entstehen neue Bausteine (Abschnitt „Neue
+Bausteine"). Auf den **Entitätsseiten** gilt die alte Regel weiter: Sie
+werden über Tokens und CSS umgestellt, das Markup bleibt. Unverhandelbar
+bleiben überall die Entscheidungen, die an Struktur hängen:
 
 - Der Textinhalt steht **früh** im DOM; die Hauptnavigation kommt bewusst
   **nach** `</main>`, ganz am Ende des `<body>`.
@@ -38,9 +58,72 @@ die an Struktur hängen, nicht an Optik:
   unzuverlässig.
 - Keine `localStorage`/`sessionStorage`-Nutzung.
 
-**Bitte also kein neues Markup entwerfen.** Gesucht ist eine Gestaltung, die
-sich an das vorhandene Markup bindet: Werte für den Token-Vertrag unten plus
-CSS gegen die genannten Selektoren.
+Auf Entitätsseiten also kein neues Markup. Der Faktenblock darf optisch als
+Seitenspalte neben dem Text stehen (so im Entwurf), bleibt im DOM aber vor
+dem Fließtext.
+
+---
+
+## Das Gestaltungssystem: Plattenhülle
+
+Anleihen bei Plattenhüllen und Katalogen der Fünfziger, gesetzt mit
+heutiger Typografie. Entschieden am 2026-10-02 (Markus), aus drei
+Richtungen (Plattenhülle, Programmheft, Nachtausgabe).
+
+**Logo.** Das bestehende Logo „Vintage 101 – Das neue Vintage Portal"
+(Pinselschrift, „101" in Rosé) und das Monogramm „V101". Das Logo ist das
+**einzige** Element in Schwungschrift; alles andere bleibt klar gesetzt.
+Für dunkle Flächen gibt es eine helle Fassung (im Entwurf aus dem Original
+umgefärbt, muss vom Original nachgezogen werden). Die vorliegenden Dateien
+sind 300 × 120 px — für die Site braucht es SVG oder mindestens die
+doppelte Auflösung.
+
+**Farben.** Papier `#F5F4EF`, Tinte `#1C1C1E`, leise `#4A4F59`, Linie
+`#D6D3CA`, Rosé aus dem Logo `#9A4A53`. Gemessen: Weiß auf Rosé 6,0:1,
+Rosé auf Papier 5,5:1. **Rosé bedeutet „jetzt / demnächst"** und sonst
+nichts: Wochenende, Datumsziffern, Regionsbalken, der Navigationspunkt
+„Termine". Ressorts, Artikel und Lexikon bleiben Tinte und Papier.
+Dunkelmodus: Grund `#16151A`, Feld `#1F1E24`, Text `#EEEBE4`, leise
+`#B3AEA4`, Linie `#38363E`, Rosé als Schrift `#D68C94`, Rosé als Fläche
+`#8C3F48`.
+
+**Schrift.** Archivo (variabel, schmal bis 62 %) für Plakatzeilen,
+Datumsziffern, Etiketten und Bedienelemente; Newsreader für Fließtext und
+die ruhigen Abschnittsüberschriften. **Nur ein lautes Element je
+Abschnitt:** schmale fette Großbuchstaben für Aufmacher, Ressortnamen,
+Datumsziffern und die H1 — Abschnittsüberschriften in normaler
+Schreibweise in Newsreader. Die H1 passt sich der Breite an
+(`clamp()`) und darf trennen, damit auch „Taillenmieder" passt.
+
+**Katalognummern.** Jedes Ressort trägt eine Nummer wie auf einem
+Plattenlabel: V101-01 Musik, -02 Mode, -03 Tanz, -04 Autos, -05 Frisur,
+-06 Szene. Sie steht über Artikeln und Lexikoneinträgen des Ressorts.
+
+**Linien statt Kästen**, 3 px Tinte als Abschnittskante, 1 px als
+Trennlinie. Flächen nur für den Wochenend-Block (Rosé), den Begriff im
+Fokus und den Oldtimer-Hinweis (Tinte) und die Ressort-Kacheln
+(Schachbrett Tinte/Papier).
+
+## Neue Bausteine
+
+Neu im Markup, Stand der Entwürfe:
+
+- **Seitenkopf vor `<main>`:** Logo, Suchfeld, „Termin melden",
+  Ressortleiste (Termine, Musik, Mode, Tanz, Autos, Frisur, Szene, Orte &
+  Läden, Regionen). Die vollständige Hauptnavigation bleibt nach
+  `</main>`. Der Kopf muss kurz bleiben, damit der Textinhalt weiter früh
+  im DOM steht.
+- **Startseite:** Aufmacher (ein Artikel), „Dieses Wochenende" (nur Samstag
+  und Sonntag; leer → „Als Nächstes"), Kalender ab dem Ende des
+  Wochenendes ohne Doppelungen, sechs Ressort-Kacheln, „Wohin, mit wem, zu
+  wem" (Orte, Bands, Läden), Begriff im Fokus, Termine je Region,
+  Artikel, „Jede Angabe belegt" mit Monogramm und Meldeaufruf.
+- **Querverweis Band ↔ Termin:** Hat eine Band im Line-up eine eigene
+  Seite, zeigt der Termin „Band im Portal" und die Band „Live am …".
+- **Eventseite:** große Datumsfläche in Rosé neben der H1; Line-up als
+  Zeitplan, Preise als Tabelle — beides aus Feldern, die es schon gibt.
+- **Zählungen überall gleich:** „36 kommende Termine" heißt kommende, nicht
+  alle Dateien.
 
 ---
 
@@ -92,13 +175,19 @@ Farbe    --farbe-grund --farbe-flaeche --farbe-text --farbe-text-leise
          --farbe-linie --farbe-akzent --farbe-akzent-text --farbe-link
          --farbe-link-besucht --farbe-hinweis-grund --farbe-hinweis-linie
 Schrift  --schrift-text --schrift-titel --schrift-ui
+         --schrift-plakat --schrift-etikett            (neu 2026-10-02)
          --groesse-basis --groesse-klein --groesse-h1 --groesse-h2
          --groesse-h3 --zeilenhoehe --zeilenhoehe-titel
 Raum     --raum-1 … --raum-6 --zeilenlaenge --inhalt-breite
-Form     --radius --linie --schatten
+Form     --radius --linie --linie-kraeftig --schatten  (--linie-kraeftig neu)
 ```
 
-**Gegen `src/styles/tokens.css` abgeglichen: 32 zu 32, keine Abweichung.**
+**Gegen `src/styles/tokens.css` abgeglichen: 32 zu 32, keine Abweichung**
+(Stand 2026-09-16). Seit dem 2026-10-02 sind es 35: `--schrift-plakat`
+(Archivo Schmal 800, nur für die H1 und Plakatzeilen), `--schrift-etikett`
+(Archivo 700, nur für Feldnamen und Kennzeilen) und `--linie-kraeftig`
+(3 px Tinte als Abschnittskante). Beide Schriften gibt es in genau einem
+Gewicht; für Fließtext sind sie nicht gedacht.
 Der Vertrag ist als einziger Teil des alten Briefs unverändert gültig. Drei
 Anmerkungen, die man beim Belegen braucht:
 
@@ -253,7 +342,7 @@ Das naheliegende Rockabilly-Design ist auch das falsche: Schachbrettmuster,
 Schwungschriften wie Lobster oder Pacifico, Kirschrot auf Türkis, Würfel,
 Flammen, Neonschilder, künstliche Vintage-Vergilbung.
 
-Das liest sich wie ein Themenrestaurant, nicht wie ein Nachschlagewerk — und
+Das liest sich wie ein Themenrestaurant, nicht wie ein Portal mit Anspruch — und
 es kostet genau die Glaubwürdigkeit, die eine Szene-Ressource braucht. Dazu
 ist fast jedes dieser Mittel schlecht lesbar.
 
@@ -266,6 +355,10 @@ klare Raster, Linien statt Kästen, Zurückhaltung bei Effekten.
 Faustregel für jede Entscheidung: **Würde das in einem Diner-Menü stehen
 oder in einem sorgfältig gesetzten Katalog?** Der Katalog gewinnt.
 
+**Die eine Ausnahme ist das Logo.** Seine Pinselschrift ist Markenzeichen,
+nicht Stilmittel; sie wird nirgends sonst verwendet, auch nicht für
+Überschriften.
+
 ## Bilder
 
 Die Site funktioniert **ohne Bilder** und muss das auch. Band- und
@@ -276,8 +369,11 @@ Aufnahmen mit Bildunterschrift und Urhebernennung.
 
 ## Technische Grenzen
 
-- **Schriften selbst hosten**, keine Google-Fonts-Einbindung. Maximal zwei
-  Familien, maximal drei Schnitte — jeder weitere kostet Ladezeit für nichts.
+- **Schriften selbst hosten**, keine Google-Fonts-Einbindung (die Entwürfe
+  laden Google Fonts nur zur Vorschau). Maximal zwei Familien. Die
+  Plattenhülle braucht Archivo in drei Gewichten bei schmaler Laufweite und
+  Newsreader in zwei — mehr als die bisherige Grenze von drei Schnitten,
+  siehe „Offene Fragen".
 - Kein CSS-Framework, keine Utility-Klassen. Reines CSS gegen die Selektoren
   oben; Astro bündelt es automatisch und inlined es bei geringer Größe. Das
   gesamte CSS steht derzeit als ein `<style>`-Block im `<head>` jeder Seite.
@@ -331,13 +427,49 @@ Die Filterlinks stehen **unter** der Liste, nicht darüber, und es ist die
 sind leer und tragen nur den Satz „Noch kein Eintrag."
 
 **6. Startseite — `/`**
-Der einzige Bildschirm mit Gestaltungsfreiheit. Aufbau: H1 → `.kapsel` →
-`.liste.liste--knapp` „Als Nächstes" mit sechs Terminen, jeder mit
-`.liste__datum` → `.sammlungen` „Im Register" mit Name, Anzahl und
-Beschreibungssatz je Sammlung.
+Seit dem 2026-10-02 neu gebaut statt nur neu gestaltet; Aufbau siehe „Neue
+Bausteine". Der Stand bis dahin: H1 → `.kapsel` → `.liste.liste--knapp`
+„Als Nächstes" mit sechs Terminen → `.sammlungen` „Im Register". Die
+`.kapsel` muss im neuen Aufbau erhalten bleiben (sie ist die Antwort für
+Sprachmodelle), auch wenn sie optisch zurücktritt.
 
 **Nicht mehr in dieser Liste: `/daten/`.** Die Seite ist Kapsel, fünf H2,
 eine `<dl>` mit vier Einträgen und drei `<ul>` — und enthält entgegen der
 alten Annahme **kein einziges `<code>` oder `<pre>`**. Sie braucht keine
 eigene Gestaltungsentscheidung; was für `.inhalt` und `.kapsel` gilt, trägt
 sie mit.
+
+---
+
+## Entschieden am 2026-10-02 (vormals „Offene Fragen")
+
+Gemessen, dann von Markus entschieden:
+
+1. **Suche: ja, mit Pagefind.** Der Index entsteht beim Build (Probelauf
+   über den Build vom 2026-10-02: 154 Seiten in 0,3 s), kein Server, kein
+   Drittanbieter. Das Suchfeld im Kopf ist ein einfaches Formular, das auf
+   `/suche/` führt — **alle anderen Seiten laden dafür nichts.** Erst
+   `/suche/` lädt beim Benutzen rund 45 KB Skript, den WebAssembly-Teil und
+   kleine Indexstücke. Ohne JavaScript zeigt `/suche/` einen Hinweis auf
+   Termine und Lexikon. Die Ergebnisse sind kein Inhalt, die JS-Regel ist
+   damit nicht berührt.
+2. **Begriff im Fokus: wöchentlich rotierend.** Je Kalenderwoche der
+   nächste veröffentlichte Lexikonbegriff in fester Reihenfolge; die Woche
+   wird in der Zeitzone der Site berechnet (`src/lib/datum.ts`). Er wechselt
+   mit dem ersten Build der Woche — die Tagesläufe bauen ohnehin täglich.
+3. **Schriften: vier statische Schnitte, gemessen 94 KB — gebaut 76 KB**
+   (die schmale Archivo kommt bei Google als variable Datei und ist mit
+   fontTools auf einen festen Schnitt gebracht; `scripts/test-schriften.ts`
+   hält Dateien, Lizenzen und ein Budget von 90 KB fest) (westeuropäischer
+   Zeichensatz, gemessen an der Auslieferung von Google Fonts): Archivo
+   schmal/800 (36 KB), Archivo 700 (14 KB), Newsreader 400 (21 KB),
+   Newsreader 600 (23 KB). Archivo 600 entfällt, 700 übernimmt. Kursiv
+   stellt der Browser schräg, es gibt keine eigene Datei. Verworfen:
+   fünf Schnitte (107 KB), Archivo variabel (87 KB allein, mit Newsreader
+   131 KB). Zum Vergleich: Die Startseite wiegt heute 1,6 KB (gzip) — die
+   Schriften sind beim ersten Besuch das Schwerste, danach im Cache.
+   `font-display: swap`, vorgeladen wird nur Newsreader 400.
+4. **Logo: vorerst die vorhandene PNG** (300 × 120 px), später durch ein
+   Original ersetzt. Die helle Fassung bleibt bis dahin die umgefärbte.
+5. **Ressort Frisur** bleibt mit einem Begriff; die Lücken werden vor dem
+   Go-Live geschlossen, sonst wird nachgesteuert.

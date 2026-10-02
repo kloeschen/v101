@@ -18,6 +18,46 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Nur für Screenreader sichtbar (Beschriftung des Suchfelds im Kopf). */
+.nurleser { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* --- Seitenkopf (Plattenhülle, Etappe 2) ---------------------------- */
+.kopf { border-bottom: var(--linie-kraeftig); }
+.kopf__zeile,
+.kopf__ressorts { max-width: var(--inhalt-breite); margin: 0 auto; padding-inline: var(--raum-4); }
+.kopf__zeile { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--raum-3) var(--raum-5); padding-block: var(--raum-3) 0; }
+.kopf__logo { display: block; line-height: 0; }
+.kopf__logo img { width: 200px; height: auto; }
+.kopf__suche { flex: 1 1 min(18rem, 100%); max-width: 32rem; min-width: 0; display: flex; }
+.kopf__suche input,
+.suche input { flex: 1; min-width: 0; min-height: 48px; padding: 0 var(--raum-3); border: 2px solid var(--farbe-text); border-right: 0; border-radius: 0; background: var(--farbe-flaeche); color: var(--farbe-text); font: inherit; }
+.kopf__suche button,
+.suche button { min-height: 48px; padding: 0 var(--raum-4); border: 2px solid var(--farbe-text); border-radius: 0; background: var(--farbe-text); color: var(--farbe-grund); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+.kopf__melden { display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--raum-3); border: 2px solid var(--farbe-text); color: var(--farbe-text); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
+.kopf__melden:visited { color: var(--farbe-text); }
+nav.kopf__ressorts { display: flex; flex-wrap: wrap; gap: var(--raum-1) var(--raum-4); padding-block: var(--raum-2); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--farbe-text); }
+.kopf__ressorts a { display: inline-flex; align-items: center; min-height: 44px; color: var(--farbe-text); text-decoration: none; border-bottom: 3px solid transparent; }
+.kopf__ressorts a:visited { color: var(--farbe-text); }
+.kopf__ressorts a:hover { border-bottom-color: var(--farbe-linie); }
+.kopf__ressorts a[aria-current="page"] { border-bottom-color: var(--farbe-text); }
+/* Auf dem Handy enger, damit die Leiste in zwei Zeilen passt; die Ziele
+   bleiben 44 px hoch. */
+@media (max-width: 30rem) {
+  nav.kopf__ressorts { gap: 0 var(--raum-3); font-size: 0.82rem; letter-spacing: 0.04em; }
+  .kopf__logo img { width: 160px; }
+  .kopf__melden { min-height: 44px; }
+}
+
+/* --- Suchseite ------------------------------------------------------ */
+.suche label { display: block; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text-leise); margin-bottom: var(--raum-1); }
+.suche__zeile { display: flex; max-width: 36rem; }
+.suche__stand { color: var(--farbe-text-leise); margin-top: var(--raum-4); }
+.suche__treffer { list-style: none; margin: 0; padding: 0; }
+.suche__treffer li { padding: var(--raum-3) 0; border-bottom: var(--linie); }
+.suche__treffer a { font-weight: 600; font-size: 1.1em; }
+.suche__treffer p { margin: var(--raum-1) 0 0; color: var(--farbe-text-leise); }
+.suche__treffer mark { background: none; color: var(--farbe-text); font-weight: 600; }
+
 main {
   max-width: var(--inhalt-breite);
   margin: 0 auto;
@@ -26,13 +66,28 @@ main {
 
 article, .inhalt { max-width: var(--zeilenlaenge); }
 
-h1, h2, h3 { font-family: var(--schrift-titel); line-height: var(--zeilenhoehe-titel); text-wrap: balance; }
-h1 { font-size: var(--groesse-h1); margin: 0 0 var(--raum-3); }
+h1, h2, h3 { font-family: var(--schrift-titel); font-weight: 600; line-height: var(--zeilenhoehe-titel); text-wrap: balance; }
+/* Plattenhülle: Die H1 ist die Plakatzeile — schmal, fett, Versalien. Sie
+   passt sich der Breite an und darf trennen, damit auch „Taillenmieder"
+   oder ein langer Terminname auf ein Handy passt. Die übrigen Überschriften
+   bleiben ruhig in der Textschrift: je Abschnitt nur ein lautes Element. */
+h1 {
+  font-family: var(--schrift-plakat);
+  font-weight: 800;
+  font-size: var(--groesse-h1);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  margin: 0 0 var(--raum-4);
+}
 h2 { font-size: var(--groesse-h2); margin: var(--raum-5) 0 var(--raum-2); }
 h3 { font-size: var(--groesse-h3); margin: var(--raum-4) 0 var(--raum-1); }
 p { margin: 0 0 var(--raum-3); }
 
-a { color: var(--farbe-link); text-underline-offset: 0.15em; }
+a { color: var(--farbe-link); text-decoration-thickness: 1px; text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
 a:visited { color: var(--farbe-link-besucht); }
 a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
 
@@ -44,7 +99,7 @@ a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
    darunter — die dt/dd-Beziehung bleibt in beiden Fällen erhalten. */
 .fakten { margin: var(--raum-4) 0; border-top: var(--linie); }
 .fakten__zeile { display: grid; gap: var(--raum-1); padding: var(--raum-2) 0; border-bottom: var(--linie); }
-.fakten dt { font-family: var(--schrift-ui); font-size: var(--groesse-klein); color: var(--farbe-text-leise); }
+.fakten dt { font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text-leise); }
 .fakten dd { margin: 0; }
 @media (min-width: 40rem) {
   .fakten__zeile { grid-template-columns: minmax(9rem, 14rem) 1fr; gap: var(--raum-3); align-items: baseline; }
@@ -56,7 +111,7 @@ a:focus-visible { outline: 2px solid var(--farbe-akzent); outline-offset: 2px; }
 .liste__beschreibung { color: var(--farbe-text-leise); font-size: var(--groesse-klein); }
 /* Das Datum der Terminliste: eine Angabe, kein Titel -- deshalb leise und
    in der Oberflaechenschrift, wie die Kurzbeschreibung daneben. */
-.liste__datum { color: var(--farbe-text-leise); font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
+.liste__datum { color: var(--farbe-akzent); font-family: var(--schrift-etikett); font-weight: 700; font-size: var(--groesse-klein); }
 
 /* Die Sammlungen auf der Startseite. Gleiche Abstufung wie in den Listen:
    der Name traegt, Zahl und Satz ordnen ein. */
@@ -78,6 +133,148 @@ nav[aria-label] { font-family: var(--schrift-ui); font-size: var(--groesse-klein
 nav[aria-label="Hauptnavigation"] { max-width: var(--inhalt-breite); margin: 0 auto; padding: var(--raum-4); border-top: var(--linie); display: flex; gap: var(--raum-3); flex-wrap: wrap; }
 /* Impressum und Datenschutz unter der Navigation: gleiche Breite und Schrift, ohne eigene Linie. */
 body > footer { max-width: var(--inhalt-breite); margin: 0 auto; padding: 0 var(--raum-4) var(--raum-4); display: flex; gap: var(--raum-3); flex-wrap: wrap; font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
+
+/* --- Entitätsseiten (Plattenhülle, Etappe 3) ------------------------
+   Nur CSS gegen das vorhandene Markup. Im DOM bleibt der Faktenblock vor
+   dem Fließtext (Extrahierbarkeit); auf breiten Bildschirmen steht er
+   optisch als Spalte daneben. Unterhalb von 64rem bleibt alles gestapelt. */
+nav[aria-label="Brotkrumen"] { margin-bottom: var(--raum-3); }
+/* Katalognummer über der H1 (V101-02 · Mode): ein Etikett wie auf einem
+   Plattenlabel, Tinte auf Papier umgekehrt. Kein Rosé — das heißt „jetzt". */
+.katalognummer { margin: 0 0 var(--raum-2); }
+.katalognummer,
+.katalognummer a { display: inline-block; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.katalognummer { padding: var(--raum-1) var(--raum-2); background: var(--farbe-text); color: var(--farbe-grund); }
+.katalognummer a, .katalognummer a:visited { color: inherit; text-decoration: none; min-height: 24px; }
+.katalognummer a:hover { text-decoration: underline; }
+.katalognummer a:focus-visible { outline-color: var(--farbe-akzent); }
+
+/* Antwortkapsel: der erste Absatz des Fließtexts trägt die Antwort. */
+.inhalt > p:first-child { font-size: 1.2em; line-height: 1.5; padding-top: var(--raum-3); border-top: var(--linie-kraeftig); }
+
+@media (min-width: 64rem) {
+  main:has(> article > .fakten) { max-width: var(--inhalt-breite); }
+  article:has(> .fakten) {
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, var(--zeilenlaenge)) minmax(17rem, 23rem);
+    column-gap: var(--raum-6);
+    align-items: start;
+  }
+  article:has(> .fakten) > * { grid-column: 1; }
+  article:has(> .fakten) > h1 { grid-column: 1 / -1; }
+  article > .fakten {
+    grid-column: 2;
+    grid-row: 2 / span 40;
+    margin-top: 0;
+    /* Bewusst nicht `position: sticky`: Lange Faktenblöcke (Abgrenzung im
+       Lexikon) sind höher als der Bildschirm, ihr Ende wäre dann nicht
+       lesbar. */
+  }
+  /* In der schmalen Spalte stehen Feldname und Wert untereinander. */
+  article > .fakten .fakten__zeile { grid-template-columns: 1fr; gap: var(--raum-1); }
+}
+
+/* Der Faktenblock als Karteikarte: kräftiger Rahmen, Fläche, Zeilen. */
+.fakten { border: 2px solid var(--farbe-text); background: var(--farbe-flaeche); }
+.fakten__zeile { padding: var(--raum-2) var(--raum-3); }
+.fakten__zeile:last-child { border-bottom: 0; }
+
+/* Datumsfläche: Rosé heißt „jetzt / demnächst" — der Beginn eines
+   Termins ist genau das. Nur diese Zeile, sonst nichts. */
+.fakten__zeile[data-feld="beginn"] { background: var(--farbe-akzent); color: var(--farbe-akzent-text); }
+.fakten__zeile[data-feld="beginn"] dt { color: inherit; }
+.fakten__zeile[data-feld="beginn"] dd { font-family: var(--schrift-plakat); font-weight: 800; font-size: 2rem; line-height: 1; text-transform: uppercase; }
+
+/* Abgeleitete Listen: Abschnittskante statt Kasten. */
+.liste { border-top: var(--linie-kraeftig); padding-top: var(--raum-2); }
+.liste h2 { margin-top: var(--raum-2); }
+.liste--knapp ul { display: flex; flex-wrap: wrap; gap: var(--raum-1) var(--raum-4); }
+.liste--knapp li { border-bottom: 0; padding: var(--raum-1) 0; }
+
+/* Belege: Prüfvermerk und Quellen in der Etikettschrift. */
+.belege__stand { margin-bottom: var(--raum-2); }
+.belege__quellen summary { display: inline-flex; align-items: center; min-height: 44px; cursor: pointer; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text); }
+.belege__quellen ul { margin: var(--raum-2) 0 0; padding-left: var(--raum-4); }
+.belege__quellen li { margin-bottom: var(--raum-2); }
+.melden { font-family: var(--schrift-ui); font-size: var(--groesse-klein); }
+
+/* Entwurfsmarker in Listen (nur Vorschau, DESIGN-BRIEF „Was ein Entwurf
+   gestalterisch braucht"): ein Etikett, das mitliest — Text und Rahmen,
+   nicht Farbe allein; nimmt keinen Platz, den die Produktion freiließe. */
+.liste__entwurf { display: inline-block; margin-left: var(--raum-2); padding: 0 var(--raum-2); border: 1px solid var(--farbe-hinweis-linie); background: var(--farbe-hinweis-grund); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 0.1em; }
+
+/* --- Startseite (Plattenhülle, Etappe 4) ---------------------------
+   Flächen nur hier und nur, wie der Brief sie vergibt: Rosé für das
+   Wochenende (jetzt / demnächst), Tinte für den Begriff im Fokus,
+   Schachbrett für die Ressorts. Alles andere bleibt Linie auf Papier. */
+.etikett { margin: 0 0 var(--raum-1); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--farbe-text-leise); }
+.start > section, .start > div { margin: var(--raum-5) 0; }
+.start h2 { margin-top: var(--raum-2); }
+.start > div .liste { margin: 0; }
+.start__mehr { margin: var(--raum-2) 0 0; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.start__aufmacher { border-top: var(--linie-kraeftig); padding-top: var(--raum-2); max-width: 52rem; }
+.start__aufmacher h2 { font-family: var(--schrift-plakat); font-weight: 800; font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3rem); line-height: 1; text-transform: uppercase; hyphens: auto; overflow-wrap: break-word; }
+.start__aufmacher h2 a { text-decoration: none; color: var(--farbe-text); }
+.start__aufmacher h2 a:hover { text-decoration: underline; }
+.start__aufmacher p:last-child { font-size: 1.1em; max-width: var(--zeilenlaenge); }
+
+/* Termine: Wochenende als rosé Fläche, der Kalender daneben als Liste. */
+.start__termine { display: grid; gap: var(--raum-5); }
+@media (min-width: 56rem) {
+  .start__termine:has(> .start__wochenende) { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+}
+.start__wochenende { background: var(--farbe-akzent); color: var(--farbe-akzent-text); padding: var(--raum-3) var(--raum-4) var(--raum-4); }
+.start__wochenende .liste { border-top: 0; padding-top: 0; }
+.start__wochenende h2 { font-family: var(--schrift-plakat); font-weight: 800; text-transform: uppercase; line-height: 1; }
+.start__wochenende a,
+.start__wochenende a:visited,
+.start__wochenende .liste__datum { color: inherit; }
+.start__wochenende a:focus-visible { outline-color: var(--farbe-akzent-text); }
+.start__wochenende .liste li { border-bottom-color: currentColor; }
+.start__kalender .liste--knapp ul,
+.start__wochenende .liste--knapp ul { display: block; }
+.start__kalender .liste--knapp li,
+.start__wochenende .liste--knapp li { border-bottom: var(--linie); padding: var(--raum-2) 0; }
+.liste__entwurf { color: var(--farbe-text); }
+.liste__zusatz { color: var(--farbe-text-leise); font-size: var(--groesse-klein); }
+
+/* Ressorts: sechs Kacheln, Schachbrett Tinte/Papier. Die Nummer ist die
+   Katalognummer wie auf einem Plattenlabel. */
+/* Feste Spaltenzahlen (2 / 3 / 6), weil das Schachbrett davon abhängt:
+   Bei zwei Spalten sind die dunklen Felder 1, 4, 5, 8 …, bei drei und
+   sechs die ungeraden. */
+.kacheln { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: 2px solid var(--farbe-text); }
+.kacheln a { display: flex; flex-direction: column; gap: var(--raum-1); min-height: 7rem; height: 100%; padding: var(--raum-3); text-decoration: none; background: var(--farbe-flaeche); color: var(--farbe-text); }
+@media (max-width: 39.99rem) {
+  .kacheln li:nth-child(4n+1) a,
+  .kacheln li:nth-child(4n) a { background: var(--farbe-text); color: var(--farbe-grund); }
+}
+@media (min-width: 40rem) {
+  .kacheln { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .kacheln li:nth-child(odd) a { background: var(--farbe-text); color: var(--farbe-grund); }
+}
+@media (min-width: 64rem) {
+  .kacheln { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .kacheln a { min-height: 8rem; }
+}
+.kacheln a:hover .kacheln__name { text-decoration: underline; }
+.kacheln a:focus-visible { outline: 3px solid var(--farbe-akzent); outline-offset: -3px; }
+.kacheln__nummer,
+.kacheln__anzahl { font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.kacheln__name { font-family: var(--schrift-plakat); font-weight: 800; font-size: clamp(1.6rem, 1.3rem + 1vw, 2rem); overflow-wrap: break-word; line-height: 1; text-transform: uppercase; margin-top: auto; }
+
+/* Begriff im Fokus: Tintenfläche. */
+.start__fokus { background: var(--farbe-text); color: var(--farbe-grund); padding: var(--raum-4); max-width: 52rem; }
+.start__fokus .etikett { color: inherit; }
+.start__fokus a, .start__fokus a:visited { color: inherit; }
+.start__fokus a:focus-visible { outline-color: var(--farbe-grund); }
+.start__fokus h2 { font-family: var(--schrift-plakat); font-weight: 800; font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem); line-height: 1; text-transform: uppercase; hyphens: auto; overflow-wrap: break-word; }
+.start__fokus h2 a { text-decoration: none; }
+.start__fokus h2 a:hover { text-decoration: underline; }
+
+.start__belegt { border-top: var(--linie-kraeftig); padding-top: var(--raum-2); max-width: var(--zeilenlaenge); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }

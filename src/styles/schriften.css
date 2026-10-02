@@ -1,0 +1,48 @@
+/*
+ * Schriften, selbst gehostet (Entscheidung 2026-10-02, DESIGN-BRIEF.md).
+ *
+ * Vier statische Schnitte, westeuropäischer Zeichensatz, zusammen 76 KB.
+ * Herkunft: Google Fonts (SIL Open Font License 1.1, Lizenztexte in
+ * public/schriften/). Die schmale Archivo kommt dort als variable Datei
+ * mit Breitenachse; sie ist mit fontTools auf Breite 66 und Gewicht 800
+ * festgelegt, damit nur dieser eine Schnitt geladen wird.
+ *
+ * `font-display: swap`: Text erscheint sofort in der Systemschrift und
+ * wechselt, sobald die Datei da ist — auf dem Festivalgelände mit schlechtem
+ * Empfang ist das besser als unsichtbarer Text.
+ *
+ * Archivo gibt es nur in 700 und als Schmal-800. Wer `--schrift-etikett`
+ * mit normalem Gewicht setzt, bekommt trotzdem 700 — Etiketten sind fett.
+ */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/schriften/newsreader-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/schriften/newsreader-600.woff2") format("woff2");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archivo";
+  src: url("/schriften/archivo-700.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Archivo Schmal";
+  src: url("/schriften/archivo-schmal-800.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}

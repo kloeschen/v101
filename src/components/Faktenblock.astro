@@ -28,7 +28,9 @@ const zeilen = faktZeilen(collection, daten, registry);
   <dl class="fakten">
     {zeilen.map((zeile) => (
       <div class="fakten__zeile" data-feld={zeile.feld}>
-        <dt>{zeile.label}</dt>
+        {/* Feldnamen nicht in den Suchindex: Pagefind klebt sie sonst an den
+            Wert („DefinitionEin Petticoat …"), und gesucht wird der Wert. */}
+        <dt data-pagefind-ignore>{zeile.label}</dt>
         <dd>
           {zeile.stuecke.map((s, i) => (
             <>

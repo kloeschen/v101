@@ -174,6 +174,19 @@ export function tageBis(datum: Datumswert, jetzt: Date = new Date(), zone: strin
 }
 
 /**
+ * Fortlaufende Nummer des Kalendertags, auf den die Wanduhr in `zone` zum
+ * Zeitpunkt `d` steht: Tage seit dem 1. Januar 1970. Für Rechnungen über
+ * Wochen und Wochentage, die sonst in der Zeitzone des Prozesses landeten
+ * (Lektion 1). Ein unlesbares Datum liefert NaN.
+ */
+export function tagesnummer(datum: Datumswert, zone: string = site.zeitzone): number {
+  const d = datum instanceof Date ? datum : new Date(datum);
+  if (Number.isNaN(d.getTime())) return NaN;
+  const w = wanduhr(d, zone);
+  return Math.round(Date.UTC(w.year, w.month - 1, w.day) / 86_400_000);
+}
+
+/**
  * Die Gegenprobe. Kein eigener Vergleich, damit es keinen Rand gibt, an dem
  * ein Termin weder kommend noch vergangen ist.
  */
