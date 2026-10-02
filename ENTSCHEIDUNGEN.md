@@ -17,6 +17,52 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 
 ---
 
+## 2026-10-02 — Line-up als Zeitplan: neues Feld `programm`
+
+**Auftrag Markus:** den Zeitplan planen und bauen. Entschieden in der
+Sitzung:
+- Ein Feld `programm` mit einer Art je Punkt: Auftritt, DJ, Kurs,
+  Sonstiges. Damit sind auch Kurse abgedeckt. Verworfen wurde „nur
+  Auftritte".
+- Nur auf der Seite, nicht im JSON-LD (`subEvent`). Eine falsche Uhrzeit
+  soll nicht auch noch an Suchmaschinen gehen; ergänzen lässt es sich
+  später.
+
+**Gemessen vor dem Bau:** Von 43 Terminen nennt genau einer Uhrzeiten je
+Programmpunkt, das Rock'n'Roll & Boogie Woogie Weekend (Liveband Freitag
+20:30, zwei Kurse am Samstag). Sonst gibt es Einlass und Beginn, und das
+ist schon `beginn` des Termins. Das Feld ist also für Festivals und
+Weekender gebaut, nicht für den Konzertabend.
+
+**Form:** je Punkt `beginn` (Pflicht, mit Uhrzeit und Offset), `ende`,
+`art`, `titel`, `band` (Slug, muss in `lineupBands` stehen) und `buehne`.
+`programm` ist belegpflichtig.
+
+**Die Schemaänderung liegt als Patch vor:** `docs/vorschlaege/programm.patch`.
+Der Guard sperrt `_schemas.ts` für Agenten auch mit Auftrag, wie bei den
+Läden & Studios. Markus spielt ihn mit `git apply` ein.
+
+**Schon gebaut, ohne Schema lauffähig:**
+- `src/lib/programm.ts`: Zeilen und Befunde. Ein Punkt muss im Zeitraum
+  liegen, dazu gilt die Nacht nach dem letzten Tag bis 06:00. Eine
+  Aftershow um 01:00 gehört zum Samstag.
+- Regel `event-programm` in validate-content.ts. Sie meldet auch Punkte
+  ohne Uhrzeit; das prüft sie am Text, weil man einem Date die fehlende
+  Uhrzeit nicht mehr ansieht.
+- Tabelle `src/components/Programm.astro`. Die Spalte „Tag" erscheint nur
+  bei mehreren Tagen, die Spalte „Bühne" nur, wenn eine Quelle eine nennt.
+- `scripts/test-programm.ts`, auch unter vier Prozesszeitzonen. Vier
+  Mutationen, jede schlägt an:
+  - Tag in UTC
+  - ohne Nachtprogramm
+  - ohne Line-up-Abgleich
+  - unsortiert
+
+**Erst nach dem Einspielen möglich:**
+- Fälle für `event-programm` in test-validate.ts. Bis dahin streicht der
+  strikte Vertrag das Feld nicht, er lehnt es ab.
+- Das Programm des Weekenders aus seinen vorhandenen Quellen.
+
 ## 2026-10-02 — Plattenhülle, Rest aus Etappe 3: Katalognummer, Werte, kein Zeitplan
 
 **Katalognummer über der H1.** Lexikoneinträge und Artikel eines Ressorts

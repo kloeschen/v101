@@ -204,6 +204,17 @@ nav[aria-label="Brotkrumen"] { margin-bottom: var(--raum-3); }
    nicht Farbe allein; nimmt keinen Platz, den die Produktion freiließe. */
 .liste__entwurf { display: inline-block; margin-left: var(--raum-2); padding: 0 var(--raum-2); border: 1px solid var(--farbe-hinweis-linie); background: var(--farbe-hinweis-grund); font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 0.1em; }
 
+/* --- Programm eines Termins ------------------------------------------
+   Tabelle unter dem Fließtext: Zeit in der Etikettschrift, ein neuer Tag
+   mit kräftiger Kante. Auf schmalen Bildschirmen scrollt nur die Tabelle. */
+.programm { margin: var(--raum-5) 0; border-top: var(--linie-kraeftig); padding-top: var(--raum-2); max-width: var(--zeilenlaenge); overflow-x: auto; }
+.programm table { width: 100%; border-collapse: collapse; }
+.programm th { text-align: left; font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text-leise); padding: var(--raum-1) var(--raum-3) var(--raum-1) 0; border-bottom: var(--linie); }
+.programm td { padding: var(--raum-2) var(--raum-3) var(--raum-2) 0; border-bottom: var(--linie); vertical-align: baseline; }
+.programm__neuer-tag td { border-top: 2px solid var(--farbe-text); }
+.programm__tag, .programm__zeit { white-space: nowrap; font-family: var(--schrift-etikett); font-weight: 700; font-size: var(--groesse-klein); }
+.programm__art { font-family: var(--schrift-etikett); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--farbe-text-leise); }
+
 /* --- Startseite (Plattenhülle, Etappe 4) ---------------------------
    Flächen nur hier und nur, wie der Brief sie vergibt: Rosé für das
    Wochenende (jetzt / demnächst), Tinte für den Begriff im Fokus,
