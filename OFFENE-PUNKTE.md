@@ -32,6 +32,28 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`mensch` **„Boogie Woogie" in Terminen: Klavierstil oder Tanz?** Gefunden
+am 2026-10-02 beim Entwurf der Eventseite; derselbe Fall wie beim
+Rock'n'Roll & Boogie Woogie Weekend (am 2026-10-01 auf `genres:
+[rocknroll]` korrigiert). `lexikon/boogie-woogie` ist der Klavierstil, der
+Tanz ist `lexikon/boogie-woogie-tanz`. **`genres` mit `boogie-woogie`:**
+`events/rockabilly-convention-2027` (Quelle: „Rockabilly Convention meets
+Rock'n'Roll & Boogie Woogie" — hier kann wirklich die Musik gemeint sein),
+`events/boogie-mix-haslinger-hof-2026-11-13` und `…-2026-12-11` (Flyer
+nennt „Boogie Woogie, Rock'n'Roll, Rockabilly, Swing" für einen
+Tanzabend). **Fließtext-Links auf den Klavierstil:** dieselben drei plus
+`…-2027-01-08`, `herbstparty-rock-dock-teddys-perchtoldsdorf-2026-11-20`
+(„laufen Boogie Woogie, Swing und Standard-Latein" — klingt nach Tänzen)
+und `rock-this-christmas-perchtoldsdorf-2026-12-18` („Titel für Boogie
+Woogie, Rock'n'Roll und Swing" — Musik zum Tanzen). Richtig verlinkt ist
+`boogie-party-sonntagnachmittag-2026-09-20`, das den Unterschied eigens
+erklärt. Zu entscheiden: (1) eine Regel — nennt ein Tanzabend „Boogie
+Woogie", ist der Tanz gemeint, außer die Quelle spricht von Musik oder
+Klavier?; (2) ob der Tanz in `genres` stehen darf (bisher steht dort nie
+ein Tanzeintrag) oder `genres` dann ohne Boogie bleibt; (3) die
+Convention einzeln, gegen die Quelle. Danach baut ein Lauf die Stellen um
+und prüft jede gegen ihre Quelle.
+
 `mensch` **Portal-Gestaltung „Plattenhülle": vier Fragen vor dem Umbau.**
 Richtung entschieden am 2026-10-02 (ENTSCHEIDUNGEN, `DESIGN-BRIEF.md`,
 Abschnitte „Das Gestaltungssystem", „Neue Bausteine", „Offene Fragen").
