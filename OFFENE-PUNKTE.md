@@ -32,16 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Artikel A4: Rockabilly oder Rock'n'Roll? (vergleich, Säule
-`musik`).** Entscheidung Markus, 2026-10-03. Hauptentität
-`lexikon/rockabilly`, Ausgangspunkt dessen `abgrenzung`. PAA-Fragen:
-Unterschied Rockabilly/Rock'n'Roll (18), Welche Musikrichtung ist
-Rockabilly? (13). Nicht doppeln: „Welcher Jahrgang ist Rockabilly?" und
-„Ist Rockabilly 70er?" beantwortet seit dem 2026-10-02 die FAQ von
-`lexikon/rockabilly`; der Artikel verlinkt dorthin, statt sie zu
-wiederholen. Quellen zur Musikgeschichte (Nachschlagewerke, Britannica,
-Fachliteratur), Widersprüche in den Text (Regel 5). Keine Songtexte.
-
 `frei` **Artikel A7: Rockabilly-Frisuren (liste, Säule `frisur`).**
 Entscheidung Markus, 2026-10-03. Fragen: Rockabilly-Frisur (2+1),
 Pompadour (8+4+2+1), Elvis-Frisur. Baut auf den Lexikon-Entwürfen
