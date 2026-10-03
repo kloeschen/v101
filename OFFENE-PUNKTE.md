@@ -95,6 +95,28 @@ dann die Kernaussagen, Belegpflicht-Warnungen an bestehenden Artikeln
 möglich; (c) den Gegenleser `body:`-Abschnitte prüfen lassen — deckt den
 Fließtext ab, ist aber das größte Stück Arbeit. Empfehlung: (b).
 
+`mensch` **Zwei grüne PRs ergeben ein rotes `main`.** Fund vom 2026-10-03:
+Der Tageslauf für den Pillar (#145) setzte bei `artikel/petticoat-tragen`,
+damals Entwurf, `gehoertZu: der-rockabilly-look`. Die Freigabe (#143) war
+vorher vom alten Stand abgezweigt und veröffentlichte denselben Artikel.
+Jeder PR war für sich grün, zusammen ergaben sie einen veröffentlichten
+Artikel mit Verweis auf einen Entwurf (`verweis-auf-entwurf`) und
+Autolink-Drift. `main` war rot, bis #148 es reparierte; aufgefallen ist
+es erst am nächsten PR. Die Freigabeprüfung sieht nur ihren eigenen
+Stand, und die CI eines PRs läuft gegen das `main` zum Zeitpunkt des
+Pushs, nicht des Merges. Zu entscheiden: (1) In den GitHub-Einstellungen
+für `main` „Require branches to be up to date before merging" — dann
+läuft jeder PR nach einem fremden Merge erneut, bevor er gemergt werden
+kann. Verhindert den Fall, ist eine Einstellung und kein Code, kostet
+aber bei jedem Merge einen Update-Klick oder -Lauf, auch bei den
+Bot-PRs der Freigabe und den selbst mergenden Tagesläufen; (2) der
+Freigabelauf warnt, wenn ein offener PR eine der freizugebenden Dateien
+ändert (ähnlich `warteschlange:belegt`) — meldet nur, verhindert nichts;
+(3) lassen: Die CI auf `main` zeigt den Bruch nach dem Merge, die
+Reparatur kostet einen PR. Empfehlung: (1), weil nur sie den Fall
+verhindert; vorher prüfen, ob die Tagesläufe ihren Zweig vor dem Merge
+aktualisieren können.
+
 `mensch` **Agenten-Arbeitskopien liegen unter dem gesperrten `.claude/`.**
 Befund vom 2026-10-02, ausführlich in `docs/lektionen.md`, Lektion 31.
 Das Agent-Werkzeug legt Arbeitskopien unter `.claude/worktrees/` an, und
