@@ -23,6 +23,7 @@ import {
   vergleiche,
   vergleichAlles,
   alsMarkdown,
+  ohnePruefpunkte,
   ortszeit,
   type Antwort,
   type Kontext,
@@ -202,6 +203,30 @@ gleich("Quelle nicht erreichbar: nicht prüfbar", urteil("ort", { id: id("ort"),
   pruefe("…und zeigt sie offen mit beiden Werten", /\*\*Abweichungen\*\*[\s\S]*beginn \| 2026-10-24 20:00 \| 2026-10-24 21:00/.test(md), md);
   pruefe("…mit dem Zitat als Link zur Quelle", md.includes(`[Beginn 21 Uhr](${Q1})`), md);
   pruefe("Bestätigtes steht eingeklappt", /<details><summary>Bestätigt \(5\)<\/summary>/.test(md), md);
+}
+
+/* --- 5. Einträge ohne Prüfpunkte (seit 2026-10-03) ---------------------- */
+/*
+ * Ein Artikel hat keine belegpflichtigen Felder, also keine Prüfpunkte. Der
+ * Bericht darf darüber nicht „0 Abweichungen" sagen. Lebenszeichen: Der
+ * Artikel ist ein vollständiger Eintrag mit Quelle — dass er keine
+ * Prüfpunkte hat, liegt an der Collection, nicht an fehlenden Daten.
+ */
+{
+  const artikel = eintrag("artikel", "petticoat-test", { name: "Petticoat tragen", kurzbeschreibung: "Wie man einen Petticoat trägt.", quellen: [{ url: Q1, felder: ["kurzbeschreibung"] }] });
+  pruefe("Lebenszeichen: der Artikel hat Daten", artikel.daten?.name === "Petticoat tragen");
+  gleich("ein Artikel hat keine Prüfpunkte", auftragFuer([artikel]).pruefpunkte.length, 0);
+  gleich("…und steht in der Liste ohne Prüfpunkte", ohnePruefpunkte([termin, artikel]), ["artikel/petticoat-test"]);
+  gleich("…der Termin daneben nicht", ohnePruefpunkte([termin]), []);
+
+  const leer = alsMarkdown([], ohnePruefpunkte([artikel]));
+  pruefe("ohne Prüfpunkte heißt es „nicht anwendbar\"", leer.includes("**Nicht anwendbar:** 0 Prüfpunkte"), leer);
+  pruefe("…und nicht „0 Abweichung(en)\"", !/Abweichung/.test(leer), leer);
+  pruefe("…und nennt den Eintrag", leer.includes("`artikel/petticoat-test`"), leer);
+
+  const gemischt = alsMarkdown(vergleichAlles(auftrag, vollstaendig, k), ohnePruefpunkte([termin, artikel]));
+  pruefe("gemischt: der Termin wird gezählt", gemischt.includes("**0 Abweichung(en)**"), gemischt.slice(0, 300));
+  pruefe("…und der Artikel steht als nicht gegengelesen da", gemischt.includes("nicht gegengelesen: `artikel/petticoat-test`"), gemischt.slice(0, 400));
 }
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);

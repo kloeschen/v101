@@ -56,28 +56,6 @@ im PR sagen. Die Widersprüche aus den Lexikoneinträgen (Pompadour und
 Madame de Pompadour, Erfinder des Ducktail) nicht neu entscheiden,
 sondern übernehmen, wie sie dort zugeordnet sind.
 
-`mensch` **Nachprüfung kurz vor dem Termin löscht den Stale-Posten nicht.**
-Fund vom 2026-10-02: Boppin'B Barsinghausen (03.10.) wurde um 11:58 UTC
-gegen die Quelle nachgeprüft (Redaktionsnotiz, `abgerufenAm` 2026-10-02),
-`geprueftAm` blieb aber auf 2026-09-23 — auf freigegebenen Einträgen hat
-das Feld bisher nur die Freigabe geändert. `stale` meldet den Termin
-deshalb weiter als dringendsten Posten, und der Nachmittagslauf hat die
-Quelle ein zweites Mal geöffnet (unverändert). Das trifft jeden Lauf mit
-leerer Warteschlange, solange ein nachgeprüfter Termin im
-14-Tage-Fenster liegt. Zu entscheiden: (1) Ein Lauf darf `geprueftAm`
-eines freigegebenen Termins bei einer Nachprüfung setzen — einfach, aber
-das Feld hieße dann nicht mehr „von Markus geprüft"; (2) `stale-report`
-rechnet „termin-naht" vom jüngsten `abgerufenAm` einer `offiziell`-Quelle
-mit `beginn` in `felder` — kein Schemaeingriff, ein Test plus Mutation,
-die Freigabesemantik bleibt; (3) lassen — kostet höchstens einen leeren
-Lauf pro Termin, solange die Warteschlange leer ist. Empfehlung: (2). Nachtrag
-2026-10-03: Der Morgenlauf bekam Boppin'B am Konzerttag zum dritten Mal
-als dringendsten Posten; die Ankündigung war unverändert (keine Absage),
-der Lauf hat deshalb nichts eingetragen und den nächsten Stale-Posten
-(The Sinners, 10.10.) nachgeprüft. Ab jetzt steht auch The Sinners
-trotz Nachprüfung bis zum 10.10. in `stale` — bei drei Läufen am Tag
-summiert sich (3) auf mehrere Doppelabrufe pro Termin.
-
 `mensch` **Vintage freigeben.** Der Eintrag `lexikon/vintage` liegt seit
 dem 2026-10-02 als Entwurf vor. Die Autolink-Frage ist entschieden
 (Markus, 2026-10-02): „Vintage" wird nur von Hand verlinkt
@@ -152,16 +130,14 @@ Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
 `mensch` **Gegenleser ist für Artikel blind.** Gefunden am 2026-10-02 beim
 ersten Artikel seit Einführung des Gegenlesers (`artikel/petticoat-tragen`,
 PR #122): `belegpflichtigeFelder.artikel` ist leer, also erzeugt
-`gegenlesen --auftrag` 0 Prüfpunkte, und der Abschnitt meldet „0
-Abweichungen", obwohl nichts gelesen wurde. Lexikon trifft es fast genauso
-(nur Ära und Herkunftsland). Zu entscheiden: (a) so lassen und den Abschnitt
-bei 0 Prüfpunkten „nicht anwendbar" statt „0 Abweichungen" melden lassen —
-klein, ehrlich, prüft aber weiter nichts; (b) `kurzbeschreibung` und `faq`
+`gegenlesen --auftrag` 0 Prüfpunkte. Lexikon trifft es fast genauso (nur
+Ära und Herkunftsland). Variante (a) ist seit dem 2026-10-03 umgesetzt:
+Der Abschnitt meldet „nicht anwendbar" und nennt Einträge ohne Prüfpunkte
+(ENTSCHEIDUNGEN.md). Noch zu entscheiden: (b) `kurzbeschreibung` und `faq`
 für Artikel belegpflichtig machen — Schemaänderung, der Gegenleser prüft
 dann die Kernaussagen, Belegpflicht-Warnungen an bestehenden Artikeln
 möglich; (c) den Gegenleser `body:`-Abschnitte prüfen lassen — deckt den
-Fließtext ab, ist aber das größte Stück Arbeit. Empfehlung: (a) sofort,
-(b) danach.
+Fließtext ab, ist aber das größte Stück Arbeit. Empfehlung: (b).
 
 `mensch` **Agenten-Arbeitskopien liegen unter dem gesperrten `.claude/`.**
 Befund vom 2026-10-02, ausführlich in `docs/lektionen.md`, Lektion 31.
