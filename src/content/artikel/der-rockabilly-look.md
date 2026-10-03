@@ -59,17 +59,18 @@ redaktionsnotiz: >-
   musik trägt lexikon/rockabilly bereits. Entsteht später ein Eintrag für
   den Look selbst, gehört er hierher.
 
-  SPOKES: artikel/petticoat-tragen (Entwurf) trägt ab diesem Lauf
-  `gehoertZu: der-rockabilly-look`. artikel/petticoat-reifrock-unterrock
-  trägt es NOCH NICHT, obwohl deren Redaktionsnotiz darauf wartet: Der
-  Vergleich ist freigegeben, dieser Pillar nicht, und `verweis-auf-entwurf`
-  macht einen solchen Verweis zu Recht zum Fehler. BEI DER FREIGABE DIESES
-  PILLARS dort `gehoertZu: der-rockabilly-look` nachtragen. Im Fließtext
-  ist nur der freigegebene Vergleich verlinkt; petticoat-tragen erreicht
-  der Leser über `gehoertZu`, ohne dass ein Link auf einen Entwurf
-  entsteht. Ebenso nicht verlinkt: lexikon/pompadour, lexikon/teddy-boy und
-  lexikon/vintage (alle Entwurf) — die Freigabe dieses Artikels hängt
-  damit an keinem anderen Eintrag.
+  SPOKES: Beide Artikel darunter tragen `gehoertZu: der-rockabilly-look`
+  NOCH NICHT. artikel/petticoat-reifrock-unterrock wartet laut
+  Redaktionsnotiz darauf; artikel/petticoat-tragen trug den Verweis kurz
+  (dieser Lauf, damals Entwurf) und verlor ihn am 2026-10-03 wieder, weil
+  die Freigabe #143 den Artikel zeitgleich veröffentlicht hat und
+  `verweis-auf-entwurf` einen Verweis von Freigegebenem auf diesen Pillar
+  zu Recht zum Fehler macht. BEI DER FREIGABE DIESES PILLARS in beiden
+  Artikeln `gehoertZu: der-rockabilly-look` nachtragen. Im Fließtext
+  ist nur der freigegebene Vergleich verlinkt. Pompadour, Teddy Boy und
+  Vintage waren beim Bau Entwürfe und deshalb nicht verlinkt; seit der
+  Freigabe #143 sind sie veröffentlicht, den Link auf teddy-boy hat der
+  Autolink am 2026-10-03 gesetzt (Vintage nur von Hand, NUR_VON_HAND).
 
   WAS DIE QUELLEN NICHT HERGEBEN, und darum nicht im Text steht: Keine der
   geöffneten Quellen sagt, dass Polka Dots, Gingham oder Hahnentritt
@@ -198,7 +199,7 @@ Ausführlicher ist die englische Wikipedia zum Greaser, dem amerikanischen Vorbi
 
 ## Woher der Rockabilly-Look kommt
 
-Der Look hat zwei Linien, eine amerikanische und eine britische. Die amerikanische ist die der Greaser: Arbeiterjugend der Nachkriegszeit, häufig an Hot Rods oder Motorrädern interessiert, mit den Frisuren der Rock-'n'-Roll-Stars. Die britische beginnt nach der englischen Wikipedia mit den Teddy Boys, der ersten Generation britischer Rockabilly-Fans, die lange Gehröcke im edwardianischen Stil, enge schwarze Röhrenhosen und Creepers trugen. Ihnen folgten in den Fünfzigern die Ton-Up Boys auf britischen Motorrädern, die als Rocker den Greaser-Look aus T-Shirt, Jeans, Lederjacke und pomadisierter Tolle übernahmen.
+Der Look hat zwei Linien, eine amerikanische und eine britische. Die amerikanische ist die der Greaser: Arbeiterjugend der Nachkriegszeit, häufig an Hot Rods oder Motorrädern interessiert, mit den Frisuren der Rock-'n'-Roll-Stars. Die britische beginnt nach der englischen Wikipedia mit den [Teddy Boys](/lexikon/teddy-boy/), der ersten Generation britischer Rockabilly-Fans, die lange Gehröcke im edwardianischen Stil, enge schwarze Röhrenhosen und Creepers trugen. Ihnen folgten in den Fünfzigern die Ton-Up Boys auf britischen Motorrädern, die als Rocker den Greaser-Look aus T-Shirt, Jeans, Lederjacke und pomadisierter Tolle übernahmen.
 
 Dass der Look heute lebt, ist eine Folge des Revivals. Nach der englischen Wikipedia weckten unter anderem das Teddy-Boy-Revival, der Film *American Graffiti* und die Fernsehserie *Happy Days* Neugier auf die Musik der Fünfziger, und besonders in England entstand ab den 1970er Jahren eine Revival-Szene um Plattensammler und Clubs.
 

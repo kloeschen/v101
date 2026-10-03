@@ -12,7 +12,6 @@ hauptentitaet:
   typ: lexikon
   slug: petticoat
 erwaehnteBegriffe: [petticoat, unterrock, reifrock, rockabilly, rocknroll-tanz]
-gehoertZu: der-rockabilly-look
 veroeffentlichtAm: 2026-10-02
 faq:
   - frage: Darf der Petticoat unter dem Kleid hervorschauen?
