@@ -18,6 +18,49 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-03 — Fünf offene Entscheidungen nach Messung
+
+**Entscheidung Markus**, jeweils nach Empfehlung mit Messung am Bestand.
+
+**Belegpflicht für `faq` und Artikel:** `faq` wird im Lexikon und bei
+Artikeln belegpflichtig, `kurzbeschreibung` bei Artikeln. Gemessen: alle
+12 Einträge mit FAQ und alle 5 Artikel sind schon gedeckt, die Regel
+erzeugt keine Nacharbeit. Nutzen: Schutz gegen Rückfall, und der
+Gegenleser liest Artikel künftig gegen. Grenze: Die Prüfung sieht, ob
+*eine* Quelle `faq` deckt, nicht jede Antwort — das bleibt Sache des
+Gegenlesers. Tests in #152; die Schemazeilen trägt Markus ein.
+
+**Tänze in `genres`:** erlaubt bei `tanzabend`, `workshop` und
+`weekender`, bei Bands nie; andere Kategorien als `genre` und `tanz`
+nirgends (Regel `genres-kategorie`, Rechnung in `src/lib/genres.ts`).
+Der Faktenblock zeigt bei Terminen „Musik" und „Tanz" in eigenen Zeilen.
+Gemessen: 26 von 33 künftigen Tanzterminen hatten kein Genre, der
+Prüfzettel meldete jeden als „Keine Genres". Verworfen: ein eigenes Feld
+`taenze` (Schemaänderung, dieselbe Nacharbeit) und „lassen" (26 Termine
+ohne Einordnung). Mutationsbeleg: Ohne Tanztypen, ohne Typprüfung, mit
+durchgelassenen Fremdkategorien und ohne Aufteilung im Faktenblock fällt
+jeweils genau die erwartete Prüfung. Die Nacharbeit ist ein `frei`-Posten.
+
+**Zwei grüne PRs ergeben ein rotes `main`:** Weg 1, die GitHub-Einstellung
+„Require branches to be up to date before merging" (setzt Markus).
+Kosten bewusst in Kauf genommen: nach jedem fremden Merge ein Update und
+ein CI-Lauf, bei Freigabe-PRs ein zweites „Approve workflows".
+
+**Startseite:** bleibt bei sechs Terminen, Wiedervorlage nach dem Go-Live
+mit Besucherzahlen (OFFENE-PUNKTE, „Später").
+
+**Agenten-Arbeitskopien unter `.claude/`:** nicht bauen. Die Sperre bleibt,
+der Umweg (eigener Klon je Agent im Scratchpad, Patch, Übernahme durch die
+Hauptsitzung) bleibt der Weg. Begründung: Jede Arbeitskopie enthält ihr
+eigenes `.claude/` samt `guard.mjs`; wer `.claude/worktrees/` freigibt,
+erlaubt einem Agenten, die Kopie der Sperre zu ändern und über seinen Zweig
+in einen PR zu bringen. Das mit einer verschachtelten Sperre abzufangen,
+macht die empfindlichste Stelle des Projekts komplizierter, um einen
+Arbeitsschritt zu sparen (Lektion 31).
+
+**Vintage:** seit #143 veröffentlicht; die sieben Handlinks sind ein
+`frei`-Posten.
+
 ## 2026-10-03 — „Boogie Woogie" an Tanzabenden meint den Tanz
 
 **Regel von Markus:** Nennt ein Tanzabend „Boogie Woogie", verlinkt der

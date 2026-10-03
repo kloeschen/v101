@@ -1137,6 +1137,64 @@ fall({
   erwartet: { "band-jahre": "fehler" },
 });
 
+/* ------------------------------------------------------------------ */
+/* genres-kategorie: Musik immer, Tanz nur bei Tanzterminen (2026-10-03) */
+/* ------------------------------------------------------------------ */
+/*
+ * Zwei Ziele mit eigener Kategorie: ein Tanz und ein Musikstil. Die
+ * Gegenproben (Tanzabend mit Tanz, Band mit Musik) sind das Lebenszeichen:
+ * Dieselben Ziele schlagen dort nicht an, die Regel unterscheidet also nach
+ * Kategorie und Terminart und nicht nach dem Vorhandensein von `genres`.
+ */
+fall({
+  name: "genres-kategorie: Tanzeintrag als Ziel",
+  datei: "lexikon/testtanz.md",
+  inhalt: md(lexFelder("Testtanz", { kategorie: "tanz" }), lexKoerper("Testtanz")),
+  verboten: ["schema"],
+});
+
+fall({
+  name: "genres-kategorie: Musikeintrag als Ziel",
+  datei: "lexikon/testmusik.md",
+  inhalt: md(lexFelder("Testmusik", { kategorie: "genre" }), lexKoerper("Testmusik")),
+  verboten: ["schema"],
+});
+
+fall({
+  name: "genres-kategorie: Tanzabend mit Musik und Tanz ist sauber",
+  datei: "events/genres-tanzabend.md",
+  inhalt: md(evFelder("Genres Tanzabend", { typ: "tanzabend", genres: "[testmusik, testtanz]" }), evKoerper("Genres Tanzabend")),
+  verboten: ["genres-kategorie", "referenzen", "schema"],
+});
+
+fall({
+  name: "genres-kategorie: Tanz bei einem Konzert ist ein Fehler",
+  datei: "events/genres-konzert-tanz.md",
+  inhalt: md(evFelder("Genres Konzert", { typ: "konzert", genres: "[testtanz]" }), evKoerper("Genres Konzert")),
+  erwartet: { "genres-kategorie": "fehler" },
+});
+
+fall({
+  name: "genres-kategorie: Modebegriff in genres ist auch beim Tanzabend ein Fehler",
+  datei: "events/genres-mode.md",
+  inhalt: md(evFelder("Genres Mode", { typ: "tanzabend", genres: "[tellerrock]" }), evKoerper("Genres Mode")),
+  erwartet: { "genres-kategorie": "fehler" },
+});
+
+fall({
+  name: "genres-kategorie: Tanz bei einer Band ist ein Fehler",
+  datei: "bands/genres-tanzband.md",
+  inhalt: md(bandFelder("Die Tanzenden", { genres: "[testtanz]" }), bandKoerper("Die Tanzenden")),
+  erwartet: { "genres-kategorie": "fehler" },
+});
+
+fall({
+  name: "genres-kategorie: Musik bei einer Band ist sauber",
+  datei: "bands/genres-musikband.md",
+  inhalt: md(bandFelder("Die Musikalischen", { genres: "[testmusik]" }), bandKoerper("Die Musikalischen")),
+  verboten: ["genres-kategorie", "referenzen", "schema"],
+});
+
 fall({
   name: "band-jahre: plausible Jahre sind sauber",
   datei: "bands/jahre-gut.md",

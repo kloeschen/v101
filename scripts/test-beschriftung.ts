@@ -94,6 +94,26 @@ const sae = faktZeilen("artikel", { saeule: "kustom-kulture" }, leer).find((z) =
 pruefe("Themenbereich kustom-kulture heißt Kustom Kulture", sae?.text === "Kustom Kulture", JSON.stringify(sae));
 pruefe("Themenbereich verlinkt seine Facettenseite", sae?.href === "/artikel/saeule/kustom-kulture/", JSON.stringify(sae));
 
+// Musik und Tanz getrennt (Entscheidung 2026-10-03, src/lib/genres.ts).
+// Ein Termin mit einem Musik- und einem Tanzeintrag zeigt zwei Zeilen,
+// eine Band mit denselben Daten behält ihre eine Zeile „Genres".
+{
+  const reg = buildRegistry([
+    { collection: "lexikon", slug: "rockabilly", daten: { name: "Rockabilly", kategorie: "genre" } },
+    { collection: "lexikon", slug: "boogie-woogie-tanz", daten: { name: "Boogie-Woogie (Tanz)", kategorie: "tanz" } },
+  ]);
+  const zeilen = faktZeilen("events", { genres: ["boogie-woogie-tanz", "rockabilly"] }, reg);
+  const musik = zeilen.find((z) => z.feld === "genres");
+  const tanz = zeilen.find((z) => z.feld === "genres-tanz");
+  pruefe("Termin: Musik steht unter „Musik\"", musik?.label === "Musik" && musik.stuecke.map((s) => s.text).join() === "Rockabilly", JSON.stringify(musik));
+  pruefe("Termin: Tanz steht unter „Tanz\" und ist verlinkt", tanz?.label === "Tanz" && tanz.stuecke[0]?.href === "/lexikon/boogie-woogie-tanz/", JSON.stringify(tanz));
+  pruefe("Termin: keine Zeile „Genres\" mehr", !zeilen.some((z) => z.label === "Genres"), JSON.stringify(zeilen));
+  const nurMusik = faktZeilen("events", { genres: ["rockabilly"] }, reg);
+  pruefe("Termin ohne Tanz: keine leere Zeile „Tanz\"", !nurMusik.some((z) => z.feld === "genres-tanz"), JSON.stringify(nurMusik));
+  const band = faktZeilen("bands", { genres: ["rockabilly"] }, reg).find((z) => z.feld === "genres");
+  pruefe("Band: Zeile heißt weiter „Genres\"", band?.label === "Genres", JSON.stringify(band));
+}
+
 console.log(`${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);
 for (const f of fehler) console.log(`  FEHLER  ${f}`);
 process.exit(fehler.length ? 1 : 0);
