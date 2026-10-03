@@ -24,6 +24,7 @@ import { RESERVIERTE_SEGMENTE } from "../src/lib/facetten";
 import { istVorbei, jahrIn } from "../src/lib/datum";
 import { segmentiere } from "../src/lib/links";
 import { programmBefunde } from "../src/lib/programm";
+import { genresBefunde } from "../src/lib/genres";
 import {
   collectionSchemas,
   collectionNames,
@@ -754,6 +755,28 @@ const REGELN: Regel[] = [
         b.push({ ebene: "fehler", code: "", feld: `programm[${f.index}]`, nachricht: f.nachricht });
       }
       return b;
+    },
+  },
+
+  {
+    /**
+     * Was in `genres` stehen darf (Entscheidung Markus, 2026-10-03): Musik
+     * (Lexikon-Kategorie `genre`) immer, Tänze (Kategorie `tanz`) nur bei
+     * Terminen, an denen getanzt wird. Bei Bands nur Musik. Die Rechnung
+     * steht in src/lib/genres.ts, der Faktenblock nutzt dieselbe.
+     */
+    code: "genres-kategorie",
+    collections: ["events", "bands"],
+    pruefe(e, ctx) {
+      if (!e.daten?.genres?.length) return [];
+      const kategorieVon = (slug: string) =>
+        ctx.eintraege.find((x) => x.collection === "lexikon" && x.slug === slug)?.daten?.kategorie;
+      return genresBefunde(e.collection, e.daten, kategorieVon).map((f) => ({
+        ebene: "fehler" as const,
+        code: "",
+        feld: "genres",
+        nachricht: f.nachricht,
+      }));
     },
   },
 

@@ -15,6 +15,7 @@ import { referenzFelder, urlPrefix, type CollectionName } from "../content/_sche
 import { aufloesen, type Registry } from "./links";
 import { site } from "../site.config";
 import { KATEGORIE, SAEULE } from "./facetten";
+import { genresNachArt } from "./genres";
 
 export interface FaktStueck {
   text: string;
@@ -207,6 +208,24 @@ export function faktZeilen(
     if ((feld === "bezeichnungDe" || feld === "bezeichnungEn") && istNurDerName(wert, daten.name)) continue;
     // Der Anzeigename der Reihe ersetzt den Slug.
     if (feld === "reihe" && daten.reiheName) continue;
+
+    // Termine zeigen Musik und Tanz getrennt (Entscheidung 2026-10-03,
+    // src/lib/genres.ts): Ein Boogie-Abend mit `boogie-woogie-tanz` hätte
+    // sonst einen Tanz unter „Genres". Bands führen nur Musik und behalten
+    // ihre Zeile. Ein Ziel, das die Registry nicht kennt (Entwurf in der
+    // Produktion), zählt als Musik — es erscheint ohnehin nur als Text.
+    if (feld === "genres" && collection === "events") {
+      const { musik, tanz } = genresNachArt(wert, (s) => aufloesen(registry, "lexikon", s)?.daten?.kategorie);
+      for (const [teilFeld, label, teil] of [
+        ["genres", "Musik", musik],
+        ["genres-tanz", "Tanz", tanz],
+      ] as const) {
+        if (!teil.length) continue;
+        const st = formatiere("genres", teil, daten, registry, refFelder);
+        if (st.length) zeilen.push({ feld: teilFeld, label, stuecke: st });
+      }
+      continue;
+    }
 
     const stuecke = formatiere(feld, wert, daten, registry, refFelder);
     if (stuecke.length) zeilen.push({ feld, label: beschriftung(feld), stuecke });

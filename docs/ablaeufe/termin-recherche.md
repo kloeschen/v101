@@ -177,8 +177,11 @@ versucht wird.
   zählt nicht als Musik: Die Aufzählung nennt Tänze, zu denen gespielt
   wird. Steht Rock'n'Roll in derselben Aufzählung, gilt dasselbe
   (`rocknroll-tanz`). Beispiele: Haslinger Hof bleibt Musik, die Abende
-  der Rock Dock Teddys sind Tanz. In `genres` steht bisher kein
-  Tanzeintrag (offen, OFFENE-PUNKTE).
+  der Rock Dock Teddys sind Tanz. Seit dem 2026-10-03 darf der Tanz auch
+  in `genres` stehen (`boogie-woogie-tanz`, `rocknroll-tanz`, `jive`,
+  `lindy-hop`), aber nur bei `tanzabend`, `workshop` und `weekender`;
+  die Regel `genres-kategorie` prüft das. Ein Tanz ohne Lexikoneintrag
+  (Discofox, Balboa) bleibt im Text.
 - **Sonderkonditionen für Hotelgäste werden nicht gelistet** (Entscheidung
   Markus, 2026-09-30, an PR #105). Ein Haus wie der Haslinger Hof gibt
   Hotelgästen freien Zutritt; das gehört weder in `preise` noch in den
