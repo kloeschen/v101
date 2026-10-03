@@ -192,6 +192,11 @@ export function pruefpunkteFuer(e: GeladenerEintrag): Pruefpunkt[] {
   return aus;
 }
 
+/** Die Einträge der Auswahl, zu denen es keinen einzigen Prüfpunkt gibt. */
+export function ohnePruefpunkte(eintraege: GeladenerEintrag[]): string[] {
+  return eintraege.filter((e) => pruefpunkteFuer(e).length === 0).map((e) => `${e.collection}/${e.slug}`);
+}
+
 export function auftragFuer(eintraege: GeladenerEintrag[]): Auftrag {
   return { anleitung: ANLEITUNG, pruefpunkte: eintraege.flatMap(pruefpunkteFuer) };
 }
@@ -394,8 +399,26 @@ export function vergleichAlles(auftrag: Auftrag, antworten: Antwort[], k: Kontex
 
 const zelle = (s: string | undefined) => (s ?? "").replace(/\|/g, "\\|").replace(/\n/g, " ");
 
-export function alsMarkdown(befunde: Befund[]): string {
+/**
+ * Der Abschnitt für die PR-Beschreibung. `ungeprueft` sind die Einträge der
+ * Auswahl, die keinen einzigen Prüfpunkt hatten — bei Artikeln immer, weil
+ * `belegpflichtigeFelder.artikel` leer ist. Sie stehen ausdrücklich da: Ein
+ * „0 Abweichungen" über Einträge, die niemand gelesen hat, sähe aus wie eine
+ * bestandene Prüfung (Fund vom 2026-10-02, Entscheidung Markus vom
+ * 2026-10-03, OFFENE-PUNKTE „Gegenleser ist für Artikel blind").
+ */
+export function alsMarkdown(befunde: Befund[], ungeprueft: string[] = []): string {
   const zahl = (u: Urteil) => befunde.filter((b) => b.urteil === u).length;
+  const ohne = ungeprueft.map((p) => `\`${p}\``).join(", ");
+  if (befunde.length === 0) {
+    return [
+      "## Gegenleser",
+      "",
+      "**Nicht anwendbar:** 0 Prüfpunkte. Kein geänderter Eintrag hat ein belegpflichtiges Feld mit Wert, " +
+        "gelesen wurde nichts — das ist keine bestandene Prüfung." +
+        (ohne ? ` Nicht gegengelesen: ${ohne}.` : ""),
+    ].join("\n");
+  }
   const zeilen: string[] = [
     "## Gegenleser",
     "",
@@ -403,6 +426,7 @@ export function alsMarkdown(befunde: Befund[]): string {
       `${zahl("bestaetigt")} bestätigt, **${zahl("abweichung")} Abweichung(en)**, ` +
       `${zahl("sichtpruefung")} zur Sichtprüfung, ${zahl("nicht-pruefbar")} nicht prüfbar.`,
   ];
+  if (ohne) zeilen.push("", `Ohne Prüfpunkte, also nicht gegengelesen: ${ohne}.`);
   const tabelle = (titel: string, u: Urteil, offen: boolean) => {
     const liste = befunde.filter((b) => b.urteil === u);
     if (liste.length === 0) return;
@@ -449,6 +473,8 @@ function main() {
   if (argv.includes("--auftrag")) {
     console.log(JSON.stringify(auftrag, null, 2));
     console.error(`${auftrag.pruefpunkte.length} Prüfpunkte aus ${gewaehlt.length} Eintrag/Einträgen.`);
+    const ohne = ohnePruefpunkte(gewaehlt);
+    if (ohne.length) console.error(`Ohne Prüfpunkte, also nicht gegengelesen: ${ohne.join(", ")}.`);
     process.exit(0);
   }
 
@@ -474,7 +500,7 @@ function main() {
     alle: new Map(alle.map((e) => [`${e.collection}/${e.slug}`, e])),
   });
   if (argv.includes("--json")) console.log(JSON.stringify(befunde, null, 2));
-  else console.log(alsMarkdown(befunde));
+  else console.log(alsMarkdown(befunde, ohnePruefpunkte(gewaehlt)));
   process.exit(befunde.some((b) => b.urteil === "abweichung") ? 3 : 0);
 }
 

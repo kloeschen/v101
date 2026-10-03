@@ -228,6 +228,12 @@ bearbeitet.
    überhaupt — kein Lauf bleibt leer, weil eine Sorte fehlt. Die Grenze ist
    12 Uhr UTC; zum Nachstellen `--stunde <0–23>`.
 2. Ist keiner frei: den dringendsten Posten aus `npm run stale`.
+   **Nachprüfung eines nahen Termins** (seit dem 2026-10-03): Die
+   offizielle Quelle öffnen und bei ihr `abgerufenAm` auf den Tag des
+   Abrufs setzen, auch wenn sich nichts geändert hat; `beginn` muss in
+   ihren `felder` stehen. Das erledigt den Posten. `geprueftAm` bleibt
+   unberührt — es ändert sich nur bei der Freigabe. Ein Abruf eines
+   Aggregators zählt nicht: Absagen kündigt der Veranstalter an.
 3. Baut ihn vollständig nach den Regeln aus `CLAUDE.md` — `npm run verify`
    grün, Mutationsbeleg für jede neue Regel. Der Bericht steht im PR, neue
    Fallen im Ablauf; in `ENTSCHEIDUNGEN.md` nur, was eine Regel ändert oder
