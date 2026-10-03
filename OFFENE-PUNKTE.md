@@ -126,23 +126,6 @@ und prüft jede gegen ihre Quelle.
 
 
 
-`mensch` **Creepers und Pomade: zwei ungeprüfte Teddy-Boy-Angaben aus der
-deutschen Wikipedia.** Gefunden am 2026-10-02 beim Entwurf
-`lexikon/teddy-boy`. Die veröffentlichten Einträge `lexikon/creepers`
-(Abschnitt „Creepers in der Szene") und `lexikon/pomade` (Abschnitt
-„Pomade in der Szene") übernehmen aus der deutschen Wikipedia, dass die
-Teds der 1950er „die Elvis-Tolle" trugen, `creepers` außerdem, dass das
-Revival Mitte der 1970er Jahre „unter anderem die Stray Cats" trugen.
-Beides widerspricht den Quellen, die `lexikon/teddy-boy` geöffnet hat:
-Die ersten Teds gab es vor Elvis und vor dem Rock 'n' Roll (englische
-Wikipedia „Teddy Boys", Vintage Rock 2021), die Stray Cats wurden 1979
-gegründet (englische Wikipedia), und Teds rissen ihre Aufnäher ab, weil
-die Band als Punk galt (Vintage Rock 2022). Zu entscheiden: die beiden
-Stellen nach Regel 5 umschreiben (Angabe der Wikipedia benennen, das
-Gesicherte daneben) — Änderung an Freigegebenem, also über die normale
-Freigabe — oder bis zur Freigabe von `teddy-boy` warten und dann in
-einem Zug.
-
 `mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
 geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
 Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der

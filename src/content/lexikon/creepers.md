@@ -5,6 +5,7 @@ kurzbeschreibung: Creepers sind flache Lederschuhe mit einer bis zu fünf Zentim
 status: veroeffentlicht
 erstelltAm: 2026-09-03
 geprueftAm: 2026-09-09
+geaendertAm: 2026-10-03
 autor: markus
 kategorie: mode
 bezeichnungDe: Leisetreter
@@ -42,6 +43,17 @@ redaktionsnotiz: >-
   darauf, dass die Quellen Creepers durchgehend den britischen Teds
   zuordnen; welche Schuhe die amerikanische Szene trug, ist hier bewusst
   nicht behauptet, weil dafür kein geöffneter Beleg vorliegt.
+  TEDS NACH REGEL 5 (2026-10-03, Entscheidung Markus, Posten aus
+  OFFENE-PUNKTE): Zwei Angaben der deutschen Wikipedia standen hier
+  ungeprueft -- die "Elvis-Tolle" der Teds der 1950er und die Stray Cats
+  als Traeger des Revivals "Mitte der 1970er Jahre". Beide widersprechen
+  den Quellen, die lexikon/teddy-boy geoeffnet hat. Jetzt stehen sie als
+  Angabe der deutschen Wikipedia im Text, daneben das Gesicherte:
+  englische Wikipedia (Rock 'n' Roll erst ab 1955, vorher Jump Blues, R&B,
+  Jazz, Skiffle; Frisur Quiff und Duck's Arse; Stray Cats 1979
+  gegruendet) und Vintage Rock 2022 (abgerissene Stray-Cats-Aufnaeher).
+  Alle drei am 2026-10-03 erneut gelesen. `geprueftAm` bleibt, die
+  Aenderung laeuft ueber die normale Freigabe.
 quellen:
   - url: https://de.wikipedia.org/wiki/Pomade
     titel: Pomade (Wikipedia)
@@ -68,6 +80,21 @@ quellen:
     abgerufenAm: 2026-09-03
     felder: [abgrenzung, body:szene]
     art: nachschlagewerk
+  - url: https://en.wikipedia.org/wiki/Teddy_Boys
+    titel: Teddy Boys (Wikipedia, englisch)
+    abgerufenAm: 2026-10-03
+    felder: [body:szene]
+    art: nachschlagewerk
+  - url: https://en.wikipedia.org/wiki/Stray_Cats
+    titel: Stray Cats (Wikipedia, englisch)
+    abgerufenAm: 2026-10-03
+    felder: [body:szene]
+    art: nachschlagewerk
+  - url: https://www.vintagerockmag.com/2022/06/the-voice-of-neo-rockabilly/
+    titel: The voices of neo-rockabilly (Vintage Rock, Juni 2022)
+    abgerufenAm: 2026-10-03
+    felder: [body:szene]
+    art: presse
 ---
 
 Creepers sind flache Lederschuhe mit besonders dicken, weichen Kreppsohlen. Die Sohle ist in der Regel bis zu fünf Zentimeter dick, durchgängig gestreift und hat senkrecht verlaufende Riefen — sie ist das Kleidungsstück, nicht der Schaft. Für die Vintage-Szene sind Creepers das Schuhwerk der britischen [Teddy Boys](/lexikon/teddy-boy/) und damit einer der wenigen Gegenstände, an denen sich diese Linie sofort von der amerikanischen unterscheiden lässt.
@@ -92,11 +119,11 @@ In den 1970er Jahren wurden Creepers in London im Laden „Let it Rock" von Malc
 
 ## Creepers in der Szene
 
-Ihren Höhepunkt hatten Creepers bei den Teds der 1950er und frühen 1960er Jahre; in den fünfziger Jahren waren sie laut Wikipedia auch bei [Rockabilly](/lexikon/rockabilly/)-Kids beliebt. Die Teddy Boys entstanden im England der frühen 1950er als Jugendprotest, der sich ausgerechnet über vornehme Kleidung abgrenzte: fast knielange Anzugjacketts mit breitem Revers und farbig abgesetzten Applikationen — die Drapes —, dazu enge Röhrenhosen, die Elvis-Tolle — ohne [Pomade](/lexikon/pomade/) nicht zu bauen — und eben Schuhe mit hohen Kreppsohlen. Der Name geht auf die Zeit Eduards VII. zurück, als ähnlich lange Jacketts in Mode waren.
+Ihren Höhepunkt hatten Creepers bei den Teds der 1950er und frühen 1960er Jahre; in den fünfziger Jahren waren sie laut Wikipedia auch bei [Rockabilly](/lexikon/rockabilly/)-Kids beliebt. Die Teddy Boys entstanden im England der frühen 1950er als Jugendprotest, der sich ausgerechnet über vornehme Kleidung abgrenzte: fast knielange Anzugjacketts mit breitem Revers und farbig abgesetzten Applikationen — die Drapes —, dazu enge Röhrenhosen, langes, mit [Pomade](/lexikon/pomade/) geformtes Haar und eben Schuhe mit hohen Kreppsohlen. Die deutsche Wikipedia nennt die Frisur „Elvis-Tolle"; die englische beschreibt sie als Tolle vorn und [Ducktail](/lexikon/ducktail/) hinten und hält fest, dass die Teds Rock 'n' Roll erst ab 1955 übernahmen — die ersten von ihnen frisierten sich also vor Elvis. Der Name Teddy Boy geht auf die Zeit Eduards VII. zurück, als ähnlich lange Jacketts in Mode waren.
 
 Über dieselbe britische Linie kam ein zweites Stück in die Szene, das oft danebensteht und doch anders zu verorten ist: der [Porkpie](/lexikon/pork-pie/). Er gehört nicht zu den Teds, sondern zu den jamaikanischen Rude Boys und zum Ska — zwei Wege nach Großbritannien, die im heutigen Weekender-Publikum nebeneinander sichtbar sind.
 
-[Rock 'n' Roll](/lexikon/rocknroll/) war für die Teds identitätsstiftend, und die Bewegung lebte Mitte der 1970er Jahre wieder auf — die Wikipedia nennt unter anderem die Stray Cats. Damit sind Creepers für die heutige Szene doppelt anschlussfähig: über die Teds selbst und über das Psychobilly-Revival, das dieselbe Silhouette weiterführte.
+[Rock 'n' Roll](/lexikon/rocknroll/) wurde für die Teds ab 1955 identitätsstiftend; vorher hörten sie nach der englischen Wikipedia [Jump Blues](/lexikon/jump-blues/), R&B, Jazz und Skiffle. In den 1970er Jahren lebte die Bewegung wieder auf, getragen von britischen Bands wie Crazy Cavan, Matchbox und den Flying Saucers. Die deutsche Wikipedia zählt auch die Stray Cats dazu; die Band wurde laut englischer Wikipedia aber erst 1979 in New York gegründet, und Vintage Rock zitiert einen Musiker, dem Teds in Dublin die Stray-Cats-Aufnäher von der Jacke rissen, weil die Band für sie Punk war. Ausführlich steht das unter [Teddy Boy](/lexikon/teddy-boy/). Damit sind Creepers für die heutige Szene doppelt anschlussfähig: über die Teds selbst und über das Psychobilly-Revival, das dieselbe Silhouette weiterführte.
 
 ## Abgrenzung der Creepers
 
