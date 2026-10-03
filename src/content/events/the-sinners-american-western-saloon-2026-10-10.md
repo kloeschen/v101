@@ -81,20 +81,32 @@ redaktionsnotiz: >-
   "DooWop" und "Rockabilly". Alle drei haben einen Lexikoneintrag.
   Nicht gefuellt: veranstalter (organizer im JSON-LD ist ein leeres
   Person-Objekt), ticketUrl, kapazitaet, barrierefrei, ende.
+  NACHPRUEFUNG 2026-10-03 (sieben Tage vor dem Konzert): Detailseite von
+  Rockin' Wildcat unveraendert -- "Sa., 10. Oktober 2026", Uhrzeit 20:00,
+  Kalenderlink 20261010T180000Z/20261011T030000Z, JSON-LD weiter
+  EventScheduled mit dem bekannten Versatz (22:00+02:00) und price "0".
+  Der Gig Guide fuehrt "10 Okt. 20:00 American Western Saloon The
+  Sinners". Die Weekly Specials des Hauses tragen jetzt "aktualisiert am
+  30.09.2026" und fuehren den Flyer 10.10.2026Sinners.jpg weiter. Die
+  Veranstaltungsseite nennt unveraendert "Einlass 18 Uhr - Live Music
+  beginnt um 20 Uhr" und die Bitte, den Eintritt bar zu zahlen; einen
+  Betrag nennt weiterhin keine Quelle. Kein Hinweis auf Absage oder
+  Verlegung. `geprueftAm` bleibt unberuehrt (Posten "Nachpruefung kurz
+  vor dem Termin" in OFFENE-PUNKTE.md).
 quellen:
   - url: https://www.rockin-wildcat.com/rwc/events/the-sinners
     titel: The Sinners, 10. Oktober 2026 (Rockin' Wildcat)
-    abgerufenAm: 2026-09-24
+    abgerufenAm: 2026-10-03
     felder: [beginn, ende, ort, lineupWeitere, genres, eintritt, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik]
     art: aggregator
   - url: https://www.western-saloon.de/weeklyspecials.html
     titel: Weekly Specials (American Western Saloon Berlin)
-    abgerufenAm: 2026-09-24
+    abgerufenAm: 2026-10-03
     felder: [beginn, ort, lineupWeitere, body:termin]
     art: offiziell
   - url: https://www.western-saloon.de/veranstaltungen.html
     titel: Veranstaltungen 2026 (American Western Saloon Berlin)
-    abgerufenAm: 2026-09-24
+    abgerufenAm: 2026-10-03
     felder: [beginn, eintritt, body:termin]
     art: offiziell
   - url: https://www.western-saloon.de/
@@ -104,7 +116,7 @@ quellen:
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/guide
     titel: Berlin Gig Guide (Rockin' Wildcat)
-    abgerufenAm: 2026-09-24
+    abgerufenAm: 2026-10-03
     felder: [beginn, ort, body:einordnung]
     art: aggregator
 ---

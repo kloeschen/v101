@@ -46,7 +46,13 @@ das Feld hieße dann nicht mehr „von Markus geprüft"; (2) `stale-report`
 rechnet „termin-naht" vom jüngsten `abgerufenAm` einer `offiziell`-Quelle
 mit `beginn` in `felder` — kein Schemaeingriff, ein Test plus Mutation,
 die Freigabesemantik bleibt; (3) lassen — kostet höchstens einen leeren
-Lauf pro Termin, solange die Warteschlange leer ist. Empfehlung: (2).
+Lauf pro Termin, solange die Warteschlange leer ist. Empfehlung: (2). Nachtrag
+2026-10-03: Der Morgenlauf bekam Boppin'B am Konzerttag zum dritten Mal
+als dringendsten Posten; die Ankündigung war unverändert (keine Absage),
+der Lauf hat deshalb nichts eingetragen und den nächsten Stale-Posten
+(The Sinners, 10.10.) nachgeprüft. Ab jetzt steht auch The Sinners
+trotz Nachprüfung bis zum 10.10. in `stale` — bei drei Läufen am Tag
+summiert sich (3) auf mehrere Doppelabrufe pro Termin.
 
 `mensch` **Vintage freigeben.** Der Eintrag `lexikon/vintage` liegt seit
 dem 2026-10-02 als Entwurf vor. Die Autolink-Frage ist entschieden
