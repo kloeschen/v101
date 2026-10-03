@@ -5,7 +5,7 @@ kurzbeschreibung: Pomade ist eine fetthaltige, salbenähnliche Substanz zur Haar
 status: veroeffentlicht
 erstelltAm: 2026-09-03
 geprueftAm: 2026-09-09
-geaendertAm: 2026-09-11
+geaendertAm: 2026-10-03
 autor: markus
 kategorie: frisur
 bezeichnungDe: Pomade
@@ -60,10 +60,22 @@ redaktionsnotiz: >-
   Der Duden markiert das Wort als "veraltend" — das steht im Text, weil es
   im Widerspruch zur belegten Renaissance steht und dieser Widerspruch
   interessanter ist als eine geglättete Fassung.
+  TEDS NACH REGEL 5 (2026-10-03, Entscheidung Markus, Posten aus
+  OFFENE-PUNKTE): Die "Elvis-Tolle" der Teds stand hier als Angabe der
+  deutschen Wikipedia ohne Gegenprobe. Die englische Wikipedia
+  (am 2026-10-03 erneut gelesen) beschreibt die Frisur als Quiff vorn und
+  Duck's Arse hinten und datiert die Uebernahme des Rock 'n' Roll auf ab
+  1955; beides steht jetzt neben der deutschen Angabe. `geprueftAm`
+  bleibt, die Aenderung laeuft ueber die normale Freigabe.
 quellen:
   - url: https://de.wikipedia.org/wiki/Teddyboy
     titel: Teddyboy (Wikipedia)
     abgerufenAm: 2026-09-03
+    felder: [body:szene]
+    art: nachschlagewerk
+  - url: https://en.wikipedia.org/wiki/Teddy_Boys
+    titel: Teddy Boys (Wikipedia, englisch)
+    abgerufenAm: 2026-10-03
     felder: [body:szene]
     art: nachschlagewerk
   - url: https://de.wikipedia.org/wiki/Pomade
@@ -114,7 +126,7 @@ Zwischen den 1960er und den 2000er Jahren geriet Pomade in Deutschland weitgehen
 
 Pomade ist im Register dieser Begriffe der Sonderfall: [Petticoat](/lexikon/petticoat/), [Korsett](/lexikon/korsett/) und Creepers sind Gegenstände, die man aufbewahrt, weitergibt und im Museum wiederfindet — Pomade ist ein Verbrauchsgut. Eine Szene hält sie nicht am Leben, indem sie sie sammelt, sondern indem sie sie nachkauft, und genau das lässt sich belegen. Der Satz, der diesen Eintrag von den übrigen dieser Reihe unterscheidet, steht in der Wikipedia selbst: Zwischen den 1960er und 2000er Jahren war Pomade in Deutschland vergessen — mit Ausnahme der Rockabilly-Szene. Sie ist damit kein Gegenstand, den die Szene sich später angeeignet hat, sondern einer, den sie über vier Jahrzehnte am Leben gehalten hat, während der Rest des Marktes zu Gel überging.
 
-Sichtbar wird das an der britischen Seite derselben Jahre. Die [Teddy Boys](/lexikon/teddy-boy/) trugen zu ihren Drapes und Röhrenhosen die Elvis-Tolle und [Creepers](/lexikon/creepers/) — die Frisur war Teil der Uniform, nicht ihr Zubehör, und ohne ein Produkt, das formbar bleibt, ist sie nicht zu bauen.
+Sichtbar wird das an der britischen Seite derselben Jahre. Die [Teddy Boys](/lexikon/teddy-boy/) trugen zu ihren Drapes, Röhrenhosen und [Creepers](/lexikon/creepers/) langes, gefettetes Haar, vorn zur Tolle geformt und hinten zum [Ducktail](/lexikon/ducktail/) gekämmt — die Frisur war Teil der Uniform, nicht ihr Zubehör, und ohne ein Produkt, das formbar bleibt, ist sie nicht zu bauen. Die deutsche Wikipedia nennt sie „Elvis-Tolle"; nach der englischen Wikipedia übernahmen die Teds Rock 'n' Roll aber erst ab 1955, die ersten von ihnen trugen die Tolle also schon vor Elvis.
 
 Die Renaissance seit 2010 läuft über die Barbershops, und damit über dieselben Betriebe, die auch Pompadour und Ducktail wieder anbieten. Für den Aufbau einer Frisur heißt das praktisch: Die Wahl zwischen ölbasiert und wasserbasiert entscheidet über Halt, Glanz und Waschbarkeit — und wer eine Tolle möchte, die einen Weekender übersteht, wählt anders als jemand, der abends duschen will.
 

@@ -71,9 +71,9 @@ redaktionsnotiz: >-
   Kein Alias "Cosh Boys": Die deutsche Wikipedia führt ihn als
   Synonym, die englische als Bezeichnung krimineller Banden vor dem Namen
   Teddy Boy. Steht im Text, nicht im Alias.
-  Bekannter Folgebefund: lexikon/creepers übernimmt aus der deutschen
-  Wikipedia die "Elvis-Tolle" und die Stray Cats als Revival-Träger
-  ungeprüft (siehe OFFENE-PUNKTE).
+  Folgebefund erledigt am 2026-10-03: lexikon/creepers und lexikon/pomade
+  nennen "Elvis-Tolle" und Stray Cats jetzt als Angabe der deutschen
+  Wikipedia, mit dem Gesicherten daneben (Regel 5).
 quellen:
   - url: https://de.wikipedia.org/wiki/Teddy_Boy
     titel: Teddy Boy (Wikipedia)
