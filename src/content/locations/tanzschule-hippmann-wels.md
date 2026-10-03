@@ -2,9 +2,9 @@
 name: Tanzschule Hippmann Wels
 aliases: [Tanzschule Hippmann, Hippmann7, Hippmann 7 – die Tanzbar, Hippmann im Gerstlhaus]
 kurzbeschreibung: Die Tanzschule Hippmann in Wels ist eine Tanzschule mit eigenem Tanzlokal, dem Hippmann7, in der Pollheimerstraße 7, die neben Gesellschaftstanz auch Boogie- und Swing-Partys sowie einen Boogie & Swing Ball ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzschule
 adresse:

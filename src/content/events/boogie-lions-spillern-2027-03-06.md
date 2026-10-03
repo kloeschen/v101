@@ -2,9 +2,9 @@
 name: Boogie-Abend der Boogie Lions, März 2027
 aliases: [Boogie Lions März 2027, Boogie Party Spillern 06.03.2027]
 kurzbeschreibung: Boogie-Tanzabend des Vereins Boogie Lions am Samstag, 6. März 2027, ab 20 Uhr im Festsaal WieMex in Spillern; einen Eintrittspreis nennt der Verein noch nicht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 reihe: boogie-lions-boogie-party

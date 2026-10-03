@@ -2,9 +2,9 @@
 name: Steiermark
 aliases: [Land Steiermark]
 kurzbeschreibung: Die Steiermark ist ein Bundesland im Südosten Österreichs mit der Landeshauptstadt Graz; im Register ist sie bisher über ein Tanzwochenende in der Therme Rogner Bad Blumau vertreten.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 ebene: bundesland
 land: AT

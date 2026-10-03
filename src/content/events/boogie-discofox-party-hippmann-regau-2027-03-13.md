@@ -2,9 +2,9 @@
 name: Big Boogie & Discofox Party in Regau, März 2027
 aliases: [Big Boogie und Discofox Party März 2027, Big Boogie & Discofox Party Regau 2027]
 kurzbeschreibung: Tanzabend am Samstag, 13. März 2027, ab 20 Uhr im Standort Hippmann im Star Movie Regau, mit DJ.K am Boogie-Floor und DJ Walter am Discofox-Floor.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 reihe: hippmann-boogie-discofox-party-regau

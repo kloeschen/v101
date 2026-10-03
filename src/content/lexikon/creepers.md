@@ -70,7 +70,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Creepers sind flache Lederschuhe mit besonders dicken, weichen Kreppsohlen. Die Sohle ist in der Regel bis zu fünf Zentimeter dick, durchgängig gestreift und hat senkrecht verlaufende Riefen — sie ist das Kleidungsstück, nicht der Schaft. Für die Vintage-Szene sind Creepers das Schuhwerk der britischen Teddy Boys und damit einer der wenigen Gegenstände, an denen sich diese Linie sofort von der amerikanischen unterscheiden lässt.
+Creepers sind flache Lederschuhe mit besonders dicken, weichen Kreppsohlen. Die Sohle ist in der Regel bis zu fünf Zentimeter dick, durchgängig gestreift und hat senkrecht verlaufende Riefen — sie ist das Kleidungsstück, nicht der Schaft. Für die Vintage-Szene sind Creepers das Schuhwerk der britischen [Teddy Boys](/lexikon/teddy-boy/) und damit einer der wenigen Gegenstände, an denen sich diese Linie sofort von der amerikanischen unterscheiden lässt.
 
 ## Aufbau von Creepers
 

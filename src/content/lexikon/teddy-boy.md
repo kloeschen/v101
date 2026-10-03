@@ -2,9 +2,9 @@
 name: Teddy Boy
 aliases: [Teddy Boys, Teddyboy, Teddyboys, Teds, Edwardians]
 kurzbeschreibung: Teddy Boy ist die Bezeichnung für die Angehörigen einer britischen Jugendkultur, die Anfang der 1950er Jahre in London entstand, sich über lange Drape-Jacketts im Stil der Edwardianischen Zeit definierte und ab Mitte der 1950er Jahre mit dem Rock 'n' Roll verbunden wurde.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 kategorie: szene
 bezeichnungDe: Teddyboy
