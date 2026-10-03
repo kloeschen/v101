@@ -2,9 +2,9 @@
 name: Hippmann im Star Movie Regau
 aliases: [Hippmann Starmovie Regau, Tanzschule Hippmann im Star Movie Regau, Hippmann Regau, Hippmann in Regau]
 kurzbeschreibung: Hippmann im Star Movie Regau ist der Standort der Welser Tanzschule Hippmann im Kinozentrum Star Movie in Regau bei Vöcklabruck, an dem sie Tanzabende und Boogie- und Discofox-Partys veranstaltet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzschule
 adresse:

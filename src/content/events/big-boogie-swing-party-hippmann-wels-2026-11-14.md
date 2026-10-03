@@ -2,9 +2,9 @@
 name: Big Boogie & Swing Party 2026 im Hippmann7 Wels
 aliases: [BIG BOOGIE & SWING PARTY + FOX, Big Boogie + Fox Party 2026, Big Boogie & Fox Party Wels 2026]
 kurzbeschreibung: Tanzparty der Tanzschule Hippmann am Samstag, 14. November 2026, im Hippmann7 in Wels, mit The 6 Fireballs live und DJ Rockin' Daddy am Floor für Boogie, Lindy Hop und Swing; Musikbeginn 20:15 Uhr, Eintritt 19 oder 25 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 beginn: 2026-11-14T20:15:00+01:00

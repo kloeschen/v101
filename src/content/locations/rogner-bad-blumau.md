@@ -2,9 +2,9 @@
 name: Rogner Bad Blumau
 aliases: [Therme Rogner Bad Blumau, Hotel Rogner Bad Blumau, Therme Bad Blumau]
 kurzbeschreibung: Das Rogner Bad Blumau ist ein von Friedensreich Hundertwasser gestaltetes Thermalbad mit Hotel in Bad Blumau in der Oststeiermark, in dem im November 2026 zum zehnten Mal das Tanzwochenende Swinging Wellness stattfindet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: sonstiges
 adresse:

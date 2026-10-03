@@ -2,9 +2,9 @@
 name: Swinging Wellness Tanzwochenende 2026
 aliases: [Swinging Wellness Weekend 2026, Swinging Wellness 2026, Swinging Wellness Bad Blumau]
 kurzbeschreibung: Tanzwochenende mit Kursen in Boogie, Lindy Hop, West Coast Swing und Balboa vom 6. bis 8. November 2026 im Thermenhotel Rogner Bad Blumau, zehnte Ausgabe, mit zwei Partys und Livemusik.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: workshop
 ausgabe: 10

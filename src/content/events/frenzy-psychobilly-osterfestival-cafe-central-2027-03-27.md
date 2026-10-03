@@ -2,9 +2,9 @@
 name: Frenzy beim Psychobilly-Osterfestival im Café Central Weinheim
 aliases: [Frenzy Weinheim 2027, Psychobilly Oster Festival Weinheim 2027 Samstag, Frenzy und Drekhund]
 kurzbeschreibung: Psychobilly-Konzert mit Frenzy und Drekhund am Samstag, 27. März 2027, dem ersten Abend des Psychobilly-Osterfestivals im Café Central in Weinheim.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: konzert
 beginn: 2027-03-27T19:30:00+01:00

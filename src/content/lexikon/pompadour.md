@@ -2,9 +2,9 @@
 name: Pompadour
 aliases: [Pompadour-Frisur]
 kurzbeschreibung: Ein Pompadour ist eine Frisur, bei der das Haar über der Stirn mit viel Volumen hoch und nach hinten gekämmt wird; in der Rockabilly-Szene meint der Begriff die mit Pomade geformte Männerfrisur der 1950er Jahre.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 kategorie: frisur
 bezeichnungEn: Pompadour
