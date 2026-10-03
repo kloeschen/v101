@@ -2,9 +2,9 @@
 name: Boogieball '26 in der Stadtgalerie Mödling
 aliases: [Boogieball 2026, Boogieball Mödling 2026, Boogieball Stadtgalerie Mödling]
 kurzbeschreibung: Boogie-Ball am Freitag, 13. November 2026, ab 20 Uhr in der Stadtgalerie Mödling südlich von Wien, live mit Junior & The Mad Cats und Hannes Otahal, Eintritt 28 Euro inklusive Tischreservierung.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 reihe: rockn-boogie-moedling

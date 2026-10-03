@@ -2,9 +2,9 @@
 name: Vintage
 aliases: []
 kurzbeschreibung: Vintage ist eine Stilrichtung in Mode und Design, die ältere, meist gebrauchte Kleidung und Gebrauchsgegenstände wieder trägt und verwendet — und zugleich das Etikett für solche Stücke selbst, ohne dass eine verbindliche Altersgrenze dafür feststeht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 kategorie: mode
 bezeichnungEn: Vintage

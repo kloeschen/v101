@@ -2,9 +2,9 @@
 name: Boogie & Swing Ball 2027 der Tanzschule Hippmann
 aliases: [BOOGIE & SWINGBALL 2027, Boogie & Swingball Wels 2027, Boogie und Swing Ball Wels 2027]
 kurzbeschreibung: Ball der Tanzschule Hippmann für die Boogie- und Swing-Szene am Samstag, 16. Jänner 2027, in Wels, live mit Ray Collins' Hot Club und DJ Rockin' Daddy auf fünf Floors; Karten ab 35 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 beginn: 2027-01-16T20:00:00+01:00

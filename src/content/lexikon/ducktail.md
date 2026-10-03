@@ -2,9 +2,9 @@
 name: Ducktail
 aliases: [Duck's Ass, Duck's Arse, Duck's Tail, Entenschwanz]
 kurzbeschreibung: Ein Ducktail ist eine Männerfrisur der 1950er Jahre, bei der das mit Pomade gefettete Haar an beiden Seiten nach hinten gekämmt wird und am Hinterkopf in einer senkrechten Kante zusammenläuft, die an den Schwanz einer Ente erinnert.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 kategorie: frisur
 bezeichnungEn: Ducktail

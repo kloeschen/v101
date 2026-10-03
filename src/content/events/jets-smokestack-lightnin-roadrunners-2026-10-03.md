@@ -91,7 +91,7 @@ Einen Eintrittspreis nennt der Gig Guide nicht, eine Endzeit ebenfalls nicht.
 
 ## Die Musik beim Konzert von The Jets
 
-Die Ankündigung führt vier Stilrichtungen: [Neo-Rockabilly](/lexikon/neo-rockabilly/), [Rockabilly](/lexikon/rockabilly/), Roots und Americana sowie Teddyboy-Rock'n'Roll. Damit reicht der Abend von der britischen Spielart der Achtziger bis zu amerikanischer Wurzelmusik. The Jets und Smokestack Lightnin' stehen in diesem Register bislang als Namen im Line-up und nicht als eigene Einträge.
+Die Ankündigung führt vier Stilrichtungen: [Neo-Rockabilly](/lexikon/neo-rockabilly/), [Rockabilly](/lexikon/rockabilly/), Roots und Americana sowie [Teddyboy](/lexikon/teddy-boy/)-Rock'n'Roll. Damit reicht der Abend von der britischen Spielart der Achtziger bis zu amerikanischer Wurzelmusik. The Jets und Smokestack Lightnin' stehen in diesem Register bislang als Namen im Line-up und nicht als eigene Einträge.
 
 ## Einordnung des Konzerts in Berlin
 

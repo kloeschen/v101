@@ -106,7 +106,7 @@ Genau am letzten Punkt setzen die moderneren Varianten an. Wasserbasierte Pomade
 
 Als aristokratisches Kosmetikprodukt ist Pomade im 18. Jahrhundert dokumentiert. In den 1920er und 1930er Jahren verbreitete sie sich in der afroamerikanischen Bevölkerung zum Stylen kräftigen Haars.
 
-Ihren Höhepunkt hatte sie in den 1950er Jahren, und zwar über zwei Gesichter: Rudolph Valentinos glänzendes Haar prägte das Bild zuerst, Elvis Presleys Pompadour und Ducktail machten es zum Massenphänomen. Beide Frisuren sind ohne ein Produkt, das formbar bleibt, nicht zu bauen.
+Ihren Höhepunkt hatte sie in den 1950er Jahren, und zwar über zwei Gesichter: Rudolph Valentinos glänzendes Haar prägte das Bild zuerst, Elvis Presleys [Pompadour](/lexikon/pompadour/) und [Ducktail](/lexikon/ducktail/) machten es zum Massenphänomen. Beide Frisuren sind ohne ein Produkt, das formbar bleibt, nicht zu bauen.
 
 Zwischen den 1960er und den 2000er Jahren geriet Pomade in Deutschland weitgehend in Vergessenheit. Seit 2010 gibt es eine Renaissance als Nischenprodukt, getragen von der wieder aufkommenden Barbershop-Kultur; verwendet wird sie inzwischen geschlechtsübergreifend.
 
@@ -114,7 +114,7 @@ Zwischen den 1960er und den 2000er Jahren geriet Pomade in Deutschland weitgehen
 
 Pomade ist im Register dieser Begriffe der Sonderfall: [Petticoat](/lexikon/petticoat/), [Korsett](/lexikon/korsett/) und Creepers sind Gegenstände, die man aufbewahrt, weitergibt und im Museum wiederfindet — Pomade ist ein Verbrauchsgut. Eine Szene hält sie nicht am Leben, indem sie sie sammelt, sondern indem sie sie nachkauft, und genau das lässt sich belegen. Der Satz, der diesen Eintrag von den übrigen dieser Reihe unterscheidet, steht in der Wikipedia selbst: Zwischen den 1960er und 2000er Jahren war Pomade in Deutschland vergessen — mit Ausnahme der Rockabilly-Szene. Sie ist damit kein Gegenstand, den die Szene sich später angeeignet hat, sondern einer, den sie über vier Jahrzehnte am Leben gehalten hat, während der Rest des Marktes zu Gel überging.
 
-Sichtbar wird das an der britischen Seite derselben Jahre. Die Teddy Boys trugen zu ihren Drapes und Röhrenhosen die Elvis-Tolle und [Creepers](/lexikon/creepers/) — die Frisur war Teil der Uniform, nicht ihr Zubehör, und ohne ein Produkt, das formbar bleibt, ist sie nicht zu bauen.
+Sichtbar wird das an der britischen Seite derselben Jahre. Die [Teddy Boys](/lexikon/teddy-boy/) trugen zu ihren Drapes und Röhrenhosen die Elvis-Tolle und [Creepers](/lexikon/creepers/) — die Frisur war Teil der Uniform, nicht ihr Zubehör, und ohne ein Produkt, das formbar bleibt, ist sie nicht zu bauen.
 
 Die Renaissance seit 2010 läuft über die Barbershops, und damit über dieselben Betriebe, die auch Pompadour und Ducktail wieder anbieten. Für den Aufbau einer Frisur heißt das praktisch: Die Wahl zwischen ölbasiert und wasserbasiert entscheidet über Halt, Glanz und Waschbarkeit — und wer eine Tolle möchte, die einen Weekender übersteht, wählt anders als jemand, der abends duschen will.
 
