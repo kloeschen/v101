@@ -5,13 +5,18 @@ kurzbeschreibung: Konzert der Band The Sinners am Samstag, 10. Oktober 2026, im 
 status: veroeffentlicht
 erstelltAm: 2026-09-24
 geprueftAm: 2026-09-25
+geaendertAm: 2026-10-03
 autor: markus
 typ: konzert
 beginn: 2026-10-10T20:00:00+02:00
 ort: american-western-saloon-reinickendorf
 region: berlin
 lineupWeitere: [The Sinners]
-eintritt: unveroeffentlicht
+eintritt: beziffert
+preise:
+  - bezeichnung: Eintritt
+    betrag: 15
+    waehrung: EUR
 genres: [rocknroll, doo-wop, rockabilly]
 durchfuehrung: geplant
 links:
@@ -81,21 +86,41 @@ redaktionsnotiz: >-
   "DooWop" und "Rockabilly". Alle drei haben einen Lexikoneintrag.
   Nicht gefuellt: veranstalter (organizer im JSON-LD ist ein leeres
   Person-Objekt), ticketUrl, kapazitaet, barrierefrei, ende.
+  NACHPRUEFUNG 2026-10-03 (sieben Tage vor dem Konzert): Detailseite von
+  Rockin' Wildcat unveraendert -- "Sa., 10. Oktober 2026", Uhrzeit 20:00,
+  Kalenderlink 20261010T180000Z/20261011T030000Z, JSON-LD weiter
+  EventScheduled mit dem bekannten Versatz (22:00+02:00) und price "0".
+  Der Gig Guide fuehrt "10 Okt. 20:00 American Western Saloon The
+  Sinners". Die Weekly Specials des Hauses tragen jetzt "aktualisiert am
+  30.09.2026" und fuehren den Flyer 10.10.2026Sinners.jpg weiter. Die
+  Veranstaltungsseite nennt unveraendert "Einlass 18 Uhr - Live Music
+  beginnt um 20 Uhr" und die Bitte, den Eintritt bar zu zahlen. Kein Hinweis auf Absage oder
+  Verlegung. `geprueftAm` bleibt unberuehrt (Posten "Nachpruefung kurz
+  vor dem Termin" in OFFENE-PUNKTE.md).
+  PREIS NACHGETRAGEN 2026-10-03 (Entscheidung Markus an PR #142): Der
+  Flyer 10.10.2026Sinners.jpg, eingebunden auf veranstaltungen.html und
+  weeklyspecials.html, nennt "Eintritt 15.- €" (Bild selbst geoeffnet).
+  Die fruehere Aussage "einen Betrag nennt keine Quelle" beruhte auf
+  einem Textabgleich, der das Bild nicht lesen konnte; der Abschnitt
+  EINTRITT oben ist damit ueberholt. Rockin' Wildcat traegt weiter
+  price "0" (= kein Preis hinterlegt, siehe oben) und deckt `eintritt`
+  deshalb nicht mehr. Falle: docs/ablaeufe/termin-recherche.md,
+  "American Western Saloon: der Preis steht nur im Flyer".
 quellen:
   - url: https://www.rockin-wildcat.com/rwc/events/the-sinners
     titel: The Sinners, 10. Oktober 2026 (Rockin' Wildcat)
-    abgerufenAm: 2026-09-24
-    felder: [beginn, ende, ort, lineupWeitere, genres, eintritt, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik]
+    abgerufenAm: 2026-10-03
+    felder: [beginn, ende, ort, lineupWeitere, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik]
     art: aggregator
   - url: https://www.western-saloon.de/weeklyspecials.html
     titel: Weekly Specials (American Western Saloon Berlin)
-    abgerufenAm: 2026-09-24
-    felder: [beginn, ort, lineupWeitere, body:termin]
+    abgerufenAm: 2026-10-03
+    felder: [beginn, ort, lineupWeitere, preise, eintritt, body:termin]
     art: offiziell
   - url: https://www.western-saloon.de/veranstaltungen.html
     titel: Veranstaltungen 2026 (American Western Saloon Berlin)
-    abgerufenAm: 2026-09-24
-    felder: [beginn, eintritt, body:termin]
+    abgerufenAm: 2026-10-03
+    felder: [beginn, eintritt, preise, body:termin]
     art: offiziell
   - url: https://www.western-saloon.de/
     titel: American Western Saloon Berlin, Startseite
@@ -104,7 +129,7 @@ quellen:
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/guide
     titel: Berlin Gig Guide (Rockin' Wildcat)
-    abgerufenAm: 2026-09-24
+    abgerufenAm: 2026-10-03
     felder: [beginn, ort, body:einordnung]
     art: aggregator
 ---
@@ -115,7 +140,7 @@ Das Konzert von The Sinners im [American Western Saloon](/locations/american-wes
 
 Den Termin belegen zwei voneinander unabhängige Quellen: der Berliner Gig Guide von Rockin' Wildcat und das Haus selbst, das den Abend unter seinen „Weekly Specials" führt. Die Anfangszeit steht bei Rockin' Wildcat nicht einheitlich — die sichtbare Angabe und der Kalendereintrag nennen 20 Uhr, die maschinenlesbaren Daten derselben Seite 22 Uhr. Dieser Eintrag folgt den 20 Uhr, und zwar nicht nur der Mehrheit wegen: Der Saloon schreibt selbst, dass die Live-Musik um 20 Uhr beginnt.
 
-Einen Eintrittspreis nennt keine der Quellen. Dass Eintritt genommen wird, steht dagegen fest — das Haus bittet ausdrücklich darum, ihn bei Live-Musik in bar zu zahlen. Eine Endzeit gibt dieser Eintrag ebenfalls nicht an. Die einzige Angabe dazu lautet bei dieser Quelle an fast jedem Termin gleich — fünf Uhr morgens, gleichgültig wann der Termin anfängt — und sagt deshalb nichts über diesen Abend.
+Der Eintritt kostet 15 Euro. Der Betrag steht nur auf dem Flyer, den das Haus auf seinen Seiten zeigt, nicht im Text und nicht im Gig Guide; bezahlt wird nach Bitte des Hauses bei Live-Musik in bar. Eine Endzeit gibt dieser Eintrag ebenfalls nicht an. Die einzige Angabe dazu lautet bei dieser Quelle an fast jedem Termin gleich — fünf Uhr morgens, gleichgültig wann der Termin anfängt — und sagt deshalb nichts über diesen Abend.
 
 ## Die Musik von The Sinners
 

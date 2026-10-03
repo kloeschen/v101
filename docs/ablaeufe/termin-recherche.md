@@ -197,6 +197,14 @@ Fehler verursacht oder beinahe verursacht.
   dem Haus und nennt den Widerspruch im Text (Regel 5). Zweiter Fall:
   Swamp Shakers im Klubhaus Ludwigsfelde am 24.10.2026 — Gig Guide 19
   Uhr, Haus und Reservix „Einlass 19:30, Beginn 20:00" (2026-10-01).
+- **American Western Saloon: der Preis steht nur im Flyer.** Der
+  Seitentext von `veranstaltungen.html` und `weeklyspecials.html` nennt
+  keinen Betrag („Eintritt … bitte nur in bar bezahlen"), der eingebundene
+  Flyer `weeklyflyer/2026/10.10.2026Sinners.jpg` dagegen „Eintritt 15.- €".
+  Erstrecherche und eine Nachprüfung per Textabgleich haben ihn deshalb
+  übersehen; gefunden hat ihn der Gegenleser (2026-10-03). Flyer dieses
+  Hauses immer als Bild öffnen — Datum im Dateinamen reicht nicht als
+  Lektüre.
 - **Ticketseite gegen das Haus, auch beim hauseigenen Anbieter.** Beim
   Psychobilly-Osterfestival im Café Central Weinheim (27.3.2027) nennt
   die loveyourartist-Seite des Einzeltickets „19:00 Uhr, Einlass 18:00",
