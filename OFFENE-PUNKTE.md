@@ -32,25 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Artikel: Pillar „Der Rockabilly-Look" (Säule `mode`).**
-Entscheidung Markus, 2026-10-01 (Pillar) und 2026-10-03 (frei). Vorschlag
-A6 der PAA-Recherche (`docs/daten/paa-rockabilly-2026-10-01/`). `typ:
-pillar`, Vorlage `src/content/artikel/_golden-example.md` und der Pillar
-`artikel/hot-rod-und-kustom-kulture`. Beantwortet die meistgestellte Frage
-zum Look, „Welcher Rock gehört zur Rockabilly-Szene?" (23 Treffer), dazu
-„Was sollte man im Rockabilly-Stil anziehen?" (5), Rockabilly-Look/-Style
-(3+3), Dresscode Polka Dots (6), Dresscode Vintage (6), „Wie zieht man
-sich Vintage an?" (11). Die Fragen sind Themen, keine Quelle. Spokes per
-`gehoertZu` darunter: `artikel/petticoat-reifrock-unterrock` (deren
-Redaktionsnotiz wartet darauf) und `artikel/petticoat-tragen`. Verlinkt
-die Lexikoneinträge der Säule (Petticoat, Bleistiftrock, Polka Dots,
-Gingham, Creepers, Pin-up, Taillenmieder …). Ein Pillar beschreibt, er
-schreibt nichts vor: Was „dazugehört", wird über Quellen zur Szene belegt,
-nicht gesetzt. Achtung: Links auf Entwürfe (`pompadour`, `vintage`)
-lassen den Artikel bei der Freigabe durchfallen, bis die Ziele mit
-freigegeben sind (`link-auf-entwurf`). Also im Text verlinken, nur wenn
-beide zusammen freigegeben werden sollen, und das im PR sagen.
-
 `frei` **Artikel A4: Rockabilly oder Rock'n'Roll? (vergleich, Säule
 `musik`).** Entscheidung Markus, 2026-10-03. Hauptentität
 `lexikon/rockabilly`, Ausgangspunkt dessen `abgrenzung`. PAA-Fragen:
@@ -298,8 +279,9 @@ gewählt, nicht abgelehnt (Einzelheiten in
 `docs/daten/paa-rockabilly-2026-10-01/README.md`): A2 „Vintage-Kleidung
 erkennen" (howto, `sammeln`, nach `lexikon/vintage`), A5 „Bekannte
 Rockabilly-Songs" (liste, `musik`, keine Songtexte). Ein Lauf baut davon
-nichts, solange Markus keinen auf `frei` setzt. Pillar, A4 und A7 sind
-seit dem 2026-10-03 `frei` (oben unter „Als Nächstes").
+nichts, solange Markus keinen auf `frei` setzt. A4 und A7 sind
+seit dem 2026-10-03 `frei` (oben unter „Als Nächstes"), der Pillar ist
+als `artikel/der-rockabilly-look` gebaut.
 
 **Artikel A1 „Vintage, Retro oder Secondhand?" — sobald
 `lexikon/vintage` als Entwurf steht.** Gewählt von Markus am 2026-10-01
