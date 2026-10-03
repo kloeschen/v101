@@ -18,6 +18,30 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-03 — Nachprüfung zählt ab dem Quellabruf; Gegenleser meldet „nicht anwendbar"
+
+**Entscheidung Markus**, beides Empfehlungen aus OFFENE-PUNKTE.
+
+**Stale-Bericht, „Termin naht":** Die letzte Prüfung ist das jüngere von
+`geprueftAm` und dem jüngsten `abgerufenAm` einer `offiziell`-Quelle mit
+`beginn` in `felder` (`letzteNachpruefung` in `scripts/stale-report.ts`).
+Anlass: Boppin'B (03.10.) wurde dreimal nachgeprüft und stand trotzdem
+dreimal als dringendster Posten im Bericht, weil eine Nachprüfung
+`geprueftAm` nicht anfassen darf. Verworfen: (1) Läufe setzen
+`geprueftAm` selbst — dann hieße das Feld nicht mehr „von Markus geprüft";
+(3) lassen — bei drei Läufen am Tag mehrere Doppelabrufe pro Termin.
+Aggregatoren zählen nicht, ein Abruf ohne `beginn` auch nicht. Test in
+`scripts/test-stale.ts` (fünf neue Fälle), Mutationsbeleg: Ohne die neue
+Rechnung, ohne die `art`-Bedingung oder ohne die `felder`-Bedingung fällt
+jeweils genau die erwartete Prüfung.
+
+**Gegenleser:** Bei 0 Prüfpunkten steht im PR „Nicht anwendbar" statt
+„0 Abweichung(en)", und Einträge ohne Prüfpunkte (jeder Artikel) werden
+als „nicht gegengelesen" genannt, auch in einem gemischten PR. Das prüft
+nichts zusätzlich, verhindert aber, dass ein leerer Abschnitt wie eine
+bestandene Prüfung aussieht. Offen bleibt (b), `kurzbeschreibung` und
+`faq` für Artikel belegpflichtig zu machen (Schemaänderung).
+
 ## 2026-10-02 — „Vintage" wird nur von Hand verlinkt
 
 **Entscheidung Markus:** `vintage` steht in `NUR_VON_HAND`

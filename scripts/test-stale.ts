@@ -268,15 +268,22 @@ try {
   /* 5. Termin naht, Pruefung liegt zurueck (seit 2026-09-23)          */
   /* ---------------------------------------------------------------- */
   /*
-   * Zehn Termine in einem Lauf, jeder mit genau einer Abweichung vom
+   * Fuenfzehn Termine in einem Lauf, jeder mit genau einer Abweichung vom
    * Grundfall "freigegeben, in 5 Tagen, vor 10 Tagen geprueft". Gemeldet
-   * werden duerfen genau drei. Das Paar steht wieder im selben Lauf: Eine
-   * Rubrik, die gar nicht laeuft, faellt an den dreien, eine, die wahllos
-   * meldet, an den sieben anderen. Die Raender liegen auf beiden Achsen
+   * werden duerfen genau sechs. Das Paar steht wieder im selben Lauf: Eine
+   * Rubrik, die gar nicht laeuft, faellt an den sechsen, eine, die wahllos
+   * meldet, an den neun anderen. Die Raender liegen auf beiden Achsen
    * (14/15 Tage bis zum Termin, 7/8 Tage seit der Pruefung).
    */
   {
-    const naht = (slug: string, name: string, inTagen: number, geprueftVor: number, extra: Record<string, string> = {}) => {
+    const naht = (
+      slug: string,
+      name: string,
+      inTagen: number,
+      geprueftVor: number,
+      extra: Record<string, string> = {},
+      nachpruefung?: { vor: number; art: string; felder: string },
+    ) => {
       const felder: Record<string, string> = {
         name,
         kurzbeschreibung: `${name} ist ein erfundener Tanzabend der Rockabilly-Szene, an dem die Pruefung naher Termine getestet wird.`,
@@ -302,7 +309,16 @@ quellen:
     abgerufenAm: ${tagVorOrt(-geprueftVor)}
     felder: [beginn, ort, eintritt, durchfuehrung]
     art: nachschlagewerk
----
+${
+  nachpruefung
+    ? `  - url: https://example.org/${slug}
+    titel: Ankündigung ${name}
+    abgerufenAm: ${tagVorOrt(-nachpruefung.vor)}
+    felder: [${nachpruefung.felder}]
+    art: ${nachpruefung.art}
+`
+    : ""
+}---
 
 ${name} ist ein erfundener Tanzabend der Rockabilly-Szene. Er existiert nur in den Pruefdaten dieses Projekts und dient dazu, den Bericht ueber nahe Termine mit veralteter Pruefung zu testen.
 `);
@@ -320,6 +336,16 @@ ${name} ist ein erfundener Tanzabend der Rockabilly-Szene. Er existiert nur in d
     naht("naht-abgesagt", "Abgesagt Nah Alt", 5, 10, { durchfuehrung: "abgesagt" });
     // Laeuft gerade: Beginn gestern, Ende morgen -- nicht vorbei, aber auch nicht "bevorstehend".
     naht("naht-laeuft", "Laeuft Alt", -1, 10, { ende: tagVorOrt(1), typ: "weekender" });
+    // Nachpruefung durch einen Lauf (seit 2026-10-03): `geprueftAm` bleibt
+    // alt, die offizielle Quelle mit `beginn` ist frisch abgerufen -- erledigt.
+    // Die beiden Gegenstuecke haben denselben frischen Abruf, aber ohne
+    // `beginn` in `felder` oder von einem Aggregator: weiter faellig.
+    naht("naht-nachgeprueft", "Nachgeprueft", 5, 10, {}, { vor: 2, art: "offiziell", felder: "beginn, durchfuehrung" });
+    naht("naht-ohne-beginn", "Abruf Ohne Beginn", 5, 10, {}, { vor: 2, art: "offiziell", felder: "eintritt" });
+    naht("naht-aggregator", "Abruf Aggregator", 5, 10, {}, { vor: 2, art: "aggregator", felder: "beginn" });
+    // Rand: Abruf vor 8 Tagen ist nicht frisch, vor 7 Tagen schon.
+    naht("naht-abruf8", "Abruf Acht", 5, 10, {}, { vor: 8, art: "offiziell", felder: "beginn" });
+    naht("naht-abruf7", "Abruf Sieben", 5, 10, {}, { vor: 7, art: "offiziell", felder: "beginn" });
 
     const b = bericht(temp);
     const nah = b.posten.filter((p) => p.art === "termin-naht");
@@ -333,9 +359,14 @@ ${name} ist ein erfundener Tanzabend der Rockabilly-Szene. Er existiert nur in d
       JSON.stringify(b.posten.map((p) => `${p.art}:${p.titel}`)),
     );
     gleich(
-      "genau die drei faelligen Termine werden gemeldet",
+      "genau die sechs faelligen Termine werden gemeldet",
       nah.map((p) => p.titel).sort(),
-      ["Heute Alt", "Nah Alt", "Rand Vierzehn"],
+      ["Abruf Acht", "Abruf Aggregator", "Abruf Ohne Beginn", "Heute Alt", "Nah Alt", "Rand Vierzehn"],
+    );
+    pruefe(
+      "der Abruf der offiziellen Quelle zaehlt als Pruefung (vor 8 statt vor 10 Tagen)",
+      nah.some((p) => p.titel === "Abruf Acht" && /zuletzt vor 8 Tagen/.test(p.detail)),
+      JSON.stringify(nah.find((p) => p.titel === "Abruf Acht") ?? null),
     );
     gleich("der naechste steht vorn", nah[0]?.titel, "Heute Alt");
     pruefe("heute heisst heute", /^heute, zuletzt vor 10 Tagen/.test(nah[0]?.detail ?? ""), nah[0]?.detail ?? "");
