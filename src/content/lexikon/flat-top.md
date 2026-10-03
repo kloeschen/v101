@@ -2,9 +2,9 @@
 name: Flat Top
 aliases: [Flattop, Flat-Top]
 kurzbeschreibung: Ein Flat Top ist ein kurzer Männerhaarschnitt, bei dem das aufrecht stehende Deckhaar zu einer flachen, ebenen Fläche geschnitten wird, während Seiten und Hinterkopf sehr kurz sind; er gilt als Spielart des Crew Cut.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 kategorie: frisur
 bezeichnungEn: Flattop
@@ -123,7 +123,7 @@ Gehalten wird das Deckhaar mit Wachspomade — in den 1950er Jahren „Butch Wax
 
 ## Geschichte des Flat Top
 
-Die englische Wikipedia nennt den Flat Top im frühen und mittleren 20. Jahrhundert beliebt, ein Jahr nennt sie nicht. Seine Geschichte ist die des Crew Cut, dessen Spielart er ist: Crew Cut und Flat Top hießen im Englischen früher „pompadour", „short pompadour" oder „brush cut". Der Name „crew cut" geht nach der englischen Wikipedia auf die Ruderteams amerikanischer Universitäten zurück, deren Mitglieder das Haar kurz trugen, damit es ihnen beim Rudern nicht ins Gesicht wehte. In den 1920er und 1930er Jahren war der Crew Cut unter Studenten verbreitet, im Zweiten Weltkrieg bekamen ihn die Rekruten. Mit der Langhaarmode ab Mitte der 1960er Jahre verlor er an Beliebtheit; Ende der 1970er Jahre kam er zurück, und in den 1980er Jahren war der Flat Top die beliebteste Form des Crew Cut.
+Die englische Wikipedia nennt den Flat Top im frühen und mittleren 20. Jahrhundert beliebt, ein Jahr nennt sie nicht. Seine Geschichte ist die des Crew Cut, dessen Spielart er ist: Crew Cut und Flat Top hießen im Englischen früher „[pompadour](/lexikon/pompadour/)", „short pompadour" oder „brush cut". Der Name „crew cut" geht nach der englischen Wikipedia auf die Ruderteams amerikanischer Universitäten zurück, deren Mitglieder das Haar kurz trugen, damit es ihnen beim Rudern nicht ins Gesicht wehte. In den 1920er und 1930er Jahren war der Crew Cut unter Studenten verbreitet, im Zweiten Weltkrieg bekamen ihn die Rekruten. Mit der Langhaarmode ab Mitte der 1960er Jahre verlor er an Beliebtheit; Ende der 1970er Jahre kam er zurück, und in den 1980er Jahren war der Flat Top die beliebteste Form des Crew Cut.
 
 Im Deutschen war die Frisur nach der deutschen Wikipedia schon gängig, bevor sie den englischen Namen bekam; als bekannten Träger nennt sie Paul von Hindenburg. Der Artikel „Frisur" ergänzt, dass der Bürstenschnitt in Deutschland schon zu Anfang des 20. Jahrhunderts ein Haarschnitt für Soldaten war. In der zweiten Hälfte der 1980er Jahre machten Rapper und das Duo Kid 'n Play den Flat Top im Hip-Hop bekannt.
 

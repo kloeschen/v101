@@ -67,4 +67,4 @@ Die Adresse stammt aus dem Berliner Gig Guide von Rockin' Wildcat. Mehr als Name
 
 ## Programm im Roadrunner's
 
-Der Termin, für den dieser Eintrag angelegt ist, führt [Neorockabilly](/lexikon/neo-rockabilly/), Rockabilly, Roots und Teddyboy-Rock'n'Roll als Stilrichtungen. Anders als ein Haus mit breitem Programm, das der Szene einzelne Abende gibt, ist der Club schon dem Namen nach auf Rock 'n' Roll und Motoren ausgerichtet.
+Der Termin, für den dieser Eintrag angelegt ist, führt [Neorockabilly](/lexikon/neo-rockabilly/), Rockabilly, Roots und [Teddyboy](/lexikon/teddy-boy/)-Rock'n'Roll als Stilrichtungen. Anders als ein Haus mit breitem Programm, das der Szene einzelne Abende gibt, ist der Club schon dem Namen nach auf Rock 'n' Roll und Motoren ausgerichtet.

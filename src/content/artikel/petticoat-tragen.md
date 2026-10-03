@@ -2,9 +2,9 @@
 name: "Petticoat tragen: Rock, Länge, Sitz und Pflege"
 aliases: [Petticoat richtig tragen, Wie trägt man einen Petticoat]
 kurzbeschreibung: Einen Petticoat trägt man in der natürlichen Taille unter einem ausreichend weiten Rock, auf dessen Länge er abgestimmt ist; ob die unterste Rüsche hervorschauen darf, ist eine Stilfrage zwischen zeitgetreuem Fünfziger-Look und modernem Rockabilly-Stil.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: praxis
 saeule: mode

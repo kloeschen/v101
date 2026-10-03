@@ -2,9 +2,9 @@
 name: Boogielicious im ASB-Bahnhof Barsinghausen
 aliases: [Boogielicious Barsinghausen 2026]
 kurzbeschreibung: Konzert des deutsch-niederländischen Boogie-Woogie-Trios Boogielicious am Samstag, 12. Dezember 2026, im ASB-Bahnhof Barsinghausen bei Hannover.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: konzert
 beginn: 2026-12-12T20:15:00+01:00

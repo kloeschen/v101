@@ -2,9 +2,9 @@
 name: Boogie-Party am Sonntagnachmittag, November 2026
 aliases: [Boogie Party Kammgarnsaal November 2026, Boogie Cats Tanzparty November 2026]
 kurzbeschreibung: Tanznachmittag des Union Tanzsportvereins Möllersdorf am Samstag, 21. November 2026, ab 17 Uhr im Kammgarnsaal Traiskirchen — der letzte der sechs für 2026 angekündigten Termine der Reihe.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 reihe: boogie-party-sonntagnachmittag

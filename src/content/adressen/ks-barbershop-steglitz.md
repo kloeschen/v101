@@ -68,7 +68,7 @@ KS Barbershop ist ein kleiner Friseurladen im Gardeschützenweg in Berlin-Stegli
 
 ## Angebot von KS Barbershop
 
-Der Laden nennt als Fifties-Haarschnitte Flat Top, Crew Cut und Pompadour, die Elvis-Tolle, und bietet an, darüber hinaus jeden gewünschten [Rockabilly](/lexikon/rockabilly/)-Stil zu schneiden. Waschen, Föhnen und Styling gehören dazu. Termine vergibt der Laden nach eigener Angabe nur telefonisch.
+Der Laden nennt als Fifties-Haarschnitte [Flat Top](/lexikon/flat-top/), Crew Cut und [Pompadour](/lexikon/pompadour/), die Elvis-Tolle, und bietet an, darüber hinaus jeden gewünschten [Rockabilly](/lexikon/rockabilly/)-Stil zu schneiden. Waschen, Föhnen und Styling gehören dazu. Termine vergibt der Laden nach eigener Angabe nur telefonisch.
 
 ## KS Barbershop in der Szene
 

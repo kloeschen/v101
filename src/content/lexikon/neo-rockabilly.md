@@ -78,7 +78,7 @@ Neo-Rockabilly ist eine Spielart des [Rockabilly](/lexikon/rockabilly/), die an 
 
 ## Merkmale von Neo-Rockabilly
 
-Die Besetzung ist die des Rockabilly: Gitarre, [Kontrabass](/lexikon/kontrabass/) im Slap-Stil und Schlagzeug. Nach der englischen Wikipedia bestand der Ansatz darin, beliebige populäre Musik in genau diese Besetzung zu übertragen. Vintage Rock beschreibt die Bands als Leute, die den Sound der 1950er mit Punk-Attitüde aufluden, und nennt als Kennzeichen der neuen Generation auch Äußeres: den amerikanischen Flat-Top statt der Ducktail-Frisur der Teddy Boys, dazu Peg-Hosen und Hawaiihemden.
+Die Besetzung ist die des Rockabilly: Gitarre, [Kontrabass](/lexikon/kontrabass/) im Slap-Stil und Schlagzeug. Nach der englischen Wikipedia bestand der Ansatz darin, beliebige populäre Musik in genau diese Besetzung zu übertragen. Vintage Rock beschreibt die Bands als Leute, die den Sound der 1950er mit Punk-Attitüde aufluden, und nennt als Kennzeichen der neuen Generation auch Äußeres: den amerikanischen [Flat-Top](/lexikon/flat-top/) statt der [Ducktail](/lexikon/ducktail/)-Frisur der [Teddy Boys](/lexikon/teddy-boy/), dazu Peg-Hosen und Hawaiihemden.
 
 ## Entstehung von Neo-Rockabilly
 

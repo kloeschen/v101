@@ -2,9 +2,9 @@
 name: Demented Are Go beim Psychobilly-Osterfestival im Café Central Weinheim
 aliases: [Demented Are Go Weinheim 2027, Psychobilly Oster Festival Weinheim 2027 Sonntag, Demented Are Go und Les Wampas]
 kurzbeschreibung: Psychobilly-Konzert mit Demented Are Go und Les Wampas am Sonntag, 28. März 2027, dem zweiten Abend des Psychobilly-Osterfestivals im Café Central in Weinheim.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: konzert
 beginn: 2027-03-28T19:30:00+02:00

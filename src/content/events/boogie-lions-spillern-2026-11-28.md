@@ -2,9 +2,9 @@
 name: Boogie-Abend der Boogie Lions, November 2026
 aliases: [Boogie Lions November 2026, Boogie Party Spillern 28.11.2026]
 kurzbeschreibung: Boogie-Tanzabend des Vereins Boogie Lions am Samstag, 28. November 2026, ab 20 Uhr im Festsaal WieMex in Spillern, mit DJ Sascha; einen Eintrittspreis nennt der Verein noch nicht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 reihe: boogie-lions-boogie-party

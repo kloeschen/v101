@@ -2,9 +2,9 @@
 name: Weihnachts-Boogie & Discofox Party 2026 in Regau
 aliases: [Chrismas Big Boogie und Discofox Party, Christmas Big Boogie und Discofox Party 2026, Weihnachts-Boogie & Discofox Party Regau]
 kurzbeschreibung: Tanzparty der Tanzschule Hippmann am Samstag, 5. Dezember 2026, ab 20 Uhr im Standort Star Movie Regau, mit DJ.K und DJ Walter auf zwei Floors für Boogie und Discofox.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-02
-geprueftAm: 2026-10-02
+geprueftAm: 2026-10-03
 autor: markus
 typ: tanzabend
 reihe: hippmann-boogie-discofox-party-regau
