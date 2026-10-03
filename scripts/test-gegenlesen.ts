@@ -207,26 +207,42 @@ gleich("Quelle nicht erreichbar: nicht prüfbar", urteil("ort", { id: id("ort"),
 
 /* --- 5. Einträge ohne Prüfpunkte (seit 2026-10-03) ---------------------- */
 /*
- * Ein Artikel hat keine belegpflichtigen Felder, also keine Prüfpunkte. Der
- * Bericht darf darüber nicht „0 Abweichungen" sagen. Lebenszeichen: Der
- * Artikel ist ein vollständiger Eintrag mit Quelle — dass er keine
+ * Eine Region hat keine belegpflichtigen Felder, also keine Prüfpunkte. Der
+ * Bericht darf darüber nicht „0 Abweichungen" sagen. Lebenszeichen: Die
+ * Region ist ein vollständiger Eintrag mit Quelle — dass sie keine
  * Prüfpunkte hat, liegt an der Collection, nicht an fehlenden Daten.
+ *
+ * Bis zum 2026-10-03 stand hier ein Artikel. Seit `kurzbeschreibung` und
+ * `faq` bei Artikeln belegpflichtig sind, hat er Prüfpunkte — die
+ * Gegenrichtung steht am Ende des Blocks.
  */
 {
-  const artikel = eintrag("artikel", "petticoat-test", { name: "Petticoat tragen", kurzbeschreibung: "Wie man einen Petticoat trägt.", quellen: [{ url: Q1, felder: ["kurzbeschreibung"] }] });
-  pruefe("Lebenszeichen: der Artikel hat Daten", artikel.daten?.name === "Petticoat tragen");
-  gleich("ein Artikel hat keine Prüfpunkte", auftragFuer([artikel]).pruefpunkte.length, 0);
-  gleich("…und steht in der Liste ohne Prüfpunkte", ohnePruefpunkte([termin, artikel]), ["artikel/petticoat-test"]);
+  const region = eintrag("regionen", "testregion", { name: "Testregion", kurzbeschreibung: "Eine erfundene Region.", quellen: [{ url: Q1, felder: ["kurzbeschreibung"] }] });
+  pruefe("Lebenszeichen: die Region hat Daten", region.daten?.name === "Testregion");
+  gleich("eine Region hat keine Prüfpunkte", auftragFuer([region]).pruefpunkte.length, 0);
+  gleich("…und steht in der Liste ohne Prüfpunkte", ohnePruefpunkte([termin, region]), ["regionen/testregion"]);
   gleich("…der Termin daneben nicht", ohnePruefpunkte([termin]), []);
 
-  const leer = alsMarkdown([], ohnePruefpunkte([artikel]));
+  const leer = alsMarkdown([], ohnePruefpunkte([region]));
   pruefe("ohne Prüfpunkte heißt es „nicht anwendbar\"", leer.includes("**Nicht anwendbar:** 0 Prüfpunkte"), leer);
   pruefe("…und nicht „0 Abweichung(en)\"", !/Abweichung/.test(leer), leer);
-  pruefe("…und nennt den Eintrag", leer.includes("`artikel/petticoat-test`"), leer);
+  pruefe("…und nennt den Eintrag", leer.includes("`regionen/testregion`"), leer);
 
-  const gemischt = alsMarkdown(vergleichAlles(auftrag, vollstaendig, k), ohnePruefpunkte([termin, artikel]));
+  const gemischt = alsMarkdown(vergleichAlles(auftrag, vollstaendig, k), ohnePruefpunkte([termin, region]));
   pruefe("gemischt: der Termin wird gezählt", gemischt.includes("**0 Abweichung(en)**"), gemischt.slice(0, 300));
-  pruefe("…und der Artikel steht als nicht gegengelesen da", gemischt.includes("nicht gegengelesen: `artikel/petticoat-test`"), gemischt.slice(0, 400));
+  pruefe("…und die Region steht als nicht gegengelesen da", gemischt.includes("nicht gegengelesen: `regionen/testregion`"), gemischt.slice(0, 400));
+
+  // Gegenrichtung: Ein Artikel hat seit dem 2026-10-03 Prüfpunkte für
+  // kurzbeschreibung und faq — der Gegenleser ist für Artikel nicht mehr blind.
+  const artikel = eintrag("artikel", "petticoat-test", {
+    name: "Petticoat tragen",
+    kurzbeschreibung: "Einen Petticoat trägt man in der natürlichen Taille.",
+    faq: [{ frage: "Darf der Petticoat hervorschauen?", antwort: "Das ist eine Stilfrage." }],
+    quellen: [{ url: Q1, felder: ["kurzbeschreibung", "faq"] }],
+  });
+  gleich("ein Artikel hat Prüfpunkte für kurzbeschreibung und faq", auftragFuer([artikel]).pruefpunkte.map((p) => p.feld), ["kurzbeschreibung", "faq"]);
+  pruefe("…ohne den Wert zu verraten", !JSON.stringify(auftragFuer([artikel])).includes("natürlichen Taille"), JSON.stringify(auftragFuer([artikel])));
+  gleich("…und steht nicht mehr in der Liste ohne Prüfpunkte", ohnePruefpunkte([artikel]), []);
 }
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);
