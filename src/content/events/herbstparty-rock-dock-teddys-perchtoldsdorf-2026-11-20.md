@@ -5,6 +5,7 @@ kurzbeschreibung: Herbstlicher Tanzabend des Boogie-Vereins BWC Rock Dock Teddys
 status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
+geaendertAm: 2026-10-03
 autor: markus
 typ: tanzabend
 beginn: 2026-11-20T19:00:00+01:00
@@ -51,8 +52,9 @@ redaktionsnotiz: >-
   Weihnachtsabend desselben Vereins. Beide Quellen nennen 10 Euro.
   MUSIK: Die Vereinsseite nennt Boogie Woogie, Swing und
   Standard-Latein, boogie.at Boogie Woogie, Rock'n'Roll und Swing.
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie-Woogie als Tanz", Lexikon-Posten "Bündel Tanz").
+  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich: Gemeint
+  ist der Tanz, und ob ein Tanzeintrag in `genres` stehen darf, ist offen
+  (OFFENE-PUNKTE, "Tanz in genres").
   ZEITZONE +01:00 (Winterzeit, Umstellung am 25.10.2026).
   REIHE LEER: Der Weihnachtsabend desselben Vereins
   (rock-this-christmas-perchtoldsdorf-2026-12-18) fuehrt keine Reihe;
@@ -62,6 +64,16 @@ redaktionsnotiz: >-
   VERANSTALTERURL LEER: Die Vereinsseite ist nur ueber http erreichbar.
   Nicht gefuellt: djs, drinnenDraussen, veranstalterUrl, ticketUrl,
   kapazitaet, barrierefrei, kinder, genres, reihe.
+  TANZ STATT KLAVIERSTIL (2026-10-03, Regel von Markus: Nennt ein
+  Tanzabend "Boogie Woogie", ist der Tanz gemeint, ausser die Quelle
+  spricht von der Musik selbst oder vom Klavier): Die Links im Abschnitt
+  zum Abend zeigen jetzt auf `boogie-woogie-tanz` und `rocknroll-tanz`
+  statt auf die Musikeintraege. Beide Quellen am 2026-10-03 erneut
+  gelesen, Wortlaut unveraendert: Vereinsseite "Gespielt wird Boogie
+  Woogie, Swing und Standard-Latein!" -- Standard-Latein ist eine
+  Tanzgattung, die Aufzaehlung nennt also Taenze, zu denen gespielt
+  wird; boogie.at "Ein Tanzabend fuer alle Fans von Boogie Woogie,
+  Rock'n'Roll und Swing".
 quellen:
   - url: https://web.archive.org/web/20260929183302/http://www.rockdockteddys.at/0000019b6a0b14d0e/index.html
     titel: Terminkalender BWC Rock Dock Teddys (Archivkopie vom 29.09.2026)
@@ -87,4 +99,4 @@ Nach der Vereinsseite findet der Abend auf der [Burg Perchtoldsdorf](/locations/
 
 ## Der Abend der Herbstparty der Rock Dock Teddys
 
-Der Verein richtet den Abend gemeinsam mit der Tanzschule Schmid in Perchtoldsdorf aus. Das Motto verbindet drei Anlässe: Man darf im Stil der 1950er Jahre oder in Tracht kommen, der Abend versteht sich als Nachfeier zu Halloween und als Auftakt zum Fasching. Laut Vereinsseite laufen [Boogie Woogie](/lexikon/boogie-woogie/), Swing und Standard-Latein; boogie.at nennt statt Standard-Latein [Rock'n'Roll](/lexikon/rocknroll/) und kündigt DJane Edith und DJ Andreas an — die Vereinsseite nennt für den 20. November keine DJs.
+Der Verein richtet den Abend gemeinsam mit der Tanzschule Schmid in Perchtoldsdorf aus. Das Motto verbindet drei Anlässe: Man darf im Stil der 1950er Jahre oder in Tracht kommen, der Abend versteht sich als Nachfeier zu Halloween und als Auftakt zum Fasching. Laut Vereinsseite laufen [Boogie Woogie](/lexikon/boogie-woogie-tanz/), Swing und Standard-Latein; boogie.at nennt statt Standard-Latein [Rock'n'Roll](/lexikon/rocknroll-tanz/) und kündigt DJane Edith und DJ Andreas an — die Vereinsseite nennt für den 20. November keine DJs.

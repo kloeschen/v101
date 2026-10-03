@@ -5,6 +5,7 @@ kurzbeschreibung: Weihnachtlicher Tanzabend des Boogie-Vereins BWC Rock Dock Ted
 status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
+geaendertAm: 2026-10-03
 autor: markus
 typ: tanzabend
 beginn: 2026-12-18T18:30:00+01:00
@@ -71,13 +72,21 @@ redaktionsnotiz: >-
   das Schema verlangt https. boogie.at ist Kalender, nicht Veranstalter.
   DJs: Schreibung wie auf boogie.at ("DJane Edith & DJ Andreas"); keine
   eigenen Seiten.
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie-Woogie als Tanz", Lexikon-Posten "Bündel Tanz").
+  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich: Gemeint
+  ist der Tanz, und ob ein Tanzeintrag in `genres` stehen darf, ist offen
+  (OFFENE-PUNKTE, "Tanz in genres").
   Nicht gefuellt: ende, veranstalterUrl, ticketUrl, kapazitaet,
   barrierefrei, kinder, genres, reihe.
   DIE HERBSTPARTY DESSELBEN POSTENS fehlt: boogie.at nennt den
   06.11.2026 im Kulturzentrum, die Vereinsseite den 20.11.2026 in der
   Burg. Datum und Ort strittig, zurueck in OFFENE-PUNKTE.
+  TANZ STATT KLAVIERSTIL (2026-10-03, Regel von Markus: Nennt ein
+  Tanzabend "Boogie Woogie", ist der Tanz gemeint, ausser die Quelle
+  spricht von der Musik selbst oder vom Klavier): Die Links im Abschnitt
+  zum Abend zeigen jetzt auf `boogie-woogie-tanz` und `rocknroll-tanz`
+  statt auf die Musikeintraege. boogie.at am 2026-10-03 erneut gelesen,
+  Wortlaut unveraendert: "Ein Tanzabend fuer alle Fans von Boogie Woogie,
+  Rock'n'Roll und Swing mit DJane Edith & DJ Andreas."
 quellen:
   - url: https://boogie.at/event/rock-christmas-swing-christmas-2
     titel: Rock this Christmas! Swing this Christmas! (BOOGIE.at)
@@ -113,4 +122,4 @@ boogie.at führt den Abend im [Kulturzentrum Perchtoldsdorf](/locations/kulturze
 
 ## Der Abend von Rock this Christmas! Swing this Christmas!
 
-Ausgerichtet wird der Abend in Kooperation mit der Tanzschule Schmid in Perchtoldsdorf. Gespielt werden laut Ankündigung neben Weihnachtsliedern auch Klassiker und neuere Titel für [Boogie Woogie](/lexikon/boogie-woogie/), [Rock'n'Roll](/lexikon/rocknroll/) und Swing; wer mag, kommt im Stil der 1950er Jahre. Der Verein richtet einen Weihnachtsabend unter diesem Titel nicht zum ersten Mal aus: 2025 fand er im Schloss Neugebäude in Wien statt, damals mit einer Musikspende von 5 Euro. Perchtoldsdorf liegt in [Niederösterreich](/regionen/niederoesterreich/).
+Ausgerichtet wird der Abend in Kooperation mit der Tanzschule Schmid in Perchtoldsdorf. Gespielt werden laut Ankündigung neben Weihnachtsliedern auch Klassiker und neuere Titel für [Boogie Woogie](/lexikon/boogie-woogie-tanz/), [Rock'n'Roll](/lexikon/rocknroll-tanz/) und Swing; wer mag, kommt im Stil der 1950er Jahre. Der Verein richtet einen Weihnachtsabend unter diesem Titel nicht zum ersten Mal aus: 2025 fand er im Schloss Neugebäude in Wien statt, damals mit einer Musikspende von 5 Euro. Perchtoldsdorf liegt in [Niederösterreich](/regionen/niederoesterreich/).

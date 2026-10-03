@@ -18,6 +18,18 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-03 — „Boogie Woogie" an Tanzabenden meint den Tanz
+
+**Regel von Markus:** Nennt ein Tanzabend „Boogie Woogie", verlinkt der
+Eintrag den Tanz (`boogie-woogie-tanz`), außer die Quelle spricht von der
+Musik selbst oder vom Klavier. Umgestellt: Herbstparty und Rock this
+Christmas der Rock Dock Teddys (Perchtoldsdorf), dort auch Rock'n'Roll
+auf `rocknroll-tanz`, weil dieselbe Aufzählung. Gegen die Quellen
+geprüft und belassen: die drei Boogie Mix im Haslinger Hof und der Hof
+selbst („100% Boogie Woogie … Originalmusik"), die Rockabilly Convention
+(„Bands sorgen für … Boogie Woogie"). Offen bleibt, ob Tanzeinträge in
+`genres` stehen dürfen (OFFENE-PUNKTE).
+
 ## 2026-10-02 — „Vintage" wird nur von Hand verlinkt
 
 **Entscheidung Markus:** `vintage` steht in `NUR_VON_HAND`
