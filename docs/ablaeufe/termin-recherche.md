@@ -169,6 +169,16 @@ versucht wird.
 
 ## Fallen beim Bauen eines Termin-Postens
 
+- **„Boogie Woogie" an einem Tanzabend meint den Tanz** (Regel von Markus,
+  2026-10-03). Verlinkt wird `lexikon/boogie-woogie-tanz`, nicht der
+  Klavierstil `lexikon/boogie-woogie` — außer die Quelle spricht von der
+  Musik selbst („Originalmusik", „Bands sorgen für … Boogie Woogie") oder
+  vom Klavier. „Gespielt wird Boogie Woogie, Swing und Standard-Latein"
+  zählt nicht als Musik: Die Aufzählung nennt Tänze, zu denen gespielt
+  wird. Steht Rock'n'Roll in derselben Aufzählung, gilt dasselbe
+  (`rocknroll-tanz`). Beispiele: Haslinger Hof bleibt Musik, die Abende
+  der Rock Dock Teddys sind Tanz. In `genres` steht bisher kein
+  Tanzeintrag (offen, OFFENE-PUNKTE).
 - **Sonderkonditionen für Hotelgäste werden nicht gelistet** (Entscheidung
   Markus, 2026-09-30, an PR #105). Ein Haus wie der Haslinger Hof gibt
   Hotelgästen freien Zutritt; das gehört weder in `preise` noch in den

@@ -97,6 +97,15 @@ redaktionsnotiz: >-
   laesst sich das von hier nicht. Der Samstag wirkt unvollstaendig (eine
   Band); das Line-up ist deshalb als Stand vom 2026-09-23 formuliert.
   Bands in `lineupWeitere`, keine Bandseiten.
+  BOOGIE WOOGIE GEPRUEFT 2026-10-03 (Regel von Markus: Nennt ein
+  Tanzabend "Boogie Woogie", ist der Tanz gemeint, ausser die Quelle
+  spricht von der Musik selbst oder vom Klavier): Hier bleibt der
+  Musikeintrag in `genres` und im Lead. Die Seite, am 2026-10-03 erneut
+  gelesen, sagt "Zahlreiche hochkaraetige Bands sorgen fuer beste
+  Rockabilly-Musik, fuer mitreissenden Rock'n'Roll und Boogie Woogie" --
+  das ist die Musik. Den Tanz nennt sie zusaetzlich ("Boogie
+  Woogie-Tanzworkshops von Claudia und Wolfgang Fesl"); die Workshops
+  stehen bisher nicht im Text.
 quellen:
   - url: https://www.pullmancity.de/events-shows-musik/events/rockabilly-convention
     titel: Rockabilly Convention meets Rock'n'Roll & Boogie Woogie (Pullman City)
