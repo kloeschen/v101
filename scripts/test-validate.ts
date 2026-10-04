@@ -594,6 +594,72 @@ fall({
 });
 
 /* ------------------------------------------------------------------ */
+/* Belegpflicht fuer faq und Artikel-kurzbeschreibung (2026-10-03)     */
+/* ------------------------------------------------------------------ */
+/*
+ * Entscheidung Markus: `faq` ist im Lexikon und bei Artikeln
+ * belegpflichtig, `kurzbeschreibung` zusaetzlich bei Artikeln. Bis dahin
+ * stand die Regel „nur Fragen, die eine Quelle deckt" nur in Prosa. Je
+ * Feld das Paar: ohne Deckung schlaegt `belegpflicht` an, mit Deckung
+ * schweigt es. Die Gegenprobe ist das Lebenszeichen — sie zeigt, dass der
+ * Eintrag gelesen wurde und die FAQ gesetzt ist, nicht verworfen.
+ */
+const faqYaml =
+  "\n  - frage: Wie weit schwingt ein Testrock beim Tanzen eigentlich aus?" +
+  "\n    antwort: Ein Testrock schwingt beim Tanzen so weit aus, wie sein kreisrunder Zuschnitt es erlaubt.";
+
+fall({
+  name: "belegpflicht: faq ohne faq-Quelle warnt im Lexikon-Entwurf",
+  datei: "lexikon/faq-ohne-beleg.md",
+  inhalt: md(lexFelder("Faqlueckerock", { faq: faqYaml }), lexKoerper("Faqlueckerock")),
+  erwartet: { belegpflicht: "warnung" },
+});
+
+fall({
+  name: "belegpflicht: faq mit faq-Quelle schweigt im Lexikon",
+  datei: "lexikon/faq-mit-beleg.md",
+  inhalt: md(
+    lexFelder("Faqbelegrock", { faq: faqYaml, quellen: quelle("definition, kurzbeschreibung, faq") }),
+    lexKoerper("Faqbelegrock"),
+  ),
+  verboten: ["belegpflicht", "quellen-felder-gueltig", "schema"],
+});
+
+fall({
+  name: "belegpflicht: freigegebener Artikel ohne kurzbeschreibung-Quelle ist ein Fehler",
+  datei: "artikel/kurz-ohne-beleg.md",
+  inhalt: md(
+    artFelder("Belegartikel Kurz", { hauptentitaet: "\n  typ: lexikon\n  slug: freiziel", quellen: quelle("aliases") }),
+    artKoerper("Belegartikel Kurz"),
+  ),
+  erwartet: { belegpflicht: "fehler" },
+});
+
+fall({
+  name: "belegpflicht: freigegebener Artikel mit faq ohne faq-Quelle ist ein Fehler",
+  datei: "artikel/faq-ohne-beleg.md",
+  inhalt: md(
+    artFelder("Belegartikel Faq", { hauptentitaet: "\n  typ: lexikon\n  slug: freiziel", faq: faqYaml }),
+    artKoerper("Belegartikel Faq"),
+  ),
+  erwartet: { belegpflicht: "fehler" },
+});
+
+fall({
+  name: "belegpflicht: Artikel mit gedeckter kurzbeschreibung und faq schweigt",
+  datei: "artikel/faq-mit-beleg.md",
+  inhalt: md(
+    artFelder("Belegartikel Voll", {
+      hauptentitaet: "\n  typ: lexikon\n  slug: freiziel",
+      faq: faqYaml,
+      quellen: quelle("kurzbeschreibung, faq"),
+    }),
+    artKoerper("Belegartikel Voll"),
+  ),
+  verboten: ["belegpflicht", "quellen-felder-gueltig", "schema"],
+});
+
+/* ------------------------------------------------------------------ */
 /* Duplikate (globale Pruefung)                                        */
 /* ------------------------------------------------------------------ */
 
@@ -1135,6 +1201,64 @@ fall({
   datei: "bands/jahre-widerspruch.md",
   inhalt: md(bandFelder("Die Widerspruechlichen", { gegruendet: "1985", aufgeloest: "1990", aktiv: "true" }), bandKoerper("Die Widerspruechlichen")),
   erwartet: { "band-jahre": "fehler" },
+});
+
+/* ------------------------------------------------------------------ */
+/* genres-kategorie: Musik immer, Tanz nur bei Tanzterminen (2026-10-03) */
+/* ------------------------------------------------------------------ */
+/*
+ * Zwei Ziele mit eigener Kategorie: ein Tanz und ein Musikstil. Die
+ * Gegenproben (Tanzabend mit Tanz, Band mit Musik) sind das Lebenszeichen:
+ * Dieselben Ziele schlagen dort nicht an, die Regel unterscheidet also nach
+ * Kategorie und Terminart und nicht nach dem Vorhandensein von `genres`.
+ */
+fall({
+  name: "genres-kategorie: Tanzeintrag als Ziel",
+  datei: "lexikon/testtanz.md",
+  inhalt: md(lexFelder("Testtanz", { kategorie: "tanz" }), lexKoerper("Testtanz")),
+  verboten: ["schema"],
+});
+
+fall({
+  name: "genres-kategorie: Musikeintrag als Ziel",
+  datei: "lexikon/testmusik.md",
+  inhalt: md(lexFelder("Testmusik", { kategorie: "genre" }), lexKoerper("Testmusik")),
+  verboten: ["schema"],
+});
+
+fall({
+  name: "genres-kategorie: Tanzabend mit Musik und Tanz ist sauber",
+  datei: "events/genres-tanzabend.md",
+  inhalt: md(evFelder("Genres Tanzabend", { typ: "tanzabend", genres: "[testmusik, testtanz]" }), evKoerper("Genres Tanzabend")),
+  verboten: ["genres-kategorie", "referenzen", "schema"],
+});
+
+fall({
+  name: "genres-kategorie: Tanz bei einem Konzert ist ein Fehler",
+  datei: "events/genres-konzert-tanz.md",
+  inhalt: md(evFelder("Genres Konzert", { typ: "konzert", genres: "[testtanz]" }), evKoerper("Genres Konzert")),
+  erwartet: { "genres-kategorie": "fehler" },
+});
+
+fall({
+  name: "genres-kategorie: Modebegriff in genres ist auch beim Tanzabend ein Fehler",
+  datei: "events/genres-mode.md",
+  inhalt: md(evFelder("Genres Mode", { typ: "tanzabend", genres: "[tellerrock]" }), evKoerper("Genres Mode")),
+  erwartet: { "genres-kategorie": "fehler" },
+});
+
+fall({
+  name: "genres-kategorie: Tanz bei einer Band ist ein Fehler",
+  datei: "bands/genres-tanzband.md",
+  inhalt: md(bandFelder("Die Tanzenden", { genres: "[testtanz]" }), bandKoerper("Die Tanzenden")),
+  erwartet: { "genres-kategorie": "fehler" },
+});
+
+fall({
+  name: "genres-kategorie: Musik bei einer Band ist sauber",
+  datei: "bands/genres-musikband.md",
+  inhalt: md(bandFelder("Die Musikalischen", { genres: "[testmusik]" }), bandKoerper("Die Musikalischen")),
+  verboten: ["genres-kategorie", "referenzen", "schema"],
 });
 
 fall({

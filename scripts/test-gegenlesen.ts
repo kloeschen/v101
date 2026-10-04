@@ -186,6 +186,33 @@ gleich("Quelle nicht erreichbar: nicht prüfbar", urteil("ort", { id: id("ort"),
   const p = auftragFuer([ohneQuelle]).pruefpunkte.find((x) => x.feld === "ort")!;
   gleich("Feld ohne Quelle: nicht prüfbar", vergleiche(p, gut(p.id, { name: "Gasthaus Forstinger", stadt: "Roitham" }), ohneQuelle, k).urteil, "nicht-pruefbar");
 }
+// Nicht prüfbar zeigt den eingetragenen Wert wie die übrigen Zweige
+// (seit 2026-10-04): Ortszeit statt Date.toString(), Beträge statt
+// „[object Object]". Fund aus PR #156.
+{
+  const weg = (feld: string): Antwort => ({ id: id(feld), ergebnis: "nicht-erreichbar", grund: "Zeitüberschreitung" });
+  const zeile = (feld: string, a: Antwort, e = termin) => vergleiche(pp(feld), a, e, k);
+  // Lebenszeichen: Die frühe Rückgabe ist wirklich der Zweig, der antwortet.
+  gleich("nicht erreichbar: beginn ist nicht prüfbar", zeile("beginn", weg("beginn")).urteil, "nicht-pruefbar");
+  gleich("…und zeigt Datum und Uhrzeit in Ortszeit", zeile("beginn", weg("beginn")).eingetragen, "2026-10-24 20:00");
+  gleich("…preise als Beträge", zeile("preise", weg("preise")).eingetragen, "12 / 15");
+  gleich("…ort mit Namen und Stadt", zeile("ort", weg("ort")).eingetragen, "Gasthaus Forstinger, Roitham am Traunfall");
+  gleich("…lineupBands mit Bandnamen", zeile("lineupBands", weg("lineupBands")).eingetragen, "The Testers");
+  // Dieselbe Darstellung wie im bestätigten Fall — nicht bloß „irgendwie lesbar".
+  const richtig = vergleichAlles(auftrag, vollstaendig, k);
+  for (const feld of ["beginn", "preise", "ort", "lineupBands"]) {
+    gleich(`…${feld} genau wie im Vergleichszweig`, zeile(feld, weg(feld)).eingetragen, richtig.find((b) => b.feld === feld)?.eingetragen);
+  }
+  const ohneQuelle = eintrag("events", "herbst-2026-10-24", { ...termin.daten!, quellen: [] });
+  const pb = auftragFuer([ohneQuelle]).pruefpunkte.find((x) => x.feld === "beginn")!;
+  const ohne = vergleiche(pb, weg("beginn"), ohneQuelle, k);
+  gleich("ohne Quelle: beginn ist nicht prüfbar", ohne.urteil, "nicht-pruefbar");
+  gleich("…und zeigt ebenfalls Ortszeit", ohne.eingetragen, "2026-10-24 20:00");
+  const ng = vergleiche(pp("beginn"), { id: id("beginn"), ergebnis: "nicht-gefunden", grund: "nur 31.10." }, termin, k);
+  gleich("nicht gefunden: beginn zeigt Ortszeit", ng.eingetragen, "2026-10-24 20:00");
+  const ganz = eintrag("events", "herbst-2026-10-24", { ...termin.daten!, ganztaegig: true });
+  gleich("ganztägig, nicht erreichbar: nur das Datum", vergleiche(pp("beginn"), weg("beginn"), ganz, k).eingetragen, "2026-10-24");
+}
 // Andere Sammlungen: kein Code-Vergleich, Mensch sieht hin.
 {
   const begriff = eintrag("lexikon", "swing", { name: "Swing", aeraVon: 1930, quellen: [{ url: Q1, felder: ["aeraVon"] }] });
@@ -207,26 +234,42 @@ gleich("Quelle nicht erreichbar: nicht prüfbar", urteil("ort", { id: id("ort"),
 
 /* --- 5. Einträge ohne Prüfpunkte (seit 2026-10-03) ---------------------- */
 /*
- * Ein Artikel hat keine belegpflichtigen Felder, also keine Prüfpunkte. Der
- * Bericht darf darüber nicht „0 Abweichungen" sagen. Lebenszeichen: Der
- * Artikel ist ein vollständiger Eintrag mit Quelle — dass er keine
+ * Eine Region hat keine belegpflichtigen Felder, also keine Prüfpunkte. Der
+ * Bericht darf darüber nicht „0 Abweichungen" sagen. Lebenszeichen: Die
+ * Region ist ein vollständiger Eintrag mit Quelle — dass sie keine
  * Prüfpunkte hat, liegt an der Collection, nicht an fehlenden Daten.
+ *
+ * Bis zum 2026-10-03 stand hier ein Artikel. Seit `kurzbeschreibung` und
+ * `faq` bei Artikeln belegpflichtig sind, hat er Prüfpunkte — die
+ * Gegenrichtung steht am Ende des Blocks.
  */
 {
-  const artikel = eintrag("artikel", "petticoat-test", { name: "Petticoat tragen", kurzbeschreibung: "Wie man einen Petticoat trägt.", quellen: [{ url: Q1, felder: ["kurzbeschreibung"] }] });
-  pruefe("Lebenszeichen: der Artikel hat Daten", artikel.daten?.name === "Petticoat tragen");
-  gleich("ein Artikel hat keine Prüfpunkte", auftragFuer([artikel]).pruefpunkte.length, 0);
-  gleich("…und steht in der Liste ohne Prüfpunkte", ohnePruefpunkte([termin, artikel]), ["artikel/petticoat-test"]);
+  const region = eintrag("regionen", "testregion", { name: "Testregion", kurzbeschreibung: "Eine erfundene Region.", quellen: [{ url: Q1, felder: ["kurzbeschreibung"] }] });
+  pruefe("Lebenszeichen: die Region hat Daten", region.daten?.name === "Testregion");
+  gleich("eine Region hat keine Prüfpunkte", auftragFuer([region]).pruefpunkte.length, 0);
+  gleich("…und steht in der Liste ohne Prüfpunkte", ohnePruefpunkte([termin, region]), ["regionen/testregion"]);
   gleich("…der Termin daneben nicht", ohnePruefpunkte([termin]), []);
 
-  const leer = alsMarkdown([], ohnePruefpunkte([artikel]));
+  const leer = alsMarkdown([], ohnePruefpunkte([region]));
   pruefe("ohne Prüfpunkte heißt es „nicht anwendbar\"", leer.includes("**Nicht anwendbar:** 0 Prüfpunkte"), leer);
   pruefe("…und nicht „0 Abweichung(en)\"", !/Abweichung/.test(leer), leer);
-  pruefe("…und nennt den Eintrag", leer.includes("`artikel/petticoat-test`"), leer);
+  pruefe("…und nennt den Eintrag", leer.includes("`regionen/testregion`"), leer);
 
-  const gemischt = alsMarkdown(vergleichAlles(auftrag, vollstaendig, k), ohnePruefpunkte([termin, artikel]));
+  const gemischt = alsMarkdown(vergleichAlles(auftrag, vollstaendig, k), ohnePruefpunkte([termin, region]));
   pruefe("gemischt: der Termin wird gezählt", gemischt.includes("**0 Abweichung(en)**"), gemischt.slice(0, 300));
-  pruefe("…und der Artikel steht als nicht gegengelesen da", gemischt.includes("nicht gegengelesen: `artikel/petticoat-test`"), gemischt.slice(0, 400));
+  pruefe("…und die Region steht als nicht gegengelesen da", gemischt.includes("nicht gegengelesen: `regionen/testregion`"), gemischt.slice(0, 400));
+
+  // Gegenrichtung: Ein Artikel hat seit dem 2026-10-03 Prüfpunkte für
+  // kurzbeschreibung und faq — der Gegenleser ist für Artikel nicht mehr blind.
+  const artikel = eintrag("artikel", "petticoat-test", {
+    name: "Petticoat tragen",
+    kurzbeschreibung: "Einen Petticoat trägt man in der natürlichen Taille.",
+    faq: [{ frage: "Darf der Petticoat hervorschauen?", antwort: "Das ist eine Stilfrage." }],
+    quellen: [{ url: Q1, felder: ["kurzbeschreibung", "faq"] }],
+  });
+  gleich("ein Artikel hat Prüfpunkte für kurzbeschreibung und faq", auftragFuer([artikel]).pruefpunkte.map((p) => p.feld), ["kurzbeschreibung", "faq"]);
+  pruefe("…ohne den Wert zu verraten", !JSON.stringify(auftragFuer([artikel])).includes("natürlichen Taille"), JSON.stringify(auftragFuer([artikel])));
+  gleich("…und steht nicht mehr in der Liste ohne Prüfpunkte", ohnePruefpunkte([artikel]), []);
 }
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);
