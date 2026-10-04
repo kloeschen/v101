@@ -238,10 +238,51 @@ export function pruefeAntwort(auftrag: Auftrag, antworten: unknown): string[] {
 
 type Vergleich = { urteil: Urteil; eingetragen: string; quelleSagt: string; hinweis?: string };
 
+/*
+ * Die Darstellung der eingetragenen Werte. Jeder Zweig von `vergleiche`
+ * zeigt dasselbe Feld gleich — auch die frühen Rückgaben (keine Quelle,
+ * nicht erreichbar, nicht gefunden). Bis zum 2026-10-04 bildeten die mit
+ * `String(...)` ab: „Sat Oct 03 2026 18:15:00 GMT+0000" statt
+ * „2026-10-03 20:15", „[object Object]" statt der Beträge. Eine UTC-Zeit
+ * sieht in der Tabelle wie eine falsche Anfangszeit aus.
+ */
+function zeitText(eintrag: Date, ganztaegig: boolean): string {
+  const e = ortszeit(eintrag);
+  return ganztaegig ? e.datum : `${e.datum} ${e.uhrzeit}`;
+}
+
+function preisText(d: Record<string, any>): string {
+  const betraege = ((d.preise ?? []) as { betrag: number }[]).map((p) => p.betrag).sort((x, y) => x - y);
+  return d.eintritt === "frei" ? "Eintritt frei" : d.eintritt === "unveroeffentlicht" ? "kein Preis veröffentlicht" : betraege.join(" / ");
+}
+
+function ortText(slug: string, k: Kontext): string {
+  const ort = k.alle.get(`locations/${slug}`)?.daten;
+  return ort ? `${ort.name}, ${ort.adresse?.ort ?? ""}` : slug;
+}
+
+function lineupText(slugs: string[], k: Kontext): string {
+  return slugs.map((slug) => k.alle.get(`bands/${slug}`)?.daten?.name ?? slug).join(", ");
+}
+
+/** Der eingetragene Wert eines Felds, wie ihn auch der passende Vergleich zeigt. */
+export function eingetragenText(feld: string, e: GeladenerEintrag, k: Kontext): string {
+  const d = e.daten ?? {};
+  if (e.collection === "events") {
+    if ((feld === "beginn" || feld === "ende") && d[feld] instanceof Date) return zeitText(d[feld], Boolean(d.ganztaegig));
+    if (feld === "preise") return preisText(d);
+    if (feld === "ort" && d.ort) return ortText(String(d.ort), k);
+    if (feld === "lineupBands" && Array.isArray(d.lineupBands)) return lineupText(d.lineupBands, k);
+  }
+  const w = d[feld];
+  if (w === undefined || w === null) return "—";
+  return typeof w === "object" ? JSON.stringify(w) : String(w);
+}
+
 function zeitVergleich(eintrag: Date | undefined, w: any, ganztaegig: boolean, mitEinlass: boolean): Vergleich {
   if (!(eintrag instanceof Date)) return { urteil: "sichtpruefung", eingetragen: "—", quelleSagt: JSON.stringify(w) };
   const e = ortszeit(eintrag);
-  const eingetragen = ganztaegig ? e.datum : `${e.datum} ${e.uhrzeit}`;
+  const eingetragen = zeitText(eintrag, ganztaegig);
   const quelleSagt = `${w?.datum ?? "?"}${w?.uhrzeit ? ` ${w.uhrzeit}` : ""}${mitEinlass && w?.einlass ? ` (Einlass ${w.einlass})` : ""}`;
   if (w?.datum !== e.datum) return { urteil: "abweichung", eingetragen, quelleSagt, hinweis: "anderes Datum" };
   if (ganztaegig) return { urteil: "bestaetigt", eingetragen, quelleSagt };
@@ -257,8 +298,7 @@ function zeitVergleich(eintrag: Date | undefined, w: any, ganztaegig: boolean, m
 
 function preisVergleich(d: Record<string, any>, a: Antwort): Vergleich {
   const betraege = ((d.preise ?? []) as { betrag: number }[]).map((p) => p.betrag).sort((x, y) => x - y);
-  const eingetragen =
-    d.eintritt === "frei" ? "Eintritt frei" : d.eintritt === "unveroeffentlicht" ? "kein Preis veröffentlicht" : betraege.join(" / ");
+  const eingetragen = preisText(d);
   if (a.ergebnis === "nicht-gefunden") {
     const quelleSagt = "nennt keinen Preis";
     return d.eintritt === "unveroeffentlicht"
@@ -290,7 +330,7 @@ function preisVergleich(d: Record<string, any>, a: Antwort): Vergleich {
 function ortVergleich(slug: string, w: any, k: Kontext): Vergleich {
   const ort = k.alle.get(`locations/${slug}`)?.daten;
   const stadt = ort?.adresse?.ort ?? "";
-  const eingetragen = ort ? `${ort.name}, ${stadt}` : slug;
+  const eingetragen = ortText(slug, k);
   const quelleSagt = `${w?.name ?? "?"}, ${w?.stadt ?? "?"}`;
   if (!ort) return { urteil: "sichtpruefung", eingetragen, quelleSagt, hinweis: "Ort nicht im Register gefunden" };
   const stadtGleich = norm(String(w?.stadt ?? "")) !== "" && (norm(String(w.stadt)).includes(norm(stadt)) || norm(stadt).includes(norm(String(w.stadt))));
@@ -333,10 +373,10 @@ export function vergleiche(p: Pruefpunkt, a: Antwort, e: GeladenerEintrag, k: Ko
   const d = e.daten ?? {};
   const basis = { id: p.id, pfad: p.pfad, feld: p.feld, zitat: a.zitat, url: a.quelle };
   if (p.quellen.length === 0) {
-    return { ...basis, urteil: "nicht-pruefbar", eingetragen: String(d[p.feld] ?? "—"), quelleSagt: "—", hinweis: "keine Quelle deckt das Feld" };
+    return { ...basis, urteil: "nicht-pruefbar", eingetragen: eingetragenText(p.feld, e, k), quelleSagt: "—", hinweis: "keine Quelle deckt das Feld" };
   }
   if (a.ergebnis === "nicht-erreichbar") {
-    return { ...basis, urteil: "nicht-pruefbar", eingetragen: String(d[p.feld] ?? "—"), quelleSagt: "—", hinweis: a.grund };
+    return { ...basis, urteil: "nicht-pruefbar", eingetragen: eingetragenText(p.feld, e, k), quelleSagt: "—", hinweis: a.grund };
   }
 
   let v: Vergleich;
@@ -344,7 +384,7 @@ export function vergleiche(p: Pruefpunkt, a: Antwort, e: GeladenerEintrag, k: Ko
   if (e.collection === "events" && p.feld === "preise") {
     v = preisVergleich(d, a);
   } else if (a.ergebnis === "nicht-gefunden") {
-    const eingetragen = String(d[p.feld] ?? "—");
+    const eingetragen = eingetragenText(p.feld, e, k);
     v = hart.includes(p.feld) && e.collection === "events"
       ? { urteil: "abweichung", eingetragen, quelleSagt: "nicht gefunden", hinweis: a.grund }
       : { urteil: "sichtpruefung", eingetragen, quelleSagt: "nicht gefunden", hinweis: a.grund };

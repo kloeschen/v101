@@ -132,17 +132,6 @@ Bis dahin gilt der Umweg: eigener Klon je Agent im Scratchpad, Patch,
 2026-10-02 in `.gitignore`, damit der Stop-Hook die Kopien nicht als
 unversionierte Dateien meldet.
 
-`frei` **Gegenleser zeigt Rohwerte bei „nicht prüfbar".** Fund vom
-2026-10-04 (PR #156): In der Tabelle „Nicht prüfbar" steht bei `beginn`
-„Sat Oct 03 2026 18:15:00 GMT+0000 …" statt „2026-10-03 20:15", bei
-`preise` „[object Object],[object Object]". Ursache: Die beiden frühen
-Rückgaben in `scripts/gegenlesen.ts` (keine Quelle / nicht erreichbar)
-bilden `eingetragen` mit `String(d[p.feld])`, statt dieselbe Darstellung
-wie die übrigen Zweige zu nutzen. Gerade dort schaut Markus hin, und eine
-UTC-Zeit sieht dort wie eine falsche Anfangszeit aus. Mit Test in
-`scripts/test-gegenlesen.ts` (Datum in Ortszeit, Preise lesbar) und
-Mutationsbeleg.
-
 ## Vor dem Go-Live
 
 **Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht
