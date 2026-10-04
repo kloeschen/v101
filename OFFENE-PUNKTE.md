@@ -32,6 +32,164 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **Lexikon, Bündel Rock- und Kleidformen: Tellerrock, Etuikleid, Neckholder.**
+Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
+2026-10-04). Abgrenzungen laut Vorrat: Tellerrock (gegen Glockenrock und
+Petticoat), Etuikleid (gegen Bleistiftrock und Wiggle Dress), Neckholder
+(gegen Racerback). Alte Pfade laut Vorrat vorhanden. Beim Bauen:
+`lexikon/petticoat` und `lexikon/bleistiftrock` bestehen schon — gegen
+ihre Abgrenzungen und `aliases` prüfen, damit nichts doppelt entsteht.
+
+`frei` **Lexikon, Bündel Genres: Rhythm and Blues, Hillbilly.**
+Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
+2026-10-04). Abgrenzungen laut Vorrat: Rhythm and Blues (gegen das
+heutige R&B), Hillbilly (gegen Country, gegen den Gebrauch als
+Schimpfwort, gegen Bluegrass). Swing ist seit dem 2026-09-29 ein Entwurf
+(`lexikon/swing`) und gehört nicht in dieses Bündel.
+
+`frei` **Lexikon, Bündel Schuhe: Saddle Shoes, Peep Toe, Stiletto, Keilabsatz.**
+Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
+2026-10-04). Abgrenzungen laut Vorrat: Saddle Shoes (gegen Two-Tone und
+Budapester), Peep Toe (gegen Slingback), Stiletto (gegen Kitten Heel und
+gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
+`/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
+Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
+abgrenzen, falls sich Überschneidungen zeigen.
+
+`frei` **Berlin, Rockin' Wildcat: 4 Termine anlegen (31.12.2026, 30.01.2027, 23.03.2027, 11.05.2027).**
+Gesehen am 2026-10-04 auf https://www.rockin-wildcat.com/rwc/guide
+(Herkunft: Suchlauf 2026-10-04). Dort steht, sichtbar auf den
+Detailseiten: Klingonz / Evil Devil / Church Of Confidence, Do., 31.
+Dezember 2026, 20:00, Wild at Heart, Wiener Str. 20, 10999
+Berlin-Kreuzberg, Genre Psychobilly, dazu „WAH Silvester Rock'N'Roll
+Circus Record Hop w/ DJ Skalex" (/rwc/events/klingonz-evil-devil);
+Demented are go, Sa., 30. Januar 2027, 19:00, Lido, Cuvrystr. 7, 10997
+Berlin-Kreuzberg, Genre Psychobilly (/rwc/events/demented-are-go-6);
+Pokey LaFarge, Di., 23. März 2027, 19:00, Lido, Genres Country,
+Rockabilly, Soul, Swing (/rwc/events/pokey-lafarge-4); Nikki Hill, Di.,
+11. Mai 2027, 21:00, Quasimodo, Kantstr. 12a, 10623
+Berlin-Charlottenburg, Genres Blues, Rhythm'n'Blues, Soul
+(/rwc/events/nikki-hill-3). Das JSON-LD nennt je Termin eine Stunde
+später (Leseregel: sichtbare Uhrzeit gilt). Beim Bauen: Seiten der Häuser
+gegenlesen (wildatheartberlin.de, lido-berlin.de, quasimodo.club), bei
+Abweichung folgt der Eintrag dem Haus (Falle „Rockin' Wildcat gegen das
+Haus"). Wild at Heart und Lido sind als Orte im Register, Quasimodo ist
+neu. Demented Are Go spielt auch beim Psychobilly-Osterfestival in
+Weinheim (28.3.2027, im Register) — anderer Termin, kein Duplikat. Nikki
+Hill: Szenebezug über Rhythm and Blues (Lexikon-Bündel oben), solange es
+den Eintrag nicht gibt, bleibt `genres` dafür leer. Zeitzone durchweg
+`+01:00`, nur 11.05.2027 `+02:00`. Bewusst nicht im Posten: Monsters
+(27.10., Garage Trash) und Waltons (28.11., Punk'n'Roll) — kein Genre mit
+Lexikoneintrag, wie schon am 2026-10-01.
+
+`frei` **Boogie Lions, Spillern: 5 Folgetermine anlegen (26.05.2027, 26.06.2027, 11.09.2027, 30.10.2027, 27.11.2027).**
+Gesehen am 2026-10-04 auf https://boogie.at/?page=3 und der Sammelseite
+https://boogie.at/event/boogie-party-56 (Herkunft: Suchlauf 2026-10-04).
+Dort steht: „Boogie Party", Mi., 26.05.2027, Sa., 26.06.2027, Sa.,
+11.09.2027, Sa., 30.10.2027, Sa., 27.11.2027, jeweils 20:00, Festsaal
+Wiemex Spillern, Schulgasse 1, 2104 Spillern, Veranstalter „Boogie
+Lions"; kein Preis, keine Beschreibung. Folgetermine einer Reihe im
+Register: Vorlage ist `events/boogie-lions-spillern-2027-05-01` (derselbe
+Saal, dieselbe Sammelseite). Beim Bauen: Terminliste des Vereins
+(https://www.boogielions.at) gegenlesen — sie reichte am 2026-09-28 bis
+Ende 2027, aber ohne Uhrzeit und Ort; der 26.05.2027 ist ein Mittwoch,
+also eigens prüfen. Datum je Termin aus der Datumszeile der Sammelseite
+(Falle „Sammelseiten"). Zeitzone `+02:00` bis einschließlich 30.10.2027
+(die Sommerzeit endet am 31.10.2027), 27.11.2027 `+01:00`.
+
+`frei` **Niederösterreich, boogie.at: 4 Termine anlegen (21.11.2026, 12.12.2026, 19.12.2026, 31.12.2026).**
+Gesehen am 2026-10-04 auf https://boogie.at/?page=1 und ?page=2
+(Herkunft: Suchlauf 2026-10-04). Dort steht: „Tanzschuh-Party", Sa.,
+21.11.2026, 19:30, Aufriss Mainburg – das Eventlokal im Pielachtal,
+Mainburgstrasse 8, 3202 Hofstetten, Link http://aufriss.net,
+Beschreibung nennt die letzte Tanzschuhparty 2026 in einem Lokal, „wo
+Boogie-Woogie mitlerweile schon zuhause ist" (/event/tanzschuh-party-9);
+„Boogieparty", Sa., 12.12.2026, 20:00, gleicher Ort, ohne Beschreibung
+(/event/boogieparty-20); „JUKEBOX CHRISTMAS PARTY-NIGHT 2026", Sa.,
+19.12.2026, 19:30, Gemeindesaal Matzendorf-Hölles, Badenerstraße 19, 2751
+Matzendorf-Hölles, Party „im Stil der 50er & 60er Jahre" mit den Jukebox
+Bandits, Rock'n'Roll und Boogie Woogie, DJ Matthias & DomyLee, Link auf
+die Veranstaltungsseite der Gemeinde (/event/jukebox-christmas-party-night-2026);
+„Silvester Boogie Night 2026", Do., 31.12.2026, 19:00, Volkshaus,
+Loosdorfer Straße 15, 3243 St. Leonhard, Organisation „FIVES ★ Boogie,
+Swing & Rock'n'Roll Tanzsport", Tickets https://fives.at/event/silvester-boogie-night-2026
+(/event/silvester-boogie-night-2026). Beim Bauen: boogie.at ist nur
+Kalender; je Termin die Seite des Veranstalters bzw. Hauses öffnen
+(aufriss.net — nur http angegeben, Falle „Seiten nur über http";
+Gemeindeseite Matzendorf-Hölles; fives.at), Flyer öffnen, wenn einer
+beiliegt. Boogie Woogie meint an diesen Abenden den Tanz (Regel
+2026-10-03); bei der Jukebox-Party spielt eine Band, dort prüfen, ob die
+Quelle die Musik meint. Alle drei Orte sind neu. Die Aufriss-Reihe hat
+weitere Tanzschuh-Partys 2027 (29.05., 21.08., 20.11.) — Kandidaten für
+einen späteren Posten.
+
+`frei` **Oberösterreich, boogie.at: 3 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 19.06.2027).**
+Gesehen am 2026-10-04 auf https://boogie.at/?page=2 und ?page=3
+(Herkunft: Suchlauf 2026-10-04). Dort steht: „Boogie trifft Schlager und
+Discofox", Fr., 18.12.2026, 20:00, „Weihnachts Edition", Tanzclub
+HARLEKIN, Dragoner-Straße 4, 4470 Enns, großer Saal „DJ.K Boogie Klaus"
+mit Boogie Woogie, kleiner Saal DJ Mike mit Schlager und Discofox
+(/event/boogie-trifft-schlager-und-discofox); „Boogie trifft Schlager",
+Fr., 05.02.2027, 20:00, gleicher Ort, gleiche Aufteilung
+(/event/boogie-trifft-schlager-0); „Boogie trifft Schlager", Sa.,
+19.06.2027, 20:00, gleicher Ort (/event/boogie-trifft-schlager-2).
+Organisation laut boogie.at „DJ. K."; kein Preis. Beim Bauen: eine Seite
+des Tanzclubs Harlekin oder des DJs suchen, boogie.at ist nur Kalender;
+Ort neu. Szenebezug nur über den Boogie-Woogie-Saal — Vorbild sind die
+„Big Boogie & Discofox"-Partys der Tanzschule Hippmann im Register. Die
+übrigen Harlekin-Abende (Golden Dance Night, Christmas Dance Revival,
+„Harlekin") nennen keine Musik und sind deshalb nicht im Posten.
+
+`frei` **Boppin'B, Tour: 6 Termine anlegen (31.10.2026, 04.11.2026, 13.11.2026, 21.11.2026, 04.12.2026, 11.12.2026).**
+Gesehen am 2026-10-04 über das Bandsintown-Widget der Live-Seite
+https://www.boppinb.de/live, Datensatz
+https://rest.bandsintown.com/artists/id_310419/events?app_id=js_www.boppinb.de
+(Herkunft: Suchlauf 2026-10-04). Dort steht: 31.10.2026, 20:30, Irish
+House, Kaiserslautern; 04.11.2026, 20:00, Harmonie, Bonn; 13.11.2026,
+20:30, Musiktheater Piano, Dortmund; 21.11.2026, 20:00, Doubles
+Starclub, Donauwörth; 04.12.2026, 20:00, Alte Piesel, Künzell;
+11.12.2026, 20:00, Eventlokal Hüttenwerk, Michelstadt. Folgetermine
+einer Band mit eigener Seite (`bands/boppin-b`, `lineupBands`); Vorlage
+z. B. `events/boppin-b-colos-saal-2026-12-26`. Beim Bauen: je Termin die
+Seite des Hauses bzw. das Ticketportal öffnen — die Uhrzeit aus
+Bandsintown allein trägt nicht (Falle „Bandsintown-Widget"), Adressen
+nur aus einer Quelle, die sie nennt. Alle sechs Orte sind neu; Regionen
+Rheinland-Pfalz, Nordrhein-Westfalen und Hessen gibt es noch nicht
+(Donauwörth: `bayern`). Weitere Termine im selben Datensatz (28.12.
+Hamburg, 31.12. Dreieich, 2027 Düsseldorf, Wiesbaden, Kaiserslautern,
+Erfurt, Lübeck, Köln, Münster, Idstein) sind Kandidaten für einen
+späteren Posten.
+
+`frei` **Pullman City: 1 Termin anlegen (27.12.2026, Rockabilly Night).**
+Gesehen am 2026-10-04 auf https://www.pullmancity.de/events-shows-musik/events
+und der Detailseite https://www.pullmancity.de/events-shows-musik/events/rockabilly-night
+(Herkunft: Suchlauf 2026-10-04). Dort steht: „Rockabilly Night",
+„Boogie Woogie meets Wild West", 27. Dezember 2026, Abend mit dem
+„Lebensgefühl der 50er Jahre", Tanzfläche für Rock'n'Roll- und
+Boogie-Woogie-Fans; Programm des Tages: 17:00 DJ Rockin' Daddy (Music
+Hall), 20:30 The Ridin' Dudes (AT) (Music Hall), 21:00 DJane Angy Blue
+(Pina Colada Bar); Tageskarte Erwachsene 13,00 €, Kind 4–14 Jahre
+5,00 €. Beim Bauen: Die Preise sind die allgemeinen Tageskarten der
+Westernstadt, kein Konzertpreis — Hinweis „Jahreskarte … ausgenommen
+Konzerte/Sonderevents" beachten; die Tagesansicht nennt sonst
+Weihnachtsprogramm (Special Christmas Week), nur der Abend in der Music
+Hall gehört in den Eintrag. Ort und Veranstalter im Register (Vorlage
+`events/rockabilly-convention-2027`). `programm` nur mit den
+Uhrzeiten der Quelle. Zeitzone `+01:00`.
+
+`frei` **Café Central Weinheim: 1 Termin anlegen (29.01.2027, The Flames).**
+Gesehen am 2026-10-04 auf https://cafecentral.de/ (Herkunft: Suchlauf
+2026-10-04). Dort steht: „Fr 29.01. | rockabilly | the flames | Café
+Central Weinheim | Einlass: 19.00 Uhr | Beginn: 20.00 Uhr" — **ohne
+Jahreszahl** und ohne eigene `/konzert/`-Seite. Das Jahr steht beim
+Ticketanbieter des Hauses: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events
+führt „The Flames am 29. Jan. 2027 in Weinheim"
+(/events/the-flames-weinheim-EDRZCH3); der Wochentag passt zu 2027. Beim
+Bauen: Ticketseite öffnen und gegen das Haus lesen (Falle „Ticketseite
+gegen das Haus"); kein Preis auf der Startseite. Welche Band „The
+Flames" ist, sagt keine der Seiten — nicht raten, in `lineupWeitere`.
+Ort und Region im Register (Vorlage `events/long-tall-texans-cafe-central-2026-11-20`).
+
 `frei` **Artikel A7: Rockabilly-Frisuren (liste, Säule `frisur`).**
 Entscheidung Markus, 2026-10-03. Fragen: Rockabilly-Frisur (2+1),
 Pompadour (8+4+2+1), Elvis-Frisur. Baut auf den Lexikon-Entwürfen
@@ -191,16 +349,9 @@ Pompadour aus?" kamen auf zusammen 12 Treffer, „Welcher Rock gehört zur
 Rockabilly-Szene?" auf 23 — die meistgestellte Frage zum Look
 (`docs/daten/paa-rockabilly-2026-10-01/`). Das Frisuren-Bündel ist seit
 dem 2026-10-02 als Entwurf angelegt (`lexikon/pompadour`,
-`lexikon/ducktail`, `lexikon/flat-top`) und hier gestrichen.
-- *Rock- und Kleidformen:* Tellerrock (Glockenrock, Petticoat), Etuikleid
-  (Bleistiftrock, Wiggle Dress), Neckholder (Racerback). Alte Pfade vorhanden.
-- *Genres:* Rhythm and Blues (heutiges R&B), Hillbilly (Country,
-  Schimpfwort, Bluegrass). Swing ist seit dem 2026-09-29 ein Entwurf
-  (`lexikon/swing`).
-- *Schuhe:* Saddle Shoes (Two-Tone, Budapester), Peep Toe (Slingback),
-  Stiletto (Kitten Heel, das Messer), Keilabsatz (Plateausohle). Alte
-  Pfade: `/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
-  Unterkategorie `…/saddle-shoes`.
+`lexikon/ducktail`, `lexikon/flat-top`) und hier gestrichen. Rock- und
+Kleidformen, Genres und Schuhe hat der Suchlauf am 2026-10-04 nach oben
+gezogen.
 - *Wäsche:* Corsage (Korsett, Bustier, die Ansteckblume), Hüfthalter
   (vorher gegen die Aliases von `strapsguertel` prüfen), Nahtstrümpfe.
 - *Instrument und Klang:* Slap-Bass (Slap am E-Bass; gegen `kontrabass`
