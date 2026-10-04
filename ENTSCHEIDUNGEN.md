@@ -28,7 +28,7 @@ Artikeln belegpflichtig, `kurzbeschreibung` bei Artikeln. Gemessen: alle
 erzeugt keine Nacharbeit. Nutzen: Schutz gegen Rückfall, und der
 Gegenleser liest Artikel künftig gegen. Grenze: Die Prüfung sieht, ob
 *eine* Quelle `faq` deckt, nicht jede Antwort — das bleibt Sache des
-Gegenlesers. Tests in #152; die Schemazeilen trägt Markus ein.
+Gegenlesers. Tests und Schemazeilen in #152 (Schema von Markus eingetragen).
 
 **Tänze in `genres`:** erlaubt bei `tanzabend`, `workshop` und
 `weekender`, bei Bands nie; andere Kategorien als `genre` und `tanz`

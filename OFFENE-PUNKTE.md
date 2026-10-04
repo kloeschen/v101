@@ -91,13 +91,6 @@ im PR sagen. Die Widersprüche aus den Lexikoneinträgen (Pompadour und
 Madame de Pompadour, Erfinder des Ducktail) nicht neu entscheiden,
 sondern übernehmen, wie sie dort zugeordnet sind.
 
-`mensch` **Schema-Patch für die Belegpflicht eintragen (#152).**
-Entscheidung vom 2026-10-03: `faq` im Lexikon und bei Artikeln,
-`kurzbeschreibung` bei Artikeln belegpflichtig. Die Tests stehen in #152
-und fallen, bis die zwei Zeilen in `src/content/_schemas.ts` geändert
-sind (Patch in der PR-Beschreibung). Danach liest der Gegenleser auch
-Artikel gegen.
-
 `mensch` **GitHub: `main` nur mit aktuellem Zweig mergen.** Einstellung
 „Require branches to be up to date before merging". Entscheidung vom 2026-10-03 nach dem Fund
 „Zwei grüne PRs ergeben ein rotes `main`" (ENTSCHEIDUNGEN.md). Settings →
