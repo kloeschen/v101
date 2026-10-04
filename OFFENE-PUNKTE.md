@@ -32,19 +32,19 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Artikel A7: Rockabilly-Frisuren (liste, Säule `frisur`).**
-Entscheidung Markus, 2026-10-03. Fragen: Rockabilly-Frisur (2+1),
-Pompadour (8+4+2+1), Elvis-Frisur. Baut auf den Lexikon-Entwürfen
-`pompadour`, `ducktail`, `flat-top` und `teddy-boy` auf (seit dem
-2026-10-02, noch nicht freigegeben). Die Liste beschreibt die Frisuren
-knapp und verweist auf die Lexikoneinträge. Damenfrisuren der Szene
-(Victory Rolls, Pin Curls, Bettie-Page-Pony u. a.) nur mit Quelle; jede
-Zuordnung „gehört zum Rockabilly-Look" braucht einen Beleg aus der Szene,
-nicht aus Händlertexten allein. Achtung `link-auf-entwurf`: Der Artikel
-lässt sich erst zusammen mit den vier Lexikoneinträgen freigeben; das
-im PR sagen. Die Widersprüche aus den Lexikoneinträgen (Pompadour und
-Madame de Pompadour, Erfinder des Ducktail) nicht neu entscheiden,
-sondern übernehmen, wie sie dort zugeordnet sind.
+`mensch` **`typ: liste` erzeugt ungültiges JSON-LD.** Fund vom 2026-10-04
+beim ersten Listenartikel (`artikel/rockabilly-frisuren`, deshalb vorerst
+`typ: spoke`): Der Artikel-Builder (`src/lib/jsonld/builders.ts`) gibt jeder
+Liste den Typ `ItemList`, kennt aber keine Listeneinträge — `check-jsonld`
+meldet das fehlende Pflichtfeld `itemListElement` als Fehler. Zu
+entscheiden, woher die Einträge kommen: (a) aus den H2 des Fließtexts —
+kein Schemaeingriff, aber der Builder sieht den Body heute nicht, und nicht
+jede H2 ist ein Eintrag (Einleitungsabschnitte); (b) ein neues
+Frontmatter-Feld mit den Einträgen (Slugs oder Namen) — eindeutig, aber
+Schemaänderung; (c) `ItemList` für Listen streichen, nur `Article` —
+eine Zeile, verschenkt aber das Listen-Markup. Empfehlung: (b), weil nur
+dort feststeht, was ein Eintrag ist. Danach den Artikel auf `liste`
+zurücksetzen. Betrifft auch A5 aus dem Artikel-Vorrat (ebenfalls `liste`).
 
 `mensch` **Vintage freigeben.** Der Eintrag `lexikon/vintage` liegt seit
 dem 2026-10-02 als Entwurf vor. Die Autolink-Frage ist entschieden
@@ -244,9 +244,10 @@ gewählt, nicht abgelehnt (Einzelheiten in
 `docs/daten/paa-rockabilly-2026-10-01/README.md`): A2 „Vintage-Kleidung
 erkennen" (howto, `sammeln`, nach `lexikon/vintage`), A5 „Bekannte
 Rockabilly-Songs" (liste, `musik`, keine Songtexte). Ein Lauf baut davon
-nichts, solange Markus keinen auf `frei` setzt. A4 und A7 sind
-seit dem 2026-10-03 `frei` (oben unter „Als Nächstes"), der Pillar ist
-als `artikel/der-rockabilly-look` gebaut.
+nichts, solange Markus keinen auf `frei` setzt. A4 ist als
+`artikel/rockabilly-oder-rocknroll` gebaut, A7 als
+`artikel/rockabilly-frisuren` (Entwurf, 2026-10-04), der Pillar als
+`artikel/der-rockabilly-look`.
 
 **Artikel A1 „Vintage, Retro oder Secondhand?" — sobald
 `lexikon/vintage` als Entwurf steht.** Gewählt von Markus am 2026-10-01
