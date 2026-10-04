@@ -44,7 +44,13 @@ jeweils genau die erwartete Prüfung. Die Nacharbeit ist ein `frei`-Posten.
 **Zwei grüne PRs ergeben ein rotes `main`:** Weg 1, die GitHub-Einstellung
 „Require branches to be up to date before merging" (setzt Markus).
 Kosten bewusst in Kauf genommen: nach jedem fremden Merge ein Update und
-ein CI-Lauf, bei Freigabe-PRs ein zweites „Approve workflows".
+ein CI-Lauf, bei Freigabe-PRs ein zweites „Approve workflows". Gesetzt
+am 2026-10-04 als Branch-Protection-Regel für `main`: „Require status
+checks to pass", darunter „Require branches to be up to date", Pflicht-
+Check `verify` (GitHub Actions); „Do not allow bypassing" bewusst aus,
+damit Markus im Notfall (rotes `main`, Reparatur-PR) trotzdem mergen kann.
+Kein Workflow pusht direkt auf `main` (freigeben, pflege: PR; vorschau:
+eigener Zweig), die Regel blockiert also keinen Ablauf.
 
 **Startseite:** bleibt bei sechs Terminen, Wiedervorlage nach dem Go-Live
 mit Besucherzahlen (OFFENE-PUNKTE, „Später").
