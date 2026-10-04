@@ -13,7 +13,7 @@ region: berlin
 lineupWeitere: [The Jets, Smokestack Lightnin']
 eintritt: unveroeffentlicht
 genres: [neo-rockabilly, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/jets-smokestack-lightnin
 redaktionsnotiz: >-
