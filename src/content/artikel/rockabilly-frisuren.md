@@ -6,7 +6,7 @@ status: entwurf
 erstelltAm: 2026-10-04
 geprueftAm: 2026-10-04
 autor: markus
-typ: spoke
+typ: liste
 saeule: frisur
 erwaehnteBegriffe: [pompadour, ducktail, flat-top, teddy-boy, pomade, pin-up, psychobilly, neo-rockabilly, rockabilly]
 veroeffentlichtAm: 2026-10-04
@@ -87,16 +87,11 @@ redaktionsnotiz: >-
   der Säule mode ein Entwurf ist (verweis-auf-entwurf); ob ein Frisuren-
   Artikel überhaupt unter den Look-Pillar gehört, entscheidet die Freigabe.
 
-  TYP SPOKE STATT LISTE, bewusst abweichend vom Posten. Dies ist der erste
-  Artikel mit typ: liste, und dabei lief check-jsonld zum ersten Mal gegen
-  eine Liste: Der Artikel-Builder (src/lib/jsonld/builders.ts) gibt jeder
-  Liste den Typ ItemList, hat aber keine Quelle für itemListElement —
-  Pflichtfeld, also Fehler. Woher die Listeneinträge kommen sollen
-  (Frontmatter, H2 des Fließtexts, erwaehnteBegriffe), ist eine
-  Entscheidung, keine Reparatur; sie steht als Posten in OFFENE-PUNKTE.md.
-  Bis dahin spoke ("Vertiefung"), ohne ItemList-Markup. Ist der Builder
-  so weit, typ auf liste zurücksetzen; der Text ist schon als Liste
-  gebaut.
+  TYP LISTE (seit 2026-10-04): Beim Bau stand hier vorübergehend
+  typ: spoke, weil der Artikel-Builder jeder Liste den Typ ItemList ohne
+  itemListElement gab (Fehler in check-jsonld). Entscheidung Markus vom
+  2026-10-04: Listen bekommen nur Article, kein ItemList (ENTSCHEIDUNGEN.md).
+  Damit steht der Artikel wieder auf liste, wie im Posten vorgesehen.
 
   NAECHSTEPRUEFUNG ungesetzt, wie bei den übrigen Artikelentwürfen.
   VEROEFFENTLICHTAM steht auf dem Tag der Anlage, weil das Schema das Feld
