@@ -404,7 +404,13 @@ export const artikelBuilder: Builder = {
   entitaet(d, slug) {
     const url = seitenUrl("artikel", slug);
     return saeubern({
-      "@type": d.typ === "liste" ? ["Article", "ItemList"] : "Article",
+      // Auch eine Liste ist nur ein Article (Entscheidung Markus, 2026-10-04):
+      // Google zeigt ItemList-Karussells nur für Kurse, Filme, Rezepte und
+      // Restaurants, und unsere Listeneinträge haben meist keine eigene Seite.
+      // Die Struktur tragen die H2 (Grounding Page Standard). Kommt ein
+      // Listenartikel, dessen Einträge alle eigene Seiten haben, wird ItemList
+      // mit URL-Einträgen neu entschieden (OFFENE-PUNKTE, „Später").
+      "@type": "Article",
       "@id": entitaetsId("artikel", slug),
       headline: d.name,
       description: d.kurzbeschreibung,

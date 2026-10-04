@@ -278,6 +278,23 @@ pruefe(
   ohneAutor?.author !== undefined && articleKnoten("markus")?.author !== undefined,
 );
 
+// typ: liste ist ein Article und keine ItemList (Entscheidung 2026-10-04).
+// Vorher bekam jede Liste ["Article", "ItemList"] ohne itemListElement —
+// ein Pflichtfeld, das check-jsonld als Fehler meldet; gefunden am ersten
+// Listenartikel (artikel/rockabilly-frisuren). Lebenszeichen: Der Knoten
+// existiert und ist der Article des Testartikels.
+{
+  const graph = buildGraph("artikel", "testliste", { ...artikel("markus"), typ: "liste" } as any)["@graph"] as any[];
+  const knoten = graph.find((k) => [k["@type"]].flat().includes("Article"));
+  pruefe("Liste: der Article-Knoten existiert", knoten?.headline === "Testartikel", JSON.stringify(knoten?.["@type"]));
+  gleich("Liste: @type ist nur Article", knoten?.["@type"], "Article");
+  pruefe(
+    "Liste: kein Knoten im Graph ist eine ItemList ohne itemListElement",
+    !graph.some((k) => [k["@type"]].flat().includes("ItemList") && !k.itemListElement),
+    JSON.stringify(graph.map((k) => k["@type"])),
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Die Hauptentitaet am Article: about                                 */
 /* ------------------------------------------------------------------ */

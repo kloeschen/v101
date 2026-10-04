@@ -18,6 +18,32 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-04 — Listenartikel bekommen nur `Article`, kein `ItemList`
+
+**Entscheidung Markus**, nach Empfehlung. Der Artikel-Builder gab jeder
+Liste `["Article", "ItemList"]`, aber nie `itemListElement` — ein
+Pflichtfeld, `check-jsonld` meldete es am ersten Listenartikel
+(`artikel/rockabilly-frisuren`, deshalb vorübergehend `spoke`).
+
+Gewählt: (c) `ItemList` streichen. Begründung: Google zeigt
+ItemList-Karussells laut Dokumentation (Stand 2026-09-08) nur für Kurse,
+Filme, Rezepte und Restaurants — Frisuren oder Songs bringen kein
+Suchergebnis-Feature. Listeneinträge sollen auf eigene Seiten zeigen; von
+den acht Frisuren in A7 haben vier eine, A5 („Bekannte Rockabilly-Songs")
+hätte keine. Die Listenstruktur tragen die H2, die den Eintrag nennen
+(Grounding Page Standard).
+
+Verworfen: (b) neues Frontmatter-Feld mit den Einträgen — eine zweite
+Pflegestelle derselben Liste ohne Nutzen in der Suche; (a) Einträge aus
+den H2 — der Builder sieht den Fließtext nicht, und nicht jede H2 ist ein
+Eintrag; `erwaehnteBegriffe` — enthält auch Nicht-Einträge (Pomade,
+Pin-up). Wiedervorlage unter „Später", sobald ein Listenartikel nur
+Einträge mit eigener Seite hat.
+
+Test in `scripts/test-jsonld.ts` (3 Prüfungen), Mutationsbeleg: mit der
+alten Zeile fallen genau die beiden Typ-Prüfungen. A7 steht wieder auf
+`typ: liste`.
+
 ## 2026-10-03 — Fünf offene Entscheidungen nach Messung
 
 **Entscheidung Markus**, jeweils nach Empfehlung mit Messung am Bestand.

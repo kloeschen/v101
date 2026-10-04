@@ -235,20 +235,6 @@ Formel „Vintage- und Rockabilly-Szene". Die Stellen per `grep -rn
 auflisten. Offen am Eintrag bleibt „Wie erkennt man Vintage-Kleidung?"
 (13 Treffer) — Kandidat für Artikel A2, nicht Teil dieses Postens.
 
-`mensch` **`typ: liste` erzeugt ungültiges JSON-LD.** Fund vom 2026-10-04
-beim ersten Listenartikel (`artikel/rockabilly-frisuren`, deshalb vorerst
-`typ: spoke`): Der Artikel-Builder (`src/lib/jsonld/builders.ts`) gibt jeder
-Liste den Typ `ItemList`, kennt aber keine Listeneinträge — `check-jsonld`
-meldet das fehlende Pflichtfeld `itemListElement` als Fehler. Zu
-entscheiden, woher die Einträge kommen: (a) aus den H2 des Fließtexts —
-kein Schemaeingriff, aber der Builder sieht den Body heute nicht, und nicht
-jede H2 ist ein Eintrag (Einleitungsabschnitte); (b) ein neues
-Frontmatter-Feld mit den Einträgen (Slugs oder Namen) — eindeutig, aber
-Schemaänderung; (c) `ItemList` für Listen streichen, nur `Article` —
-eine Zeile, verschenkt aber das Listen-Markup. Empfehlung: (b), weil nur
-dort feststeht, was ein Eintrag ist. Danach den Artikel auf `liste`
-zurücksetzen. Betrifft auch A5 aus dem Artikel-Vorrat (ebenfalls `liste`).
-
 ## Vor dem Go-Live
 
 **Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht
@@ -292,6 +278,13 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**ItemList für Listenartikel.** Entscheidung vom 2026-10-04: Listen
+(`typ: liste`) bekommen im JSON-LD nur `Article`. Bedingung für die
+Wiedervorlage: ein Listenartikel, dessen Einträge alle eine eigene Seite
+im Register haben (etwa Festivals oder Bands). Dann `ItemList` mit
+`itemListElement` aus `ListItem` mit `position` und `url` — die Einträge
+kämen aus einem neuen Frontmatter-Feld (Schemaänderung).
 
 **Wie viele Termine auf die Startseite?** Entscheidung vom 2026-10-03:
 bei sechs bleiben. Gemessen: 51 freigegebene künftige Termine, davon 3
