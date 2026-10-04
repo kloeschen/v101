@@ -32,6 +32,51 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **Tanztermine: `genres` nachtragen (26 Termine).** Entscheidung
+Markus vom 2026-10-03 (ENTSCHEIDUNGEN.md, „Tänze in genres"): An
+Tanzabenden, Workshops und Weekendern dürfen Tanzeinträge in `genres`
+stehen (`boogie-woogie-tanz`, `rocknroll-tanz`, `jive`, `lindy-hop`);
+Musik (Kategorie `genre`) wie bisher. Die Regel `genres-kategorie` prüft
+das, der Faktenblock zeigt Musik und Tanz getrennt. Nachzutragen bei den
+freigegebenen künftigen Tanzterminen ohne `genres`, je Termin gegen seine
+Quelle: Hippmann Wels und Regau (`big-boogie-swing-party-hippmann-wels-2026-11-14`,
+`boogie-discofox-party-hippmann-regau-2026-12-05`, `…-2027-03-13`,
+`boogie-swing-ball-hippmann-wels-2027-01-16`); Boogie Lions Spillern
+(`boogie-lions-halloween-spillern-2026-10-31`, `boogie-lions-spillern-2026-11-28`,
+`…-2027-01-09`, `…-2027-02-20`, `…-2027-03-06`, `…-2027-05-01`);
+Boogie-Party Sonntagnachmittag (`…-2026-10-31`, `…-2026-11-21`); Mödling
+(`boogieball-stadtgalerie-moedling-2026-11-13`,
+`rockn-boogie-tanzparty-moedling-2026-10-16`); Keferfeld Linz
+(`christmas-boogie-swing-night-keferfeld-2026-12-05`,
+`november-jive-night-keferfeld-2026-11-06`); Gmundner Boogie Party
+(`gmundner-boogie-party-eberstalzell-2027-06-05`, `…-roitham-2026-10-24`,
+`…-roitham-2027-04-03`, `…-roitham-2027-10-23`,
+`gmundner-silvester-boogie-party-fischlham-2026-12-31`); Rock Dock Teddys
+(`herbstparty-rock-dock-teddys-perchtoldsdorf-2026-11-20`,
+`rock-this-christmas-perchtoldsdorf-2026-12-18`);
+`steyrtal-boogie-party-sierning-2026-10-17`,
+`swinging-wellness-bad-blumau-2026-11-06`,
+`boogie-mix-haslinger-hof-2027-01-08`. Leseregel aus
+`docs/ablaeufe/termin-recherche.md` (Falle „Boogie Woogie an einem
+Tanzabend"): Tanz, außer die Quelle spricht von der Musik selbst; dann
+der Musikeintrag (beim Haslinger Hof der Fall, wie bei den beiden
+Vorgängerterminen). Nur eintragen, was die Quelle nennt; die Quelle
+bekommt `genres` in `felder`, die Redaktionsnotiz das Zitat. Ein Tanz
+ohne Lexikoneintrag (Discofox, West Coast Swing, Balboa) bleibt im Text.
+Bei Bedarf in zwei PRs teilen; geändert wird Freigegebenes, also wartet
+jeder PR auf Markus.
+
+`frei` **Vintage: sieben Handlinks setzen.** `lexikon/vintage` ist seit
+der Freigabe #143 (2026-10-03) veröffentlicht. „Vintage" wird nur von
+Hand verlinkt (`NUR_VON_HAND`, Entscheidung 2026-10-02). Zu verlinken
+sind die sieben Stellen, die in der Simulation den Stil meinten
+(Vintage-Mode, -Garderobe, -Ästhetik, -Outfit, dreimal Vintage-Markt);
+nicht Eigennamen („Vintage Rock", „Peggy Sue Vintage") und nicht die
+Formel „Vintage- und Rockabilly-Szene". Die Stellen per `grep -rn
+"Vintage-"` in `src/content/` suchen, jede einzeln im Satz prüfen, im PR
+auflisten. Offen am Eintrag bleibt „Wie erkennt man Vintage-Kleidung?"
+(13 Treffer) — Kandidat für Artikel A2, nicht Teil dieses Postens.
+
 `mensch` **`typ: liste` erzeugt ungültiges JSON-LD.** Fund vom 2026-10-04
 beim ersten Listenartikel (`artikel/rockabilly-frisuren`, deshalb vorerst
 `typ: spoke`): Der Artikel-Builder (`src/lib/jsonld/builders.ts`) gibt jeder
@@ -46,91 +91,12 @@ eine Zeile, verschenkt aber das Listen-Markup. Empfehlung: (b), weil nur
 dort feststeht, was ein Eintrag ist. Danach den Artikel auf `liste`
 zurücksetzen. Betrifft auch A5 aus dem Artikel-Vorrat (ebenfalls `liste`).
 
-`mensch` **Vintage freigeben.** Der Eintrag `lexikon/vintage` liegt seit
-dem 2026-10-02 als Entwurf vor. Die Autolink-Frage ist entschieden
-(Markus, 2026-10-02): „Vintage" wird nur von Hand verlinkt
-(`NUR_VON_HAND` in `src/lib/links.ts`, ENTSCHEIDUNGEN.md). Nach der Freigabe
-setzt ein Lauf die passenden Handlinks. Das sind die sieben Stellen, die in
-der Simulation den Stil meinten (Vintage-Mode, -Garderobe, -Ästhetik,
--Outfit, dreimal Vintage-Markt). Nicht verlinkt werden Eigennamen
-(„Vintage Rock", „Peggy Sue Vintage") und die Formel „Vintage- und
-Rockabilly-Szene". Offen am Eintrag: „Wie erkennt man Vintage-Kleidung?"
-(13 Treffer) bleibt unbeantwortet, weil keine geöffnete Quelle Kriterien
-nennt. Das ist ein Kandidat für Artikel A2.
-
-`mensch` **Belegpflicht für `faq` ist nirgends maschinell geprüft.** Fund
-vom 2026-10-02 beim Bau der Lexikon-FAQs: `faq` steht in keiner Liste von
-`belegpflichtigeFelder` (`_schemas.ts`), und `belegpflicht` prüft nur
-diese. Eine FAQ ohne Quelle mit `felder: [faq]` fällt also weder im
-Lexikon noch bei Artikeln auf; die Regel „nur Fragen, die eine Quelle
-deckt" steht bisher nur in Prosa (Regel 3). Zu entscheiden: `faq` in die
-Liste für lexikon und artikel aufnehmen (Schemaänderung, gesperrt) — mit
-Negativtest — oder bewusst lassen, weil eine Antwort mehrere Quellen
-mischt und die Prüfung nur das Vorhandensein irgendeiner `faq`-Quelle
-sähe.
-
-`mensch` **Tanz in `genres`?** Rest des Postens „Boogie Woogie in
-Terminen" (Regel 2026-10-03, ENTSCHEIDUNGEN.md). Gemeint ist an
-Tanzabenden der Tanz; `genres` führt aber bisher nur Musikeinträge, und
-die Boogie-Abende in Österreich stehen deshalb mit leerem `genres`. Zu
-entscheiden: dürfen `boogie-woogie-tanz` und `rocknroll-tanz` in
-`genres` stehen (dann tauchen die Termine auf den Genre-Seiten der Tänze
-auf), oder bleibt `genres` Musik und der Tanz steht nur im Text?
-
-`mensch` **Wie viele Termine auf die Startseite?** Sie zeigt sechs, und die Zahl ist
-geraten — sie war die, bei der die Liste in einer Bildschirmhöhe bleibt.
-Entscheidbar wird das erst mit Zahlen: wie viele Termine dauerhaft in der
-Zukunft liegen, und ob jemand über die Startseite oder direkt auf einer
-Terminseite einsteigt. Vorher nicht anfassen (erst messen, dann entscheiden).
-
-`mensch` **Gegenleser ist für Artikel blind.** Gefunden am 2026-10-02 beim
-ersten Artikel seit Einführung des Gegenlesers (`artikel/petticoat-tragen`,
-PR #122): `belegpflichtigeFelder.artikel` ist leer, also erzeugt
-`gegenlesen --auftrag` 0 Prüfpunkte. Lexikon trifft es fast genauso (nur
-Ära und Herkunftsland). Variante (a) ist seit dem 2026-10-03 umgesetzt:
-Der Abschnitt meldet „nicht anwendbar" und nennt Einträge ohne Prüfpunkte
-(ENTSCHEIDUNGEN.md). Noch zu entscheiden: (b) `kurzbeschreibung` und `faq`
-für Artikel belegpflichtig machen — Schemaänderung, der Gegenleser prüft
-dann die Kernaussagen, Belegpflicht-Warnungen an bestehenden Artikeln
-möglich; (c) den Gegenleser `body:`-Abschnitte prüfen lassen — deckt den
-Fließtext ab, ist aber das größte Stück Arbeit. Empfehlung: (b).
-
-`mensch` **Zwei grüne PRs ergeben ein rotes `main`.** Fund vom 2026-10-03:
-Der Tageslauf für den Pillar (#145) setzte bei `artikel/petticoat-tragen`,
-damals Entwurf, `gehoertZu: der-rockabilly-look`. Die Freigabe (#143) war
-vorher vom alten Stand abgezweigt und veröffentlichte denselben Artikel.
-Jeder PR war für sich grün, zusammen ergaben sie einen veröffentlichten
-Artikel mit Verweis auf einen Entwurf (`verweis-auf-entwurf`) und
-Autolink-Drift. `main` war rot, bis #148 es reparierte; aufgefallen ist
-es erst am nächsten PR. Die Freigabeprüfung sieht nur ihren eigenen
-Stand, und die CI eines PRs läuft gegen das `main` zum Zeitpunkt des
-Pushs, nicht des Merges. Zu entscheiden: (1) In den GitHub-Einstellungen
-für `main` „Require branches to be up to date before merging" — dann
-läuft jeder PR nach einem fremden Merge erneut, bevor er gemergt werden
-kann. Verhindert den Fall, ist eine Einstellung und kein Code, kostet
-aber bei jedem Merge einen Update-Klick oder -Lauf, auch bei den
-Bot-PRs der Freigabe und den selbst mergenden Tagesläufen; (2) der
-Freigabelauf warnt, wenn ein offener PR eine der freizugebenden Dateien
-ändert (ähnlich `warteschlange:belegt`) — meldet nur, verhindert nichts;
-(3) lassen: Die CI auf `main` zeigt den Bruch nach dem Merge, die
-Reparatur kostet einen PR. Empfehlung: (1), weil nur sie den Fall
-verhindert; vorher prüfen, ob die Tagesläufe ihren Zweig vor dem Merge
-aktualisieren können.
-
-`mensch` **Agenten-Arbeitskopien liegen unter dem gesperrten `.claude/`.**
-Befund vom 2026-10-02, ausführlich in `docs/lektionen.md`, Lektion 31.
-Das Agent-Werkzeug legt Arbeitskopien unter `.claude/worktrees/` an, und
-`permissions.deny` sperrt dort jedes Schreiben. Zu entscheiden, beides in
-`.claude/` und damit nur von Markus änderbar:
-(1) die Arbeitskopien woanders anlegen lassen oder `.claude/worktrees/`
-von der Sperre ausnehmen; (2) `guard.mjs` Schreibziele gegen das
-Arbeitsverzeichnis auflösen lassen. Bisher sieht er relative Pfade nicht,
-wenn die Sitzung selbst unter `.claude/` steht, und er blockiert Befehle,
-die den Text `.claude/` nur als Inhalt in eine andere Datei schreiben.
-Bis dahin gilt der Umweg: eigener Klon je Agent im Scratchpad, Patch,
-Übernahme durch die Hauptsitzung. `.claude/worktrees/` steht seit dem
-2026-10-02 in `.gitignore`, damit der Stop-Hook die Kopien nicht als
-unversionierte Dateien meldet.
+`mensch` **GitHub: `main` nur mit aktuellem Zweig mergen.** Einstellung
+„Require branches to be up to date before merging". Entscheidung vom 2026-10-03 nach dem Fund
+„Zwei grüne PRs ergeben ein rotes `main`" (ENTSCHEIDUNGEN.md). Settings →
+Branches → Regel für `main`. Danach: nach jedem fremden Merge „Update
+branch" und die CI erneut abwarten, bei Freigabe-PRs erneut „Approve
+workflows".
 
 ## Vor dem Go-Live
 
@@ -175,6 +141,13 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Wie viele Termine auf die Startseite?** Entscheidung vom 2026-10-03:
+bei sechs bleiben. Gemessen: 51 freigegebene künftige Termine, davon 3
+in den nächsten 14 und 12 in den nächsten 30 Tagen — sechs decken gut
+zwei Wochen. Bedingung für die Wiedervorlage: nach dem Go-Live, mit
+Zahlen dazu, ob Besucher über die Startseite oder direkt auf einer
+Terminseite einsteigen.
 
 **Lexikon-Vorrat — der Suchlauf zieht von oben nach, sobald weniger als
 zwei Lexikon-Posten frei sind.** Recherchiert am 2026-09-29
