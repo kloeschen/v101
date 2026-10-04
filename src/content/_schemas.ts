@@ -620,8 +620,8 @@ export const belegpflichtigeFelder: Record<CollectionName, string[]> = {
   bands: ["gegruendet", "aufgeloest", "besetzung", "veroeffentlichungen", "label", "herkunftOrt"],
   locations: ["adresse", "kapazitaet"],
   regionen: [],
-  lexikon: ["aeraVon", "aeraBis", "herkunftsland"],
-  artikel: [],
+  lexikon: ["aeraVon", "aeraBis", "herkunftsland", "faq"],
+  artikel: ["kurzbeschreibung", "faq"],
   adressen: ["typ", "schwerpunkte", "adresse"],
 };
 
