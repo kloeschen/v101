@@ -2,9 +2,9 @@
 name: "Der Rockabilly-Look: Was dazugehört und woher er kommt"
 aliases: [Rockabilly-Style, Rockabilly-Kleidung]
 kurzbeschreibung: Der Rockabilly-Look ist die Kleidung, Frisur und Aufmachung der Szene, die sich auf den Rockabilly beruft; er zitiert die Mode der 1940er und 1950er Jahre, oft kombiniert mit Tätowierungen; zu seinem gängigen Bild gehört der weite Tellerrock mit Petticoat.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-03
-geprueftAm: 2026-10-03
+geprueftAm: 2026-10-04
 autor: markus
 typ: pillar
 saeule: mode
