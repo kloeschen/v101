@@ -22,7 +22,7 @@ preise:
 eintritt: beziffert
 ticketUrl: https://asb-bahnhof.reservix.de/
 genres: [rockabilly, rocknroll]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.asb-bahnhof-barsinghausen.de/2026/05/29/03-10-2026-boppin-b/
 redaktionsnotiz: >-
