@@ -594,6 +594,72 @@ fall({
 });
 
 /* ------------------------------------------------------------------ */
+/* Belegpflicht fuer faq und Artikel-kurzbeschreibung (2026-10-03)     */
+/* ------------------------------------------------------------------ */
+/*
+ * Entscheidung Markus: `faq` ist im Lexikon und bei Artikeln
+ * belegpflichtig, `kurzbeschreibung` zusaetzlich bei Artikeln. Bis dahin
+ * stand die Regel „nur Fragen, die eine Quelle deckt" nur in Prosa. Je
+ * Feld das Paar: ohne Deckung schlaegt `belegpflicht` an, mit Deckung
+ * schweigt es. Die Gegenprobe ist das Lebenszeichen — sie zeigt, dass der
+ * Eintrag gelesen wurde und die FAQ gesetzt ist, nicht verworfen.
+ */
+const faqYaml =
+  "\n  - frage: Wie weit schwingt ein Testrock beim Tanzen eigentlich aus?" +
+  "\n    antwort: Ein Testrock schwingt beim Tanzen so weit aus, wie sein kreisrunder Zuschnitt es erlaubt.";
+
+fall({
+  name: "belegpflicht: faq ohne faq-Quelle warnt im Lexikon-Entwurf",
+  datei: "lexikon/faq-ohne-beleg.md",
+  inhalt: md(lexFelder("Faqlueckerock", { faq: faqYaml }), lexKoerper("Faqlueckerock")),
+  erwartet: { belegpflicht: "warnung" },
+});
+
+fall({
+  name: "belegpflicht: faq mit faq-Quelle schweigt im Lexikon",
+  datei: "lexikon/faq-mit-beleg.md",
+  inhalt: md(
+    lexFelder("Faqbelegrock", { faq: faqYaml, quellen: quelle("definition, kurzbeschreibung, faq") }),
+    lexKoerper("Faqbelegrock"),
+  ),
+  verboten: ["belegpflicht", "quellen-felder-gueltig", "schema"],
+});
+
+fall({
+  name: "belegpflicht: freigegebener Artikel ohne kurzbeschreibung-Quelle ist ein Fehler",
+  datei: "artikel/kurz-ohne-beleg.md",
+  inhalt: md(
+    artFelder("Belegartikel Kurz", { hauptentitaet: "\n  typ: lexikon\n  slug: freiziel", quellen: quelle("aliases") }),
+    artKoerper("Belegartikel Kurz"),
+  ),
+  erwartet: { belegpflicht: "fehler" },
+});
+
+fall({
+  name: "belegpflicht: freigegebener Artikel mit faq ohne faq-Quelle ist ein Fehler",
+  datei: "artikel/faq-ohne-beleg.md",
+  inhalt: md(
+    artFelder("Belegartikel Faq", { hauptentitaet: "\n  typ: lexikon\n  slug: freiziel", faq: faqYaml }),
+    artKoerper("Belegartikel Faq"),
+  ),
+  erwartet: { belegpflicht: "fehler" },
+});
+
+fall({
+  name: "belegpflicht: Artikel mit gedeckter kurzbeschreibung und faq schweigt",
+  datei: "artikel/faq-mit-beleg.md",
+  inhalt: md(
+    artFelder("Belegartikel Voll", {
+      hauptentitaet: "\n  typ: lexikon\n  slug: freiziel",
+      faq: faqYaml,
+      quellen: quelle("kurzbeschreibung, faq"),
+    }),
+    artKoerper("Belegartikel Voll"),
+  ),
+  verboten: ["belegpflicht", "quellen-felder-gueltig", "schema"],
+});
+
+/* ------------------------------------------------------------------ */
 /* Duplikate (globale Pruefung)                                        */
 /* ------------------------------------------------------------------ */
 
