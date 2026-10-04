@@ -77,19 +77,19 @@ Formel „Vintage- und Rockabilly-Szene". Die Stellen per `grep -rn
 auflisten. Offen am Eintrag bleibt „Wie erkennt man Vintage-Kleidung?"
 (13 Treffer) — Kandidat für Artikel A2, nicht Teil dieses Postens.
 
-`frei` **Artikel A7: Rockabilly-Frisuren (liste, Säule `frisur`).**
-Entscheidung Markus, 2026-10-03. Fragen: Rockabilly-Frisur (2+1),
-Pompadour (8+4+2+1), Elvis-Frisur. Baut auf den Lexikon-Entwürfen
-`pompadour`, `ducktail`, `flat-top` und `teddy-boy` auf (seit dem
-2026-10-02, noch nicht freigegeben). Die Liste beschreibt die Frisuren
-knapp und verweist auf die Lexikoneinträge. Damenfrisuren der Szene
-(Victory Rolls, Pin Curls, Bettie-Page-Pony u. a.) nur mit Quelle; jede
-Zuordnung „gehört zum Rockabilly-Look" braucht einen Beleg aus der Szene,
-nicht aus Händlertexten allein. Achtung `link-auf-entwurf`: Der Artikel
-lässt sich erst zusammen mit den vier Lexikoneinträgen freigeben; das
-im PR sagen. Die Widersprüche aus den Lexikoneinträgen (Pompadour und
-Madame de Pompadour, Erfinder des Ducktail) nicht neu entscheiden,
-sondern übernehmen, wie sie dort zugeordnet sind.
+`mensch` **`typ: liste` erzeugt ungültiges JSON-LD.** Fund vom 2026-10-04
+beim ersten Listenartikel (`artikel/rockabilly-frisuren`, deshalb vorerst
+`typ: spoke`): Der Artikel-Builder (`src/lib/jsonld/builders.ts`) gibt jeder
+Liste den Typ `ItemList`, kennt aber keine Listeneinträge — `check-jsonld`
+meldet das fehlende Pflichtfeld `itemListElement` als Fehler. Zu
+entscheiden, woher die Einträge kommen: (a) aus den H2 des Fließtexts —
+kein Schemaeingriff, aber der Builder sieht den Body heute nicht, und nicht
+jede H2 ist ein Eintrag (Einleitungsabschnitte); (b) ein neues
+Frontmatter-Feld mit den Einträgen (Slugs oder Namen) — eindeutig, aber
+Schemaänderung; (c) `ItemList` für Listen streichen, nur `Article` —
+eine Zeile, verschenkt aber das Listen-Markup. Empfehlung: (b), weil nur
+dort feststeht, was ein Eintrag ist. Danach den Artikel auf `liste`
+zurücksetzen. Betrifft auch A5 aus dem Artikel-Vorrat (ebenfalls `liste`).
 
 `mensch` **GitHub: `main` nur mit aktuellem Zweig mergen.** Einstellung
 „Require branches to be up to date before merging". Entscheidung vom 2026-10-03 nach dem Fund
@@ -97,6 +97,17 @@ sondern übernehmen, wie sie dort zugeordnet sind.
 Branches → Regel für `main`. Danach: nach jedem fremden Merge „Update
 branch" und die CI erneut abwarten, bei Freigabe-PRs erneut „Approve
 workflows".
+
+`frei` **Gegenleser zeigt Rohwerte bei „nicht prüfbar".** Fund vom
+2026-10-04 (PR #156): In der Tabelle „Nicht prüfbar" steht bei `beginn`
+„Sat Oct 03 2026 18:15:00 GMT+0000 …" statt „2026-10-03 20:15", bei
+`preise` „[object Object],[object Object]". Ursache: Die beiden frühen
+Rückgaben in `scripts/gegenlesen.ts` (keine Quelle / nicht erreichbar)
+bilden `eingetragen` mit `String(d[p.feld])`, statt dieselbe Darstellung
+wie die übrigen Zweige zu nutzen. Gerade dort schaut Markus hin, und eine
+UTC-Zeit sieht dort wie eine falsche Anfangszeit aus. Mit Test in
+`scripts/test-gegenlesen.ts` (Datum in Ortszeit, Preise lesbar) und
+Mutationsbeleg.
 
 ## Vor dem Go-Live
 
@@ -206,9 +217,10 @@ gewählt, nicht abgelehnt (Einzelheiten in
 `docs/daten/paa-rockabilly-2026-10-01/README.md`): A2 „Vintage-Kleidung
 erkennen" (howto, `sammeln`, nach `lexikon/vintage`), A5 „Bekannte
 Rockabilly-Songs" (liste, `musik`, keine Songtexte). Ein Lauf baut davon
-nichts, solange Markus keinen auf `frei` setzt. A4 und A7 sind
-seit dem 2026-10-03 `frei` (oben unter „Als Nächstes"), der Pillar ist
-als `artikel/der-rockabilly-look` gebaut.
+nichts, solange Markus keinen auf `frei` setzt. A4 ist als
+`artikel/rockabilly-oder-rocknroll` gebaut, A7 als
+`artikel/rockabilly-frisuren` (Entwurf, 2026-10-04), der Pillar als
+`artikel/der-rockabilly-look`.
 
 **Artikel A1 „Vintage, Retro oder Secondhand?" — sobald
 `lexikon/vintage` als Entwurf steht.** Gewählt von Markus am 2026-10-01
