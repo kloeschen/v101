@@ -249,13 +249,6 @@ eine Zeile, verschenkt aber das Listen-Markup. Empfehlung: (b), weil nur
 dort feststeht, was ein Eintrag ist. Danach den Artikel auf `liste`
 zurücksetzen. Betrifft auch A5 aus dem Artikel-Vorrat (ebenfalls `liste`).
 
-`mensch` **GitHub: `main` nur mit aktuellem Zweig mergen.** Einstellung
-„Require branches to be up to date before merging". Entscheidung vom 2026-10-03 nach dem Fund
-„Zwei grüne PRs ergeben ein rotes `main`" (ENTSCHEIDUNGEN.md). Settings →
-Branches → Regel für `main`. Danach: nach jedem fremden Merge „Update
-branch" und die CI erneut abwarten, bei Freigabe-PRs erneut „Approve
-workflows".
-
 ## Vor dem Go-Live
 
 **Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht
