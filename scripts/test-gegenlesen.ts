@@ -186,6 +186,33 @@ gleich("Quelle nicht erreichbar: nicht prüfbar", urteil("ort", { id: id("ort"),
   const p = auftragFuer([ohneQuelle]).pruefpunkte.find((x) => x.feld === "ort")!;
   gleich("Feld ohne Quelle: nicht prüfbar", vergleiche(p, gut(p.id, { name: "Gasthaus Forstinger", stadt: "Roitham" }), ohneQuelle, k).urteil, "nicht-pruefbar");
 }
+// Nicht prüfbar zeigt den eingetragenen Wert wie die übrigen Zweige
+// (seit 2026-10-04): Ortszeit statt Date.toString(), Beträge statt
+// „[object Object]". Fund aus PR #156.
+{
+  const weg = (feld: string): Antwort => ({ id: id(feld), ergebnis: "nicht-erreichbar", grund: "Zeitüberschreitung" });
+  const zeile = (feld: string, a: Antwort, e = termin) => vergleiche(pp(feld), a, e, k);
+  // Lebenszeichen: Die frühe Rückgabe ist wirklich der Zweig, der antwortet.
+  gleich("nicht erreichbar: beginn ist nicht prüfbar", zeile("beginn", weg("beginn")).urteil, "nicht-pruefbar");
+  gleich("…und zeigt Datum und Uhrzeit in Ortszeit", zeile("beginn", weg("beginn")).eingetragen, "2026-10-24 20:00");
+  gleich("…preise als Beträge", zeile("preise", weg("preise")).eingetragen, "12 / 15");
+  gleich("…ort mit Namen und Stadt", zeile("ort", weg("ort")).eingetragen, "Gasthaus Forstinger, Roitham am Traunfall");
+  gleich("…lineupBands mit Bandnamen", zeile("lineupBands", weg("lineupBands")).eingetragen, "The Testers");
+  // Dieselbe Darstellung wie im bestätigten Fall — nicht bloß „irgendwie lesbar".
+  const richtig = vergleichAlles(auftrag, vollstaendig, k);
+  for (const feld of ["beginn", "preise", "ort", "lineupBands"]) {
+    gleich(`…${feld} genau wie im Vergleichszweig`, zeile(feld, weg(feld)).eingetragen, richtig.find((b) => b.feld === feld)?.eingetragen);
+  }
+  const ohneQuelle = eintrag("events", "herbst-2026-10-24", { ...termin.daten!, quellen: [] });
+  const pb = auftragFuer([ohneQuelle]).pruefpunkte.find((x) => x.feld === "beginn")!;
+  const ohne = vergleiche(pb, weg("beginn"), ohneQuelle, k);
+  gleich("ohne Quelle: beginn ist nicht prüfbar", ohne.urteil, "nicht-pruefbar");
+  gleich("…und zeigt ebenfalls Ortszeit", ohne.eingetragen, "2026-10-24 20:00");
+  const ng = vergleiche(pp("beginn"), { id: id("beginn"), ergebnis: "nicht-gefunden", grund: "nur 31.10." }, termin, k);
+  gleich("nicht gefunden: beginn zeigt Ortszeit", ng.eingetragen, "2026-10-24 20:00");
+  const ganz = eintrag("events", "herbst-2026-10-24", { ...termin.daten!, ganztaegig: true });
+  gleich("ganztägig, nicht erreichbar: nur das Datum", vergleiche(pp("beginn"), weg("beginn"), ganz, k).eingetragen, "2026-10-24");
+}
 // Andere Sammlungen: kein Code-Vergleich, Mensch sieht hin.
 {
   const begriff = eintrag("lexikon", "swing", { name: "Swing", aeraVon: 1930, quellen: [{ url: Q1, felder: ["aeraVon"] }] });
