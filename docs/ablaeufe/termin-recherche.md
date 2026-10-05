@@ -210,6 +210,16 @@ Fehler verursacht oder beinahe verursacht.
   dem Haus und nennt den Widerspruch im Text (Regel 5). Zweiter Fall:
   Swamp Shakers im Klubhaus Ludwigsfelde am 24.10.2026 — Gig Guide 19
   Uhr, Haus und Reservix „Einlass 19:30, Beginn 20:00" (2026-10-01).
+  Beim Lido ist die Uhrzeit des Gig Guides regelmäßig der Einlass des
+  Hauses (Guana Batz, Demented Are Go, Pokey LaFarge: Gig Guide 19:00,
+  Lido „19:00 Doors, 20:00 Start"; 2026-10-05). Führt das Haus einen
+  Abend noch nicht, ist die Uhrzeit offen — beim Quasimodo stehen sonst
+  „Einlass 21:00, Beginn 22:00", der Gig Guide nannte für Nikki Hill
+  21:00. Dann den Termin mit Bedingung zurückgeben, nicht raten.
+- **Das Datum im Pfad einer Lido-Seite kann falsch sein.** Demented Are
+  Go am 30.01.2027 liegt unter `/events/2026-06-30-demented-are-go-`
+  (2026-10-05). Maßgeblich ist der Seitentext; die Liste des Hauses nach
+  Datum im Pfad zu durchsuchen, findet den Abend nicht.
 - **American Western Saloon: der Preis steht nur im Flyer.** Der
   Seitentext von `veranstaltungen.html` und `weeklyspecials.html` nennt
   keinen Betrag („Eintritt … bitte nur in bar bezahlen"), der eingebundene

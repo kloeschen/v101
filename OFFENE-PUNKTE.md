@@ -56,32 +56,6 @@ gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
 Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
 abgrenzen, falls sich Überschneidungen zeigen.
 
-`frei` **Berlin, Rockin' Wildcat: 4 Termine anlegen (31.12.2026, 30.01.2027, 23.03.2027, 11.05.2027).**
-Gesehen am 2026-10-04 auf https://www.rockin-wildcat.com/rwc/guide
-(Herkunft: Suchlauf 2026-10-04). Dort steht, sichtbar auf den
-Detailseiten: Klingonz / Evil Devil / Church Of Confidence, Do., 31.
-Dezember 2026, 20:00, Wild at Heart, Wiener Str. 20, 10999
-Berlin-Kreuzberg, Genre Psychobilly, dazu „WAH Silvester Rock'N'Roll
-Circus Record Hop w/ DJ Skalex" (/rwc/events/klingonz-evil-devil);
-Demented are go, Sa., 30. Januar 2027, 19:00, Lido, Cuvrystr. 7, 10997
-Berlin-Kreuzberg, Genre Psychobilly (/rwc/events/demented-are-go-6);
-Pokey LaFarge, Di., 23. März 2027, 19:00, Lido, Genres Country,
-Rockabilly, Soul, Swing (/rwc/events/pokey-lafarge-4); Nikki Hill, Di.,
-11. Mai 2027, 21:00, Quasimodo, Kantstr. 12a, 10623
-Berlin-Charlottenburg, Genres Blues, Rhythm'n'Blues, Soul
-(/rwc/events/nikki-hill-3). Das JSON-LD nennt je Termin eine Stunde
-später (Leseregel: sichtbare Uhrzeit gilt). Beim Bauen: Seiten der Häuser
-gegenlesen (wildatheartberlin.de, lido-berlin.de, quasimodo.club), bei
-Abweichung folgt der Eintrag dem Haus (Falle „Rockin' Wildcat gegen das
-Haus"). Wild at Heart und Lido sind als Orte im Register, Quasimodo ist
-neu. Demented Are Go spielt auch beim Psychobilly-Osterfestival in
-Weinheim (28.3.2027, im Register) — anderer Termin, kein Duplikat. Nikki
-Hill: Szenebezug über Rhythm and Blues (Lexikon-Bündel oben), solange es
-den Eintrag nicht gibt, bleibt `genres` dafür leer. Zeitzone durchweg
-`+01:00`, nur 11.05.2027 `+02:00`. Bewusst nicht im Posten: Monsters
-(27.10., Garage Trash) und Waltons (28.11., Punk'n'Roll) — kein Genre mit
-Lexikoneintrag, wie schon am 2026-10-01.
-
 `frei` **Boogie Lions, Spillern: 5 Folgetermine anlegen (26.05.2027, 26.06.2027, 11.09.2027, 30.10.2027, 27.11.2027).**
 Gesehen am 2026-10-04 auf https://boogie.at/?page=3 und der Sammelseite
 https://boogie.at/event/boogie-party-56 (Herkunft: Suchlauf 2026-10-04).
@@ -278,6 +252,26 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Berlin, Quasimodo: Nikki Hill am 11.05.2027 anlegen, sobald das Haus den Abend führt.**
+Aus dem Bündel „Berlin, Rockin' Wildcat" (2026-10-05) zurückgegeben, die
+übrigen drei Termine sind gebaut. Datum und Ort sind belegt: Rockin'
+Wildcat (`/rwc/events/nikki-hill-3`) nennt Di., 11. Mai 2027, Quasimodo,
+Kantstr. 12a, 10623 Berlin-Charlottenburg; die Tourseite der Musikerin
+(https://nikkihillrocks.com/tour, Bandsintown) nennt „Tuesday, May 11,
+2027 @ 10:00PM, Quasimodo, Berlin". **Die Uhrzeit nicht:** Rockin'
+Wildcat sichtbar 21:00, die Tourseite 22:00. Das Quasimodo selbst führt
+den Abend noch nicht (Programm am 2026-10-05 bis Januar 2027, kein Treffer
+für „nikki"); seine Konzerte nennen sonst „Einlass 21:00, Beginn 22:00"
+(Otis Kane 8.10., Ella Eyre 26.10. mit 22:30, Nighthawks 6.11. mit 20:30
+Einlass). Die 21:00 des Gig Guides sind also wahrscheinlich der Einlass,
+wie beim Lido — aber das ist ein Muster, kein Beleg für diesen Abend,
+und die Bandsintown-Uhrzeit trägt laut Falle nicht allein. **Bedingung:**
+Das Quasimodo hat eine Seite unter `quasimodo.club/events/…` für den
+Abend. Dann als `frei`-Posten nach oben ziehen; `beginn` folgt dem Haus.
+Beim Bauen: Quasimodo ist als Ort neu (Adresse vom Haus), Zeitzone
+`+02:00`, `genres` leer bis zum Lexikoneintrag Rhythm and Blues (Bündel
+oben), Szenebezug im Text über Rhythm and Blues und Soul.
 
 **ItemList für Listenartikel.** Entscheidung vom 2026-10-04: Listen
 (`typ: liste`) bekommen im JSON-LD nur `Article`. Bedingung für die
