@@ -56,21 +56,6 @@ gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
 Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
 abgrenzen, falls sich Überschneidungen zeigen.
 
-`frei` **Boogie Lions, Spillern: 5 Folgetermine anlegen (26.05.2027, 26.06.2027, 11.09.2027, 30.10.2027, 27.11.2027).**
-Gesehen am 2026-10-04 auf https://boogie.at/?page=3 und der Sammelseite
-https://boogie.at/event/boogie-party-56 (Herkunft: Suchlauf 2026-10-04).
-Dort steht: „Boogie Party", Mi., 26.05.2027, Sa., 26.06.2027, Sa.,
-11.09.2027, Sa., 30.10.2027, Sa., 27.11.2027, jeweils 20:00, Festsaal
-Wiemex Spillern, Schulgasse 1, 2104 Spillern, Veranstalter „Boogie
-Lions"; kein Preis, keine Beschreibung. Folgetermine einer Reihe im
-Register: Vorlage ist `events/boogie-lions-spillern-2027-05-01` (derselbe
-Saal, dieselbe Sammelseite). Beim Bauen: Terminliste des Vereins
-(https://www.boogielions.at) gegenlesen — sie reichte am 2026-09-28 bis
-Ende 2027, aber ohne Uhrzeit und Ort; der 26.05.2027 ist ein Mittwoch,
-also eigens prüfen. Datum je Termin aus der Datumszeile der Sammelseite
-(Falle „Sammelseiten"). Zeitzone `+02:00` bis einschließlich 30.10.2027
-(die Sommerzeit endet am 31.10.2027), 27.11.2027 `+01:00`.
-
 `frei` **Niederösterreich, boogie.at: 4 Termine anlegen (21.11.2026, 12.12.2026, 19.12.2026, 31.12.2026).**
 Gesehen am 2026-10-04 auf https://boogie.at/?page=1 und ?page=2
 (Herkunft: Suchlauf 2026-10-04). Dort steht: „Tanzschuh-Party", Sa.,
