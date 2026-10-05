@@ -32,14 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Lexikon, Bündel Rock- und Kleidformen: Tellerrock, Etuikleid, Neckholder.**
-Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
-2026-10-04). Abgrenzungen laut Vorrat: Tellerrock (gegen Glockenrock und
-Petticoat), Etuikleid (gegen Bleistiftrock und Wiggle Dress), Neckholder
-(gegen Racerback). Alte Pfade laut Vorrat vorhanden. Beim Bauen:
-`lexikon/petticoat` und `lexikon/bleistiftrock` bestehen schon — gegen
-ihre Abgrenzungen und `aliases` prüfen, damit nichts doppelt entsteht.
-
 `frei` **Lexikon, Bündel Genres: Rhythm and Blues, Hillbilly.**
 Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
 2026-10-04). Abgrenzungen laut Vorrat: Rhythm and Blues (gegen das
