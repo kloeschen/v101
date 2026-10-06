@@ -37,8 +37,9 @@ redaktionsnotiz: >-
   Pielachtal", die Flyer "Tanzlokal Aufriss" bzw. "Pielachtanzterrasse"
   und "AUFRISS - Das Eventlokal in NÖ". `name` folgt dem Impressum
   ("Aufriss Mainburg"); die uebrigen Schreibungen stehen in `aliases`.
-  TYP `sonstiges`: Eventlokal mit mehreren Raeumen und Terrasse; das
-  Schema hat dafuer keinen Wert.
+  TYP `sonstiges`: Der Flyer nennt das Haus "Tanzlokal Aufriss" und
+  "Das Eventlokal in NÖ"; die http-Startseite ein Eventlokal mit mehreren
+  Raeumen und Terrasse. Das Schema hat dafuer keinen Wert.
   REGION `niederoesterreich` aus der Wikipedia (Hofstetten-Gruenau,
   Bezirk St. Poelten-Land; Mainburg ist dort als Ortschaft der Gemeinde
   gefuehrt).
@@ -55,7 +56,7 @@ quellen:
   - url: https://boogie.at/sites/default/files/medien/event/2026/1000108662.jpg
     titel: Flyer Tanzschuh-Party, 29. Mai 2027 (Tanzlokal Aufriss, auf BOOGIE.at)
     abgerufenAm: 2026-10-06
-    felder: [adresse, aliases, kurzbeschreibung, body:haus]
+    felder: [adresse, typ, aliases, kurzbeschreibung, body:haus]
     art: offiziell
   - url: https://boogie.at/sites/default/files/medien/event/2026/1000108709.jpg
     titel: Flyer Tanzschuh-Party an der Pielach, 21. August 2027 (Pielachtanzterrasse, auf BOOGIE.at)
