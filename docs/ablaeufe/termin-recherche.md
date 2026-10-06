@@ -297,6 +297,24 @@ Fehler verursacht oder beinahe verursacht.
   liefert denselben Datensatz als JSON. Datum und Ort daraus sind
   brauchbar, die **Uhrzeit nicht allein**: Bei Boppin'B wich sie in zwei
   von vier geprüften Terminen vom Haus bzw. von Reservix ab.
+- **Terminseiten, die die Uhrzeit im Browser umrechnen.** Das Pitcher
+  Düsseldorf (2026-10-06) lädt seine Termine per Skript aus
+  `/wp-json/eventflow/v1/public/events` und zeigt sie in der Zeitzone des
+  Betrachters. Ein Abruf mit Browser in UTC zeigte für Boppin'B
+  „Einlass 17:00, Beginn 18:00“, mit Zeitzone Europe/Berlin „18:00 /
+  19:00“ — die Schnittstelle selbst nennt `19:00:00+01:00`. Beim Rendern
+  mit Playwright immer `timezoneId: 'Europe/Berlin'` setzen, sonst liest
+  der Lauf eine um den Versatz verschobene Uhrzeit als sichtbare Angabe.
+  Dort war 19:00/18:00 außerdem bei 44 von 101 Terminen gesetzt; ob das
+  ein Vorgabewert des Plugins ist, ist offen — im Text vorsichtig
+  formulieren.
+- **Häuser ohne erreichbare eigene Seite.** Beim Irish House
+  Kaiserslautern (2026-10-06) endete jeder Weg zur eigenen Seite auf
+  einer Weiterleitung oder einer Hosting-Standardseite; Eventim,
+  Eventim Light und Westticket brachen aus der Cloud mit HTTP/2-Fehlern
+  ab. Ohne Quelle des Hauses oder des Ticketverkaufs trägt nur
+  Bandsintown die Uhrzeit, und das reicht nicht: Termin mit Befund
+  zurückgeben.
 - **boogie.at-Detailseiten sind teils Sammelseiten.** Wiederkehrende
   Termine eines Vereins zeigen in der Liste alle auf dieselbe Adresse
   (Boogie Lions: `/event/boogie-party-56` trägt sechs Termine, Boogie Mix
