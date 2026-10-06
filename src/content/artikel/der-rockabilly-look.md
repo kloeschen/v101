@@ -169,7 +169,7 @@ Der Rockabilly-Look ist die Kleidung, Frisur und Aufmachung der Szene, die sich 
 
 Die deutsche Wikipedia beschreibt die Rockabilly-Mode als Rückgriff auf die große stilistische Bandbreite der 1940er und 1950er Jahre — teils auf tatsächliche Stilmerkmale dieser Zeit, teils auf solche, die nur als charakteristisch empfunden werden. Dieser Unterschied ist wichtig: Nicht alles, was heute als Fünfziger-Look gilt, trug man in den Fünfzigern so.
 
-Kombiniert werden diese Modezitate oft mit Tätowierungen, beliebt sind Motive wie Kirschen, Totenköpfe und flammende Herzen. Damit ist der Look von Anfang an mehr als historische Kostümierung: Ein Tellerrock mit Petticoat über einem tätowierten Arm ist kein Bild aus den Fünfzigern, sondern eines aus der Szene von heute.
+Kombiniert werden diese Modezitate oft mit Tätowierungen, beliebt sind Motive wie Kirschen, Totenköpfe und flammende Herzen. Damit ist der Look von Anfang an mehr als historische Kostümierung: Ein [Tellerrock](/lexikon/tellerrock/) mit Petticoat über einem tätowierten Arm ist kein Bild aus den Fünfzigern, sondern eines aus der Szene von heute.
 
 Für die einzelnen Stücke hat dieses Register eigene Einträge, die auch sagen, was über ihre Geschichte belegt ist und was nicht. Das gilt besonders für die Muster: Zu [Polka Dots](/lexikon/polka-dots/), [Gingham](/lexikon/gingham/) und [Hahnentritt](/lexikon/hahnentritt/) steht dort, woher sie kommen — eine feste Zugehörigkeit zum Rockabilly-Look behauptet keine der für diesen Text geöffneten Quellen, und darum tut es auch dieser Text nicht.
 

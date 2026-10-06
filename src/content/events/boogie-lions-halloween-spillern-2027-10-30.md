@@ -2,9 +2,9 @@
 name: Boogie Halloween 2027 der Boogie Lions
 aliases: [Boogie Lions Halloween 2027, Boogie Party Spillern 30.10.2027]
 kurzbeschreibung: Halloween-Tanzabend des Vereins Boogie Lions am Samstag, 30. Oktober 2027, ab 20 Uhr im Festsaal WieMex in Spillern; einen Eintrittspreis nennt der Verein noch nicht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-06
 autor: markus
 typ: tanzabend
 reihe: boogie-lions-boogie-party

@@ -2,9 +2,9 @@
 name: Boogie-Abend der Boogie Lions, Ende Mai 2027
 aliases: [Boogie Lions Ende Mai 2027, Boogie Party Spillern 26.05.2027]
 kurzbeschreibung: Boogie-Tanzabend des Vereins Boogie Lions am Mittwoch, 26. Mai 2027, ab 20 Uhr im Festsaal WieMex in Spillern; einen Eintrittspreis nennt der Verein noch nicht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-06
 autor: markus
 typ: tanzabend
 reihe: boogie-lions-boogie-party

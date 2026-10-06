@@ -2,7 +2,7 @@
 name: Pitcher Düsseldorf
 aliases: [Pitcher, Pitcher 29]
 kurzbeschreibung: Das Pitcher ist ein Club für Live-Musik an der Oberbilker Allee in Düsseldorf mit Platz für rund 150 Gäste, der sich „Rock'n'Roll Headquarter“ nennt und neben Rock und Metal auch Rockabilly zeigt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

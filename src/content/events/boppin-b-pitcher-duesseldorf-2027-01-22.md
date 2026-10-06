@@ -2,7 +2,7 @@
 name: Boppin'B im Pitcher Düsseldorf
 aliases: [Boppin' B Düsseldorf 2027, BOPPIN` B - Düsseldorf, Boppin'B Pitcher]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Freitag, 22. Januar 2027, im Pitcher in Düsseldorf.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

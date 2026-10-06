@@ -2,7 +2,7 @@
 name: Boppin'B im Stattbahnhof Schweinfurt
 aliases: [Boppin' B Schweinfurt 2027, Boppin'B Stattbahnhof]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Samstag, 27. Februar 2027, im großen Saal des Kulturhauses Stattbahnhof in Schweinfurt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

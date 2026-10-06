@@ -2,9 +2,9 @@
 name: Etuikleid
 aliases: [Sheath Dress, Wiggle Dress]
 kurzbeschreibung: Ein Etuikleid ist ein einteiliges, eng und figurbetont geschnittenes Kleid ohne Taillennaht, das meist bis zum Knie reicht; in der Vintage-Szene heißt es oft Wiggle Dress.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-06
 autor: markus
 kategorie: mode
 bezeichnungDe: Etuikleid

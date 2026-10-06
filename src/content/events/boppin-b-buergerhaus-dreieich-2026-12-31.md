@@ -2,7 +2,7 @@
 name: Silvestersause mit Boppin'B in Dreieich
 aliases: [Silvestersause 26/27, Silvestersause Dreieich 2026, Boppin'B Silvester 2026]
 kurzbeschreibung: Silvesterfeier der Bürgerhäuser Dreieich mit der Rock'n'Roll-Band Boppin'B und der Band Celebration X am Donnerstag, 31. Dezember 2026, im Bürgerhaus Dreieich-Sprendlingen.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

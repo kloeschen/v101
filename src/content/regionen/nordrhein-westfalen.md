@@ -2,7 +2,7 @@
 name: Nordrhein-Westfalen
 aliases: [NRW]
 kurzbeschreibung: Nordrhein-Westfalen ist das bevölkerungsreichste Land Deutschlands mit der Landeshauptstadt Düsseldorf; für die Szene steht hier bisher ein Clubkonzert im Register.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

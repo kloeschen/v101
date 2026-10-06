@@ -2,7 +2,7 @@
 name: Hessen
 aliases: [Land Hessen]
 kurzbeschreibung: Hessen ist ein Land in der Mitte Deutschlands mit der Landeshauptstadt Wiesbaden; für die Szene stehen hier bisher zwei Konzerte der Band Boppin'B im Register.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus
