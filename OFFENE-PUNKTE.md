@@ -32,13 +32,28 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Lexikon, Bündel Rock- und Kleidformen: Tellerrock, Etuikleid, Neckholder.**
-Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
-2026-10-04). Abgrenzungen laut Vorrat: Tellerrock (gegen Glockenrock und
-Petticoat), Etuikleid (gegen Bleistiftrock und Wiggle Dress), Neckholder
-(gegen Racerback). Alte Pfade laut Vorrat vorhanden. Beim Bauen:
-`lexikon/petticoat` und `lexikon/bleistiftrock` bestehen schon — gegen
-ihre Abgrenzungen und `aliases` prüfen, damit nichts doppelt entsteht.
+`frei` **Niederösterreich, boogie.at: 4 Termine anlegen (05.05.2027, 29.05.2027, 21.08.2027, 20.11.2027).**
+Gesehen am 2026-10-06 auf https://boogie.at/?page=3 (Herkunft: Suchlauf
+2026-10-06). Dort steht: „Boogie Party", Mi., 05.05.2027, 20:00,
+Mostlandhof, Schauboden 4, 3251 Purgstall, „Music by DJ.K Boogie
+Klaus", „Folder und nähere Informationen folgen", Organisation „DJ. K."
+(/event/boogie-party-51); „Tanzschuh-Party", Sa., 29.05.2027, 19:30,
+Aufriss Mainburg – das Eventlokal im Pielachtal, Mainburgstrasse 8, 3202
+Hofstetten, DJ, 50er-Jahre-Kleidung, „Rock'n'Roll, Boogie & Swing"
+(/event/tanzschuh-party-10); „Tanzschuh-Party" („Summer
+Tanzschuhparty an der Pielach"), Sa., 21.08.2027, 20:00, gleicher Ort,
+„Boogie, Rock'n'Roll & jede Menge Tanz" (/event/tanzschuh-party-11);
+„Tanzschuh-Party", Sa., 20.11.2027, 19:30, gleicher Ort, letzte
+Tanzschuhparty des Jahres, DJ (/event/tanzschuh-party-12). Kein Preis.
+Beim Bauen: boogie.at ist nur Kalender; aufriss.net ist nur über http
+angegeben (Falle „Seiten nur über http"), für Purgstall eine Seite des
+Hauses oder des DJs suchen. Boogie Woogie und Rock'n'Roll meinen an
+diesen Abenden den Tanz (Regel 2026-10-03). Die Aufriss-Reihe beginnt
+im Register erst mit dem Posten „Niederösterreich, boogie.at" vom
+2026-10-04 (21.11. und 12.12.2026, gleicher Ort) — ist der gebaut, ist
+er die Vorlage. Purgstall: „nähere Informationen folgen" — fehlt beim
+Bauen eine zweite Angabe zu Uhrzeit oder Ort, den Termin mit Befund
+zurückgeben.
 
 `frei` **Lexikon, Bündel Genres: Rhythm and Blues, Hillbilly.**
 Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
@@ -55,47 +70,6 @@ gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
 `/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
 Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
 abgrenzen, falls sich Überschneidungen zeigen.
-
-`frei` **Berlin, Rockin' Wildcat: 4 Termine anlegen (31.12.2026, 30.01.2027, 23.03.2027, 11.05.2027).**
-Gesehen am 2026-10-04 auf https://www.rockin-wildcat.com/rwc/guide
-(Herkunft: Suchlauf 2026-10-04). Dort steht, sichtbar auf den
-Detailseiten: Klingonz / Evil Devil / Church Of Confidence, Do., 31.
-Dezember 2026, 20:00, Wild at Heart, Wiener Str. 20, 10999
-Berlin-Kreuzberg, Genre Psychobilly, dazu „WAH Silvester Rock'N'Roll
-Circus Record Hop w/ DJ Skalex" (/rwc/events/klingonz-evil-devil);
-Demented are go, Sa., 30. Januar 2027, 19:00, Lido, Cuvrystr. 7, 10997
-Berlin-Kreuzberg, Genre Psychobilly (/rwc/events/demented-are-go-6);
-Pokey LaFarge, Di., 23. März 2027, 19:00, Lido, Genres Country,
-Rockabilly, Soul, Swing (/rwc/events/pokey-lafarge-4); Nikki Hill, Di.,
-11. Mai 2027, 21:00, Quasimodo, Kantstr. 12a, 10623
-Berlin-Charlottenburg, Genres Blues, Rhythm'n'Blues, Soul
-(/rwc/events/nikki-hill-3). Das JSON-LD nennt je Termin eine Stunde
-später (Leseregel: sichtbare Uhrzeit gilt). Beim Bauen: Seiten der Häuser
-gegenlesen (wildatheartberlin.de, lido-berlin.de, quasimodo.club), bei
-Abweichung folgt der Eintrag dem Haus (Falle „Rockin' Wildcat gegen das
-Haus"). Wild at Heart und Lido sind als Orte im Register, Quasimodo ist
-neu. Demented Are Go spielt auch beim Psychobilly-Osterfestival in
-Weinheim (28.3.2027, im Register) — anderer Termin, kein Duplikat. Nikki
-Hill: Szenebezug über Rhythm and Blues (Lexikon-Bündel oben), solange es
-den Eintrag nicht gibt, bleibt `genres` dafür leer. Zeitzone durchweg
-`+01:00`, nur 11.05.2027 `+02:00`. Bewusst nicht im Posten: Monsters
-(27.10., Garage Trash) und Waltons (28.11., Punk'n'Roll) — kein Genre mit
-Lexikoneintrag, wie schon am 2026-10-01.
-
-`frei` **Boogie Lions, Spillern: 5 Folgetermine anlegen (26.05.2027, 26.06.2027, 11.09.2027, 30.10.2027, 27.11.2027).**
-Gesehen am 2026-10-04 auf https://boogie.at/?page=3 und der Sammelseite
-https://boogie.at/event/boogie-party-56 (Herkunft: Suchlauf 2026-10-04).
-Dort steht: „Boogie Party", Mi., 26.05.2027, Sa., 26.06.2027, Sa.,
-11.09.2027, Sa., 30.10.2027, Sa., 27.11.2027, jeweils 20:00, Festsaal
-Wiemex Spillern, Schulgasse 1, 2104 Spillern, Veranstalter „Boogie
-Lions"; kein Preis, keine Beschreibung. Folgetermine einer Reihe im
-Register: Vorlage ist `events/boogie-lions-spillern-2027-05-01` (derselbe
-Saal, dieselbe Sammelseite). Beim Bauen: Terminliste des Vereins
-(https://www.boogielions.at) gegenlesen — sie reichte am 2026-09-28 bis
-Ende 2027, aber ohne Uhrzeit und Ort; der 26.05.2027 ist ein Mittwoch,
-also eigens prüfen. Datum je Termin aus der Datumszeile der Sammelseite
-(Falle „Sammelseiten"). Zeitzone `+02:00` bis einschließlich 30.10.2027
-(die Sommerzeit endet am 31.10.2027), 27.11.2027 `+01:00`.
 
 `frei` **Niederösterreich, boogie.at: 4 Termine anlegen (21.11.2026, 12.12.2026, 19.12.2026, 31.12.2026).**
 Gesehen am 2026-10-04 auf https://boogie.at/?page=1 und ?page=2
@@ -123,7 +97,7 @@ Quelle die Musik meint. Alle drei Orte sind neu. Die Aufriss-Reihe hat
 weitere Tanzschuh-Partys 2027 (29.05., 21.08., 20.11.) — Kandidaten für
 einen späteren Posten.
 
-`frei` **Oberösterreich, boogie.at: 3 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 19.06.2027).**
+`frei` **Oberösterreich, boogie.at: 4 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 17.04.2027, 19.06.2027).**
 Gesehen am 2026-10-04 auf https://boogie.at/?page=2 und ?page=3
 (Herkunft: Suchlauf 2026-10-04). Dort steht: „Boogie trifft Schlager und
 Discofox", Fr., 18.12.2026, 20:00, „Weihnachts Edition", Tanzclub
@@ -132,7 +106,11 @@ mit Boogie Woogie, kleiner Saal DJ Mike mit Schlager und Discofox
 (/event/boogie-trifft-schlager-und-discofox); „Boogie trifft Schlager",
 Fr., 05.02.2027, 20:00, gleicher Ort, gleiche Aufteilung
 (/event/boogie-trifft-schlager-0); „Boogie trifft Schlager", Sa.,
-19.06.2027, 20:00, gleicher Ort (/event/boogie-trifft-schlager-2).
+19.06.2027, 20:00, gleicher Ort (/event/boogie-trifft-schlager-2). Nachgetragen im Suchlauf 2026-10-06 (dort
+auf ?page=3 gesehen, im Posten zuvor übersehen): „Boogie trifft
+Schlager", Sa., 17.04.2027, 20:00, gleicher Ort, „Two Djs Two Floors",
+DJ.K Boogie Klaus mit Boogie Woogie, DJ Mike mit Schlager und Discofox
+(/event/boogie-trifft-schlager-1).
 Organisation laut boogie.at „DJ. K."; kein Preis. Beim Bauen: eine Seite
 des Tanzclubs Harlekin oder des DJs suchen, boogie.at ist nur Kalender;
 Ort neu. Szenebezug nur über den Boogie-Woogie-Saal — Vorbild sind die
@@ -235,6 +213,30 @@ Formel „Vintage- und Rockabilly-Szene". Die Stellen per `grep -rn
 auflisten. Offen am Eintrag bleibt „Wie erkennt man Vintage-Kleidung?"
 (13 Treffer) — Kandidat für Artikel A2, nicht Teil dieses Postens.
 
+`frei` **Boppin'B, Irish House Kaiserslautern: 1 Termin anlegen (13.03.2027), sobald eine Quelle des Hauses gefunden ist.**
+Aus dem Bündel „Boppin'B, Tour (Fortsetzung)" (2026-10-06) zurückgegeben,
+die übrigen fünf Termine sind gebaut. Bandsintown
+(https://rest.bandsintown.com/artists/id_310419/events?app_id=js_www.boppinb.de)
+nennt 2027-03-13T20:30, Irish House, Eselsfürth 11, 67657
+Kaiserslautern. BEFUND: Das Haus hat keine erreichbare eigene Seite.
+`irishhouse.de` antwortet per https mit TLS-Fehler, per http mit einer
+Weiterleitung auf `irishhouse.kunstgriff-event.de` (falsches Zertifikat,
+http zeigt nur die Plesk-Standardseite); `kunstgriff-event.de` leitet
+auf `pfalzdigital.de/kunstgriff-event/` weiter, wo nichts zum Termin
+stand. Ein Eventim-Light-Shop
+(https://www.eventim-light.com/de/a/6141d3a4a7dca437d10f1139, Treffer
+der Websuche zum Haus) war aus der Cloud nicht abrufbar
+(ERR_HTTP2_PROTOCOL_ERROR), ebenso eventim.de und westticket.de. Was
+fehlt: eine Quelle des Hauses oder des Ticketverkaufs mit Uhrzeit und
+Adresse — Bandsintown allein trägt die Uhrzeit nicht (Falle
+„Bandsintown-Widget"). Beim Bauen zuerst den Eventim-Light-Shop öffnen
+(sieht nach dem Shop des Hauses aus, Veranstalter dort prüfen), sonst
+nach dem Haus suchen. Dasselbe Problem hat der Termin am 31.10.2026 im
+Posten „Boppin'B, Tour: 6 Termine" weiter oben. Die Region
+Rheinland-Pfalz gibt es noch nicht. Weitere Termine im Datensatz (2027:
+Erfurt 20.03., Lübeck 09.04., Köln 17.04., Münster 30.04., Idstein
+05.11.) sind Kandidaten für einen späteren Suchlauf.
+
 ## Vor dem Go-Live
 
 **Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht
@@ -278,6 +280,26 @@ Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
 
 ## Später, mit Bedingung
+
+**Berlin, Quasimodo: Nikki Hill am 11.05.2027 anlegen, sobald das Haus den Abend führt.**
+Aus dem Bündel „Berlin, Rockin' Wildcat" (2026-10-05) zurückgegeben, die
+übrigen drei Termine sind gebaut. Datum und Ort sind belegt: Rockin'
+Wildcat (`/rwc/events/nikki-hill-3`) nennt Di., 11. Mai 2027, Quasimodo,
+Kantstr. 12a, 10623 Berlin-Charlottenburg; die Tourseite der Musikerin
+(https://nikkihillrocks.com/tour, Bandsintown) nennt „Tuesday, May 11,
+2027 @ 10:00PM, Quasimodo, Berlin". **Die Uhrzeit nicht:** Rockin'
+Wildcat sichtbar 21:00, die Tourseite 22:00. Das Quasimodo selbst führt
+den Abend noch nicht (Programm am 2026-10-05 bis Januar 2027, kein Treffer
+für „nikki"); seine Konzerte nennen sonst „Einlass 21:00, Beginn 22:00"
+(Otis Kane 8.10., Ella Eyre 26.10. mit 22:30, Nighthawks 6.11. mit 20:30
+Einlass). Die 21:00 des Gig Guides sind also wahrscheinlich der Einlass,
+wie beim Lido — aber das ist ein Muster, kein Beleg für diesen Abend,
+und die Bandsintown-Uhrzeit trägt laut Falle nicht allein. **Bedingung:**
+Das Quasimodo hat eine Seite unter `quasimodo.club/events/…` für den
+Abend. Dann als `frei`-Posten nach oben ziehen; `beginn` folgt dem Haus.
+Beim Bauen: Quasimodo ist als Ort neu (Adresse vom Haus), Zeitzone
+`+02:00`, `genres` leer bis zum Lexikoneintrag Rhythm and Blues (Bündel
+oben), Szenebezug im Text über Rhythm and Blues und Soul.
 
 **ItemList für Listenartikel.** Entscheidung vom 2026-10-04: Listen
 (`typ: liste`) bekommen im JSON-LD nur `Article`. Bedingung für die

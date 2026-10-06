@@ -210,6 +210,16 @@ Fehler verursacht oder beinahe verursacht.
   dem Haus und nennt den Widerspruch im Text (Regel 5). Zweiter Fall:
   Swamp Shakers im Klubhaus Ludwigsfelde am 24.10.2026 — Gig Guide 19
   Uhr, Haus und Reservix „Einlass 19:30, Beginn 20:00" (2026-10-01).
+  Beim Lido ist die Uhrzeit des Gig Guides regelmäßig der Einlass des
+  Hauses (Guana Batz, Demented Are Go, Pokey LaFarge: Gig Guide 19:00,
+  Lido „19:00 Doors, 20:00 Start"; 2026-10-05). Führt das Haus einen
+  Abend noch nicht, ist die Uhrzeit offen — beim Quasimodo stehen sonst
+  „Einlass 21:00, Beginn 22:00", der Gig Guide nannte für Nikki Hill
+  21:00. Dann den Termin mit Bedingung zurückgeben, nicht raten.
+- **Das Datum im Pfad einer Lido-Seite kann falsch sein.** Demented Are
+  Go am 30.01.2027 liegt unter `/events/2026-06-30-demented-are-go-`
+  (2026-10-05). Maßgeblich ist der Seitentext; die Liste des Hauses nach
+  Datum im Pfad zu durchsuchen, findet den Abend nicht.
 - **American Western Saloon: der Preis steht nur im Flyer.** Der
   Seitentext von `veranstaltungen.html` und `weeklyspecials.html` nennt
   keinen Betrag („Eintritt … bitte nur in bar bezahlen"), der eingebundene
@@ -287,6 +297,24 @@ Fehler verursacht oder beinahe verursacht.
   liefert denselben Datensatz als JSON. Datum und Ort daraus sind
   brauchbar, die **Uhrzeit nicht allein**: Bei Boppin'B wich sie in zwei
   von vier geprüften Terminen vom Haus bzw. von Reservix ab.
+- **Terminseiten, die die Uhrzeit im Browser umrechnen.** Das Pitcher
+  Düsseldorf (2026-10-06) lädt seine Termine per Skript aus
+  `/wp-json/eventflow/v1/public/events` und zeigt sie in der Zeitzone des
+  Betrachters. Ein Abruf mit Browser in UTC zeigte für Boppin'B
+  „Einlass 17:00, Beginn 18:00“, mit Zeitzone Europe/Berlin „18:00 /
+  19:00“ — die Schnittstelle selbst nennt `19:00:00+01:00`. Beim Rendern
+  mit Playwright immer `timezoneId: 'Europe/Berlin'` setzen, sonst liest
+  der Lauf eine um den Versatz verschobene Uhrzeit als sichtbare Angabe.
+  Dort war 19:00/18:00 außerdem bei 44 von 101 Terminen gesetzt; ob das
+  ein Vorgabewert des Plugins ist, ist offen — im Text vorsichtig
+  formulieren.
+- **Häuser ohne erreichbare eigene Seite.** Beim Irish House
+  Kaiserslautern (2026-10-06) endete jeder Weg zur eigenen Seite auf
+  einer Weiterleitung oder einer Hosting-Standardseite; Eventim,
+  Eventim Light und Westticket brachen aus der Cloud mit HTTP/2-Fehlern
+  ab. Ohne Quelle des Hauses oder des Ticketverkaufs trägt nur
+  Bandsintown die Uhrzeit, und das reicht nicht: Termin mit Befund
+  zurückgeben.
 - **boogie.at-Detailseiten sind teils Sammelseiten.** Wiederkehrende
   Termine eines Vereins zeigen in der Liste alle auf dieselbe Adresse
   (Boogie Lions: `/event/boogie-party-56` trägt sechs Termine, Boogie Mix
