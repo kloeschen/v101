@@ -32,6 +32,54 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
+`frei` **Boppin'B, Tour (Fortsetzung): 6 Termine anlegen (28.12.2026, 31.12.2026, 22.01.2027, 18.02.2027, 27.02.2027, 13.03.2027).**
+Gesehen am 2026-10-06 über das Bandsintown-Widget der Live-Seite
+https://www.boppinb.de/live, Datensatz
+https://rest.bandsintown.com/artists/id_310419/events?app_id=js_www.boppinb.de
+(Herkunft: Suchlauf 2026-10-06). Dort steht: 28.12.2026, 20:00, LOGO,
+Hamburg; 31.12.2026, 20:00, „Silvestersause 26/27", Dreieich (als
+Ortsname steht dort nur der Veranstaltungstitel, kein Haus);
+22.01.2027, 20:00, Pitcher, Düsseldorf; 18.02.2027, 20:00, Schlachthof
+Wiesbaden, Wiesbaden; 27.02.2027, 21:00, Kulturhaus Stattbahnhof,
+Schweinfurt; 13.03.2027, 20:30, Irish House, Kaiserslautern.
+Fortsetzung des Postens „Boppin'B, Tour: 6 Termine" vom 2026-10-04
+(Termine bis 11.12.2026); Folgetermine einer Band mit eigener Seite
+(`bands/boppin-b`, `lineupBands`), Vorlage z. B.
+`events/boppin-b-colos-saal-2026-12-26`. Beim Bauen: je Termin die Seite
+des Hauses bzw. das Ticketportal öffnen — die Uhrzeit aus Bandsintown
+allein trägt nicht (Falle „Bandsintown-Widget"), Adressen nur aus einer
+Quelle, die sie nennt. In Dreieich zuerst das Haus finden; ohne Ort kein
+Termin. Irish House Kaiserslautern und die Regionen Rheinland-Pfalz,
+Hessen, Nordrhein-Westfalen entstehen womöglich schon mit dem
+Vorgängerposten — vorher `src/content/locations/` und `regionen/` prüfen.
+Hamburg, Düsseldorf, Wiesbaden, Schweinfurt (`bayern`) sind neue Orte.
+Weitere Termine im Datensatz (2027: Erfurt 20.03., Lübeck 09.04., Köln
+17.04., Münster 30.04., Idstein 05.11.) sind Kandidaten für einen
+späteren Posten.
+
+`frei` **Niederösterreich, boogie.at: 4 Termine anlegen (05.05.2027, 29.05.2027, 21.08.2027, 20.11.2027).**
+Gesehen am 2026-10-06 auf https://boogie.at/?page=3 (Herkunft: Suchlauf
+2026-10-06). Dort steht: „Boogie Party", Mi., 05.05.2027, 20:00,
+Mostlandhof, Schauboden 4, 3251 Purgstall, „Music by DJ.K Boogie
+Klaus", „Folder und nähere Informationen folgen", Organisation „DJ. K."
+(/event/boogie-party-51); „Tanzschuh-Party", Sa., 29.05.2027, 19:30,
+Aufriss Mainburg – das Eventlokal im Pielachtal, Mainburgstrasse 8, 3202
+Hofstetten, DJ, 50er-Jahre-Kleidung, „Rock'n'Roll, Boogie & Swing"
+(/event/tanzschuh-party-10); „Tanzschuh-Party" („Summer
+Tanzschuhparty an der Pielach"), Sa., 21.08.2027, 20:00, gleicher Ort,
+„Boogie, Rock'n'Roll & jede Menge Tanz" (/event/tanzschuh-party-11);
+„Tanzschuh-Party", Sa., 20.11.2027, 19:30, gleicher Ort, letzte
+Tanzschuhparty des Jahres, DJ (/event/tanzschuh-party-12). Kein Preis.
+Beim Bauen: boogie.at ist nur Kalender; aufriss.net ist nur über http
+angegeben (Falle „Seiten nur über http"), für Purgstall eine Seite des
+Hauses oder des DJs suchen. Boogie Woogie und Rock'n'Roll meinen an
+diesen Abenden den Tanz (Regel 2026-10-03). Die Aufriss-Reihe beginnt
+im Register erst mit dem Posten „Niederösterreich, boogie.at" vom
+2026-10-04 (21.11. und 12.12.2026, gleicher Ort) — ist der gebaut, ist
+er die Vorlage. Purgstall: „nähere Informationen folgen" — fehlt beim
+Bauen eine zweite Angabe zu Uhrzeit oder Ort, den Termin mit Befund
+zurückgeben.
+
 `frei` **Lexikon, Bündel Genres: Rhythm and Blues, Hillbilly.**
 Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
 2026-10-04). Abgrenzungen laut Vorrat: Rhythm and Blues (gegen das
@@ -74,7 +122,7 @@ Quelle die Musik meint. Alle drei Orte sind neu. Die Aufriss-Reihe hat
 weitere Tanzschuh-Partys 2027 (29.05., 21.08., 20.11.) — Kandidaten für
 einen späteren Posten.
 
-`frei` **Oberösterreich, boogie.at: 3 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 19.06.2027).**
+`frei` **Oberösterreich, boogie.at: 4 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 17.04.2027, 19.06.2027).**
 Gesehen am 2026-10-04 auf https://boogie.at/?page=2 und ?page=3
 (Herkunft: Suchlauf 2026-10-04). Dort steht: „Boogie trifft Schlager und
 Discofox", Fr., 18.12.2026, 20:00, „Weihnachts Edition", Tanzclub
@@ -83,7 +131,11 @@ mit Boogie Woogie, kleiner Saal DJ Mike mit Schlager und Discofox
 (/event/boogie-trifft-schlager-und-discofox); „Boogie trifft Schlager",
 Fr., 05.02.2027, 20:00, gleicher Ort, gleiche Aufteilung
 (/event/boogie-trifft-schlager-0); „Boogie trifft Schlager", Sa.,
-19.06.2027, 20:00, gleicher Ort (/event/boogie-trifft-schlager-2).
+19.06.2027, 20:00, gleicher Ort (/event/boogie-trifft-schlager-2). Nachgetragen im Suchlauf 2026-10-06 (dort
+auf ?page=3 gesehen, im Posten zuvor übersehen): „Boogie trifft
+Schlager", Sa., 17.04.2027, 20:00, gleicher Ort, „Two Djs Two Floors",
+DJ.K Boogie Klaus mit Boogie Woogie, DJ Mike mit Schlager und Discofox
+(/event/boogie-trifft-schlager-1).
 Organisation laut boogie.at „DJ. K."; kein Preis. Beim Bauen: eine Seite
 des Tanzclubs Harlekin oder des DJs suchen, boogie.at ist nur Kalender;
 Ort neu. Szenebezug nur über den Boogie-Woogie-Saal — Vorbild sind die
