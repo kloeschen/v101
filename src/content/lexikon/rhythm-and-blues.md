@@ -1,7 +1,7 @@
 ---
 name: Rhythm and Blues
 aliases: [Rhythm & Blues]
-kurzbeschreibung: Rhythm and Blues ist die populäre Musik der afroamerikanischen Bevölkerung der USA, die in den 1940er Jahren entstand, den Blues mit stark betontem Rhythmus zur Unterhaltung spielte und zur wichtigsten Quelle des Rock'n'Roll wurde.
+kurzbeschreibung: Rhythm and Blues ist die populäre Musik der afroamerikanischen Bevölkerung der USA, die in den 1940er Jahren entstand, den Blues mit stark betontem Rhythmus zur Unterhaltung spielte und aus der der Rock'n'Roll hervorging.
 status: entwurf
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
