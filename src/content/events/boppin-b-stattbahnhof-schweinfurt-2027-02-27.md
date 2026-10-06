@@ -19,10 +19,6 @@ preise:
     betrag: 23.76
     waehrung: EUR
     hinweis: ab-Preis; an der Abendkasse laut Haus ein erhöhter Preis ohne Betrag
-  - bezeichnung: Online-Ticket bei Reservix
-    betrag: 25.20
-    waehrung: EUR
-    hinweis: ab-Preis
 ticketUrl: https://www.reservix.de/tickets-boppin-b-in-schweinfurt-kulturhaus-stattbahnhof-am-27-2-2027/e2621403
 genres: [rockabilly, rocknroll]
 durchfuehrung: geplant
@@ -41,6 +37,11 @@ redaktionsnotiz: >-
   ab 25,20 EUR". Woraus die Differenz besteht, sagt keine Seite; nach der
   Falle "Haus und Ticketportal nennen verschiedene ab-Preise" getrennt
   gefuehrt und im Text benannt. Die Abendkasse hat keinen Betrag.
+  PREIS ENTSCHIEDEN (Markus, 2026-10-06, an PR #166, nach der Abweichung
+  des Gegenlesers): `preise` fuehrt nur den Vorverkauf des Hauses, 23,76
+  EUR. Der Reservix-Betrag (25,20 EUR) steht nicht mehr in `preise` und
+  Reservix nicht mehr mit `preise` in `felder`; der Text nennt die
+  Abweichung weiter (Regel 5), belegt ueber body:termin.
   TICKETURL: Reservix-Einzelseite. Das Haus verlinkt nur allgemein auf
   tickets.stattbahnhof.de (http) und seine Ticketseite.
   VERANSTALTER: Reservix "Veranstalter: Stattbahnhof Schweinfurt"; die
@@ -69,7 +70,7 @@ quellen:
   - url: https://www.reservix.de/tickets-boppin-b-in-schweinfurt-kulturhaus-stattbahnhof-am-27-2-2027/e2621403
     titel: Boppin' B, 27.02.2027, Kulturhaus Stattbahnhof (Reservix)
     abgerufenAm: 2026-10-06
-    felder: [beginn, ort, veranstalter, preise, ticketUrl, lineupBands, durchfuehrung, body:termin]
+    felder: [beginn, ort, veranstalter, ticketUrl, lineupBands, durchfuehrung, body:termin]
     art: aggregator
   - url: https://www.boppinb.de/live
     titel: Live – Tourdaten (Boppin'B, offizielle Website, Bandsintown-Widget)
