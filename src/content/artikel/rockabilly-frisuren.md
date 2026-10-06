@@ -2,7 +2,7 @@
 name: "Rockabilly-Frisuren: Pompadour, Ducktail, Flat Top und Victory Rolls"
 aliases: [Rockabilly-Frisur, Rockabilly Frisuren]
 kurzbeschreibung: Rockabilly-Frisuren sind die Haarschnitte und Frisuren, die die Szene aus den 1940er und 1950er Jahren übernommen hat; bei Männern vor allem Pompadour, Ducktail und Flat Top, bei Frauen die Victory Rolls aus der Pin-up-Mode.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-04
 geprueftAm: 2026-10-04
 autor: markus
