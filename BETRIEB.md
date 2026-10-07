@@ -216,8 +216,10 @@ bearbeitet.
    ein Fehler — und färbt dann jeden Zweig rot, auch einen, der mit Terminen
    nichts zu tun hat. Am 2026-09-21 genau so passiert. Ergibt sich eine
    Änderung, gehört sie in denselben Pull Request.
-1. Nimmt den **obersten freien Posten** aus `OFFENE-PUNKTE.md`
-   (`npm run warteschlange:naechster`). Genau einen. Posten, die ein noch
+1. Nimmt den **obersten freien Posten** aus `docs/posten/`
+   (`npm run warteschlange:naechster`, nennt Datei und Auftrag). Genau
+   einen. Ist er erledigt, **löscht der Lauf dessen Datei** — und keine
+   andere; bleibt ein Rest, kürzt er die Datei darauf. Posten, die ein noch
    offener Zweig bereits bearbeitet, überspringt das Skript von selbst —
    Voraussetzung ist ein `git fetch origin` davor, denn gelesen werden die
    vorhandenen Refs und nicht das Netz.
@@ -248,10 +250,13 @@ bearbeitet.
    `--vergleich` vergleicht im Code. Der Abschnitt „Gegenleser" steht über
    dem Prüfzettel; bei einer Abweichung beginnt der PR-Titel mit
    „[Abweichung]". Der Lauf **meldet nur** und ändert den Eintrag nicht.
-5. Merged selbst, wenn `npm run automerge:erlaubt` es erlaubt und die CI
+5. Ruft `npm run konflikte` auf und schreibt das Ergebnis in den PR
+   (seit dem 2026-10-07): welche offenen Zweige an welcher Datei mit
+   `main` kollidieren würden, der eigene eingeschlossen.
+6. Merged selbst, wenn `npm run automerge:erlaubt` es erlaubt und die CI
    grün ist. Sonst bleibt der PR liegen.
-6. Stößt er auf eine **Ermessensfrage**, baut er nicht: Er markiert den
-   Posten als `mensch`, schreibt hin, was zu entscheiden ist, und meldet.
+7. Stößt er auf eine **Ermessensfrage**, baut er nicht: Er stellt die
+   Postendatei auf `marke: mensch`, schreibt hin, was zu entscheiden ist, und meldet.
    **Was keine Ermessensfrage ist** (Entscheidung vom 2026-09-21): eine eng
    geführte Ausnahme von einer bestehenden Regel — begrenzt auf ein Feld an
    einem Typ, mit Negativtest und Mutationsbeleg. Die baut der Lauf selbst.
@@ -260,8 +265,11 @@ bearbeitet.
 
 #### Die zwei Regeln, die das tragen
 
-**Die Warteschlange** (`scripts/warteschlange.ts`). Jeder Posten unter
-„Als Nächstes" trägt `frei` oder `mensch`. Ein Posten ohne Marke ist ein
+**Die Warteschlange** (`scripts/warteschlange.ts`). Jeder Posten ist eine
+Datei in `docs/posten/` (seit dem 2026-10-07; vorher Absätze unter „Als
+Nächstes" in `OFFENE-PUNKTE.md`, wo parallele Läufe fünf von sieben
+Merge-Konflikten erzeugten) und trägt im Kopf `marke: frei` oder `mensch`,
+`titel` und `angelegt`. Neuester zuerst. Eine Datei ohne Marke ist ein
 Fehler in der Prüfkette — nicht stillschweigend das eine oder andere.
 Beide naheliegenden Voreinstellungen wären falsch, und die Begründung steht
 im Kopf der Datei.
@@ -272,8 +280,9 @@ warteschlange:belegt` zeigt, welche das sind). Gefragt wird nach
 Git-Refs, nicht nach Pull Requests: Das braucht kein Token und keinen
 Netzaufruf, die Prüfkette bleibt offline, und ein Zweig zählt auch dann
 schon, wenn noch gar kein Pull Request offen ist — genau das Fenster, in
-dem der Doppellauf entstand. Als bearbeitet gilt ein Posten nur, wenn er am
-**Abzweigpunkt** des Zweigs frei war und an dessen Spitze nicht mehr. Ohne
+dem der Doppellauf entstand. Als bearbeitet gilt ein Posten nur, wenn seine Datei am
+**Abzweigpunkt** des Zweigs frei war und an dessen Spitze gelöscht oder
+auf `mensch` gestellt ist. Ohne
 diese zweite Bedingung meldet ein Zweig, der bloß hinterherhinkt, alles als
 bearbeitet, was nach seinem Abzweig dazukam — beim ersten Lauf gegen das
 echte Repository prompt passiert.
@@ -290,8 +299,8 @@ durch Zufall. Code kann sich selbst beweisen, ein recherchierter Fakt nicht.
 
 Beide Regeln stehen in Code und nicht im Prompt der Routine. Im Prompt wären
 sie eine Bitte an ein Modell; als Skript sind sie ein Exitcode, und
-`scripts/test-warteschlange.ts` belegt beide Richtungen (77 Prüfungen,
-23 Mutationen).
+`scripts/test-warteschlange.ts` belegt beide Richtungen (93 Prüfungen;
+Mutationsbelege in ENTSCHEIDUNGEN.md, 2026-10-07).
 
 #### Was der Lauf nicht darf
 

@@ -18,6 +18,66 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-07 — Ein Posten, eine Datei; Konfliktvorschau vor jedem PR
+
+**Entscheidung Markus**, nach Vorschlag. Anlass: Seit `main` geschützt ist
+(„Require branches to be up to date", 2026-10-04), kostet jeder Konflikt
+ein Update von Hand. Gemessen mit `git show --remerge-diff` über die
+Merge-Commits seit dem 2026-09-30: fünf Konflikte in `OFFENE-PUNKTE.md`,
+je einer in `docs/ablaeufe/termin-recherche.md` und `ENTSCHEIDUNGEN.md`.
+Ursache der fünf: Parallele Läufe änderten benachbarte Zeilen am Kopf von
+„Als Nächstes" — der Suchlauf fügte oben ein, der Tageslauf strich oben.
+
+**1. Die Warteschlange liegt in `docs/posten/`, eine Datei je Posten.**
+Kopf mit `marke` (`frei`/`mensch`), `titel`, `angelegt`; darunter der
+Auftrag. Ein Lauf löscht nur seine eigene Datei, der Suchlauf legt neue
+an. Zwei Läufe berühren dieselbe Datei nur, wenn sie denselben Posten
+nehmen — und das verhindert `--belegt` schon.
+- *Reihenfolge:* `angelegt`, neuester zuerst, bei gleichem Tag nach
+  Dateiname. Das bildet die bisherige Regel nach (der Suchlauf fügte oben
+  ein). Die acht migrierten Posten haben als `angelegt` den Tag, an dem
+  ihr Titel zuerst in OFFENE-PUNKTE stand (`git log -S`), beim
+  zurückgegebenen Rest den Tag der Rückgabe. Dadurch rückt der
+  Irish-House-Posten (2026-10-06) vom letzten auf den zweiten Platz.
+  *Verworfen:* ein Feld `rang` (der Suchlauf müsste Zahlen umrechnen, und
+  zwei Läufe vergäben dieselbe) und ein Datum im Dateinamen (eine
+  Umbenennung bricht die Belegungserkennung).
+- *Kein YAML-Parser:* Ein ungeschütztes `2026-10-04` würde gray-matter als
+  Mitternacht UTC lesen (Regel 1). Die drei Schlüssel liest
+  `warteschlange.ts` von Hand, `angelegt` bleibt eine Zeichenkette.
+- *Belegung:* Verglichen wird über den Dateinamen statt den Titel. Ein Lauf,
+  der den Titel umformuliert, bleibt derselbe Posten. Zweige vom alten
+  Stand haben am Abzweigpunkt kein Verzeichnis und belegen nichts.
+- *Belege:* `test-warteschlange.ts` 93 Prüfungen. Sieben Mutationen, alle
+  gefallen: keine Sortierung (3), kein Gleichstand-Tiebreak (1), fehlende
+  Marke nicht gemeldet (1), ohne Abzweigbedingung (9), Vergleich über den
+  Titel (10), Tagesformat ungeprüft (3), README als Posten (1).
+
+**2. `npm run konflikte`.** Mergt jeden offenen Zweig probehalber mit
+`origin/main` und jeden mit jedem (`git merge-tree --write-tree`, ohne
+Arbeitsbaum, schreibt nichts). Ausgabe als Markdown für den PR. Tageslauf
+und Suchlauf rufen es vor dem PR auf. „Offen" heißt: nicht in `main` und
+Spitze höchstens sieben Tage alt (`--tage`). Gezählt am 2026-10-07: rund
+fünfzig ungemergte Remote-Zweige, ein einziger offener PR (#167). Ohne
+Altersgrenze handelte die Meldung meist von Toten. Tokenfrei wie
+`warteschlange.ts`; wer es genau braucht, nennt die Zweige mit `--zweige`.
+- *Fund beim Test:* `git merge-tree` meldet einen unbekannten Ref mit
+  demselben Exitcode 1 wie einen Konflikt, nur ohne Baum auf stdout. Ein
+  Tippfehler im Zweignamen wäre als „Konflikt ohne Dateien" durchgegangen.
+  Jetzt zählt Exitcode 1 nur zusammen mit einem Baum, sonst wird geworfen.
+- *Belege:* `test-konflikte.ts` baut ein Wegwerf-Repository mit einem
+  klemmenden, einem sauberen, einem gemergten, einem alten Zweig und einem
+  kollidierenden Paar. 18 Prüfungen. Sechs Mutationen, alle gefallen:
+  Konflikt als sauber (5), ohne Altersgrenze (3), gemergte mitgezählt (2),
+  Baum nicht geprüft (1), Paare auch für klemmende Zweige (2 — erst nach
+  einer Erweiterung der Vorrichtung; vorher teilte der klemmende Zweig
+  keine Datei mit dem Paar, und die Mutation überlebte), HEAD ohne Arbeit
+  mitgenommen (1).
+
+**Offen:** Die Prompts der Routinen in claude.ai sagen noch „Posten in
+OFFENE-PUNKTE streichen". Markus ändert sie (Wortlaut im PR).
+
+
 ## 2026-10-04 — Listenartikel bekommen nur `Article`, kein `ItemList`
 
 **Entscheidung Markus**, nach Empfehlung. Der Artikel-Builder gab jeder

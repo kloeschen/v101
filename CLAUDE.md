@@ -145,7 +145,8 @@ Ausführlich mit den Fehlern, aus denen sie entstanden sind:
   Aufnahmekriterium, was als Beleg zählt, warum Google Maps keiner ist.
 - Architektur, Verträge und Begründungen: `README.md`
 - Betrieb, Go-Live, agentische Workflows: `BETRIEB.md`
-- Was als Nächstes ansteht: `OFFENE-PUNKTE.md`
+- Was als Nächstes ansteht: `docs/posten/README.md` (Warteschlange, eine
+  Datei je Posten), Rückstau in `OFFENE-PUNKTE.md`
 - Befunde aus dem Review, auch die vertagten: `REVIEW.md`
 - Warum etwas so ist, samt verworfener Alternativen: `ENTSCHEIDUNGEN.md`
 - Lektionen aus dem Aufbau: `docs/lektionen.md`

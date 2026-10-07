@@ -19,11 +19,11 @@ aufgegebenen Vorgängerprojekt und gelten hier nicht. Was aus ihnen
 
 | Lauf | Wann | Tut | Tut nicht |
 |---|---|---|---|
-| **Suchlauf** | sonntags, dienstags, donnerstags | Quellen unten absuchen, Funde als `frei`-Posten in `OFFENE-PUNKTE.md` schreiben | Inhalte anlegen. Ein Fund ist ein Hinweis, kein Beleg. |
+| **Suchlauf** | sonntags, dienstags, donnerstags | Quellen unten absuchen, Funde als `frei`-Posten in `docs/posten/` anlegen, je Posten eine Datei | Inhalte anlegen. Ein Fund ist ein Hinweis, kein Beleg. |
 | **Täglicher Lauf** | dreimal am Tag | je Lauf genau einen Posten bauen (`BETRIEB.md`, 2.5) | suchen, was nicht im Posten steht |
 
 Die Trennung ist Absicht. Der Suchlauf darf großzügig sein, weil er nur
-Arbeitsaufträge erzeugt; ein Posten-PR berührt nur `OFFENE-PUNKTE.md` und
+Arbeitsaufträge erzeugt; ein Posten-PR legt nur Dateien in `docs/posten/` an und
 darf nach `automerge:erlaubt` selbst mergen. Der tägliche Lauf öffnet jede
 Quelle erneut und belegt jedes Feld — erst dort entsteht ein Fakt, und der
 wartet auf Markus.
@@ -71,9 +71,10 @@ ist mehr wert als ein einzelner Termin.
 1a. **Lexikon nachziehen** (seit dem 2026-09-29). `warteschlange:platz`
    nennt die Zahl: Stehen weniger als zwei Lexikon-Posten auf `frei`,
    zieht der Suchlauf Bündel aus dem Abschnitt „Lexikon-Vorrat" in
-   `OFFENE-PUNKTE.md` nach oben, bis drei dastehen — von oben nach unten,
-   nie über die Obergrenze. Jedes Bündel wird ein `frei`-Posten
-   „Lexikon, Bündel <Kategorie>: <Begriffe>." mit den Abgrenzungen aus
+   `OFFENE-PUNKTE.md` nach, bis drei dastehen — von oben nach unten,
+   nie über die Obergrenze. Jedes Bündel wird eine Postendatei
+   `docs/posten/lexikon-buendel-<kategorie>.md` mit dem Titel
+   „Lexikon, Bündel <Kategorie>: <Begriffe>" und den Abgrenzungen aus
    dem Vorrat, den alten Pfaden, falls genannt, und der Zeile „Herkunft:
    Lexikon-Vorrat JJJJ-MM-TT"; im Vorrat wird es gestrichen. Recherchiert
    wird dabei nichts. Ist der Vorrat leer, steht das im Bericht — neue
@@ -95,17 +96,27 @@ ist mehr wert als ein einzelner Termin.
    pro Quelle oder Reihe, mit bis zu sechs Terminen.** Der tägliche Lauf
    baut alle Termine eines Postens in einem PR; Quelle, Ort und Leseregeln
    teilen sie sich. Gehören Termine zu verschiedenen Quellen, sind es
-   verschiedene Posten. Oben unter „Als Nächstes":
+   verschiedene Posten. Jeder Posten ist eine eigene Datei in
+   `docs/posten/` (Form: `docs/posten/README.md`), Dateiname ein Slug aus
+   Quelle und Jahr, etwa `docs/posten/pullman-city-rockabilly-night-2026.md`.
+   Vorher `ls docs/posten/` — ein Name, den es schon gibt, ist ein
+   Duplikat oder braucht einen anderen Slug:
 
    ```
-   `frei` **<Veranstaltung/Reihe/Quelle>: <n> Termine anlegen (<Datum>, <Datum> …).**
+   ---
+   marke: frei
+   titel: "<Veranstaltung/Reihe/Quelle>: <n> Termine anlegen (<Datum>, <Datum> …)"
+   angelegt: JJJJ-MM-TT
+   ---
+
    Gesehen am JJJJ-MM-TT auf <URL der Kalenderseite> (Herkunft: Suchlauf
    JJJJ-MM-TT). Dort steht: <je Termin Datum, Uhrzeit, Ort so wie
    angegeben>. <Was beim Bauen zu prüfen ist — Detailseiten, Jahreszahl,
    zweite Quelle.>
    ```
 
-   Der fette Titel schließt in derselben Zeile. „Dort steht" gibt wieder,
+   `angelegt` ist der Tag des Suchlaufs; er ordnet die Warteschlange
+   (neuester zuerst). „Dort steht" gibt wieder,
    was die Quelle sagt — es ist kein Beleg und wird beim Bauen erneut
    geöffnet. Die Zeile „Herkunft: Suchlauf" ist für die Auswertung (unten)
    nötig; ohne sie lässt sich nicht zählen, was der Suchlauf gebracht hat.
@@ -118,8 +129,9 @@ ist mehr wert als ein einzelner Termin.
    derselben Region und desselben Typs. Es stehen höchstens zwei davon in
    der Warteschlange, und Termine haben Vorrang. Ablauf, Quellen und Format
    stehen in `docs/ablaeufe/adressen-recherche.md`.
-7. **Abliefern:** Branch, PR, der nur `OFFENE-PUNKTE.md` (und ggf. diese
-   Datei) berührt, `npm run verify`, `npm run automerge:erlaubt`, bei
+7. **Abliefern:** Branch, PR, der nur `docs/posten/` (beim
+   Lexikon-Nachschub den Vorrat in `OFFENE-PUNKTE.md`, ggf. diese Datei)
+   berührt, `npm run konflikte` mit dem Ergebnis im PR, `npm run verify`, `npm run automerge:erlaubt`, bei
    Exitcode 0 und grüner CI selbst mergen. Kein Fund ist ein vollständiges
    Ergebnis: melden, kein PR.
 

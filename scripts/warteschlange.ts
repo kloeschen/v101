@@ -3,11 +3,30 @@
  * warteschlange.ts — welcher offene Punkt darf ohne Menschen gebaut werden?
  *
  * ANLASS: Ab dem 2026-09-20 läuft täglich ein unbeaufsichtigter Lauf, der
- * sich seine Aufgabe selbst aus OFFENE-PUNKTE.md nimmt. Damit ist diese
- * Datei nicht mehr nur Prosa für Menschen, sondern die Eingabe eines
- * Automaten — und eine Eingabe, die ein Automat rät, ist keine.
+ * sich seine Aufgabe selbst aus der Warteschlange nimmt. Damit ist sie
+ * nicht mehr nur Prosa für Menschen, sondern die Eingabe eines Automaten —
+ * und eine Eingabe, die ein Automat rät, ist keine.
  *
- * Deshalb trägt jeder Posten unter „Als Nächstes" eine Marke:
+ * EIN POSTEN, EINE DATEI (seit dem 2026-10-07). Bis dahin standen die
+ * Posten als Absätze unter „Als Nächstes" in OFFENE-PUNKTE.md. Gemessen
+ * über die Merge-Commits seit dem 2026-09-30 (`git show --remerge-diff`):
+ * fünf von sieben Konflikten lagen in genau dieser Datei, weil parallele
+ * Läufe benachbarte Zeilen am Kopf desselben Abschnitts änderten — der
+ * Suchlauf fügte oben ein, der Tageslauf strich oben einen Posten. Jetzt
+ * liegt jeder Posten in `docs/posten/<slug>.md`. Ein Lauf löscht seine
+ * eigene Datei, der Suchlauf legt neue an; zwei Läufe berühren nie
+ * dieselbe Datei, solange sie nicht denselben Posten bearbeiten — und das
+ * verhindert schon `--belegt`.
+ *
+ * Eine Postendatei:
+ *
+ *   ---
+ *   marke: frei
+ *   titel: Pullman City: 1 Termin anlegen (27.12.2026, Rockabilly Night)
+ *   angelegt: 2026-10-04
+ *   ---
+ *
+ *   Der Auftrag als Fließtext.
  *
  *   `frei`    — darf ein Lauf ohne Rückfrage bauen
  *   `mensch`  — gehört dem Menschen: Ermessen, Zahlen, Semantik, oder der
@@ -19,44 +38,40 @@
  * Automaten laufen. „Ohne Marke = mensch" lässt ihn stumm aus der
  * Warteschlange fallen — der Lauf meldet „nichts zu tun", obwohl etwas da
  * ist, und niemand merkt es. Eine Voreinstellung, die man nicht sieht, ist
- * die schlechtere von beiden (Lektion 19). Also: laut scheitern.
+ * die schlechtere von beiden (Lektion 19). Also: laut scheitern. Dasselbe
+ * gilt für `titel` und `angelegt`.
  *
- * Geprüft wird nur der Abschnitt „Als Nächstes". „Vor dem Go-Live" und
- * „Später, mit Bedingung" sind Rückstau, keine Warteschlange — dort wäre
- * eine Marke eine Behauptung über einen Zeitpunkt, den niemand kennt.
+ * REIHENFOLGE: Bis zum 2026-10-07 galt die Reihenfolge der Absätze, und
+ * der Suchlauf fügte oben ein — der neueste Posten stand zuerst. Ein
+ * Verzeichnis hat keine Reihenfolge, also trägt sie jetzt `angelegt`:
+ * neuester zuerst, bei gleichem Datum nach Dateiname. Das Datum ist ein
+ * Kalendertag als Zeichenkette (`JJJJ-MM-TT`) und wird nie als Datum
+ * gelesen — deshalb kein YAML-Parser, der daraus einen Zeitpunkt in UTC
+ * machte (Regel 1), sondern die drei Schlüssel von Hand.
  *
  * ZWEITE AUFGABE seit dem 2026-09-21: einen Posten ueberspringen, den ein
  * noch offener Zweig bereits abarbeitet. Anlass war der teuerste Fehlgriff
  * der ersten beiden Laeufe — beide nahmen denselben Posten, weil der PR des
- * Vorabends noch nicht gemergt war und OFFENE-PUNKTE.md im Arbeitsbaum
+ * Vorabends noch nicht gemergt war und die Warteschlange im Arbeitsbaum
  * unveraendert `frei` sagte. Zwei Pull Requests, dieselbe Band, ein
  * garantierter Konflikt.
  *
- * WARUM GIT-REFS UND NICHT DIE GITHUB-API: Die Entscheidung lautete, dass
- * `--naechster` die offenen Pull Requests abfragt. Gebaut ist etwas
- * Aequivalentes, das weniger kostet — und der Unterschied gehoert benannt.
- * Gefragt wird nach **nicht gemergten Zweigen** unter `refs/remotes/`, nicht
- * nach Pull Requests. Das ist:
- *
- *   - tokenfrei. Kein `GITHUB_TOKEN`, kein Netzaufruf im Skript selbst; es
- *     liest, was `git fetch` ohnehin schon geholt hat. Damit bleibt die
- *     ganze Datei offline lauffaehig, nicht nur `--check` — der Einwand,
- *     der gegen diese Variante sprach, entfaellt ganz;
- *   - breiter im richtigen Sinn. Ein Zweig, der Arbeit traegt, zaehlt auch
- *     dann, wenn noch gar kein Pull Request offen ist. Genau dieses Fenster
- *     — gepusht, PR noch nicht da — war der Zustand am 2026-09-20 abends;
- *   - enger im richtigen Sinn. Ein gemergter Zweig zaehlt nicht mehr, auch
- *     wenn er als Ref noch herumliegt.
+ * WARUM GIT-REFS UND NICHT DIE GITHUB-API: Gefragt wird nach **nicht
+ * gemergten Zweigen** unter `refs/remotes/`, nicht nach Pull Requests. Das
+ * ist tokenfrei (es liest, was `git fetch` geholt hat), breiter im
+ * richtigen Sinn (ein gepushter Zweig ohne PR zählt) und enger im richtigen
+ * Sinn (ein gemergter Zweig zählt nicht mehr).
  *
  * Erkannt wird die Belegung nicht am Zweignamen, sondern am Inhalt: Ein
- * Posten, der auf der Basis `frei` ist und auf dem Zweig nicht mehr, wird
- * dort bearbeitet. Das ist derselbe Parser wie oben, auf zwei Fassungen
- * derselben Datei angewandt.
+ * Posten, der auf der Basis `frei` ist und auf dem Zweig nicht mehr (Datei
+ * gelöscht oder auf `mensch` gestellt), wird dort bearbeitet. Verglichen
+ * wird über den Dateinamen, nicht über den Titel — ein Lauf, der den Titel
+ * umformuliert, bleibt so derselbe Posten.
  *
  *   npx tsx scripts/warteschlange.ts            # alle Posten mit Marke
  *   npx tsx scripts/warteschlange.ts --naechster # der nächste freie Posten (Termine
  *                                                  morgens, Lexikon nachmittags zuerst)
- *   npx tsx scripts/warteschlange.ts --check     # Exitcode 1 bei fehlender Marke
+ *   npx tsx scripts/warteschlange.ts --check     # Exitcode 1 bei einer kaputten Datei
  *                                                  oder mehr als zwölf freien Posten
  *   npx tsx scripts/warteschlange.ts --platz     # was der Suchlauf schreiben darf
  *   npx tsx scripts/warteschlange.ts --belegt    # was offene Zweige schon bearbeiten
@@ -64,124 +79,112 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+
+/** Das Verzeichnis der Warteschlange, relativ zum Projekt (auch für `git show`). */
+export const VERZEICHNIS = "docs/posten";
 
 export type Marke = "frei" | "mensch";
 
 export interface Posten {
   marke: Marke;
   titel: string;
-  /** Der vollständige Absatz, ohne Marke — das ist der Auftrag. */
+  /** Kalendertag `JJJJ-MM-TT`, nur als Zeichenkette verglichen. */
+  angelegt: string;
+  /** Dateiname ohne Verzeichnis — die Identität des Postens. */
+  datei: string;
+  /** Titel und Auftrag, so wie der Lauf ihn bekommt. */
   text: string;
-  /** 1-basiert, für Fehlermeldungen. */
-  zeile: number;
+}
+
+export interface Mangel {
+  datei: string;
+  grund: string;
 }
 
 export interface Befund {
+  /** In der Reihenfolge der Warteschlange: neuester zuerst. */
   posten: Posten[];
-  /** Absätze, die wie ein Posten aussehen, aber keine Marke tragen. */
-  ohneMarke: { titel: string; zeile: number }[];
+  /** Dateien, die wie ein Posten aussehen, aber nicht lesbar sind. */
+  maengel: Mangel[];
 }
 
-const ABSCHNITT = "## Als Nächstes";
-/** `frei` **Titel.** … — die Marke steht am Zeilenanfang, davor nichts. */
-const MIT_MARKE = /^`(frei|mensch)`\s+\*\*(.+?)\*\*/;
-/** Ein Absatz, der mit Fettschrift beginnt, ist ein Posten ohne Marke. */
-const OHNE_MARKE = /^\*\*(.+?)\*\*/;
-/** Der Anfang eines Titels, dessen schließende `**` noch fehlen. */
-const TITEL_BEGINN = /^(?:`(?:frei|mensch)`\s+)?\*\*/;
+export interface Rohdatei {
+  name: string;
+  text: string;
+}
+
+/** Dateien, die im Verzeichnis liegen dürfen, ohne ein Posten zu sein. */
+export const KEIN_POSTEN = (name: string) => !name.endsWith(".md") || name === "README.md" || name.startsWith("_");
+
+const TAG = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Eine Postendatei lesen. Liefert den Posten oder den Grund, warum nicht. */
+export function liesDatei(d: Rohdatei): Posten | Mangel {
+  const zeilen = d.text.replace(/\r\n/g, "\n").split("\n");
+  if (zeilen[0]?.trim() !== "---") return { datei: d.name, grund: "kein Kopf (erste Zeile muss `---` sein)" };
+  const ende = zeilen.indexOf("---", 1);
+  if (ende < 0) return { datei: d.name, grund: "Kopf ohne schließendes `---`" };
+  const kopf: Record<string, string> = {};
+  for (const z of zeilen.slice(1, ende)) {
+    const m = /^([a-z]+):\s*(.*)$/.exec(z.trim());
+    if (!m) continue;
+    kopf[m[1]!] = (m[2] ?? "").trim().replace(/^(["'])(.*)\1$/, "$2");
+  }
+  const marke = kopf.marke;
+  if (!marke) return { datei: d.name, grund: "keine Marke (`marke: frei` oder `marke: mensch`)" };
+  if (marke !== "frei" && marke !== "mensch") return { datei: d.name, grund: `unbekannte Marke „${marke}" (nur frei oder mensch)` };
+  const titel = (kopf.titel ?? "").replace(/\.$/, "");
+  if (!titel) return { datei: d.name, grund: "kein Titel (`titel: …`)" };
+  const angelegt = kopf.angelegt ?? "";
+  if (!TAG.test(angelegt)) return { datei: d.name, grund: `\`angelegt\` fehlt oder ist kein Tag JJJJ-MM-TT („${angelegt}")` };
+  const auftrag = zeilen.slice(ende + 1).join("\n").trim();
+  if (!auftrag) return { datei: d.name, grund: "kein Auftragstext unter dem Kopf" };
+  return { marke, titel, angelegt, datei: d.name, text: `**${titel}.**\n${auftrag}` };
+}
+
+const istMangel = (x: Posten | Mangel): x is Mangel => "grund" in x;
+
+/** Neuester zuerst, bei gleichem Tag nach Dateiname. */
+export function reihenfolge(a: Posten, b: Posten): number {
+  if (a.angelegt !== b.angelegt) return a.angelegt < b.angelegt ? 1 : -1;
+  return a.datei < b.datei ? -1 : a.datei > b.datei ? 1 : 0;
+}
 
 /**
- * Umgebrochene Titel zu einer logischen Zeile zusammenziehen.
- *
- * DER FEHLER, DEN DAS BEHEBT, war der schlimmste, den diese Datei haben
- * kann: Ein Posten, dessen fetter Titel über zwei Zeilen umbricht — bei 79
- * Zeichen Zeilenlänge der Normalfall für einen langen Titel —, fiel
- * **stumm** aus der Liste. Weder `MIT_MARKE` noch `OHNE_MARKE` griffen, denn
- * die Folgezeile beginnt nicht mit `**`. `--check` schlug nicht an, weil der
- * Posten gar nicht erst gesehen wurde. Ein freier Posten, den niemand sieht,
- * wird nie gebaut; ein `mensch`-Posten, den niemand sieht, gilt als
- * erledigt. Genau der Zustand, den der Kopf dieser Datei ausschließen
- * wollte.
- *
- * Die Zeilennummer bleibt die der ERSTEN Zeile — Fehlermeldungen sollen
- * dorthin zeigen, wo der Posten anfängt.
+ * Die Warteschlange aus fertig gelesenen Dateien. Reine Funktion: kein
+ * Dateisystem, kein Git — deshalb im Harnisch prüfbar und für die
+ * Belegung auf beliebige Stände anwendbar.
  */
-function logischeZeilen(zeilen: string[]): { inhalt: string; zeile: number }[] {
-  const aus: { inhalt: string; zeile: number }[] = [];
-  for (let i = 0; i < zeilen.length; i++) {
-    const zeile = zeilen[i] ?? "";
-    // Nur ein angefangener Titel wird fortgesetzt — und nur solange die
-    // schließenden `**` auf derselben Zeile fehlen.
-    if (TITEL_BEGINN.test(zeile) && !MIT_MARKE.test(zeile) && !OHNE_MARKE.test(zeile)) {
-      let inhalt = zeile;
-      let j = i + 1;
-      // Eine Leerzeile beendet den Absatz: Was dahinter steht, gehört nicht
-      // mehr zum Titel, auch wenn irgendwo später `**` käme.
-      while (j < zeilen.length && (zeilen[j] ?? "").trim() !== "" && !inhalt.includes("**", inhalt.indexOf("**") + 2)) {
-        inhalt += " " + (zeilen[j] ?? "").trim();
-        j++;
-      }
-      aus.push({ inhalt, zeile: i + 1 });
-      i = j - 1;
-      continue;
-    }
-    aus.push({ inhalt: zeile, zeile: i + 1 });
+export function lies(dateien: Rohdatei[]): Befund {
+  const posten: Posten[] = [];
+  const maengel: Mangel[] = [];
+  for (const d of dateien) {
+    if (KEIN_POSTEN(d.name)) continue;
+    const x = liesDatei(d);
+    if (istMangel(x)) maengel.push(x);
+    else posten.push(x);
   }
-  return aus;
+  posten.sort(reihenfolge);
+  maengel.sort((a, b) => (a.datei < b.datei ? -1 : 1));
+  return { posten, maengel };
 }
 
-export function lies(text: string): Befund {
-  const zeilen = text.split("\n");
-  const start = zeilen.findIndex((z) => z.trim() === ABSCHNITT);
-  if (start < 0) return { posten: [], ohneMarke: [] };
-
-  // Bis zur nächsten H2 — der Abschnitt endet dort, nicht am Dateiende.
-  let ende = zeilen.length;
-  for (let i = start + 1; i < zeilen.length; i++) {
-    if (zeilen[i].startsWith("## ")) { ende = i; break; }
+/** Das Verzeichnis im Arbeitsbaum. Fehlt es, ist die Warteschlange leer. */
+export function liesVerzeichnis(verzeichnis = path.join(PROJEKT, VERZEICHNIS)): Rohdatei[] {
+  let namen: string[];
+  try {
+    namen = readdirSync(verzeichnis);
+  } catch {
+    return [];
   }
-
-  const posten: Posten[] = [];
-  const ohneMarke: { titel: string; zeile: number }[] = [];
-  let offen: Posten | null = null;
-
-  // Gelesen wird über logische Zeilen: Ein Titel, der umbricht, ist eine.
-  const log = logischeZeilen(zeilen.slice(start + 1, ende));
-
-  for (let i = 0; i < log.length; i++) {
-    const inhalt = log[i]?.inhalt ?? "";
-    const nummer = start + 1 + (log[i]?.zeile ?? 0);
-    const m = MIT_MARKE.exec(inhalt);
-    if (m) {
-      if (offen) posten.push(offen);
-      offen = {
-        marke: m[1] as Marke,
-        titel: (m[2] ?? "").replace(/\.$/, ""),
-        text: inhalt.replace(/^`(frei|mensch)`\s+/, ""),
-        zeile: nummer,
-      };
-      continue;
-    }
-    const o = OHNE_MARKE.exec(inhalt);
-    if (o) {
-      // Nur ein Absatzanfang zählt: Fettschrift mitten im Text eines
-      // laufenden Postens ist Auszeichnung, kein neuer Posten.
-      const vorher = log[i - 1]?.inhalt ?? "";
-      if (vorher.trim() === "") {
-        if (offen) { posten.push(offen); offen = null; }
-        ohneMarke.push({ titel: (o[1] ?? "").replace(/\.$/, ""), zeile: nummer });
-        continue;
-      }
-    }
-    if (offen) offen.text += "\n" + inhalt;
-  }
-  if (offen) posten.push(offen);
-  return { posten, ohneMarke };
+  return namen
+    .filter((n) => !KEIN_POSTEN(n))
+    .map((name) => ({ name, text: readFileSync(path.join(verzeichnis, name), "utf8") }));
 }
 
 /* ------------------------------------------------------------------ */
@@ -191,54 +194,54 @@ export function lies(text: string): Befund {
 export interface Belegung {
   /** Der Titel des Postens, so wie er auf der Basis steht. */
   titel: string;
+  /** Seine Datei — darüber wird verglichen. */
+  datei: string;
   /** Der Zweig, der ihn bearbeitet. */
   zweig: string;
 }
 
-/** Ein offener Zweig: sein Stand, und der Stand an seinem Abzweigpunkt. */
+/** Ein offener Zweig: seine Warteschlange, und die an seinem Abzweigpunkt. */
 export interface Zweigstand {
   zweig: string;
-  /** OFFENE-PUNKTE.md an der Spitze des Zweigs. */
-  text: string;
-  /** Dieselbe Datei am Abzweigpunkt (merge-base mit der Basis). */
-  abzweig: string;
+  /** Die Postendateien an der Spitze des Zweigs. */
+  spitze: Rohdatei[];
+  /** Dieselben am Abzweigpunkt (merge-base mit der Basis). */
+  abzweig: Rohdatei[];
 }
 
 /**
  * Welche freien Posten der Basis bearbeitet ein offener Zweig bereits?
  *
- * Reine Funktion: Sie bekommt fertig gelesene Texte und ruft kein Git auf.
- * Genau deshalb ist sie im Harnisch pruefbar, ohne ein Repository zu bauen.
+ * DIE ENTSCHEIDENDE BEDINGUNG IST DIE ERSTE, und sie hat im ersten Entwurf
+ * gefehlt. Ohne sie meldete die Prüfung beim ersten Lauf gegen das echte
+ * Repository drei Fehlalarme — der Zweig `pflege/woechentlich` zweigte von
+ * einem aelteren Stand ab, auf dem es diese drei Posten schlicht noch nicht
+ * gab. „Steht da nicht" und „wurde dort abgearbeitet" sind verschiedene
+ * Dinge.
  *
- * DIE ENTSCHEIDENDE BEDINGUNG IST DIE ZWEITE, und sie hat gefehlt. Der erste
- * Entwurf pruefte nur: „auf der Basis `frei`, auf dem Zweig nicht mehr".
- * Beim ersten Lauf gegen das echte Repository meldete er prompt drei
- * Fehlalarme — der Zweig `pflege/woechentlich` zweigte von einem aelteren
- * Stand ab, auf dem es diese drei Posten schlicht noch nicht gab. „Steht da
- * nicht" und „wurde dort abgearbeitet" sind verschiedene Dinge, und ein
- * Zweig, der hinterherhinkt, sieht ohne diese Unterscheidung aus wie einer,
- * der arbeitet.
- *
- * Deshalb zaehlt ein Posten nur dann als belegt, wenn er
+ * Ein Posten zaehlt deshalb nur dann als belegt, wenn er
  *
  *   1. **am Abzweigpunkt des Zweigs `frei` war** — er lag dem Lauf also
  *      ueberhaupt vor —, und
  *   2. **an der Spitze des Zweigs nicht mehr `frei` ist** — der Lauf hat ihn
- *      auf `mensch` gestellt oder als erledigt entfernt.
+ *      auf `mensch` gestellt oder seine Datei geloescht.
  *
- * Der Vergleich laeuft ueber den Titel, nicht ueber die Zeilennummer: Ein
- * Zweig, der weiter oben etwas einfuegt, verschiebt sonst alles darunter.
+ * Ein Zweig, der noch vom alten Stand abzweigte (Posten in
+ * OFFENE-PUNKTE.md), hat am Abzweigpunkt kein Verzeichnis und belegt
+ * nichts. Das ist dieselbe Lücke wie bei jedem Zweig, der hinterherhinkt,
+ * und schließt sich mit dem nächsten Merge von main.
  */
 export function belegte(basis: Befund, zweige: Zweigstand[]): Belegung[] {
   const belegt: Belegung[] = [];
+  const stand = (dateien: Rohdatei[]) => new Map(lies(dateien).posten.map((p) => [p.datei, p]));
+  const gelesen = zweige.map((z) => ({ zweig: z.zweig, vorher: stand(z.abzweig), nachher: stand(z.spitze) }));
   for (const posten of basis.posten) {
     if (posten.marke !== "frei") continue;
-    for (const z of zweige) {
-      const vorher = lies(z.abzweig).posten.find((p) => p.titel === posten.titel);
-      if (vorher?.marke !== "frei") continue; // lag dem Zweig nie als frei vor
-      const nachher = lies(z.text).posten.find((p) => p.titel === posten.titel);
+    for (const z of gelesen) {
+      if (z.vorher.get(posten.datei)?.marke !== "frei") continue; // lag dem Zweig nie als frei vor
+      const nachher = z.nachher.get(posten.datei);
       if (!nachher || nachher.marke !== "frei") {
-        belegt.push({ titel: posten.titel, zweig: z.zweig });
+        belegt.push({ titel: posten.titel, datei: posten.datei, zweig: z.zweig });
         break;
       }
     }
@@ -250,29 +253,45 @@ export function belegte(basis: Befund, zweige: Zweigstand[]): Belegung[] {
  * Git aufrufen und nur stdout zurueckgeben.
  *
  * `stdio` ist ausgeschrieben, weil der Vorgabewert stderr an den eigenen
- * Prozess durchreicht: Ein `git show` auf einen Zweig ohne die Datei ist
+ * Prozess durchreicht: Ein `git show` auf einen Stand ohne die Datei ist
  * hier ein erwarteter, abgefangener Fall — aber Git schrieb sein `fatal:`
- * trotzdem in die Ausgabe des Laufs. Aufgefallen beim Mutationsbeleg zur
- * Zweigauswahl. Erwartete Fehler gehoeren nicht in fremde Ausgaben; das ist
- * dieselbe stdout-Hygiene, die `--json` schon verlangt.
+ * trotzdem in die Ausgabe des Laufs. Erwartete Fehler gehoeren nicht in
+ * fremde Ausgaben; das ist dieselbe stdout-Hygiene, die `--json` verlangt.
  */
 function git(...args: string[]): string {
   return execFileSync("git", args, {
     cwd: PROJEKT,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
+    maxBuffer: 64 * 1024 * 1024,
   }).trim();
+}
+
+/** Die Postendateien eines Stands (Commit oder Ref). Ohne Verzeichnis: leer. */
+export function liesStand(stand: string): Rohdatei[] {
+  let namen: string[];
+  try {
+    namen = git("ls-tree", "--name-only", `${stand}:${VERZEICHNIS}`).split("\n").filter(Boolean);
+  } catch {
+    return [];
+  }
+  const dateien: Rohdatei[] = [];
+  for (const name of namen) {
+    if (KEIN_POSTEN(name)) continue;
+    try {
+      dateien.push({ name, text: git("show", `${stand}:${VERZEICHNIS}/${name}`) });
+    } catch {
+      // Unterverzeichnis oder unlesbar: kein Posten.
+    }
+  }
+  return dateien;
 }
 
 /**
  * Die nicht gemergten Zweige unter `refs/remotes/<fern>/`, samt ihrer
- * Fassung von OFFENE-PUNKTE.md.
+ * Warteschlange an Spitze und Abzweigpunkt.
  *
- * Kein Netzaufruf: gelesen wird, was der letzte `git fetch` geholt hat. Wer
- * den aktuellen Stand braucht, holt ihn vorher — das ist die Entscheidung
- * des Aufrufers und nicht die dieses Skripts, damit die Pruefkette offline
- * bleibt.
- *
+ * Kein Netzaufruf: gelesen wird, was der letzte `git fetch` geholt hat.
  * Faellt Git aus (kein Repository, keine Refs), ist das Ergebnis leer und
  * nicht etwa ein Abbruch: Die Belegungspruefung ist eine Verbesserung, kein
  * Tor. Ohne sie arbeitet der Lauf wie vorher.
@@ -288,8 +307,7 @@ export function offeneZweige(basis = "origin/main", fern = "origin"): Zweigstand
   }
   const offen: Zweigstand[] = [];
   for (const ref of refs) {
-    if (ref === basis || ref === `${fern}/HEAD`) continue;
-    let abzweigPunkt: string;
+    if (ref === basis || ref === `${fern}/HEAD` || ref === fern) continue;
     try {
       // Gemergt heisst: die Basis enthaelt den Zweig schon. Dann traegt er
       // keine offene Arbeit mehr.
@@ -298,23 +316,17 @@ export function offeneZweige(basis = "origin/main", fern = "origin"): Zweigstand
     } catch {
       // Nicht gemergt — weiter.
     }
+    let abzweigPunkt: string;
     try {
       abzweigPunkt = git("merge-base", ref, basis);
     } catch {
       continue; // keine gemeinsame Geschichte: nichts zu vergleichen
     }
-    try {
-      offen.push({
-        zweig: ref,
-        text: git("show", `${ref}:OFFENE-PUNKTE.md`),
-        abzweig: git("show", `${abzweigPunkt}:OFFENE-PUNKTE.md`),
-      });
-    } catch {
-      // Zweig oder Abzweigpunkt ohne die Datei: kein Posten belegt.
-    }
+    offen.push({ zweig: ref, spitze: liesStand(ref), abzweig: liesStand(abzweigPunkt) });
   }
   return offen;
 }
+
 
 /* ------------------------------------------------------------------ */
 /* Welcher freie Posten zuerst? Termine und Lexikon abwechselnd        */
@@ -339,7 +351,7 @@ export const istLexikon = (p: Pick<Posten, "titel">) => /^Lexikon\b/.test(p.tite
  * gespeicherten Zustand und ist aus der Uhrzeit nachvollziehbar. Gibt es
  * von der bevorzugten Sorte keinen freien Posten, nimmt der Lauf den
  * obersten der anderen — ein leerer Vorzug darf keinen Lauf verschenken.
- * Innerhalb einer Sorte bleibt die Reihenfolge der Datei.
+ * Innerhalb einer Sorte bleibt die Reihenfolge der Warteschlange (`angelegt`).
  */
 export function waehle(offen: Posten[], stundeUtc: number): Posten | undefined {
   const lexikonZuerst = stundeUtc >= 12;
@@ -401,13 +413,13 @@ export function platz(frei: Pick<Posten, "titel">[]): Platz {
 
 function main() {
   const argv = process.argv.slice(2);
-  const datei = path.join(PROJEKT, "OFFENE-PUNKTE.md");
-  const befund = lies(readFileSync(datei, "utf8"));
+  const befund = lies(liesVerzeichnis());
   const frei = befund.posten.filter((p) => p.marke === "frei");
+  const ort = `${VERZEICHNIS}/`;
 
   if (argv.includes("--json")) {
     console.log(JSON.stringify(befund, null, 2));
-    process.exit(befund.ohneMarke.length ? 1 : 0);
+    process.exit(befund.maengel.length ? 1 : 0);
   }
 
   if (argv.includes("--platz")) {
@@ -424,25 +436,22 @@ function main() {
     const { ueber } = platz(frei);
     if (ueber > 0) {
       console.error(
-        `OFFENE-PUNKTE.md: ${frei.length} \`frei\`-Posten unter 'Als Nächstes', ` +
-          `${ueber} über der Obergrenze von ${OBERGRENZE} (Weg A, 2026-09-29).`,
+        `${ort}: ${frei.length} \`frei\`-Posten, ${ueber} über der Obergrenze von ${OBERGRENZE} (Weg A, 2026-09-29).`,
       );
       process.exit(1);
     }
-    if (befund.ohneMarke.length === 0) {
+    if (befund.maengel.length === 0) {
       console.log(
-        `OFFENE-PUNKTE.md: ${befund.posten.length} Posten unter 'Als Nächstes', ` +
-          `alle markiert (${frei.length}× frei, ${befund.posten.length - frei.length}× mensch).`,
+        `${ort}: ${befund.posten.length} Posten, alle lesbar und markiert ` +
+          `(${frei.length}× frei, ${befund.posten.length - frei.length}× mensch).`,
       );
       process.exit(0);
     }
-    console.error("OFFENE-PUNKTE.md: Posten ohne Marke unter 'Als Nächstes'.\n");
-    for (const o of befund.ohneMarke) {
-      console.error(`  Zeile ${o.zeile}: ${o.titel}`);
-    }
+    console.error(`${ort}: Postendateien, die nicht lesbar sind.\n`);
+    for (const m of befund.maengel) console.error(`  ${m.datei}: ${m.grund}`);
     console.error(
-      "\nJeder Posten dort braucht `frei` oder `mensch` am Zeilenanfang.\n" +
-        "Siehe den Kopf von scripts/warteschlange.ts, warum es keine Voreinstellung gibt.",
+      "\nJede Datei braucht einen Kopf mit `marke: frei|mensch`, `titel:` und `angelegt: JJJJ-MM-TT`.\n" +
+        `Vorlage: ${ort}README.md. Warum es keine Voreinstellung gibt: Kopf von scripts/warteschlange.ts.`,
     );
     process.exit(1);
   }
@@ -451,7 +460,7 @@ function main() {
   // neben einem offenen Zweig arbeiten soll, und für den Testharnisch.
   const zweige = argv.includes("--ohne-zweigpruefung") ? [] : offeneZweige();
   const belegt = belegte(befund, zweige);
-  const istBelegt = (titel: string) => belegt.find((b) => b.titel === titel);
+  const istBelegt = (datei: string) => belegt.find((b) => b.datei === datei);
 
   if (argv.includes("--belegt")) {
     if (belegt.length === 0) {
@@ -459,16 +468,16 @@ function main() {
       process.exit(0);
     }
     console.log(`${belegt.length} freie(r) Posten wird bereits bearbeitet:`);
-    for (const b of belegt) console.log(`  ${b.titel}\n    ${b.zweig}`);
+    for (const b of belegt) console.log(`  ${b.titel} (${b.datei})\n    ${b.zweig}`);
     process.exit(0);
   }
 
   if (argv.includes("--naechster")) {
-    if (befund.ohneMarke.length) {
-      console.error(`Erst die ${befund.ohneMarke.length} unmarkierten Posten klären (--check).`);
+    if (befund.maengel.length) {
+      console.error(`Erst die ${befund.maengel.length} unlesbaren Postendateien klären (--check).`);
       process.exit(1);
     }
-    const offen = frei.filter((p) => !istBelegt(p.titel));
+    const offen = frei.filter((p) => !istBelegt(p.datei));
     if (offen.length === 0) {
       const grund =
         belegt.length > 0
@@ -487,23 +496,24 @@ function main() {
     const stunde = i >= 0 ? Number(argv[i + 1]) : new Date().getUTCHours();
     const gewaehlt = waehle(offen, stunde)!;
     console.error(`Vorzug: ${stunde >= 12 ? "Lexikon" : "Termine und Übriges"} (${stunde} Uhr UTC).`);
+    console.log(`Datei: ${ort}${gewaehlt.datei} — nach getaner Arbeit löschen (oder auf mensch stellen).\n`);
     console.log(gewaehlt.text);
     process.exit(0);
   }
 
   for (const p of befund.posten) {
-    const b = istBelegt(p.titel);
-    console.log(`  ${p.marke === "frei" ? "frei  " : "mensch"}  ${p.titel}${b ? `   [belegt: ${b.zweig}]` : ""}`);
+    const b = istBelegt(p.datei);
+    console.log(`  ${p.marke === "frei" ? "frei  " : "mensch"}  ${p.angelegt}  ${p.titel}${b ? `   [belegt: ${b.zweig}]` : ""}`);
   }
-  for (const o of befund.ohneMarke) {
-    console.log(`  OHNE MARKE (Zeile ${o.zeile})  ${o.titel}`);
+  for (const m of befund.maengel) {
+    console.log(`  UNLESBAR  ${m.datei}: ${m.grund}`);
   }
   console.log(
-    `\n${befund.posten.length} Posten, davon ${frei.length - belegt.length} ohne Rückfrage baubar.` +
+    `\n${befund.posten.length} Posten in ${ort}, davon ${frei.length - belegt.length} ohne Rückfrage baubar.` +
       (belegt.length ? `  ${belegt.length} bereits auf einem offenen Zweig.` : "") +
-      (befund.ohneMarke.length ? `  ${befund.ohneMarke.length} ohne Marke.` : ""),
+      (befund.maengel.length ? `  ${befund.maengel.length} unlesbar.` : ""),
   );
-  process.exit(befund.ohneMarke.length ? 1 : 0);
+  process.exit(befund.maengel.length ? 1 : 0);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
