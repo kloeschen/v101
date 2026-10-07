@@ -56,6 +56,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ladeAlle } from "./_laden";
 import { VORSCHLAG } from "../src/lib/vorschlag";
+import { liesVerzeichnis } from "./warteschlange";
 
 const PROJEKT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const VERZEICHNIS = path.join(PROJEKT, "docs", "ablaeufe", "vorschlaege-verarbeitet.json");
@@ -138,7 +139,10 @@ export function registerUrls(eintraege: { daten: Record<string, any> | null; col
   return bekannt;
 }
 
-/** Adressen, die in OFFENE-PUNKTE.md schon einem Posten zugeordnet sind. */
+/**
+ * Adressen, die schon einem Posten zugeordnet sind — in `docs/posten/`
+ * (seit dem 2026-10-07) oder im Rückstau von OFFENE-PUNKTE.md.
+ */
 export function postenUrls(text: string): Set<string> {
   const aus = new Set<string>();
   for (const m of text.matchAll(/https?:\/\/[^\s)<>"'`]+/g)) {
@@ -158,7 +162,7 @@ export function beurteile(
   if (!url) return { art: "ungueltig", grund: `keine http(s)-Adresse: ${JSON.stringify((e.url ?? "").slice(0, 80))}` };
   const imRegister = kontext.register.get(url);
   if (imRegister) return { art: "bekannt", wo: imRegister };
-  if (kontext.posten.has(url)) return { art: "bekannt", wo: "offener Posten in OFFENE-PUNKTE.md" };
+  if (kontext.posten.has(url)) return { art: "bekannt", wo: "offener Posten (docs/posten/ oder OFFENE-PUNKTE.md)" };
   return { art: "neu", url };
 }
 
@@ -310,7 +314,9 @@ async function main() {
   const verarbeitet = leseVerzeichnis();
   const kontext = {
     register: registerUrls(ladeAlle()),
-    posten: postenUrls(readFileSync(OFFENE_PUNKTE, "utf8")),
+    posten: postenUrls(
+      [readFileSync(OFFENE_PUNKTE, "utf8"), ...liesVerzeichnis().map((d) => d.text)].join("\n"),
+    ),
     verarbeitet,
   };
   const urteile = einsendungen.map((e) => ({ e, u: beurteile(e, kontext) }));

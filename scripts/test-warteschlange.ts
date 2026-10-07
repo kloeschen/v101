@@ -8,24 +8,23 @@
  * jede Prüfung braucht ihren Negativtest, und jede Abwesenheit braucht ein
  * positives Lebenszeichen daneben (Lektion 19).
  *
- * Geprüft wird gegen Zeichenketten im Testharnisch, NICHT gegen die echte
- * OFFENE-PUNKTE.md. Ein Test, der an der echten Datei hängt, schlägt an,
- * sobald jemand einen Posten erledigt — und wird dann abgeschaltet statt
- * gelesen. Die echte Datei prüft `npm run warteschlange --check` in der
- * Kette, das ist die andere Frage.
+ * Seit dem 2026-10-07 liegt jeder Posten in einer eigenen Datei unter
+ * `docs/posten/`. Geprüft wird gegen Zeichenketten im Testharnisch, NICHT
+ * gegen das echte Verzeichnis. Ein Test, der an den echten Dateien hängt,
+ * schlägt an, sobald jemand einen Posten erledigt — und wird dann
+ * abgeschaltet statt gelesen. Die echten Dateien prüft
+ * `npm run warteschlange:check` in der Kette, das ist die andere Frage.
  *
  * WARUM HIER UEBERALL `?.` UND `?? ""` STEHT: Der erste Mutationsbeleg
  * dieser Datei ist an ihr selbst gescheitert. `u.gruende[0].grund` warf eine
  * TypeError, sobald die mutierte Regel eine leere Liste lieferte — der Test
  * STUERZTE AB, statt FEHLZUSCHLAGEN, und der Beleg sah null gefallene
- * Behauptungen. Ein Absturz ist kein Fehlschlag: Er sagt nichts darüber, ob
- * die Behauptung stimmt. Dieselbe Fehlerklasse wie damals in
- * test-checklinks.ts.
+ * Behauptungen. Ein Absturz ist kein Fehlschlag.
  *
  *   npx tsx scripts/test-warteschlange.ts
  */
 
-import { lies, belegte, waehle, istLexikon, platz, OBERGRENZE, type Zweigstand } from "./warteschlange";
+import { lies, liesDatei, belegte, waehle, istLexikon, platz, OBERGRENZE, type Rohdatei, type Zweigstand } from "./warteschlange";
 import { beurteile, MENSCHENPFLICHTIG } from "./automerge-erlaubt";
 
 let bestanden = 0;
@@ -35,81 +34,106 @@ const pruefe = (name: string, ok: boolean, detail = "") =>
 const gleich = (name: string, ist: unknown, soll: unknown) =>
   pruefe(name, JSON.stringify(ist) === JSON.stringify(soll), `ist ${JSON.stringify(ist)}, soll ${JSON.stringify(soll)}`);
 
+/** Eine Postendatei, wie ein Lauf sie schreibt. */
+const P = (name: string, marke: string, titel: string, angelegt = "2026-10-01", auftrag = "Der Auftrag."): Rohdatei => ({
+  name,
+  text: `---\nmarke: ${marke}\ntitel: "${titel}"\nangelegt: ${angelegt}\n---\n\n${auftrag}\n`,
+});
+
 /* ------------------------------------------------------------------ */
-/* 1. Die Warteschlange liest Marken                                   */
+/* 1. Die Warteschlange liest Postendateien                            */
 /* ------------------------------------------------------------------ */
-
-const DATEI = (koerper: string) => `# Offene Punkte
-
-Vorspann, der keine Posten enthält.
-
-## Als Nächstes
-
-${koerper}
-
-## Vor dem Go-Live
-
-\`frei\` **Ein markierter Posten im Rückstau.** Er darf NICHT in der
-Warteschlange auftauchen — an ihm fällt auf, wenn die Abschnittsgrenze bricht.
-
-**Und einer ohne Marke.** Hier ist das erlaubt: Der Rückstau trägt keine
-Marken.
-`;
 
 {
-  const b = lies(
-    DATEI(
-      "`frei` **Erster Posten.** Text dazu.\n\n" +
-        "`mensch` **Zweiter Posten.** Gehört dem Menschen.\n\n" +
-        "`frei` **Dritter Posten.** Auch frei.",
-    ),
-  );
+  const b = lies([
+    P("a.md", "frei", "Erster Posten.", "2026-10-05", "Text dazu."),
+    P("b.md", "mensch", "Zweiter Posten", "2026-10-04"),
+    P("c.md", "frei", "Dritter Posten", "2026-10-03"),
+  ]);
   gleich("drei Posten erkannt", b.posten.length, 3);
-  gleich("Marken in der richtigen Reihenfolge", b.posten.map((p) => p.marke), ["frei", "mensch", "frei"]);
+  gleich("Marken richtig gelesen", b.posten.map((p) => p.marke), ["frei", "mensch", "frei"]);
   gleich("Titel ohne Schlusspunkt", b.posten[0]?.titel, "Erster Posten");
-  gleich("nichts Unmarkiertes gemeldet", b.ohneMarke.length, 0);
+  gleich("nichts Unlesbares gemeldet", b.maengel.length, 0);
+  pruefe("der Auftrag trägt Titel und Text", b.posten[0]?.text === "**Erster Posten.**\nText dazu.", b.posten[0]?.text ?? "kein Posten");
+  gleich("die Datei ist die Identität", b.posten[0]?.datei, "a.md");
+}
 
-  // Das Lebenszeichen zur Reihenfolge: Der OBERSTE freie Posten ist der
-  // erste, nicht irgendein freier. Daran hängt, was der Lauf morgen tut.
-  gleich("der oberste freie Posten ist der erste", b.posten.filter((p) => p.marke === "frei")[0]?.titel, "Erster Posten");
+{
+  // DIE REIHENFOLGE. Vorher galt die Reihenfolge der Absätze, und der
+  // Suchlauf fügte oben ein — neuester zuerst. Ein Verzeichnis hat keine
+  // Reihenfolge; `angelegt` übernimmt sie. Die Dateinamen sind hier mit
+  // Absicht gegenläufig zum Datum gewählt: Eine Sortierung nach Namen
+  // (die Reihenfolge, in der readdir sie meist liefert) fiele auf.
+  const b = lies([
+    P("aaa-alt.md", "frei", "Alt", "2026-09-30"),
+    P("zzz-neu.md", "frei", "Neu", "2026-10-06"),
+    P("mmm-mitte.md", "frei", "Mitte", "2026-10-02"),
+  ]);
+  gleich("neuester Posten zuerst, nicht nach Dateiname", b.posten.map((p) => p.titel), ["Neu", "Mitte", "Alt"]);
+}
+
+{
+  // Bei gleichem Tag entscheidet der Dateiname — sonst hinge die
+  // Reihenfolge an der Laune des Dateisystems.
+  const b = lies([P("b.md", "frei", "B", "2026-10-04"), P("a.md", "frei", "A", "2026-10-04")]);
+  gleich("gleicher Tag: nach Dateiname", b.posten.map((p) => p.datei), ["a.md", "b.md"]);
+}
+
+{
+  // README und Dateien mit `_` sind keine Posten, ebensowenig Nicht-Markdown.
+  const b = lies([
+    { name: "README.md", text: "# Posten\n\nKein Kopf." },
+    { name: "_vorlage.md", text: "---\nmarke: frei\n---\n" },
+    { name: "notiz.txt", text: "irgendwas" },
+    P("echt.md", "frei", "Echt"),
+  ]);
+  gleich("README, _vorlage und .txt werden übergangen", b.posten.map((p) => p.datei), ["echt.md"]);
+  gleich("und erzeugen keine Mängel", b.maengel.length, 0);
+}
+
+{
+  // Titel mit Doppelpunkt, Backticks und Apostroph — so sehen echte aus.
+  const b = lies([
+    P("x.md", "frei", "Boppin'B, Tour: 6 Termine anlegen (31.10.2026)"),
+    { name: "y.md", text: "---\r\nmarke: mensch\r\ntitel: Tanztermine: `genres` nachtragen\r\nangelegt: 2026-10-03\r\n---\r\n\r\nText.\r\n" },
+  ]);
+  gleich("Doppelpunkt im Titel in Anführungszeichen", b.posten.find((p) => p.datei === "x.md")?.titel, "Boppin'B, Tour: 6 Termine anlegen (31.10.2026)");
+  gleich("Doppelpunkt ohne Anführungszeichen, Windows-Zeilenenden", b.posten.find((p) => p.datei === "y.md")?.titel, "Tanztermine: `genres` nachtragen");
+  gleich("beide lesbar", b.maengel.length, 0);
 }
 
 /* ------------------------------------------------------------------ */
-/* 2. Ein Posten ohne Marke fällt auf — das ist der Kern               */
+/* 2. Eine kaputte Datei fällt auf — das ist der Kern                  */
 /* ------------------------------------------------------------------ */
 
-{
-  const b = lies(DATEI("`frei` **Markiert.** Text.\n\n**Unmarkiert.** Text."));
-  gleich("der unmarkierte Posten wird gemeldet", b.ohneMarke.map((o) => o.titel), ["Unmarkiert"]);
-  // Gegenrichtung im selben Lauf: Der markierte daneben wird NICHT gemeldet.
-  // Ohne diese Zeile wäre „meldet Unmarkiertes" auch mit einer Regel
-  // vereinbar, die jeden Posten meldet (Lektion 17).
-  gleich("der markierte daneben bleibt ein Posten", b.posten.map((p) => p.titel), ["Markiert"]);
-  gleich("und er wandert nicht zusätzlich in die Mängelliste", b.ohneMarke.length, 1);
+/*
+ * Jede Zeile hier ist ein Weg, auf dem ein Posten stumm aus der
+ * Warteschlange fallen könnte. Daneben steht jeweils der lesbare Posten,
+ * damit „gemeldet" nicht auch von einer Regel erfüllt wird, die alles
+ * meldet (Lektion 17).
+ */
+const KAPUTT: [string, string, RegExp][] = [
+  ["ohne-marke.md", "---\ntitel: X\nangelegt: 2026-10-01\n---\n\nText.\n", /keine Marke/],
+  ["falsche-marke.md", "---\nmarke: Frei\ntitel: X\nangelegt: 2026-10-01\n---\n\nText.\n", /unbekannte Marke/],
+  ["ohne-titel.md", "---\nmarke: frei\nangelegt: 2026-10-01\n---\n\nText.\n", /kein Titel/],
+  ["ohne-tag.md", "---\nmarke: frei\ntitel: X\n---\n\nText.\n", /angelegt/],
+  ["falscher-tag.md", "---\nmarke: frei\ntitel: X\nangelegt: 7.10.2026\n---\n\nText.\n", /angelegt/],
+  ["ohne-kopf.md", "`frei` **Alter Stil.** Ein Absatz wie früher in OFFENE-PUNKTE.\n", /kein Kopf/],
+  ["offener-kopf.md", "---\nmarke: frei\ntitel: X\nangelegt: 2026-10-01\n\nText.\n", /schließendes/],
+  ["ohne-auftrag.md", "---\nmarke: frei\ntitel: X\nangelegt: 2026-10-01\n---\n\n", /kein Auftragstext/],
+];
+for (const [name, text, grund] of KAPUTT) {
+  const b = lies([{ name, text }, P("gut.md", "frei", "Gut")]);
+  gleich(`${name}: gemeldet`, b.maengel.map((m) => m.datei), [name]);
+  pruefe(`${name}: mit passendem Grund`, grund.test(b.maengel[0]?.grund ?? ""), b.maengel[0]?.grund ?? "keiner");
+  gleich(`${name}: kein Posten daraus, der gute daneben bleibt`, b.posten.map((p) => p.datei), ["gut.md"]);
 }
 
 {
-  // Der Abschnitt endet an der nächsten H2. Sonst zöge der Rückstau
-  // Posten in die Warteschlange, die dort nichts zu suchen haben — und
-  // „Vor dem Go-Live" hat absichtlich keine Marken.
-  const b = lies(DATEI("`frei` **Einziger Posten.** Text."));
-  gleich("der Rückstau wird nicht mitgelesen", b.posten.length, 1);
-  gleich("und erzeugt keine Mängelmeldung", b.ohneMarke.length, 0);
-}
-
-{
-  // Fettschrift MITTEN in einem Posten ist Auszeichnung, kein neuer Posten.
-  // Fast jeder echte Posten enthält so etwas.
-  const b = lies(DATEI("`frei` **Ein Posten.** Text mit\n**Fettschrift** mitten im Absatz."));
-  gleich("Fettschrift im Fließtext startet keinen Posten", b.posten.length, 1);
-  gleich("und gilt nicht als unmarkiert", b.ohneMarke.length, 0);
-  pruefe("der Folgesatz gehört zum Auftragstext", !!b.posten[0]?.text.includes("Fettschrift"), b.posten[0]?.text ?? "kein Posten");
-}
-
-{
-  const b = lies("# Datei ganz ohne den Abschnitt\n\n**Irgendwas.**\n");
-  gleich("ohne den Abschnitt gibt es keine Posten", b.posten.length, 0);
-  gleich("und keine Mängel", b.ohneMarke.length, 0);
+  // Ein ungeschütztes YAML-Datum würde ein Parser als Zeitpunkt in UTC
+  // lesen (Regel 1). Hier bleibt es eine Zeichenkette.
+  const x = liesDatei(P("t.md", "frei", "T", "2026-10-07"));
+  gleich("angelegt bleibt der Kalendertag als Zeichenkette", "angelegt" in x ? x.angelegt : x, "2026-10-07");
 }
 
 /* ------------------------------------------------------------------ */
@@ -173,236 +197,124 @@ Marken.
 /* ------------------------------------------------------------------ */
 
 /*
- * Die Regel: Ein freier Posten gilt als belegt, wenn er am ABZWEIGPUNKT
- * eines offenen Zweigs frei war und an dessen SPITZE nicht mehr.
+ * Die Regel: Ein freier Posten gilt als belegt, wenn seine Datei am
+ * ABZWEIGPUNKT eines offenen Zweigs `frei` war und an dessen SPITZE nicht
+ * mehr (gelöscht oder auf `mensch` gestellt).
  *
- * Die zweite Hälfte dieser Bedingung ist in einem ersten Entwurf gefehlt,
+ * Die erste Hälfte dieser Bedingung hat in einem ersten Entwurf gefehlt,
  * und der Fehler war beim ersten Lauf gegen das echte Repository sofort da:
  * drei Fehlalarme auf `pflege/woechentlich`, einem Zweig, der schlicht von
- * einem älteren Stand abzweigte. Fall C unten ist genau dieser Fall — er ist
- * der Grund, warum es diesen Abschnitt gibt, und er muss grün bleiben.
+ * einem älteren Stand abzweigte. Fall C unten ist genau dieser Fall.
  */
 
-const BASIS = DATEI(
-  "`frei` **Posten A.** Frei auf der Basis.\n\n" +
-    "`frei` **Posten B.** Ebenfalls frei.\n\n" +
-    "`mensch` **Posten C.** Gehört dem Menschen.\n\n" +
-    "`frei` **Posten D.** Kam erst nach dem Abzweig dazu.\n\n" +
-    "`mensch` **Posten E.** War frei, ist inzwischen zurückgeholt.",
-);
+const A = P("a.md", "frei", "Posten A", "2026-10-05");
+const B = P("b.md", "frei", "Posten B", "2026-10-04");
+const C = P("c.md", "mensch", "Posten C", "2026-10-03");
+const D = P("d.md", "frei", "Posten D", "2026-10-06"); // kam erst nach dem Abzweig
+const E_FREI = P("e.md", "frei", "Posten E", "2026-10-02");
+const E_MENSCH = P("e.md", "mensch", "Posten E", "2026-10-02"); // inzwischen zurückgeholt
 
-/** Der Abzweigpunkt eines Zweigs, der D noch nicht kannte — und auf dem E
- *  noch frei war. */
-const ALT = DATEI(
-  "`frei` **Posten A.** Frei auf der Basis.\n\n" +
-    "`frei` **Posten B.** Ebenfalls frei.\n\n" +
-    "`mensch` **Posten C.** Gehört dem Menschen.\n\n" +
-    "`frei` **Posten E.** Damals noch frei.",
-);
-
-const basis = lies(BASIS);
+const basis = lies([A, B, C, D, E_MENSCH]);
+/** Der Abzweigpunkt eines Zweigs, der D noch nicht kannte und auf dem E noch frei war. */
+const ALT = [A, B, C, E_FREI];
 
 {
-  // A: Der Lauf hat den Posten auf `mensch` gestellt — der Normalfall.
-  const zweig: Zweigstand = {
-    zweig: "origin/claude/gestern",
-    abzweig: ALT,
-    text: DATEI(
-      "`frei` **Posten A.** Frei auf der Basis.\n\n" +
-        "`mensch` **Posten B.** Wird auf diesem Zweig bearbeitet.\n\n" +
-        "`mensch` **Posten C.** Gehört dem Menschen.",
-    ),
-  };
+  // A: Der Lauf hat den Posten auf `mensch` gestellt.
+  const zweig: Zweigstand = { zweig: "origin/claude/gestern", abzweig: ALT, spitze: [A, P("b.md", "mensch", "Posten B"), C] };
   const b = belegte(basis, [zweig]);
-  gleich("A — umgestellter Posten gilt als belegt", b.map((x) => x.titel), ["Posten B"]);
+  gleich("A — umgestellter Posten gilt als belegt", b.map((x) => x.datei), ["b.md"]);
   gleich("A — und der Zweig wird benannt", b[0]?.zweig, "origin/claude/gestern");
+  gleich("A — mit dem Titel der Basis", b[0]?.titel, "Posten B");
 }
 
 {
-  // B: Der Lauf hat den Posten ganz entfernt, weil er erledigt ist.
+  // B: Der Lauf hat die Datei gelöscht, weil der Posten erledigt ist —
+  // der Normalfall seit dem 2026-10-07.
+  const zweig: Zweigstand = { zweig: "origin/claude/erledigt", abzweig: ALT, spitze: [A, C, E_FREI] };
+  gleich("B — gelöschte Datei gilt als belegt", belegte(basis, [zweig]).map((x) => x.datei), ["b.md"]);
+}
+
+{
+  // B2: Ein Lauf, der den TITEL umformuliert, die Datei aber behält, hat
+  // den Posten nicht abgearbeitet. Vorher wurde über den Titel verglichen —
+  // dann hätte das als „entfernt" gegolten.
   const zweig: Zweigstand = {
-    zweig: "origin/claude/erledigt",
+    zweig: "origin/claude/umbenannt",
     abzweig: ALT,
-    text: DATEI(
-      "`frei` **Posten A.** Frei auf der Basis.\n\n" + "`mensch` **Posten C.** Gehört dem Menschen.",
-    ),
+    spitze: [P("a.md", "frei", "Posten A, neu formuliert"), B, C, E_FREI],
   };
-  gleich("B — entfernter Posten gilt als belegt", belegte(basis, [zweig]).map((x) => x.titel), ["Posten B"]);
+  gleich("B2 — geänderter Titel bei gleicher Datei belegt nichts", belegte(basis, [zweig]).map((x) => x.datei), []);
 }
 
 {
   // C: DER FEHLALARM AUS DEM ECHTEN REPOSITORY. Der Zweig hinkt hinterher:
   // Posten D gab es an seinem Abzweigpunkt noch nicht, und es gibt ihn auf
-  // dem Zweig auch nicht. Ohne die Abzweigbedingung zählte das als
-  // „bearbeitet" — mit ihr nicht.
-  const zweig: Zweigstand = { zweig: "origin/pflege/woechentlich", abzweig: ALT, text: ALT };
-  const b = belegte(basis, [zweig]);
-  gleich("C — ein zurückliegender Zweig belegt nichts", b.map((x) => x.titel), []);
+  // dem Zweig auch nicht.
+  const zweig: Zweigstand = { zweig: "origin/pflege/woechentlich", abzweig: ALT, spitze: ALT };
+  gleich("C — ein zurückliegender Zweig belegt nichts", belegte(basis, [zweig]).map((x) => x.datei), []);
 
   // Das positive Lebenszeichen daneben: Derselbe Zweig belegt sehr wohl
-  // etwas, sobald er wirklich etwas anfasst. Sonst wäre die leere Liste
-  // oben auch aus einem zweiten Grund erklärbar (Regel 4).
-  const arbeitend: Zweigstand = {
-    zweig: "origin/pflege/woechentlich",
-    abzweig: ALT,
-    text: DATEI(
-      "`mensch` **Posten A.** Jetzt doch angefasst.\n\n" +
-        "`frei` **Posten B.** Ebenfalls frei.\n\n" +
-        "`mensch` **Posten C.** Gehört dem Menschen.",
-    ),
-  };
-  gleich("C — derselbe Zweig belegt, sobald er etwas anfasst", belegte(basis, [arbeitend]).map((x) => x.titel), ["Posten A"]);
+  // etwas, sobald er wirklich etwas anfasst (Regel 4).
+  const arbeitend: Zweigstand = { zweig: "origin/pflege/woechentlich", abzweig: ALT, spitze: [B, C, E_FREI] };
+  gleich("C — derselbe Zweig belegt, sobald er etwas anfasst", belegte(basis, [arbeitend]).map((x) => x.datei), ["a.md"]);
+}
+
+{
+  // C2: Ein Zweig vom alten Stand (Posten noch in OFFENE-PUNKTE.md) hat am
+  // Abzweigpunkt kein Verzeichnis. Er belegt nichts — auch nicht, wenn das
+  // Verzeichnis an seiner Spitze fehlt.
+  const zweig: Zweigstand = { zweig: "origin/claude/vorher", abzweig: [], spitze: [] };
+  gleich("C2 — Zweig ohne Verzeichnis belegt nichts", belegte(basis, [zweig]).map((x) => x.datei), []);
 }
 
 {
   // D: Nichts verändert — nichts belegt.
-  const zweig: Zweigstand = { zweig: "origin/claude/leer", abzweig: BASIS, text: BASIS };
-  gleich("D — ein unveränderter Zweig belegt nichts", belegte(basis, [zweig]).map((x) => x.titel), []);
-  gleich("D — und ohne offene Zweige erst recht nichts", belegte(basis, []).map((x) => x.titel), []);
+  const zweig: Zweigstand = { zweig: "origin/claude/leer", abzweig: [A, B, C, D, E_MENSCH], spitze: [A, B, C, D, E_MENSCH] };
+  gleich("D — ein unveränderter Zweig belegt nichts", belegte(basis, [zweig]).map((x) => x.datei), []);
+  gleich("D — und ohne offene Zweige erst recht nichts", belegte(basis, []).map((x) => x.datei), []);
 }
 
 {
   // E: Was die Basis inzwischen dem Menschen zugeschlagen hat, wird nicht
-  // als Belegung gemeldet.
-  //
-  // DIE VORRICHTUNG MUSSTE DAFÜR UMGEBAUT WERDEN. Der erste Anlauf setzte
-  // einen Posten ein, der schon am Abzweigpunkt `mensch` war — dann greift
-  // aber bereits die Abzweigbedingung, und die Mutation dieser Zeile ließ
-  // alles grün. Eine Prüfung, die auch aus einem zweiten Grund besteht,
-  // belegt keinen von beiden (Regel 4). Posten E trägt deshalb den einzigen
-  // Zustand, der wirklich nur an dieser Zeile hängt: am Abzweigpunkt frei,
-  // auf dem Zweig abgearbeitet — und auf der Basis inzwischen `mensch`,
-  // weil der Mensch ihn zurückgeholt hat. Ihn zu melden wäre Lärm über
-  // etwas, das ohnehin niemand mehr automatisch nimmt.
-  const zweig: Zweigstand = {
-    zweig: "origin/claude/mensch",
-    abzweig: ALT,
-    text: DATEI(
-      "`frei` **Posten A.** Frei auf der Basis.\n\n" +
-        "`frei` **Posten B.** Ebenfalls frei.\n\n" +
-        "`mensch` **Posten C.** Gehört dem Menschen.",
-    ),
-  };
-  const b = belegte(basis, [zweig]);
-  gleich("E — ein zurückgeholter Posten wird nicht als belegt gemeldet", b.map((x) => x.titel), []);
+  // als Belegung gemeldet. Posten E trägt den einzigen Zustand, der nur an
+  // dieser Bedingung hängt: am Abzweigpunkt frei, auf dem Zweig gelöscht,
+  // auf der Basis inzwischen `mensch`.
+  const zweig: Zweigstand = { zweig: "origin/claude/mensch", abzweig: ALT, spitze: [A, B, C] };
+  gleich("E — ein zurückgeholter Posten wird nicht als belegt gemeldet", belegte(basis, [zweig]).map((x) => x.datei), []);
 }
 
 {
-  // F: Zwei Zweige, zwei verschiedene Posten — jeder wird seinem Zweig
-  // zugeordnet und keiner doppelt gezählt.
-  const eins: Zweigstand = {
-    zweig: "origin/claude/eins",
-    abzweig: ALT,
-    text: DATEI("`mensch` **Posten A.** Hier.\n\n`frei` **Posten B.** Ebenfalls frei.\n\n`mensch` **Posten C.** X."),
-  };
-  const zwei: Zweigstand = {
-    zweig: "origin/claude/zwei",
-    abzweig: ALT,
-    text: DATEI("`frei` **Posten A.** Frei.\n\n`mensch` **Posten B.** Dort.\n\n`mensch` **Posten C.** X."),
-  };
+  // F: Zwei Zweige, zwei verschiedene Posten.
+  const eins: Zweigstand = { zweig: "origin/claude/eins", abzweig: ALT, spitze: [B, C, E_FREI] };
+  const zwei: Zweigstand = { zweig: "origin/claude/zwei", abzweig: ALT, spitze: [A, C, E_FREI] };
   const b = belegte(basis, [eins, zwei]);
-  gleich("F — beide Posten erkannt", b.map((x) => x.titel).sort(), ["Posten A", "Posten B"]);
-  gleich("F — jeder seinem Zweig zugeordnet", b.find((x) => x.titel === "Posten A")?.zweig, "origin/claude/eins");
-  gleich("F — und der zweite dem seinen", b.find((x) => x.titel === "Posten B")?.zweig, "origin/claude/zwei");
+  gleich("F — beide Posten erkannt", b.map((x) => x.datei).sort(), ["a.md", "b.md"]);
+  gleich("F — jeder seinem Zweig zugeordnet", b.find((x) => x.datei === "a.md")?.zweig, "origin/claude/eins");
+  gleich("F — und der zweite dem seinen", b.find((x) => x.datei === "b.md")?.zweig, "origin/claude/zwei");
 }
 
 {
-  // G: Was der Lauf morgen früh tatsächlich nimmt. Das ist die Behauptung,
-  // an der die ganze Regel hängt: Der oberste freie Posten wird
-  // übersprungen, wenn er belegt ist — und der nächste kommt dran, statt
-  // dass der Lauf leer ausgeht.
-  const zweig: Zweigstand = {
-    zweig: "origin/claude/gestern",
-    abzweig: ALT,
-    text: DATEI("`mensch` **Posten A.** Bearbeitet.\n\n`frei` **Posten B.** Ebenfalls frei.\n\n`mensch` **Posten C.** X."),
-  };
-  const belegtTitel = new Set(belegte(basis, [zweig]).map((x) => x.titel));
-  const offen = basis.posten.filter((p) => p.marke === "frei" && !belegtTitel.has(p.titel));
-  gleich("G — der Lauf nimmt den nächsten freien Posten", offen[0]?.titel, "Posten B");
+  // G: Was der Lauf morgen früh tatsächlich nimmt. D ist der neueste und
+  // steht oben; ist er belegt, kommt der nächste dran.
+  const abzweig = [A, B, C, D, E_MENSCH];
+  const zweig: Zweigstand = { zweig: "origin/claude/gestern", abzweig, spitze: [A, B, C, E_MENSCH] };
+  const belegtDatei = new Set(belegte(basis, [zweig]).map((x) => x.datei));
+  const offen = basis.posten.filter((p) => p.marke === "frei" && !belegtDatei.has(p.datei));
+  gleich("G — ohne Belegung stünde D oben", basis.posten[0]?.datei, "d.md");
+  gleich("G — belegt nimmt der Lauf den nächsten freien Posten", offen[0]?.datei, "a.md");
   gleich("G — und nicht etwa gar keinen", offen.length, 2);
 }
-
-/* ------------------------------------------------------------------ */
-/* 6. Umgebrochene Titel                                               */
-/* ------------------------------------------------------------------ */
-
-/*
- * Der gefährlichste Fehler, den diese Datei haben kann, weil er nichts
- * meldet: Ein Titel, der über zwei Zeilen umbricht, wurde von beiden
- * Mustern verfehlt — der Posten fiel STUMM aus der Liste, und `--check`
- * schlug nicht an, weil nichts da war, worüber es hätte klagen können.
- *
- * Die neue Belegungsprüfung hängt an derselben Erkennung: Sie vergleicht
- * Posten über ihren Titel. Ein verschluckter Titel hieße dort, dass ein
- * Posten als unbelegt gilt, obwohl ein Zweig ihn schon bearbeitet.
- */
-
-{
-  const b = lies(
-    DATEI(
-      "`frei` **Ein Titel, der so lang ist, dass er beim Schreiben über zwei\nZeilen umbricht.** Und der Text dahinter.\n\n" +
-        "`mensch` **Ein kurzer.** Text.",
-    ),
-  );
-  gleich("umgebrochener Titel wird gefunden", b.posten.length, 2);
-  gleich(
-    "und vollständig gelesen, über den Umbruch hinweg",
-    b.posten[0]?.titel,
-    "Ein Titel, der so lang ist, dass er beim Schreiben über zwei Zeilen umbricht",
-  );
-  gleich("die Marke bleibt richtig", b.posten[0]?.marke, "frei");
-  gleich("nichts landet fälschlich in ohneMarke", b.ohneMarke.length, 0);
-}
-
-{
-  // Die Gegenprobe: Der Zusammenzug darf die Meldung für fehlende Marken
-  // nicht verschlucken. Ein umgebrochener Titel OHNE Marke muss weiterhin
-  // auffallen — sonst hätte die Reparatur das Loch nur verschoben.
-  const b = lies(
-    DATEI("**Ein unmarkierter Posten, dessen Titel ebenfalls über zwei\nZeilen läuft.** Text dazu."),
-  );
-  gleich("umgebrochener Titel ohne Marke fällt auf", b.ohneMarke.length, 1);
-  gleich("und wird vollständig benannt", b.ohneMarke[0]?.titel, "Ein unmarkierter Posten, dessen Titel ebenfalls über zwei Zeilen läuft");
-  gleich("er zählt nicht als Posten", b.posten.length, 0);
-}
-
-{
-  // Und Fettschrift mitten im Absatz bleibt Auszeichnung, auch wenn sie
-  // umbricht. Sonst zerfiele ein Posten in zwei.
-  const b = lies(
-    DATEI(
-      "`frei` **Ein Posten.** Erste Zeile.\n" +
-        "**Eine Hervorhebung mitten im Text, die auch noch über zwei\nZeilen geht.** Weiter im Text.",
-    ),
-  );
-  gleich("Hervorhebung im Absatz erzeugt keinen zweiten Posten", b.posten.length, 1);
-  gleich("und keine Meldung über eine fehlende Marke", b.ohneMarke.length, 0);
-}
-
-{
-  // Ein Titel, dessen schließende `**` nie kommen, darf den Zusammenzug
-  // nicht bis ans Abschnittsende laufen lassen. Die Leerzeile stoppt ihn.
-  const b = lies(DATEI("`frei` **Ein Titel ohne Ende\n\n`mensch` **Der nächste Posten.** Text."));
-  gleich("ein nie geschlossener Titel frisst den nächsten Posten nicht", b.posten.length, 1);
-  gleich("und der gefundene ist der nächste", b.posten[0]?.titel, "Der nächste Posten");
-}
-
-/* ------------------------------------------------------------------ */
 
 /* ------------------------------------------------------------------ */
 /* 7. Termine und Lexikon abwechselnd (2026-09-29)                     */
 /* ------------------------------------------------------------------ */
 {
-  const w = lies(`## Als Nächstes
-
-\`frei\` **Termin A anlegen.** Text A.
-
-\`frei\` **Termin B anlegen.** Text B.
-
-\`frei\` **Lexikon, Bündel Muster: X, Y.** Text L1.
-
-\`frei\` **Lexikon: Teddy Boy.** Text L2.
-`);
+  const w = lies([
+    P("termin-a.md", "frei", "Termin A anlegen", "2026-10-04"),
+    P("termin-b.md", "frei", "Termin B anlegen", "2026-10-03"),
+    P("lexikon-1.md", "frei", "Lexikon, Bündel Muster: X, Y", "2026-10-02"),
+    P("lexikon-2.md", "frei", "Lexikon: Teddy Boy", "2026-10-01"),
+  ]);
   const titel = (p?: { titel: string }) => p?.titel ?? "(keiner)";
   gleich("morgens: der oberste Posten, der kein Lexikon ist", titel(waehle(w.posten, 4)), "Termin A anlegen");
   gleich("nachmittags: der oberste Lexikon-Posten, auch wenn Termine darüber stehen", titel(waehle(w.posten, 14)), "Lexikon, Bündel Muster: X, Y");

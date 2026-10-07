@@ -115,8 +115,16 @@ mit Grund im Bericht.
 
 ### Das Postenformat
 
+Eine eigene Datei in `docs/posten/` (Form: `docs/posten/README.md`),
+etwa `docs/posten/laeden-barbershops-hamburg.md`:
+
 ```
-`frei` **Läden & Studios: <n> <Typ> in <Region> anlegen (<Name>, <Name> …).**
+---
+marke: frei
+titel: "Läden & Studios: <n> <Typ> in <Region> anlegen (<Name>, <Name> …)"
+angelegt: JJJJ-MM-TT
+---
+
 Gesehen am JJJJ-MM-TT auf <URL der Liste> (Herkunft: Suchlauf JJJJ-MM-TT).
 Je Anbieter: eigene Website <URL>; dort steht zum Schwerpunkt: „<kurzes
 Zitat>“; Ladenadresse laut Website: <Adresse>. <Was beim Bauen zu prüfen
@@ -129,7 +137,7 @@ der Posten `mensch` statt `frei` geschrieben, mit dem Zitat als Frage.
 
 ## Kandidaten, die auf eine Entscheidung warten
 
-Grenzfälle kommen als `mensch`-Posten nach `OFFENE-PUNKTE.md`, mit dem
+Grenzfälle kommen als `mensch`-Posten nach `docs/posten/`, mit dem
 Zitat, an dem die Entscheidung hängt. Der erste Grenzfall, KS Barbershop
 in Berlin-Steglitz, wurde aufgenommen (Markus, 2026-09-25): Er bot
 Fifties-Schnitte als Angebot neben regulären Schnitten an, auf einer
