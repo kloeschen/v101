@@ -290,7 +290,10 @@ Fehler verursacht oder beinahe verursacht.
 - **„Parkett" ist oft eine Redewendung.** „Das Tanzbein auf einem
   schönen Parkett schwingen" sagt nichts über den Boden. `tanzflaeche`
   nur setzen, wenn die Quelle den Belag als Belag nennt (Stadtgalerie
-  Mödling, 2026-09-25).
+  Mödling, 2026-09-25). Auch als Platzangabe: Das Buchungsformular des
+  Vereins Simmatthi fragt beim „Tischwunsch" nach „Parkett" oder
+  „Galerie" — gemeint ist das Parterre (Gemeindezentrum Matzendorf,
+  2026-10-07).
 - **Band-Websites mit Bandsintown-Widget** (Boppin'B, 2026-09-27): Die
   Seite enthält im HTML keinen Termin, der Abruf „findet nichts". Die
   Künstler-ID steht im Attribut `data-artist-name` (etwa `id_310419`);
