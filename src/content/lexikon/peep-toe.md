@@ -26,7 +26,7 @@ redaktionsnotiz: >-
   als Beginn der Beliebtheit, das Verschwinden bis in die 1960er (mit
   einem Zeitungsbericht von 1955, der das Ende ankündigt), ein kurzes
   Wiederaufleben in den 1970er/80er Jahren und eine neue Welle zuletzt.
-  Die Quellen widersprechen sich nicht, die deutsche datiert nicht.
+  Die deutsche Quelle datiert nicht; einen Gegensatz gibt es daher nicht.
   aeraVon und aeraBis bleiben leer: Offene Schuhspitzen gab es nach
   derselben Quelle schon vor den 1940ern, nur der Name kam dann auf, und
   erloschen ist die Form nicht. herkunftsland ungesetzt — keine Quelle

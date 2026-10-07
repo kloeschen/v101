@@ -25,7 +25,8 @@ redaktionsnotiz: >-
   geprüft. Die deutsche Wikipedia hat keinen eigenen Artikel;
   "Pfennigabsatz" leitet auf den Abschnitt Stiletto im Artikel "Pumps"
   weiter, "Absatz (Schuh)" führt Stilettoabsatz und Pfennigabsatz als
-  dieselbe Form. NAMENSHERKUNFT NACH REGEL 5: Die englische Wikipedia
+  dieselbe Form. DREI WIDERSPRÜCHE, alle im Text benannt (Regel 5).
+  NAMENSHERKUNFT: Die englische Wikipedia
   leitet den Namen vom Dolch ab, der Artikel "Pumps" nennt Stiletto "die
   italienische Bezeichnung für Bleistiftabsatz". Der Artikel "Stilett"
   erklärt beides: Das Wort geht auf lateinisch stilus (Griffel,
