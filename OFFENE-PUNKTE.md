@@ -71,32 +71,6 @@ gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
 Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
 abgrenzen, falls sich Überschneidungen zeigen.
 
-`frei` **Niederösterreich, boogie.at: 4 Termine anlegen (21.11.2026, 12.12.2026, 19.12.2026, 31.12.2026).**
-Gesehen am 2026-10-04 auf https://boogie.at/?page=1 und ?page=2
-(Herkunft: Suchlauf 2026-10-04). Dort steht: „Tanzschuh-Party", Sa.,
-21.11.2026, 19:30, Aufriss Mainburg – das Eventlokal im Pielachtal,
-Mainburgstrasse 8, 3202 Hofstetten, Link http://aufriss.net,
-Beschreibung nennt die letzte Tanzschuhparty 2026 in einem Lokal, „wo
-Boogie-Woogie mitlerweile schon zuhause ist" (/event/tanzschuh-party-9);
-„Boogieparty", Sa., 12.12.2026, 20:00, gleicher Ort, ohne Beschreibung
-(/event/boogieparty-20); „JUKEBOX CHRISTMAS PARTY-NIGHT 2026", Sa.,
-19.12.2026, 19:30, Gemeindesaal Matzendorf-Hölles, Badenerstraße 19, 2751
-Matzendorf-Hölles, Party „im Stil der 50er & 60er Jahre" mit den Jukebox
-Bandits, Rock'n'Roll und Boogie Woogie, DJ Matthias & DomyLee, Link auf
-die Veranstaltungsseite der Gemeinde (/event/jukebox-christmas-party-night-2026);
-„Silvester Boogie Night 2026", Do., 31.12.2026, 19:00, Volkshaus,
-Loosdorfer Straße 15, 3243 St. Leonhard, Organisation „FIVES ★ Boogie,
-Swing & Rock'n'Roll Tanzsport", Tickets https://fives.at/event/silvester-boogie-night-2026
-(/event/silvester-boogie-night-2026). Beim Bauen: boogie.at ist nur
-Kalender; je Termin die Seite des Veranstalters bzw. Hauses öffnen
-(aufriss.net — nur http angegeben, Falle „Seiten nur über http";
-Gemeindeseite Matzendorf-Hölles; fives.at), Flyer öffnen, wenn einer
-beiliegt. Boogie Woogie meint an diesen Abenden den Tanz (Regel
-2026-10-03); bei der Jukebox-Party spielt eine Band, dort prüfen, ob die
-Quelle die Musik meint. Alle drei Orte sind neu. Die Aufriss-Reihe hat
-weitere Tanzschuh-Partys 2027 (29.05., 21.08., 20.11.) — Kandidaten für
-einen späteren Posten.
-
 `frei` **Oberösterreich, boogie.at: 4 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 17.04.2027, 19.06.2027).**
 Gesehen am 2026-10-04 auf https://boogie.at/?page=2 und ?page=3
 (Herkunft: Suchlauf 2026-10-04). Dort steht: „Boogie trifft Schlager und
@@ -167,6 +141,28 @@ Bauen: Ticketseite öffnen und gegen das Haus lesen (Falle „Ticketseite
 gegen das Haus"); kein Preis auf der Startseite. Welche Band „The
 Flames" ist, sagt keine der Seiten — nicht raten, in `lineupWeitere`.
 Ort und Region im Register (Vorlage `events/long-tall-texans-cafe-central-2026-11-20`).
+
+`frei` **Niederösterreich, Aufriss Mainburg: 2 Termine anlegen (21.11.2026, 12.12.2026), erst nach dem Merge von PR #168.**
+Aus dem Bündel „Niederösterreich, boogie.at: 4 Termine" (Suchlauf
+2026-10-04) am 2026-10-07 zurückgegeben; die Jukebox Christmas
+Party-Night (19.12.2026) und die Silvester Boogie Night (31.12.2026)
+sind gebaut. BEFUND: Der Ort `locations/aufriss-mainburg-hofstetten` und
+die Reihe `tanzschuh-party-aufriss` entstehen auf dem noch offenen
+Zweig `claude/nice-rubin-n8oe72` (PR #168). Denselben Ort ein zweites
+Mal anzulegen hätte entweder einen Konflikt zwischen zwei Fassungen
+derselben Datei erzeugt oder tote Links auf die Termine 2027, die nur
+auf jenem Zweig liegen. Beim Bauen: Ist PR #168 noch nicht gemergt,
+nicht bauen, sondern den Posten unverändert lassen und das im Bericht
+melden. Sonst: boogie.at „Tanzschuh-Party", Sa., 21.11.2026, 19:30
+(/event/tanzschuh-party-9, letzte Tanzschuhparty 2026), und
+„Boogieparty", Sa., 12.12.2026, 20:00, ohne Beschreibung
+(/event/boogieparty-20), beide im Aufriss, Mainburgstraße 8, 3202
+Hofstetten. Laut PR #168 nennt die Terminliste des Hauses (nur http,
+Falle „Aufriss Mainburg: Terminliste des Hauses gegen Flyer") für den
+21.11.2026 ebenfalls 19:30 und für den 12.12.2026 „DJ Pete und DJ
+Franz". Vorlage ist `events/tanzschuh-party-aufriss-hofstetten-2027-05-29`
+aus PR #168; Flyer auf boogie.at öffnen, Boogie Woogie meint den Tanz
+(Regel 2026-10-03).
 
 `frei` **Tanztermine: `genres` nachtragen (26 Termine).** Entscheidung
 Markus vom 2026-10-03 (ENTSCHEIDUNGEN.md, „Tänze in genres"): An
