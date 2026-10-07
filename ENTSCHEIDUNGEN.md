@@ -38,7 +38,9 @@ nehmen — und das verhindert `--belegt` schon.
   ein). Die acht migrierten Posten haben als `angelegt` den Tag, an dem
   ihr Titel zuerst in OFFENE-PUNKTE stand (`git log -S`), beim
   zurückgegebenen Rest den Tag der Rückgabe. Dadurch rückt der
-  Irish-House-Posten (2026-10-06) vom letzten auf den zweiten Platz.
+  Irish-House-Posten (2026-10-06) vom letzten auf den zweiten Platz. Das
+  Schuh-Bündel war beim Merge schon gebaut; seine Datei ist gelöscht, es
+  bleiben sieben.
   *Verworfen:* ein Feld `rang` (der Suchlauf müsste Zahlen umrechnen, und
   zwei Läufe vergäben dieselbe) und ein Datum im Dateinamen (eine
   Umbenennung bricht die Belegungserkennung).
