@@ -32,13 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Lexikon, Bündel Genres: Rhythm and Blues, Hillbilly.**
-Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
-2026-10-04). Abgrenzungen laut Vorrat: Rhythm and Blues (gegen das
-heutige R&B), Hillbilly (gegen Country, gegen den Gebrauch als
-Schimpfwort, gegen Bluegrass). Swing ist seit dem 2026-09-29 ein Entwurf
-(`lexikon/swing`) und gehört nicht in dieses Bündel.
-
 `frei` **Lexikon, Bündel Schuhe: Saddle Shoes, Peep Toe, Stiletto, Keilabsatz.**
 Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
 2026-10-04). Abgrenzungen laut Vorrat: Saddle Shoes (gegen Two-Tone und
@@ -256,8 +249,8 @@ und die Bandsintown-Uhrzeit trägt laut Falle nicht allein. **Bedingung:**
 Das Quasimodo hat eine Seite unter `quasimodo.club/events/…` für den
 Abend. Dann als `frei`-Posten nach oben ziehen; `beginn` folgt dem Haus.
 Beim Bauen: Quasimodo ist als Ort neu (Adresse vom Haus), Zeitzone
-`+02:00`, `genres` leer bis zum Lexikoneintrag Rhythm and Blues (Bündel
-oben), Szenebezug im Text über Rhythm and Blues und Soul.
+`+02:00`, `genres` leer bis zur Freigabe von `lexikon/rhythm-and-blues`
+(Entwurf seit 2026-10-06), Szenebezug im Text über Rhythm and Blues und Soul.
 
 **ItemList für Listenartikel.** Entscheidung vom 2026-10-04: Listen
 (`typ: liste`) bekommen im JSON-LD nur `Article`. Bedingung für die
