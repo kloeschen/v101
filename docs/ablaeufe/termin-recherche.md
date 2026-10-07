@@ -349,6 +349,19 @@ Fehler verursacht oder beinahe verursacht.
   aber da und vollständig. Fehlt ein Termin, den die Vereinsseite nennt,
   in der Liste: die benachbarten Detail-URLs (`…-54`, `…-55`) öffnen,
   bevor er als unbestätigt zurückgeht.
+- **boogie.at: „Person/Organisation" kann der DJ sein.** Bei der Boogie
+  Party im Mostlandhof Purgstall (05.05.2027) steht dort „DJ. K.", der
+  Flyer nennt als Veranstalter die „Sport Union (Sektion Boogie Woogie)"
+  (2026-10-06). Das Feld zeigt, wer den Termin eingetragen hat, nicht
+  wer veranstaltet; `veranstalter` nur aus einer Angabe, die es
+  ausdrücklich sagt.
+- **Aufriss Mainburg (Hofstetten): Terminliste des Hauses gegen Flyer.**
+  Die Liste unter `http://www.aufriss.net/eventtermine/` nennt für die
+  Tanzschuh-Partys am 29.05. und 20.11.2027 „Beginn: 20.00 Uhr", Flyer
+  und boogie.at „ab 19:30" (2026-10-06); für den 21.11.2026 und den
+  21.08.2027 stimmen alle überein. Die Liste ist nur über http
+  erreichbar (https: abgelaufenes Zertifikat), zählt also nicht als
+  Quelle; der Eintrag folgt dem Flyer und nennt den Widerspruch.
 - **Tanzclub Harlekin: die Zeitangabe ist oft ein Textbaustein.** Auf
   der Veranstaltungsseite des Vereins steht unter fast jedem Abend
   derselbe Block („Tanzen wie früher … DISCOFOX, SCHLAGER, OLDIES,

@@ -32,29 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Niederösterreich, boogie.at: 4 Termine anlegen (05.05.2027, 29.05.2027, 21.08.2027, 20.11.2027).**
-Gesehen am 2026-10-06 auf https://boogie.at/?page=3 (Herkunft: Suchlauf
-2026-10-06). Dort steht: „Boogie Party", Mi., 05.05.2027, 20:00,
-Mostlandhof, Schauboden 4, 3251 Purgstall, „Music by DJ.K Boogie
-Klaus", „Folder und nähere Informationen folgen", Organisation „DJ. K."
-(/event/boogie-party-51); „Tanzschuh-Party", Sa., 29.05.2027, 19:30,
-Aufriss Mainburg – das Eventlokal im Pielachtal, Mainburgstrasse 8, 3202
-Hofstetten, DJ, 50er-Jahre-Kleidung, „Rock'n'Roll, Boogie & Swing"
-(/event/tanzschuh-party-10); „Tanzschuh-Party" („Summer
-Tanzschuhparty an der Pielach"), Sa., 21.08.2027, 20:00, gleicher Ort,
-„Boogie, Rock'n'Roll & jede Menge Tanz" (/event/tanzschuh-party-11);
-„Tanzschuh-Party", Sa., 20.11.2027, 19:30, gleicher Ort, letzte
-Tanzschuhparty des Jahres, DJ (/event/tanzschuh-party-12). Kein Preis.
-Beim Bauen: boogie.at ist nur Kalender; aufriss.net ist nur über http
-angegeben (Falle „Seiten nur über http"), für Purgstall eine Seite des
-Hauses oder des DJs suchen. Boogie Woogie und Rock'n'Roll meinen an
-diesen Abenden den Tanz (Regel 2026-10-03). Die Aufriss-Reihe beginnt
-im Register erst mit dem Posten „Niederösterreich, boogie.at" vom
-2026-10-04 (21.11. und 12.12.2026, gleicher Ort) — ist der gebaut, ist
-er die Vorlage. Purgstall: „nähere Informationen folgen" — fehlt beim
-Bauen eine zweite Angabe zu Uhrzeit oder Ort, den Termin mit Befund
-zurückgeben.
-
 `frei` **Lexikon, Bündel Genres: Rhythm and Blues, Hillbilly.**
 Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
 2026-10-04). Abgrenzungen laut Vorrat: Rhythm and Blues (gegen das
@@ -93,9 +70,11 @@ Kalender; je Termin die Seite des Veranstalters bzw. Hauses öffnen
 Gemeindeseite Matzendorf-Hölles; fives.at), Flyer öffnen, wenn einer
 beiliegt. Boogie Woogie meint an diesen Abenden den Tanz (Regel
 2026-10-03); bei der Jukebox-Party spielt eine Band, dort prüfen, ob die
-Quelle die Musik meint. Alle drei Orte sind neu. Die Aufriss-Reihe hat
-weitere Tanzschuh-Partys 2027 (29.05., 21.08., 20.11.) — Kandidaten für
-einen späteren Posten.
+Quelle die Musik meint. Matzendorf-Hölles und St. Leonhard sind neue Orte. Den Aufriss gibt es
+seit dem 2026-10-06 (`locations/aufriss-mainburg-hofstetten`), ebenso die
+Reihe `tanzschuh-party-aufriss` mit den Partys 2027 als Vorlage. Die
+Terminliste des Hauses (http) nennt für den 21.11.2026 19:30 wie
+boogie.at, für die Boogie-Party am 12.12.2026 „DJ Pete und DJ Franz".
 
 `frei` **Boppin'B, Tour: 6 Termine anlegen (31.10.2026, 04.11.2026, 13.11.2026, 21.11.2026, 04.12.2026, 11.12.2026).**
 Gesehen am 2026-10-04 über das Bandsintown-Widget der Live-Seite
