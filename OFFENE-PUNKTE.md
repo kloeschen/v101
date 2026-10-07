@@ -32,15 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Lexikon, Bündel Schuhe: Saddle Shoes, Peep Toe, Stiletto, Keilabsatz.**
-Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
-2026-10-04). Abgrenzungen laut Vorrat: Saddle Shoes (gegen Two-Tone und
-Budapester), Peep Toe (gegen Slingback), Stiletto (gegen Kitten Heel und
-gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
-`/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
-Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
-abgrenzen, falls sich Überschneidungen zeigen.
-
 `frei` **Boppin'B, Tour: 6 Termine anlegen (31.10.2026, 04.11.2026, 13.11.2026, 21.11.2026, 04.12.2026, 11.12.2026).**
 Gesehen am 2026-10-04 über das Bandsintown-Widget der Live-Seite
 https://www.boppinb.de/live, Datensatz
