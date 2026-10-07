@@ -41,27 +41,6 @@ gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
 Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
 abgrenzen, falls sich Überschneidungen zeigen.
 
-`frei` **Oberösterreich, boogie.at: 4 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 17.04.2027, 19.06.2027).**
-Gesehen am 2026-10-04 auf https://boogie.at/?page=2 und ?page=3
-(Herkunft: Suchlauf 2026-10-04). Dort steht: „Boogie trifft Schlager und
-Discofox", Fr., 18.12.2026, 20:00, „Weihnachts Edition", Tanzclub
-HARLEKIN, Dragoner-Straße 4, 4470 Enns, großer Saal „DJ.K Boogie Klaus"
-mit Boogie Woogie, kleiner Saal DJ Mike mit Schlager und Discofox
-(/event/boogie-trifft-schlager-und-discofox); „Boogie trifft Schlager",
-Fr., 05.02.2027, 20:00, gleicher Ort, gleiche Aufteilung
-(/event/boogie-trifft-schlager-0); „Boogie trifft Schlager", Sa.,
-19.06.2027, 20:00, gleicher Ort (/event/boogie-trifft-schlager-2). Nachgetragen im Suchlauf 2026-10-06 (dort
-auf ?page=3 gesehen, im Posten zuvor übersehen): „Boogie trifft
-Schlager", Sa., 17.04.2027, 20:00, gleicher Ort, „Two Djs Two Floors",
-DJ.K Boogie Klaus mit Boogie Woogie, DJ Mike mit Schlager und Discofox
-(/event/boogie-trifft-schlager-1).
-Organisation laut boogie.at „DJ. K."; kein Preis. Beim Bauen: eine Seite
-des Tanzclubs Harlekin oder des DJs suchen, boogie.at ist nur Kalender;
-Ort neu. Szenebezug nur über den Boogie-Woogie-Saal — Vorbild sind die
-„Big Boogie & Discofox"-Partys der Tanzschule Hippmann im Register. Die
-übrigen Harlekin-Abende (Golden Dance Night, Christmas Dance Revival,
-„Harlekin") nennen keine Musik und sind deshalb nicht im Posten.
-
 `frei` **Boppin'B, Tour: 6 Termine anlegen (31.10.2026, 04.11.2026, 13.11.2026, 21.11.2026, 04.12.2026, 11.12.2026).**
 Gesehen am 2026-10-04 über das Bandsintown-Widget der Live-Seite
 https://www.boppinb.de/live, Datensatz
