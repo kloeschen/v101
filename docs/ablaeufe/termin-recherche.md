@@ -47,6 +47,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [BWC Gmunden, Aktivitätenkalender](https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/) | Oberösterreich (Roitham, Eberstalzell, Fischlham) | Verein | nein, nur Flyer als Bilder | die auf boogie.at und den Flyern genannte `www.bwc-gmunden.com` löst nicht auf (2026-09-28); Kalender je Jahr, am 2026-09-28 nur bis Ende 2026 |
 | [Haslinger Hof, Musikprogramm](https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html) | Bayern (Kirchham bei Bad Füssing) | Haus | nein | Tagesprogramm aller Säle, rund viereinhalb Monate im Voraus; Szenebezug nur beim „BoogieMix" (zweiter Freitag). Tabelle ohne Jahreszahl (siehe Fallen) |
 | [Tanzschule Hippmann, Events](https://www.tanzschule.at/events/) | Oberösterreich (Wels, Regau) | Haus | nein | Ankündigungen je Party mit Preis; Uhrzeit beim Ball oft erst spät. Termine in Regau teils nur auf der Seite der Fox & Boogie Nacht oder nur als Flyer auf boogie.at (2026-10-02) |
+| [Tanzclub Harlekin, Veranstaltungen](https://www.tanzclub-harlekin.at/veranstaltungen) | Oberösterreich (Enns) | Verein mit eigenem Haus | nein | reicht rund drei Monate voraus (2026-10-07: bis 19.12.); Szenebezug nur bei „Boogie trifft Schlager" und „Boogie meets …". Zeitangaben teils Textbaustein (siehe Fallen) |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
@@ -289,7 +290,10 @@ Fehler verursacht oder beinahe verursacht.
 - **„Parkett" ist oft eine Redewendung.** „Das Tanzbein auf einem
   schönen Parkett schwingen" sagt nichts über den Boden. `tanzflaeche`
   nur setzen, wenn die Quelle den Belag als Belag nennt (Stadtgalerie
-  Mödling, 2026-09-25).
+  Mödling, 2026-09-25). Auch als Platzangabe: Das Buchungsformular des
+  Vereins Simmatthi fragt beim „Tischwunsch" nach „Parkett" oder
+  „Galerie" — gemeint ist das Parterre (Gemeindezentrum Matzendorf,
+  2026-10-07).
 - **Band-Websites mit Bandsintown-Widget** (Boppin'B, 2026-09-27): Die
   Seite enthält im HTML keinen Termin, der Abruf „findet nichts". Die
   Künstler-ID steht im Attribut `data-artist-name` (etwa `id_310419`);
@@ -348,6 +352,30 @@ Fehler verursacht oder beinahe verursacht.
   aber da und vollständig. Fehlt ein Termin, den die Vereinsseite nennt,
   in der Liste: die benachbarten Detail-URLs (`…-54`, `…-55`) öffnen,
   bevor er als unbestätigt zurückgeht.
+- **boogie.at: „Person/Organisation" kann der DJ sein.** Bei der Boogie
+  Party im Mostlandhof Purgstall (05.05.2027) steht dort „DJ. K.", der
+  Flyer nennt als Veranstalter die „Sport Union (Sektion Boogie Woogie)"
+  (2026-10-06). Das Feld zeigt, wer den Termin eingetragen hat, nicht
+  wer veranstaltet; `veranstalter` nur aus einer Angabe, die es
+  ausdrücklich sagt.
+- **Aufriss Mainburg (Hofstetten): Terminliste des Hauses gegen Flyer.**
+  Die Liste unter `http://www.aufriss.net/eventtermine/` nennt für die
+  Tanzschuh-Partys am 29.05. und 20.11.2027 „Beginn: 20.00 Uhr", Flyer
+  und boogie.at „ab 19:30" (2026-10-06); für den 21.11.2026 und den
+  21.08.2027 stimmen alle überein. Die Liste ist nur über http
+  erreichbar (https: abgelaufenes Zertifikat), zählt also nicht als
+  Quelle; der Eintrag folgt dem Flyer und nennt den Widerspruch.
+- **Tanzclub Harlekin: die Zeitangabe ist oft ein Textbaustein.** Auf
+  der Veranstaltungsseite des Vereins steht unter fast jedem Abend
+  derselbe Block („Tanzen wie früher … DISCOFOX, SCHLAGER, OLDIES,
+  BOOGIE, EVERGREENS … 20:00 bis 03:00 Uhr"), auch unter der Party
+  „Boogie trifft Schlager" am 18.12.2026 (2026-10-07). Der Beginn deckt
+  sich mit boogie.at und Flyer, das Ende ist nicht als eigene Angabe zu
+  zeigen: `ende` leer lassen, die Angabe im Text zuordnen. Dort auch
+  Saal-Widerspruch: boogie.at verteilt die DJs auf zwei Säle, der Verein
+  nennt beide im großen Saal. Der Verein bezeichnet sich als geschlossen
+  (Mitgliedschaft nötig, Tagesmitgliedschaft 10–20 €), Flyer nennen
+  trotzdem Eintritt — beides nennen, nicht verrechnen.
 - **Flyer auf boogie.at sind oft die einzige Stelle mit Uhrzeit und
   Logo.** Bei den Partys der Tanzschule Hippmann in Regau (2026-10-02)
   nannte nur der Flyer Einlass und Beginn; für den 13.03.2027 kündigte

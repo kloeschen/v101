@@ -32,36 +32,6 @@ Bedingung" sind Rückstau, keine Warteschlange.
 
 ## Als Nächstes
 
-`frei` **Niederösterreich, boogie.at: 4 Termine anlegen (05.05.2027, 29.05.2027, 21.08.2027, 20.11.2027).**
-Gesehen am 2026-10-06 auf https://boogie.at/?page=3 (Herkunft: Suchlauf
-2026-10-06). Dort steht: „Boogie Party", Mi., 05.05.2027, 20:00,
-Mostlandhof, Schauboden 4, 3251 Purgstall, „Music by DJ.K Boogie
-Klaus", „Folder und nähere Informationen folgen", Organisation „DJ. K."
-(/event/boogie-party-51); „Tanzschuh-Party", Sa., 29.05.2027, 19:30,
-Aufriss Mainburg – das Eventlokal im Pielachtal, Mainburgstrasse 8, 3202
-Hofstetten, DJ, 50er-Jahre-Kleidung, „Rock'n'Roll, Boogie & Swing"
-(/event/tanzschuh-party-10); „Tanzschuh-Party" („Summer
-Tanzschuhparty an der Pielach"), Sa., 21.08.2027, 20:00, gleicher Ort,
-„Boogie, Rock'n'Roll & jede Menge Tanz" (/event/tanzschuh-party-11);
-„Tanzschuh-Party", Sa., 20.11.2027, 19:30, gleicher Ort, letzte
-Tanzschuhparty des Jahres, DJ (/event/tanzschuh-party-12). Kein Preis.
-Beim Bauen: boogie.at ist nur Kalender; aufriss.net ist nur über http
-angegeben (Falle „Seiten nur über http"), für Purgstall eine Seite des
-Hauses oder des DJs suchen. Boogie Woogie und Rock'n'Roll meinen an
-diesen Abenden den Tanz (Regel 2026-10-03). Die Aufriss-Reihe beginnt
-im Register erst mit dem Posten „Niederösterreich, boogie.at" vom
-2026-10-04 (21.11. und 12.12.2026, gleicher Ort) — ist der gebaut, ist
-er die Vorlage. Purgstall: „nähere Informationen folgen" — fehlt beim
-Bauen eine zweite Angabe zu Uhrzeit oder Ort, den Termin mit Befund
-zurückgeben.
-
-`frei` **Lexikon, Bündel Genres: Rhythm and Blues, Hillbilly.**
-Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
-2026-10-04). Abgrenzungen laut Vorrat: Rhythm and Blues (gegen das
-heutige R&B), Hillbilly (gegen Country, gegen den Gebrauch als
-Schimpfwort, gegen Bluegrass). Swing ist seit dem 2026-09-29 ein Entwurf
-(`lexikon/swing`) und gehört nicht in dieses Bündel.
-
 `frei` **Lexikon, Bündel Schuhe: Saddle Shoes, Peep Toe, Stiletto, Keilabsatz.**
 Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
 2026-10-04). Abgrenzungen laut Vorrat: Saddle Shoes (gegen Two-Tone und
@@ -70,53 +40,6 @@ gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
 `/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
 Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
 abgrenzen, falls sich Überschneidungen zeigen.
-
-`frei` **Niederösterreich, boogie.at: 4 Termine anlegen (21.11.2026, 12.12.2026, 19.12.2026, 31.12.2026).**
-Gesehen am 2026-10-04 auf https://boogie.at/?page=1 und ?page=2
-(Herkunft: Suchlauf 2026-10-04). Dort steht: „Tanzschuh-Party", Sa.,
-21.11.2026, 19:30, Aufriss Mainburg – das Eventlokal im Pielachtal,
-Mainburgstrasse 8, 3202 Hofstetten, Link http://aufriss.net,
-Beschreibung nennt die letzte Tanzschuhparty 2026 in einem Lokal, „wo
-Boogie-Woogie mitlerweile schon zuhause ist" (/event/tanzschuh-party-9);
-„Boogieparty", Sa., 12.12.2026, 20:00, gleicher Ort, ohne Beschreibung
-(/event/boogieparty-20); „JUKEBOX CHRISTMAS PARTY-NIGHT 2026", Sa.,
-19.12.2026, 19:30, Gemeindesaal Matzendorf-Hölles, Badenerstraße 19, 2751
-Matzendorf-Hölles, Party „im Stil der 50er & 60er Jahre" mit den Jukebox
-Bandits, Rock'n'Roll und Boogie Woogie, DJ Matthias & DomyLee, Link auf
-die Veranstaltungsseite der Gemeinde (/event/jukebox-christmas-party-night-2026);
-„Silvester Boogie Night 2026", Do., 31.12.2026, 19:00, Volkshaus,
-Loosdorfer Straße 15, 3243 St. Leonhard, Organisation „FIVES ★ Boogie,
-Swing & Rock'n'Roll Tanzsport", Tickets https://fives.at/event/silvester-boogie-night-2026
-(/event/silvester-boogie-night-2026). Beim Bauen: boogie.at ist nur
-Kalender; je Termin die Seite des Veranstalters bzw. Hauses öffnen
-(aufriss.net — nur http angegeben, Falle „Seiten nur über http";
-Gemeindeseite Matzendorf-Hölles; fives.at), Flyer öffnen, wenn einer
-beiliegt. Boogie Woogie meint an diesen Abenden den Tanz (Regel
-2026-10-03); bei der Jukebox-Party spielt eine Band, dort prüfen, ob die
-Quelle die Musik meint. Alle drei Orte sind neu. Die Aufriss-Reihe hat
-weitere Tanzschuh-Partys 2027 (29.05., 21.08., 20.11.) — Kandidaten für
-einen späteren Posten.
-
-`frei` **Oberösterreich, boogie.at: 4 Termine „Boogie trifft Schlager" anlegen (18.12.2026, 05.02.2027, 17.04.2027, 19.06.2027).**
-Gesehen am 2026-10-04 auf https://boogie.at/?page=2 und ?page=3
-(Herkunft: Suchlauf 2026-10-04). Dort steht: „Boogie trifft Schlager und
-Discofox", Fr., 18.12.2026, 20:00, „Weihnachts Edition", Tanzclub
-HARLEKIN, Dragoner-Straße 4, 4470 Enns, großer Saal „DJ.K Boogie Klaus"
-mit Boogie Woogie, kleiner Saal DJ Mike mit Schlager und Discofox
-(/event/boogie-trifft-schlager-und-discofox); „Boogie trifft Schlager",
-Fr., 05.02.2027, 20:00, gleicher Ort, gleiche Aufteilung
-(/event/boogie-trifft-schlager-0); „Boogie trifft Schlager", Sa.,
-19.06.2027, 20:00, gleicher Ort (/event/boogie-trifft-schlager-2). Nachgetragen im Suchlauf 2026-10-06 (dort
-auf ?page=3 gesehen, im Posten zuvor übersehen): „Boogie trifft
-Schlager", Sa., 17.04.2027, 20:00, gleicher Ort, „Two Djs Two Floors",
-DJ.K Boogie Klaus mit Boogie Woogie, DJ Mike mit Schlager und Discofox
-(/event/boogie-trifft-schlager-1).
-Organisation laut boogie.at „DJ. K."; kein Preis. Beim Bauen: eine Seite
-des Tanzclubs Harlekin oder des DJs suchen, boogie.at ist nur Kalender;
-Ort neu. Szenebezug nur über den Boogie-Woogie-Saal — Vorbild sind die
-„Big Boogie & Discofox"-Partys der Tanzschule Hippmann im Register. Die
-übrigen Harlekin-Abende (Golden Dance Night, Christmas Dance Revival,
-„Harlekin") nennen keine Musik und sind deshalb nicht im Posten.
 
 `frei` **Boppin'B, Tour: 6 Termine anlegen (31.10.2026, 04.11.2026, 13.11.2026, 21.11.2026, 04.12.2026, 11.12.2026).**
 Gesehen am 2026-10-04 über das Bandsintown-Widget der Live-Seite
@@ -167,6 +90,27 @@ Bauen: Ticketseite öffnen und gegen das Haus lesen (Falle „Ticketseite
 gegen das Haus"); kein Preis auf der Startseite. Welche Band „The
 Flames" ist, sagt keine der Seiten — nicht raten, in `lineupWeitere`.
 Ort und Region im Register (Vorlage `events/long-tall-texans-cafe-central-2026-11-20`).
+
+`frei` **Niederösterreich, Aufriss Mainburg: 2 Termine anlegen (21.11.2026, 12.12.2026).**
+Aus dem Bündel „Niederösterreich, boogie.at: 4 Termine" (Suchlauf
+2026-10-04) am 2026-10-07 zurückgegeben; die Jukebox Christmas
+Party-Night (19.12.2026) und die Silvester Boogie Night (31.12.2026)
+sind gebaut. BEFUND: Der Ort `locations/aufriss-mainburg-hofstetten` und
+die Reihe `tanzschuh-party-aufriss` entstanden auf dem damals offenen
+Zweig `claude/nice-rubin-n8oe72` (PR #168). Denselben Ort ein zweites
+Mal anzulegen hätte entweder einen Konflikt zwischen zwei Fassungen
+derselben Datei erzeugt oder tote Links auf die Termine 2027, die nur
+auf jenem Zweig lagen. PR #168 ist seit dem 2026-10-07 gemergt, Ort und
+Reihe stehen auf `main`; der Posten ist damit baubar. boogie.at „Tanzschuh-Party", Sa., 21.11.2026, 19:30
+(/event/tanzschuh-party-9, letzte Tanzschuhparty 2026), und
+„Boogieparty", Sa., 12.12.2026, 20:00, ohne Beschreibung
+(/event/boogieparty-20), beide im Aufriss, Mainburgstraße 8, 3202
+Hofstetten. Laut PR #168 nennt die Terminliste des Hauses (nur http,
+Falle „Aufriss Mainburg: Terminliste des Hauses gegen Flyer") für den
+21.11.2026 ebenfalls 19:30 und für den 12.12.2026 „DJ Pete und DJ
+Franz". Vorlage ist `events/tanzschuh-party-aufriss-hofstetten-2027-05-29`
+aus PR #168; Flyer auf boogie.at öffnen, Boogie Woogie meint den Tanz
+(Regel 2026-10-03).
 
 `frei` **Tanztermine: `genres` nachtragen (26 Termine).** Entscheidung
 Markus vom 2026-10-03 (ENTSCHEIDUNGEN.md, „Tänze in genres"): An
@@ -298,8 +242,8 @@ und die Bandsintown-Uhrzeit trägt laut Falle nicht allein. **Bedingung:**
 Das Quasimodo hat eine Seite unter `quasimodo.club/events/…` für den
 Abend. Dann als `frei`-Posten nach oben ziehen; `beginn` folgt dem Haus.
 Beim Bauen: Quasimodo ist als Ort neu (Adresse vom Haus), Zeitzone
-`+02:00`, `genres` leer bis zum Lexikoneintrag Rhythm and Blues (Bündel
-oben), Szenebezug im Text über Rhythm and Blues und Soul.
+`+02:00`, `genres` leer bis zur Freigabe von `lexikon/rhythm-and-blues`
+(Entwurf seit 2026-10-06), Szenebezug im Text über Rhythm and Blues und Soul.
 
 **ItemList für Listenartikel.** Entscheidung vom 2026-10-04: Listen
 (`typ: liste`) bekommen im JSON-LD nur `Article`. Bedingung für die
