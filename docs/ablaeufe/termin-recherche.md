@@ -107,6 +107,7 @@ ist mehr wert als ein einzelner Termin.
    marke: frei
    titel: "<Veranstaltung/Reihe/Quelle>: <n> Termine anlegen (<Datum>, <Datum> …)"
    angelegt: JJJJ-MM-TT
+   vorrang: 1
    ---
 
    Gesehen am JJJJ-MM-TT auf <URL der Kalenderseite> (Herkunft: Suchlauf
@@ -116,7 +117,9 @@ ist mehr wert als ein einzelner Termin.
    ```
 
    `angelegt` ist der Tag des Suchlaufs; er ordnet die Warteschlange
-   (neuester zuerst). „Dort steht" gibt wieder,
+   (neuester zuerst). Innerhalb dieses Laufs vergibt der Suchlauf
+   `vorrang: 1`, `2`, `3` … in der Reihenfolge der Priorität (Schritt 5),
+   sonst entschiede der Dateiname. „Dort steht" gibt wieder,
    was die Quelle sagt — es ist kein Beleg und wird beim Bauen erneut
    geöffnet. Die Zeile „Herkunft: Suchlauf" ist für die Auswertung (unten)
    nötig; ohne sie lässt sich nicht zählen, was der Suchlauf gebracht hat.

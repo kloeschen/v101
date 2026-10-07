@@ -44,10 +44,16 @@
  * REIHENFOLGE: Bis zum 2026-10-07 galt die Reihenfolge der Absätze, und
  * der Suchlauf fügte oben ein — der neueste Posten stand zuerst. Ein
  * Verzeichnis hat keine Reihenfolge, also trägt sie jetzt `angelegt`:
- * neuester zuerst, bei gleichem Datum nach Dateiname. Das Datum ist ein
+ * neuester zuerst. Bei gleichem Tag entscheidet das optionale Feld
+ * `vorrang` (1 vor 2 vor 3 …, ohne Feld danach), dann der Dateiname. Den
+ * `vorrang` gibt es seit dem 2026-10-07 (Entscheidung Markus): Alle
+ * Posten eines Suchlaufs tragen denselben Tag, und ohne das Feld ordnete
+ * sie der Dateiname statt „nahe Termine vor fernen". Gilt nur innerhalb
+ * eines Tages; ein neuerer Posten steht immer vor einem älteren, auch mit
+ * schlechterem Vorrang. Das Datum ist ein
  * Kalendertag als Zeichenkette (`JJJJ-MM-TT`) und wird nie als Datum
  * gelesen — deshalb kein YAML-Parser, der daraus einen Zeitpunkt in UTC
- * machte (Regel 1), sondern die drei Schlüssel von Hand.
+ * machte (Regel 1), sondern die Schlüssel von Hand.
  *
  * ZWEITE AUFGABE seit dem 2026-09-21: einen Posten ueberspringen, den ein
  * noch offener Zweig bereits abarbeitet. Anlass war der teuerste Fehlgriff
@@ -95,6 +101,8 @@ export interface Posten {
   titel: string;
   /** Kalendertag `JJJJ-MM-TT`, nur als Zeichenkette verglichen. */
   angelegt: string;
+  /** Rang innerhalb desselben Tages, 1 zuerst. Optional. */
+  vorrang?: number;
   /** Dateiname ohne Verzeichnis — die Identität des Postens. */
   datei: string;
   /** Titel und Auftrag, so wie der Lauf ihn bekommt. */
@@ -142,16 +150,24 @@ export function liesDatei(d: Rohdatei): Posten | Mangel {
   if (!titel) return { datei: d.name, grund: "kein Titel (`titel: …`)" };
   const angelegt = kopf.angelegt ?? "";
   if (!TAG.test(angelegt)) return { datei: d.name, grund: `\`angelegt\` fehlt oder ist kein Tag JJJJ-MM-TT („${angelegt}")` };
+  let vorrang: number | undefined;
+  if (kopf.vorrang !== undefined) {
+    if (!/^[1-9]\d*$/.test(kopf.vorrang)) return { datei: d.name, grund: `\`vorrang\` ist keine ganze Zahl ab 1 („${kopf.vorrang}")` };
+    vorrang = Number(kopf.vorrang);
+  }
   const auftrag = zeilen.slice(ende + 1).join("\n").trim();
   if (!auftrag) return { datei: d.name, grund: "kein Auftragstext unter dem Kopf" };
-  return { marke, titel, angelegt, datei: d.name, text: `**${titel}.**\n${auftrag}` };
+  return { marke, titel, angelegt, ...(vorrang ? { vorrang } : {}), datei: d.name, text: `**${titel}.**\n${auftrag}` };
 }
 
 const istMangel = (x: Posten | Mangel): x is Mangel => "grund" in x;
 
-/** Neuester zuerst, bei gleichem Tag nach Dateiname. */
+/** Neuester zuerst; bei gleichem Tag nach `vorrang` (ohne Feld zuletzt), dann nach Dateiname. */
 export function reihenfolge(a: Posten, b: Posten): number {
   if (a.angelegt !== b.angelegt) return a.angelegt < b.angelegt ? 1 : -1;
+  const va = a.vorrang ?? Infinity;
+  const vb = b.vorrang ?? Infinity;
+  if (va !== vb) return va < vb ? -1 : 1;
   return a.datei < b.datei ? -1 : a.datei > b.datei ? 1 : 0;
 }
 
@@ -351,7 +367,8 @@ export const istLexikon = (p: Pick<Posten, "titel">) => /^Lexikon\b/.test(p.tite
  * gespeicherten Zustand und ist aus der Uhrzeit nachvollziehbar. Gibt es
  * von der bevorzugten Sorte keinen freien Posten, nimmt der Lauf den
  * obersten der anderen — ein leerer Vorzug darf keinen Lauf verschenken.
- * Innerhalb einer Sorte bleibt die Reihenfolge der Warteschlange (`angelegt`).
+ * Innerhalb einer Sorte bleibt die Reihenfolge der Warteschlange
+ * (`angelegt`, dann `vorrang`).
  */
 export function waehle(offen: Posten[], stundeUtc: number): Posten | undefined {
   const lexikonZuerst = stundeUtc >= 12;
