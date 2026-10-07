@@ -170,18 +170,22 @@ gleich("echte Daten, alle Einträge als freigegeben gedacht: die erwarteten auto
   "/c/petticoats → /lexikon/petticoat/",
   "/c/pomade → /lexikon/pomade/",
   "/c/roecke/tellerrock → /lexikon/tellerrock/",
+  "/c/schuhe/saddle-shoes → /lexikon/saddle-shoes/",
   "/c/strapsguertel → /lexikon/strapsguertel/",
   "/c/taillenmieder → /lexikon/taillenmieder/",
   "/thema/burlesque → /lexikon/burlesque/",
   "/thema/gingham → /lexikon/gingham/",
   "/thema/hahnentritt → /lexikon/hahnentritt/",
   "/thema/houndstooth → /lexikon/hahnentritt/",
+  "/thema/keilabsatz → /lexikon/keilabsatz/",
   "/thema/nadelstreifen → /lexikon/nadelstreifen/",
   "/thema/neckholder → /lexikon/neckholder/",
+  "/thema/peep-toe → /lexikon/peep-toe/",
   "/thema/pencil → /lexikon/bleistiftrock/",
   "/thema/pin-up → /lexikon/pin-up/",
   "/thema/polka-dots → /lexikon/polka-dots/",
   "/thema/rockabilly → /lexikon/rockabilly/",
+  "/thema/stiletto → /lexikon/stiletto/",
 ]);
 gleich("echte Daten, alle Einträge als freigegeben gedacht: nichts mehrdeutig", gesamt.mehrdeutig, []);
 gleich(

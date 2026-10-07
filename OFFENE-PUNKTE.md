@@ -62,15 +62,6 @@ heutige R&B), Hillbilly (gegen Country, gegen den Gebrauch als
 Schimpfwort, gegen Bluegrass). Swing ist seit dem 2026-09-29 ein Entwurf
 (`lexikon/swing`) und gehört nicht in dieses Bündel.
 
-`frei` **Lexikon, Bündel Schuhe: Saddle Shoes, Peep Toe, Stiletto, Keilabsatz.**
-Aus dem Lexikon-Vorrat nach oben gezogen (Herkunft: Lexikon-Vorrat
-2026-10-04). Abgrenzungen laut Vorrat: Saddle Shoes (gegen Two-Tone und
-Budapester), Peep Toe (gegen Slingback), Stiletto (gegen Kitten Heel und
-gegen das Messer), Keilabsatz (gegen Plateausohle). Alte Pfade:
-`/thema/peep-toe`, `/thema/stiletto`, `/thema/keilabsatz`, eine
-Unterkategorie `…/saddle-shoes`. Beim Bauen gegen `lexikon/creepers`
-abgrenzen, falls sich Überschneidungen zeigen.
-
 `frei` **Niederösterreich, boogie.at: 4 Termine anlegen (21.11.2026, 12.12.2026, 19.12.2026, 31.12.2026).**
 Gesehen am 2026-10-04 auf https://boogie.at/?page=1 und ?page=2
 (Herkunft: Suchlauf 2026-10-04). Dort steht: „Tanzschuh-Party", Sa.,
