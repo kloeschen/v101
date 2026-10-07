@@ -2,9 +2,9 @@
 name: Silvester mit Klingonz im Wild at Heart
 aliases: [WAH Silvester Rock'n'Roll Circus 2026, Klingonz Berlin 2026, Klingonz Evil Devil Church Of Confidence]
 kurzbeschreibung: Silvesterkonzert mit Klingonz, Evil Devil und Church Of Confidence am Donnerstag, 31. Dezember 2026, im Wild at Heart in Berlin-Kreuzberg, mit Record Hop von DJ Skalex danach.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-06
 autor: markus
 typ: konzert
 beginn: 2026-12-31T20:00:00+01:00

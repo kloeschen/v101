@@ -2,7 +2,7 @@
 name: Schlachthof Wiesbaden
 aliases: [Kulturzentrum Schlachthof Wiesbaden, Schlachthof, Kesselhaus Wiesbaden]
 kurzbeschreibung: Der Schlachthof Wiesbaden ist ein seit 1994 kollektiv geführtes soziokulturelles Zentrum nahe dem Wiesbadener Hauptbahnhof, mit einer großen Halle und dem kleineren Kesselhaus für Konzerte, darunter Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

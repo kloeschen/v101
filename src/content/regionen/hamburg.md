@@ -2,7 +2,7 @@
 name: Hamburg
 aliases: [Freie und Hansestadt Hamburg]
 kurzbeschreibung: Hamburg ist als Stadtstaat ein Land der Bundesrepublik und zugleich die zweitgrößte Stadt Deutschlands; für die Szene steht hier bisher ein Clubkonzert zwischen den Feiertagen im Register.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

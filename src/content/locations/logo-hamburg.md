@@ -2,7 +2,7 @@
 name: Logo Hamburg
 aliases: [Logo, LOGO Hamburg]
 kurzbeschreibung: Das Logo ist ein 1974 gegründeter Live-Musik-Club an der Grindelallee in Hamburg mit Platz für 450 Personen und Konzerten aller Stilrichtungen, darunter Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

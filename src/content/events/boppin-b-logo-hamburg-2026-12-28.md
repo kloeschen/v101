@@ -2,7 +2,7 @@
 name: Boppin'B im Logo Hamburg
 aliases: [Boppin' B Hamburg 2026, Boppin'B Logo]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B mit Tom Toxic & Die Poison Jerrys am Montag, 28. Dezember 2026, im Logo in Hamburg.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

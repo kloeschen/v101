@@ -2,7 +2,7 @@
 name: Kulturhaus Stattbahnhof Schweinfurt
 aliases: [Stattbahnhof, Kulturhaus Stattbahnhof, Stattbahnhof Schweinfurt]
 kurzbeschreibung: Der Stattbahnhof ist ein soziokulturelles Zentrum im ehemaligen Bahnhofsgebäude an der Alten Bahnhofstraße in Schweinfurt, mit großem und kleinem Saal und einer Kneipe; im Konzertprogramm steht auch Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

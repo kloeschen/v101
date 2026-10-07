@@ -2,9 +2,9 @@
 name: Pokey LaFarge im Lido
 aliases: [Pokey LaFarge Berlin 2027, Pokey LaFarge Rent Money Tour Berlin, Rent Money Tour 2027 Berlin]
 kurzbeschreibung: Konzert des US-amerikanischen Musikers Pokey LaFarge auf seiner „Rent Money Tour" am Dienstag, 23. März 2027, im Lido in Berlin-Kreuzberg, präsentiert von Greyzone Concerts.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-06
 autor: markus
 typ: konzert
 beginn: 2027-03-23T20:00:00+01:00

@@ -2,7 +2,7 @@
 name: Bürgerhaus Dreieich
 aliases: [Bürgerhaus Sprendlingen, Bürgerhaus Dreieich-Sprendlingen]
 kurzbeschreibung: Das Bürgerhaus Dreieich ist das 1972 eröffnete städtische Veranstaltungshaus an der Fichtestraße im Stadtteil Sprendlingen und das Haupthaus der Bürgerhäuser Dreieich, mit Theater, Konzerten und Festen.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

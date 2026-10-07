@@ -2,7 +2,7 @@
 name: Boppin'B im Schlachthof Wiesbaden
 aliases: [Boppin' B / Das Rock´n´roll Quartett, Boppin' B Wiesbaden 2027, Boppin'B Kesselhaus]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B mit dem Rock'n'Roll Quartett am Donnerstag, 18. Februar 2027, im Kesselhaus des Schlachthofs Wiesbaden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
 geprueftAm: 2026-10-06
 autor: markus

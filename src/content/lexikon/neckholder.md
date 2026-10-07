@@ -2,9 +2,9 @@
 name: Neckholder
 aliases: [Halterneck]
 kurzbeschreibung: Ein Neckholder ist ein Oberteil, Kleid oder Badeanzug, dessen Träger im Nacken gebunden oder zusammengeführt sind und Schultern und Rücken freilassen; das Wort ist ein Scheinanglizismus für englisch halterneck.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-06
 autor: markus
 kategorie: mode
 bezeichnungDe: Neckholder
