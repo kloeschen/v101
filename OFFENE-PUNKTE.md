@@ -11,166 +11,17 @@ Bewusst vertagte Befunde aus dem Review stehen weiterhin in `REVIEW.md`,
 Abschnitt 4 — sie werden hier nicht wiederholt, damit es nicht zwei Orte
 für „nicht jetzt" gibt.
 
-## Die Marken unter „Als Nächstes"
-
-Seit dem 2026-09-20 nimmt sich ein täglicher unbeaufsichtigter Lauf seine
-Aufgabe aus diesem Abschnitt. Damit ist er nicht mehr nur Prosa, sondern die
-Eingabe eines Automaten, und jeder Posten dort trägt eine Marke:
-
-- **`frei`** — ein Lauf darf das ohne Rückfrage bauen. Das Ergebnis ist
-  immer ein Pull Request, Inhalte immer `status: entwurf`.
-- **`mensch`** — gehört Markus: Ermessen, Zahlen, Semantik, oder der Posten
-  liegt hinter einer Sperre (`.claude/`, `.github/`, Schema, `site.config`).
-
-`npm run warteschlange` zeigt die Liste, `--check` scheitert bei einem
-Posten ohne Marke. Es gibt bewusst **keine Voreinstellung**: Ohne Marke wäre
-ein Ermessensposten entweder im Automaten oder stumm aus der Warteschlange
-gefallen. Die Begründung steht im Kopf von `scripts/warteschlange.ts`.
-
-Nur dieser Abschnitt trägt Marken. „Vor dem Go-Live" und „Später, mit
-Bedingung" sind Rückstau, keine Warteschlange.
-
 ## Als Nächstes
 
-`frei` **Boppin'B, Tour: 6 Termine anlegen (31.10.2026, 04.11.2026, 13.11.2026, 21.11.2026, 04.12.2026, 11.12.2026).**
-Gesehen am 2026-10-04 über das Bandsintown-Widget der Live-Seite
-https://www.boppinb.de/live, Datensatz
-https://rest.bandsintown.com/artists/id_310419/events?app_id=js_www.boppinb.de
-(Herkunft: Suchlauf 2026-10-04). Dort steht: 31.10.2026, 20:30, Irish
-House, Kaiserslautern; 04.11.2026, 20:00, Harmonie, Bonn; 13.11.2026,
-20:30, Musiktheater Piano, Dortmund; 21.11.2026, 20:00, Doubles
-Starclub, Donauwörth; 04.12.2026, 20:00, Alte Piesel, Künzell;
-11.12.2026, 20:00, Eventlokal Hüttenwerk, Michelstadt. Folgetermine
-einer Band mit eigener Seite (`bands/boppin-b`, `lineupBands`); Vorlage
-z. B. `events/boppin-b-colos-saal-2026-12-26`. Beim Bauen: je Termin die
-Seite des Hauses bzw. das Ticketportal öffnen — die Uhrzeit aus
-Bandsintown allein trägt nicht (Falle „Bandsintown-Widget"), Adressen
-nur aus einer Quelle, die sie nennt. Alle sechs Orte sind neu; Regionen
-Rheinland-Pfalz, Nordrhein-Westfalen und Hessen gibt es noch nicht
-(Donauwörth: `bayern`). Weitere Termine im selben Datensatz (28.12.
-Hamburg, 31.12. Dreieich, 2027 Düsseldorf, Wiesbaden, Kaiserslautern,
-Erfurt, Lübeck, Köln, Münster, Idstein) sind Kandidaten für einen
-späteren Posten.
+Die Posten stehen seit dem 2026-10-07 nicht mehr hier, sondern je in einer
+eigenen Datei unter **`docs/posten/`** — Form, Marken (`frei`/`mensch`)
+und wer was tut: `docs/posten/README.md`. `npm run warteschlange` zeigt
+die Liste. Grund: Parallele Läufe änderten benachbarte Zeilen dieses
+Abschnitts und erzeugten fünf von sieben Merge-Konflikten seit dem
+2026-09-30 (ENTSCHEIDUNGEN.md, 2026-10-07).
 
-`frei` **Pullman City: 1 Termin anlegen (27.12.2026, Rockabilly Night).**
-Gesehen am 2026-10-04 auf https://www.pullmancity.de/events-shows-musik/events
-und der Detailseite https://www.pullmancity.de/events-shows-musik/events/rockabilly-night
-(Herkunft: Suchlauf 2026-10-04). Dort steht: „Rockabilly Night",
-„Boogie Woogie meets Wild West", 27. Dezember 2026, Abend mit dem
-„Lebensgefühl der 50er Jahre", Tanzfläche für Rock'n'Roll- und
-Boogie-Woogie-Fans; Programm des Tages: 17:00 DJ Rockin' Daddy (Music
-Hall), 20:30 The Ridin' Dudes (AT) (Music Hall), 21:00 DJane Angy Blue
-(Pina Colada Bar); Tageskarte Erwachsene 13,00 €, Kind 4–14 Jahre
-5,00 €. Beim Bauen: Die Preise sind die allgemeinen Tageskarten der
-Westernstadt, kein Konzertpreis — Hinweis „Jahreskarte … ausgenommen
-Konzerte/Sonderevents" beachten; die Tagesansicht nennt sonst
-Weihnachtsprogramm (Special Christmas Week), nur der Abend in der Music
-Hall gehört in den Eintrag. Ort und Veranstalter im Register (Vorlage
-`events/rockabilly-convention-2027`). `programm` nur mit den
-Uhrzeiten der Quelle. Zeitzone `+01:00`.
-
-`frei` **Café Central Weinheim: 1 Termin anlegen (29.01.2027, The Flames).**
-Gesehen am 2026-10-04 auf https://cafecentral.de/ (Herkunft: Suchlauf
-2026-10-04). Dort steht: „Fr 29.01. | rockabilly | the flames | Café
-Central Weinheim | Einlass: 19.00 Uhr | Beginn: 20.00 Uhr" — **ohne
-Jahreszahl** und ohne eigene `/konzert/`-Seite. Das Jahr steht beim
-Ticketanbieter des Hauses: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events
-führt „The Flames am 29. Jan. 2027 in Weinheim"
-(/events/the-flames-weinheim-EDRZCH3); der Wochentag passt zu 2027. Beim
-Bauen: Ticketseite öffnen und gegen das Haus lesen (Falle „Ticketseite
-gegen das Haus"); kein Preis auf der Startseite. Welche Band „The
-Flames" ist, sagt keine der Seiten — nicht raten, in `lineupWeitere`.
-Ort und Region im Register (Vorlage `events/long-tall-texans-cafe-central-2026-11-20`).
-
-`frei` **Niederösterreich, Aufriss Mainburg: 2 Termine anlegen (21.11.2026, 12.12.2026).**
-Aus dem Bündel „Niederösterreich, boogie.at: 4 Termine" (Suchlauf
-2026-10-04) am 2026-10-07 zurückgegeben; die Jukebox Christmas
-Party-Night (19.12.2026) und die Silvester Boogie Night (31.12.2026)
-sind gebaut. BEFUND: Der Ort `locations/aufriss-mainburg-hofstetten` und
-die Reihe `tanzschuh-party-aufriss` entstanden auf dem damals offenen
-Zweig `claude/nice-rubin-n8oe72` (PR #168). Denselben Ort ein zweites
-Mal anzulegen hätte entweder einen Konflikt zwischen zwei Fassungen
-derselben Datei erzeugt oder tote Links auf die Termine 2027, die nur
-auf jenem Zweig lagen. PR #168 ist seit dem 2026-10-07 gemergt, Ort und
-Reihe stehen auf `main`; der Posten ist damit baubar. boogie.at „Tanzschuh-Party", Sa., 21.11.2026, 19:30
-(/event/tanzschuh-party-9, letzte Tanzschuhparty 2026), und
-„Boogieparty", Sa., 12.12.2026, 20:00, ohne Beschreibung
-(/event/boogieparty-20), beide im Aufriss, Mainburgstraße 8, 3202
-Hofstetten. Laut PR #168 nennt die Terminliste des Hauses (nur http,
-Falle „Aufriss Mainburg: Terminliste des Hauses gegen Flyer") für den
-21.11.2026 ebenfalls 19:30 und für den 12.12.2026 „DJ Pete und DJ
-Franz". Vorlage ist `events/tanzschuh-party-aufriss-hofstetten-2027-05-29`
-aus PR #168; Flyer auf boogie.at öffnen, Boogie Woogie meint den Tanz
-(Regel 2026-10-03).
-
-`frei` **Tanztermine: `genres` nachtragen (26 Termine).** Entscheidung
-Markus vom 2026-10-03 (ENTSCHEIDUNGEN.md, „Tänze in genres"): An
-Tanzabenden, Workshops und Weekendern dürfen Tanzeinträge in `genres`
-stehen (`boogie-woogie-tanz`, `rocknroll-tanz`, `jive`, `lindy-hop`);
-Musik (Kategorie `genre`) wie bisher. Die Regel `genres-kategorie` prüft
-das, der Faktenblock zeigt Musik und Tanz getrennt. Nachzutragen bei den
-freigegebenen künftigen Tanzterminen ohne `genres`, je Termin gegen seine
-Quelle: Hippmann Wels und Regau (`big-boogie-swing-party-hippmann-wels-2026-11-14`,
-`boogie-discofox-party-hippmann-regau-2026-12-05`, `…-2027-03-13`,
-`boogie-swing-ball-hippmann-wels-2027-01-16`); Boogie Lions Spillern
-(`boogie-lions-halloween-spillern-2026-10-31`, `boogie-lions-spillern-2026-11-28`,
-`…-2027-01-09`, `…-2027-02-20`, `…-2027-03-06`, `…-2027-05-01`);
-Boogie-Party Sonntagnachmittag (`…-2026-10-31`, `…-2026-11-21`); Mödling
-(`boogieball-stadtgalerie-moedling-2026-11-13`,
-`rockn-boogie-tanzparty-moedling-2026-10-16`); Keferfeld Linz
-(`christmas-boogie-swing-night-keferfeld-2026-12-05`,
-`november-jive-night-keferfeld-2026-11-06`); Gmundner Boogie Party
-(`gmundner-boogie-party-eberstalzell-2027-06-05`, `…-roitham-2026-10-24`,
-`…-roitham-2027-04-03`, `…-roitham-2027-10-23`,
-`gmundner-silvester-boogie-party-fischlham-2026-12-31`); Rock Dock Teddys
-(`herbstparty-rock-dock-teddys-perchtoldsdorf-2026-11-20`,
-`rock-this-christmas-perchtoldsdorf-2026-12-18`);
-`steyrtal-boogie-party-sierning-2026-10-17`,
-`swinging-wellness-bad-blumau-2026-11-06`,
-`boogie-mix-haslinger-hof-2027-01-08`. Leseregel aus
-`docs/ablaeufe/termin-recherche.md` (Falle „Boogie Woogie an einem
-Tanzabend"): Tanz, außer die Quelle spricht von der Musik selbst; dann
-der Musikeintrag (beim Haslinger Hof der Fall, wie bei den beiden
-Vorgängerterminen). Nur eintragen, was die Quelle nennt; die Quelle
-bekommt `genres` in `felder`, die Redaktionsnotiz das Zitat. Ein Tanz
-ohne Lexikoneintrag (Discofox, West Coast Swing, Balboa) bleibt im Text.
-Bei Bedarf in zwei PRs teilen; geändert wird Freigegebenes, also wartet
-jeder PR auf Markus.
-
-`frei` **Vintage: sieben Handlinks setzen.** `lexikon/vintage` ist seit
-der Freigabe #143 (2026-10-03) veröffentlicht. „Vintage" wird nur von
-Hand verlinkt (`NUR_VON_HAND`, Entscheidung 2026-10-02). Zu verlinken
-sind die sieben Stellen, die in der Simulation den Stil meinten
-(Vintage-Mode, -Garderobe, -Ästhetik, -Outfit, dreimal Vintage-Markt);
-nicht Eigennamen („Vintage Rock", „Peggy Sue Vintage") und nicht die
-Formel „Vintage- und Rockabilly-Szene". Die Stellen per `grep -rn
-"Vintage-"` in `src/content/` suchen, jede einzeln im Satz prüfen, im PR
-auflisten. Offen am Eintrag bleibt „Wie erkennt man Vintage-Kleidung?"
-(13 Treffer) — Kandidat für Artikel A2, nicht Teil dieses Postens.
-
-`frei` **Boppin'B, Irish House Kaiserslautern: 1 Termin anlegen (13.03.2027), sobald eine Quelle des Hauses gefunden ist.**
-Aus dem Bündel „Boppin'B, Tour (Fortsetzung)" (2026-10-06) zurückgegeben,
-die übrigen fünf Termine sind gebaut. Bandsintown
-(https://rest.bandsintown.com/artists/id_310419/events?app_id=js_www.boppinb.de)
-nennt 2027-03-13T20:30, Irish House, Eselsfürth 11, 67657
-Kaiserslautern. BEFUND: Das Haus hat keine erreichbare eigene Seite.
-`irishhouse.de` antwortet per https mit TLS-Fehler, per http mit einer
-Weiterleitung auf `irishhouse.kunstgriff-event.de` (falsches Zertifikat,
-http zeigt nur die Plesk-Standardseite); `kunstgriff-event.de` leitet
-auf `pfalzdigital.de/kunstgriff-event/` weiter, wo nichts zum Termin
-stand. Ein Eventim-Light-Shop
-(https://www.eventim-light.com/de/a/6141d3a4a7dca437d10f1139, Treffer
-der Websuche zum Haus) war aus der Cloud nicht abrufbar
-(ERR_HTTP2_PROTOCOL_ERROR), ebenso eventim.de und westticket.de. Was
-fehlt: eine Quelle des Hauses oder des Ticketverkaufs mit Uhrzeit und
-Adresse — Bandsintown allein trägt die Uhrzeit nicht (Falle
-„Bandsintown-Widget"). Beim Bauen zuerst den Eventim-Light-Shop öffnen
-(sieht nach dem Shop des Hauses aus, Veranstalter dort prüfen), sonst
-nach dem Haus suchen. Dasselbe Problem hat der Termin am 31.10.2026 im
-Posten „Boppin'B, Tour: 6 Termine" weiter oben. Die Region
-Rheinland-Pfalz gibt es noch nicht. Weitere Termine im Datensatz (2027:
-Erfurt 20.03., Lübeck 09.04., Köln 17.04., Münster 30.04., Idstein
-05.11.) sind Kandidaten für einen späteren Suchlauf.
+„Vor dem Go-Live" und „Später, mit Bedingung" bleiben hier. Sie sind
+Rückstau, keine Warteschlange, und tragen keine Marken.
 
 ## Vor dem Go-Live
 
