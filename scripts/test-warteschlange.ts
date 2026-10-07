@@ -80,6 +80,34 @@ const P = (name: string, marke: string, titel: string, angelegt = "2026-10-01", 
 }
 
 {
+  // VORRANG (2026-10-07). Ein Suchlauf schreibt alle Posten mit demselben
+  // Tag; `vorrang` ordnet sie innerhalb des Tages. Die Dateinamen laufen
+  // absichtlich gegen den Vorrang, sonst bestünde der Test auch über den
+  // Dateinamen (Regel 4).
+  const V = (name: string, angelegt: string, vorrang?: number): Rohdatei => ({
+    name,
+    text: `---\nmarke: frei\ntitel: ${name}\nangelegt: ${angelegt}\n${vorrang ? `vorrang: ${vorrang}\n` : ""}---\n\nText.\n`,
+  });
+  const b = lies([
+    V("a-fern.md", "2026-10-04", 3),
+    V("b-ohne.md", "2026-10-04"),
+    V("c-mitte.md", "2026-10-04", 2),
+    V("z-nah.md", "2026-10-04", 1),
+    V("y-neuer.md", "2026-10-05", 9),
+  ]);
+  gleich(
+    "gleicher Tag: nach vorrang, ohne Feld zuletzt; ein neuerer Tag schlägt jeden Vorrang",
+    b.posten.map((p) => p.datei),
+    ["y-neuer.md", "z-nah.md", "c-mitte.md", "a-fern.md", "b-ohne.md"],
+  );
+  gleich("vorrang wird als Zahl gelesen", b.posten.find((p) => p.datei === "c-mitte.md")?.vorrang, 2);
+  gleich("ohne Feld kein vorrang", "vorrang" in (b.posten.find((p) => p.datei === "b-ohne.md") ?? {}), false);
+  // Zweistellig: Als Zeichenkette verglichen käme „10" vor „9".
+  const z = lies([V("a.md", "2026-10-04", 10), V("b.md", "2026-10-04", 9)]);
+  gleich("vorrang 9 vor 10 (Zahl, nicht Zeichenkette)", z.posten.map((p) => p.datei), ["b.md", "a.md"]);
+}
+
+{
   // README und Dateien mit `_` sind keine Posten, ebensowenig Nicht-Markdown.
   const b = lies([
     { name: "README.md", text: "# Posten\n\nKein Kopf." },
@@ -120,6 +148,8 @@ const KAPUTT: [string, string, RegExp][] = [
   ["falscher-tag.md", "---\nmarke: frei\ntitel: X\nangelegt: 7.10.2026\n---\n\nText.\n", /angelegt/],
   ["ohne-kopf.md", "`frei` **Alter Stil.** Ein Absatz wie früher in OFFENE-PUNKTE.\n", /kein Kopf/],
   ["offener-kopf.md", "---\nmarke: frei\ntitel: X\nangelegt: 2026-10-01\n\nText.\n", /schließendes/],
+  ["vorrang-null.md", "---\nmarke: frei\ntitel: X\nangelegt: 2026-10-01\nvorrang: 0\n---\n\nText.\n", /vorrang/],
+  ["vorrang-text.md", "---\nmarke: frei\ntitel: X\nangelegt: 2026-10-01\nvorrang: hoch\n---\n\nText.\n", /vorrang/],
   ["ohne-auftrag.md", "---\nmarke: frei\ntitel: X\nangelegt: 2026-10-01\n---\n\n", /kein Auftragstext/],
 ];
 for (const [name, text, grund] of KAPUTT) {

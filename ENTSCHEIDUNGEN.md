@@ -18,6 +18,24 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-07 — Postendateien: `vorrang` innerhalb eines Tages
+
+**Entscheidung Markus**, nach Vorschlag (a) gegen (b). Alle Posten eines
+Suchlaufs tragen denselben `angelegt`-Tag. Damit ordnete sie der
+Dateiname statt der Priorität „nahe Termine vor fernen", die vorher in
+der Reihenfolge der Absätze steckte. Neu ist das optionale Feld
+`vorrang` (ganze Zahl ab 1), der zweite Sortierschlüssel nach
+`angelegt`. Posten ohne das Feld kommen nach allen mit, und ein neuerer
+Tag schlägt jeden Vorrang.
+*Verworfen:* (b) eine Ziffer vor dem Dateinamen. Das geht ohne Code,
+aber der Dateiname ist die Identität des Postens für `--belegt`, und
+wer umsortiert, benennt um.
+*Belege:* `test-warteschlange.ts` 103 Prüfungen. Sechs Mutationen, alle
+gefallen: vorrang ignoriert (2), ohne Feld zuerst (1 bzw. 2), als
+Zeichenkette verglichen (1, „10" vor „9"), vorrang ungeprüft (6), Tag
+nicht mehr vorrangig (3).
+
+
 ## 2026-10-07 — Ein Posten, eine Datei; Konfliktvorschau vor jedem PR
 
 **Entscheidung Markus**, nach Vorschlag. Anlass: Seit `main` geschützt ist

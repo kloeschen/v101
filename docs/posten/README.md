@@ -35,8 +35,13 @@ Bauen zu achten ist.
   Titel mit Doppelpunkt in Anführungszeichen.
 - **`angelegt`** — der Tag, an dem der Posten in dieser Form entstand
   (`JJJJ-MM-TT`). Er bestimmt die Reihenfolge: neuester zuerst, bei
-  gleichem Tag nach Dateiname. Ein zurückgegebener Rest bekommt den Tag
-  der Rückgabe.
+  gleichem Tag nach `vorrang`, dann nach Dateiname. Ein zurückgegebener
+  Rest bekommt den Tag der Rückgabe.
+- **`vorrang`** — optional, eine ganze Zahl ab 1. Ordnet Posten
+  **desselben Tages**: 1 zuerst, Posten ohne das Feld nach allen mit.
+  Der Suchlauf vergibt es fortlaufend nach seiner Priorität (nahe Termine
+  vor fernen), damit sie nicht der Dateiname ordnet. Ein Posten von einem
+  neueren Tag steht trotzdem immer vorn.
 
 Keine Voreinstellung: Eine Datei ohne Marke, Titel, Tag oder Auftragstext
 lässt `npm run warteschlange:check` scheitern, und der hängt in `verify`.
