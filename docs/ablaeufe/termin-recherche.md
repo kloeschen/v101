@@ -334,6 +334,34 @@ Fehler verursacht oder beinahe verursacht.
   ab. Ohne Quelle des Hauses oder des Ticketverkaufs trägt nur
   Bandsintown die Uhrzeit, und das reicht nicht: Termin mit Befund
   zurückgeben.
+- **Terminlisten ohne Jahr, Jahr nur im Kalenderexport** (HsD /
+  Museumskeller Erfurt, 2026-10-08). Liste und Detailseite nennen nur
+  „20.03." und „Sa / 20:00"; das Jahr steht allein im iCal-Export des
+  Termins (`ical.php?event_id=…`, Link am Termin in der Liste). Dieser
+  Export markiert die Ortszeit fälschlich als UTC (`DTSTART:…T200000Z`,
+  Kopf „PRODID:-//YourWebsite//EN"): Das Jahr daraus übernehmen, die
+  Uhrzeit von der sichtbaren Angabe. Wochentag gegenrechnen.
+- **Häuser mit „The Events Calendar" haben eine Schnittstelle.**
+  Hot Jazz Club Münster und Riders Café Lübeck (2026-10-08) liefern unter
+  `/wp-json/tribe/events/v1/events?search=<Name>&start_date=<heute>`
+  Datum, Uhrzeit, Zeitzone und Preisfeld als JSON — schneller als die
+  Programmseiten, die nur einen Ausschnitt zeigen. Die Detailseite trotzdem
+  öffnen: Beim Riders Café nennt die Kalenderzeile „20:00 – 23:00", der
+  Text darunter „Einlass 20:00 Beginn 21:00". `beginn` folgt der
+  ausdrücklichen Angabe, der Widerspruch gehört in den Text. Die
+  Archivseiten unter `/project/<band>/` beim Hot Jazz Club sind frühere
+  Auftritte, nicht der kommende Termin.
+- **Fremdveranstaltungen fehlen im Kalender des Hauses.** Das Konzert
+  von Boppin'B im Artheater Köln (17.04.2027, Veranstalter GoldMucke)
+  stand am 2026-10-08 nur auf der Ticketseite des Veranstalters bei
+  rausgegangen, nicht im Kalender des Hauses (alle fünf Seiten
+  `artheater.de/?page=N` durchsucht). Die Ticketseite des Veranstalters
+  trägt dann Uhrzeit, Preis und Veranstalter; im Text vermerken, dass das
+  Haus den Abend nicht führt.
+- **Gleicher Name, anderes Haus.** `die-scheuer.de` ist ein Restaurant in
+  Hofheim am Taunus, nicht die Scheuer in Idstein-Wörsdorf, für die
+  keine eigene Website zu finden war (2026-10-08). Vor jeder Hausquelle
+  Ort und Adresse auf der Seite selbst prüfen, nicht nur den Namen.
 - **boogie.at-Detailseiten sind teils Sammelseiten.** Wiederkehrende
   Termine eines Vereins zeigen in der Liste alle auf dieselbe Adresse
   (Boogie Lions: `/event/boogie-party-56` trägt sechs Termine, Boogie Mix
@@ -446,7 +474,10 @@ Fehler verursacht oder beinahe verursacht.
 - **Ankündigungen selbst formulieren**, keine Sätze des Veranstalters
   übernehmen.
 - **Abrufhürden:** Reservix antwortet Skripten mit 403, Wikimedia drosselt
-  ohne User-Agent. Anderes Abrufwerkzeug nehmen, nicht die Quelle
+  ohne User-Agent. Antwortet die Wikimedia-API trotz User-Agent mit 429, liefert
+  `de.wikipedia.org/w/index.php?title=<Titel>&action=raw` den Rohtext
+  des Artikels (2026-10-08); Eventim, koelnticket und ticket.io brachen
+  aus der Cloud ab oder zeigten eine Sicherheitsabfrage. Anderes Abrufwerkzeug nehmen, nicht die Quelle
   weglassen.
 
 ## Auswertung nach vier Wochen
