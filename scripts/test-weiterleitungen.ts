@@ -164,6 +164,7 @@ const echt = automatischeRegeln(echtAlt, echtEintraege, (p) => frei.has(p));
 pruefe("Altliste ist gelesen (mindestens 1000 Pfade)", echtAlt.length >= 1000, String(echtAlt.length));
 gleich("echte Daten, alle Einträge als freigegeben gedacht: die erwarteten automatischen 301", alsZeilen(gesamt), [
   "/c/bleistiftrock → /lexikon/bleistiftrock/",
+  "/c/corsage → /lexikon/corsage/",
   "/c/huete/pork-pie → /lexikon/pork-pie/",
   "/c/kleider/etuikleid → /lexikon/etuikleid/",
   "/c/korsett → /lexikon/korsett/",
