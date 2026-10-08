@@ -118,13 +118,8 @@ Rockabilly-Szene?" auf 23 — die meistgestellte Frage zum Look
 dem 2026-10-02 als Entwurf angelegt (`lexikon/pompadour`,
 `lexikon/ducktail`, `lexikon/flat-top`) und hier gestrichen. Rock- und
 Kleidformen, Genres und Schuhe hat der Suchlauf am 2026-10-04 nach oben
-gezogen.
-- *Wäsche:* Corsage (Korsett, Bustier, die Ansteckblume), Hüfthalter
-  (vorher gegen die Aliases von `strapsguertel` prüfen), Nahtstrümpfe.
-- *Instrument und Klang:* Slap-Bass (Slap am E-Bass; gegen `kontrabass`
-  abgrenzen, seit dem 2026-09-29 ein Entwurf), Slapback-Echo (Hall, Tape
-  Delay).
-- *Autos:* Pinstriping (Nadelstreifen am Stoff), Lowrider, Lead Sled.
+gezogen. Wäsche, Instrument und Klang und Autos hat der Suchlauf am
+2026-10-08 nach oben gezogen (`docs/posten/lexikon-buendel-*.md`).
 - *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an
   `lexikon/teddy-boy` anschließen (Entwurf seit dem 2026-10-02).
 Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
