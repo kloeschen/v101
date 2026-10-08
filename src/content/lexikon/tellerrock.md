@@ -2,9 +2,9 @@
 name: Tellerrock
 aliases: [Circle Skirt]
 kurzbeschreibung: Ein Tellerrock ist ein sehr weiter Rock, dessen Stoff ausgebreitet einen vollen Kreis ergibt; getragen wird er oft über einem Petticoat, der ihm zusätzliches Volumen gibt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-08
 autor: markus
 kategorie: mode
 bezeichnungDe: Tellerrock

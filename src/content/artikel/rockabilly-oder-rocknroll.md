@@ -2,9 +2,9 @@
 name: "Rockabilly oder Rock'n'Roll? Was die beiden unterscheidet"
 aliases: [Unterschied Rockabilly und Rock'n'Roll, Rockabilly oder Rock'n'Roll]
 kurzbeschreibung: Rockabilly ist eine Spielart des Rock'n'Roll, nämlich die country-geprägte aus den Südstaaten der USA, in ihrer Frühphase ohne Schlagzeug gespielt; Rock'n'Roll ist der Sammelbegriff für mehrere regionale Musikstile der 1950er Jahre, zu denen sie gehört.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-03
-geprueftAm: 2026-10-03
+geprueftAm: 2026-10-08
 autor: markus
 typ: vergleich
 saeule: musik

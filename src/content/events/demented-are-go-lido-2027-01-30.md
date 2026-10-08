@@ -2,9 +2,9 @@
 name: Demented Are Go im Lido
 aliases: [Demented Are Go Berlin 2027, Demented Are Go Lido]
 kurzbeschreibung: Konzert der walisischen Psychobilly-Band Demented Are Go am Samstag, 30. Januar 2027, im Lido in Berlin-Kreuzberg, präsentiert von 36 Concerts.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-05
-geprueftAm: 2026-10-05
+geprueftAm: 2026-10-08
 autor: markus
 typ: konzert
 beginn: 2027-01-30T20:00:00+01:00
