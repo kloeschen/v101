@@ -367,6 +367,15 @@ Fehler verursacht oder beinahe verursacht.
   aber da und vollständig. Fehlt ein Termin, den die Vereinsseite nennt,
   in der Liste: die benachbarten Detail-URLs (`…-54`, `…-55`) öffnen,
   bevor er als unbestätigt zurückgeht.
+- **boogie.at: eine Absage ändert die Adresse.** Am 2026-10-08 standen
+  die November Jive Night (06.11.2026) und die Christmas Boogie & Swing
+  Night (05.12.2026) im Gasthaus Keferfeld als „(abgesagt)" in der
+  Liste, unter neuen Adressen mit der Endung `-abgesagt`; die alten
+  Detailseiten, die beide Einträge als einzige Quelle führen, antworten
+  mit 404. Eine Absage zeigt sich also nicht als Änderung der bekannten
+  Seite, sondern als toter Link plus neuer Titel. Der Suchlauf gleicht
+  die boogie.at-Liste deshalb auch gegen die Termine im Register ab;
+  `links:extern` meldet den toten Link, aber nicht die Absage.
 - **boogie.at: „Person/Organisation" kann der DJ sein.** Bei der Boogie
   Party im Mostlandhof Purgstall (05.05.2027) steht dort „DJ. K.", der
   Flyer nennt als Veranstalter die „Sport Union (Sektion Boogie Woogie)"
