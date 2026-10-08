@@ -1,7 +1,7 @@
 ---
 name: November Jive Night im Gasthaus Keferfeld 2026
 aliases: [November Jive Night 2026, November Jive Night Linz, Jive Night GH Keferfeld November 2026]
-kurzbeschreibung: Tanzabend mit Jive, Boogie und Swing am Freitag, 6. November 2026, ab 20 Uhr im Gasthaus Keferfeld in Linz, mit DJ Daddy C; Eintritt gegen freiwillige Unterstützung.
+kurzbeschreibung: Abgesagt — der für Freitag, 6. November 2026, ab 20 Uhr angekündigte Tanzabend mit Jive, Boogie und Swing im Gasthaus Keferfeld in Linz mit DJ Daddy C findet laut boogie.at nicht statt.
 status: veroeffentlicht
 erstelltAm: 2026-10-02
 geprueftAm: 2026-10-02
@@ -12,10 +12,26 @@ ort: gasthaus-keferfeld-linz
 region: oberoesterreich
 djs: [DJ Daddy C]
 eintritt: frei
-durchfuehrung: geplant
+durchfuehrung: abgesagt
+durchfuehrungHinweis: Laut Szenekalender boogie.at abgesagt; einen Grund nennt die Ankündigung nicht.
 links:
-  website: https://boogie.at/event/november-jive-night
+  website: https://boogie.at/event/november-jive-night-abgesagt
 redaktionsnotiz: >-
+  ABGESAGT (2026-10-08, auf Hinweis des Suchlaufs vom selben Tag): Die
+  bisherige Detailseite https://boogie.at/event/november-jive-night antwortet mit "Seite nicht gefunden 404".
+  boogie.at fuehrt den Abend jetzt unter https://boogie.at/event/november-jive-night-abgesagt als "November Jive Night (abgesagt)",
+  Datumszeile "Fr., 06.11.2026 - 20:00", ohne Ort, ohne Beschreibung und
+  ohne Grund. Die Personenseite von DJ Daddy C auf boogie.at (abgerufen
+  2026-10-08) listet den Abend nicht mehr, nur noch einen Termin im
+  Harlekin Enns 2027; die Seite des Gasthauses fuehrt weiterhin nur die
+  Halloweenparty am 31.10. Eine Bestaetigung durch den Veranstalter
+  selbst gibt es nicht, weil es keine eigene Seite gibt; boogie.at war
+  von Anfang an die einzige Quelle, und dieselbe Quelle meldet jetzt die
+  Absage. `durchfuehrung: abgesagt`, der Hinweis sagt, dass kein Grund
+  genannt ist. `links.website` zeigt auf die neue Adresse; `durchfuehrung`
+  und `links` sind aus den Feldern der alten Quelle genommen, weil sie
+  dort nicht mehr stimmen. Der Text bleibt als Beschreibung des
+  angekuendigten Abends stehen, in der Vergangenheitsform.
   EINZIGE QUELLE boogie.at (abgerufen 2026-10-02). Die Detailseite ist
   eine Einzelseite, keine Sammelseite: Datumszeile "Fr., 06.11.2026 -
   20:00", Ort "Gasthaus Keferfeld, Landwiedstrasse 65, 4020 Linz", im
@@ -64,7 +80,12 @@ quellen:
   - url: https://boogie.at/event/november-jive-night
     titel: November Jive Night (BOOGIE.at)
     abgerufenAm: 2026-10-02
-    felder: [beginn, ort, djs, eintritt, name, aliases, kurzbeschreibung, links, durchfuehrung, body:termin, body:eintritt, body:musik]
+    felder: [beginn, ort, djs, eintritt, name, aliases, body:termin, body:eintritt, body:musik]
+    art: aggregator
+  - url: https://boogie.at/event/november-jive-night-abgesagt
+    titel: November Jive Night (abgesagt) (BOOGIE.at)
+    abgerufenAm: 2026-10-08
+    felder: [durchfuehrung, durchfuehrungHinweis, kurzbeschreibung, links, body:absage]
     art: aggregator
   - url: https://boogie.at/person/dj-daddy-c
     titel: DJ Daddy C (BOOGIE.at)
@@ -73,16 +94,20 @@ quellen:
     art: aggregator
 ---
 
-Die November Jive Night ist ein Tanzabend am Freitag, dem 6. November 2026, im [Gasthaus Keferfeld](/locations/gasthaus-keferfeld-linz/) in Linz. Einlass ist um 19 Uhr, Beginn um 20 Uhr, auflegen wird DJ Daddy C; einen festen Eintritt gibt es nicht, gebeten wird um freiwillige Unterstützung.
+Die November Jive Night ist ein Tanzabend im [Gasthaus Keferfeld](/locations/gasthaus-keferfeld-linz/) in Linz, der für Freitag, den 6. November 2026, angekündigt war und **abgesagt** ist. Angekündigt waren Einlass um 19 Uhr, Beginn um 20 Uhr und DJ Daddy C; statt eines festen Eintritts war um freiwillige Unterstützung gebeten.
+
+## Die Absage der November Jive Night
+
+Der Szenekalender boogie.at führt den Abend spätestens seit dem 8. Oktober 2026 mit dem Zusatz „abgesagt“, ohne Ort und ohne Beschreibung. Einen Grund nennt er nicht, und eine zweite Quelle zur Absage gibt es nicht: Eine eigene Seite des Veranstalters existiert nicht, und das Gasthaus hatte den Abend nie auf seiner Veranstaltungsseite. Auf seiner Profilseite im selben Kalender führt DJ Daddy C den Abend nicht mehr.
 
 ## Der Termin der November Jive Night
 
-Datum, Uhrzeit und Ort stehen im Szenekalender boogie.at, in der Datumszeile und im Ankündigungstext gleichlautend. Die Ankündigung hebt eigens hervor, dass ausnahmsweise an einem Freitag getanzt wird. Eine zweite Quelle gibt es nicht: Das Gasthaus führt den Abend auf seiner Veranstaltungsseite nicht, und eine eigene Seite des DJ war nicht zu finden. Ein Ende nennt die Ankündigung nicht.
+Datum, Uhrzeit und Ort standen im Szenekalender boogie.at, in der Datumszeile und im Ankündigungstext gleichlautend. Die Ankündigung hob eigens hervor, dass ausnahmsweise an einem Freitag getanzt werden sollte. Eine zweite Quelle gibt es nicht: Das Gasthaus führt den Abend auf seiner Veranstaltungsseite nicht, und eine eigene Seite des DJ war nicht zu finden. Ein Ende nannte die Ankündigung nicht.
 
 ## Eintritt zur November Jive Night
 
-Statt eines Eintrittspreises nennt die Ankündigung eine freiwillige Unterstützung. Einen Betrag dafür gibt sie nicht vor.
+Statt eines Eintrittspreises nannte die Ankündigung eine freiwillige Unterstützung. Einen Betrag dafür gab sie nicht vor.
 
 ## Musik bei der November Jive Night
 
-Angekündigt ist eine Party für Jive, Boogie, Swing, Rock'n'Roll und Blues, der sich für West Coast Swing eignet, dazu ausgewählte Partyklassiker. Laut seinem Profil im selben Kalender legt DJ Daddy C neben Boogie auch für Balboa, [Lindy Hop](/lexikon/lindy-hop/), West Coast Swing und weitere Paartänze auf und gibt Boogie-Training. Im Dezember folgt im selben Haus die [Christmas Boogie & Swing Night](/events/christmas-boogie-swing-night-keferfeld-2026-12-05/), ebenfalls mit DJ Daddy C. Linz liegt in [Oberösterreich](/regionen/oberoesterreich/).
+Angekündigt war eine Party für Jive, Boogie, Swing, Rock'n'Roll und Blues, der sich für West Coast Swing eignet, dazu ausgewählte Partyklassiker. Laut seinem Profil im selben Kalender legt DJ Daddy C neben Boogie auch für Balboa, [Lindy Hop](/lexikon/lindy-hop/), West Coast Swing und weitere Paartänze auf und gibt Boogie-Training. Auch die für Dezember im selben Haus angekündigte [Christmas Boogie & Swing Night](/events/christmas-boogie-swing-night-keferfeld-2026-12-05/) mit DJ Daddy C ist abgesagt. Linz liegt in [Oberösterreich](/regionen/oberoesterreich/).

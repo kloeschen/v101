@@ -1,6 +1,6 @@
 ---
 marke: frei
-titel: "Tanztermine: `genres` nachtragen (26 Termine)"
+titel: "Tanztermine: `genres` nachtragen (24 Termine)"
 angelegt: 2026-10-03
 ---
 
@@ -18,9 +18,7 @@ Quelle: Hippmann Wels und Regau (`big-boogie-swing-party-hippmann-wels-2026-11-1
 `…-2027-01-09`, `…-2027-02-20`, `…-2027-03-06`, `…-2027-05-01`);
 Boogie-Party Sonntagnachmittag (`…-2026-10-31`, `…-2026-11-21`); Mödling
 (`boogieball-stadtgalerie-moedling-2026-11-13`,
-`rockn-boogie-tanzparty-moedling-2026-10-16`); Keferfeld Linz
-(`christmas-boogie-swing-night-keferfeld-2026-12-05`,
-`november-jive-night-keferfeld-2026-11-06`); Gmundner Boogie Party
+`rockn-boogie-tanzparty-moedling-2026-10-16`); Gmundner Boogie Party
 (`gmundner-boogie-party-eberstalzell-2027-06-05`, `…-roitham-2026-10-24`,
 `…-roitham-2027-04-03`, `…-roitham-2027-10-23`,
 `gmundner-silvester-boogie-party-fischlham-2026-12-31`); Rock Dock Teddys
@@ -37,3 +35,6 @@ bekommt `genres` in `felder`, die Redaktionsnotiz das Zitat. Ein Tanz
 ohne Lexikoneintrag (Discofox, West Coast Swing, Balboa) bleibt im Text.
 Bei Bedarf in zwei PRs teilen; geändert wird Freigegebenes, also wartet
 jeder PR auf Markus.
+
+Die beiden Keferfeld-Abende (06.11. und 05.12.2026) sind seit dem
+2026-10-08 abgesagt und aus der Liste genommen.
