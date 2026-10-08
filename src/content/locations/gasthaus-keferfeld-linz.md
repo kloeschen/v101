@@ -63,6 +63,11 @@ quellen:
     abgerufenAm: 2026-10-02
     felder: [aliases, kurzbeschreibung, body:programm]
     art: aggregator
+  - url: https://boogie.at/event/november-jive-night-abgesagt
+    titel: November Jive Night (abgesagt) (BOOGIE.at)
+    abgerufenAm: 2026-10-08
+    felder: [body:programm]
+    art: aggregator
   - url: https://de.wikipedia.org/wiki/Linz
     titel: Linz (Wikipedia)
     abgerufenAm: 2026-10-02
@@ -78,4 +83,4 @@ Das Haus beschreibt sich selbst als traditionelles Linzer Gasthaus. Laut Oberös
 
 ## Programm im Gasthaus Keferfeld
 
-Im Register stehen die [November Jive Night am 6. November 2026](/events/november-jive-night-keferfeld-2026-11-06/) und die [Christmas Boogie & Swing Night am 5. Dezember 2026](/events/christmas-boogie-swing-night-keferfeld-2026-12-05/), beide mit DJ Daddy C. Das Gasthaus liegt in [Oberösterreich](/regionen/oberoesterreich/).
+Im Register stehen die [November Jive Night am 6. November 2026](/events/november-jive-night-keferfeld-2026-11-06/) und die [Christmas Boogie & Swing Night am 5. Dezember 2026](/events/christmas-boogie-swing-night-keferfeld-2026-12-05/), beide mit DJ Daddy C. Laut boogie.at sind beide Abende abgesagt (Stand 8. Oktober 2026). Das Gasthaus liegt in [Oberösterreich](/regionen/oberoesterreich/).
