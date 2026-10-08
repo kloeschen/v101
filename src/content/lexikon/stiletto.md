@@ -2,9 +2,9 @@
 name: Stiletto
 aliases: [Stilettoabsatz, Pfennigabsatz, Stiletto Heel]
 kurzbeschreibung: Ein Stiletto ist ein hoher, sehr schlanker und spitz zulaufender Schuhabsatz, im Deutschen auch Pfennigabsatz; übertragen heißt so der ganze Damenschuh mit diesem Absatz, der in den 1950er Jahren in Mode kam.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 kategorie: mode
 bezeichnungDe: Pfennigabsatz

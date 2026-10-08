@@ -2,9 +2,9 @@
 name: Tanzschuh-Party an der Pielach 2027
 aliases: [Summer Tanzschuhparty an der Pielach 2027, Tanzschuh-Party Aufriss August 2027, Tanzschuhparty Hofstetten 21.08.2027]
 kurzbeschreibung: Tanzabend mit Boogie Woogie und Rock'n'Roll am Samstag, 21. August 2027, ab 20:00 Uhr auf der Pielachtanzterrasse des Aufriss Mainburg in Hofstetten, mit DJ Klaus; einen Eintrittspreis nennt bisher keine Quelle.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 reihe: tanzschuh-party-aufriss

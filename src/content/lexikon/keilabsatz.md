@@ -2,9 +2,9 @@
 name: Keilabsatz
 aliases: [Wedgeabsatz, Wedge Heel, Wedges]
 kurzbeschreibung: Ein Keilabsatz ist ein Absatz, der mit der Sohle ein Stück bildet und als Keil den Raum unter dem Fußgewölbe füllt, nach hinten ansteigend; bekannt aus den Korksohlen der späten 1930er und 1940er Jahre.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 kategorie: mode
 bezeichnungDe: Keilabsatz

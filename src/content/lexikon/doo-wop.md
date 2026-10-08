@@ -52,7 +52,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Doo Wop ist ein Vokalstil des Rhythm and Blues, der auf mehrstimmigem Gruppengesang beruht und mit wenig oder gar keiner Instrumentierung auskommt. Er entstand Ende der 1940er Jahre in afroamerikanischen Stadtvierteln der USA und bestimmte einen erheblichen Teil der amerikanischen Charts der 1950er Jahre. Sein Name kam erst auf, als die Musik ihren Höhepunkt bereits hinter sich hatte.
+Doo Wop ist ein Vokalstil des [Rhythm and Blues](/lexikon/rhythm-and-blues/), der auf mehrstimmigem Gruppengesang beruht und mit wenig oder gar keiner Instrumentierung auskommt. Er entstand Ende der 1940er Jahre in afroamerikanischen Stadtvierteln der USA und bestimmte einen erheblichen Teil der amerikanischen Charts der 1950er Jahre. Sein Name kam erst auf, als die Musik ihren Höhepunkt bereits hinter sich hatte.
 
 ## Merkmale von Doo Wop
 

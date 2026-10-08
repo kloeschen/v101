@@ -2,9 +2,9 @@
 name: Aufriss Mainburg
 aliases: [Aufriss, Tanzlokal Aufriss, Aufriss – Das Eventlokal in NÖ, Aufriss Mainburg - das Eventlokal im Pielachtal, Pielachtanzterrasse, Aufriss Hofstetten]
 kurzbeschreibung: Das Aufriss Mainburg ist ein Eventlokal mit Tanzbar in der Mainburgstraße 8 in Hofstetten im Pielachtal, Niederösterreich, in dem regelmäßig Tanzschuh-Partys mit Boogie Woogie und Rock'n'Roll stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 typ: sonstiges
 adresse:

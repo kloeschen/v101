@@ -2,9 +2,9 @@
 name: Jukebox Christmas Party-Night 2026
 aliases: [Jukebox Christmas Party Night 2026, Jukebox Christmas Party-Night Matzendorf, Simmatthi Christmas Party 2026]
 kurzbeschreibung: Weihnachtliche Tanzparty im Stil der 1950er und 1960er Jahre am Samstag, 19. Dezember 2026, ab 19:30 Uhr im Gemeindezentrum Matzendorf, live mit den Jukebox Bandits und den DJs Matthias und DomyLee; Vorverkauf 29 Euro inklusive Tischreservierung, Abendkasse 35 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 reihe: jukebox-christmas-party-night

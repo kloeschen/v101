@@ -83,7 +83,7 @@ Datum und Uhrzeit stimmen in beiden Quellen überein: Das Haus nennt auf seiner 
 
 ## Die Musik von Kitty, Daisy & Lewis
 
-Das Haus beschreibt die drei Geschwister aus dem Londoner Stadtteil Kentish Town als Band, die Swing, Blues, Country, Bluegrass und [Rock'n'Roll](/lexikon/rocknroll/) mit Aufnahmetechnik aus der Zeit spielt, und kündigt die Tour zu ihrem ersten neuen Album seit neun Jahren an. Der Gig Guide ordnet den Abend außerdem dem [Rockabilly](/lexikon/rockabilly/), dem Rhythm and Blues und der Roots-Musik zu. Kitty, Daisy & Lewis stehen in diesem Register als Name im Line-up und nicht als eigener Eintrag.
+Das Haus beschreibt die drei Geschwister aus dem Londoner Stadtteil Kentish Town als Band, die Swing, Blues, Country, Bluegrass und [Rock'n'Roll](/lexikon/rocknroll/) mit Aufnahmetechnik aus der Zeit spielt, und kündigt die Tour zu ihrem ersten neuen Album seit neun Jahren an. Der Gig Guide ordnet den Abend außerdem dem [Rockabilly](/lexikon/rockabilly/), dem [Rhythm and Blues](/lexikon/rhythm-and-blues/) und der Roots-Musik zu. Kitty, Daisy & Lewis stehen in diesem Register als Name im Line-up und nicht als eigener Eintrag.
 
 ## Einordnung des Konzerts in Berlin
 
