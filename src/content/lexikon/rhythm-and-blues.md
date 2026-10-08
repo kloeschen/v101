@@ -2,9 +2,9 @@
 name: Rhythm and Blues
 aliases: [Rhythm & Blues]
 kurzbeschreibung: Rhythm and Blues ist die populäre Musik der afroamerikanischen Bevölkerung der USA, die in den 1940er Jahren entstand, den Blues mit stark betontem Rhythmus zur Unterhaltung spielte und aus der der Rock'n'Roll hervorging.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 kategorie: genre
 bezeichnungEn: Rhythm and blues
@@ -110,4 +110,4 @@ Auch dazwischen hat der Begriff nach der englischen Wikipedia mehrfach die Bedeu
 
 Für die Szene, die dieses Register beschreibt, ist Rhythm and Blues die zweite große Wurzel neben der Countrymusik. Die deutsche Wikipedia beschreibt den [Rock'n'Roll](/lexikon/rocknroll/) als die von Weißen gespielte und produzierte Form des Rhythm and Blues. Die englische Wikipedia zitiert einen Artikel des Wall Street Journal von 1985, nach dem beide Begriffe bis etwa 1957 austauschbar verwendet wurden; den Nachweis dieses Artikels markiert sie selbst als unvollständig. Auch der [Doo-Wop](/lexikon/doo-wop/) hat nach der deutschen Wikipedia seine Wurzeln im Rhythm and Blues.
 
-Im [Rockabilly](/lexikon/rockabilly/) trifft der Rhythm and Blues auf die ländliche Musik der weißen Südstaatler: Der Duden beschreibt Rockabilly als Verbindung von Rhythm and Blues und Hillbillymusic.
+Im [Rockabilly](/lexikon/rockabilly/) trifft der Rhythm and Blues auf die ländliche Musik der weißen Südstaatler: Der Duden beschreibt Rockabilly als Verbindung von Rhythm and Blues und [Hillbillymusic](/lexikon/hillbilly/).

@@ -2,9 +2,9 @@
 name: Tanzschuh-Party im Aufriss, November 2027
 aliases: [Tanzschuh-Party Aufriss November 2027, Tanzschuhparty Hofstetten 20.11.2027, letzte Tanzschuhparty 2027]
 kurzbeschreibung: Boogie-Woogie-Tanzabend am Samstag, 20. November 2027, ab 19:30 Uhr im Aufriss Mainburg in Hofstetten im Pielachtal, mit DJ Klaus; einen Eintrittspreis nennt bisher keine Quelle.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 reihe: tanzschuh-party-aufriss

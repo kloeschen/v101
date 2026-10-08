@@ -2,9 +2,9 @@
 name: Mostlandhof
 aliases: [Mostlandhof Purgstall, Gasthof Mostlandhof, Mostlandhof Schauboden]
 kurzbeschreibung: Der Mostlandhof ist ein Gasthof mit Zimmern in Schauboden bei Purgstall an der Erlauf im Mostviertel, Niederösterreich, in dem eine Boogie Party der Sport Union stattfindet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 typ: sonstiges
 adresse:

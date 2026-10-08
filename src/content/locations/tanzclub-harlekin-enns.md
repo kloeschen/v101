@@ -2,9 +2,9 @@
 name: Tanzclub Harlekin
 aliases: [Tanzclub Harlekin Enns, Tanzclub HARLEKIN, Harlekin Enns, Harlekin]
 kurzbeschreibung: Der Tanzclub Harlekin in Enns ist ein Verein mit eigenem Tanzlokal in der Dragoner-Straße, in dem er Tanzabende, Kurse und Partys wie „Boogie trifft Schlager" ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 typ: club
 adresse:

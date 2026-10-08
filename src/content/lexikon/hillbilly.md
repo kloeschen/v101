@@ -2,9 +2,9 @@
 name: Hillbilly
 aliases: [Hillbillymusic, Hillbilly-Musik]
 kurzbeschreibung: Hillbilly ist die frühere Bezeichnung der amerikanischen Musikindustrie für die ländliche Musik weißer Südstaatler, ab 1925 im Gebrauch und bis in die 1950er Jahre der gängige Name für die Musik, die heute Country heißt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 kategorie: genre
 bezeichnungEn: Hillbilly music

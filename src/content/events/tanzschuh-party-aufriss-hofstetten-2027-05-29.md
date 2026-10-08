@@ -2,9 +2,9 @@
 name: Tanzschuh-Party im Aufriss, Mai 2027
 aliases: [Tanzschuh-Party Aufriss Mai 2027, Tanzschuhparty Hofstetten 29.05.2027, Tanzschuh-Party Frühjahr 2027]
 kurzbeschreibung: Tanzabend mit Boogie Woogie und Rock'n'Roll am Samstag, 29. Mai 2027, ab 19:30 Uhr im Aufriss Mainburg in Hofstetten im Pielachtal, mit DJ Klaus; einen Eintrittspreis nennt bisher keine Quelle.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 reihe: tanzschuh-party-aufriss

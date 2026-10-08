@@ -2,9 +2,9 @@
 name: Saddle Shoes
 aliases: [Saddle Shoe, Saddle Oxford]
 kurzbeschreibung: Saddle Shoes sind flache, geschnürte Halbschuhe aus Leder mit glatter Spitze und einem sattelförmigen Querstück über dem Mittelfuß, meist weiß mit schwarzem, dunkelbraunem oder dunkelblauem Sattel.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 kategorie: mode
 bezeichnungEn: Saddle shoe

@@ -83,7 +83,7 @@ Angekündigt ist der Abend allein im Berliner Gig Guide von Rockin' Wildcat. Das
 
 ## Die Musik der Killer Dillers
 
-Die Band beschreibt sich selbst als Berliner Formation für den Rhythm & Blues und Jive der Fünfziger, mit [Kontrabass](/lexikon/kontrabass/) und zwei Saxofonen, und spielt nach eigener Angabe ausdrücklich zum Paartanz. Der Gig Guide ordnet den Abend dem [Rock'n'Roll](/lexikon/rocknroll/) der Fünfziger und dem Jump & Jive zu — also der Spielart, die im Lexikon als [Jump Blues](/lexikon/jump-blues/) steht. Die Killer Dillers stehen in diesem Register als Name im Line-up und nicht als eigener Eintrag.
+Die Band beschreibt sich selbst als Berliner Formation für den [Rhythm & Blues](/lexikon/rhythm-and-blues/) und Jive der Fünfziger, mit [Kontrabass](/lexikon/kontrabass/) und zwei Saxofonen, und spielt nach eigener Angabe ausdrücklich zum Paartanz. Der Gig Guide ordnet den Abend dem [Rock'n'Roll](/lexikon/rocknroll/) der Fünfziger und dem Jump & Jive zu — also der Spielart, die im Lexikon als [Jump Blues](/lexikon/jump-blues/) steht. Die Killer Dillers stehen in diesem Register als Name im Line-up und nicht als eigener Eintrag.
 
 ## Einordnung des Konzerts in Berlin
 

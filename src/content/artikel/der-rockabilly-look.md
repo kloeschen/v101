@@ -207,7 +207,7 @@ Dass der Look heute lebt, ist eine Folge des Revivals. Nach der englischen Wikip
 
 Einen allgemeinen Dresscode der Szene belegt keine der geöffneten Quellen. Wo eine Veranstaltung einen verlangt, steht er in ihrer Ankündigung — die Stadtgalerie Mödling etwa schreibt für ihren Boogieball „30, 40, 50er Jahre oder Abendkleidung" vor. Bemerkenswert daran ist das Oder: Auch eine Veranstaltung mit Dresscode lässt hier Abendkleidung ohne Zeitbezug gelten.
 
-Wer tanzen will, kleidet sich ohnehin nach dem [Rock-'n'-Roll-Tanz](/lexikon/rocknroll-tanz/) und nicht nach dem Foto. Die Beratung von Peggy Sue Vintage hält für einen frechen Rockabilly-Look oder zum Boogie-Tanzen schlichte Sneaker oder Stoffturnschuhe für passend, abseits davon Pumps, Sandaletten, Ballerinas oder Wedges in jeder Absatzhöhe.
+Wer tanzen will, kleidet sich ohnehin nach dem [Rock-'n'-Roll-Tanz](/lexikon/rocknroll-tanz/) und nicht nach dem Foto. Die Beratung von Peggy Sue Vintage hält für einen frechen Rockabilly-Look oder zum Boogie-Tanzen schlichte Sneaker oder Stoffturnschuhe für passend, abseits davon Pumps, Sandaletten, Ballerinas oder [Wedges](/lexikon/keilabsatz/) in jeder Absatzhöhe.
 
 ## Das Klischee vom Rockabilly-Look
 

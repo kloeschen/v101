@@ -2,9 +2,9 @@
 name: Gemeindezentrum Matzendorf
 aliases: [Gemeindesaal Matzendorf-Hölles, Gemeindezentrum Matzendorf-Hölles, Gemeindezentrum Matzendorf Badener Straße]
 kurzbeschreibung: Das Gemeindezentrum Matzendorf in der Badenerstraße 19 in Matzendorf-Hölles im Bezirk Wiener Neustadt ist Sitz des Gemeindeamts und Saal für die Boogie-Abende des Vereins Simmatthi Boogie Woogie Halli Galli.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 typ: gemeindehaus
 adresse:

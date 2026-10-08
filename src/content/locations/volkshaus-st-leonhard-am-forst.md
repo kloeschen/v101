@@ -2,9 +2,9 @@
 name: Volkshaus St. Leonhard
 aliases: [Volkshaus, Volkshaus St. Leonhard am Forst, Volkshaus Sankt Leonhard]
 kurzbeschreibung: Das Volkshaus St. Leonhard ist ein Haus der Marktgemeinde St. Leonhard am Forst im Bezirk Melk in Niederösterreich, in der Loosdorfer Straße 15, in dem der Tanzsportverein The Fives seine Silvester Boogie Night ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 typ: gemeindehaus
 adresse:
