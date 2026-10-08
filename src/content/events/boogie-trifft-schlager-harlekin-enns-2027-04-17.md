@@ -2,9 +2,9 @@
 name: Boogie trifft Schlager in Enns, April 2027
 aliases: [Boogie trifft Schlager Harlekin April 2027, Boogie trifft Schlager 17.04.2027]
 kurzbeschreibung: Tanzabend am Samstag, 17. April 2027, ab 20 Uhr im Tanzclub Harlekin in Enns, mit DJ.K Boogie Klaus für Boogie Woogie und DJ Mike für Schlager und Discofox.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 reihe: harlekin-boogie-trifft-schlager

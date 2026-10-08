@@ -2,9 +2,9 @@
 name: Silvester Boogie Night 2026
 aliases: [Silvester Boogie Night St. Leonhard 2026, Fives Silvester 2026, Silvester Boogie Night der Fives]
 kurzbeschreibung: Silvester-Tanzabend des Tanzsportvereins The Fives am Donnerstag, 31. Dezember 2026, ab 19 Uhr im Volkshaus St. Leonhard am Forst, mit DJ Boogie Opa Franz; 40 Euro pro Person inklusive Buffet und Mitternachtssekt, Anmeldung bis 27. Dezember.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 reihe: silvester-boogie-night-fives

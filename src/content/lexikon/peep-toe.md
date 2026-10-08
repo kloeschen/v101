@@ -2,9 +2,9 @@
 name: Peep Toe
 aliases: [Peeptoe, Peeptoes, Peep-Toe-Schuh]
 kurzbeschreibung: Ein Peep Toe ist ein Damenschuh, meist ein Pumps, mit einer kleinen Öffnung an der Schuhspitze, durch die die Zehen nur andeutungsweise zu sehen sind; beliebt vor allem in den 1940er Jahren.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 kategorie: mode
 bezeichnungEn: Peep-toe shoe

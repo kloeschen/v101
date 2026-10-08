@@ -2,9 +2,9 @@
 name: Boogie Party im Mostlandhof 2027
 aliases: [Boogie Party Mostlandhof, Boogie Party Purgstall 05.05.2027, Boogie Party Sport Union Purgstall]
 kurzbeschreibung: Boogie-Tanzabend der Sport Union (Sektion Boogie Woogie) am Mittwoch, 5. Mai 2027, im Mostlandhof in Purgstall an der Erlauf, mit DJ Klaus; laut Flyer Einlass 18 Uhr, Beginn 19 Uhr, Eintritt 8 Euro.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-06
-geprueftAm: 2026-10-06
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 beginn: 2027-05-05T19:00:00+02:00

@@ -100,7 +100,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Rock'n'Roll ist ein Sammelbegriff für eine US-amerikanische Musikrichtung der 1950er und frühen 1960er Jahre und für das Lebensgefühl der Jugendkultur, die sich über sie verständigte. Britannica beschreibt die Musik als Verschmelzung von Country-Musik und Rhythm and Blues; die deutsche Wikipedia nennt sie einen „nicht klar umrissenen Begriff" und die Ursprungsform der Rockmusik. Das Wort bezeichnet außerdem einen Turniertanz — dieser Eintrag beschreibt die Musik.
+Rock'n'Roll ist ein Sammelbegriff für eine US-amerikanische Musikrichtung der 1950er und frühen 1960er Jahre und für das Lebensgefühl der Jugendkultur, die sich über sie verständigte. Britannica beschreibt die Musik als Verschmelzung von Country-Musik und [Rhythm and Blues](/lexikon/rhythm-and-blues/); die deutsche Wikipedia nennt sie einen „nicht klar umrissenen Begriff" und die Ursprungsform der Rockmusik. Das Wort bezeichnet außerdem einen Turniertanz — dieser Eintrag beschreibt die Musik.
 
 ## Merkmale des Rock'n'Roll
 

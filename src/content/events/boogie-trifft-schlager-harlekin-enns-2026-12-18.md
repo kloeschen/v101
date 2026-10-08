@@ -2,9 +2,9 @@
 name: Boogie trifft Schlager in Enns, Weihnachtsausgabe 2026
 aliases: [Boogie trifft Schlager und Discofox, Boogie trifft Schlager Weihnachts Edition, Boogie trifft Schlager Harlekin Dezember 2026]
 kurzbeschreibung: Tanzabend am Freitag, 18. Dezember 2026, ab 20 Uhr im Tanzclub Harlekin in Enns, mit DJ.K Boogie Klaus für Boogie Woogie und DJ Mike für Schlager und Discofox.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-07
-geprueftAm: 2026-10-07
+geprueftAm: 2026-10-08
 autor: markus
 typ: tanzabend
 reihe: harlekin-boogie-trifft-schlager
