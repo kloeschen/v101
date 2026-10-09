@@ -18,6 +18,40 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-09 — Lexikon-Vorrat aufgefüllt: sieben Bündel, 27 Begriffe
+
+**Entscheidung Markus**, nach Vorschlag. Anlass: Startschwelle 80
+Lexikonbegriffe; Stand 51 im Repo (48 veröffentlicht), 5 in der
+Warteschlange, im Vorrat nur noch „Halbstarke" — ohne Auswahl wäre bei 57
+Schluss gewesen.
+
+**Gemessen statt geschätzt**, drei Signale je Kandidat:
+1. Erwähnungen im Fließtext aller Einträge (dort greift der Autolink),
+   etwa Blues 46× in 26 Dateien (ohne die Vorkommen in „Rhythm and Blues"
+   und „Jump Blues"), Tolle 39×, Country 38×, Discofox 30×, „50er" 97× in
+   48 Dateien.
+2. Alte Pfade der früheren v101.de, die im Build heute 404 liefern
+   (`check-weiterleitungen`: 127 offene `/thema/…`-Pfade), etwa
+   `/thema/charleston`, `/thema/plateausohle`, `/jahrzehnt/50s`.
+3. Die PAA-Fragen vom 2026-10-01 und Abgrenzungen veröffentlichter
+   Einträge, die auf Begriffe ohne eigene Seite verweisen (Plateausohle,
+   Slingback, Kitten Heel, Budapester).
+
+**Gewählt:** Genre (Blues, Country, Skiffle, Big Band), Tanz (Discofox,
+West Coast Swing, Balboa, Charleston), Frisur (Tolle, Quiff, Victory
+Rolls, Pin Curls), Szene (Weekender, Greaser, Mods, Rockabella), Medium
+(Jukebox, Schellackplatte, Single, Pin-up-Magazin), Mode/Schuhe
+(Plateausohle, Slingback, Kitten Heel, Budapester), Epoche (Fifties,
+Wirtschaftswunder, Mid-Century Modern). Mit Halbstarke und der
+Warteschlange ergibt das 84.
+**Fifties:** angelegt, aber nur von Hand verlinkt (`NUR_VON_HAND`), aus
+demselben Grund wie „Vintage" — der Autolink würde „50er" fast überall
+setzen. Damit ist die offene Ermessensfrage aus dem Vorrat beantwortet.
+**Reserve, nicht gewählt:** Tattoo (die Kategorie ist leer, aber im
+Register kaum erwähnt) und Herrenmode. **Bewusst nicht:** Personen,
+Marken, Farb- und Adjektivpfade der alten Seite.
+
+
 ## 2026-10-07 — Postendateien: `vorrang` innerhalb eines Tages
 
 **Entscheidung Markus**, nach Vorschlag (a) gegen (b). Alle Posten eines
