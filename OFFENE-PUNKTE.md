@@ -103,7 +103,8 @@ Terminseite einsteigen.
 
 **Lexikon-Vorrat — der Suchlauf zieht von oben nach, sobald weniger als
 zwei Lexikon-Posten frei sind.** Recherchiert am 2026-09-29
-(Startschwelle: 80 Begriffe; Stand 23). Seit Weg A (2026-09-29) zieht der
+(Startschwelle: 80 Begriffe; Stand 2026-10-09: 51 im Repo, 5 in der
+Warteschlange, 28 hier, zusammen 84). Seit Weg A (2026-09-29) zieht der
 Suchlauf Bündel von oben nach unten nach, bis drei Lexikon-Posten frei
 sind, innerhalb der Obergrenze von zwölf (`npm run warteschlange:platz`,
 Ablauf in `docs/ablaeufe/termin-recherche.md`, Schritt 1a). Ein
@@ -122,10 +123,48 @@ gezogen. Wäsche, Instrument und Klang und Autos hat der Suchlauf am
 2026-10-08 nach oben gezogen (`docs/posten/lexikon-buendel-*.md`).
 - *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an
   `lexikon/teddy-boy` anschließen (Entwurf seit dem 2026-10-02).
-Bewusst nicht: Personen (`/thema/elvis`), Marken (`lindy-bop`),
-`/thema/country` (meinte Landhausmode). Ob `/jahrzehnt/50s` einen
-Epochen-Eintrag „Fifties" bekommt, ist eine Ermessensfrage (der Autolink
-würde „50er" sehr oft verlinken).
+
+Aufgefüllt am 2026-10-09 (Auswahl Markus, nach Vorschlag; Begründung und
+Messung in ENTSCHEIDUNGEN.md vom selben Tag). Die Zahl hinter einem
+Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
+setzt der Autolink später an.
+- *Genre:* Blues (gegen Rhythm and Blues und Jump Blues; 46×), Country
+  (gegen Hillbilly und Western Swing, nicht die Landhausmode des alten
+  Pfads `/thema/country`; 38×), Skiffle (gegen Rockabilly, Bezug zu den
+  Teddy Boys), Big Band (gegen Swing: Besetzung, nicht Stil).
+- *Tanz:* Discofox (gegen Boogie-Woogie als Tanz; 30× in Terminen),
+  West Coast Swing (gegen Lindy Hop; 11×), Balboa (gegen Lindy Hop),
+  Charleston (gegen Lindy Hop und die Mode der 20er; alter Pfad
+  `/thema/charleston`). Danach die Tanztermine prüfen, die diese Tänze im
+  Text nennen: `genres` dort nachtragen, wie im Posten
+  `tanztermine-genres-nachtragen`.
+- *Frisur:* Tolle (gegen Pompadour und Quiff — der häufigste
+  Verwechslungsfall; 39×), Quiff, Victory Rolls (gegen Pin Curls), Pin
+  Curls. An `lexikon/pompadour` und `artikel/rockabilly-frisuren`
+  anschließen.
+- *Szene:* Weekender (gegen Festival; auch Termintyp `weekender`; 18×),
+  Greaser (gegen Teddy Boy; 12×), Mods (gegen Rocker und gegen
+  Halbstarke), Rockabella (Selbstbezeichnung; nur anlegen, wenn eine
+  Quelle den Begriff erklärt, sonst mit Befund zurück).
+- *Medium:* Jukebox (gegen Musikbox als Möbel; Termin „Jukebox Christmas
+  Party"), Schellackplatte (gegen Vinyl), Single (gegen LP und EP),
+  Pin-up-Magazin (gegen `lexikon/pin-up`).
+- *Mode, Schuhe:* Plateausohle (gegen `lexikon/keilabsatz`; alter Pfad
+  `/thema/plateausohle`), Slingback (gegen `lexikon/peep-toe`), Kitten
+  Heel (gegen `lexikon/stiletto`), Budapester (gegen
+  `lexikon/saddle-shoes`). Alle vier stehen schon als Abgrenzung in
+  veröffentlichten Einträgen, ohne eigene Seite.
+- *Epoche:* Fifties (gegen „50er" als bloße Jahreszahl; alter Pfad
+  `/jahrzehnt/50s`), Wirtschaftswunder, Mid-Century Modern (gegen
+  Vintage). **Fifties nur von Hand verlinken:** „50er" steht 97-mal in
+  48 Dateien. Beim Bauen den Slug in `NUR_VON_HAND`
+  (`src/lib/links.ts`) eintragen, mit Negativtest wie bei „Vintage".
+
+Bewusst nicht: Personen (`/thema/elvis`, Bettie Page, Sailor Jerry),
+Marken (`lindy-bop`, Gretsch), reine Farb- und Adjektivpfade der alten
+Seite (`/thema/rot`, `/thema/sexy`). Reserve, nicht nachziehen ohne
+Markus: Tattoo (Old School, Neo Traditional, Tattoo-Flash, Schwalbe) und
+Herrenmode (Lederjacke, Jeans mit Umschlag, Bowlinghemd, Hawaiihemd).
 
 **Portal-Gestaltung „Plattenhülle" umsetzen — in der Sitzung mit Markus,
 nicht im Tageslauf.** Vorfragen entschieden am 2026-10-02
