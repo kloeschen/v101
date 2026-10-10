@@ -2,9 +2,9 @@
 name: Boogie meets Golden Dance Night in Enns 2026
 aliases: [Golden Dance Night, Boogie meets Golden Dance Nights, Golden Dance Night Harlekin Enns]
 kurzbeschreibung: Tanzabend der Reihe Boogie meets am Samstag, 14. November 2026, ab 20 Uhr im großen Saal des Tanzclubs Harlekin in Enns, mit DJ Daddy C und 5 Euro Eintritt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: tanzabend
 reihe: harlekin-boogie-meets

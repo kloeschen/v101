@@ -2,9 +2,9 @@
 name: Boppin'B im Hot Jazz Club Münster
 aliases: [Boppin' B Münster 2027, Boppin'B Hot Jazz Club]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Freitag, 30. April 2027, im Hot Jazz Club am Stadthafen in Münster.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: konzert
 beginn: 2027-04-30T20:00:00+02:00

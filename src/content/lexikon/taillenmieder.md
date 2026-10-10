@@ -82,7 +82,7 @@ Das deutsche Wort ist selten. Das DWDS führt „Taillenmieder" nicht in seinen 
 
 ## Geschichte des Taillenmieders
 
-Die schmale Taille als Modeziel ist alt und kehrt in Wellen wieder. Die deutschsprachige Wikipedia nennt für die Wespentaille drei Hochzeiten: das späte 17. und das 18. Jahrhundert, die Zeit von etwa 1840 bis 1910 und die späten 1940er und 1950er Jahre. Die Mittel unterscheiden sich: Korsetts mit fester Schnürung, aber auch Gürtel, elastische Miederware, Korseletts und Korsagen.
+Die schmale Taille als Modeziel ist alt und kehrt in Wellen wieder. Die deutschsprachige Wikipedia nennt für die Wespentaille drei Hochzeiten: das späte 17. und das 18. Jahrhundert, die Zeit von etwa 1840 bis 1910 und die späten 1940er und 1950er Jahre. Die Mittel unterscheiden sich: Korsetts mit fester Schnürung, aber auch Gürtel, elastische Miederware, Korseletts und [Korsagen](/lexikon/corsage/).
 
 Für die letzte dieser Wellen ist das Taillenmieder das Kleidungsstück der Wahl. Christian Dior machte es um 1947 mit dem New Look populär; er beschrieb seine Absicht als Kleider für blumenhafte Frauen mit runden Schultern, voller Brust und einer Taille, die eine Handspanne misst, über weit ausgestellten Röcken. Das Taillenmieder war das Wäschestück, das diese Taille lieferte — leichter zu tragen als ein Korsett und darauf angelegt, unter Alltagskleidung zu verschwinden.
 
@@ -90,6 +90,6 @@ Für die letzte dieser Wellen ist das Taillenmieder das Kleidungsstück der Wahl
 
 Der Unterschied zum Korsett ist einer der Ausdehnung, nicht des Prinzips, und genau deshalb ist er so leicht zu übersehen. Beide arbeiten mit Stäbchen und Zug. Aber ein Korsett umfasst den Rumpf und formt Brustkorb, Taille und Hüfte in einem; das Taillenmieder greift nur an der Taille an. Die englischsprachige Quelle beschreibt es folgerichtig als leichtere Alternative, die ohne die starke Kompression des viktorianischen Korsetts auskommt und deshalb für den täglichen Gebrauch taugt.
 
-Davon zu trennen ist der Hüfthalter, im Englischen *girdle*: Er formt den unteren Rumpf, arbeitet also unterhalb der Zone des Taillenmieders. Wer eine glatte Linie unter einem [Bleistiftrock](/lexikon/bleistiftrock/) sucht, braucht diesen; wer die Taille verschmälern will, jenes. Das Kleidungsstück, das beides zugleich versucht, ist das Korselett.
+Davon zu trennen ist der [Hüfthalter](/lexikon/huefthalter/), im Englischen *girdle*: Er formt den unteren Rumpf, arbeitet also unterhalb der Zone des Taillenmieders. Wer eine glatte Linie unter einem [Bleistiftrock](/lexikon/bleistiftrock/) sucht, braucht diesen; wer die Taille verschmälern will, jenes. Das Kleidungsstück, das beides zugleich versucht, ist das Korselett.
 
 Und schließlich ist ein Taillenmieder kein bloßer Gürtel, auch wenn die Quelle es als Gürtel definiert. Ein Gürtel liegt auf; ein Taillenmieder zieht zusammen, und die Versteifung ist es, die den Unterschied macht. Der Oberbegriff für beide Richtungen bleibt das Mieder — laut deutscher Wikipedia jedes den Oberkörper eng umschließende Kleidungsstück, vom Oberteil eines Kleides bis zum Korsett.

@@ -2,9 +2,9 @@
 name: Boppin'B in der Scheuer Idstein
 aliases: [Boppin' B Idstein 2027, Boppin'B Scheuer Wörsdorf]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Freitag, 5. November 2027, in der Scheuer im Idsteiner Stadtteil Wörsdorf.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: konzert
 beginn: 2027-11-05T20:00:00+01:00

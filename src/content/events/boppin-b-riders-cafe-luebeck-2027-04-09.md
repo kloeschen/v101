@@ -2,9 +2,9 @@
 name: Boppin'B im Riders Café Lübeck
 aliases: [Boppin' B Lübeck 2027, Boppin'B Riders Cafe, "Boppin'B – Solid as a Rock, Lübeck"]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Freitag, 9. April 2027, im Musikclub Riders Café in Lübeck.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: konzert
 beginn: 2027-04-09T21:00:00+02:00

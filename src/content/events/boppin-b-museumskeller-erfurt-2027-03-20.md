@@ -2,9 +2,9 @@
 name: Boppin'B im Museumskeller Erfurt
 aliases: [Boppin' B Erfurt 2027, Boppin'B Museumskeller]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Samstag, 20. März 2027, im Museumskeller am Juri-Gagarin-Ring in Erfurt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: konzert
 beginn: 2027-03-20T20:00:00+01:00

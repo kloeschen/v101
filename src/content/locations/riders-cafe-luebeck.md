@@ -2,9 +2,9 @@
 name: Riders Café Lübeck
 aliases: [Riders Café, Riders Cafe, Rider's Cafe]
 kurzbeschreibung: Das Riders Café ist ein Musikclub in der Leinweberstraße in Lübeck mit Konzerten, DJ-Abenden und Comedy; nach eigener Angabe besteht es seit 1985.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: club
 adresse:

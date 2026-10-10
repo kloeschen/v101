@@ -1,9 +1,9 @@
 ---
 name: Slap-Bass
 kurzbeschreibung: Slap-Bass ist eine Spielweise des Kontrabasses, bei der die Saiten so kräftig angerissen werden, dass sie auf das Griffbrett zurückschlagen; das perkussive Klacken trägt im Rockabilly und Psychobilly den Rhythmus mit.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-09
-geprueftAm: 2026-10-09
+geprueftAm: 2026-10-10
 autor: markus
 kategorie: musiktechnik
 bezeichnungEn: Slap bass

@@ -144,7 +144,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Nadelstreifen sind sehr schmale Längsstreifen, die in mäßig breitem Abstand parallel durch einen Anzug- oder Kostümstoff laufen und sich scharf von der Grundfarbe abheben, meist hell auf dunklem Grund. Das Muster gehört mit [Hahnentritt](/lexikon/hahnentritt/), [Gingham](/lexikon/gingham/) und [Polka Dots](/lexikon/polka-dots/) zu den klassischen Stoffmustern; nach ihm heißt auch der Anzug aus solchem Stoff. Mit dem breiteren Kreidestreifen und mit dem Pinstriping, den Zierlinien auf Autos, ist es nicht zu verwechseln.
+Nadelstreifen sind sehr schmale Längsstreifen, die in mäßig breitem Abstand parallel durch einen Anzug- oder Kostümstoff laufen und sich scharf von der Grundfarbe abheben, meist hell auf dunklem Grund. Das Muster gehört mit [Hahnentritt](/lexikon/hahnentritt/), [Gingham](/lexikon/gingham/) und [Polka Dots](/lexikon/polka-dots/) zu den klassischen Stoffmustern; nach ihm heißt auch der Anzug aus solchem Stoff. Mit dem breiteren Kreidestreifen und mit dem [Pinstriping](/lexikon/pinstriping/), den Zierlinien auf Autos, ist es nicht zu verwechseln.
 
 ## Merkmale von Nadelstreifen
 

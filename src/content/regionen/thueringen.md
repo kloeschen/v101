@@ -2,9 +2,9 @@
 name: Thüringen
 aliases: [Freistaat Thüringen]
 kurzbeschreibung: Thüringen ist ein Land in der Mitte Deutschlands mit der Landeshauptstadt Erfurt; für die Szene steht hier bisher ein Konzert der Band Boppin'B im Register.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 ebene: bundesland
 land: DE

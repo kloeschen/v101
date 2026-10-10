@@ -2,9 +2,9 @@
 name: Museumskeller Erfurt
 aliases: [Museumskeller, Mukeller, HsD / Museumskeller]
 kurzbeschreibung: Der Museumskeller ist eine Kellerkneipe mit kleiner Konzertbühne am Juri-Gagarin-Ring in Erfurt, neben dem Museum für Thüringer Volkskunde, für bis zu 150 Gäste.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: club
 adresse:

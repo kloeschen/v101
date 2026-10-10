@@ -2,7 +2,7 @@
 name: Boppin'B im Starclub Donauwörth
 aliases: [Boppin' B Donauwörth 2026, Boppin'B Doubles Starclub, Boppin'B Starclub]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Samstag, 21. November 2026, im Starclub in der Kronengasse in Donauwörth.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

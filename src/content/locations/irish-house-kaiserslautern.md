@@ -2,7 +2,7 @@
 name: Irish House Kaiserslautern
 aliases: [Irish House, Irishhouse Kaiserslautern]
 kurzbeschreibung: Das Irish House ist ein Pub mit Konzertsaal an der Eselsfürth in Kaiserslautern, dessen Konzertprogramm überwiegend aus Tribute- und Coverbands besteht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

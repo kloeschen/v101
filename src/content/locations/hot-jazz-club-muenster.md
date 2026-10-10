@@ -2,9 +2,9 @@
 name: Hot Jazz Club Münster
 aliases: [Hot Jazz Club]
 kurzbeschreibung: Der Hot Jazz Club ist ein Live-Musik-Club im Souterrain eines alten Hafengebäudes am Stadthafen in Münster, seit 2000 mit Jazz, Blues und gelegentlich Rock'n'Roll und Rockabilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: club
 adresse:

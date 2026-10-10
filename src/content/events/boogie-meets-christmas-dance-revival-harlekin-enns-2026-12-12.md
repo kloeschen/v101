@@ -2,9 +2,9 @@
 name: Boogie meets Christmas Dance Revival in Enns 2026
 aliases: [Christmas Dance Revival, Boogie meets Christmas Dance Revival, Christmas Dance Revival Harlekin Enns]
 kurzbeschreibung: Weihnachtlicher Tanzabend der Reihe Boogie meets am Samstag, 12. Dezember 2026, ab 20 Uhr im großen Saal des Tanzclubs Harlekin in Enns, für Boogie, Swing und mehr, mit 5 Euro Eintritt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: tanzabend
 reihe: harlekin-boogie-meets

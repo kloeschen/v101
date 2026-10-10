@@ -2,9 +2,9 @@
 name: Boogie-Party im Aufriss, Dezember 2026
 aliases: [Boogieparty Aufriss 12.12.2026, Boogie-Party Hofstetten Dezember 2026, Boogieparty Aufriss Mainburg]
 kurzbeschreibung: Tanzabend mit Boogie Woogie am Samstag, 12. Dezember 2026, ab 20:00 Uhr im Aufriss Mainburg in Hofstetten im Pielachtal, mit DJ Pete und DJ Franz; einen Eintrittspreis nennt bisher keine Quelle.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-09
-geprueftAm: 2026-10-09
+geprueftAm: 2026-10-10
 autor: markus
 typ: tanzabend
 beginn: 2026-12-12T20:00:00+01:00

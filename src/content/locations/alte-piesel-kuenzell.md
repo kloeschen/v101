@@ -2,7 +2,7 @@
 name: Alte Piesel
 aliases: [Piesel, Alte Piesel Dirlos, Alte Piesel Künzell]
 kurzbeschreibung: Die Alte Piesel ist ein Liveclub mit Kneipe im Künzeller Ortsteil Dirlos bei Fulda, dessen Saal 350 Zuschauern Platz bietet und vor allem Rock, Blues und Tribute-Bands zeigt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

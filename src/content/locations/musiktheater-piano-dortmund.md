@@ -2,7 +2,7 @@
 name: Musiktheater Piano
 aliases: [Piano, Das Piano, Musiktheater Piano Dortmund]
 kurzbeschreibung: Das Musiktheater Piano ist eine Konzertbühne in einem denkmalgeschützten früheren Gasthaus mit Jugendstil-Saal in Dortmund-Lütgendortmund, vor allem für Jazz, Blues und Rock.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

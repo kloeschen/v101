@@ -2,9 +2,9 @@
 name: Nahtstrumpf
 aliases: [Nahtstrümpfe]
 kurzbeschreibung: Ein Nahtstrumpf ist ein Feinstrumpf mit einer sichtbaren Naht an der Rückseite des Beins, die aus der Herstellung aus flach gewirktem und zusammengenähtem Gewebe stammt; er beherrschte den Markt etwa von 1945 bis 1955.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 kategorie: mode
 bezeichnungEn: Fully fashioned stockings

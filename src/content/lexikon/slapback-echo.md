@@ -2,9 +2,9 @@
 name: Slapback-Echo
 aliases: [Slapback]
 kurzbeschreibung: Das Slapback-Echo ist ein kurzes Echo mit wenig oder keiner Wiederholung, das einen Ton kurz nach dem Original noch einmal hörbar macht; es prägt den Gesangsklang des Rock'n'Roll und Rockabilly der 1950er Jahre.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-09
-geprueftAm: 2026-10-09
+geprueftAm: 2026-10-10
 autor: markus
 kategorie: musiktechnik
 bezeichnungEn: Slapback echo

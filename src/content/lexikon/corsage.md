@@ -2,9 +2,9 @@
 name: Corsage
 aliases: [Korsage]
 kurzbeschreibung: Eine Corsage ist ein schulterfreies, eng am Oberkörper anliegendes Kleidungsstück, das durch eingearbeitete Stäbe ohne Träger hält und den BH ersetzt, den Körper aber anders als ein Korsett nicht umformt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 kategorie: mode
 bezeichnungDe: Korsage
@@ -82,7 +82,7 @@ Die Wikipedia ordnet die Corsage in ihrem ersten Satz der Shapewear zu, also der
 
 ## Abgrenzung der Corsage
 
-Die folgenreichste Verwechslung ist die mit dem Korsett. Beide Wörter gehen auf das altfranzösische *cors*, Körper, zurück, und der Duden nennt Korsett als Synonym von Korsage — daneben auch Body, Hüfthalter und Korselett, was eher die Unschärfe des Sprachgebrauchs zeigt als eine Gleichheit der Sache. In der Sache trennt die Wikipedia deutlich: Die Corsage ist weniger steif als das Korsett und darum nicht geeignet, den Körper zu formen. Wer zu einem Kleid der fünfziger Jahre eine Wespentaille sucht, braucht ein Korsett oder ein [Taillenmieder](/lexikon/taillenmieder/), keine Corsage.
+Die folgenreichste Verwechslung ist die mit dem Korsett. Beide Wörter gehen auf das altfranzösische *cors*, Körper, zurück, und der Duden nennt Korsett als Synonym von Korsage — daneben auch Body, [Hüfthalter](/lexikon/huefthalter/) und Korselett, was eher die Unschärfe des Sprachgebrauchs zeigt als eine Gleichheit der Sache. In der Sache trennt die Wikipedia deutlich: Die Corsage ist weniger steif als das Korsett und darum nicht geeignet, den Körper zu formen. Wer zu einem Kleid der fünfziger Jahre eine Wespentaille sucht, braucht ein Korsett oder ein [Taillenmieder](/lexikon/taillenmieder/), keine Corsage.
 
 Das Bustier ist ihr nächster Verwandter und doch ein anderes Stück. Nach der Wikipedia ist es ein eng anliegendes, kurzes Oberteil, das nur bis zu den Rippen oder zur Taille reicht und wie ein BH die Brust in Form bringt und hält. Die Corsage umschließt den Oberkörper; das Bustier endet früher.
 

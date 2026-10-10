@@ -2,7 +2,7 @@
 name: Eventlokal Hüttenwerk
 aliases: [Hüttenwerk, Hüttenwerk Michelstadt, Hüttenwerk – Musik und mehr]
 kurzbeschreibung: Das Hüttenwerk ist ein Eventlokal mit Saal und Empore für bis zu 350 Gäste am Unteren Hammer in Michelstadt im Odenwald, vor allem für Tribute-Bands, regionale Bands und Partys.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

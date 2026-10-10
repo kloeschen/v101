@@ -2,7 +2,7 @@
 name: Lead Sled
 aliases: []
 kurzbeschreibung: Lead Sled ist ein Custom Car der späten 1940er und 1950er Jahre mit stark umgearbeiteter, geglätteter und tiefergelegter Karosserie, klassisch auf Basis eines Mercury oder Ford der Baujahre 1949 bis 1951.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

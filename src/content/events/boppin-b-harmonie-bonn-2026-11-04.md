@@ -2,7 +2,7 @@
 name: Boppin'B in der Harmonie Bonn
 aliases: [BOPPIN' B – Solid as a Rock Tour 2026, Boppin' B Bonn 2026, Boppin'B Harmonie]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll-Band Boppin'B am Mittwoch, 4. November 2026, in der Harmonie in Bonn-Endenich, veranstaltet von Rock-Times Production.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus
