@@ -2,9 +2,9 @@
 name: Tanzschuh-Party im Aufriss, November 2026
 aliases: [Tanzschuh-Party Aufriss November 2026, Tanzschuhparty Hofstetten 21.11.2026, Letzte Tanzschuhparty 2026]
 kurzbeschreibung: Tanzabend mit Boogie Woogie am Samstag, 21. November 2026, ab 19:30 Uhr im Aufriss Mainburg in Hofstetten im Pielachtal, mit DJ Klaus; die letzte Tanzschuh-Party des Jahres 2026, einen Eintrittspreis nennt bisher keine Quelle.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-09
-geprueftAm: 2026-10-09
+geprueftAm: 2026-10-10
 autor: markus
 typ: tanzabend
 reihe: tanzschuh-party-aufriss

@@ -88,7 +88,7 @@ Rockabilly ist ein Musikstil, der Mitte der 1950er Jahre im Süden der USA entst
 
 ## Merkmale von Rockabilly
 
-Die Besetzung ist sparsam: E-Gitarre, akustische Gitarre und [Kontrabass](/lexikon/kontrabass/), in der Frühphase oft ohne Schlagzeug. Der Bass wird im Slap-Stil gespielt, die Saiten schlagen hörbar aufs Griffbrett und übernehmen damit einen Teil der Rhythmusarbeit. Über der Stimme liegt ein kurzes Echo — die englische Wikipedia nennt es Slapback-, Tape-Delay- oder Flutter-Echo und beschreibt seine Wirkung als den Eindruck eines Live-Auftritts. Charakteristisch ist außerdem eine Gesangsmanier, die die deutsche Wikipedia als nervösen „Schluckauf-Stil" beschreibt.
+Die Besetzung ist sparsam: E-Gitarre, akustische Gitarre und [Kontrabass](/lexikon/kontrabass/), in der Frühphase oft ohne Schlagzeug. Der Bass wird im Slap-Stil gespielt, die Saiten schlagen hörbar aufs Griffbrett und übernehmen damit einen Teil der Rhythmusarbeit. Über der Stimme liegt ein kurzes Echo — die englische Wikipedia nennt es [Slapback](/lexikon/slapback-echo/)-, Tape-Delay- oder Flutter-Echo und beschreibt seine Wirkung als den Eindruck eines Live-Auftritts. Charakteristisch ist außerdem eine Gesangsmanier, die die deutsche Wikipedia als nervösen „Schluckauf-Stil" beschreibt.
 
 ## Entstehung von Rockabilly
 

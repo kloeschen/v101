@@ -2,7 +2,7 @@
 name: Lowrider
 aliases: [Low Rider]
 kurzbeschreibung: Lowrider ist ein tiefergelegtes, auffällig gestaltetes Custom Car, das langsam und tief statt schnell gefahren wird; entstanden ist er nach dem Zweiten Weltkrieg unter Mexican Americans in Südkalifornien.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

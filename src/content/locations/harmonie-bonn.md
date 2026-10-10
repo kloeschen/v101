@@ -2,7 +2,7 @@
 name: Harmonie Bonn
 aliases: [Harmonie, Endenicher Harmonie]
 kurzbeschreibung: Die Harmonie ist ein Traditionslokal mit Konzertsaal in der Frongasse in Bonn-Endenich, dessen Saal für bis zu 500 Personen vor allem Jazz, Rock, Blues, Folk und Kabarett zeigt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

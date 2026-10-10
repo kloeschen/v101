@@ -2,7 +2,7 @@
 name: Boppin'B im Musiktheater Piano
 aliases: [Boppin' B Live 2026, Boppin' B Dortmund 2026, Boppin'B Piano]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B mit Mr. Motor am Freitag, 13. November 2026, im Musiktheater Piano in Dortmund-Lütgendortmund.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

@@ -2,9 +2,9 @@
 name: Boppin'B im Artheater Köln
 aliases: [Boppin' B Köln 2027, Boppin'B Artheater]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll- und Rockabilly-Band Boppin'B am Samstag, 17. April 2027, im Artheater am Ehrenfeldgürtel in Köln, veranstaltet von GoldMucke.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: konzert
 beginn: 2027-04-17T20:00:00+02:00

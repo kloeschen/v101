@@ -2,7 +2,7 @@
 name: Boppin'B in der Alten Piesel
 aliases: [Boppin B – finest Rock n Roll, Boppin' B Künzell 2026, Boppin'B Piesel]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll-Band Boppin'B am Freitag, 4. Dezember 2026, in der Alten Piesel in Künzell-Dirlos bei Fulda.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

@@ -2,7 +2,7 @@
 name: Rheinland-Pfalz
 aliases: [RLP, Land Rheinland-Pfalz]
 kurzbeschreibung: Rheinland-Pfalz ist ein Land im Südwesten Deutschlands mit der Landeshauptstadt Mainz; für die Szene steht hier bisher ein Konzert der Band Boppin'B im Register.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

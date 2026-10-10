@@ -61,7 +61,7 @@ Die Szene baut nicht nur Autos um: Die Gegenstücke auf zwei Rädern sind der *B
 
 ## Prägende Figuren der Kustom Kulture
 
-Die Quelle nennt Kenneth Howard, besser bekannt als Von Dutch, den Customizer und Cartoonisten Ed Roth, genannt „Big Daddy", sowie die Barris-Brüder als Hot-Rod- und Lowrider-Customizer. Hinzu kommen zahllose Tätowierer und Automaler und, als Verstärker in die Breite, Fernsehshows wie *Happy Days*.
+Die Quelle nennt Kenneth Howard, besser bekannt als Von Dutch, den Customizer und Cartoonisten Ed Roth, genannt „Big Daddy", sowie die Barris-Brüder als Hot-Rod- und [Lowrider](/lexikon/lowrider/)-Customizer. Hinzu kommen zahllose Tätowierer und Automaler und, als Verstärker in die Breite, Fernsehshows wie *Happy Days*.
 
 ## Musik und Jugendbewegungen in der Kustom Kulture
 

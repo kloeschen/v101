@@ -2,9 +2,9 @@
 name: Schleswig-Holstein
 aliases: [Land Schleswig-Holstein]
 kurzbeschreibung: Schleswig-Holstein ist ein Land zwischen Nord- und Ostsee mit der Landeshauptstadt Kiel; für die Szene steht hier bisher ein Konzert der Band Boppin'B in Lübeck im Register.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 ebene: bundesland
 land: DE

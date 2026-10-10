@@ -2,7 +2,7 @@
 name: Boppin'B im Irish House Kaiserslautern
 aliases: [Boppin' B Kaiserslautern 2027, Boppin'B Irish House]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll-Band Boppin'B am Samstag, 13. März 2027, im Irish House an der Eselsfürth in Kaiserslautern, veranstaltet vom Haus selbst.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

@@ -2,9 +2,9 @@
 name: Artheater Köln
 aliases: [Artheater, artheater Köln]
 kurzbeschreibung: Das Artheater ist ein Club- und Konzerthaus am Ehrenfeldgürtel in Köln-Ehrenfeld, das seit 1998 Konzerte, Clubnächte, Comedy und Theater zeigt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: club
 adresse:

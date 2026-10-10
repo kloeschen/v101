@@ -72,7 +72,7 @@ Ein Bleistiftrock ist ein körpernaher Rock mit geradem Schnitt, der knapp unter
 
 Der Bleistiftrock arbeitet mit Abnähern oder Teilungsnähten an der Hüfte, die diese betonen statt sie zu kaschieren. Der Saum ist schmal, und genau daraus folgt das einzige konstruktive Zugeständnis: ein Schlitz, meist hinten, weil die enge Form die Schrittlänge sonst zu stark begrenzt. Wer einen Bleistiftrock ohne Gehschlitz trägt, geht in Trippelschritten — das ist keine Stilfrage, sondern Geometrie.
 
-Klassisch kombiniert wird er mit Stöckelschuhen und Feinstrümpfen, in der Vintage-Szene häufig mit Nahtstrümpfen als Zitat der fünfziger Jahre.
+Klassisch kombiniert wird er mit Stöckelschuhen und Feinstrümpfen, in der Vintage-Szene häufig mit [Nahtstrümpfen](/lexikon/nahtstrumpf/) als Zitat der fünfziger Jahre.
 
 ## Geschichte des Bleistiftrocks
 

@@ -2,9 +2,9 @@
 name: eventhalle Westpark Ingolstadt
 aliases: [Eventhalle Westpark, eventhalle Westpark, Westpark Ingolstadt Eventhalle]
 kurzbeschreibung: Die eventhalle Westpark ist eine Konzert- und Veranstaltungshalle in einer früheren Diskothek am Westpark in Ingolstadt, mit Platz für etwa 700 Stehende; im Programm stehen Konzerte, Kabarett und Partys.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-09
-geprueftAm: 2026-10-09
+geprueftAm: 2026-10-10
 autor: markus
 typ: halle
 adresse:

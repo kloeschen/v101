@@ -2,7 +2,7 @@
 name: Boppin'B und The Riwwels im Hüttenwerk
 aliases: [Boppin`B & The Riwwels – Rockin` together, Boppin' B Michelstadt 2026, Boppin'B Hüttenwerk]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll-Band Boppin'B und der Rockabilly-Band The Riwwels am Freitag, 11. Dezember 2026, im Eventlokal Hüttenwerk in Michelstadt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

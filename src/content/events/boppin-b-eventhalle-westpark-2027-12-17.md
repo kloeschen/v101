@@ -2,9 +2,9 @@
 name: Boppin'B in der eventhalle Westpark Ingolstadt
 aliases: [Boppin' B Ingolstadt 2027, Boppin'B Eventhalle Westpark]
 kurzbeschreibung: Konzert der Aschaffenburger Rock'n'Roll-Band Boppin'B zum 40-jährigen Bestehen am Freitag, 17. Dezember 2027, in der eventhalle Westpark in Ingolstadt, mit noch nicht genannten Gästen.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-09
-geprueftAm: 2026-10-09
+geprueftAm: 2026-10-10
 autor: markus
 typ: konzert
 beginn: 2027-12-17T20:00:00+01:00

@@ -2,7 +2,7 @@
 name: Starclub Donauwörth
 aliases: [Starclub, Doubles Starclub]
 kurzbeschreibung: Der Starclub ist ein Liveclub in der Kronengasse in Donauwörth, betrieben von der Start25 Concert GmbH, der freitags und samstags öffnet und von Juni bis September Sommerpause macht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus

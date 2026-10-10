@@ -2,9 +2,9 @@
 name: Hüfthalter
 aliases: [Leibhalter, Hüftmieder]
 kurzbeschreibung: Ein Hüfthalter ist ein Wäschestück, das die Hüften von der Taille bis zum Oberschenkelansatz umschließt, die Figur formt und über angebaute Strumpfhalter die Strümpfe hält.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 kategorie: mode
 bezeichnungEn: Girdle

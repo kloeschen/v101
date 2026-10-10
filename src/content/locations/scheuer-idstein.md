@@ -2,9 +2,9 @@
 name: Scheuer Idstein
 aliases: [Die Scheuer, Scheuer, Scheuer Wörsdorf]
 kurzbeschreibung: Die Scheuer ist ein Club im Innenhof des Nassauer Hofs im Idsteiner Stadtteil Wörsdorf, bekannt für Coverbands und Tribute-Shows.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-08
-geprueftAm: 2026-10-08
+geprueftAm: 2026-10-10
 autor: markus
 typ: club
 adresse:

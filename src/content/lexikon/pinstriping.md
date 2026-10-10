@@ -2,7 +2,7 @@
 name: Pinstriping
 aliases: [Pin Striping, Linierung]
 kurzbeschreibung: Pinstriping ist das freihändige Aufmalen feiner Zierlinien auf Fahrzeuge, die deren Konturen betonen; in seiner freien, ornamentalen Form ist es ein Handwerk der Hot-Rod- und Custom-Car-Szene.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-10
 geprueftAm: 2026-10-10
 autor: markus
