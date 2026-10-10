@@ -333,7 +333,15 @@ Fehler verursacht oder beinahe verursacht.
   Eventim Light und Westticket brachen aus der Cloud mit HTTP/2-Fehlern
   ab. Ohne Quelle des Hauses oder des Ticketverkaufs trägt nur
   Bandsintown die Uhrzeit, und das reicht nicht: Termin mit Befund
-  zurückgeben.
+  zurückgeben. **Nachtrag 2026-10-10:** Eventim Light ist mit Browser
+  erreichbar — Chromium über Playwright mit `--disable-http2`,
+  `waitUntil: 'domcontentloaded'` und rund zehn Sekunden Wartezeit (curl
+  bekommt 403, `networkidle` läuft in den Timeout). Das Irish House führt
+  dort einen eigenen Shop („IRISH HOUSE Kaiserslautern Events",
+  `eventim-light.com/de/a/6141d3a4a7dca437d10f1139`) mit Uhrzeit, Einlass,
+  Preis und im JSON-LD dem Veranstalter. Vor dem Zurückgeben also
+  nachsehen, ob das Haus einen Eventim-Light-Shop hat. Die Liste lädt
+  beim Scrollen nach; der Link zur Terminseite entsteht erst per Klick.
 - **Terminlisten ohne Jahr, Jahr nur im Kalenderexport** (HsD /
   Museumskeller Erfurt, 2026-10-08). Liste und Detailseite nennen nur
   „20.03." und „Sa / 20:00"; das Jahr steht allein im iCal-Export des
