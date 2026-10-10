@@ -165,7 +165,7 @@ jobs:
           gh pr create \
             --base main \
             --head "$BRANCH" \
-            --title "Freigabe: $(wc -l < freigabe-slugs.txt) Einträge (Lauf ${{ github.run_id }})" \
+            --title "Freigabe: $(tr ',' '\n' < freigabe-slugs.txt | grep -c .) Einträge (Lauf ${{ github.run_id }})" \
             --body-file pr.md
 
       - name: Bericht als Artefakt
