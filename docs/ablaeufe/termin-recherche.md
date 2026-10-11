@@ -345,8 +345,11 @@ Fehler verursacht oder beinahe verursacht.
   Verlässlich ist das nicht: Im Lauf vom 2026-10-10 vormittags
   antwortete jede Seite von Eventim Light, auch die Startseite, im
   Browser nur mit „upstream request failed“ — wenige Stunden nachdem
-  ein anderer Lauf denselben Shop gelesen hatte. Dann den Termin mit
-  diesem Befund zurückgeben, nicht aus Sammlern bauen.
+  ein anderer Lauf denselben Shop gelesen hatte. Am 2026-10-11 vormittags
+  wieder: Chromium mit und ohne `--disable-http2` bekam 502 „upstream
+  request failed“, curl und WebFetch 403 (Akamai „Access Denied“), obwohl
+  curl die Startseite `eventim-light.com/de/` mit 200 erreichte. Dann den
+  Termin mit diesem Befund zurückgeben, nicht aus Sammlern bauen.
 - **Terminlisten ohne Jahr, Jahr nur im Kalenderexport** (HsD /
   Museumskeller Erfurt, 2026-10-08). Liste und Detailseite nennen nur
   „20.03." und „Sa / 20:00"; das Jahr steht allein im iCal-Export des

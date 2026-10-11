@@ -18,7 +18,7 @@ preise:
     betrag: 15
     waehrung: EUR
 genres: [rocknroll, doo-wop, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/the-sinners
 redaktionsnotiz: >-
