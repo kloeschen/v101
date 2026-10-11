@@ -346,7 +346,10 @@ Fehler verursacht oder beinahe verursacht.
   antwortete jede Seite von Eventim Light, auch die Startseite, im
   Browser nur mit „upstream request failed“ — wenige Stunden nachdem
   ein anderer Lauf denselben Shop gelesen hatte. Dann den Termin mit
-  diesem Befund zurückgeben, nicht aus Sammlern bauen.
+  diesem Befund zurückgeben, nicht aus Sammlern bauen. Am 2026-10-11
+  nachmittags leitete der Shop curl auf einen Queue-it-Warteraum um
+  (`eventimlight.queue-it.net`, danach 403), Chromium bekam weiter 502 —
+  der Warteraum ist also ein zweites Hindernis neben dem Abbruch.
 - **Terminlisten ohne Jahr, Jahr nur im Kalenderexport** (HsD /
   Museumskeller Erfurt, 2026-10-08). Liste und Detailseite nennen nur
   „20.03." und „Sa / 20:00"; das Jahr steht allein im iCal-Export des
