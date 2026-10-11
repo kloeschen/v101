@@ -37,3 +37,12 @@ Startseite und den Queue-it-Link `ERR_EMPTY_RESPONSE`, ohne
 unverändert (2026-10-31T20:30, Irish House Kaiserslautern). Nicht gebaut.
 Für den nächsten Versuch: nicht morgens um 4–5 Uhr UTC allein probieren —
 der erfolgreiche Abruf vom 2026-10-10 lag später am Tag.
+
+**Befund 2026-10-11 (Mittagslauf, ~09:45 UTC):** Der empfohlene spätere
+Versuch, wieder ohne Erfolg. Chromium (Playwright, Europe/Berlin, 12 s
+Wartezeit) bekam auf den Shop mit und ohne `--disable-http2` `502` mit
+„upstream request failed“; curl mit Browser-Kennung auf die Terminseite
+vom 13.03.2027 `403 Access Denied` (Akamai), WebFetch auf den Shop `403`.
+Die Startseite `eventim-light.com/de/` antwortete curl dagegen mit `200`.
+Nicht gebaut. Zwei Läufe an zwei Tageszeiten sind gescheitert; liegt bis
+etwa 25.10. kein Abruf vor, lohnt der Termin den Aufwand kaum noch.
