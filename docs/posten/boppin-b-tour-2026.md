@@ -1,7 +1,7 @@
 ---
 marke: frei
 titel: "Boppin'B, Tour: 1 Termin anlegen (31.10.2026, Irish House Kaiserslautern)"
-angelegt: 2026-10-10
+angelegt: 2026-10-11
 ---
 
 Rest des Bündels vom 2026-10-04 (Herkunft: Suchlauf 2026-10-04). Die
@@ -26,3 +26,14 @@ Termin, sind aber Sammler und tragen die Uhrzeit nicht (Falle
 erneut abrufen und die Terminseite zum 31.10. suchen (Liste lädt beim
 Scrollen nach). Ist er wieder nicht erreichbar, gilt dasselbe: nicht
 bauen. Der Termin liegt nah — ist er bis zum Bau vorbei, Datei löschen.
+
+**Befund 2026-10-11 (Morgenlauf, ~04:50 UTC):** Wieder nicht erreichbar,
+diesmal mit anderem Bild. curl auf die Shop-URL bekommt jetzt zuerst
+`302` auf einen Queue-it-Warteraum (`eventimlight.queue-it.net/?c=eventimlight&e=shopde…`),
+mit Browser-Kennung `403 Access Denied` (Akamai). Chromium (Playwright,
+`--disable-http2`, Europe/Berlin, 12 s Wartezeit) erhält auf Shop,
+Startseite und den Queue-it-Link `ERR_EMPTY_RESPONSE`, ohne
+`--disable-http2` `ERR_HTTP2_PROTO`. Bandsintown nennt den Termin
+unverändert (2026-10-31T20:30, Irish House Kaiserslautern). Nicht gebaut.
+Für den nächsten Versuch: nicht morgens um 4–5 Uhr UTC allein probieren —
+der erfolgreiche Abruf vom 2026-10-10 lag später am Tag.
