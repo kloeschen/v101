@@ -347,9 +347,15 @@ Fehler verursacht oder beinahe verursacht.
   Browser nur mit „upstream request failed“ — wenige Stunden nachdem
   ein anderer Lauf denselben Shop gelesen hatte. Dann den Termin mit
   diesem Befund zurückgeben, nicht aus Sammlern bauen. Am 2026-10-11
-  nachmittags leitete der Shop curl auf einen Queue-it-Warteraum um
-  (`eventimlight.queue-it.net`, danach 403), Chromium bekam weiter 502 —
-  der Warteraum ist also ein zweites Hindernis neben dem Abbruch.
+  morgens leitete der Shop curl auf einen Queue-it-Warteraum um
+  (`302`, danach Akamai-`403`), Chromium bekam `ERR_EMPTY_RESPONSE`
+  (mit `--disable-http2`) bzw. `ERR_HTTP2_PROTO` (ohne) — auch über den
+  Queue-it-Link. Ein `302` auf `queue-it.net` heißt also: Warteraum,
+  nicht Umzug der Seite. Mittags und nachmittags (09:45 und 14:45 UTC)
+  bekam Chromium `502` „upstream request failed" — drei Tageszeiten,
+  dreimal nichts. Ein Posten, der allein an diesem Shop hängt, braucht
+  dann die Terminseite aus einem Browser von Hand, nicht einen vierten
+  Lauf.
 - **Terminlisten ohne Jahr, Jahr nur im Kalenderexport** (HsD /
   Museumskeller Erfurt, 2026-10-08). Liste und Detailseite nennen nur
   „20.03." und „Sa / 20:00"; das Jahr steht allein im iCal-Export des
