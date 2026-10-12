@@ -21,6 +21,7 @@ preise:
     waehrung: EUR
     hinweis: ab, in verschiedenen Kategorien; Verkauf ab 11. November 2026
 ticketUrl: https://www.tanzschule.at/newsbeitrag/boogie-swing-ball/
+genres: [boogie-woogie-tanz, lindy-hop]
 durchfuehrung: geplant
 links:
   website: https://www.tanzschule.at/newsbeitrag/boogie-swing-ball/
@@ -50,9 +51,15 @@ redaktionsnotiz: >-
   TYP `tanzabend`: Das Schema kennt keinen Ball; dass es ein Ball
   ist, steht im Namen und im Text.
   ORT: Die Tanzschule als Ganzes (fuenf Floors), kein `ortHinweis`.
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich.
-  Nicht gefuellt: ende, kapazitaet, barrierefrei, kinder,
-  drinnenDraussen, genres.
+  GENRES `boogie-woogie-tanz`, `lindy-hop` (nachgetragen 2026-10-12):
+  boogie.at nennt den Ball "Unser Highlight fuer die Boogie & Swing-Szene"
+  und "Wir tanzen auf 5 Floors - u.a. auch Lindy Hop, West Coast Swing";
+  "Boogie" ist an einem Ball mit Tanzfloors der Tanz (Falle "Boogie Woogie
+  an einem Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des
+  Tanzes steht im Lexikoneintrag). Swing und West Coast Swing haben keinen
+  Tanzeintrag im Lexikon und stehen nur im Text. Seite am 2026-10-12
+  erneut abgerufen, Datumszeile, Lineup und Preis unveraendert.
+  Nicht gefuellt: ende, kapazitaet, barrierefrei, kinder, drinnenDraussen.
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/boogie-swing-ball/
     titel: Boogie & Swing Ball 2027 (Tanzschule Hippmann)
@@ -71,8 +78,8 @@ quellen:
     art: offiziell
   - url: https://boogie.at/event/boogie-swingball-2027
     titel: BOOGIE & SWINGBALL 2027 (BOOGIE.at)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, lineupWeitere, djs, eintritt, preise, aliases, body:termin, body:lineup, body:eintritt]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, lineupWeitere, djs, eintritt, preise, aliases, genres, body:termin, body:lineup, body:eintritt]
     art: aggregator
 ---
 

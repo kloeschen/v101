@@ -23,6 +23,7 @@ preise:
   - bezeichnung: Mitglieder
     betrag: 0
     waehrung: EUR
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://www.boogielions.at/component/content/article/74-boogie-halloween-31-10-2026?catid=2&Itemid=101
@@ -56,15 +57,22 @@ redaktionsnotiz: >-
   spricht vom Festsaal, in dem man "wie gewohnt" tanzt. Die fuenf
   weiteren Termine des Postens (28.11.2026 bis 01.05.2027) fehlen, weil
   Uhrzeit und Ort dafuer nur boogie.at nennt (OFFENE-PUNKTE).
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie-Woogie als Tanz", Lexikon-Posten "Bündel Tanz").
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12): Die Ankuendigung
+  heisst "Boogie Halloween", richtet sich an "Liebe Boogie Freunde" und
+  verspricht "Spass und viel Tanzen"; die Terminliste nennt "Boogie
+  Halloween mit DJ Chris de Play", die Startseite spricht von
+  "Boogie-Tanzabend" und vom "Boogie 8er Schritt". An einem Tanzabend
+  eines Tanzvereins ist das der Tanz (Falle "Boogie Woogie an einem
+  Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des Tanzes
+  steht im Lexikoneintrag). Alle drei Seiten am 2026-10-12 erneut
+  abgerufen, Datum, Uhrzeit, Eintritt und DJ unveraendert.
   Nicht gefuellt: ende, ticketUrl, drinnenDraussen, kapazitaet,
-  barrierefrei, kinder, genres.
+  barrierefrei, kinder.
 quellen:
   - url: https://www.boogielions.at/component/content/article/74-boogie-halloween-31-10-2026?catid=2&Itemid=101
     titel: Boogie Halloween - 31.10.2026 (Boogie Lions)
-    abgerufenAm: 2026-09-28
-    felder: [beginn, ort, djs, veranstalter, veranstalterUrl, eintritt, preise, name, aliases, kurzbeschreibung, links, durchfuehrung, body:termin, body:eintritt]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, djs, veranstalter, veranstalterUrl, eintritt, preise, name, aliases, kurzbeschreibung, links, durchfuehrung, genres, body:termin, body:eintritt]
     art: offiziell
   - url: https://www.boogielions.at/images/Halloween-20261031-400.jpg
     titel: Flyer Boogieparty Halloween, 31.10.2026 (Boogie Lions)
@@ -73,8 +81,8 @@ quellen:
     art: offiziell
   - url: https://www.boogielions.at/veranstaltungen
     titel: Veranstaltungen (Boogie Lions)
-    abgerufenAm: 2026-09-28
-    felder: [beginn, djs, veranstalter, veranstalterUrl, reihe, reiheName, aliases, body:termin, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, djs, veranstalter, veranstalterUrl, reihe, reiheName, aliases, genres, body:termin, body:reihe]
     art: offiziell
   - url: https://www.boogielions.at/component/content/article/72-boogie-party-19-09-2026?catid=2&Itemid=101
     titel: Boogie Party - 19.09.2026 (Boogie Lions)
@@ -83,8 +91,8 @@ quellen:
     art: offiziell
   - url: https://www.boogielions.at/
     titel: Boogie Lions
-    abgerufenAm: 2026-09-28
-    felder: [veranstalter, veranstalterUrl, reihe, reiheName, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [veranstalter, veranstalterUrl, reihe, reiheName, genres, body:reihe]
     art: offiziell
 ---
 

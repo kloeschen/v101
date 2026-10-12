@@ -14,6 +14,7 @@ ort: kammgarnsaal-traiskirchen
 region: niederoesterreich
 veranstalter: Union Tanzsportverein Möllersdorf
 eintritt: unveroeffentlicht
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
@@ -43,14 +44,21 @@ redaktionsnotiz: >-
   QUELLENART: boogie.at steht hier als `aggregator` (Regel seit
   2026-09-24); die beiden aelteren Ausgaben fuehren die Seite noch als
   `offiziell`.
-  GENRES LEER wie bei den uebrigen Ausgaben der Reihe.
-  Nicht gefuellt: ende, preise, djs, ticketUrl, kapazitaet,
-  barrierefrei, kinder, drinnenDraussen, genres.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12): Die Sammelseite
+  von boogie.at fuehrt alle sechs Termine unter "Boogie Cats Union
+  Tanzsport Verein Moellersdorf"; der Beschreibungstext ("Boogie - Party")
+  ist auf die Halloween-Ausgabe zugeschnitten, gilt aber fuer die Reihe,
+  in der getanzt wird. Gemeint ist der Tanz (Falle "Boogie Woogie an einem
+  Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des Tanzes
+  steht im Lexikoneintrag). Seite am 2026-10-12 erneut abgerufen,
+  Datumszeile unveraendert ("Sa., 21.11.2026 - 17:00").
+  Nicht gefuellt: ende, preise, djs, ticketUrl, kapazitaet, barrierefrei,
+  kinder, drinnenDraussen.
 quellen:
   - url: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
     titel: Boogie Cats Union Tanzsport Verein Möllersdorf (BOOGIE.at)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, veranstalter, eintritt, reihe, reiheName, links, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, veranstalter, eintritt, reihe, reiheName, links, name, aliases, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt, body:reihe]
     art: aggregator
   - url: https://www.traiskirchen.gv.at/veranstaltungen/veranstaltungsdetails/boogie-cats-tanzparty01/
     titel: Boogie Cats – Tanzparty (Stadtgemeinde Traiskirchen)

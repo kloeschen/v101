@@ -1,22 +1,26 @@
 ---
 marke: frei
-titel: "Tanztermine: `genres` nachtragen (24 Termine)"
-angelegt: 2026-10-03
+titel: "Tanztermine: `genres` nachtragen (Rest: 12 Termine)"
+angelegt: 2026-10-12
 ---
 
-Entscheidung
-Markus vom 2026-10-03 (ENTSCHEIDUNGEN.md, „Tänze in genres"): An
-Tanzabenden, Workshops und Weekendern dürfen Tanzeinträge in `genres`
-stehen (`boogie-woogie-tanz`, `rocknroll-tanz`, `jive`, `lindy-hop`);
-Musik (Kategorie `genre`) wie bisher. Die Regel `genres-kategorie` prüft
-das, der Faktenblock zeigt Musik und Tanz getrennt. Nachzutragen bei den
-freigegebenen künftigen Tanzterminen ohne `genres`, je Termin gegen seine
-Quelle: Hippmann Wels und Regau (`big-boogie-swing-party-hippmann-wels-2026-11-14`,
-`boogie-discofox-party-hippmann-regau-2026-12-05`, `…-2027-03-13`,
-`boogie-swing-ball-hippmann-wels-2027-01-16`); Boogie Lions Spillern
-(`boogie-lions-halloween-spillern-2026-10-31`, `boogie-lions-spillern-2026-11-28`,
-`…-2027-01-09`, `…-2027-02-20`, `…-2027-03-06`, `…-2027-05-01`);
-Boogie-Party Sonntagnachmittag (`…-2026-10-31`, `…-2026-11-21`); Mödling
+Rest des Postens vom 2026-10-03. Entscheidung Markus vom 2026-10-03
+(ENTSCHEIDUNGEN.md, „Tänze in genres"): An Tanzabenden, Workshops und
+Weekendern dürfen Tanzeinträge in `genres` stehen (`boogie-woogie-tanz`,
+`rocknroll-tanz`, `jive`, `lindy-hop`); Musik (Kategorie `genre`) wie
+bisher. Die Regel `genres-kategorie` prüft das, der Faktenblock zeigt
+Musik und Tanz getrennt.
+
+Erledigt am 2026-10-12 (erster PR): Hippmann Wels und Regau (4), alle elf
+künftigen Abende der Boogie Lions Spillern (auch die fünf, die erst nach
+dem Posten angelegt wurden und auf ihn verweisen), Boogie-Party
+Sonntagnachmittag (2). Vorgehen dort als Muster: je Termin die Quelle neu
+öffnen, die Quelle mit dem Zitat bekommt `genres` in `felder` und
+`abgerufenAm` auf den Tag des Abrufs — dann aber auch die übrigen Felder
+dieser Quelle gegenlesen —, die Redaktionsnotiz das Zitat, „genres" aus
+„Nicht gefuellt" streichen.
+
+Noch offen, je Termin gegen seine Quelle: Mödling
 (`boogieball-stadtgalerie-moedling-2026-11-13`,
 `rockn-boogie-tanzparty-moedling-2026-10-16`); Gmundner Boogie Party
 (`gmundner-boogie-party-eberstalzell-2027-06-05`, `…-roitham-2026-10-24`,
@@ -30,11 +34,8 @@ Boogie-Party Sonntagnachmittag (`…-2026-10-31`, `…-2026-11-21`); Mödling
 `docs/ablaeufe/termin-recherche.md` (Falle „Boogie Woogie an einem
 Tanzabend"): Tanz, außer die Quelle spricht von der Musik selbst; dann
 der Musikeintrag (beim Haslinger Hof der Fall, wie bei den beiden
-Vorgängerterminen). Nur eintragen, was die Quelle nennt; die Quelle
-bekommt `genres` in `felder`, die Redaktionsnotiz das Zitat. Ein Tanz
-ohne Lexikoneintrag (Discofox, West Coast Swing, Balboa) bleibt im Text.
-Bei Bedarf in zwei PRs teilen; geändert wird Freigegebenes, also wartet
-jeder PR auf Markus.
-
-Die beiden Keferfeld-Abende (06.11. und 05.12.2026) sind seit dem
-2026-10-08 abgesagt und aus der Liste genommen.
+Vorgängerterminen). Nur eintragen, was die Quelle nennt. Ein Tanz ohne
+Lexikoneintrag (Discofox, West Coast Swing, Balboa, Swing als Tanz)
+bleibt im Text. Mödling (16.10.) und Steyrtal (17.10.) liegen nahe; wird
+der Rest erst danach gebaut, sind sie archiviert und fallen weg.
+Geändert wird Freigegebenes, also wartet der PR auf Markus.

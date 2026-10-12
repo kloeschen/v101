@@ -14,6 +14,7 @@ ort: hippmann-star-movie-regau
 region: oberoesterreich
 djs: [DJ.K, DJ Walter]
 eintritt: unveroeffentlicht
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://boogie.at/event/big-boogie-und-discofox-party-2
@@ -36,14 +37,20 @@ redaktionsnotiz: >-
   ZEITZONE +01:00: Die Sommerzeit beginnt erst am 28. Maerz 2027.
   EINTRITT unveroeffentlicht: keine Quelle nennt einen Preis.
   REIHE wie beim Dezembertermin; Format und Flyer gleich.
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12): boogie.at nennt
+  "DJ.K. am Boogie Floor", "DJ Walter am Discofox Floor" und "Fuer alle
+  die gerne Tanzen" -- die Floors sind nach Taenzen benannt (Falle "Boogie
+  Woogie an einem Tanzabend", Regel Markus 2026-10-03; "Boogie" als
+  Kurzform des Tanzes steht im Lexikoneintrag). Discofox hat keinen
+  Lexikoneintrag und steht nur im Text. Seite am 2026-10-12 erneut
+  abgerufen, Datumszeile unveraendert ("Sa., 13.03.2027 - 20:00").
   Nicht gefuellt: ende, preise, ticketUrl, veranstalter, kapazitaet,
-  barrierefrei, kinder, drinnenDraussen, genres.
+  barrierefrei, kinder, drinnenDraussen.
 quellen:
   - url: https://boogie.at/event/big-boogie-und-discofox-party-2
     titel: Big Boogie und Discofox Party (BOOGIE.at)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, djs, eintritt, links, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, djs, eintritt, links, name, aliases, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt]
     art: aggregator
   - url: https://boogie.at/sites/default/files/medien/event/2026/1000177988.jpg
     titel: Flyer Big Boogie & Discofox Party, 13. März 2027 (auf BOOGIE.at)

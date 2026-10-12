@@ -15,6 +15,7 @@ region: niederoesterreich
 veranstalter: Boogie Lions
 veranstalterUrl: https://www.boogielions.at/
 eintritt: unveroeffentlicht
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://www.boogielions.at/veranstaltungen
@@ -37,15 +38,21 @@ redaktionsnotiz: >-
   Eintritt fuer Mitglieder bei Halloween 2026 sind nicht uebertragen.
   DJ LEER: Weder Verein ("Boogieabend") noch boogie.at nennen einen DJ.
   REIHE wie beim Halloween-Termin (`boogie-lions-boogie-party`).
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie Woogie in Terminen").
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12): Die Terminliste
+  des Vereins nennt "20.02.2027 - Boogieabend"; die Startseite spricht von
+  "Boogie-Tanzabend", "Boogie Taenzer" und vom "Boogie 8er Schritt", den
+  das Einsteigertraining lehrt. An einem Tanzabend eines Tanzvereins ist
+  das der Tanz (Falle "Boogie Woogie an einem Tanzabend", Regel Markus
+  2026-10-03; "Boogie" als Kurzform des Tanzes steht im Lexikoneintrag).
+  Beide Seiten am 2026-10-12 erneut abgerufen, Termine und DJ-Angaben
+  unveraendert.
   Nicht gefuellt: ende, preise, ticketUrl, drinnenDraussen, kapazitaet,
-  barrierefrei, kinder, genres.
+  barrierefrei, kinder.
 quellen:
   - url: https://www.boogielions.at/veranstaltungen
     titel: Veranstaltungen (Boogie Lions)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, veranstalter, veranstalterUrl, eintritt, reihe, reiheName, links, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, veranstalter, veranstalterUrl, eintritt, reihe, reiheName, links, name, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://boogie.at/event/boogie-party-54
     titel: Boogie Party (BOOGIE.at)
@@ -59,8 +66,8 @@ quellen:
     art: offiziell
   - url: https://www.boogielions.at/
     titel: Boogie Lions
-    abgerufenAm: 2026-10-02
-    felder: [veranstalter, veranstalterUrl, body:termin, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [veranstalter, veranstalterUrl, genres, body:termin, body:reihe]
     art: offiziell
 ---
 
