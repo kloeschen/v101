@@ -13,7 +13,15 @@ beginn: 2026-11-21T17:00:00+01:00
 ort: kammgarnsaal-traiskirchen
 region: niederoesterreich
 veranstalter: Union Tanzsportverein Möllersdorf
-eintritt: unveroeffentlicht
+eintritt: beziffert
+preise:
+  - bezeichnung: Tageskassa
+    betrag: 8
+    waehrung: EUR
+  - bezeichnung: Vorreservierung
+    betrag: 5
+    waehrung: EUR
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
@@ -30,12 +38,13 @@ redaktionsnotiz: >-
   ("Boogie Cats - Tanzparty", 17-20 Uhr, Wolfstrasse 18, 2514
   Moellersdorf, Eintritt mit Reservierung 5 Euro, Tageskassa 8 Euro), den
   21.11. nicht. Eine eigene Website des Vereins habe ich nicht gefunden.
-  PREISE UND DJS NICHT UEBERNOMMEN, wie im Posten vorgegeben: Die Seite
-  nennt "Tageskassa EUR 8, Vorreservierung EUR 5" und "DJ- Ernst und
-  Charly" im Halloween-Text. Dass sie auch am 21.11. gelten, ist
-  wahrscheinlich, aber fuer diesen Termin nicht gesagt. `eintritt` ist
-  deshalb `unveroeffentlicht`; der Text nennt die Halloween-Preise als
-  solche.
+  PREISE: Tageskassa 8 Euro, Vorreservierung 5 Euro. ENTSCHIEDEN
+  2026-10-12 (Markus, zu PR #198, nach Abweichung des Gegenlesers): Die
+  Sammelseite nennt "Eintritt: Tageskassa EUR 8.- / Vorreservierung
+  EUR 5,-" fuer die Reihe, deren Termine sie gemeinsam auffuehrt, den
+  21.11.2026 eingeschlossen; die Preise gelten damit auch hier. Die DJs
+  ("DJ- Ernst und Charly") bleiben ungesetzt, sie stehen nur im
+  Halloween-Text.
   EINLASS nicht im Eintrag: 16:30 steht nur fuer Halloween.
   VERANSTALTER: Die Sammelseite traegt den Vereinsnamen im Titel ("Boogie
   Cats Union Tanzsport Verein Moellersdorf") fuer alle sechs Termine.
@@ -43,14 +52,21 @@ redaktionsnotiz: >-
   QUELLENART: boogie.at steht hier als `aggregator` (Regel seit
   2026-09-24); die beiden aelteren Ausgaben fuehren die Seite noch als
   `offiziell`.
-  GENRES LEER wie bei den uebrigen Ausgaben der Reihe.
-  Nicht gefuellt: ende, preise, djs, ticketUrl, kapazitaet,
-  barrierefrei, kinder, drinnenDraussen, genres.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12): Die Sammelseite
+  von boogie.at fuehrt alle sechs Termine unter "Boogie Cats Union
+  Tanzsport Verein Moellersdorf"; der Beschreibungstext ("Boogie - Party")
+  ist auf die Halloween-Ausgabe zugeschnitten, gilt aber fuer die Reihe,
+  in der getanzt wird. Gemeint ist der Tanz (Falle "Boogie Woogie an einem
+  Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des Tanzes
+  steht im Lexikoneintrag). Seite am 2026-10-12 erneut abgerufen,
+  Datumszeile unveraendert ("Sa., 21.11.2026 - 17:00").
+  Nicht gefuellt: ende, djs, ticketUrl, kapazitaet, barrierefrei,
+  kinder, drinnenDraussen.
 quellen:
   - url: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
     titel: Boogie Cats Union Tanzsport Verein Möllersdorf (BOOGIE.at)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, veranstalter, eintritt, reihe, reiheName, links, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, veranstalter, eintritt, reihe, reiheName, links, name, aliases, kurzbeschreibung, durchfuehrung, preise, genres, body:termin, body:eintritt, body:reihe]
     art: aggregator
   - url: https://www.traiskirchen.gv.at/veranstaltungen/veranstaltungsdetails/boogie-cats-tanzparty01/
     titel: Boogie Cats – Tanzparty (Stadtgemeinde Traiskirchen)
@@ -67,7 +83,7 @@ Wie schon im Oktober fällt die Ausgabe trotz des Reihennamens auf einen Samstag
 
 ## Eintritt zur Boogie-Party im November 2026
 
-Einen Preis für diesen Termin nennt keine Quelle. Für Halloween verlangt der Verein an der Tageskasse 8 Euro und mit Vorreservierung 5 Euro, und dort legen die DJs Ernst und Charly auf — ob das im November genauso ist, steht nirgends.
+Die Seite der Reihe nennt für ihre Termine 8 Euro an der Tageskasse und 5 Euro mit Vorreservierung. Welche DJs im November auflegen, steht nicht dabei; für Halloween sind es Ernst und Charly.
 
 ## Die Boogie-Party im November in der Reihe
 

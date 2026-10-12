@@ -20,9 +20,7 @@ preise:
   - bezeichnung: Gäste
     betrag: 5
     waehrung: EUR
-  - bezeichnung: Mitglieder
-    betrag: 0
-    waehrung: EUR
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://www.boogielions.at/component/content/article/74-boogie-halloween-31-10-2026?catid=2&Itemid=101
@@ -45,9 +43,10 @@ redaktionsnotiz: >-
   ZEITZONE +01:00: Die Sommerzeit endet am 25. Oktober 2026, sechs Tage
   vorher.
   ENDE LEER: Keine Quelle nennt ein Ende.
-  PREISE: "Mitglieder frei" als Betrag 0 unter `preise`, damit die
-  Staffel vollstaendig ist; `eintritt` ist `beziffert`, weil es fuer
-  Gaeste einen Preis gibt. Anmeldung ist laut Verein erforderlich; die
+  PREISE: Nur der Gaestepreis von 5 Euro unter `preise`. ENTSCHIEDEN
+  2026-10-12 (Markus, zu PR #198, nach Abweichung des Gegenlesers):
+  "Mitglieder frei" ist kein Preis und steht nicht mehr als Betrag 0 in
+  der Staffel, sondern nur im Text. `eintritt` ist `beziffert`. Anmeldung ist laut Verein erforderlich; die
   Kontaktdaten dafuer sind die einer Vereinsvertreterin und stehen nicht
   im Text.
   DJ: Schreibung wie beim Verein ("Chris de Play"); keine eigene Seite.
@@ -56,15 +55,22 @@ redaktionsnotiz: >-
   spricht vom Festsaal, in dem man "wie gewohnt" tanzt. Die fuenf
   weiteren Termine des Postens (28.11.2026 bis 01.05.2027) fehlen, weil
   Uhrzeit und Ort dafuer nur boogie.at nennt (OFFENE-PUNKTE).
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie-Woogie als Tanz", Lexikon-Posten "Bündel Tanz").
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12): Die Ankuendigung
+  heisst "Boogie Halloween", richtet sich an "Liebe Boogie Freunde" und
+  verspricht "Spass und viel Tanzen"; die Terminliste nennt "Boogie
+  Halloween mit DJ Chris de Play", die Startseite spricht von
+  "Boogie-Tanzabend" und vom "Boogie 8er Schritt". An einem Tanzabend
+  eines Tanzvereins ist das der Tanz (Falle "Boogie Woogie an einem
+  Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des Tanzes
+  steht im Lexikoneintrag). Alle drei Seiten am 2026-10-12 erneut
+  abgerufen, Datum, Uhrzeit, Eintritt und DJ unveraendert.
   Nicht gefuellt: ende, ticketUrl, drinnenDraussen, kapazitaet,
-  barrierefrei, kinder, genres.
+  barrierefrei, kinder.
 quellen:
   - url: https://www.boogielions.at/component/content/article/74-boogie-halloween-31-10-2026?catid=2&Itemid=101
     titel: Boogie Halloween - 31.10.2026 (Boogie Lions)
-    abgerufenAm: 2026-09-28
-    felder: [beginn, ort, djs, veranstalter, veranstalterUrl, eintritt, preise, name, aliases, kurzbeschreibung, links, durchfuehrung, body:termin, body:eintritt]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, djs, veranstalter, veranstalterUrl, eintritt, preise, name, aliases, kurzbeschreibung, links, durchfuehrung, genres, body:termin, body:eintritt]
     art: offiziell
   - url: https://www.boogielions.at/images/Halloween-20261031-400.jpg
     titel: Flyer Boogieparty Halloween, 31.10.2026 (Boogie Lions)
@@ -73,8 +79,8 @@ quellen:
     art: offiziell
   - url: https://www.boogielions.at/veranstaltungen
     titel: Veranstaltungen (Boogie Lions)
-    abgerufenAm: 2026-09-28
-    felder: [beginn, djs, veranstalter, veranstalterUrl, reihe, reiheName, aliases, body:termin, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, djs, veranstalter, veranstalterUrl, reihe, reiheName, aliases, genres, body:termin, body:reihe]
     art: offiziell
   - url: https://www.boogielions.at/component/content/article/72-boogie-party-19-09-2026?catid=2&Itemid=101
     titel: Boogie Party - 19.09.2026 (Boogie Lions)
@@ -83,8 +89,8 @@ quellen:
     art: offiziell
   - url: https://www.boogielions.at/
     titel: Boogie Lions
-    abgerufenAm: 2026-09-28
-    felder: [veranstalter, veranstalterUrl, reihe, reiheName, body:reihe]
+    abgerufenAm: 2026-10-12
+    felder: [veranstalter, veranstalterUrl, reihe, reiheName, genres, body:reihe]
     art: offiziell
 ---
 

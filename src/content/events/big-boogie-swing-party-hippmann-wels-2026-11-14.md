@@ -26,6 +26,7 @@ preise:
     waehrung: EUR
 ticketUrl: https://www.tanzschule.at/newsbeitrag/boogiefox2026/
 drinnenDraussen: drinnen
+genres: [boogie-woogie-tanz, lindy-hop]
 durchfuehrung: geplant
 links:
   website: https://www.tanzschule.at/newsbeitrag/boogiefox2026/
@@ -63,14 +64,22 @@ redaktionsnotiz: >-
   50's Rock'n'Roll Band" auf der Bassdrum -- das ist Bildinhalt, keine
   Beschreibung der Tanzschule, und steht nicht im Text.
   DRINNEN aus "vollklimatisiertes Tanzlokal" (Seite des Hippmann7).
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie Woogie in Terminen").
-  Nicht gefuellt: ende, kapazitaet, barrierefrei, kinder, genres.
+  GENRES `boogie-woogie-tanz`, `lindy-hop` (nachgetragen 2026-10-12): Die
+  Ankuendigung der Tanzschule nennt den Hauptfloor "BOOGIE, LINDY HOP &
+  SWING - Floor", dazu je einen Floor fuer West Coast Swing und Discofox.
+  An einem Tanzabend ist "Boogie" der Tanz (Falle "Boogie Woogie an einem
+  Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des Tanzes
+  steht im Lexikoneintrag). Swing, West Coast Swing und Discofox haben
+  keinen Tanzeintrag im Lexikon und stehen nur im Text; der Musikeintrag
+  `swing` waere hier die falsche Zuordnung, weil der Floor nach Taenzen
+  benannt ist. Seite am 2026-10-12 erneut abgerufen, Datum, Zeiten, Lineup
+  und Preise unveraendert.
+  Nicht gefuellt: ende, kapazitaet, barrierefrei, kinder.
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/boogiefox2026/
     titel: Big Boogie + Fox Party 2026 (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, ortHinweis, veranstalter, veranstalterUrl, lineupWeitere, djs, eintritt, preise, ticketUrl, links, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:lineup, body:eintritt]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, ortHinweis, veranstalter, veranstalterUrl, lineupWeitere, djs, eintritt, preise, ticketUrl, links, name, aliases, kurzbeschreibung, durchfuehrung, genres, body:termin, body:lineup, body:eintritt]
     art: offiziell
   - url: https://www.tanzschule.at/events/
     titel: Events (Tanzschule Hippmann)

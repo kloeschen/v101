@@ -16,6 +16,7 @@ veranstalter: Tanzschule Hippmann
 veranstalterUrl: https://www.tanzschule.at/
 djs: [DJ.K, DJ Walter]
 eintritt: unveroeffentlicht
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
@@ -51,9 +52,15 @@ redaktionsnotiz: >-
   haben dasselbe Format; im Register stehen zwei Ausgaben.
   TITEL: boogie.at schreibt "Chrismas" (sic), der Flyer
   "Weihnachts - Boogie & Discofox Party"; `name` folgt dem Flyer.
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12): boogie.at nennt
+  "Big Boogie und Discofox Party", "2 Dj's 2 Floors", "Fuer alle die gerne
+  Tanzen" -- Boogie und Discofox als die beiden Floors, also Taenze (Falle
+  "Boogie Woogie an einem Tanzabend", Regel Markus 2026-10-03; "Boogie"
+  als Kurzform des Tanzes steht im Lexikoneintrag). Discofox hat keinen
+  Lexikoneintrag und steht nur im Text. Seite am 2026-10-12 erneut
+  abgerufen, Datumszeile unveraendert ("Sa., 05.12.2026 - 20:00").
   Nicht gefuellt: ende, preise, ticketUrl, kapazitaet, barrierefrei,
-  kinder, drinnenDraussen, genres.
+  kinder, drinnenDraussen.
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
     titel: Fox & Boogie Nacht – Donnerstags beim Hippmann in Regau (Tanzschule Hippmann)
@@ -67,8 +74,8 @@ quellen:
     art: offiziell
   - url: https://boogie.at/event/chrismas-big-boogie-und-discofox-party
     titel: Chrismas Big Boogie und Discofox Party (BOOGIE.at)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, aliases, body:termin]
+    abgerufenAm: 2026-10-12
+    felder: [beginn, ort, aliases, genres, body:termin]
     art: aggregator
   - url: https://www.tanzschule.at/newsbeitrag/big-boogie-discofox-party/
     titel: Big Boogie & Discofox-Party 2026 (Tanzschule Hippmann)

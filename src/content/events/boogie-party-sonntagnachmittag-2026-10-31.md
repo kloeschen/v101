@@ -22,6 +22,7 @@ preise:
   - bezeichnung: Vorreservierung
     betrag: 5
     waehrung: EUR
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
@@ -40,13 +41,21 @@ redaktionsnotiz: >-
   die Reihe "Sonntagnachmittag" heisst. Der Widerspruch steht in beiden
   Ausgaben im Text -- er ist keine Unsicherheit der Quelle, sondern eine
   Eigenheit der Reihe.
-  Preise, DJs, Einlasszeit und die leeren `genres` wie bei der
-  Septemberausgabe; die Begruendung zu `genres` steht dort ausfuehrlich.
+  Preise, DJs und Einlasszeit wie bei der Septemberausgabe.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-12; die Begruendung
+  der Septemberausgabe gegen `boogie-woogie` gilt weiter fuer den
+  Musikeintrag): boogie.at nennt die Ausgabe "HALLOWEEN - Boogie - Party",
+  Veranstalter ist der "Union Tanzsport Verein Moellersdorf", der die
+  Boogie Cats im Titel fuehrt. Gemeint ist der Tanz, nicht die Musik
+  (Falle "Boogie Woogie an einem Tanzabend", Regel Markus 2026-10-03;
+  "Boogie" als Kurzform des Tanzes steht im Lexikoneintrag). Seite am
+  2026-10-12 erneut abgerufen, Datumszeile, Preise, DJs und Einlass
+  unveraendert.
 quellen:
   - url: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
     titel: Boogie – Party – Sonntagnachmittag, Kammgarnsaal Traiskirchen (BOOGIE.at)
     abgerufenAm: 2026-10-12
-    felder: [beginn, ort, eintritt, preise, veranstalter, djs, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
+    felder: [beginn, ort, eintritt, preise, veranstalter, djs, name, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://boogie.at/
     titel: BOOGIE.at — Terminliste
