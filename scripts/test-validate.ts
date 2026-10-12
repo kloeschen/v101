@@ -824,6 +824,75 @@ fall({
   erwartet: { "event-zeitraum": "warnung" },
 });
 
+/*
+ * pruefkadenz bei Terminen (2026-10-12). Zwei Aenderungen, je mit
+ * Gegenprobe: Eine Nachpruefung (frischer Abruf einer offiziellen Quelle
+ * mit `beginn`) zaehlt wie im Stale-Bericht, und ein Termin, der
+ * stattgefunden hat oder abgesagt ist, hat keine Kadenz mehr. Anlass: vier
+ * Termine vom September faerbten jede CI rot, ohne dass es etwas zu
+ * pruefen gab. Der erste Fall ist das Lebenszeichen: Die Regel greift bei
+ * Terminen ueberhaupt.
+ */
+const abruf = (vor: number, art: string, felder = "beginn, ort") =>
+  `\n  - url: https://example.org/kalender\n` +
+  `    titel: Kalender des Veranstalters\n` +
+  `    abgerufenAm: ${vorTagen(vor)}\n` +
+  `    felder: [${felder}]\n` +
+  `    art: ${art}`;
+
+fall({
+  name: "pruefkadenz: kuenftiger Termin, seit 40 Tagen ungeprueft, warnt",
+  datei: "events/kadenz-alt.md",
+  inhalt: md(evFelder("Alter Weekender", { geprueftAm: vorTagen(40), quellen: abruf(40, "offiziell") }), evKoerper("Alter Weekender")),
+  erwartet: { pruefkadenz: "warnung" },
+});
+
+fall({
+  name: "pruefkadenz: Nachpruefung an der offiziellen Quelle erledigt die Kadenz",
+  datei: "events/kadenz-nachgeprueft.md",
+  inhalt: md(evFelder("Nachgepruefter Weekender", { geprueftAm: vorTagen(40), quellen: abruf(2, "offiziell") }), evKoerper("Nachgepruefter Weekender")),
+  verboten: ["pruefkadenz"],
+});
+
+fall({
+  name: "pruefkadenz: frischer Abruf eines Aggregators zaehlt nicht",
+  datei: "events/kadenz-aggregator.md",
+  inhalt: md(evFelder("Aggregierter Weekender", { geprueftAm: vorTagen(40), quellen: abruf(2, "aggregator") }), evKoerper("Aggregierter Weekender")),
+  erwartet: { pruefkadenz: "warnung" },
+});
+
+fall({
+  name: "pruefkadenz: frischer Abruf ohne beginn in felder zaehlt nicht",
+  datei: "events/kadenz-ohne-beginn.md",
+  inhalt: md(evFelder("Beginnloser Weekender", { geprueftAm: vorTagen(40), quellen: abruf(2, "offiziell", "ort") + quelle("beginn") }), evKoerper("Beginnloser Weekender")),
+  erwartet: { pruefkadenz: "warnung" },
+});
+
+fall({
+  name: "pruefkadenz: stattgefundener Termin hat keine Kadenz",
+  datei: "events/kadenz-vorbei.md",
+  inhalt: md(
+    evFelder("Vergangener Kadenzweekender", { beginn: vorTagen(40), durchfuehrung: "stattgefunden", geprueftAm: vorTagen(80), quellen: abruf(80, "offiziell") }),
+    evKoerper("Vergangener Kadenzweekender"),
+  ),
+  verboten: ["pruefkadenz", "event-zeitraum"],
+});
+
+fall({
+  name: "pruefkadenz: abgesagter Termin hat keine Kadenz",
+  datei: "events/kadenz-abgesagt.md",
+  inhalt: md(
+    evFelder("Abgesagter Kadenzweekender", {
+      durchfuehrung: "abgesagt",
+      durchfuehrungHinweis: "Laut Veranstalter abgesagt.",
+      geprueftAm: vorTagen(80),
+      quellen: abruf(80, "offiziell", "beginn, ort, durchfuehrung"),
+    }),
+    evKoerper("Abgesagter Kadenzweekender"),
+  ),
+  verboten: ["pruefkadenz"],
+});
+
 fall({
   name: "event-zeitraum: kuenftiger Termin mit Status geplant ist sauber",
   datei: "events/zeit-gut.md",
