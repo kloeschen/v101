@@ -360,7 +360,18 @@ Fehler verursacht oder beinahe verursacht.
   bekam Chromium `502` „upstream request failed" — drei Tageszeiten,
   dreimal nichts. Ein Posten, der allein an diesem Shop hängt, braucht
   dann die Terminseite aus einem Browser von Hand, nicht einen vierten
-  Lauf.
+  Lauf. **Nachtrag 2026-10-12, die Ursache:** Auch ein Chromium mit
+  echtem (virtuellem) Bildschirm unter `xvfb-run`, deutscher Sprache,
+  Zeitzone Europe/Berlin und ohne Automatisierungskennung bekam von
+  Akamai `403 Access Denied` — schon auf der Startseite
+  `eventim-light.com/de/`. Gesperrt ist die Adresse, nicht das
+  Verhalten: Die Cloud-Umgebung geht über Rechenzentrums-IPs hinaus.
+  Kein Browser-Trick ändert das, und Tarnung ist hier ohnehin nicht der
+  Weg. Eventim Light ist aus der Cloud **keine** verlässliche Quelle;
+  der Termin vom 31.10.2026 wurde deshalb nicht gebaut (Entscheidung
+  Markus). Andere Wix- oder Bot-Prüfseiten („Checking your request")
+  ließen sich dagegen mit demselben Browser lesen — erst der Versuch mit
+  `xvfb-run`, dann das Urteil.
 - **Terminlisten ohne Jahr, Jahr nur im Kalenderexport** (HsD /
   Museumskeller Erfurt, 2026-10-08). Liste und Detailseite nennen nur
   „20.03." und „Sa / 20:00"; das Jahr steht allein im iCal-Export des

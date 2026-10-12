@@ -216,6 +216,21 @@ bearbeitet.
    ein Fehler — und färbt dann jeden Zweig rot, auch einen, der mit Terminen
    nichts zu tun hat. Am 2026-09-21 genau so passiert. Ergibt sich eine
    Änderung, gehört sie in denselben Pull Request.
+
+   **0b. Überfällige Termine nachprüfen** (seit dem 2026-10-12,
+   Entscheidung Markus zum „Zeitzünder"). Gleich nach `archivieren`:
+   `npm run stale` und im Abschnitt „Überfällige Prüfungen" die Termine
+   (`src/content/events/`) nehmen, die nächsten zuerst, höchstens fünf
+   je Lauf. Jeden nachprüfen wie unter Schritt 2 beschrieben: offizielle
+   Quelle öffnen, `abgerufenAm` auf den Abruftag, `beginn` in ihren
+   `felder`. Weicht etwas ab, wird es nicht still korrigiert, sondern im
+   PR gemeldet, wie beim Gegenleser. Ist eine Quelle nicht erreichbar,
+   steht das im PR, und der Lauf macht mit seinem Posten weiter.
+   Überfällige Einträge anderer Sammlungen (Lexikon, Orte, Bands …)
+   erledigt nur die Freigabe: Für sie zählt allein `geprueftAm`. Anlass:
+   Vom 2026-10-10 bis 2026-10-12 war jede CI rot, weil Termine durch
+   bloßen Zeitablauf die Kadenz überschritten (ENTSCHEIDUNGEN.md,
+   2026-10-12).
 1. Nimmt den **obersten freien Posten** aus `docs/posten/`
    (`npm run warteschlange:naechster`, nennt Datei und Auftrag). Genau
    einen. Ist er erledigt, **löscht der Lauf dessen Datei** — und keine
