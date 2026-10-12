@@ -45,7 +45,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://boogie.at/event/boogie-cats-union-tanzsport-verein-moellersdorf
     titel: Boogie – Party – Sonntagnachmittag, Kammgarnsaal Traiskirchen (BOOGIE.at)
-    abgerufenAm: 2026-09-10
+    abgerufenAm: 2026-10-12
     felder: [beginn, ort, eintritt, preise, veranstalter, djs, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://boogie.at/

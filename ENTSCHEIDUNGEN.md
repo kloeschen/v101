@@ -18,6 +18,50 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-12 — Prüfkadenz: Nachprüfung zählt, vergangene Termine sind ausgenommen
+
+**Fund mit Folgen, behoben.** Vom 2026-10-10 bis zum 2026-10-12 wurde kein
+PR mehr grün, keiner der sieben Tagesläufe und auch nicht der Suchlauf.
+Die Ursache war in keinem dieser PRs zu finden. Zwei Dinge sind schlicht
+durch Zeitablauf eingetreten:
+
+1. The Sinners (2026-10-10) stand noch auf `geplant`. Das war ein Fehler
+   in `event-zeitraum`, und den räumt `archivieren` auf.
+2. Sechs Einträge mit `geprueftAm: 2026-09-10` hatten die 30-Tage-Kadenz
+   überschritten. `verify:ci` läuft mit `--strict` und macht daraus
+   Fehler. Vier dieser sechs waren Termine vom September, die längst
+   `stattgefunden` hatten.
+
+Dazu kam eine Lücke, die seit dem 2026-10-03 bestand: Der Stale-Bericht
+zählt die Nachprüfung eines Laufs (`abgerufenAm` einer offiziellen Quelle
+mit `beginn`), der Validator zählte nur `geprueftAm`. Ein Lauf, der nach
+BETRIEB.md nachprüft, hätte die CI also gar nicht grün machen können.
+
+**Geändert:** Beide rechnen jetzt mit `src/lib/pruefung.ts`
+(`letzteNachpruefung`, `kadenzGilt`).
+- Die Nachprüfung zählt im Validator genauso wie im Stale-Bericht.
+- Termine mit `stattgefunden` oder `abgesagt` haben keine Kadenz mehr.
+  An ihnen gibt es nichts mehr zu prüfen.
+
+**Belege:** `test-validate.ts` hat sechs neue Fälle, 350 Prüfungen
+insgesamt. Lebenszeichen ist ein künftiger Termin, der seit 40 Tagen
+ungeprüft ist und warnt. Fünf Mutationen sind gefallen:
+- Kadenz immer (2)
+- `abgesagt` nicht ausgenommen (1)
+- nur `geprueftAm` (1)
+- Aggregator zählt (4)
+- Abruf ohne `beginn` zählt (1)
+
+**Im selben PR:** Sinners archiviert. Die Boogie-Party vom 2026-10-31 ist
+an boogie.at nachgeprüft: Datum, Uhrzeit, Ort, Preise und DJs stimmen,
+`abgerufenAm` steht auf 2026-10-12.
+
+**Offen, Ermessensfrage für Markus:** Die Kadenz bleibt ein Zeitzünder.
+Ein künftiger Termin, den 30 Tage niemand nachprüft, färbt wieder jede CI
+rot, auch PRs, die nichts mit ihm zu tun haben. Ein Posten dazu steht in
+`docs/posten/pruefkadenz-zeitzuender.md`.
+
+
 ## 2026-10-09 — Lexikon-Vorrat aufgefüllt: sieben Bündel, 27 Begriffe
 
 **Entscheidung Markus**, nach Vorschlag. Anlass: Startschwelle 80

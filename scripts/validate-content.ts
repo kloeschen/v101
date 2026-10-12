@@ -25,6 +25,7 @@ import { istVorbei, jahrIn } from "../src/lib/datum";
 import { segmentiere } from "../src/lib/links";
 import { programmBefunde } from "../src/lib/programm";
 import { genresBefunde } from "../src/lib/genres";
+import { kadenzGilt, letzteNachpruefung } from "../src/lib/pruefung";
 import {
   collectionSchemas,
   collectionNames,
@@ -1266,7 +1267,11 @@ const REGELN: Regel[] = [
     collections: "*",
     pruefe(e, ctx) {
       if (!e.daten) return [];
-      const alter = tageSeit(e.daten.geprueftAm, ctx.heute);
+      // Seit dem 2026-10-12 dieselbe Rechnung wie im Stale-Bericht
+      // (src/lib/pruefung.ts): Eine Nachprüfung zählt, ein vergangener oder
+      // abgesagter Termin hat keine Kadenz mehr.
+      if (!kadenzGilt(e.collection, e.daten)) return [];
+      const alter = tageSeit(letzteNachpruefung(e.daten), ctx.heute);
       const grenze = pruefKadenzTage[e.collection];
       if (alter > grenze * 2) {
         return [{ ebene: "fehler", code: "", nachricht: `Seit ${alter} Tagen nicht geprüft (Kadenz ${grenze} Tage, doppelt überschritten).` }];
