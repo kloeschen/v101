@@ -104,7 +104,8 @@ Terminseite einsteigen.
 **Lexikon-Vorrat — der Suchlauf zieht von oben nach, sobald weniger als
 zwei Lexikon-Posten frei sind.** Recherchiert am 2026-09-29
 (Startschwelle: 80 Begriffe; Stand 2026-10-09: 51 im Repo, 5 in der
-Warteschlange, 28 hier, zusammen 84). Seit Weg A (2026-09-29) zieht der
+Warteschlange, 28 hier, zusammen 84; am 2026-10-11 neun davon in die
+Warteschlange gezogen). Seit Weg A (2026-09-29) zieht der
 Suchlauf Bündel von oben nach unten nach, bis drei Lexikon-Posten frei
 sind, innerhalb der Obergrenze von zwölf (`npm run warteschlange:platz`,
 Ablauf in `docs/ablaeufe/termin-recherche.md`, Schritt 1a). Ein
@@ -121,23 +122,13 @@ dem 2026-10-02 als Entwurf angelegt (`lexikon/pompadour`,
 Kleidformen, Genres und Schuhe hat der Suchlauf am 2026-10-04 nach oben
 gezogen. Wäsche, Instrument und Klang und Autos hat der Suchlauf am
 2026-10-08 nach oben gezogen (`docs/posten/lexikon-buendel-*.md`).
-- *Szene:* Halbstarke (Teddy Boys, Rocker, der Film von 1956) — an
-  `lexikon/teddy-boy` anschließen (Entwurf seit dem 2026-10-02).
+Halbstarke (Szene), Genre und Tanz hat der Suchlauf am 2026-10-11 nach
+oben gezogen.
 
 Aufgefüllt am 2026-10-09 (Auswahl Markus, nach Vorschlag; Begründung und
 Messung in ENTSCHEIDUNGEN.md vom selben Tag). Die Zahl hinter einem
 Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
 setzt der Autolink später an.
-- *Genre:* Blues (gegen Rhythm and Blues und Jump Blues; 46×), Country
-  (gegen Hillbilly und Western Swing, nicht die Landhausmode des alten
-  Pfads `/thema/country`; 38×), Skiffle (gegen Rockabilly, Bezug zu den
-  Teddy Boys), Big Band (gegen Swing: Besetzung, nicht Stil).
-- *Tanz:* Discofox (gegen Boogie-Woogie als Tanz; 30× in Terminen),
-  West Coast Swing (gegen Lindy Hop; 11×), Balboa (gegen Lindy Hop),
-  Charleston (gegen Lindy Hop und die Mode der 20er; alter Pfad
-  `/thema/charleston`). Danach die Tanztermine prüfen, die diese Tänze im
-  Text nennen: `genres` dort nachtragen, wie im Posten
-  `tanztermine-genres-nachtragen`.
 - *Frisur:* Tolle (gegen Pompadour und Quiff — der häufigste
   Verwechslungsfall; 39×), Quiff, Victory Rolls (gegen Pin Curls), Pin
   Curls. An `lexikon/pompadour` und `artikel/rockabilly-frisuren`
