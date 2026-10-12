@@ -1,13 +1,13 @@
 ---
 name: Rockabilly Night in Pullman City 2026
 aliases: [Rockabilly Night Pullman City, Rockabilly Night Eging, Boogie Woogie meets Wild West]
-kurzbeschreibung: Tanzabend am Sonntag, 27. Dezember 2026, in der Music Hall der Westernstadt Pullman City in Eging am See, mit The Ridin' Dudes live und zwei DJs; Einlass mit der Tageskarte der Westernstadt.
+kurzbeschreibung: Rockabilly Night am Sonntag, 27. Dezember 2026, in der Westernstadt Pullman City in Eging am See. Einlass mit der Tageskarte ab 9 Uhr, Musik ab 17 Uhr in der Music Hall mit The Ridin' Dudes live und zwei DJs.
 status: entwurf
 erstelltAm: 2026-10-12
 geprueftAm: 2026-10-12
 autor: markus
 typ: tanzabend
-beginn: 2026-12-27T17:00:00+01:00
+beginn: 2026-12-27T09:00:00+01:00
 ort: pullman-city
 ortHinweis: Music Hall und Pina Colada Bar
 region: bayern
@@ -55,12 +55,15 @@ redaktionsnotiz: >-
   New Country Night (28.12.), und der Ticketshop, der fuer genau diesen
   Tag verkauft. Das Aufmacherbild heisst dagegen
   `csm_2018_Rockabilly_Day` -- ein altes Bild, kein Gegenbeleg.
-  BEGINN 17:00: Die Seite nennt keine Anfangszeit fuer die "Night" als
-  Ganzes. Unter "Live Musik & DJS" stehen drei Punkte mit Uhrzeit: 17:00
-  DJ Rockin' Daddy (Music Hall), 20:30 The Ridin' Dudes (AT) (Music
-  Hall), 21:00 DJane Angy Blue (Pina Colada Bar). `beginn` ist der
-  frueheste davon. Kein `ende`: Die Seite nennt keins; "11:00 - 20:00"
-  gilt fuer die Staende und Buden, nicht fuer den Abend.
+  BEGINN 09:00, ENTSCHIEDEN 2026-10-12 (Markus, zu PR #196, nach
+  Abweichung des Gegenlesers gegen den zuerst eingetragenen Beginn 17:00):
+  Die Veranstaltung gilt fuer den ganzen Tag, eingelassen wird mit der
+  Tageskarte. Die Detailseite nennt "TAGESKARTEN AB 9.00 UHR" (Abschnitt
+  "Preise & Oeffnungszeiten"). Die Musik beginnt um 17:00; unter "Live
+  Musik & DJS" stehen 17:00 DJ Rockin' Daddy (Music Hall), 20:30 The
+  Ridin' Dudes (AT) (Music Hall), 21:00 DJane Angy Blue (Pina Colada
+  Bar), und so steht es in `programm`. Kein `ende`: Die Seite nennt
+  keins; "11:00 - 20:00" gilt fuer die Staende und Buden.
   NUR DER ABEND: Die Tagesansicht fuehrt ausserdem das Programm der
   Special Christmas Week (Staende, Live-Schmieden, Wild West Show Winter,
   Christmas Light Show, Fackelwanderung, Kinderprogramm). Das gehoert
@@ -113,7 +116,7 @@ Die [Rockabilly](/lexikon/rockabilly/) Night in Pullman City ist ein Tanzabend a
 
 ## Der Termin
 
-Das Datum steht auf der Seite des Betreibers mehrfach: im Kopf als 27. Dezember 2026, in der Tagesansicht als „So. 27.12." und in der Veranstaltungsübersicht zwischen den übrigen Abenden der Weihnachtswoche. Der Ticketshop verkauft Karten für genau diesen Tag. Eine Anfangszeit für den Abend als Ganzes nennt die Seite nicht; der erste Programmpunkt mit Uhrzeit ist das DJ-Set um 17 Uhr, und das ist hier als Beginn eingetragen. Ein Ende ist nicht angegeben.
+Das Datum steht auf der Seite des Betreibers mehrfach: im Kopf als 27. Dezember 2026, in der Tagesansicht als „So. 27.12." und in der Veranstaltungsübersicht zwischen den übrigen Abenden der Weihnachtswoche. Der Ticketshop verkauft Karten für genau diesen Tag. Die Rockabilly Night läuft über den ganzen Tag: Eingelassen wird mit der Tageskarte der Westernstadt, und die gibt es laut Betreiber ab 9 Uhr. Die Musik beginnt um 17 Uhr mit dem ersten DJ-Set. Ein Ende ist nicht angegeben.
 
 ## Programm
 
