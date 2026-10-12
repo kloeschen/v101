@@ -20,9 +20,6 @@ preise:
   - bezeichnung: Gäste
     betrag: 5
     waehrung: EUR
-  - bezeichnung: Mitglieder
-    betrag: 0
-    waehrung: EUR
 genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
@@ -46,9 +43,10 @@ redaktionsnotiz: >-
   ZEITZONE +01:00: Die Sommerzeit endet am 25. Oktober 2026, sechs Tage
   vorher.
   ENDE LEER: Keine Quelle nennt ein Ende.
-  PREISE: "Mitglieder frei" als Betrag 0 unter `preise`, damit die
-  Staffel vollstaendig ist; `eintritt` ist `beziffert`, weil es fuer
-  Gaeste einen Preis gibt. Anmeldung ist laut Verein erforderlich; die
+  PREISE: Nur der Gaestepreis von 5 Euro unter `preise`. ENTSCHIEDEN
+  2026-10-12 (Markus, zu PR #198, nach Abweichung des Gegenlesers):
+  "Mitglieder frei" ist kein Preis und steht nicht mehr als Betrag 0 in
+  der Staffel, sondern nur im Text. `eintritt` ist `beziffert`. Anmeldung ist laut Verein erforderlich; die
   Kontaktdaten dafuer sind die einer Vereinsvertreterin und stehen nicht
   im Text.
   DJ: Schreibung wie beim Verein ("Chris de Play"); keine eigene Seite.
