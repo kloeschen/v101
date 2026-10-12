@@ -46,7 +46,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [Crazy Boogiefreaks, Termine](https://crazy-boogiefreaks.at/termine/) | Oberösterreich (Steyr, Sierning) | Verein | ja, iCal/XML-Export des Kalender-Plugins | Terminseiten nennen oft keinen Ort; Trainings und Partys im selben Kalender. `x-cost-type` im Export ist ein Vorgabewert (siehe Fallen) |
 | [BWC Gmunden, Aktivitätenkalender](https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/) | Oberösterreich (Roitham, Eberstalzell, Fischlham) | Verein | nein, nur Flyer als Bilder | die auf boogie.at und den Flyern genannte `www.bwc-gmunden.com` löst nicht auf (2026-09-28); Kalender je Jahr, am 2026-09-28 nur bis Ende 2026 |
 | [Haslinger Hof, Musikprogramm](https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html) | Bayern (Kirchham bei Bad Füssing) | Haus | nein | Tagesprogramm aller Säle, rund viereinhalb Monate im Voraus; Szenebezug nur beim „BoogieMix" (zweiter Freitag). Tabelle ohne Jahreszahl (siehe Fallen) |
-| [Tanzschule Hippmann, Events](https://www.tanzschule.at/events/) | Oberösterreich (Wels, Regau) | Haus | nein | Ankündigungen je Party mit Preis; Uhrzeit beim Ball oft erst spät. Termine in Regau teils nur auf der Seite der Fox & Boogie Nacht oder nur als Flyer auf boogie.at (2026-10-02) |
+| [Tanzschule Hippmann, Events](https://www.tanzschule.at/events/) | Oberösterreich (Wels, Regau) | Haus | nein | Ankündigungen je Party mit Preis; Uhrzeit beim Ball oft erst spät. Termine in Regau teils nur auf der Seite der Fox & Boogie Nacht oder nur als Flyer auf boogie.at (2026-10-02). Die Fox & Boogie Nacht selbst (Donnerstag, alle zwei Wochen) steht nur als Newsbeitrag mit Terminliste ohne Jahr, nicht in der Eventliste und nicht auf boogie.at (2026-10-11) |
 | [Tanzclub Harlekin, Veranstaltungen](https://www.tanzclub-harlekin.at/veranstaltungen) | Oberösterreich (Enns) | Verein mit eigenem Haus | nein | reicht rund drei Monate voraus (2026-10-07: bis 19.12.); Szenebezug nur bei „Boogie trifft Schlager" und „Boogie meets …". Zeitangaben teils Textbaustein (siehe Fallen) |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
 
@@ -351,7 +351,16 @@ Fehler verursacht oder beinahe verursacht.
   antwortete jede Seite von Eventim Light, auch die Startseite, im
   Browser nur mit „upstream request failed“ — wenige Stunden nachdem
   ein anderer Lauf denselben Shop gelesen hatte. Dann den Termin mit
-  diesem Befund zurückgeben, nicht aus Sammlern bauen.
+  diesem Befund zurückgeben, nicht aus Sammlern bauen. Am 2026-10-11
+  morgens leitete der Shop curl auf einen Queue-it-Warteraum um
+  (`302`, danach Akamai-`403`), Chromium bekam `ERR_EMPTY_RESPONSE`
+  (mit `--disable-http2`) bzw. `ERR_HTTP2_PROTO` (ohne) — auch über den
+  Queue-it-Link. Ein `302` auf `queue-it.net` heißt also: Warteraum,
+  nicht Umzug der Seite. Mittags und nachmittags (09:45 und 14:45 UTC)
+  bekam Chromium `502` „upstream request failed" — drei Tageszeiten,
+  dreimal nichts. Ein Posten, der allein an diesem Shop hängt, braucht
+  dann die Terminseite aus einem Browser von Hand, nicht einen vierten
+  Lauf.
 - **Terminlisten ohne Jahr, Jahr nur im Kalenderexport** (HsD /
   Museumskeller Erfurt, 2026-10-08). Liste und Detailseite nennen nur
   „20.03." und „Sa / 20:00"; das Jahr steht allein im iCal-Export des
