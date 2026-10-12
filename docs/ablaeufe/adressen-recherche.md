@@ -113,6 +113,14 @@ Suchlauf öffnet deshalb schon die eigene Website und nimmt nur Anbieter
 auf, die dort eine Ladenadresse nennen. Mobile Anbieter werden verworfen,
 mit Grund im Bericht.
 
+**Falle: Die Weekender-Seite ist szeniger als die eigene.** Walldorfs
+Text über einen Anbieter ist ein Werbetext des Veranstalters. Am
+2026-10-11 nannte er Barber J. (Mainz) einen Rockabilly-Friseur; die
+eigene Website (jerome-kantner.de) erwähnt nur „Stilmöbel“ im „Charme der
+50er Jahre“ — Deko, kein Angebot — und wurde verworfen. Bei Andy's Body
+Electric (Willich) nennt die eigene Seite New School und Realistic, kein
+Traditional. Maßgeblich ist allein, was die eigene Seite sagt.
+
 ### Das Postenformat
 
 Eine eigene Datei in `docs/posten/` (Form: `docs/posten/README.md`),
