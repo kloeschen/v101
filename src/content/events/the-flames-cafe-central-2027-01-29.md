@@ -13,9 +13,6 @@ region: rhein-neckar
 veranstalter: Cafe Central/TocopillA Events
 lineupWeitere: [The Flames]
 preise:
-  - bezeichnung: Online-Ticket
-    betrag: 16.5
-    waehrung: EUR
   - bezeichnung: Abendkasse
     betrag: 17
     waehrung: EUR
@@ -47,10 +44,13 @@ redaktionsnotiz: >-
   Hauses ueber die Band, mit Zuschreibung im Text verwendet; keine zweite
   Quelle bestaetigt sie. Die Band steht in `lineupWeitere`, keine eigene
   Seite (CLAUDE.md).
-  PREISE: Online-Ticket 16,50 Euro (Ticketseite, sichtbar und im JSON-LD
-  "lowPrice"), Abendkasse 17 Euro (Startseite und Detailseite des
-  Hauses). Getrennt gefuehrt, nicht verrechnet; ob im Online-Preis
-  Gebuehren stecken, sagt keine Quelle.
+  PREISE: Nur die Abendkasse, 17 Euro (Startseite und Detailseite des
+  Hauses). ENTSCHIEDEN 2026-10-12 (Markus, zu PR #195, nach Abweichung
+  des Gegenlesers): Der Preis des Hauses gilt. Die Ticketseite nennt
+  online 16,50 Euro ("Tickets fuer 16,50 €", JSON-LD "lowPrice"); ob
+  darin Gebuehren stecken oder fehlen, sagt keine Quelle, und das Haus
+  nennt den Online-Preis nicht. Die Ticketseite bleibt Quelle fuer
+  Termin, Ort, Ticketlink und Veranstalter, nicht mehr fuer `preise`.
   `ende` ungesetzt: Das JSON-LD der Ticketseite nennt 22:00, sichtbar
   steht keine Endzeit; das JSON-LD ist nicht die Wahrheit
   (termin-recherche.md). `veranstalter` nach der Ticketseite.
@@ -66,7 +66,7 @@ quellen:
   - url: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/the-flames-weinheim-EDRZCH3
     titel: The Flames – Weinheim (loveyourartist)
     abgerufenAm: 2026-10-12
-    felder: [beginn, ort, preise, eintritt, ticketUrl, veranstalter, lineupWeitere, durchfuehrung, body:termin]
+    felder: [beginn, ort, eintritt, ticketUrl, veranstalter, lineupWeitere, durchfuehrung, body:termin]
     art: aggregator
   - url: https://cafecentral.de/
     titel: Programm (Café Central Weinheim, Startseite)
@@ -79,7 +79,7 @@ The Flames im Café Central Weinheim ist ein [Rockabilly](/lexikon/rockabilly/)-
 
 ## Der Termin von The Flames in Weinheim
 
-Das Haus und sein Ticketanbieter nennen übereinstimmend Datum, Uhrzeit und Ort. Online kosten Karten 16,50 Euro, an der Abendkasse nach Angabe des Hauses 17 Euro. Eine Endzeit nennt keine der Quellen.
+Das Haus und sein Ticketanbieter nennen übereinstimmend Datum, Uhrzeit und Ort. Der Eintritt an der Abendkasse kostet nach Angabe des Hauses 17 Euro; Karten gibt es auch über den Ticketanbieter des Hauses. Eine Endzeit nennt keine der Quellen.
 
 Die Programmübersicht auf der Startseite des Hauses führt den Abend ohne Jahreszahl; das Jahr 2027 steht auf der Detailseite und beim Ticketanbieter.
 
