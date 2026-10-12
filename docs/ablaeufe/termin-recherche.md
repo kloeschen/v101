@@ -278,6 +278,11 @@ Fehler verursacht oder beinahe verursacht.
   Startseite Termine ohne Jahr, und seine `/konzert/`-Seiten sehen für
   jedes Jahr gleich aus (eine davon ist von 2021). Ohne Jahr kein Termin —
   den Posten mit genau diesem Befund zurückgeben, nicht schätzen.
+  **Nachtrag 2026-10-12:** Vor dem Zurückgeben den Link des Termins auf
+  der Startseite öffnen. Das Haus widmet alte `/konzert/`-Seiten um: The
+  Flames am 29.1.2027 liegen unter `/konzert/dr-woggle-and-the-radio-6/`,
+  deren Datumszeile „Fr 29.1.2027" mit Jahr nennt. Die URL nach dem
+  Bandnamen zu raten, findet die Seite nicht.
 - **Programmtabellen ohne Jahreszahl.** Das Musikprogramm des Haslinger
   Hofs nennt je Tag nur „Fr - 13.11."; das Jahr steht allein im Kopftext
   („eingetragen bis So, 14.2.2027"), die Tabelle beginnt mit dem heutigen
