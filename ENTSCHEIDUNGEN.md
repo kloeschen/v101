@@ -18,6 +18,38 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-12 — Vier offene Entscheidungen erledigt (Zeitzünder, Boppin'B, Mint, Kadenz-Posten)
+
+**Entscheidung Markus**, jeweils nach Empfehlung.
+
+1. **Zeitzünder: Weg (c).** Der Tageslauf prüft überfällige Termine
+   jetzt vor jedem Posten nach, höchstens fünf, die nächsten zuerst
+   (BETRIEB.md, Schritt 0b). Den Text für den Routine-Prompt muss
+   Markus im claude.ai-Konto eintragen. Das Netz (a), die Kadenz unter
+   `--strict` nur als Hinweis, ist **nicht gebaut**: Die Cloud-Sitzung
+   durfte eine CI-Prüfung nicht herabsetzen, die Sicherheitsprüfung des
+   Agenten hat das blockiert. Die Sperre wurde nicht umgangen. Der Rest
+   steht als `mensch`-Posten in `docs/posten/pruefkadenz-zeitzuender.md`.
+2. **Boppin'B, 31.10.2026, Irish House Kaiserslautern: nicht gebaut,
+   Posten gelöscht.** Die einzige Quelle des Hauses ist sein Shop bei
+   Eventim Light. Akamai sperrt ihn für die IPs der Cloud, auch für
+   einen echten Browser unter `xvfb-run` (403 schon auf der
+   Startseite). Bandsintown allein reicht nicht. Die Falle steht
+   ergänzt in `docs/ablaeufe/termin-recherche.md`.
+3. **Mint. Hair & Make Up, Dresden: nicht aufgenommen.** Die
+   Leistungsseite, gelesen mit demselben Browser, nennt nichts
+   Szenetypisches. „Vintage Lover" ist nur ein Stilwort in einer
+   Aufzählung. Als zweiter Grenzfall neben dem KS Barbershop eingetragen
+   in `docs/ablaeufe/adressen-recherche.md`.
+4. **`pruefkadenz-vergangene-termine.md` gelöscht.** Der Lauf zu #198 hat
+   ihn angelegt, bevor #199 gemergt war. Seine Empfehlung ist dort
+   umgesetzt.
+
+**Gelernt:** Bot-Prüfseiten (Wix „Checking your request") lesen sich mit
+Chromium unter `xvfb-run`. Eine Akamai-Sperre der IP nicht. Erst der
+Versuch, dann das Urteil.
+
+
 ## 2026-10-12 — Prüfkadenz: Nachprüfung zählt, vergangene Termine sind ausgenommen
 
 **Fund mit Folgen, behoben.** Vom 2026-10-10 bis zum 2026-10-12 wurde kein

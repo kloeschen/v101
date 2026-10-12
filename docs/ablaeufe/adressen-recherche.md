@@ -152,3 +152,14 @@ Fifties-Schnitte als Angebot neben regulären Schnitten an, auf einer
 eigenen Unterseite ausdrücklich benannt. Daran lassen sich künftige
 Grenzfälle messen. Ein Szene-Angebot, das auf der eigenen Seite konkret
 benannt ist, genügt, auch wenn es nicht das einzige Angebot ist.
+
+Der zweite Grenzfall, Mint. Hair & Make Up in Dresden, wurde **nicht**
+aufgenommen (Markus, 2026-10-12). Die eigene Seite nennt „Vintage Lover
+20s – 60s Style" nur als einen von vier Stilen auf der About-Seite; die
+Leistungsseite `/salon` listet Haarschnitte, Farbe, Steckfrisuren,
+Make-up und Hochzeiten, aber nichts Szenetypisches. Rockabilly und
+Victory Rolls standen nur im Programm des Walldorf Weekenders, und das
+ist keine Seite des Salons. Daraus die Abgrenzung zum KS Barbershop:
+Ein Stilwort in einer Aufzählung ist kein konkret benanntes Angebot.
+Die Seite `/salon` war am 2026-10-11 hinter einer Bot-Prüfung; Chromium
+unter `xvfb-run` las sie am 2026-10-12 ohne Weiteres.

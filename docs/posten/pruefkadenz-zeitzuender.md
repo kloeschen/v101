@@ -1,27 +1,33 @@
 ---
 marke: mensch
-titel: "Prüfkadenz: Zeitzünder in der CI entschärfen"
+titel: "Prüfkadenz: in der CI nur noch als Hinweis (Teil a des Zeitzünders)"
 angelegt: 2026-10-12
 ---
 
-Vom 2026-10-10 bis zum 2026-10-12 war jede CI rot, weil Einträge durch
-bloßen Zeitablauf die Prüfkadenz überschritten (ENTSCHEIDUNGEN.md,
-2026-10-12). Vergangene Termine und die Nachprüfung sind inzwischen
-berücksichtigt. Der Mechanismus bleibt aber: Ein künftiger Termin, den
-30 Tage niemand nachprüft, macht `verify:ci` rot. Das trifft dann jeden
-PR, auch einen reinen Code-PR.
+Markus hat am 2026-10-12 Weg (c) entschieden: (b) als Pflicht, (a) als
+Netz. **(b) steht**: BETRIEB.md, Schritt 0b. Danach prüft der Tageslauf
+überfällige Termine vor jedem Posten nach.
 
-Zu entscheiden ist, wie die CI damit umgeht. Drei Wege:
+**Offen ist (a).** Die Regel `pruefkadenz` in `scripts/validate-content.ts`
+meldet ab der einfachen Kadenz eine `warnung` und ab der doppelten einen
+`fehler`. Unter `--strict` (`verify:ci`, Freigabe) blockieren beide. Das
+Netz hieße: In beiden Fällen nur noch `hinweis`, mit unveränderter
+Nachricht. Sichtbar bliebe die Kadenz im Validator, im Stale-Bericht und
+in der SessionStart-Zeile. In `scripts/test-validate.ts` gingen die fünf
+Erwartungen `pruefkadenz: "warnung"` bzw. `"fehler"` auf `"hinweis"`.
+Mutationsbeleg: zurück auf `warnung` → genau diese Fälle fallen.
 
-- **(a) Kadenz in der CI nur als Hinweis.** `--strict` blockiert sie
-  nicht mehr, der Stale-Bericht und die Freigabe-Erinnerung melden sie
-  weiter. Kostet: Eine überfällige Prüfung fällt nur noch dem auf, der
-  den Bericht liest.
-- **(b) Tageslauf Schritt 0 um die Nachprüfung erweitern.** Vor jedem
-  Posten werden zuerst die überfälligen Termine nachgeprüft, so wie heute
-  `archivieren` vor allem anderen läuft. Kostet: Läufe, in denen Quellen
-  nicht erreichbar sind, bleiben trotzdem rot.
-- **(c) Beides:** (b) als Pflicht, (a) als Netz.
+**Warum noch nicht gebaut:** Die Cloud-Sitzung vom 2026-10-12 durfte das
+nicht schreiben. Die Sicherheitsprüfung des Agenten stufte das
+Herabsetzen einer CI-Prüfung als Umgehung der CI ein, obwohl es
+beauftragt war. Das ist eine vertretbare Sperre, und sie wurde nicht
+umgangen. Zwei Wege:
 
-Empfehlung: (c). Die Prüfung bleibt Pflicht, aber eine einzelne
-unerreichbare Quelle legt nicht mehr das ganze Repository still.
+1. Markus ändert die zwei Stellen selbst (rund zehn Zeilen, Vorlage oben).
+2. Markus erlaubt es einer Sitzung ausdrücklich, dann baut sie es mit
+   Beleg.
+
+Bis dahin gilt: Bleibt ein Termin trotz Schritt 0b 30 Tage ungeprüft,
+etwa weil seine Quelle unerreichbar ist, wird die CI wieder rot. Ein
+Lexikon- oder Ortseintrag wird es nach seiner Kadenz ebenfalls, denn ihn
+erledigt nur die Freigabe.
