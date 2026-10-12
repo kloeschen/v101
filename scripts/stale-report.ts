@@ -19,6 +19,7 @@ import { ladeAlle, alsRegistryEingaben } from "./_laden";
 import { buildRegistry } from "../src/lib/links";
 import { eventVorbei, istVorbei, tageBis } from "../src/lib/datum";
 import { pruefKadenzTage } from "../src/content/_schemas";
+import { kadenzGilt, letzteNachpruefung } from "../src/lib/pruefung";
 import { istFreigegeben } from "../src/lib/sichtbarkeit";
 import { regionsIndexierbarkeit } from "../src/lib/regionen";
 import { uebersichtIndexierbar } from "../src/lib/facetten";
@@ -60,27 +61,6 @@ interface Posten {
 const TERMIN_NAHT_TAGE = 14;
 const PRUEFUNG_FRISCH_TAGE = 7;
 
-/**
- * Wann der Termin zuletzt gegen die Quelle geprüft wurde: das jüngere von
- * `geprueftAm` und dem jüngsten `abgerufenAm` einer offiziellen Quelle, die
- * `beginn` belegt. Entscheidung von Markus vom 2026-10-03 (ENTSCHEIDUNGEN.md):
- * `geprueftAm` heißt weiter „von Markus geprüft" und ändert sich nur bei der
- * Freigabe; eine Nachprüfung durch einen Lauf schreibt `abgerufenAm` — und
- * erledigt damit den Posten. Nur offizielle Quellen, weil nur der
- * Veranstalter eine Absage oder Verlegung verbindlich ankündigt, und nur mit
- * `beginn`, weil ein Abruf, der das Datum nicht belegt, den Termin nicht
- * geprüft hat.
- */
-function letzteNachpruefung(d: Record<string, any>): Date {
-  let juengste = new Date(d.geprueftAm);
-  for (const q of (d.quellen ?? []) as { abgerufenAm: Date | string; felder?: string[]; art?: string }[]) {
-    if (q.art !== "offiziell" || !q.felder?.includes("beginn")) continue;
-    const abruf = new Date(q.abgerufenAm);
-    if (abruf > juengste) juengste = abruf;
-  }
-  return juengste;
-}
-
 const tage = (d: Date | string) => Math.floor((Date.now() - new Date(d).getTime()) / 86_400_000);
 const rel = (p: string) => path.relative(process.cwd(), p);
 
@@ -112,9 +92,9 @@ function main() {
       });
     }
 
-    const alter = tage(d.geprueftAm);
+    const alter = tage(letzteNachpruefung(d));
     const kadenz = pruefKadenzTage[e.collection];
-    if (alter > kadenz) {
+    if (kadenzGilt(e.collection, d) && alter > kadenz) {
       posten.push({
         art: "ueberfaellig",
         datei: e.datei,
