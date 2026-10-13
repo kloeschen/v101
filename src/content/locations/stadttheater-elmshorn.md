@@ -44,7 +44,7 @@ quellen:
   - url: https://www.stadttheater-elmshorn.de/index.php?info=Haus
     titel: Spielstätte (Stadttheater Elmshorn)
     abgerufenAm: 2026-10-13
-    felder: [adresse, name, kurzbeschreibung, body:haus]
+    felder: [adresse, name, typ, kurzbeschreibung, body:haus]
     art: offiziell
   - url: https://www.stadttheater-elmshorn.de/index.php?info=Karteninfo
     titel: Karteninfo (Stadttheater Elmshorn)
