@@ -18,6 +18,33 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-13 — Prüfkadenz blockiert die CI nicht mehr (Zeitzünder, Teil a)
+
+**Entscheidung Markus**, ausdrücklich für diese Sitzung freigegeben.
+Am Vortag hatte die Sicherheitsprüfung des Agenten den Umbau noch als
+Umgehung der CI blockiert. Die Regel `pruefkadenz` meldet jetzt in
+beiden Stufen nur einen `hinweis`, einfach wie doppelt überschritten.
+Bisher war die einfache Stufe eine Warnung, die doppelte ein Fehler,
+und unter `--strict` blockierten beide. Die Pflicht trägt seit dem
+2026-10-12 der Tageslauf (BETRIEB.md, Schritt 0b). Sichtbar bleibt die
+Kadenz im Validator, im Stale-Bericht und in der SessionStart-Zeile.
+
+**Was das kostet:** Einen Lexikon-, Orts- oder Bandeintrag, dessen
+Kadenz abläuft, erledigt nur die Freigabe. Er fällt jetzt nur noch dem
+auf, der den Stale-Bericht liest, statt die CI rot zu färben.
+
+**Belege:** `test-validate.ts` hat 358 Prüfungen. Neu ist ein
+`--strict`-Lauf über einen Eintrag, der bis auf die doppelt
+überschrittene Kadenz sauber ist. Er ergibt Exitcode 0, und der Hinweis
+steht trotzdem im Bericht. Mutationen:
+- doppelt auf `fehler`: 4 fallen
+- doppelt auf `warnung`: 4 fallen
+- einfach auf `warnung`: 4 fallen
+
+Danach ist der Code zeichengenau zurückgebaut. Der Posten
+`pruefkadenz-zeitzuender.md` ist gelöscht.
+
+
 ## 2026-10-12 — Vier offene Entscheidungen erledigt (Zeitzünder, Boppin'B, Mint, Kadenz-Posten)
 
 **Entscheidung Markus**, jeweils nach Empfehlung.

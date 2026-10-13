@@ -841,10 +841,10 @@ const abruf = (vor: number, art: string, felder = "beginn, ort") =>
   `    art: ${art}`;
 
 fall({
-  name: "pruefkadenz: kuenftiger Termin, seit 40 Tagen ungeprueft, warnt",
+  name: "pruefkadenz: kuenftiger Termin, seit 40 Tagen ungeprueft, meldet einen Hinweis",
   datei: "events/kadenz-alt.md",
   inhalt: md(evFelder("Alter Weekender", { geprueftAm: vorTagen(40), quellen: abruf(40, "offiziell") }), evKoerper("Alter Weekender")),
-  erwartet: { pruefkadenz: "warnung" },
+  erwartet: { pruefkadenz: "hinweis" },
 });
 
 fall({
@@ -858,14 +858,14 @@ fall({
   name: "pruefkadenz: frischer Abruf eines Aggregators zaehlt nicht",
   datei: "events/kadenz-aggregator.md",
   inhalt: md(evFelder("Aggregierter Weekender", { geprueftAm: vorTagen(40), quellen: abruf(2, "aggregator") }), evKoerper("Aggregierter Weekender")),
-  erwartet: { pruefkadenz: "warnung" },
+  erwartet: { pruefkadenz: "hinweis" },
 });
 
 fall({
   name: "pruefkadenz: frischer Abruf ohne beginn in felder zaehlt nicht",
   datei: "events/kadenz-ohne-beginn.md",
   inhalt: md(evFelder("Beginnloser Weekender", { geprueftAm: vorTagen(40), quellen: abruf(2, "offiziell", "ort") + quelle("beginn") }), evKoerper("Beginnloser Weekender")),
-  erwartet: { pruefkadenz: "warnung" },
+  erwartet: { pruefkadenz: "hinweis" },
 });
 
 fall({
@@ -1850,6 +1850,22 @@ fall({
   verboten: ["interne-links", "pruefkadenz", "quellen-vorhanden", "gp-abgrenzung"],
 });
 
+// Fuer den --strict-Lauf am Ende: sauber bis auf die doppelt
+// ueberschrittene Kadenz (Zeitzuender, 2026-10-13). Gebaut wie
+// reife-nur-hinweis, damit keine Linkwarnung den Exitcode verfaelscht.
+fall({
+  name: "pruefkadenz: doppelt ueberfaellig, sonst sauber (Vorlage fuer --strict)",
+  datei: "lexikon/kadenz-strikt.md",
+  inhalt: md(
+    lexFelder("Kadenzstriktrock", { status: "veroeffentlicht", geprueftAm: vorTagen(800) }),
+    `Ein Kadenzstriktrock ist ein Kleidungsstueck aus der Mode der fuenfziger Jahre, das in der Taille eng anliegt und nach unten weit ausschwingt. ` +
+      `In der Vintage- und Rockabilly-Szene gilt der Kadenzstriktrock bis heute als feste Groesse, weil er die Silhouette der Zeit ohne Hilfsmittel traegt.\n\n` +
+      `## Schnitt von Kadenzstriktrock\n\nVerwandt sind der [Freizielrock](/lexikon/freiziel/) und der [Reifgutrock](/lexikon/reife-gut/). ${fueller(80)}`,
+  ),
+  erwartet: { pruefkadenz: "hinweis" },
+  verboten: ["interne-links", "quellen-vorhanden", "gp-abgrenzung", "veroeffentlichungsreife"],
+});
+
 fall({
   name: "veroeffentlichungsreife: vollstaendiger veroeffentlichter Eintrag ist sauber",
   datei: "lexikon/reife-gut.md",
@@ -1858,17 +1874,17 @@ fall({
 });
 
 fall({
-  name: "pruefkadenz: Kadenz einfach ueberschritten warnt",
+  name: "pruefkadenz: Kadenz einfach ueberschritten ist ein Hinweis",
   datei: "lexikon/kadenz-warnung.md",
   inhalt: md(lexFelder("Kadenzwarnrock", { geprueftAm: vorTagen(400) }), lexKoerper("Kadenzwarnrock")),
-  erwartet: { pruefkadenz: "warnung" },
+  erwartet: { pruefkadenz: "hinweis" },
 });
 
 fall({
-  name: "pruefkadenz: Kadenz doppelt ueberschritten ist ein Fehler",
+  name: "pruefkadenz: auch doppelt ueberschritten nur ein Hinweis, blockiert --strict nicht",
   datei: "lexikon/kadenz-fehler.md",
   inhalt: md(lexFelder("Kadenzfehlrock", { geprueftAm: vorTagen(800) }), lexKoerper("Kadenzfehlrock")),
-  erwartet: { pruefkadenz: "fehler" },
+  erwartet: { pruefkadenz: "hinweis" },
 });
 
 /* ------------------------------------------------------------------ */
@@ -2079,6 +2095,16 @@ try {
           d.befunde.some((b) => b.code === "veroeffentlichungsreife" && b.ebene === "hinweis"),
         ),
       JSON.stringify(h.bericht?.befunde ?? h.roh.slice(0, 300)),
+    );
+
+    // Zeitzünder (2026-10-13): Ein doppelt überfälliger Eintrag blockiert
+    // --strict nicht mehr, meldet die Kadenz aber weiter als Hinweis.
+    const k = strikt("lexikon/kadenz-strikt.md");
+    gleich("--strict laesst die doppelt ueberschrittene Kadenz durch (Exitcode 0)", k.code, 0);
+    pruefe(
+      "und meldet sie trotzdem, als Hinweis",
+      (k.bericht?.befunde ?? []).some((d) => d.befunde.some((b) => b.code === "pruefkadenz" && b.ebene === "hinweis")),
+      JSON.stringify(k.bericht?.befunde ?? k.roh.slice(0, 300)),
     );
 
     // Gegenprobe: Eine echte WARNUNG blockiert unter --strict weiterhin.

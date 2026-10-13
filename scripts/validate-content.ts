@@ -1273,11 +1273,17 @@ const REGELN: Regel[] = [
       if (!kadenzGilt(e.collection, e.daten)) return [];
       const alter = tageSeit(letzteNachpruefung(e.daten), ctx.heute);
       const grenze = pruefKadenzTage[e.collection];
+      // Nur ein Hinweis, auch doppelt überschritten (Entscheidung Markus,
+      // 2026-10-12/13, „Zeitzünder", Weg c): Als Warnung blockierte die
+      // Kadenz unter --strict jede CI, sobald ein Eintrag 30 Tage lang
+      // ungeprüft blieb — auch PRs, die mit ihm nichts zu tun hatten. Die
+      // Pflicht liegt beim Tageslauf (BETRIEB.md, Schritt 0b); sichtbar
+      // bleibt sie hier, im Stale-Bericht und in der SessionStart-Zeile.
       if (alter > grenze * 2) {
-        return [{ ebene: "fehler", code: "", nachricht: `Seit ${alter} Tagen nicht geprüft (Kadenz ${grenze} Tage, doppelt überschritten).` }];
+        return [{ ebene: "hinweis", code: "", nachricht: `Seit ${alter} Tagen nicht geprüft (Kadenz ${grenze} Tage, doppelt überschritten).` }];
       }
       if (alter > grenze) {
-        return [{ ebene: "warnung", code: "", nachricht: `Seit ${alter} Tagen nicht geprüft (Kadenz ${grenze} Tage).` }];
+        return [{ ebene: "hinweis", code: "", nachricht: `Seit ${alter} Tagen nicht geprüft (Kadenz ${grenze} Tage).` }];
       }
       return [];
     },
