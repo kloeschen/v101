@@ -69,7 +69,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Hippmann im Star Movie Regau ist der zweite Veranstaltungsstandort der Tanzschule Hippmann aus Wels, in der Betriebstraße 15 in 4844 Regau. Regau ist eine Marktgemeinde im Bezirk Vöcklabruck in Oberösterreich und grenzt an die Bezirkshauptstadt; die Tanzschule richtet hier Tanzabende und Partys für Boogie und Discofox aus.
+Hippmann im Star Movie Regau ist der zweite Veranstaltungsstandort der Tanzschule Hippmann aus Wels, in der Betriebstraße 15 in 4844 Regau. Regau ist eine Marktgemeinde im Bezirk Vöcklabruck in Oberösterreich und grenzt an die Bezirkshauptstadt; die Tanzschule richtet hier Tanzabende und Partys für Boogie und [Discofox](/lexikon/discofox/) aus.
 
 ## Hippmann im Star Movie Regau als Haus
 

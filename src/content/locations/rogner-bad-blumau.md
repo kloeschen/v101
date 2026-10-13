@@ -85,4 +85,4 @@ Nach Angaben der Wikipedia wurde die Anlage am 10. Mai 1997 eröffnet; die Planu
 
 ## Programm im Rogner Bad Blumau
 
-Das [Swinging Wellness Tanzwochenende](/events/swinging-wellness-bad-blumau-2026-11-06/) verbindet Kurse in Boogie, [Lindy Hop](/lexikon/lindy-hop/) und West Coast Swing mit zwei Partys und dem Aufenthalt im Hotel; 2026 findet es zum zehnten Mal statt. Der Veranstalter verteilt die Kurse auf drei Räume, die er „Rundherum", „Dunkelbunt" und „Weltenklang" nennt. Das Haus liegt in der [Steiermark](/regionen/steiermark/).
+Das [Swinging Wellness Tanzwochenende](/events/swinging-wellness-bad-blumau-2026-11-06/) verbindet Kurse in Boogie, [Lindy Hop](/lexikon/lindy-hop/) und [West Coast Swing](/lexikon/west-coast-swing/) mit zwei Partys und dem Aufenthalt im Hotel; 2026 findet es zum zehnten Mal statt. Der Veranstalter verteilt die Kurse auf drei Räume, die er „Rundherum", „Dunkelbunt" und „Weltenklang" nennt. Das Haus liegt in der [Steiermark](/regionen/steiermark/).

@@ -83,4 +83,4 @@ Nach eigener Darstellung wurde der Verein „Tanzclub Harlekin Enns" am 20. Deze
 
 ## Programm im Tanzclub Harlekin
 
-Freitags und samstags finden im Tanzclub Harlekin reguläre Tanzabende mit DJ statt, die der Verein mit Discofox, Schlager, Oldies, Boogie und Evergreens ankündigt. Dazu kommen Kurse in Line Dance, Boogie, Yoga und Bauchtanz, Live-Abende, Karaoke und Themenpartys. Für das Register zählt die Reihe „Boogie trifft Schlager", bei der ein DJ für [Boogie Woogie als Paartanz](/lexikon/boogie-woogie-tanz/) und einer für Schlager und Discofox auflegt. Enns liegt in [Oberösterreich](/regionen/oberoesterreich/).
+Freitags und samstags finden im Tanzclub Harlekin reguläre Tanzabende mit DJ statt, die der Verein mit [Discofox](/lexikon/discofox/), Schlager, Oldies, Boogie und Evergreens ankündigt. Dazu kommen Kurse in Line Dance, Boogie, Yoga und Bauchtanz, Live-Abende, Karaoke und Themenpartys. Für das Register zählt die Reihe „Boogie trifft Schlager", bei der ein DJ für [Boogie Woogie als Paartanz](/lexikon/boogie-woogie-tanz/) und einer für Schlager und Discofox auflegt. Enns liegt in [Oberösterreich](/regionen/oberoesterreich/).
