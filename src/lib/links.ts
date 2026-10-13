@@ -388,7 +388,18 @@ interface Segment {
 /**
  * Zerlegt Markdown in verlinkbare und geschützte Abschnitte.
  * Geschützt sind: Codeblöcke, Inline-Code, HTML-Tags, bestehende Links und
- * Bilder, Linkziele, Überschriften und Tabellentrennzeilen.
+ * Bilder, Linkziele, Überschriften, Tabellentrennzeilen und wörtliche Zitate
+ * in deutschen Anführungszeichen.
+ *
+ * ZITATE (seit dem 2026-10-13, Entscheidung Markus): Ein Zitat gibt fremden
+ * Wortlaut wieder, und ein Link darin deutet ihn um. Anlass war die Tolle:
+ * Die Boogie-Party vom 2026-09-20 zitiert ihre Quelle mit „Tolle Musik mit
+ * DJ- Ernst und Charly" — der Autolink hätte das Adjektiv auf die Frisur
+ * verlinkt. Gemessen über das ganze Register war das der einzige von 30
+ * Treffern, der nicht die Frisur meinte. Geschützt wird „…" bis zum
+ * schließenden Zeichen (“, ” oder "), höchstens 200 Zeichen und ohne
+ * Zeilenumbruch, damit ein vergessenes Schlusszeichen nicht den Rest des
+ * Absatzes sperrt.
  */
 export function segmentiere(markdown: string): Segment[] {
   const geschuetztesMuster = new RegExp(
@@ -403,6 +414,7 @@ export function segmentiere(markdown: string): Segment[] {
       "<[^>]+>", // HTML-Tag
       "^\\s*\\|[-:| ]+\\|\\s*$", // Tabellentrennzeile
       "https?://\\S+", // nackte URL
+      '„[^„“”"\\n]{0,200}[“”"]', // wörtliches Zitat (siehe oben)
     ].join("|"),
     "gmu",
   );
