@@ -2,7 +2,7 @@
 name: Rockabilly Mafia im Stadttheater Elmshorn
 aliases: [Traditionelles Adventssingen 2026, Adventssingen der Rockabilly Mafia, Rockabilly Mafia Adventssingen Nr. 28, Rockabilly Mafia Elmshorn 2026]
 kurzbeschreibung: Weihnachtskonzert der Rockabilly Mafia, das 28. „Traditionelle Adventssingen“, am Samstag, 19. Dezember 2026, im Stadttheater Elmshorn; das Haus führt den Abend als ausverkauft.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

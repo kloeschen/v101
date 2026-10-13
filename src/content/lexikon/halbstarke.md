@@ -2,7 +2,7 @@
 name: Halbstarke
 aliases: [Halbstarker, Halbstarken]
 kurzbeschreibung: Halbstarke ist die abwertende Bezeichnung für die Jugendlichen der 1950er Jahre im deutschsprachigen Raum, die mit Tolle, Jeans und Lederjacke, Mopeds und Rock 'n' Roll auffielen und vor allem durch Krawalle nach Konzerten und Filmvorführungen in die Schlagzeilen kamen.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

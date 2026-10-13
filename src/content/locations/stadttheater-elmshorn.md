@@ -2,7 +2,7 @@
 name: Stadttheater Elmshorn
 aliases: [Elmshorner Stadttheater]
 kurzbeschreibung: Das Stadttheater Elmshorn ist ein Theaterbau von 1900 an der Klostersande in Elmshorn ohne eigenes Ensemble, in dem Gastspiele, Kabarett und Konzerte stattfinden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

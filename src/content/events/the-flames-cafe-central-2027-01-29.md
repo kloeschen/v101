@@ -2,9 +2,9 @@
 name: The Flames im Café Central Weinheim
 aliases: [The Flames Weinheim 2027, The Flames Café Central]
 kurzbeschreibung: Rockabilly-Konzert der Mannheimer Band The Flames am Freitag, 29. Januar 2027, im Café Central in Weinheim.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-12
-geprueftAm: 2026-10-12
+geprueftAm: 2026-10-13
 autor: markus
 typ: konzert
 beginn: 2027-01-29T20:00:00+01:00
