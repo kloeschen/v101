@@ -81,7 +81,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Discofox ist ein paarweise getanzter Gesellschafts- und Turniertanz, der aus dem Foxtrott hervorging und sich in Europa zur Discomusik entwickelte. Sein amerikanisches Gegenstück ist der Hustle, der ungefähr zur selben Zeit entstand. Für die Rockabilly- und Boogie-Szene ist er der Tanz, der auf vielen Partys neben dem [Boogie-Woogie-Tanz](/lexikon/boogie-woogie-tanz/) läuft, obwohl er aus einer anderen Tanzfamilie stammt.
+Discofox ist ein paarweise getanzter Gesellschafts- und Turniertanz, der aus dem Foxtrott hervorging und sich in Europa zur Discomusik entwickelte. Sein amerikanisches Gegenstück ist der Hustle, der ungefähr zur selben Zeit entstand. Für die [Rockabilly](/lexikon/rockabilly/)- und Boogie-Szene ist er der Tanz, der auf vielen Partys neben dem [Boogie-Woogie-Tanz](/lexikon/boogie-woogie-tanz/) läuft, obwohl er aus einer anderen Tanzfamilie stammt.
 
 ## Merkmale des Discofox
 

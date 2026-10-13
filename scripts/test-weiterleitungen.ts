@@ -175,6 +175,10 @@ gleich("echte Daten, alle Einträge als freigegeben gedacht: die erwarteten auto
   "/c/strapsguertel → /lexikon/strapsguertel/",
   "/c/taillenmieder → /lexikon/taillenmieder/",
   "/thema/burlesque → /lexikon/burlesque/",
+  // Entscheidung Markus, 2026-10-13: Das Shop-Schlagwort meinte vermutlich
+  // 20er-Mode, der Eintrag grenzt den Tanz davon ausdrücklich ab — besser
+  // als ein 404. Anders als /thema/country (AUSGESCHLOSSEN).
+  "/thema/charleston → /lexikon/charleston/",
   "/thema/gingham → /lexikon/gingham/",
   "/thema/hahnentritt → /lexikon/hahnentritt/",
   "/thema/houndstooth → /lexikon/hahnentritt/",
