@@ -43,7 +43,15 @@ export const ZUORDNUNG: Record<string, string> = {
 };
 
 /** Gleicher Name, andere Sache — nie automatisch weiterleiten. Pfad → Grund. */
-export const AUSGESCHLOSSEN: Record<string, string> = {};
+export const AUSGESCHLOSSEN: Record<string, string> = {
+  // 2026-10-13, mit dem Lexikoneintrag „country" (Musik). Die /thema/-Pfade
+  // waren Produktschlagworte des alten Shops, „country" steht dort neben
+  // „landhaus", „rustikal", „altholz" und „sheesham" — gemeint war
+  // vermutlich ein Einrichtungs- oder Modestil, nicht die Musik. Belegen
+  // lässt sich keins von beiden; eine 301 auf die Musik wäre eine geratene
+  // Gleichsetzung. Bleibt 404, bis Markus es anders entscheidet.
+  "/thema/country": "Produktschlagwort des alten Shops (Stil), nicht die Musik",
+};
 
 /** Slug-Form wie in den Pfaden der alten Seite: klein, Umlaute ausgeschrieben. */
 export function slugForm(s: string): string {

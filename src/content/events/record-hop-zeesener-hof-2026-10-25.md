@@ -64,7 +64,7 @@ quellen:
     art: offiziell
 ---
 
-Der Record Hop im Zeesener Hof ist ein Tanznachmittag am Sonntag, dem 25. Oktober 2026, ab 16 Uhr in Zeesen bei Königs Wusterhausen. Aufgelegt wird von DJ Capt'n K.; angekündigt sind 50s [Rock'n'Roll](/lexikon/rocknroll/), Jump & Jive, Rhythm'n'Blues und [Rockabilly](/lexikon/rockabilly/).
+Der Record Hop im Zeesener Hof ist ein Tanznachmittag am Sonntag, dem 25. Oktober 2026, ab 16 Uhr in Zeesen bei Königs Wusterhausen. Aufgelegt wird von DJ Capt'n K.; angekündigt sind 50s [Rock'n'Roll](/lexikon/rocknroll/), Jump & Jive, [Rhythm'n'Blues](/lexikon/rhythm-and-blues/) und [Rockabilly](/lexikon/rockabilly/).
 
 ## Der Termin des Record Hops am 25. Oktober
 

@@ -100,7 +100,7 @@ Den Durchbruch brachte Donegans „Rock Island Line", als Single im November 195
 
 ## Skiffle und die Teddy Boys
 
-Die beiden Skiffle-Artikel erwähnen die [Teddy Boys](/lexikon/teddy-boy/) nicht. Der englische Wikipedia-Artikel über die Teds nennt Skiffle neben Jump Blues, Rhythm and Blues und Jazz unter der Musik, zu der sie hörten und tanzten, bevor der [Rock'n'Roll](/lexikon/rocknroll/) kam. Mehr als diese eine Zuordnung tragen die geöffneten Quellen nicht.
+Die beiden Skiffle-Artikel erwähnen die [Teddy Boys](/lexikon/teddy-boy/) nicht. Der englische Wikipedia-Artikel über die Teds nennt Skiffle neben [Jump Blues](/lexikon/jump-blues/), [Rhythm and Blues](/lexikon/rhythm-and-blues/) und Jazz unter der Musik, zu der sie hörten und tanzten, bevor der [Rock'n'Roll](/lexikon/rocknroll/) kam. Mehr als diese eine Zuordnung tragen die geöffneten Quellen nicht.
 
 ## Abgrenzung von Skiffle
 

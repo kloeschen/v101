@@ -79,7 +79,7 @@ Country ist eine Musikrichtung aus den USA, die sich zu Beginn des 20. Jahrhunde
 
 ## Merkmale von Country
 
-Die deutsche Wikipedia beschreibt Country-Lieder als melodisch und harmonisch eher schlicht; die Texte erzählen meist aus ländlicher oder kleinbürgerlicher Sicht. Getragen wird der traditionelle Klang von Saiteninstrumenten: Gitarre, Banjo, Mandoline, Kontrabass und Fiddle, dazu Mundharmonika, Akkordeon oder Klavier. Die englische Wikipedia nennt neben Banjo, Mandoline, Fiddle und Mundharmonika ausdrücklich die Steel- und die Resonatorgitarre. Schlagzeug und elektrisch verstärkte Instrumente kamen erst nach und nach hinzu; Bob Wills gehörte nach der englischen Wikipedia 1938 zu den ersten Country-Musikern mit E-Gitarre in der Band.
+Die deutsche Wikipedia beschreibt Country-Lieder als melodisch und harmonisch eher schlicht; die Texte erzählen meist aus ländlicher oder kleinbürgerlicher Sicht. Getragen wird der traditionelle Klang von Saiteninstrumenten: Gitarre, Banjo, Mandoline, [Kontrabass](/lexikon/kontrabass/) und Fiddle, dazu Mundharmonika, Akkordeon oder Klavier. Die englische Wikipedia nennt neben Banjo, Mandoline, Fiddle und Mundharmonika ausdrücklich die Steel- und die Resonatorgitarre. Schlagzeug und elektrisch verstärkte Instrumente kamen erst nach und nach hinzu; Bob Wills gehörte nach der englischen Wikipedia 1938 zu den ersten Country-Musikern mit E-Gitarre in der Band.
 
 ## Der Name Country
 
