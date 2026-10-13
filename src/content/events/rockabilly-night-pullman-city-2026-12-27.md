@@ -2,9 +2,9 @@
 name: Rockabilly Night in Pullman City 2026
 aliases: [Rockabilly Night Pullman City, Rockabilly Night Eging, Boogie Woogie meets Wild West]
 kurzbeschreibung: Rockabilly Night am Sonntag, 27. Dezember 2026, in der Westernstadt Pullman City in Eging am See. Einlass mit der Tageskarte ab 9 Uhr, Musik ab 17 Uhr in der Music Hall mit The Ridin' Dudes live und zwei DJs.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-12
-geprueftAm: 2026-10-12
+geprueftAm: 2026-10-13
 autor: markus
 typ: tanzabend
 beginn: 2026-12-27T09:00:00+01:00
