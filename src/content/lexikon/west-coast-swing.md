@@ -90,11 +90,11 @@ Umstritten ist auch die Rolle des Lindy-Hop-Tänzers Dean Collins. Die deutsche 
 
 ## Der Name West Coast Swing
 
-Nach der englischen Wikipedia beschrieb eine Tanzlehrerin der Arthur-Murray-Schulen den Stil 1951 unter dem Namen „Western Swing". Die Tanzlehrerin Skippy Blair warb Ende der 1950er Jahre mit „West Coast Swing", weil „Western" im Tanz meist Country und Western meinte; allgemein üblich wurde der Name erst Ende der 1960er Jahre.
+Nach der englischen Wikipedia beschrieb eine Tanzlehrerin der Arthur-Murray-Schulen den Stil 1951 unter dem Namen „Western Swing". Die Tanzlehrerin Skippy Blair warb Ende der 1950er Jahre mit „West Coast Swing", weil „Western" im Tanz meist [Country](/lexikon/country/) und Western meinte; allgemein üblich wurde der Name erst Ende der 1960er Jahre.
 
 ## West Coast Swing heute
 
-Kalifornien führt West Coast Swing als offiziellen Staatstanz; das Jahr 1988 nennt die englische Wikipedia. Getanzt wird er heute nicht nur zu [Swing](/lexikon/swing/), sondern auch zu Pop, Blues, Disco und Hip-Hop. Verbreitet ist er nach der englischen Wikipedia weltweit, darunter in Deutschland, Österreich und der Schweiz. Deutsche Meisterschaften richtet nach der deutschen Wikipedia TAF Germany aus; die häufigste Wettbewerbsform ist Jack and Jill mit zugelosten Partnern.
+Kalifornien führt West Coast Swing als offiziellen Staatstanz; das Jahr 1988 nennt die englische Wikipedia. Getanzt wird er heute nicht nur zu [Swing](/lexikon/swing/), sondern auch zu Pop, [Blues](/lexikon/blues/), Disco und Hip-Hop. Verbreitet ist er nach der englischen Wikipedia weltweit, darunter in Deutschland, Österreich und der Schweiz. Deutsche Meisterschaften richtet nach der deutschen Wikipedia TAF Germany aus; die häufigste Wettbewerbsform ist Jack and Jill mit zugelosten Partnern.
 
 ## Abgrenzung von West Coast Swing
 
