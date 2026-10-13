@@ -18,6 +18,47 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-13 — Autolink lässt wörtliche Zitate in Ruhe
+
+**Entscheidung Markus**, nach einer Messung beim Bündel Frisur. „Tolle“
+ist auch ein Adjektiv, und der Autolink sucht ohne Rücksicht auf Groß-
+und Kleinschreibung. Gemessen über das ganze Register mit dem Muster des
+Autolinks: 30 Treffer, 29 meinen die Frisur. Der einzige Fehltreffer stand
+in einem Zitat: „Tolle Musik mit DJ- Ernst und Charly“ (Boogie-Party vom
+2026-09-20).
+
+**Geändert:** `segmentiere` in `src/lib/links.ts` schützt jetzt Text in
+„…“. Das Zitat endet an “, ” oder ", darf höchstens 200 Zeichen lang sein
+und keinen Zeilenumbruch enthalten.
+
+**Verworfen:**
+- „tolle“ in `NUR_VON_HAND` wie Vintage. Das hätte 29 richtige Links
+  gekostet, um einen falschen zu verhindern.
+- Nur den einen Satz umformulieren. Ein künftiges Zitat wäre wieder
+  falsch verlinkt worden, und das hätte nur ein Diff gezeigt.
+
+**Grundsatz:** Ein Zitat gibt fremden Wortlaut wieder, und ein Link darin
+deutet ihn um.
+
+**Belege:**
+- Simulation über das ganze Register, alle Einträge als freigegeben
+  gedacht: Der Fehltreffer verschwindet, sonst geht kein Link verloren.
+  Zwei Links rücken von einer zitierten an eine freie Stelle desselben
+  Texts; einer davon war der Titel eines zitierten Wikipedia-Artikels.
+- `test-links.ts` hat 7 neue Prüfungen, 91 insgesamt.
+- Lebenszeichen: Dieselbe Tolle hinter dem Zitat wird verlinkt.
+- Mutationen:
+  - Muster entfernt: 3 fallen.
+  - Nur typografisches Schlusszeichen: 2 fallen.
+  - Zeilenumbruch erlaubt: 1 fällt.
+  - Längengrenze entfernt: 1 fällt.
+- Die beiden letzten hatten im ersten Anlauf überlebt. Daraufhin kamen
+  die Tests für die Grenzen dazu.
+
+**Folge:** Was künftig in „…“ steht, wird nie automatisch verlinkt. Wer
+einen Begriff im Zitat verlinken will, setzt den Link von Hand.
+
+
 ## 2026-10-13 — Prüfkadenz blockiert die CI nicht mehr (Zeitzünder, Teil a)
 
 **Entscheidung Markus**, ausdrücklich für diese Sitzung freigegeben.

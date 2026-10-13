@@ -123,16 +123,14 @@ Kleidformen, Genres und Schuhe hat der Suchlauf am 2026-10-04 nach oben
 gezogen. Wäsche, Instrument und Klang und Autos hat der Suchlauf am
 2026-10-08 nach oben gezogen (`docs/posten/lexikon-buendel-*.md`).
 Halbstarke (Szene), Genre und Tanz hat der Suchlauf am 2026-10-11 nach
-oben gezogen.
+oben gezogen. Frisur (Tolle, Quiff, Victory Rolls, Pin Curls) ist am 2026-10-13
+in einer Sitzung mit Markus direkt gebaut worden, ohne Umweg über die
+Warteschlange.
 
 Aufgefüllt am 2026-10-09 (Auswahl Markus, nach Vorschlag; Begründung und
 Messung in ENTSCHEIDUNGEN.md vom selben Tag). Die Zahl hinter einem
 Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
 setzt der Autolink später an.
-- *Frisur:* Tolle (gegen Pompadour und Quiff — der häufigste
-  Verwechslungsfall; 39×), Quiff, Victory Rolls (gegen Pin Curls), Pin
-  Curls. An `lexikon/pompadour` und `artikel/rockabilly-frisuren`
-  anschließen.
 - *Szene:* Weekender (gegen Festival; auch Termintyp `weekender`; 18×),
   Greaser (gegen Teddy Boy; 12×), Mods (gegen Rocker und gegen
   Halbstarke), Rockabella (Selbstbezeichnung; nur anlegen, wenn eine
