@@ -68,4 +68,4 @@ Vom S-Bahnhof Volksgarten (S6) oder Friedrichstadt (S8) sind es nach Angabe des 
 
 ## Programm im Pitcher Düsseldorf
 
-Das Haus nennt Rock, Metal, Punk, Blues, Country, Rockabilly und Tribute-Konzerte, dazu Partys und Comedy. Für die Szene steht darunter das [Konzert von Boppin'B](/events/boppin-b-pitcher-duesseldorf-2027-01-22/) am 22. Januar 2027, der erste Termin dieses Registers in [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/).
+Das Haus nennt Rock, Metal, Punk, [Blues](/lexikon/blues/), [Country](/lexikon/country/), Rockabilly und Tribute-Konzerte, dazu Partys und Comedy. Für die Szene steht darunter das [Konzert von Boppin'B](/events/boppin-b-pitcher-duesseldorf-2027-01-22/) am 22. Januar 2027, der erste Termin dieses Registers in [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/).

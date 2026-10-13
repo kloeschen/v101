@@ -83,4 +83,4 @@ Das Haus nennt die Besetzung mit Michi Bock (Gesang), Golo Sturm (Gitarre), Didi
 
 ## Einordnung des Konzerts in Münster
 
-Der Hot Jazz Club ist ein Live-Musik-Club mit Schwerpunkt Jazz und Blues, in dessen Programm auch Rock'n'Roll und Rockabilly vorkommen. In [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/) schließt der Abend an das [Konzert im Artheater](/events/boppin-b-artheater-koeln-2027-04-17/) in Köln knapp zwei Wochen zuvor an.
+Der Hot Jazz Club ist ein Live-Musik-Club mit Schwerpunkt Jazz und [Blues](/lexikon/blues/), in dessen Programm auch Rock'n'Roll und Rockabilly vorkommen. In [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/) schließt der Abend an das [Konzert im Artheater](/events/boppin-b-artheater-koeln-2027-04-17/) in Köln knapp zwei Wochen zuvor an.

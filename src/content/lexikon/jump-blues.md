@@ -50,7 +50,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Jump Blues ist eine schnelle Spielart des Blues, die vor allem in den 1940er Jahren in den USA populär war und von einer kleinen Combo mit dominanter Bläsergruppe gespielt wurde. Sie steht am Übergang von der Big-Band-Ära zum [Rhythm and Blues](/lexikon/rhythm-and-blues/) und gilt beiden geöffneten Quellen als Vorläufer des [Rock'n'Roll](/lexikon/rocknroll/). Für die Tanzszene ist sie bis heute Repertoire, nicht Geschichte.
+Jump Blues ist eine schnelle Spielart des [Blues](/lexikon/blues/), die vor allem in den 1940er Jahren in den USA populär war und von einer kleinen Combo mit dominanter Bläsergruppe gespielt wurde. Sie steht am Übergang von der Big-Band-Ära zum [Rhythm and Blues](/lexikon/rhythm-and-blues/) und gilt beiden geöffneten Quellen als Vorläufer des [Rock'n'Roll](/lexikon/rocknroll/). Für die Tanzszene ist sie bis heute Repertoire, nicht Geschichte.
 
 ## Merkmale von Jump Blues
 
@@ -58,7 +58,7 @@ Kennzeichnend sind Blechbläser, ein treibender Rhythmus, stark synkopierter Ges
 
 ## Entstehung von Jump Blues
 
-Der Anlass war wirtschaftlich. Nach Angaben der englischen Wikipedia setzten sich kleine Formationen durch, weil Agenten und Saalbetreiber sie zu deutlich geringeren Kosten für Jitterbug-Tanzabende engagieren konnten als eine Big Band; typisch waren fünf bis sieben Musiker mit Saxofon, Bass, Schlagzeug sowie Klavier und/oder Gitarre. Aus der Sparfassung wurde ein eigener Stil.
+Der Anlass war wirtschaftlich. Nach Angaben der englischen Wikipedia setzten sich kleine Formationen durch, weil Agenten und Saalbetreiber sie zu deutlich geringeren Kosten für Jitterbug-Tanzabende engagieren konnten als eine [Big Band](/lexikon/big-band/); typisch waren fünf bis sieben Musiker mit Saxofon, Bass, Schlagzeug sowie Klavier und/oder Gitarre. Aus der Sparfassung wurde ein eigener Stil.
 
 Prägend waren Louis Jordan, Big Joe Turner und Wynonie Harris, dazu nennt die englische Wikipedia Roy Brown und Charles Brown. Die deutsche Wikipedia hebt hervor, dass diese Musiker zu den ersten afroamerikanischen Künstlern gehörten, die auch außerhalb des als „Race Music" abgetrennten Marktes kommerziell erfolgreich waren.
 

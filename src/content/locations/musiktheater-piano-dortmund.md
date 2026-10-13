@@ -57,7 +57,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Das Musiktheater Piano ist eine Konzertbühne im Dortmunder Stadtteil Lütgendortmund, untergebracht im früheren Gasthaus „Zum Deutschen Haus“. Für die [Rockabilly](/lexikon/rockabilly/)-Szene ist es kein Szenehaus, sondern eine Bühne für Jazz, Blues und Rock, auf der auch [Rock'n'Roll](/lexikon/rocknroll/)-Bands auftreten.
+Das Musiktheater Piano ist eine Konzertbühne im Dortmunder Stadtteil Lütgendortmund, untergebracht im früheren Gasthaus „Zum Deutschen Haus“. Für die [Rockabilly](/lexikon/rockabilly/)-Szene ist es kein Szenehaus, sondern eine Bühne für Jazz, [Blues](/lexikon/blues/) und Rock, auf der auch [Rock'n'Roll](/lexikon/rocknroll/)-Bands auftreten.
 
 ## Das Haus Musiktheater Piano
 

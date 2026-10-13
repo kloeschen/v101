@@ -51,7 +51,7 @@ quellen:
 oepnv: Nach Angabe des Hauses halten elf Buslinien an sechs Haltestellen im Umkreis von einer bis acht Gehminuten; fast alle fahren über Bonn Hauptbahnhof.
 ---
 
-Die Harmonie ist ein Traditionslokal mit eigenem Konzertsaal in der Frongasse im Bonner Stadtteil Endenich. Für die [Rockabilly](/lexikon/rockabilly/)-Szene ist sie kein Szenehaus, sondern eine etablierte Bühne für Jazz, Rock, Blues und Folk, auf der gelegentlich auch [Rock'n'Roll](/lexikon/rocknroll/) zu hören ist.
+Die Harmonie ist ein Traditionslokal mit eigenem Konzertsaal in der Frongasse im Bonner Stadtteil Endenich. Für die [Rockabilly](/lexikon/rockabilly/)-Szene ist sie kein Szenehaus, sondern eine etablierte Bühne für Jazz, Rock, [Blues](/lexikon/blues/) und Folk, auf der gelegentlich auch [Rock'n'Roll](/lexikon/rocknroll/) zu hören ist.
 
 ## Das Haus Harmonie Bonn
 

@@ -67,4 +67,4 @@ Der Eingang liegt nach Angabe des Hauses am Roßmarkt 19; vom Hauptbahnhof ist d
 
 ## Programm im Colos-Saal Aschaffenburg
 
-Das Programm reicht von Blues und Classic Rock über Folk und Americana bis zu Comedy; unter den Genres, nach denen das Haus sein Programm filtert, steht Rockabilly als eigener Punkt. Für die Szene ist darunter das [Weihnachtskonzert](/events/boppin-b-colos-saal-2026-12-26/) der Aschaffenburger Band [Boppin'B](/bands/boppin-b/) am 26. Dezember 2026, das das Haus als alljährlichen Termin ankündigt.
+Das Programm reicht von [Blues](/lexikon/blues/) und Classic Rock über Folk und Americana bis zu Comedy; unter den Genres, nach denen das Haus sein Programm filtert, steht Rockabilly als eigener Punkt. Für die Szene ist darunter das [Weihnachtskonzert](/events/boppin-b-colos-saal-2026-12-26/) der Aschaffenburger Band [Boppin'B](/bands/boppin-b/) am 26. Dezember 2026, das das Haus als alljährlichen Termin ankündigt.

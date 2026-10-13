@@ -53,7 +53,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Western Swing ist eine Musikrichtung, die Anfang der 1930er Jahre im Südwesten der USA entstand und traditionelle texanische Musik mit Blues und verschiedenen Spielarten des Jazz verband. Gespielt wurde sie für den Tanzsaal, nicht für die Bühne: Die Bands des Genres arbeiteten in den Tanzhallen von Texas und Oklahoma. Ob sie damit Country oder Jazz spielten, ist bis heute nicht einhellig beantwortet.
+Western Swing ist eine Musikrichtung, die Anfang der 1930er Jahre im Südwesten der USA entstand und traditionelle texanische Musik mit [Blues](/lexikon/blues/) und verschiedenen Spielarten des Jazz verband. Gespielt wurde sie für den Tanzsaal, nicht für die Bühne: Die Bands des Genres arbeiteten in den Tanzhallen von Texas und Oklahoma. Ob sie damit [Country](/lexikon/country/) oder Jazz spielten, ist bis heute nicht einhellig beantwortet.
 
 ## Merkmale von Western Swing
 

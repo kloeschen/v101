@@ -58,4 +58,4 @@ Eröffnet wurde der Club nach eigener Angabe im Mai 2000 in einem für Kulturzwe
 
 ## Programm im Hot Jazz Club Münster
 
-Neben Jazz und Blues nennt das Haus Funk, Soul, Ska, Hip-Hop, Rock und Liedermacher, dazu Jamsessions, Comedy und sonntags Konzerte ohne Eintritt; am Wochenende folgen auf die Konzerte Partys. Für die Szene steht dort das [Konzert von Boppin'B](/events/boppin-b-hot-jazz-club-muenster-2027-04-30/) am 30. April 2027.
+Neben Jazz und [Blues](/lexikon/blues/) nennt das Haus Funk, Soul, Ska, Hip-Hop, Rock und Liedermacher, dazu Jamsessions, Comedy und sonntags Konzerte ohne Eintritt; am Wochenende folgen auf die Konzerte Partys. Für die Szene steht dort das [Konzert von Boppin'B](/events/boppin-b-hot-jazz-club-muenster-2027-04-30/) am 30. April 2027.
