@@ -1,9 +1,37 @@
 ---
-marke: frei
+marke: mensch
 titel: "District 28 Siebnen (CH), 12. Rockabilly/Rock'n'Roll Festival: 1 Termin anlegen (28.11.2026)"
 angelegt: 2026-10-13
 vorrang: 1
 ---
+
+**Zurückgegeben am 2026-10-13 (Tageslauf, morgens): Wie wird ein
+Schweizer Kanton als Region geführt?** In ENTSCHEIDUNGEN.md nicht
+beantwortet (gesucht nach „Kanton", „Schweiz", „CH"). Ohne Antwort ist
+der Termin nicht baubar: `locationSchema.region` ist Pflicht, und die
+Location District 28 braucht eine Region. Die Wahl legt außerdem den
+Slug und damit URL und `@id` fest, an denen jeder spätere Schweizer
+Eintrag hängt — deshalb nicht im Lauf entschieden.
+
+Alternativen:
+
+- **A — Kanton als `ebene: bundesland`** (Region `schwyz`, `land: CH`).
+  JSON-LD stimmt (`AdministrativeArea`), aber der Faktenblock zeigt
+  „Ebene: Bundesland" für einen Kanton (`src/lib/faktenblock.ts`,
+  Beschriftungstabelle). Kosten: kleine Codeänderung — Beschriftung für
+  `land: CH` auf „Kanton" — mit Negativtest, kein Schemaeingriff; ein
+  Lauf kann sie nach Freigabe mitbauen. Empfehlung des Laufs: A.
+- **B — neue Ebene `kanton` im Schema.** Sauberste Benennung, aber
+  Schemaänderung (nur Markus), und `regionEbeneMap` sowie die
+  Beschriftung brauchen den neuen Wert.
+- **C — eine Region „Schweiz" mit `ebene: land`.** Keine
+  Semantikfrage, aber grob, und sobald ein zweiter Kanton dazukommt,
+  ändert ein Aufteilen URL und `@id` der Ortsseiten. Weicht vom Muster
+  DE/AT (Bundesland) ab.
+
+Nach der Entscheidung: `marke` zurück auf `frei`, der Auftrag unten gilt
+unverändert. Die Region legt der Lauf dann selbst an (Entscheidung vom
+2026-09-24, „Neue Orte und Regionen ohne Rückfrage").
 
 Gesehen am 2026-10-13 auf https://www.district28.ch/ (Programm auf der
 Startseite; Herkunft: Suchlauf 2026-10-13). Gefunden über die Seite von
