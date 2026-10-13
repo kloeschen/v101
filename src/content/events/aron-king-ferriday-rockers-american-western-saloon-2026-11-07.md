@@ -98,4 +98,4 @@ Der Gig Guide ordnet das Konzert dem Rock 'n' Roll der Fünfziger und dem Rockab
 
 ## Einordnung des Konzerts in Berlin
 
-Es ist nach dem Konzert von [The Sinners im Oktober](/events/the-sinners-american-western-saloon-2026-10-10/) der zweite Szene-Termin, den der Saloon im Herbst 2026 zwischen seinem Country- und Line-Dance-Programm ausrichtet. Für [Berlin](/regionen/berlin/) bleibt das Haus damit ein Spielort, an dem die Szene zu Gast ist, und kein Szeneclub.
+Es ist nach dem Konzert von [The Sinners im Oktober](/events/the-sinners-american-western-saloon-2026-10-10/) der zweite Szene-Termin, den der Saloon im Herbst 2026 zwischen seinem [Country](/lexikon/country/)- und Line-Dance-Programm ausrichtet. Für [Berlin](/regionen/berlin/) bleibt das Haus damit ein Spielort, an dem die Szene zu Gast ist, und kein Szeneclub.

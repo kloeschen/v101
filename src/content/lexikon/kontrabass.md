@@ -60,13 +60,13 @@ Der Kontrabass ist das tiefste und größte gebräuchliche Streichinstrument, ei
 
 Ein gewöhnlicher Kontrabass hat vier Saiten, gestimmt in Quarten auf E, A, D und G — dieselbe Stimmung wie beim E-Bass, eine Oktave unter den vier tiefsten Saiten der Gitarre. Im Sinfonieorchester kommen auch Instrumente mit fünf Saiten vor. Ob der Kontrabass zur Familie der Geigen oder der Gamben gehört, ist nach beiden Quellen ungeklärt; er trägt Merkmale von beiden, etwa die F-Löcher und die Schnecke der Geige und die Quartstimmung und die abfallenden Schultern der Gambe.
 
-Im Deutschen heißt er oft einfach Bass, volkstümlich Bassgeige; der Name Kontrabass kommt von der Kontra-Oktave, die er erreicht. Im Jazz, Blues und Rockabilly sagt man nach der englischen Wikipedia meist Upright Bass, um ihn vom E-Bass zu unterscheiden. Dort wird er gezupft und nicht gestrichen.
+Im Deutschen heißt er oft einfach Bass, volkstümlich Bassgeige; der Name Kontrabass kommt von der Kontra-Oktave, die er erreicht. Im Jazz, [Blues](/lexikon/blues/) und Rockabilly sagt man nach der englischen Wikipedia meist Upright Bass, um ihn vom E-Bass zu unterscheiden. Dort wird er gezupft und nicht gestrichen.
 
 ## Der Kontrabass im Rock'n'Roll
 
 In den frühen 1950er Jahren war der Kontrabass das übliche Bassinstrument des entstehenden [Rock'n'Roll](/lexikon/rocknroll/); die englische Wikipedia nennt Marshall Lytle von Bill Haley & His Comets als Beispiel. In manchen Gruppen ersetzte der geslappte Bass sogar das Schlagzeug: Bill Haley & His Saddlemen, die Vorgänger der Comets, spielten bis Ende 1952 ohne Schlagzeuger.
 
-Die Nachteile zeigten sich im selben Jahrzehnt. Gegen Bläser und verstärkte Gitarren war der Kontrabass schwer zu hören, bei Verstärkung neigte er zu Rückkopplung, und auf Tournee war er unhandlich. 1951 brachte Leo Fender mit dem Precision Bass die erste kommerziell erfolgreiche elektrische Bassgitarre heraus; in den 1960er und 1970er Jahren verdrängte sie den Kontrabass aus der populären Musik. Seit Mitte der 1980er Jahre kehrt er nach der englischen Wikipedia zurück, getragen vom Interesse an älteren Formen von Folk und Country.
+Die Nachteile zeigten sich im selben Jahrzehnt. Gegen Bläser und verstärkte Gitarren war der Kontrabass schwer zu hören, bei Verstärkung neigte er zu Rückkopplung, und auf Tournee war er unhandlich. 1951 brachte Leo Fender mit dem Precision Bass die erste kommerziell erfolgreiche elektrische Bassgitarre heraus; in den 1960er und 1970er Jahren verdrängte sie den Kontrabass aus der populären Musik. Seit Mitte der 1980er Jahre kehrt er nach der englischen Wikipedia zurück, getragen vom Interesse an älteren Formen von Folk und [Country](/lexikon/country/).
 
 ## Slaptechnik auf dem Kontrabass
 

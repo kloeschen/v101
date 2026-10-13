@@ -87,7 +87,7 @@ Der Porkpie entsteht in der Mitte des 19. Jahrhunderts, geht aber auf mittelalte
 
 In den 1920er Jahren macht ihn Buster Keaton populär, indem er einen Fedora knapp oberhalb des Bandes flach drückte und sich so seine eigene Version baute. Während der Great Depression bekommt der Hut seine Snap-Krempe zurück und wird etwas höher.
 
-Nach dem Zweiten Weltkrieg geht die Verbreitung zurück, der Hut lebt aber in Jazz und Blues weiter. Sein bekanntester Träger dort ist der Saxofonist Lester Young; nach dessen Tod 1959 setzte ihm Charles Mingus mit einem Blues ein Denkmal. Weitere Träger reichen von Robert Oppenheimer über Gene Hackman in *The French Connection* (1971) und Robert De Niro in *Mean Streets* (1973) bis zu Bryan Cranstons Figur in *Breaking Bad*.
+Nach dem Zweiten Weltkrieg geht die Verbreitung zurück, der Hut lebt aber in Jazz und [Blues](/lexikon/blues/) weiter. Sein bekanntester Träger dort ist der Saxofonist Lester Young; nach dessen Tod 1959 setzte ihm Charles Mingus mit einem Blues ein Denkmal. Weitere Träger reichen von Robert Oppenheimer über Gene Hackman in *The French Connection* (1971) und Robert De Niro in *Mean Streets* (1973) bis zu Bryan Cranstons Figur in *Breaking Bad*.
 
 ## Porkpie in der Szene
 

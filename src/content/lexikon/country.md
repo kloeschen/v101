@@ -2,7 +2,7 @@
 name: Country
 aliases: [Country-Musik, Countrymusik, Countrymusic, Country & Western]
 kurzbeschreibung: Country ist eine in den 1920er Jahren in den USA aus ländlicher Volksmusik entstandene Musikrichtung, die zunächst unter dem Namen Hillbilly vermarktet wurde und zu deren Spielarten Western Swing und Rockabilly gezählt werden.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus
@@ -75,7 +75,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Country ist eine Musikrichtung aus den USA, die sich zu Beginn des 20. Jahrhunderts aus der Volksmusik europäischer, vor allem irischer und englischer Einwanderer und der Old-Time Music der südlichen Appalachen entwickelte und dabei Elemente des Blues aufnahm. Die ersten Schallplattenaufnahmen entstanden nach beiden Wikipedia-Fassungen 1922; vermarktet wurde die Musik zunächst als [Hillbilly](/lexikon/hillbilly/), und der Name Country setzte sich erst später durch. Für dieses Register ist Country vor allem als Herkunft von zwei Stilen wichtig: des [Western Swing](/lexikon/western-swing/) und des [Rockabilly](/lexikon/rockabilly/).
+Country ist eine Musikrichtung aus den USA, die sich zu Beginn des 20. Jahrhunderts aus der Volksmusik europäischer, vor allem irischer und englischer Einwanderer und der Old-Time Music der südlichen Appalachen entwickelte und dabei Elemente des [Blues](/lexikon/blues/) aufnahm. Die ersten Schallplattenaufnahmen entstanden nach beiden Wikipedia-Fassungen 1922; vermarktet wurde die Musik zunächst als [Hillbilly](/lexikon/hillbilly/), und der Name Country setzte sich erst später durch. Für dieses Register ist Country vor allem als Herkunft von zwei Stilen wichtig: des [Western Swing](/lexikon/western-swing/) und des [Rockabilly](/lexikon/rockabilly/).
 
 ## Merkmale von Country
 

@@ -80,4 +80,4 @@ Die Ankündigung erzählt die Geschichte der Band von einem Schulfest-Auftritt 1
 
 ## Einordnung des Konzerts in Bonn
 
-Die Harmonie ist eine Bühne für Jazz, Rock, Blues und Folk, kein Szenehaus. Für [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/) ist es der früheste Termin der Band in diesem Register; zwei Monate später folgt das [Konzert im Pitcher in Düsseldorf](/events/boppin-b-pitcher-duesseldorf-2027-01-22/).
+Die Harmonie ist eine Bühne für Jazz, Rock, [Blues](/lexikon/blues/) und Folk, kein Szenehaus. Für [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/) ist es der früheste Termin der Band in diesem Register; zwei Monate später folgt das [Konzert im Pitcher in Düsseldorf](/events/boppin-b-pitcher-duesseldorf-2027-01-22/).

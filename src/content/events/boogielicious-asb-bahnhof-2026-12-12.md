@@ -70,7 +70,7 @@ quellen:
     art: aggregator
 ---
 
-Boogielicious im ASB-Bahnhof Barsinghausen ist ein Konzert des deutsch-niederländischen Trios Boogielicious am Samstag, dem 12. Dezember 2026, um 20:15 Uhr. Angekündigt ist ein Abend mit [Boogie-Woogie](/lexikon/boogie-woogie/) am Klavier, dazu Blues und Jazz.
+Boogielicious im ASB-Bahnhof Barsinghausen ist ein Konzert des deutsch-niederländischen Trios Boogielicious am Samstag, dem 12. Dezember 2026, um 20:15 Uhr. Angekündigt ist ein Abend mit [Boogie-Woogie](/lexikon/boogie-woogie/) am Klavier, dazu [Blues](/lexikon/blues/) und Jazz.
 
 ## Der Termin von Boogielicious in Barsinghausen
 

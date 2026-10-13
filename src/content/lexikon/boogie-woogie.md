@@ -67,7 +67,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Boogie-Woogie ist ein perkussiver Klavierstil des Blues, bei dem die linke Hand eine durchlaufende Bassfigur spielt und die rechte darüber bluesorientierte Off-Beat-Figuren setzt. Er entstand im ersten Jahrzehnt des 20. Jahrhunderts in den USA und erreichte seine größte Verbreitung in den 1930er und 1940er Jahren. In Europa heißt so außerdem ein Paartanz, der hier einen eigenen Eintrag hat: der [Boogie-Woogie-Tanz](/lexikon/boogie-woogie-tanz/).
+Boogie-Woogie ist ein perkussiver Klavierstil des [Blues](/lexikon/blues/), bei dem die linke Hand eine durchlaufende Bassfigur spielt und die rechte darüber bluesorientierte Off-Beat-Figuren setzt. Er entstand im ersten Jahrzehnt des 20. Jahrhunderts in den USA und erreichte seine größte Verbreitung in den 1930er und 1940er Jahren. In Europa heißt so außerdem ein Paartanz, der hier einen eigenen Eintrag hat: der [Boogie-Woogie-Tanz](/lexikon/boogie-woogie-tanz/).
 
 ## Merkmale von Boogie-Woogie
 

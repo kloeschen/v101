@@ -2,7 +2,7 @@
 name: Big Band
 aliases: [Bigband]
 kurzbeschreibung: Eine Big Band ist ein großes Jazzensemble mit mehrfach besetzten Bläsersätzen und Rhythmusgruppe, das in den USA aufkam, die Swing-Ära trug und heute jede Stilrichtung spielen kann.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

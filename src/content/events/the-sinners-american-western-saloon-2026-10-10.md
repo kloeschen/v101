@@ -146,7 +146,7 @@ Der Eintritt kostet 15 Euro. Der Betrag steht nur auf dem Flyer, den das Haus au
 
 Über die Band selbst geben die geöffneten Quellen wenig her: Der Gig Guide nennt neben den drei Stilrichtungen nur die Adresse der bandeigenen Website. Herkunft, Besetzung und Gründungsjahr bleiben deshalb offen, und The Sinners stehen in diesem Register bislang als Name im Line-up und nicht als eigener Eintrag.
 
-Die Stilmischung passt zum Haus: Doo Wop und 50s Rock'n'Roll liegen nah an dem Country- und Western-Programm, das hier den Rest des Jahres läuft, und sind zugleich der Teil davon, der die Szene anzieht.
+Die Stilmischung passt zum Haus: Doo Wop und 50s Rock'n'Roll liegen nah an dem [Country](/lexikon/country/)- und Western-Programm, das hier den Rest des Jahres läuft, und sind zugleich der Teil davon, der die Szene anzieht.
 
 ## Einordnung des Konzerts in Berlin
 

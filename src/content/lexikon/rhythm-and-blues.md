@@ -84,7 +84,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Rhythm and Blues ist ein Musikstil, der in den 1940er Jahren in afroamerikanischen Gemeinschaften der USA entstand und eine rhythmisch stark akzentuierte Form des Blues spielte. Er war die populäre Musik der schwarzen Bevölkerung seiner Zeit, und aus ihm ging der Rock'n'Roll hervor. Gemeint ist hier dieser Stil der 1940er und 1950er Jahre, nicht das heutige R&B.
+Rhythm and Blues ist ein Musikstil, der in den 1940er Jahren in afroamerikanischen Gemeinschaften der USA entstand und eine rhythmisch stark akzentuierte Form des [Blues](/lexikon/blues/) spielte. Er war die populäre Musik der schwarzen Bevölkerung seiner Zeit, und aus ihm ging der Rock'n'Roll hervor. Gemeint ist hier dieser Stil der 1940er und 1950er Jahre, nicht das heutige R&B.
 
 ## Merkmale von Rhythm and Blues
 
@@ -112,6 +112,6 @@ Auch dazwischen hat der Begriff nach der englischen Wikipedia mehrfach die Bedeu
 
 ## Rhythm and Blues und Rock'n'Roll
 
-Für die Szene, die dieses Register beschreibt, ist Rhythm and Blues die zweite große Wurzel neben der Countrymusik. Die deutsche Wikipedia beschreibt den [Rock'n'Roll](/lexikon/rocknroll/) als die von Weißen gespielte und produzierte Form des Rhythm and Blues. Die englische Wikipedia zitiert einen Artikel des Wall Street Journal von 1985, nach dem beide Begriffe bis etwa 1957 austauschbar verwendet wurden; den Nachweis dieses Artikels markiert sie selbst als unvollständig. Auch der [Doo-Wop](/lexikon/doo-wop/) hat nach der deutschen Wikipedia seine Wurzeln im Rhythm and Blues.
+Für die Szene, die dieses Register beschreibt, ist Rhythm and Blues die zweite große Wurzel neben der [Countrymusik](/lexikon/country/). Die deutsche Wikipedia beschreibt den [Rock'n'Roll](/lexikon/rocknroll/) als die von Weißen gespielte und produzierte Form des Rhythm and Blues. Die englische Wikipedia zitiert einen Artikel des Wall Street Journal von 1985, nach dem beide Begriffe bis etwa 1957 austauschbar verwendet wurden; den Nachweis dieses Artikels markiert sie selbst als unvollständig. Auch der [Doo-Wop](/lexikon/doo-wop/) hat nach der deutschen Wikipedia seine Wurzeln im Rhythm and Blues.
 
 Im [Rockabilly](/lexikon/rockabilly/) trifft der Rhythm and Blues auf die ländliche Musik der weißen Südstaatler: Der Duden beschreibt Rockabilly als Verbindung von Rhythm and Blues und [Hillbillymusic](/lexikon/hillbilly/).
