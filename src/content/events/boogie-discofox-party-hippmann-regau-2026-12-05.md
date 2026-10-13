@@ -84,7 +84,7 @@ quellen:
     art: offiziell
 ---
 
-Die Weihnachts-Boogie & Discofox Party 2026 ist eine Tanzparty der Tanzschule Hippmann am Samstag, dem 5. Dezember 2026, an ihrem Standort [Hippmann im Star Movie Regau](/locations/hippmann-star-movie-regau/). Einlass ist um 19:30 Uhr, Beginn um 20 Uhr; DJ.K und DJ Walter legen auf zwei Floors auf, einem für Boogie und einem für Discofox.
+Die Weihnachts-Boogie & [Discofox](/lexikon/discofox/) Party 2026 ist eine Tanzparty der Tanzschule Hippmann am Samstag, dem 5. Dezember 2026, an ihrem Standort [Hippmann im Star Movie Regau](/locations/hippmann-star-movie-regau/). Einlass ist um 19:30 Uhr, Beginn um 20 Uhr; DJ.K und DJ Walter legen auf zwei Floors auf, einem für Boogie und einem für Discofox.
 
 ## Der Termin der Weihnachts-Boogie & Discofox Party
 

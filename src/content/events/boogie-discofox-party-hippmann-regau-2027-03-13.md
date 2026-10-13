@@ -64,7 +64,7 @@ quellen:
     art: offiziell
 ---
 
-Die Big Boogie & Discofox Party im März 2027 ist ein Tanzabend am Samstag, dem 13. März 2027, im [Hippmann im Star Movie Regau](/locations/hippmann-star-movie-regau/). Einlass ist um 19:30 Uhr, Beginn um 20 Uhr; am Boogie-Floor legt DJ.K auf, am Discofox-Floor DJ Walter.
+Die Big Boogie & [Discofox](/lexikon/discofox/) Party im März 2027 ist ein Tanzabend am Samstag, dem 13. März 2027, im [Hippmann im Star Movie Regau](/locations/hippmann-star-movie-regau/). Einlass ist um 19:30 Uhr, Beginn um 20 Uhr; am Boogie-Floor legt DJ.K auf, am Discofox-Floor DJ Walter.
 
 ## Der Termin der Big Boogie & Discofox Party im März 2027
 

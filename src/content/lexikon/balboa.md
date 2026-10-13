@@ -2,7 +2,7 @@
 name: Balboa
 aliases: [Bal-Swing, Pure Balboa, Balboa Shuffle]
 kurzbeschreibung: Balboa ist ein Paartanz aus der Familie der Swing-Tänze, der in Südkalifornien entstand, in sehr enger Tanzhaltung mit kleinen Schritten getanzt wird und sich deshalb für volle Tanzflächen und schnelle Swingmusik eignet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

@@ -87,7 +87,7 @@ quellen:
     art: offiziell
 ---
 
-Die Weihnachtsausgabe von Boogie trifft Schlager ist ein Tanzabend am Freitag, dem 18. Dezember 2026, im [Tanzclub Harlekin](/locations/tanzclub-harlekin-enns/) in Enns. Ab 20 Uhr legt DJ.K Boogie Klaus für [Boogie Woogie als Paartanz](/lexikon/boogie-woogie-tanz/) auf, DJ Mike für Schlager und Discofox.
+Die Weihnachtsausgabe von Boogie trifft Schlager ist ein Tanzabend am Freitag, dem 18. Dezember 2026, im [Tanzclub Harlekin](/locations/tanzclub-harlekin-enns/) in Enns. Ab 20 Uhr legt DJ.K Boogie Klaus für [Boogie Woogie als Paartanz](/lexikon/boogie-woogie-tanz/) auf, DJ Mike für Schlager und [Discofox](/lexikon/discofox/).
 
 ## Der Termin von Boogie trifft Schlager im Dezember 2026
 

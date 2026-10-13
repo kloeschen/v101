@@ -57,7 +57,7 @@ quellen:
     art: offiziell
 ---
 
-Boogie trifft Schlager im Juni 2027 ist ein Tanzabend am Samstag, dem 19. Juni 2027, im [Tanzclub Harlekin](/locations/tanzclub-harlekin-enns/) in Enns. Ab 20 Uhr legt DJ.K Boogie Klaus für [Boogie Woogie als Paartanz](/lexikon/boogie-woogie-tanz/) auf, DJ Mike für Schlager und Discofox.
+Boogie trifft Schlager im Juni 2027 ist ein Tanzabend am Samstag, dem 19. Juni 2027, im [Tanzclub Harlekin](/locations/tanzclub-harlekin-enns/) in Enns. Ab 20 Uhr legt DJ.K Boogie Klaus für [Boogie Woogie als Paartanz](/lexikon/boogie-woogie-tanz/) auf, DJ Mike für Schlager und [Discofox](/lexikon/discofox/).
 
 ## Der Termin von Boogie trifft Schlager im Juni 2027
 
