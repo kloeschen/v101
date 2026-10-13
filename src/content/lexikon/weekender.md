@@ -112,9 +112,9 @@ Wer das Wort zuerst für ein Szenetreffen benutzte, sagt keine der geöffneten Q
 
 ## Merkmale eines Weekenders
 
-Die geöffneten Beispiele haben einen gemeinsamen Kern. Gespielt wird Musik der 1940er und 1950er Jahre, live und von DJs, vom [Rockabilly](/lexikon/rockabilly/) über Doo-Wop und Boogie-Woogie bis zum [Rock'n'Roll](/lexikon/rocknroll/). Getanzt wird viel, und das Publikum kommt in Kleidung der Zeit. Zum Programm gehört fast immer ein Markt für Kleidung, Schallplatten und Einrichtung.
+Die geöffneten Beispiele haben einen gemeinsamen Kern. Gespielt wird Musik der 1940er und 1950er Jahre, live und von DJs, vom [Rockabilly](/lexikon/rockabilly/) über [Doo-Wop](/lexikon/doo-wop/) und Boogie-Woogie bis zum [Rock'n'Roll](/lexikon/rocknroll/). Getanzt wird viel, und das Publikum kommt in Kleidung der Zeit. Zum Programm gehört fast immer ein Markt für Kleidung, Schallplatten und Einrichtung.
 
-Der Ort wechselt mit dem Land. In Großbritannien sind es Ferienparks an der Küste. Viva Las Vegas, das sich selbst „Rockabilly Weekend" nennt, findet in einem Hotel in Las Vegas statt und ergänzt Konzerte um Autoshow, Burlesque und Händler. Der [Walldorf Rock'n'Roll Weekender](/events/walldorf-weekender-2026/) nutzte eine Halle und bot daneben Pool-Party, Workshops und Oldtimer-Treffen.
+Der Ort wechselt mit dem Land. In Großbritannien sind es Ferienparks an der Küste. Viva Las Vegas, das sich selbst „Rockabilly Weekend" nennt, findet in einem Hotel in Las Vegas statt und ergänzt Konzerte um Autoshow, [Burlesque](/lexikon/burlesque/) und Händler. Der [Walldorf Rock'n'Roll Weekender](/events/walldorf-weekender-2026/) nutzte eine Halle und bot daneben Pool-Party, Workshops und Oldtimer-Treffen.
 
 ## Hemsby als Vorbild für Weekender
 
