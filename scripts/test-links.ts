@@ -292,6 +292,48 @@ const registry = buildRegistry([
   pruefe("ein Handlink auf Vintage bleibt stehen", hand.markdown === "Ein [Vintage](/lexikon/vintage/)-Kleid aus dem Laden Peggy Sue Vintage.", hand.markdown);
 }
 
+/* Zitate (2026-10-13): Was in „…" steht, ist fremder Wortlaut und bleibt
+ * unverlinkt. Anlass: „Tolle Musik mit DJ- Ernst und Charly" bei der
+ * Boogie-Party vom 2026-09-20. Lebenszeichen: dieselbe Tolle außerhalb des
+ * Zitats wird verlinkt — sonst bewiese „nicht verlinkt" auch eine Registry,
+ * die das Wort gar nicht kennt. */
+{
+  const reg = buildRegistry([lex("tolle", "Tolle", { aliases: ["Haartolle"] })]);
+  const zitat = autolink('Die Quelle sagt nur „Tolle Musik mit DJ". Eine Tolle trug Elvis.', reg);
+  gleich("im Zitat nicht, danach schon verlinkt", zitat.verlinkt, ["tolle"]);
+  pruefe(
+    "der Link sitzt hinter dem Zitat, das Zitat bleibt wörtlich",
+    zitat.markdown === 'Die Quelle sagt nur „Tolle Musik mit DJ". Eine [Tolle](/lexikon/tolle/) trug Elvis.',
+    zitat.markdown,
+  );
+  gleich(
+    "typografisches Schlusszeichen wirkt genauso",
+    autolink("Laut Wörterbuch eine „Haartolle“, mehr nicht.", reg).verlinkt,
+    [],
+  );
+  gleich(
+    "ohne Schlusszeichen sperrt das Zitat nichts",
+    autolink("Ein offenes „ und dann eine Tolle im Text.", reg).verlinkt,
+    ["tolle"],
+  );
+  // Die Grenzen, die ein vergessenes Schlusszeichen auffangen: Ein Zitat
+  // endet nicht erst im nächsten Absatz und nicht nach 200 Zeichen.
+  gleich(
+    "ein offenes Zitat reicht nicht über den Zeilenumbruch",
+    autolink('Ein offenes „ Zitat ohne Ende.\n\nEine Tolle hier, und ein Schluss".', reg).verlinkt,
+    ["tolle"],
+  );
+  gleich(
+    "ein Zitat ist höchstens 200 Zeichen lang",
+    autolink(`Ein „${"x".repeat(200)} Tolle" am Ende.`, reg).verlinkt,
+    ["tolle"],
+  );
+  pruefe(
+    "segmentiere: das Zitat ist ein geschütztes Segment",
+    segmentiere('a „b" c').some((s) => s.geschuetzt && s.text === '„b"'),
+  );
+}
+
 {
   const gross = buildRegistry([lex("boogie-woogie", "Boogie-Woogie"), lex("boogie-woogie-tanz", "Boogie-Woogie-Tanz", { aliases: ["boogie-woogie"] })]);
   gleich("Mehrdeutigkeit unabhängig von Groß-/Kleinschreibung", [...gross.mehrdeutig.keys()], ["boogie-woogie"]);
