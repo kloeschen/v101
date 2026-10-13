@@ -2,7 +2,7 @@
 name: Pin Curls
 aliases: [Pin Curl]
 kurzbeschreibung: Pin Curls sind eine Frisiertechnik, bei der eine feuchte Haarsträhne von der Spitze bis zum Ansatz zu einer Locke aufgedreht, mit einer Klammer oder Nadel am Kopf festgesteckt und getrocknet wird; sie sind die Grundtechnik vieler Frisuren der 1930er bis 1950er Jahre und des Pin-up-Stils.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus
@@ -121,7 +121,7 @@ Wann die Technik aufkam, sagen die Quellen unterschiedlich. Die englische Wikipe
 
 ## Pin Curls und Victory Rolls
 
-Pin Curls und Victory Rolls werden oft verwechselt, weil beide zum Pin-up-Look gehören. Victory Rolls sind nach der englischen Wikipedia eine eigene Frisur, die vor allem zwischen 1940 und 1945 getragen wurde: wulstförmige Rollen über den Ohren oder auf dem Oberkopf, gebaut durch Toupieren, Eindrehen, Feststecken und Locken. Im Artikel zum Pin-up-Modell heißt es, die weichen Locken, die den Look abrunden, entstünden durch die Pin-Curl-Technik. Die Rolle ist also die Frisur, die Pin Curls sind das Handwerk für die Locken daneben.
+Pin Curls und [Victory Rolls](/lexikon/victory-rolls/) werden oft verwechselt, weil beide zum Pin-up-Look gehören. Victory Rolls sind nach der englischen Wikipedia eine eigene Frisur, die vor allem zwischen 1940 und 1945 getragen wurde: wulstförmige Rollen über den Ohren oder auf dem Oberkopf, gebaut durch Toupieren, Eindrehen, Feststecken und Locken. Im Artikel zum Pin-up-Modell heißt es, die weichen Locken, die den Look abrunden, entstünden durch die Pin-Curl-Technik. Die Rolle ist also die Frisur, die Pin Curls sind das Handwerk für die Locken daneben.
 
 ## Pin Curls im Deutschen
 

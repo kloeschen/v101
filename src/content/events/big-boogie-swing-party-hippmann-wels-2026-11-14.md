@@ -111,7 +111,7 @@ Datum und Uhrzeiten nennen die Ankündigung der Tanzschule, ihr Flyer und der Sz
 
 ## Floors und DJs bei der Big Boogie & Swing Party
 
-Neben dem Boogie-Floor gibt es einen für Discofox, und die Seite der Tanzschule kündigt zusätzlich einen Floor für West Coast Swing an. Für diese beiden nennt sie den DJ noch nicht. Flyer und boogie.at führen für den Discofox-Floor dagegen schon DJ Hippi, einen West-Coast-Floor erwähnen sie nicht — beide Angaben gehen auf den Veranstalter zurück, welche aktueller ist, sagt keine der Quellen.
+Neben dem Boogie-Floor gibt es einen für [Discofox](/lexikon/discofox/), und die Seite der Tanzschule kündigt zusätzlich einen Floor für [West Coast Swing](/lexikon/west-coast-swing/) an. Für diese beiden nennt sie den DJ noch nicht. Flyer und boogie.at führen für den Discofox-Floor dagegen schon DJ Hippi, einen West-Coast-Floor erwähnen sie nicht — beide Angaben gehen auf den Veranstalter zurück, welche aktueller ist, sagt keine der Quellen.
 
 ## Eintritt zur Big Boogie & Swing Party
 

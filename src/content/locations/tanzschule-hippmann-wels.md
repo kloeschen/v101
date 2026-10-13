@@ -72,7 +72,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Die Tanzschule Hippmann Wels ist eine Tanzschule in der Pollheimerstraße 7 in 4600 Wels, im Gerstlhaus, mit eigenem Tanzlokal unter demselben Dach, dem Hippmann7. Für die Boogie- und Swing-Szene ist sie Gastgeberin großer Partys mit Livebands und eines Boogie- und Swing-Balls; daneben unterrichtet sie unter anderem Gesellschaftstanz, Salsa, Discofox, Boogie und [Lindy Hop](/lexikon/lindy-hop/).
+Die Tanzschule Hippmann Wels ist eine Tanzschule in der Pollheimerstraße 7 in 4600 Wels, im Gerstlhaus, mit eigenem Tanzlokal unter demselben Dach, dem Hippmann7. Für die Boogie- und Swing-Szene ist sie Gastgeberin großer Partys mit Livebands und eines Boogie- und Swing-Balls; daneben unterrichtet sie unter anderem Gesellschaftstanz, Salsa, [Discofox](/lexikon/discofox/), Boogie und [Lindy Hop](/lexikon/lindy-hop/).
 
 ## Die Tanzschule Hippmann Wels als Haus
 

@@ -2,7 +2,7 @@
 name: Tolle
 aliases: [Haartolle, Schmalztolle]
 kurzbeschreibung: Eine Tolle ist ein auffälliger, oft welliger Haarschopf über der Stirn; gemeint ist meist die mit Pomade nach oben geformte Stirnpartie der Männerfrisur der 1950er Jahre, die der Rock 'n' Roll populär machte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus
@@ -158,4 +158,4 @@ Die Wikipedia nennt die Tolle eine typische Frisur der 1950er Jahre, populär ge
 
 Die deutsche Wikipedia setzt Tolle und Pompadour gleich: Die Frisur werde auch „pompadour" genannt. Die Wörterbücher meinen mit Tolle aber den Schopf, nicht die ganze Frisur. Der Pompadour ist das ganze hoch und nach hinten gekämmte Volumen; eine Tolle kann dazugehören, kann aber auch in die Stirn fallen.
 
-Beim Quiff gehen die englischen Quellen auseinander. Merriam-Webster nennt ihn ein britisches Wort für eine auffällige Stirnlocke, ältester Beleg um 1890, Herkunft unbekannt; das kommt der Tolle am nächsten. Die englische Wikipedia beschreibt ihn als eigene Frisur, die den Pompadour und den [Flat Top](/lexikon/flat-top/) der 1950er verbindet, manchmal auch mit einem Irokesen, und als festen Teil der Teddy-Boy-Mode. Ein englisches Wort, das genau der Tolle entspricht, nennt keine der geöffneten Quellen.
+Beim [Quiff](/lexikon/quiff/) gehen die englischen Quellen auseinander. Merriam-Webster nennt ihn ein britisches Wort für eine auffällige Stirnlocke, ältester Beleg um 1890, Herkunft unbekannt; das kommt der Tolle am nächsten. Die englische Wikipedia beschreibt ihn als eigene Frisur, die den Pompadour und den [Flat Top](/lexikon/flat-top/) der 1950er verbindet, manchmal auch mit einem Irokesen, und als festen Teil der Teddy-Boy-Mode. Ein englisches Wort, das genau der Tolle entspricht, nennt keine der geöffneten Quellen.

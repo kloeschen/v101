@@ -169,7 +169,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Rockabilly-Frisuren sind die Haarschnitte und Frisuren, die die Szene um den [Rockabilly](/lexikon/rockabilly/) aus den 1940er und 1950er Jahren übernommen hat. Bei Männern sind das vor allem [Pompadour](/lexikon/pompadour/), [Ducktail](/lexikon/ducktail/) und [Flat Top](/lexikon/flat-top/), bei Frauen die Victory Rolls aus der Pin-up-Mode. Diese Liste beschreibt jede Frisur knapp, sagt, woher die Zuordnung zur Szene stammt, und verweist für die Einzelheiten auf die Lexikoneinträge.
+Rockabilly-Frisuren sind die Haarschnitte und Frisuren, die die Szene um den [Rockabilly](/lexikon/rockabilly/) aus den 1940er und 1950er Jahren übernommen hat. Bei Männern sind das vor allem [Pompadour](/lexikon/pompadour/), [Ducktail](/lexikon/ducktail/) und [Flat Top](/lexikon/flat-top/), bei Frauen die [Victory Rolls](/lexikon/victory-rolls/) aus der Pin-up-Mode. Diese Liste beschreibt jede Frisur knapp, sagt, woher die Zuordnung zur Szene stammt, und verweist für die Einzelheiten auf die Lexikoneinträge.
 
 ## Welche Frisuren zum Rockabilly-Look gehören
 
@@ -179,9 +179,9 @@ Die Liste folgt dieser Reihenfolge — erst die Männerfrisuren, dann die der Fr
 
 ## Pompadour: die Rockabilly-Frisur schlechthin
 
-Der Pompadour ist das hoch und nach hinten gekämmte Volumen über der Stirn, bei der Männerfrisur der 1950er Jahre mit Brylcreem oder [Pomade](/lexikon/pomade/) gehalten. Elvis Presley und James Dean prägten nach der englischen Wikipedia den hohen, gefetteten Quiff-Pompadour; in den 1980er Jahren verband sich die Frisur mit der Rockabilly-Kultur.
+Der Pompadour ist das hoch und nach hinten gekämmte Volumen über der Stirn, bei der Männerfrisur der 1950er Jahre mit Brylcreem oder [Pomade](/lexikon/pomade/) gehalten. Elvis Presley und James Dean prägten nach der englischen Wikipedia den hohen, gefetteten [Quiff](/lexikon/quiff/)-Pompadour; in den 1980er Jahren verband sich die Frisur mit der Rockabilly-Kultur.
 
-Wie die Elvis-Frisur heißt, beantworten die Quellen verschieden. Die englische Wikipedia sagt Pompadour, die deutsche nennt im Artikel zur Haartolle die Tolle, populär gemacht von Bill Haley und Elvis Presley, und im Artikel zur Pomade den „Ducktail (Entenschwanz) oder Pompadour" von Elvis. Der KS Barbershop setzt beides gleich: „Pompadour (Elvis Tolle)". Gemeint ist in allen Fällen die Kombination aus hochgekämmter Stirnpartie und nach hinten gelegten Seiten.
+Wie die Elvis-Frisur heißt, beantworten die Quellen verschieden. Die englische Wikipedia sagt Pompadour, die deutsche nennt im Artikel zur [Haartolle](/lexikon/tolle/) die Tolle, populär gemacht von Bill Haley und Elvis Presley, und im Artikel zur Pomade den „Ducktail (Entenschwanz) oder Pompadour" von Elvis. Der KS Barbershop setzt beides gleich: „Pompadour (Elvis Tolle)". Gemeint ist in allen Fällen die Kombination aus hochgekämmter Stirnpartie und nach hinten gelegten Seiten.
 
 Auch beim Namen sind die Quellen uneins. Die deutsche Wikipedia nennt Madame de Pompadour eine der frühesten Trägerinnen der Frisur, die englische sagt, ihre Haartracht habe mit dem Pompadour nichts gemein, weil sie das Haar flach nach hinten trug. Ausgeführt ist das im Lexikoneintrag [Pompadour](/lexikon/pompadour/).
 
@@ -215,7 +215,7 @@ Für die Rockabilly-Szene ist die Verbindung über den [Pin-up](/lexikon/pin-up/
 
 ## Pin Curls: die Technik hinter den Locken
 
-Pin Curls sind weniger eine Frisur als eine Technik. Nach der englischen Wikipedia zum Pin-up waren sie die wichtigste Lockentechnik der Frauen und sind ein fester Bestandteil des Pin-up-Stils: Das feuchte Haar wird von den Spitzen zum Ansatz eingedreht und festgesteckt, trocken ausgebürstet ergibt es weiche, volle Locken. Eine eigene Zuordnung der Pin Curls zur Rockabilly-Szene nennt keine der geöffneten Quellen; sie stehen hier, weil die Pin-up-Frisuren auf ihnen aufbauen.
+[Pin Curls](/lexikon/pin-curls/) sind weniger eine Frisur als eine Technik. Nach der englischen Wikipedia zum Pin-up waren sie die wichtigste Lockentechnik der Frauen und sind ein fester Bestandteil des Pin-up-Stils: Das feuchte Haar wird von den Spitzen zum Ansatz eingedreht und festgesteckt, trocken ausgebürstet ergibt es weiche, volle Locken. Eine eigene Zuordnung der Pin Curls zur Rockabilly-Szene nennt keine der geöffneten Quellen; sie stehen hier, weil die Pin-up-Frisuren auf ihnen aufbauen.
 
 ## Der Bettie-Page-Pony
 

@@ -2,7 +2,7 @@
 name: Charleston
 aliases: [20s Charleston, Swinging Charleston]
 kurzbeschreibung: Charleston ist ein amerikanischer Tanz afroamerikanischen Ursprungs, der nach der Hafenstadt Charleston in South Carolina benannt ist, in den 1920er Jahren zum Modetanz wurde und heute in der Swing-Szene solo und als Paartanz getanzt wird.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

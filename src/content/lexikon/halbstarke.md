@@ -120,7 +120,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Halbstarke ist die umgangssprachlich abwertende Bezeichnung für Jugendliche, meist junge Männer aus der Arbeiterschaft, die in den 1950er Jahren im deutschsprachigen Raum provozierend in der Öffentlichkeit auftraten. Mit dem Wort verbanden Presse und Erwachsene Rowdytum und Krawalle, aber auch einen Look aus Tolle, Jeans und Lederjacke, der sich an amerikanischen Filmen und am Rock 'n' Roll orientierte. Halbstarke bezeichnet reale Jugendliche — nicht den gleichnamigen Film von 1956 und nicht die britischen Teddy Boys.
+Halbstarke ist die umgangssprachlich abwertende Bezeichnung für Jugendliche, meist junge Männer aus der Arbeiterschaft, die in den 1950er Jahren im deutschsprachigen Raum provozierend in der Öffentlichkeit auftraten. Mit dem Wort verbanden Presse und Erwachsene Rowdytum und Krawalle, aber auch einen Look aus [Tolle](/lexikon/tolle/), Jeans und Lederjacke, der sich an amerikanischen Filmen und am Rock 'n' Roll orientierte. Halbstarke bezeichnet reale Jugendliche — nicht den gleichnamigen Film von 1956 und nicht die britischen Teddy Boys.
 
 ## Der Begriff Halbstarke
 

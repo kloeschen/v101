@@ -2,7 +2,7 @@
 name: Discofox
 aliases: [Disco Fox, Disco-Fox, Diskofox]
 kurzbeschreibung: Der Discofox ist ein europäischer Paartanz, der sich aus dem Foxtrott zur Discomusik entwickelte, auf einem Grundschritt über drei Schläge nahezu auf der Stelle getanzt wird und Figuren anderer Tänze bis hin zum Boogie-Woogie aufnimmt.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

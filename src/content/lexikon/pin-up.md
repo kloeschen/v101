@@ -141,7 +141,7 @@ In den 1950er Jahren wurde nach der deutschen Wikipedia Bettie Page zum möglich
 
 ## Pin-up in der Szene
 
-Die englische Wikipedia beschreibt das Pin-up-Modeln heute als eigene Subkultur mit Zeitschriften, Foren und Wettbewerben, darunter einem Pin-up-Wettbewerb auf dem [Rockabilly](/lexikon/rockabilly/)-Festival Viva Las Vegas. Zum Stil gehört nach derselben Quelle ein Make-up mit rotem, mattem Lippenstift und geschwungenem Lidstrich, das um 2010 wiederkam, und Frisuren aus Pin Curls und Victory Rolls. Wie selbstverständlich das Wort dabei als Stilbezeichnung dient, zeigt ein Beleg im DWDS: Eine Veranstaltung versprach 2017 allen einen kostenlosen Imbiss, die sich „als Pin-up der 50er und 60er Jahre" verkleiden. Die Nähe zur [Burlesque](/lexikon/burlesque/) ist eng; die Burlesque-Darstellerin Dita Von Teese wird nach der englischen Wikipedia oft ein modernes Pin-up genannt.
+Die englische Wikipedia beschreibt das Pin-up-Modeln heute als eigene Subkultur mit Zeitschriften, Foren und Wettbewerben, darunter einem Pin-up-Wettbewerb auf dem [Rockabilly](/lexikon/rockabilly/)-Festival Viva Las Vegas. Zum Stil gehört nach derselben Quelle ein Make-up mit rotem, mattem Lippenstift und geschwungenem Lidstrich, das um 2010 wiederkam, und Frisuren aus [Pin Curls](/lexikon/pin-curls/) und [Victory Rolls](/lexikon/victory-rolls/). Wie selbstverständlich das Wort dabei als Stilbezeichnung dient, zeigt ein Beleg im DWDS: Eine Veranstaltung versprach 2017 allen einen kostenlosen Imbiss, die sich „als Pin-up der 50er und 60er Jahre" verkleiden. Die Nähe zur [Burlesque](/lexikon/burlesque/) ist eng; die Burlesque-Darstellerin Dita Von Teese wird nach der englischen Wikipedia oft ein modernes Pin-up genannt.
 
 ## Abgrenzung des Pin-ups
 
