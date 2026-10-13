@@ -75,7 +75,7 @@ quellen:
     art: aggregator
 ---
 
-Der American Western Saloon ist ein Country-Lokal mit Bühne im Fontane-Haus in Berlin-Reinickendorf. Für die Szene in [Berlin](/regionen/berlin/) ist er der Ort, an dem [Rockabilly](/lexikon/rockabilly/) und [Rock'n'Roll](/lexikon/rocknroll/) nicht im Musikclub, sondern zwischen Küche, Tresen und Line-Dance-Fläche stattfinden.
+Der American Western Saloon ist ein [Country](/lexikon/country/)-Lokal mit Bühne im Fontane-Haus in Berlin-Reinickendorf. Für die Szene in [Berlin](/regionen/berlin/) ist er der Ort, an dem [Rockabilly](/lexikon/rockabilly/) und [Rock'n'Roll](/lexikon/rocknroll/) nicht im Musikclub, sondern zwischen Küche, Tresen und Line-Dance-Fläche stattfinden.
 
 ## Das Haus American Western Saloon
 

@@ -74,7 +74,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Swing ist eine Stilrichtung des Jazz, die gegen Ende der 1920er Jahre in den USA entstand und in den 1930er und 1940er Jahren die populäre Musik beherrschte. Getragen wurde sie von der Big Band, und ihre große Beliebtheit verdankte sie vor allem ihrer Tanzbarkeit. Mit Swing ist hier der Stil gemeint, nicht das gleichnamige Rhythmusgefühl und nicht der Tanz.
+Swing ist eine Stilrichtung des Jazz, die gegen Ende der 1920er Jahre in den USA entstand und in den 1930er und 1940er Jahren die populäre Musik beherrschte. Getragen wurde sie von der [Big Band](/lexikon/big-band/), und ihre große Beliebtheit verdankte sie vor allem ihrer Tanzbarkeit. Mit Swing ist hier der Stil gemeint, nicht das gleichnamige Rhythmusgefühl und nicht der Tanz.
 
 ## Merkmale von Swing
 

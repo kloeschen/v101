@@ -2,7 +2,7 @@
 name: Skiffle
 aliases: []
 kurzbeschreibung: Skiffle ist ein Musikstil aus Folk, Blues und Jazz, der in den USA der 1920er Jahre wurzelt, auf einfachen oder selbst gebauten Instrumenten wie Waschbrett und Teekistenbass gespielt wird und Mitte der 1950er Jahre in Großbritannien eine Massenbewegung auslöste.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus
@@ -78,7 +78,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Skiffle ist ein Musikstil zwischen Folk, Blues und Jazz, der neben Gitarre und Banjo auf einfachen oder selbst gebauten Instrumenten gespielt wird. Er entstand in den USA in der ersten Hälfte des 20. Jahrhunderts und wurde Mitte der 1950er Jahre in Großbritannien zur Massenbewegung junger Laienmusiker. Skiffle ist nicht dasselbe wie [Rockabilly](/lexikon/rockabilly/), auch wenn beide in Großbritannien dasselbe Publikum erreichten.
+Skiffle ist ein Musikstil zwischen Folk, [Blues](/lexikon/blues/) und Jazz, der neben Gitarre und Banjo auf einfachen oder selbst gebauten Instrumenten gespielt wird. Er entstand in den USA in der ersten Hälfte des 20. Jahrhunderts und wurde Mitte der 1950er Jahre in Großbritannien zur Massenbewegung junger Laienmusiker. Skiffle ist nicht dasselbe wie [Rockabilly](/lexikon/rockabilly/), auch wenn beide in Großbritannien dasselbe Publikum erreichten.
 
 ## Merkmale von Skiffle
 
@@ -104,4 +104,4 @@ Die beiden Skiffle-Artikel erwähnen die [Teddy Boys](/lexikon/teddy-boy/) nicht
 
 ## Abgrenzung von Skiffle
 
-Rockabilly verbindet nach der deutschen Wikipedia Country-Musik mit Rhythm and Blues und stammt aus den Südstaaten der USA; Skiffle spielte amerikanische Folk- und Bluessongs auf Behelfsinstrumenten und blühte in Großbritannien. Uneinig sind die Quellen bei der Einordnung zum Jazz: Das DWDS beschreibt Skiffle nach dem Duden als „Vorform des Jazz", beide Wikipedias dagegen als Stil, der Jazz neben Folk und Blues aufnimmt.
+Rockabilly verbindet nach der deutschen Wikipedia [Country-Musik](/lexikon/country/) mit Rhythm and Blues und stammt aus den Südstaaten der USA; Skiffle spielte amerikanische Folk- und Bluessongs auf Behelfsinstrumenten und blühte in Großbritannien. Uneinig sind die Quellen bei der Einordnung zum Jazz: Das DWDS beschreibt Skiffle nach dem Duden als „Vorform des Jazz", beide Wikipedias dagegen als Stil, der Jazz neben Folk und Blues aufnimmt.

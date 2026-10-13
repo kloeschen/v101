@@ -96,13 +96,13 @@ quellen:
     art: nachschlagewerk
 ---
 
-[Rockabilly](/lexikon/rockabilly/) und [Rock'n'Roll](/lexikon/rocknroll/) sind keine zwei Stile nebeneinander, sondern ein Teil und sein Ganzes: Rockabilly ist eine Spielart des Rock'n'Roll, und zwar die country-geprägte aus den Südstaaten der USA. Rock'n'Roll ist der Sammelbegriff für mehrere regionale Musikstile der 1950er Jahre, zu denen neben dem Rockabilly etwa der Rhythm-and-Blues-nahe Sound von Little Richard oder Fats Domino gehört. Wer Rockabilly hört, hört also immer Rock'n'Roll — umgekehrt gilt das nicht.
+[Rockabilly](/lexikon/rockabilly/) und [Rock'n'Roll](/lexikon/rocknroll/) sind keine zwei Stile nebeneinander, sondern ein Teil und sein Ganzes: Rockabilly ist eine Spielart des Rock'n'Roll, und zwar die [country](/lexikon/country/)-geprägte aus den Südstaaten der USA. Rock'n'Roll ist der Sammelbegriff für mehrere regionale Musikstile der 1950er Jahre, zu denen neben dem Rockabilly etwa der Rhythm-and-Blues-nahe Sound von Little Richard oder Fats Domino gehört. Wer Rockabilly hört, hört also immer Rock'n'Roll — umgekehrt gilt das nicht.
 
 ## Rock'n'Roll ist der Oberbegriff
 
 Die deutsche Wikipedia nennt Rock'n'Roll einen „nicht klar umrissenen Begriff" und hält fest, er sei nie ein homogener Stil gewesen, sondern ein Sammelbegriff ähnlicher Musikarten. Den Grund sieht sie in der Zersplitterung der USA jener Jahre: lokale Radiosender, regional organisierte Plattenfirmen, Rassentrennung im Süden. Gemeinsam sei den Spielarten zweierlei — sie sind Ausdruck gesellschaftlicher Rebellion, und sie wurzeln im [Rhythm and Blues](/lexikon/rhythm-and-blues/).
 
-Wie viele Spielarten es sind, hängt davon ab, wen man fragt. Dieselbe Wikipedia zitiert den Autor Dieter Moll mit fünf Grundspielarten: Northern Band Rock'n'Roll, New Orleans Dance Blues, Memphis Country Rock — das ist der Rockabilly —, Chicago Rhythm and Blues und Vocal Group Rock'n'Roll. Die Gliederung des Artikels selbst führt noch mehr auf. Die englische Wikipedia zieht die Grenze von der anderen Seite: „Rockabilly" meine meist, aber nicht ausschließlich, den Rock'n'Roll weißer Sänger wie Elvis Presley, Carl Perkins, Johnny Cash und Jerry Lee Lewis, die vor allem aus den Country-Wurzeln der Musik schöpften. Little Richard und Fats Domino, die aus dem Rhythm and Blues kamen, würden gewöhnlich nicht dazugezählt.
+Wie viele Spielarten es sind, hängt davon ab, wen man fragt. Dieselbe Wikipedia zitiert den Autor Dieter Moll mit fünf Grundspielarten: Northern Band Rock'n'Roll, New Orleans Dance [Blues](/lexikon/blues/), Memphis Country Rock — das ist der Rockabilly —, Chicago Rhythm and Blues und Vocal Group Rock'n'Roll. Die Gliederung des Artikels selbst führt noch mehr auf. Die englische Wikipedia zieht die Grenze von der anderen Seite: „Rockabilly" meine meist, aber nicht ausschließlich, den Rock'n'Roll weißer Sänger wie Elvis Presley, Carl Perkins, Johnny Cash und Jerry Lee Lewis, die vor allem aus den Country-Wurzeln der Musik schöpften. Little Richard und Fats Domino, die aus dem Rhythm and Blues kamen, würden gewöhnlich nicht dazugezählt.
 
 ## Merkmale: Woran man Rockabilly im Rock'n'Roll hört
 

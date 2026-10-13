@@ -60,7 +60,7 @@ Der Satz trägt alles. Über einer Leadstimme liegen Begleitstimmen, die den ges
 
 ## Entstehung von Doo Wop
 
-Die deutsche Wikipedia datiert die Geburt des Genres auf 1948 und eine Balladenaufnahme der Orioles. Die englische spricht allgemeiner von den späten 1940er Jahren und nennt als Entstehungsorte afroamerikanische Gemeinden in New York, Philadelphia, Pittsburgh, Chicago, Baltimore, Newark, Detroit, Washington und Los Angeles. Musikalisch stützt sich der Stil auf Gospel, Jazz, Blues und den Barbershop-Gesang.
+Die deutsche Wikipedia datiert die Geburt des Genres auf 1948 und eine Balladenaufnahme der Orioles. Die englische spricht allgemeiner von den späten 1940er Jahren und nennt als Entstehungsorte afroamerikanische Gemeinden in New York, Philadelphia, Pittsburgh, Chicago, Baltimore, Newark, Detroit, Washington und Los Angeles. Musikalisch stützt sich der Stil auf Gospel, Jazz, [Blues](/lexikon/blues/) und den Barbershop-Gesang.
 
 Zu den prägenden Gruppen zählen The Orioles, The Clovers, The Dominoes, The Platters, The Penguins und später Dion and the Belmonts. Wie groß der kommerzielle Anteil war, beziffert die deutsche Wikipedia: Zwischen 1955 und 1963 seien rund fünfzehn Prozent aller Nummer-eins-Hits der US-Billboard-Charts dem Genre zuzurechnen; als Klassiker nennt sie „Sh-Boom" und „Earth Angel", beide 1954. Das Ende setzt sie auf Anfang 1964 mit der British Invasion; die englische Fassung spricht zurückhaltender von kommerzieller Tragfähigkeit bis in die frühen 1960er Jahre.
 

@@ -69,4 +69,4 @@ Der Club öffnet nur für Konzerte und Veranstaltungen. Zur Uhrzeit macht das Ha
 
 ## Programm im Wild at Heart
 
-Der Konzertkalender des Hauses ist breit: Punk, Hardcore und Garage stehen neben Country, Ska und Rockabilly. Für die Szene interessant sind im Herbst 2026 vor allem zwei Abende — das [Halloween-Konzert mit Zombina and the Skeletones](/events/zombina-halloween-wild-at-heart-2026-10-30/) am 30. Oktober und das Konzert der [Grumpynators](/events/grumpynators-wild-at-heart-2026-11-06/) am 6. November. Der Berliner Gig Guide von Rockin' Wildcat führt das Haus darüber hinaus mit weiteren Terminen bis Silvester.
+Der Konzertkalender des Hauses ist breit: Punk, Hardcore und Garage stehen neben [Country](/lexikon/country/), Ska und Rockabilly. Für die Szene interessant sind im Herbst 2026 vor allem zwei Abende — das [Halloween-Konzert mit Zombina and the Skeletones](/events/zombina-halloween-wild-at-heart-2026-10-30/) am 30. Oktober und das Konzert der [Grumpynators](/events/grumpynators-wild-at-heart-2026-11-06/) am 6. November. Der Berliner Gig Guide von Rockin' Wildcat führt das Haus darüber hinaus mit weiteren Terminen bis Silvester.

@@ -47,4 +47,4 @@ Die Adresse stammt aus dem Veranstaltungshinweis der Berliner Szene-Quelle, die 
 
 ## Programm
 
-Der Termin, für den dieser Eintrag angelegt ist, führt als Stilrichtungen Blues, Garage und [Rockabilly](/lexikon/rockabilly/). Das ist typisch für die Rolle solcher Häuser in [Berlin](/regionen/berlin/): Sie bespielen ein breites Programm und geben der Szene einzelne Termine, keine Reihen. Wer sie über das eigene Programm des Hauses sucht, findet die Szene dort nicht — sie steht in den Listen der Szene selbst.
+Der Termin, für den dieser Eintrag angelegt ist, führt als Stilrichtungen [Blues](/lexikon/blues/), Garage und [Rockabilly](/lexikon/rockabilly/). Das ist typisch für die Rolle solcher Häuser in [Berlin](/regionen/berlin/): Sie bespielen ein breites Programm und geben der Szene einzelne Termine, keine Reihen. Wer sie über das eigene Programm des Hauses sucht, findet die Szene dort nicht — sie steht in den Listen der Szene selbst.

@@ -2,7 +2,7 @@
 name: Blues
 aliases: []
 kurzbeschreibung: Blues ist eine afroamerikanische Musikform aus dem Süden der USA, meist im zwölftaktigen Schema mit Blue Notes, und die gemeinsame Wurzel von Rhythm and Blues und Rock'n'Roll.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus
@@ -79,7 +79,7 @@ Das Wort stammt aus dem Englischen und meint Schwermut. Die deutsche Wikipedia f
 
 ## Blues als Wurzel des Rock'n'Roll
 
-Laut deutscher Wikipedia spielten Radio-DJs den elektrischen Blues ab Mitte der 1940er Jahre und erreichten damit auch weiße Jugendliche; aus der Verbindung mit rauerem Country entstand der Rock'n'Roll. Die englische Wikipedia nennt Zwölftaktschema und Bluestonleiter als wesentlichen Einfluss auf den Rock'n'Roll und gibt wieder, dass Carl Perkins den [Rockabilly](/lexikon/rockabilly/) als Blues mit Country-Rhythmus beschrieb. Auch der [Boogie-Woogie](/lexikon/boogie-woogie/) und der [Jump Blues](/lexikon/jump-blues/) führt sie als Stile des städtischen Blues der 1930er und 1940er Jahre.
+Laut deutscher Wikipedia spielten Radio-DJs den elektrischen Blues ab Mitte der 1940er Jahre und erreichten damit auch weiße Jugendliche; aus der Verbindung mit rauerem [Country](/lexikon/country/) entstand der Rock'n'Roll. Die englische Wikipedia nennt Zwölftaktschema und Bluestonleiter als wesentlichen Einfluss auf den Rock'n'Roll und gibt wieder, dass Carl Perkins den [Rockabilly](/lexikon/rockabilly/) als Blues mit Country-Rhythmus beschrieb. Auch der [Boogie-Woogie](/lexikon/boogie-woogie/) und der [Jump Blues](/lexikon/jump-blues/) führt sie als Stile des städtischen Blues der 1930er und 1940er Jahre.
 
 ## Abgrenzung des Blues
 

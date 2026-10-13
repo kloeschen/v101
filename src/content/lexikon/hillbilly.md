@@ -88,7 +88,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Hillbilly ist die frühere Bezeichnung der amerikanischen Musikindustrie für die ländliche Musik weißer Bewohner des Südens der USA, aus der die Countrymusik hervorging. Plattenfirmen verwendeten den Namen ab 1925, und bis in die 1950er Jahre blieb er der gängige Begriff für diese Musik. Das Wort selbst ist älter und bezeichnet, oft abwertend, die Bewohner ländlicher Gebirgsgegenden wie der Appalachen.
+Hillbilly ist die frühere Bezeichnung der amerikanischen Musikindustrie für die ländliche Musik weißer Bewohner des Südens der USA, aus der die [Countrymusik](/lexikon/country/) hervorging. Plattenfirmen verwendeten den Namen ab 1925, und bis in die 1950er Jahre blieb er der gängige Begriff für diese Musik. Das Wort selbst ist älter und bezeichnet, oft abwertend, die Bewohner ländlicher Gebirgsgegenden wie der Appalachen.
 
 ## Was unter Hillbilly lief
 

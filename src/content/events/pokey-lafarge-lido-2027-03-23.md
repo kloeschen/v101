@@ -88,7 +88,7 @@ Berlin ist die letzte von drei deutschen Stationen seiner „Rent Money Tour 202
 
 ## Die Musik von Pokey LaFarge
 
-Die beiden Quellen ordnen ihn verschieden ein. Der Gig Guide führt Country, [Rockabilly](/lexikon/rockabilly/), Soul und [Swing](/lexikon/swing/). Das Lido beschreibt ihn als Musiker der amerikanischen Roots-Musik, der in Illinois aufwuchs und Folk, Country, Blues und Rock'n'Roll verbindet; Rockabilly nennt es nicht. Auf der Tour stellt er sein Album „Rent Money" vor. Der Musiker steht in diesem Register als Name im Line-up und nicht als eigener Eintrag.
+Die beiden Quellen ordnen ihn verschieden ein. Der Gig Guide führt [Country](/lexikon/country/), [Rockabilly](/lexikon/rockabilly/), Soul und [Swing](/lexikon/swing/). Das Lido beschreibt ihn als Musiker der amerikanischen Roots-Musik, der in Illinois aufwuchs und Folk, Country, [Blues](/lexikon/blues/) und Rock'n'Roll verbindet; Rockabilly nennt es nicht. Auf der Tour stellt er sein Album „Rent Money" vor. Der Musiker steht in diesem Register als Name im Line-up und nicht als eigener Eintrag.
 
 ## Einordnung des Konzerts in Berlin
 

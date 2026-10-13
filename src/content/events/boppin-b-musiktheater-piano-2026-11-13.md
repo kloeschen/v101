@@ -99,4 +99,4 @@ Die Ankündigung stellt die Band zum vierzigjährigen Bestehen vor: erster Auftr
 
 ## Einordnung des Konzerts in Dortmund
 
-Das Piano ist eine Jazz-, Blues- und Rockbühne, kein Szenehaus. In [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/) folgt der Abend auf das [Konzert in der Harmonie Bonn](/events/boppin-b-harmonie-bonn-2026-11-04/) neun Tage zuvor.
+Das Piano ist eine Jazz-, [Blues](/lexikon/blues/)- und Rockbühne, kein Szenehaus. In [Nordrhein-Westfalen](/regionen/nordrhein-westfalen/) folgt der Abend auf das [Konzert in der Harmonie Bonn](/events/boppin-b-harmonie-bonn-2026-11-04/) neun Tage zuvor.

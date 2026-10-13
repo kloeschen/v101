@@ -53,7 +53,7 @@ quellen:
     art: offiziell
 ---
 
-Billy Childish / Trainwrecks ist ein Konzertabend am Freitag, dem 11. September 2026, ab 19 Uhr im Lido in Berlin-Kreuzberg. Angekündigt ist er mit den Stilrichtungen Blues, Garage und [Rockabilly](/lexikon/rockabilly/) — ein Konzert also, kein Tanzabend, und für die Berliner Szene ein Gastspiel in einem fremden Haus.
+Billy Childish / Trainwrecks ist ein Konzertabend am Freitag, dem 11. September 2026, ab 19 Uhr im Lido in Berlin-Kreuzberg. Angekündigt ist er mit den Stilrichtungen [Blues](/lexikon/blues/), Garage und [Rockabilly](/lexikon/rockabilly/) — ein Konzert also, kein Tanzabend, und für die Berliner Szene ein Gastspiel in einem fremden Haus.
 
 ## Der Termin
 
