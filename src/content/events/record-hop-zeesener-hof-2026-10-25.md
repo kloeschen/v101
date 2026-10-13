@@ -8,10 +8,16 @@ geprueftAm: 2026-10-01
 autor: markus
 typ: tanzabend
 beginn: 2026-10-25T16:00:00+01:00
+ende: 2026-10-25T20:00:00+01:00
 ort: zeesener-hof
 region: brandenburg
 djs: [Capt'n K.]
-eintritt: unveroeffentlicht
+eintritt: beziffert
+preise:
+  - bezeichnung: Eintritt als Spende
+    betrag: 6
+    waehrung: EUR
+    hinweis: Spende ab 6 Euro
 genres: [rocknroll, rockabilly]
 durchfuehrung: geplant
 links:
@@ -35,21 +41,23 @@ redaktionsnotiz: >-
   ZEITZONE +01:00, OBWOHL OKTOBER: Am 25.10.2026 endet die Sommerzeit um
   03:00; 16:00 liegt danach. Der Kalenderlink bestaetigt das (15:00 UTC).
   Wer +02:00 setzt, verschiebt den Termin um eine Stunde.
-  ENDE NICHT GESETZT: Kalenderlink endet auf 05:00 MEZ des Folgetags, der
-  bekannte Vorgabewert.
-  PREIS NICHT BEZIFFERT: Die Detailseite hat kein Feld "Kosten";
-  offers.price "0" heisst bei dieser Quelle nur "kein Preis hinterlegt"
-  (Leseregel vom 2026-09-24). Der Eintritt der Termine im Rathaus
-  Friedrichshagen (10 Euro) wird nicht uebertragen.
+  PREIS UND ENDE VOM FLYER (2026-10-13): Der Flyer auf der Detailseite
+  (TT__25sterOkt__online.jpg) nennt am Rand "Eintritt: Spende ab 6,- EUR" und "16 - 20 Uhr".
+  Der Gegenleser zu PR #207 fand den Preis; ENTSCHIEDEN 2026-10-13
+  (Markus): Die Spende ab 6 Euro wird als Eintritt eingetragen. Die
+  Leseregel vom 2026-09-24 (offers.price "0" heisst "kein Preis
+  hinterlegt") gilt weiter fuer das JSON-LD; der Flyer ist sichtbarer
+  Text und geht vor. Ende 20:00 ebenfalls vom Flyer, nicht aus dem
+  Kalenderlink (dessen 05:00 bleibt der bekannte Vorgabewert).
   GENRES wie bei den Terminen in Friedrichshagen: "Jump & Jive" bewusst
   nicht auf `jump-blues` abgebildet, "Rhythm'n'Blues" ohne
   Lexikoneintrag.
   Nicht gefuellt: veranstalter (organizer im JSON-LD leer), ticketUrl,
-  kapazitaet, ende, preise.
+  kapazitaet.
 quellen:
   - url: https://www.rockin-wildcat.com/rwc/events/record-hop-62
     titel: Record Hop, 25. Oktober 2026 (Rockin' Wildcat)
-    abgerufenAm: 2026-10-01
+    abgerufenAm: 2026-10-13
     felder: [beginn, ende, ort, djs, genres, eintritt, preise, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:musik]
     art: aggregator
   - url: https://www.rockin-wildcat.com/rwc/guide
@@ -64,13 +72,13 @@ quellen:
     art: offiziell
 ---
 
-Der Record Hop im Zeesener Hof ist ein Tanznachmittag am Sonntag, dem 25. Oktober 2026, ab 16 Uhr in Zeesen bei Königs Wusterhausen. Aufgelegt wird von DJ Capt'n K.; angekündigt sind 50s [Rock'n'Roll](/lexikon/rocknroll/), Jump & Jive, Rhythm'n'Blues und [Rockabilly](/lexikon/rockabilly/).
+Der Record Hop im Zeesener Hof ist ein Tanznachmittag am Sonntag, dem 25. Oktober 2026, ab 16 Uhr in Zeesen bei Königs Wusterhausen. Aufgelegt wird von DJ Capt'n K.; angekündigt sind 50s [Rock'n'Roll](/lexikon/rocknroll/), Jump & Jive, [Rhythm'n'Blues](/lexikon/rhythm-and-blues/) und [Rockabilly](/lexikon/rockabilly/).
 
 ## Der Termin des Record Hops am 25. Oktober
 
 Ein Record Hop ist ein Tanzabend ohne Liveband — die Musik kommt von Platten. Wie die Termine derselben Reihe in Berlin beginnt auch dieser am Sonntagnachmittag und nicht am Abend. An diesem Tag endet die Sommerzeit; die 16 Uhr gelten nach der Umstellung.
 
-Angekündigt ist der Nachmittag allein im Berliner Gig Guide von Rockin' Wildcat; der [Zeesener Hof](/locations/zeesener-hof/) führt ihn nicht auf seiner eigenen Veranstaltungsseite. Einen Eintrittspreis nennt die Ankündigung nicht, eine Endzeit ebenso wenig. Wer hinfahren will, fragt deshalb besser vorher nach.
+Angekündigt ist der Nachmittag allein im Berliner Gig Guide von Rockin' Wildcat; der [Zeesener Hof](/locations/zeesener-hof/) führt ihn nicht auf seiner eigenen Veranstaltungsseite. Der Flyer der Ankündigung nennt die Zeit von 16 bis 20 Uhr und als Eintritt eine Spende ab 6 Euro.
 
 ## Die Musik beim Record Hop am 25. Oktober
 

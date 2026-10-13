@@ -68,7 +68,7 @@ quellen:
     art: offiziell
 ---
 
-Der Record Hop im Rathaus Friedrichshagen ist ein Tanznachmittag am Sonntag, dem 6. Dezember 2026, ab 16 Uhr in Berlin-Köpenick. Aufgelegt wird von DJ Capt'n K.; angekündigt sind 50s [Rock'n'Roll](/lexikon/rocknroll/), Jump & Jive, Rhythm'n'Blues und [Rockabilly](/lexikon/rockabilly/). Der Eintritt kostet 10 Euro.
+Der Record Hop im Rathaus Friedrichshagen ist ein Tanznachmittag am Sonntag, dem 6. Dezember 2026, ab 16 Uhr in Berlin-Köpenick. Aufgelegt wird von DJ Capt'n K.; angekündigt sind 50s [Rock'n'Roll](/lexikon/rocknroll/), Jump & Jive, [Rhythm'n'Blues](/lexikon/rhythm-and-blues/) und [Rockabilly](/lexikon/rockabilly/). Der Eintritt kostet 10 Euro.
 
 ## Der Termin des Record Hops am 6. Dezember
 

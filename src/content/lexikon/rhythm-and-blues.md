@@ -1,6 +1,6 @@
 ---
 name: Rhythm and Blues
-aliases: [Rhythm & Blues]
+aliases: [Rhythm & Blues, Rhythm'n'Blues]
 kurzbeschreibung: Rhythm and Blues ist die populäre Musik der afroamerikanischen Bevölkerung der USA, die in den 1940er Jahren entstand, den Blues mit stark betontem Rhythmus zur Unterhaltung spielte und aus der der Rock'n'Roll hervorging.
 status: veroeffentlicht
 erstelltAm: 2026-10-06
@@ -23,6 +23,10 @@ abgrenzung: >-
   gleichgesetzt; der Autor Robert Palmer tat das, AllMusic trennt beide
   wegen des stärkeren Gospel-Einflusses im Rhythm and Blues.
 redaktionsnotiz: >-
+  ALIAS RHYTHM'N'BLUES (2026-10-13): Die deutsche Wikipedia nennt die
+  Schreibung „Rhythm ’n’ Blues“ ausdrücklich; im Register steht sie
+  25-mal als „Rhythm'n'Blues“. Ohne den Alias verlinkte der Autolink dort
+  nur „Blues“ auf den Blues-Eintrag statt das Ganze hierher.
   Quellen am 2026-10-06 einzeln geöffnet: die deutsche Wikipedia (Artikel
   „Rhythm and Blues", ausdrücklich auf den Begriff der 1940er bis 1970er
   Jahre beschränkt), die englische Wikipedia („Rhythm and blues"), der
