@@ -1,11 +1,11 @@
 ---
 name: Herbstparty der Rock Dock Teddys 2026
 aliases: [Herbstparty Welcome everyone 2026, Boogie-Herbstparty Perchtoldsdorf 2026, Rock Dock Teddys Herbstparty 2026]
-kurzbeschreibung: Herbstlicher Tanzabend des Boogie-Vereins BWC Rock Dock Teddys am Freitag, 20. November 2026, auf der Burg Perchtoldsdorf, Beginn 19 Uhr; Musikspende 10 Euro pro Person. Der Szenekalender boogie.at nennt abweichend den 6. November im Kulturzentrum.
+kurzbeschreibung: Herbstlicher Tanzabend des Boogie-Vereins BWC Rock Dock Teddys am Freitag, 20. November 2026, auf der Burg Perchtoldsdorf, Beginn 19 Uhr, mit DJane Edith und DJ Andreas. Die Musikspende nennt die Vereinsseite mit 10 Euro, der Szenekalender boogie.at mit 12 Euro pro Person.
 status: veroeffentlicht
 erstelltAm: 2026-09-29
 geprueftAm: 2026-09-29
-geaendertAm: 2026-10-03
+geaendertAm: 2026-10-14
 autor: markus
 typ: tanzabend
 beginn: 2026-11-20T19:00:00+01:00
@@ -13,6 +13,7 @@ ende: 2026-11-20T23:30:00+01:00
 ort: burg-perchtoldsdorf
 region: niederoesterreich
 veranstalter: BWC Rock Dock Teddys
+djs: [DJane Edith, DJ Andreas]
 eintritt: beziffert
 preise:
   - bezeichnung: Musikspende pro Person
@@ -21,7 +22,19 @@ preise:
     hinweis: Platzreservierung beim Verein erbeten
 durchfuehrung: geplant
 redaktionsnotiz: >-
-  DATUM UND ORT STRITTIG, entschieden von Markus am 2026-09-29: Es gilt
+  ABGLEICH 2026-10-14: boogie.at fuehrt den Abend jetzt wie die
+  Vereinsseite am 20.11.2026 in der Burg Perchtoldsdorf ("Fr.,
+  20.11.2026 - 18:30", Burg Perchtoldsdorf, Paul-Katzberger-Platz 1).
+  Datum und Ort sind damit nicht mehr strittig; der alte Absatz unten
+  bleibt als Herkunft der Entscheidung stehen. Neu auf boogie.at:
+  "Musikspende pro Person: EUR 12,--". Die Vereinsseite nennt weiter
+  "Musikspende: EUR 10,00/Person" (http-Fassung am 2026-10-14 abgerufen,
+  Last-Modified unveraendert 30.08.2026). `preise` bleibt bei 10 Euro,
+  bis Markus entscheidet; der Text nennt beide Betraege (Lektion 20).
+  DJs jetzt gefuellt: boogie.at nennt "DJane Edith & DJ Andreas" fuer
+  denselben Abend; der Grund, sie wegzulassen (anderes Datum), ist
+  entfallen. Die Vereinsseite nennt keine DJs.
+  FRUEHER: DATUM UND ORT STRITTIG, entschieden von Markus am 2026-09-29: Es gilt
   der Terminkalender der Vereinsseite. Dort steht fuer die HERBSTPARTY
   "20.11.2026, B U R G Perchtoldsdorf", Einlass 18:30, Beginn 19:00,
   Ende 23:30, Musikspende EUR 10,00/Person. boogie.at
@@ -44,12 +57,11 @@ redaktionsnotiz: >-
   Silvesterparty: Die Vereinsseite nennt Einlass und Beginn getrennt;
   der Einlass um 18:30 steht im Text. Die 18:30 auf boogie.at passen zum
   Einlass, gehoeren aber zum anderen Datum.
-  DJs LEER: "DJane Edith & DJ Andreas" nennt nur boogie.at, und zwar fuer
-  den 06.11. im Kulturzentrum. Die Vereinsseite nennt fuer den 20.11.
-  keine DJs. Ob die Angabe fuer den Termin gilt, dem dieser Eintrag
-  folgt, ist nicht belegt; der Text nennt sie als Angabe von boogie.at.
+  DJs (bis 2026-10-14 leer): "DJane Edith & DJ Andreas" nannte boogie.at
+  damals nur fuer den 06.11. im Kulturzentrum.
   PREIS: Musikspende als fester Betrag je Person, `beziffert` wie beim
-  Weihnachtsabend desselben Vereins. Beide Quellen nennen 10 Euro.
+  Weihnachtsabend desselben Vereins. Am 2026-09-29 nannten beide
+  Quellen 10 Euro; zum Stand 2026-10-14 siehe oben.
   MUSIK: Die Vereinsseite nennt Boogie Woogie, Swing und
   Standard-Latein, boogie.at Boogie Woogie, Rock'n'Roll und Swing.
   GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich: Gemeint
@@ -62,7 +74,7 @@ redaktionsnotiz: >-
   DRINNENDRAUSSEN LEER: Keine geoeffnete Quelle beschreibt den Saal der
   Burg.
   VERANSTALTERURL LEER: Die Vereinsseite ist nur ueber http erreichbar.
-  Nicht gefuellt: djs, drinnenDraussen, veranstalterUrl, ticketUrl,
+  Nicht gefuellt: drinnenDraussen, veranstalterUrl, ticketUrl,
   kapazitaet, barrierefrei, kinder, genres, reihe.
   TANZ STATT KLAVIERSTIL (2026-10-03, Regel von Markus: Nennt ein
   Tanzabend "Boogie Woogie", ist der Tanz gemeint, ausser die Quelle
@@ -82,21 +94,21 @@ quellen:
     art: offiziell
   - url: https://boogie.at/event/boogie-herbstparty
     titel: Boogie-Herbstparty (BOOGIE.at)
-    abgerufenAm: 2026-09-29
-    felder: [aliases, kurzbeschreibung, body:termin, body:ort, body:abend]
+    abgerufenAm: 2026-10-14
+    felder: [ort, djs, aliases, kurzbeschreibung, body:termin, body:ort, body:abend]
     art: aggregator
 ---
 
-Die Herbstparty ist ein Tanzabend des Boogie-Vereins BWC Rock Dock Teddys auf der Burg Perchtoldsdorf südlich von Wien, nach dem Terminkalender des Vereins am Freitag, dem 20. November 2026. Die Musikspende beträgt 10 Euro pro Person; der Szenekalender boogie.at führt denselben Abend mit anderem Datum und in einem anderen Haus.
+Die Herbstparty ist ein Tanzabend des Boogie-Vereins BWC Rock Dock Teddys auf der Burg Perchtoldsdorf südlich von Wien, am Freitag, dem 20. November 2026. Es legen DJane Edith und DJ Andreas auf; die Musikspende beträgt nach der Seite des Vereins 10 Euro, nach dem Szenekalender boogie.at 12 Euro pro Person.
 
 ## Der Termin der Herbstparty der Rock Dock Teddys
 
-Der Verein nennt auf seiner eigenen Seite Freitag, 20. November 2026, mit Einlass um 18:30 Uhr, Beginn um 19 Uhr und Ende um 23:30 Uhr. Auf boogie.at, wo der Verein seine Termine selbst einträgt, steht die „Boogie-Herbstparty“ dagegen am Freitag, 6. November 2026, um 18:30 Uhr. Dieser Eintrag folgt der Vereinsseite. Wer hinfahren will, fragt bei der Platzreservierung nach, die der Verein per Telefon oder SMS entgegennimmt.
+Der Verein nennt auf seiner eigenen Seite Freitag, 20. November 2026, mit Einlass um 18:30 Uhr, Beginn um 19 Uhr und Ende um 23:30 Uhr. boogie.at, wo der Verein seine Termine selbst einträgt, führt denselben Tag mit 18:30 Uhr — der Zeit des Einlasses. Bis Ende September stand der Abend dort noch am 6. November; inzwischen stimmen beide Quellen überein. Beim Preis nicht: Die Vereinsseite, zuletzt Ende August geändert, nennt 10 Euro, der neuere Eintrag auf boogie.at 12 Euro. Wer hinfahren will, fragt bei der Platzreservierung nach, die der Verein per Telefon oder SMS entgegennimmt.
 
 ## Der Ort der Herbstparty der Rock Dock Teddys
 
-Nach der Vereinsseite findet der Abend auf der [Burg Perchtoldsdorf](/locations/burg-perchtoldsdorf/) statt, nach boogie.at im [Kulturzentrum Perchtoldsdorf](/locations/kulturzentrum-perchtoldsdorf/) in der Beatrixgasse 5a — zwei verschiedene Gebäude derselben Gemeinde in [Niederösterreich](/regionen/niederoesterreich/). Wie beim Datum gilt hier die Angabe des Vereins.
+Beide Quellen nennen die [Burg Perchtoldsdorf](/locations/burg-perchtoldsdorf/) am Paul-Katzberger-Platz in [Niederösterreich](/regionen/niederoesterreich/).
 
 ## Der Abend der Herbstparty der Rock Dock Teddys
 
-Der Verein richtet den Abend gemeinsam mit der Tanzschule Schmid in Perchtoldsdorf aus. Das Motto verbindet drei Anlässe: Man darf im Stil der 1950er Jahre oder in Tracht kommen, der Abend versteht sich als Nachfeier zu Halloween und als Auftakt zum Fasching. Laut Vereinsseite laufen [Boogie Woogie](/lexikon/boogie-woogie-tanz/), Swing und Standard-Latein; boogie.at nennt statt Standard-Latein [Rock'n'Roll](/lexikon/rocknroll-tanz/) und kündigt DJane Edith und DJ Andreas an — die Vereinsseite nennt für den 20. November keine DJs.
+Der Verein richtet den Abend gemeinsam mit der Tanzschule Schmid in Perchtoldsdorf aus. Das Motto verbindet drei Anlässe: Man darf im Stil der 1950er Jahre oder in Tracht kommen, der Abend versteht sich als Nachfeier zu Halloween und als Auftakt zum Fasching. Laut Vereinsseite laufen [Boogie Woogie](/lexikon/boogie-woogie-tanz/), Swing und Standard-Latein; boogie.at nennt statt Standard-Latein [Rock'n'Roll](/lexikon/rocknroll-tanz/) und kündigt DJane Edith und DJ Andreas an.
