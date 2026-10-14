@@ -2,9 +2,9 @@
 name: Weekender
 aliases: []
 kurzbeschreibung: Ein Weekender ist in der Rock'n'Roll- und Rockabilly-Szene ein mehrtägiges Treffen über ein Wochenende, das Livekonzerte, DJs, Tanz und einen Markt für Kleidung und Platten an einem Ort bündelt, in Großbritannien klassisch in einem Ferienpark.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
-geprueftAm: 2026-10-13
+geprueftAm: 2026-10-14
 autor: markus
 kategorie: szene
 bezeichnungEn: weekender

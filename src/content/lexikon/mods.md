@@ -1,9 +1,9 @@
 ---
 name: Mods
 kurzbeschreibung: Mods sind die Angehörigen einer britischen Jugendkultur, die Ende der 1950er Jahre in London unter Fans des Modern Jazz entstand und in den 1960er Jahren mit Maßanzug, Parka, italienischem Motorroller und Soul, Rhythm and Blues und Ska zum Gegenpol der Rocker wurde.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
-geprueftAm: 2026-10-13
+geprueftAm: 2026-10-14
 autor: markus
 kategorie: szene
 bezeichnungEn: Mod

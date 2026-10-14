@@ -65,7 +65,7 @@ Die Quelle nennt Kenneth Howard, besser bekannt als Von Dutch, den Customizer un
 
 ## Musik und Jugendbewegungen in der Kustom Kulture
 
-In Verbindung gebracht wird die Kustom Kulture mit den Greasers der 1950er, den Drag-Racern der 1960er und den Lowridern der 1970er Jahre. Als weitere Einflüsse nennt die Quelle die Mods und Rocker der 1970er, die Metal- und [Rockabilly](/lexikon/rockabilly/)-Musik der 1980er und die Psychobilly-Musik der 1990er Jahre; jede dieser Jugendbewegungen brachte eigene Umbauarten, Kleider- und Musikstile ein.
+In Verbindung gebracht wird die Kustom Kulture mit den [Greasers](/lexikon/greaser/) der 1950er, den Drag-Racern der 1960er und den Lowridern der 1970er Jahre. Als weitere Einflüsse nennt die Quelle die [Mods](/lexikon/mods/) und Rocker der 1970er, die Metal- und [Rockabilly](/lexikon/rockabilly/)-Musik der 1980er und die Psychobilly-Musik der 1990er Jahre; jede dieser Jugendbewegungen brachte eigene Umbauarten, Kleider- und Musikstile ein.
 
 Diese Datierung meint den Zeitpunkt, zu dem eine Musikrichtung auf die Fahrzeugszene durchschlug, nicht ihre Entstehung. Der Psychobilly selbst ist älter: Dieses Register datiert ihn auf um 1980 in England, und [Mad Sin](/bands/mad-sin/) spielt ihn in Berlin seit 1987.
 

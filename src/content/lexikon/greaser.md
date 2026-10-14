@@ -2,9 +2,9 @@
 name: Greaser
 aliases: [Greasers]
 kurzbeschreibung: Greaser ist die Bezeichnung für die Angehörigen einer nordamerikanischen Jugendsubkultur der 1950er und frühen 1960er Jahre, getragen von Arbeiterjugendlichen mit pomadisiertem Haar, Jeans und Lederjacke, oft mit einem Faible für Hot Rods und Motorräder.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
-geprueftAm: 2026-10-13
+geprueftAm: 2026-10-14
 autor: markus
 kategorie: szene
 definition: Greaser ist die Bezeichnung für Angehörige einer Jugendsubkultur, die in den 1950er Jahren unter Jugendlichen aus der Arbeiter- und Unterschicht in den USA und Kanada entstand.

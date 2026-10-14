@@ -138,7 +138,7 @@ Die Halbstarken gehören zu den Jahren des westdeutschen Wirtschaftswunders, in 
 
 Die englische Wikipedia nennt neben Westdeutschland auch Österreich und die Schweiz. In Zürich fotografierte Karlheinz Weinberger die Halbstarken ab 1958; die deutsche Wikipedia hebt hervor, dass er zu den wenigen Fotografen gehörte, die Zugang zu ihnen bekamen, und dass Museen seine Bilder heute sammeln.
 
-Die deutsche Wikipedia zitiert den Historiker Bodo Mrozek, der die Halbstarken 2008 als erste Generation beschrieb, die sich weltweit gleich unter den Zeichen einer neuen Zeit formierte; Mods, Rocker und Punks seien danach nur Variationen desselben Musters gewesen. Heute deutet man die Erscheinung meist als Protest gegen eine als streng und trostlos empfundene Gesellschaft — einen Protest, der weder politisch gemeint noch organisiert war.
+Die deutsche Wikipedia zitiert den Historiker Bodo Mrozek, der die Halbstarken 2008 als erste Generation beschrieb, die sich weltweit gleich unter den Zeichen einer neuen Zeit formierte; [Mods](/lexikon/mods/), Rocker und Punks seien danach nur Variationen desselben Musters gewesen. Heute deutet man die Erscheinung meist als Protest gegen eine als streng und trostlos empfundene Gesellschaft — einen Protest, der weder politisch gemeint noch organisiert war.
 
 ## Kleidung der Halbstarken
 
