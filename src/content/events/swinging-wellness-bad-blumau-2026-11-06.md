@@ -8,7 +8,7 @@ geprueftAm: 2026-10-03
 autor: markus
 typ: workshop
 ausgabe: 10
-beginn: 2026-11-06T09:00:00+01:00
+beginn: 2026-11-06T11:00:00+01:00
 ende: 2026-11-08
 ort: rogner-bad-blumau
 region: steiermark
@@ -134,11 +134,13 @@ redaktionsnotiz: >-
   "6.-8. Nov 2026" und Zeitplan "Zeitplan Swinging Wellness 2026"; boogie.at
   fuehrt Fr. 06.11., Sa. 07.11. und So. 08.11.2026. Der 6. November 2026
   ist ein Freitag. Keine Abweichung beim Datum.
-  BEGINN 09:00: boogie.at nennt an allen drei Tagen 09:00; der Zeitplan
-  des Veranstalters nennt fuer Freitag "Ab 09:00 Check In Hotel", die
-  Registrierung ab 11:00 und den ersten Kurs um 12:00. `beginn` folgt
-  der Anreise, die beide Quellen nennen; der Text sagt, wann das
-  Programm wirklich anfaengt.
+  BEGINN 11:00, ENTSCHIEDEN 2026-10-14 (Markus, zu PR #216): Der
+  Zeitplan des Veranstalters nennt fuer Freitag "Ab 09:00 Check In Hotel"
+  und "Ab 11:00 bei Hotelrezeption Teilnehmer Registration / CheckIn
+  Swinging Wellness Wochenende", den ersten Kurs um 12:00. `beginn` ist
+  die Registrierung, also der Beginn der Veranstaltung, nicht der
+  Hotel-Check-in. boogie.at nennt an allen drei Tagen 09:00 (die
+  Anreise); der Text nennt alle drei Zeiten.
   ENDE nur als Datum: Der letzte Kurs endet laut Zeitplan am Sonntag um
   16:30, Late Check-out und Therme gelten bis 23:00 -- ein Ende des
   Wochenendes nennt keine Quelle, also kein Zeitpunkt.
@@ -176,6 +178,9 @@ redaktionsnotiz: >-
   01.03.2026 und ist abgelaufen; er steht deshalb nicht in `preise`.
   Die Pakete enthalten Uebernachtung und Halbpension -- das ist kein
   Sonderpreis fuer Hotelgaeste, sondern das Angebot selbst.
+  PREISE BESTAETIGT 2026-10-14 (Markus, zu PR #216): Der Gegenleser
+  zaehlte den Aufpreis "+60" je weiterem Workshop nicht als eigenen
+  Preis; die fuenf Zeilen bleiben wie eingetragen.
   VERANSTALTER: Flyer-Logo "ErLEEBnis Events", Facebook-Seite "Erleebnis
   Events" (verlinkt auf der Veranstalterseite), Seite "Das bin ich" nennt
   ein 2018 gegruendetes Unternehmen fuer Eventorganisation. Die
@@ -232,7 +237,7 @@ quellen:
   - url: https://boogie.at/event/swinging-wellness-tanzwochenende-10-jaehriges-jubilaeum
     titel: Swinging Wellness Tanzwochenende! 10 Jähriges Jubiläum (BOOGIE.at)
     abgerufenAm: 2026-10-02
-    felder: [beginn, ort, lineupWeitere, programm, ausgabe, aliases, body:termin]
+    felder: [ort, lineupWeitere, programm, ausgabe, aliases, body:termin]
     art: aggregator
 ---
 
