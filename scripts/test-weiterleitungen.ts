@@ -188,6 +188,8 @@ gleich("echte Daten, alle Einträge als freigegeben gedacht: die erwarteten auto
   "/thema/peep-toe → /lexikon/peep-toe/",
   "/thema/pencil → /lexikon/bleistiftrock/",
   "/thema/pin-up → /lexikon/pin-up/",
+  // 2026-10-14, mit lexikon/plateausohle; im Vorrat ausdrücklich so vorgesehen.
+  "/thema/plateausohle → /lexikon/plateausohle/",
   "/thema/polka-dots → /lexikon/polka-dots/",
   "/thema/rockabilly → /lexikon/rockabilly/",
   "/thema/stiletto → /lexikon/stiletto/",
