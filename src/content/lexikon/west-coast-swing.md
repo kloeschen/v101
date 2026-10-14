@@ -2,7 +2,7 @@
 name: West Coast Swing
 aliases: []
 kurzbeschreibung: West Coast Swing ist ein Paartanz aus der Familie der Swing-Tänze, der in Kalifornien aus dem Lindy Hop hervorging, auf einer schmalen Bahn getanzt wird und heute zu Swing ebenso wie zu Pop, Blues und Hip-Hop improvisiert wird.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus

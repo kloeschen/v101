@@ -52,7 +52,7 @@ Mit rund 16.400 Quadratkilometern ist die Steiermark nach Angaben der Wikipedia 
 
 ## Szene in der Steiermark
 
-Belegt ist bisher ein Format, das sich von den Vereinsabenden in Nieder- und Oberösterreich deutlich unterscheidet: das [Swinging Wellness Tanzwochenende](/events/swinging-wellness-bad-blumau-2026-11-06/) im [Rogner Bad Blumau](/locations/rogner-bad-blumau/), bei dem Kurse in Boogie, [Lindy Hop](/lexikon/lindy-hop/) und West Coast Swing mit Partys und Hotelaufenthalt verbunden werden. Bad Blumau liegt im Bezirk Hartberg-Fürstenfeld in der Oststeiermark. Wie dicht die Szene im übrigen Land ist, sagt ein einzelner Termin nicht — dieser Eintrag wächst mit den Terminen, die dazukommen.
+Belegt ist bisher ein Format, das sich von den Vereinsabenden in Nieder- und Oberösterreich deutlich unterscheidet: das [Swinging Wellness Tanzwochenende](/events/swinging-wellness-bad-blumau-2026-11-06/) im [Rogner Bad Blumau](/locations/rogner-bad-blumau/), bei dem Kurse in Boogie, [Lindy Hop](/lexikon/lindy-hop/) und [West Coast Swing](/lexikon/west-coast-swing/) mit Partys und Hotelaufenthalt verbunden werden. Bad Blumau liegt im Bezirk Hartberg-Fürstenfeld in der Oststeiermark. Wie dicht die Szene im übrigen Land ist, sagt ein einzelner Termin nicht — dieser Eintrag wächst mit den Terminen, die dazukommen.
 
 ## Lage und Zuschnitt der Steiermark
 

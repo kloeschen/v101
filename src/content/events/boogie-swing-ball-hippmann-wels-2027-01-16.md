@@ -91,7 +91,7 @@ Das Datum nennen Ankündigung, Eventliste und Flyer der Tanzschule übereinstimm
 
 ## Programm beim Boogie & Swing Ball 2027
 
-Die Tanzschule bezeichnet den Ball als ihr Highlight für die Boogie- und Swing-Szene. Neben der Band und dem DJ sind weitere Bands, DJs und eine Tanzshow angekündigt, aber noch nicht benannt. Unter den fünf Floors nennt sie ausdrücklich auch solche für [Lindy Hop](/lexikon/lindy-hop/) und West Coast Swing.
+Die Tanzschule bezeichnet den Ball als ihr Highlight für die Boogie- und Swing-Szene. Neben der Band und dem DJ sind weitere Bands, DJs und eine Tanzshow angekündigt, aber noch nicht benannt. Unter den fünf Floors nennt sie ausdrücklich auch solche für [Lindy Hop](/lexikon/lindy-hop/) und [West Coast Swing](/lexikon/west-coast-swing/).
 
 ## Eintritt zum Boogie & Swing Ball 2027
 

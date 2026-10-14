@@ -227,7 +227,7 @@ quellen:
     art: aggregator
 ---
 
-Das Swinging Wellness Tanzwochenende 2026 ist ein dreitägiges Kurs- und Partywochenende vom 6. bis 8. November 2026 im Thermenhotel [Rogner Bad Blumau](/locations/rogner-bad-blumau/) in der Oststeiermark. Unterrichtet werden Boogie, [Lindy Hop](/lexikon/lindy-hop/) und West Coast Swing, dazu erstmals eine Schnupperstunde Balboa; es ist nach Angaben des Veranstalters die zehnte Ausgabe.
+Das Swinging Wellness Tanzwochenende 2026 ist ein dreitägiges Kurs- und Partywochenende vom 6. bis 8. November 2026 im Thermenhotel [Rogner Bad Blumau](/locations/rogner-bad-blumau/) in der Oststeiermark. Unterrichtet werden Boogie, [Lindy Hop](/lexikon/lindy-hop/) und [West Coast Swing](/lexikon/west-coast-swing/), dazu erstmals eine Schnupperstunde [Balboa](/lexikon/balboa/); es ist nach Angaben des Veranstalters die zehnte Ausgabe.
 
 ## Der Termin des Swinging Wellness Tanzwochenendes
 
