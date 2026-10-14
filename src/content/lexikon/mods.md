@@ -138,4 +138,4 @@ Wie typisch das war, ist umstritten. Die deutsche Wikipedia schildert Straßensc
 
 ## Abgrenzung von Mods
 
-Mods sind weder Rocker noch britische [Halbstarke](/lexikon/halbstarke/). Die Halbstarken waren Jugendliche der 1950er Jahre im deutschsprachigen Raum mit Tolle, Jeans, Lederjacke und Rock 'n' Roll; der Historiker Bodo Mrozek sieht Mods und Rocker als spätere Variationen dieses Musters. Im Deutschen meint „Rocker" zudem die Motorradclub-Szene, nicht die britische Jugendkultur.
+Mods sind weder Rocker noch britische [Halbstarke](/lexikon/halbstarke/). Die Halbstarken waren Jugendliche der 1950er Jahre im deutschsprachigen Raum mit [Tolle](/lexikon/tolle/), Jeans, Lederjacke und Rock 'n' Roll; der Historiker Bodo Mrozek sieht Mods und Rocker als spätere Variationen dieses Musters. Im Deutschen meint „Rocker" zudem die Motorradclub-Szene, nicht die britische Jugendkultur.
