@@ -74,6 +74,10 @@ redaktionsnotiz: >-
   Folgebefund erledigt am 2026-10-03: lexikon/creepers und lexikon/pomade
   nennen "Elvis-Tolle" und Stray Cats jetzt als Angabe der deutschen
   Wikipedia, mit dem Gesicherten daneben (Regel 5).
+  BROGUES STATT BUDAPESTER (2026-10-14, mit lexikon/budapester): Die
+  Quelle des Kleidungsabschnitts sagt "chunky brogues"; "Budapester" war
+  eine Übersetzung, die nach der deutschen Wikipedia ("Brogue") nur
+  umgangssprachlich stimmt.
 quellen:
   - url: https://de.wikipedia.org/wiki/Teddy_Boy
     titel: Teddy Boy (Wikipedia)
@@ -171,7 +175,7 @@ Die Teddy Girls, auch Judies genannt, trugen Drape-Jacketts, Bleistiftröcke, au
 
 Kern der Ausstattung war das Drape-Jackett: lang geschnitten, meist dunkel, oft mit Samtbesatz an Kragen und Taschenpatten. LACMA ordnet es als Nachfahren des amerikanischen Zoot Suit ein, dessen überlanges Jackett die Teds übernahmen. Dazu kamen Röhrenhosen mit hohem Bund, die die Socken zeigten, ein weißes Hemd mit hohem, lockerem Kragen, eine schmale Krawatte oder eine Bolo-Krawatte und eine Brokatweste. Die Kleidung war meist maßgeschneidert, teuer und wurde in Wochenraten abbezahlt.
 
-An den Füßen trugen die Teds polierte Oxford-Schuhe, schwere Budapester oder [Creepers](/lexikon/creepers/) mit Kreppsohle. Das Haar war lang, mit [Pomade](/lexikon/pomade/) gefettet und geformt: vorn eine [Tolle](/lexikon/tolle/), an den Seiten nach hinten gekämmt zum [Ducktail](/lexikon/ducktail/) am Hinterkopf. Eine Variante ließ die Stirnlocke als „Elefantenrüssel" nach vorn fallen; der Darsteller eines Teds im Film „Dandilicious" erzählt Vintage Rock, dass er für diese Frisur an jedem Drehtag anderthalb Stunden brauchte.
+An den Füßen trugen die Teds polierte Oxford-Schuhe, schwere Brogues oder [Creepers](/lexikon/creepers/) mit Kreppsohle. Das Haar war lang, mit [Pomade](/lexikon/pomade/) gefettet und geformt: vorn eine [Tolle](/lexikon/tolle/), an den Seiten nach hinten gekämmt zum [Ducktail](/lexikon/ducktail/) am Hinterkopf. Eine Variante ließ die Stirnlocke als „Elefantenrüssel" nach vorn fallen; der Darsteller eines Teds im Film „Dandilicious" erzählt Vintage Rock, dass er für diese Frisur an jedem Drehtag anderthalb Stunden brauchte.
 
 ## Musik der Teddy Boys
 

@@ -135,19 +135,18 @@ die Mühe macht: ein Heimatzeitung-Artikel (PNP, „Rockabilly: Zurück in
 die 50er Jahre", Pullman City), der aus der Cloud nicht ladbar war, und
 eine Suche in den DWDS-Korpora mit Anmeldung. Ohne erklärende Quelle
 bleibt der Begriff draußen.
+Medium (Jukebox, Schellackplatte, Single) und Mode, Schuhe (Plateausohle,
+Slingback, Kitten Heel, Budapester) sind am 2026-10-14 in einer Sitzung
+mit Markus direkt gebaut worden. **Pin-up-Magazin nicht angelegt**
+(2026-10-14), aus demselben Grund wie Rockabella: Wikipedia (de, en),
+Duden, DWDS und Wiktionary führen den Begriff nicht; die englische
+Wikipedia verwendet ihn nur als Etikett einzelner Hefte. Die Antwort im
+FAQ von `lexikon/pin-up` deckt die Frage ab.
 
 Aufgefüllt am 2026-10-09 (Auswahl Markus, nach Vorschlag; Begründung und
 Messung in ENTSCHEIDUNGEN.md vom selben Tag). Die Zahl hinter einem
 Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
 setzt der Autolink später an.
-- *Medium:* Jukebox (gegen Musikbox als Möbel; Termin „Jukebox Christmas
-  Party"), Schellackplatte (gegen Vinyl), Single (gegen LP und EP),
-  Pin-up-Magazin (gegen `lexikon/pin-up`).
-- *Mode, Schuhe:* Plateausohle (gegen `lexikon/keilabsatz`; alter Pfad
-  `/thema/plateausohle`), Slingback (gegen `lexikon/peep-toe`), Kitten
-  Heel (gegen `lexikon/stiletto`), Budapester (gegen
-  `lexikon/saddle-shoes`). Alle vier stehen schon als Abgrenzung in
-  veröffentlichten Einträgen, ohne eigene Seite.
 - *Epoche:* Fifties (gegen „50er" als bloße Jahreszahl; alter Pfad
   `/jahrzehnt/50s`), Wirtschaftswunder, Mid-Century Modern (gegen
   Vintage). **Fifties nur von Hand verlinken:** „50er" steht 97-mal in
