@@ -21,6 +21,7 @@ preise:
     betrag: 55
     waehrung: EUR
     hinweis: pro Person, inklusive Sektempfang, Buffet, Mitternachtssekt und Gulaschsuppe
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/
@@ -46,18 +47,27 @@ redaktionsnotiz: >-
   nach einer Pause.
   "FOX & CHA-CHA-CHA" steht auf dem Flyer unter dem Schriftzug Boogie:
   An diesem Abend laeuft auch Musik fuer Foxtrott und Cha-Cha-Cha. Im
-  Text so genannt; `genres` bleibt trotzdem leer (offener Punkt
-  "Boogie-Woogie als Tanz").
+  Text so genannt.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-14): Der Flyer stellt
+  "BOOGIE" neben "FOX & CHA-CHA-CHA" -- eine Reihe von Taenzen --, und
+  der Veranstalter ist ein Boogie-Woogie-Tanzverein, dessen Startseite
+  die "Boogiepartys" zu seinen Tanzabenden zaehlt (Falle "Boogie Woogie
+  an einem Tanzabend", Regel Markus 2026-10-03). boogie.at schreibt
+  "Coole Boogie Musik von DJ.K Boogie Klaus"; das ist Musik zum Tanz,
+  nicht der Klavierstil -- der Flyer nennt unter "Musik:" nur "DJ Klaus",
+  keinen Stil. Foxtrott und Cha-Cha-Cha haben keinen Lexikoneintrag und
+  stehen nur im Text. Flyer am 2026-10-14 erneut abgerufen, Datum,
+  Einlass 18.30, Beginn 19.00, Ort und Eintritt 55 Euro unveraendert.
   Der Tippfehler "Gmuden" im Titel bei boogie.at steht als Alias, weil
   so gesucht werden kann.
   Kontaktdaten zur Reservierung sind privat und stehen nicht im Text.
   Nicht gefuellt: ende, ticketUrl, drinnenDraussen, kapazitaet,
-  barrierefrei, kinder, genres.
+  barrierefrei, kinder.
 quellen:
   - url: https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/if99e578758ad1872/version/1777874935/image.jpg
     titel: Flyer Gmundner Silvester Boogie Party, 31. Dezember 2026 (BWC Gmunden)
-    abgerufenAm: 2026-09-28
-    felder: [beginn, ort, djs, veranstalter, eintritt, preise, name, kurzbeschreibung, reihe, reiheName, durchfuehrung, body:termin, body:eintritt, body:abend]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ort, djs, veranstalter, eintritt, preise, name, kurzbeschreibung, reihe, reiheName, durchfuehrung, genres, body:termin, body:eintritt, body:abend]
     art: offiziell
   - url: https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/
     titel: Unser Aktivitätenkalender (BWC Gmunden)

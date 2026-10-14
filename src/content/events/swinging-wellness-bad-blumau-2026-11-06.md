@@ -8,7 +8,7 @@ geprueftAm: 2026-10-03
 autor: markus
 typ: workshop
 ausgabe: 10
-beginn: 2026-11-06T09:00:00+01:00
+beginn: 2026-11-06T11:00:00+01:00
 ende: 2026-11-08
 ort: rogner-bad-blumau
 region: steiermark
@@ -124,6 +124,7 @@ preise:
     waehrung: EUR
     hinweis: pro Person; Samstagsparty mit Livemusik, DJs und Shows
 ticketUrl: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
+genres: [boogie-woogie-tanz, lindy-hop, west-coast-swing]
 durchfuehrung: geplant
 links:
   website: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
@@ -133,11 +134,13 @@ redaktionsnotiz: >-
   "6.-8. Nov 2026" und Zeitplan "Zeitplan Swinging Wellness 2026"; boogie.at
   fuehrt Fr. 06.11., Sa. 07.11. und So. 08.11.2026. Der 6. November 2026
   ist ein Freitag. Keine Abweichung beim Datum.
-  BEGINN 09:00: boogie.at nennt an allen drei Tagen 09:00; der Zeitplan
-  des Veranstalters nennt fuer Freitag "Ab 09:00 Check In Hotel", die
-  Registrierung ab 11:00 und den ersten Kurs um 12:00. `beginn` folgt
-  der Anreise, die beide Quellen nennen; der Text sagt, wann das
-  Programm wirklich anfaengt.
+  BEGINN 11:00, ENTSCHIEDEN 2026-10-14 (Markus, zu PR #216): Der
+  Zeitplan des Veranstalters nennt fuer Freitag "Ab 09:00 Check In Hotel"
+  und "Ab 11:00 bei Hotelrezeption Teilnehmer Registration / CheckIn
+  Swinging Wellness Wochenende", den ersten Kurs um 12:00. `beginn` ist
+  die Registrierung, also der Beginn der Veranstaltung, nicht der
+  Hotel-Check-in. boogie.at nennt an allen drei Tagen 09:00 (die
+  Anreise); der Text nennt alle drei Zeiten.
   ENDE nur als Datum: Der letzte Kurs endet laut Zeitplan am Sonntag um
   16:30, Late Check-out und Therme gelten bis 23:00 -- ein Ende des
   Wochenendes nennt keine Quelle, also kein Zeitpunkt.
@@ -175,6 +178,9 @@ redaktionsnotiz: >-
   01.03.2026 und ist abgelaufen; er steht deshalb nicht in `preise`.
   Die Pakete enthalten Uebernachtung und Halbpension -- das ist kein
   Sonderpreis fuer Hotelgaeste, sondern das Angebot selbst.
+  PREISE BESTAETIGT 2026-10-14 (Markus, zu PR #216): Der Gegenleser
+  zaehlte den Aufpreis "+60" je weiterem Workshop nicht als eigenen
+  Preis; die fuenf Zeilen bleiben wie eingetragen.
   VERANSTALTER: Flyer-Logo "ErLEEBnis Events", Facebook-Seite "Erleebnis
   Events" (verlinkt auf der Veranstalterseite), Seite "Das bin ich" nennt
   ein 2018 gegruendetes Unternehmen fuer Eventorganisation. Die
@@ -184,21 +190,29 @@ redaktionsnotiz: >-
   AUSGABE 10 aus "10 Jahre Swinging Wellness" und dem Jubilaeumssiegel
   des Flyers. Eine Reihe ist nicht gesetzt: Fruehere Ausgaben stehen
   nicht im Register, eine Reihenseite haette nur diesen Eintrag.
-  GENRES LEER wie bei den uebrigen Boogie-Terminen in Oesterreich
-  (offener Punkt "Boogie Woogie in Terminen"); "Boogie" statt "Boogie
-  Woogie" im Text, damit der Autolink nicht auf den Klavierstil zeigt.
-  Die Kurse heissen im Zeitplan "Boogie I" und "Boogie II"; gemeint ist
-  der Tanz.
+  GENRES `boogie-woogie-tanz`, `lindy-hop`, `west-coast-swing`
+  (nachgetragen 2026-10-14): Die Seite des Veranstalters nennt "2026
+  steht wieder Boogie Woogie, Lindy Hop & West Coast Swing am
+  Programm!!!" und bietet genau diese drei als Workshops zur Buchung an
+  ("Boogie Woogie (Level I)", "West Coast Swing (Level I)", "Lindy
+  Hop"). Gemeint sind die Taenze. West Coast Swing hat seit dem
+  2026-10-13 einen Tanzeintrag im Lexikon und steht deshalb in `genres`,
+  anders als der Posten vom 2026-10-12 noch annahm. Balboa ("Balboa
+  Taster") hat keinen Lexikoneintrag und steht nur im Text. Welche Musik
+  The Ridin Dudes spielen, sagt die Seite nicht; ein Musikeintrag bleibt
+  leer. "Boogie" statt "Boogie Woogie" im Text, damit der Autolink nicht
+  auf den Klavierstil zeigt. Seite am 2026-10-14 erneut abgerufen,
+  Datum, Lineup, DJs und alle fuenf Preise unveraendert.
   LINEUP: The Ridin Dudes und Robert Shumy haben keine eigene Seite und
   stehen in `lineupWeitere`. Die DJs nennt die Veranstalterseite als
   "DJ DomiLee & Matthias", so steht es in `djs`.
   Nicht gefuellt: kapazitaet, barrierefrei, kinder, camping,
-  drinnenDraussen, genres.
+  drinnenDraussen.
 quellen:
   - url: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
     titel: Swinging Wellness (Erleebnisse)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ende, ort, veranstalter, veranstalterUrl, lineupWeitere, djs, programm, eintritt, preise, ticketUrl, links, ausgabe, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ende, ort, veranstalter, veranstalterUrl, lineupWeitere, djs, programm, eintritt, preise, ticketUrl, links, ausgabe, name, aliases, kurzbeschreibung, durchfuehrung, genres, body:termin, body:programm, body:eintritt]
     art: offiziell
   - url: https://www.erleebnisse.at/.cm4all/mediadb/.Zeitplan.jpg/picture-1600
     titel: Zeitplan Swinging Wellness 2026 (Erleebnisse)
@@ -223,7 +237,7 @@ quellen:
   - url: https://boogie.at/event/swinging-wellness-tanzwochenende-10-jaehriges-jubilaeum
     titel: Swinging Wellness Tanzwochenende! 10 Jähriges Jubiläum (BOOGIE.at)
     abgerufenAm: 2026-10-02
-    felder: [beginn, ort, lineupWeitere, programm, ausgabe, aliases, body:termin]
+    felder: [ort, lineupWeitere, programm, ausgabe, aliases, body:termin]
     art: aggregator
 ---
 

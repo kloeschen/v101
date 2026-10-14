@@ -22,6 +22,7 @@ preise:
     hinweis: inklusive Tischreservierung; im Kartenbüro der Stadtgalerie gebührenfrei, online mit Gebühren des Ticketshops
 ticketUrl: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
 drinnenDraussen: drinnen
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
@@ -66,17 +67,23 @@ redaktionsnotiz: >-
   VERANSTALTER NICHT GESETZT, aus demselben Grund wie im Oktober: Das Haus
   verkauft die Karten, boogie.at nennt keine Organisation ausser der
   Band. Eine Kontaktnummer auf dem Flyer ist die des Kartenbueros.
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie Woogie in Terminen"). Welche Musik die Band spielt, sagt
-  keine Quelle.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-14): Das Haus fuehrt
+  den Ball im Kalender als "Tanzabend", auf der Seite der Reihe
+  "ROCK'N'BOOGIE" unter "Kommende Tanzabende" als "Boogieball '26", mit
+  "Dresscode beim Boogieball" und "Boogie-Termin" im Bestellformular. An
+  einem Tanzabend ist "Boogie" der Tanz (Falle "Boogie Woogie an einem
+  Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des Tanzes
+  steht im Lexikoneintrag). Welche Musik die Band spielt, sagt weiterhin
+  keine Quelle; ein Musikeintrag bleibt leer. Beide Seiten des Hauses am
+  2026-10-14 erneut abgerufen, Datum, Beginn 20:00 und Eintritt 28 Euro
+  inklusive Tischreservierung unveraendert.
   DRINNEN aus "die traditionsreichen Raeumlichkeiten der Stadtgalerie".
-  Nicht gefuellt: ende, kapazitaet, barrierefrei, kinder, veranstalter,
-  genres.
+  Nicht gefuellt: ende, kapazitaet, barrierefrei, kinder, veranstalter.
 quellen:
   - url: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
     titel: ROCK'N'BOOGIE (KulturQuadrat in der Stadtgalerie)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, eintritt, preise, ticketUrl, drinnenDraussen, reihe, reiheName, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ort, eintritt, preise, ticketUrl, drinnenDraussen, reihe, reiheName, name, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://image.jimcdn.com/app/cms/image/transf/none/path/sa7eb66c5406d01f3/image/idd1dfd09357f2c1c/version/1790077001/image.png
     titel: Flyer Boogieball '26 (KulturQuadrat in der Stadtgalerie)
@@ -85,8 +92,8 @@ quellen:
     art: offiziell
   - url: https://www.stadtgaleriekultur.info/events/kalender/
     titel: Kalender (KulturQuadrat in der Stadtgalerie)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ort, typ, name, kurzbeschreibung, durchfuehrung, body:termin]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ort, typ, name, kurzbeschreibung, durchfuehrung, genres, body:termin]
     art: offiziell
   - url: https://boogie.at/event/boogieball-0
     titel: Boogieball (BOOGIE.at)
