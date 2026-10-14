@@ -21,6 +21,7 @@ preise:
     hinweis: im Kartenbüro der Stadtgalerie gebührenfrei, online mit Gebühren des Ticketshops
 ticketUrl: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
 drinnenDraussen: drinnen
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
@@ -59,11 +60,18 @@ redaktionsnotiz: >-
   keine Quelle ausdruecklich. Das Haus verkauft die Karten, die
   Tischreservierung laeuft ueber die genannte Privatadresse. Aus beidem
   einen Veranstalter abzuleiten waere geraten.
-  GENRES BEWUSST LEER, aus demselben Grund wie bei den Boogie-Nachmittagen
-  im Kammgarnsaal: `boogie-woogie` bezeichnet im Lexikon den Klavierstil,
-  getanzt wird auf solchen Abenden zu anderer Musik. Welche Musik laeuft,
-  sagen die Quellen nicht ("die passende Musik"). Offene Frage in
-  OFFENE-PUNKTE.md ("Boogie-Woogie als Tanz").
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-14): Das Haus fuehrt
+  den Abend im Kalender als "Tanzabend", die Seite der Reihe nennt ihn
+  "ROCK'N'BOOGIE", ihre Termine "Kommende Tanzabende" und im
+  Bestellformular "Boogie-Termin"; die Beschreibung richtet sich an
+  "Taenzer". An einem Tanzabend ist "Boogie" der Tanz (Falle "Boogie
+  Woogie an einem Tanzabend", Regel Markus 2026-10-03; "Boogie" als
+  Kurzform des Tanzes steht im Lexikoneintrag). `rocknroll-tanz` nicht:
+  "Rock'n'" steht nur im Namen der Reihe, keine Quelle nennt Rock'n'Roll
+  als Tanz oder Musik des Abends. Welche Musik laeuft, sagen die Quellen
+  weiterhin nicht ("die passende Musik"), ein Musikeintrag bleibt also
+  leer. Beide Seiten des Hauses am 2026-10-14 erneut abgerufen, Datum,
+  Beginn 20:00 und Eintritt 12 Euro unveraendert.
   DRINNEN aus "die traditionsreichen Raeumlichkeiten der Stadtgalerie".
   Die Beschreibung der Veranstaltung ist bei boogie.at und beim Haus
   wortgleich; der Text hier ist selbst formuliert.
@@ -72,13 +80,13 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
     titel: ROCK'N'BOOGIE (KulturQuadrat in der Stadtgalerie)
-    abgerufenAm: 2026-09-25
-    felder: [beginn, ort, eintritt, preise, ticketUrl, drinnenDraussen, reihe, reiheName, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ort, eintritt, preise, ticketUrl, drinnenDraussen, reihe, reiheName, name, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://www.stadtgaleriekultur.info/events/kalender/
     titel: Kalender (KulturQuadrat in der Stadtgalerie)
-    abgerufenAm: 2026-09-25
-    felder: [beginn, ort, typ, name, kurzbeschreibung, durchfuehrung, body:termin]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ort, typ, name, kurzbeschreibung, durchfuehrung, genres, body:termin]
     art: offiziell
   - url: https://boogie.at/event/rockn-boogie-tanzparty-2
     titel: Rock'n' Boogie Tanzparty (BOOGIE.at)

@@ -14,6 +14,7 @@ region: oberoesterreich
 veranstalter: Crazy Boogiefreaks
 veranstalterUrl: https://crazy-boogiefreaks.at/
 eintritt: unveroeffentlicht
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://crazy-boogiefreaks.at/Veranstaltung/steyrtal-boogie-party-2/
@@ -50,19 +51,25 @@ redaktionsnotiz: >-
   Register gaebe es nur eine Ausgabe, also eine leere Reihenseite, wie
   bei der Rock'n' Boogie Tanzparty Moedling. `reihe` gehoert gesetzt,
   sobald eine zweite Ausgabe angelegt wird.
-  GENRES LEER aus demselben Grund wie bei den uebrigen Boogie-Abenden in
-  Niederoesterreich (offener Punkt "Boogie-Woogie als Tanz"). Welche Musik
-  laeuft, sagt keine Quelle.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-14): Die Seite des
+  Vereins nennt den Abend "Boogieparty"; derselbe Verein bietet laut
+  seinem Terminkalender Einsteigertrainings an ("Hier koennt ihr Boogie
+  Woogie tanzen lernen"). An einem Tanzabend eines Tanzvereins ist das
+  der Tanz (Falle "Boogie Woogie an einem Tanzabend", Regel Markus
+  2026-10-03; "Boogie" als Kurzform des Tanzes steht im Lexikoneintrag).
+  Welche Musik laeuft, sagt weiterhin keine Quelle; ein Musikeintrag
+  bleibt leer. Seite am 2026-10-14 erneut abgerufen, "17. Oktober 2026 um
+  19:00 - 18. Oktober 2026 um 1:30" unveraendert, weiterhin kein Preis.
   VERANSTALTER: boogie.at nennt "Person/Organisation Crazy Boogiefreaks",
   der Termin steht auf der Vereinsseite. veranstalterUrl ist die
   Vereinsseite, nicht boogie.at (Kalender ist nicht Veranstalter).
   Nicht gefuellt: preise, ticketUrl, drinnenDraussen, kapazitaet,
-  barrierefrei, kinder, djs, genres.
+  barrierefrei, kinder, djs.
 quellen:
   - url: https://crazy-boogiefreaks.at/Veranstaltung/steyrtal-boogie-party-2/
     titel: Steyrtal Boogie Party (Crazy-Boogiefreaks)
-    abgerufenAm: 2026-09-25
-    felder: [beginn, ende, typ, veranstalter, veranstalterUrl, eintritt, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ende, typ, veranstalter, veranstalterUrl, eintritt, name, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt]
     art: offiziell
   - url: https://crazy-boogiefreaks.at/termine/
     titel: Termine (Crazy-Boogiefreaks)

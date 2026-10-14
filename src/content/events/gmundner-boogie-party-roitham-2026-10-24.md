@@ -16,6 +16,7 @@ veranstalter: BWC Gmunden
 veranstalterUrl: https://bwc-gmunden.jimdofree.com/
 djs: [DJ Klaus]
 eintritt: unveroeffentlicht
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/
@@ -47,10 +48,19 @@ redaktionsnotiz: >-
   REIHE gesetzt: Alle Flyer des Vereins tragen den Titel "Gmundner
   Boogie Party" mit Jahreszeit (Fruehjahrs, Sommer, Herbst, Silvester);
   im Register stehen fuenf Ausgaben. Die Silvesterparty gehoert dazu.
-  GENRES LEER wie bei den uebrigen Boogie-Abenden in Oesterreich (offener
-  Punkt "Boogie-Woogie als Tanz", Lexikon-Posten "Bündel Tanz").
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-14): Die Startseite des Vereins (Union
+  Boogie-Woogie-Club Gmunden Traunsee) nennt "die Leidenschaft am
+  Boogie-Woogie-Tanz" und zaehlt die "Boogiepartys" zu den
+  "Tanzabende[n]", die der Verein anbietet. Gemeint ist der Tanz (Falle
+  "Boogie Woogie an einem Tanzabend", Regel Markus 2026-10-03; "Boogie"
+  als Kurzform des Tanzes steht im Lexikoneintrag). Die "fetzige Rock'n
+  Roll Musik" auf derselben Seite beschreibt den Verein allgemein, nicht
+  einen Abend; ein Musikeintrag bleibt deshalb leer.
+  boogie.at schreibt zu diesem Abend "Fuer alle die gerne tanzen".
+  Startseite am 2026-10-14 erneut abgerufen; Vereinsname und
+  Selbstbeschreibung unveraendert.
   Nicht gefuellt: ende, preise, ticketUrl, drinnenDraussen, kapazitaet,
-  barrierefrei, kinder, genres.
+  barrierefrei, kinder.
 quellen:
   - url: https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg
     titel: Flyer Gmundner Herbst Boogie Party, 24. Oktober 2026 (BWC Gmunden)
@@ -64,8 +74,8 @@ quellen:
     art: offiziell
   - url: https://bwc-gmunden.jimdofree.com/
     titel: Union Boogie-Woogie-Club Gmunden Traunsee
-    abgerufenAm: 2026-09-28
-    felder: [veranstalter, veranstalterUrl, kurzbeschreibung, body:reihe]
+    abgerufenAm: 2026-10-14
+    felder: [veranstalter, veranstalterUrl, kurzbeschreibung, genres, body:reihe]
     art: offiziell
   - url: https://boogie.at/event/bwc-gmunden-herbst-boogie-party-0
     titel: BWC Gmunden Herbst Boogie Party (BOOGIE.at)

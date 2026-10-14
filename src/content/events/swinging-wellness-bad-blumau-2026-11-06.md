@@ -124,6 +124,7 @@ preise:
     waehrung: EUR
     hinweis: pro Person; Samstagsparty mit Livemusik, DJs und Shows
 ticketUrl: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
+genres: [boogie-woogie-tanz, lindy-hop, west-coast-swing]
 durchfuehrung: geplant
 links:
   website: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
@@ -184,21 +185,29 @@ redaktionsnotiz: >-
   AUSGABE 10 aus "10 Jahre Swinging Wellness" und dem Jubilaeumssiegel
   des Flyers. Eine Reihe ist nicht gesetzt: Fruehere Ausgaben stehen
   nicht im Register, eine Reihenseite haette nur diesen Eintrag.
-  GENRES LEER wie bei den uebrigen Boogie-Terminen in Oesterreich
-  (offener Punkt "Boogie Woogie in Terminen"); "Boogie" statt "Boogie
-  Woogie" im Text, damit der Autolink nicht auf den Klavierstil zeigt.
-  Die Kurse heissen im Zeitplan "Boogie I" und "Boogie II"; gemeint ist
-  der Tanz.
+  GENRES `boogie-woogie-tanz`, `lindy-hop`, `west-coast-swing`
+  (nachgetragen 2026-10-14): Die Seite des Veranstalters nennt "2026
+  steht wieder Boogie Woogie, Lindy Hop & West Coast Swing am
+  Programm!!!" und bietet genau diese drei als Workshops zur Buchung an
+  ("Boogie Woogie (Level I)", "West Coast Swing (Level I)", "Lindy
+  Hop"). Gemeint sind die Taenze. West Coast Swing hat seit dem
+  2026-10-13 einen Tanzeintrag im Lexikon und steht deshalb in `genres`,
+  anders als der Posten vom 2026-10-12 noch annahm. Balboa ("Balboa
+  Taster") hat keinen Lexikoneintrag und steht nur im Text. Welche Musik
+  The Ridin Dudes spielen, sagt die Seite nicht; ein Musikeintrag bleibt
+  leer. "Boogie" statt "Boogie Woogie" im Text, damit der Autolink nicht
+  auf den Klavierstil zeigt. Seite am 2026-10-14 erneut abgerufen,
+  Datum, Lineup, DJs und alle fuenf Preise unveraendert.
   LINEUP: The Ridin Dudes und Robert Shumy haben keine eigene Seite und
   stehen in `lineupWeitere`. Die DJs nennt die Veranstalterseite als
   "DJ DomiLee & Matthias", so steht es in `djs`.
   Nicht gefuellt: kapazitaet, barrierefrei, kinder, camping,
-  drinnenDraussen, genres.
+  drinnenDraussen.
 quellen:
   - url: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
     titel: Swinging Wellness (Erleebnisse)
-    abgerufenAm: 2026-10-02
-    felder: [beginn, ende, ort, veranstalter, veranstalterUrl, lineupWeitere, djs, programm, eintritt, preise, ticketUrl, links, ausgabe, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
+    abgerufenAm: 2026-10-14
+    felder: [beginn, ende, ort, veranstalter, veranstalterUrl, lineupWeitere, djs, programm, eintritt, preise, ticketUrl, links, ausgabe, name, aliases, kurzbeschreibung, durchfuehrung, genres, body:termin, body:programm, body:eintritt]
     art: offiziell
   - url: https://www.erleebnisse.at/.cm4all/mediadb/.Zeitplan.jpg/picture-1600
     titel: Zeitplan Swinging Wellness 2026 (Erleebnisse)
