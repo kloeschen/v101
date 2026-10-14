@@ -292,6 +292,27 @@ const registry = buildRegistry([
   pruefe("ein Handlink auf Vintage bleibt stehen", hand.markdown === "Ein [Vintage](/lexikon/vintage/)-Kleid aus dem Laden Peggy Sue Vintage.", hand.markdown);
 }
 
+/* „Single" und „Jukebox" (2026-10-14): „Single" meint auch die Person
+ * („Single-Party"), „Jukebox" stand nur in Eigennamen. Lebenszeichen: der
+ * Alias „Singleplatte" desselben Eintrags wird weiter verlinkt — sonst
+ * bewiese „nicht verlinkt" auch eine Registry, die den Eintrag nicht kennt. */
+{
+  const reg = buildRegistry([
+    lex("single", "Single", { aliases: ["Singleplatte"] }),
+    lex("jukebox", "Jukebox"),
+  ]);
+  pruefe("„single\" steht auf der Liste", NUR_VON_HAND.has("single"));
+  pruefe("„jukebox\" steht auf der Liste", NUR_VON_HAND.has("jukebox"));
+  const satz = "Zur Single-Party bei der Jukebox Christmas Party-Night spielt die Jukebox jede Single als Singleplatte.";
+  gleich(
+    "Single und Jukebox werden nicht verlinkt, auch nicht vor dem Bindestrich oder im Eigennamen; die Singleplatte schon",
+    autolink(satz, reg).markdown,
+    satz.replace("als Singleplatte", "als [Singleplatte](/lexikon/single/)"),
+  );
+  const hand = autolink("Eine [Single](/lexikon/single/) für die [Jukebox](/lexikon/jukebox/).", reg);
+  pruefe("Handlinks auf Single und Jukebox bleiben stehen", hand.markdown === "Eine [Single](/lexikon/single/) für die [Jukebox](/lexikon/jukebox/).", hand.markdown);
+}
+
 /* Zitate (2026-10-13): Was in „…" steht, ist fremder Wortlaut und bleibt
  * unverlinkt. Anlass: „Tolle Musik mit DJ- Ernst und Charly" bei der
  * Boogie-Party vom 2026-09-20. Lebenszeichen: dieselbe Tolle außerhalb des
