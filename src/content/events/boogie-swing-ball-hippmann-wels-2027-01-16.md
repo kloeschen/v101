@@ -1,7 +1,7 @@
 ---
 name: Boogie & Swing Ball 2027 der Tanzschule Hippmann
 aliases: [BOOGIE & SWINGBALL 2027, Boogie & Swingball Wels 2027, Boogie und Swing Ball Wels 2027]
-kurzbeschreibung: Ball der Tanzschule Hippmann für die Boogie- und Swing-Szene am Samstag, 16. Jänner 2027, in Wels, live mit Ray Collins' Hot Club und DJ Rockin' Daddy auf fünf Floors; Karten ab 35 Euro.
+kurzbeschreibung: Ball der Tanzschule Hippmann für die Boogie- und Swing-Szene am Samstag, 16. Jänner 2027, in Wels, live mit Ray Collins' Hot Club und zwei weiteren Acts, zwei DJs und einer Tanzshow auf fünf Floors; Karten ab 35 Euro.
 status: veroeffentlicht
 erstelltAm: 2026-10-02
 geprueftAm: 2026-10-03
@@ -12,8 +12,8 @@ ort: tanzschule-hippmann-wels
 region: oberoesterreich
 veranstalter: Tanzschule Hippmann
 veranstalterUrl: https://www.tanzschule.at/
-lineupWeitere: [Ray Collins' Hot Club]
-djs: [DJ Rockin' Daddy]
+lineupWeitere: [Ray Collins' Hot Club, Daniel Ecklbauer & Friends, Piano Frizz & Friends]
+djs: [DJ Rockin' Daddy, DJ K.]
 eintritt: beziffert
 preise:
   - bezeichnung: Karten
@@ -44,9 +44,20 @@ redaktionsnotiz: >-
   Tanzschule.
   LINEUP: Tanzschule "Ray Collins Hot Club", boogie.at "Ray Collins Hot
   Club", Flyer "Ray Collins' Hot Club". `lineupWeitere` folgt dem Flyer,
-  weil er den Bandnamen als Bandnamen setzt; keine eigene Seite. "Weitere
-  Bands & DJs in Planung" und eine Tanzshow sind angekuendigt, aber nicht
-  benannt -- nicht eingetragen.
+  weil er den Bandnamen als Bandnamen setzt; keine eigene Seite.
+  LINEUP NACHGETRAGEN 2026-10-14: Die Ankuendigung der Tanzschule nennt
+  inzwischen "Live: 'Daniel Ecklbauer & Friends'", "Live 'Piano Frizz &
+  Friends'", "DJ Rockin' Daddy, DJ K.," und "Tanz-Show - Special Guests:
+  'Sondre & Tanya'"; "weiter Bands & DJ's in Planung" steht weiter da.
+  Beide Acts in `lineupWeitere`, keine Bandseiten. Die Tanzshow ist kein
+  Act des Line-ups und steht nur im Text. Keine Uhrzeiten, daher kein
+  `programm`.
+  DJ K.: boogie.at fuehrt (Stand 2026-10-14) "DJ. Rockin' Daddy" und "DJ.K
+  Boogie Klaus", aber weder Ecklbauer noch Piano Frizz noch die Tanzshow
+  namentlich. Ob "DJ K." der Tanzschule derselbe ist wie "DJ.K Boogie
+  Klaus", sagt keine Quelle ausdruecklich; `djs` folgt der Tanzschule,
+  die Namensform von boogie.at steht zugeordnet im Text (wie bei der
+  Boogie & Discofox Party Regau 2026-12-05).
   FLOORS: "5 Floors - u.a. auch Lindy Hop, West Coast Swing" bei beiden.
   TYP `tanzabend`: Das Schema kennt keinen Ball; dass es ein Ball
   ist, steht im Namen und im Text.
@@ -58,12 +69,14 @@ redaktionsnotiz: >-
   an einem Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des
   Tanzes steht im Lexikoneintrag). Swing und West Coast Swing haben keinen
   Tanzeintrag im Lexikon und stehen nur im Text. Seite am 2026-10-12
-  erneut abgerufen, Datumszeile, Lineup und Preis unveraendert.
+  erneut abgerufen, Datumszeile, Lineup und Preis unveraendert. Am
+  2026-10-14 Tanzschule und boogie.at erneut abgerufen: Datum, Preis,
+  Verkaufsstart und Floors unveraendert, Uhrzeit weiter nur bei boogie.at.
   Nicht gefuellt: ende, kapazitaet, barrierefrei, kinder, drinnenDraussen.
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/boogie-swing-ball/
     titel: Boogie & Swing Ball 2027 (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-10-14
     felder: [ort, veranstalter, veranstalterUrl, lineupWeitere, djs, eintritt, preise, ticketUrl, links, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:lineup, body:eintritt]
     art: offiziell
   - url: https://www.tanzschule.at/events/
@@ -78,12 +91,12 @@ quellen:
     art: offiziell
   - url: https://boogie.at/event/boogie-swingball-2027
     titel: BOOGIE & SWINGBALL 2027 (BOOGIE.at)
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-10-14
     felder: [beginn, ort, lineupWeitere, djs, eintritt, preise, aliases, genres, body:termin, body:lineup, body:eintritt]
     art: aggregator
 ---
 
-Der Boogie & Swing Ball 2027 ist ein Ballabend der Tanzschule Hippmann für die Boogie- und Swing-Szene am Samstag, dem 16. Jänner 2027, in der [Tanzschule Hippmann in Wels](/locations/tanzschule-hippmann-wels/). Live spielt Ray Collins' Hot Club, dazu legt DJ Rockin' Daddy auf; getanzt wird auf fünf Floors, Karten gibt es ab 35 Euro.
+Der Boogie & Swing Ball 2027 ist ein Ballabend der Tanzschule Hippmann für die Boogie- und Swing-Szene am Samstag, dem 16. Jänner 2027, in der [Tanzschule Hippmann in Wels](/locations/tanzschule-hippmann-wels/). Live spielen Ray Collins' Hot Club, Daniel Ecklbauer & Friends und Piano Frizz & Friends, dazu legen DJ Rockin' Daddy und DJ K. auf; getanzt wird auf fünf Floors, Karten gibt es ab 35 Euro.
 
 ## Der Termin des Boogie & Swing Balls 2027
 
@@ -91,7 +104,7 @@ Das Datum nennen Ankündigung, Eventliste und Flyer der Tanzschule übereinstimm
 
 ## Programm beim Boogie & Swing Ball 2027
 
-Die Tanzschule bezeichnet den Ball als ihr Highlight für die Boogie- und Swing-Szene. Neben der Band und dem DJ sind weitere Bands, DJs und eine Tanzshow angekündigt, aber noch nicht benannt. Unter den fünf Floors nennt sie ausdrücklich auch solche für [Lindy Hop](/lexikon/lindy-hop/) und [West Coast Swing](/lexikon/west-coast-swing/).
+Die Tanzschule bezeichnet den Ball als ihr Highlight für die Boogie- und Swing-Szene. Live angekündigt sind Ray Collins' Hot Club, Daniel Ecklbauer & Friends und Piano Frizz & Friends, an den Plattentellern DJ Rockin' Daddy und DJ K.; als Special Guests einer Tanzshow nennt die Tanzschule Sondre & Tanya. Weitere Bands und DJs sind laut Tanzschule in Planung. Der Szenekalender boogie.at führt als zweiten DJ „DJ.K Boogie Klaus“ – ob das der DJ K. der Tanzschule ist, sagt keine der beiden Quellen ausdrücklich. Unter den fünf Floors nennt sie ausdrücklich auch solche für [Lindy Hop](/lexikon/lindy-hop/) und [West Coast Swing](/lexikon/west-coast-swing/).
 
 ## Eintritt zum Boogie & Swing Ball 2027
 
