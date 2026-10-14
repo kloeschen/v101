@@ -50,6 +50,10 @@ redaktionsnotiz: >-
   einen Abend; ein Musikeintrag bleibt deshalb leer.
   Startseite am 2026-10-14 abgerufen und als Quelle fuer `genres`
   ergaenzt.
+  FLYER-URL KORRIGIERT 2026-10-14: Die Quelle verwies auf den Flyer der
+  Sommerparty am 2027-06-05 (Bilder bei boogie.at am 2026-10-14 geprueft).
+  Die Werte stimmen auf beiden Flyern ueberein (Einlass 19.30, Beginn
+  20.00, DJ Klaus), geaendert hat sich nur die URL.
   Nicht gefuellt: ende, preise, ticketUrl, drinnenDraussen, kapazitaet,
   barrierefrei, kinder.
 quellen:
@@ -58,7 +62,7 @@ quellen:
     abgerufenAm: 2026-09-28
     felder: [beginn, ort, djs, veranstalter, eintritt, name, aliases, kurzbeschreibung, links, durchfuehrung, body:termin, body:eintritt]
     art: aggregator
-  - url: https://boogie.at/sites/default/files/medien/event/2026/1000166340.jpg
+  - url: https://boogie.at/sites/default/files/medien/event/2026/1000166336.jpg
     titel: Flyer Gmundner Herbst Boogie Party, 23. Oktober 2027 (BOOGIE.at)
     abgerufenAm: 2026-09-28
     felder: [beginn, ort, djs, veranstalter, eintritt, name, kurzbeschreibung, reihe, reiheName, body:termin, body:eintritt]
