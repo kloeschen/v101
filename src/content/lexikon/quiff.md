@@ -2,7 +2,7 @@
 name: Quiff
 aliases: []
 kurzbeschreibung: Ein Quiff ist eine vor allem von Männern getragene Frisur, bei der das längere Haar über der Stirn nach oben gebürstet wird; in der Szene gehört er zu den Teddy Boys der 1950er Jahre und zum Psychobilly.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus
@@ -138,4 +138,4 @@ Im [Psychobilly](/lexikon/psychobilly/) wird der Pompadour nach der englischen W
 
 Quiff und Pompadour werden in den Quellen unterschiedlich zueinander gestellt. Das Cambridge Dictionary nennt Pompadour schlicht die amerikanische Entsprechung zum britischen Quiff. Merriam-Webster meint mit Quiff nur die Stirnlocke. Die englische Wikipedia sieht im Quiff eine eigene Form, die Pompadour, Flat Top und manchmal einen Irokesen verbindet. Gemeinsam ist allen drei Fassungen das hochgebürstete Haar über der Stirn; ob das schon die ganze Frisur ist, beantworten sie verschieden.
 
-Die deutsche Tolle ist kein verlässliches Gegenstück. Das DWDS beschreibt sie als welliges Haarbüschel, das in die Stirn hängt, die deutsche Wikipedia dagegen als Frisur, deren vorderes Haar zu einer Welle nach oben geformt wird. Nur die zweite Fassung kommt dem Quiff nahe. Und der Ducktail ist kein Synonym, sondern die Partie am Hinterkopf, mit der der Quiff bei den Teddy Boys kombiniert wurde.
+Die deutsche [Tolle](/lexikon/tolle/) ist kein verlässliches Gegenstück. Das DWDS beschreibt sie als welliges Haarbüschel, das in die Stirn hängt, die deutsche Wikipedia dagegen als Frisur, deren vorderes Haar zu einer Welle nach oben geformt wird. Nur die zweite Fassung kommt dem Quiff nahe. Und der Ducktail ist kein Synonym, sondern die Partie am Hinterkopf, mit der der Quiff bei den Teddy Boys kombiniert wurde.

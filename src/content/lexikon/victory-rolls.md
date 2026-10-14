@@ -2,7 +2,7 @@
 name: Victory Rolls
 aliases: [Victory Roll]
 kurzbeschreibung: Victory Rolls sind eine Damenfrisur der 1940er Jahre aus wulstförmig eingedrehten, festgesteckten Haarrollen an den Kopfseiten oder auf dem Oberkopf; heute gelten sie als kennzeichnende Frisur des Pin-up-Stils.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-13
 geprueftAm: 2026-10-13
 autor: markus
@@ -93,7 +93,7 @@ quellen:
     art: sonstige
 ---
 
-Victory Rolls sind eine Damenfrisur der 1940er Jahre, bei der Haarpartien toupiert, zu wulstförmigen Rollen eingedreht und an den Kopfseiten oder auf dem Oberkopf festgesteckt werden. Sie gehören zur Mode des Zweiten Weltkriegs und gelten heute als kennzeichnende Frisur des [Pin-up](/lexikon/pin-up/)-Stils. Eine Lockentechnik wie die Pin Curls sind sie nicht, sondern die fertige Frisur.
+Victory Rolls sind eine Damenfrisur der 1940er Jahre, bei der Haarpartien toupiert, zu wulstförmigen Rollen eingedreht und an den Kopfseiten oder auf dem Oberkopf festgesteckt werden. Sie gehören zur Mode des Zweiten Weltkriegs und gelten heute als kennzeichnende Frisur des [Pin-up](/lexikon/pin-up/)-Stils. Eine Lockentechnik wie die [Pin Curls](/lexikon/pin-curls/) sind sie nicht, sondern die fertige Frisur.
 
 ## Wie Victory Rolls aussehen
 

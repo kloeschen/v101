@@ -156,7 +156,7 @@ Im Deutschen ist ein Pompadour zuerst etwas anderes. Duden und DWDS verzeichnen 
 
 Das Grundprinzip ist Höhe über der Stirn: Das Haar wird vom Gesicht weg nach oben gekämmt und hoch über der Stirn getragen, manchmal auch an den Seiten und am Hinterkopf nach oben genommen. Merriam-Webster unterscheidet zwei Formen. Beim Herrenpompadour wird das Haar vorn zu einem hohen Wulst gekämmt; beim Damenpompadour wird es in einer lockeren, vollen Rolle um das Gesicht gelegt. Für die Damenfrisur wurde das eigene Haar früher oft über eine Rolle aus falschem Haar gekämmt.
 
-Die Männerfrisur der 1950er Jahre beschreibt die englische Wikipedia als hohen, gefetteten Quiff-Pompadour oder glatt nach hinten gelegtes Haar, gehalten mit viel Brylcreem oder [Pomade](/lexikon/pomade/). Das Produkt ist dabei kein Detail: Eine Frisur mit so viel Höhe hält nur mit einem Mittel, das formbar bleibt.
+Die Männerfrisur der 1950er Jahre beschreibt die englische Wikipedia als hohen, gefetteten [Quiff](/lexikon/quiff/)-Pompadour oder glatt nach hinten gelegtes Haar, gehalten mit viel Brylcreem oder [Pomade](/lexikon/pomade/). Das Produkt ist dabei kein Detail: Eine Frisur mit so viel Höhe hält nur mit einem Mittel, das formbar bleibt.
 
 ## Geschichte des Pompadours
 
@@ -170,7 +170,7 @@ Ein Seitenweg zeigt, wie weit das Wort reichte: Im Englischen hießen der Crew C
 
 Die Frage, wie die Rockabilly-Frisur heißt, beantworten die Quellen mit diesem Wort. Nach der englischen Wikipedia war der Pompadour in den 1950er Jahren vor allem bei männlichen [Rockabilly](/lexikon/rockabilly/)-Musikern und Schauspielern Mode, und in den 1980er Jahren verband er sich mit der Rockabilly-Kultur und allem, was zur Vintage-Kultur der späten 1950er gehörte: Hot Rods, Greaser, Teddy Boys, Rockabilly-Bands und Elvis-Imitatoren.
 
-Bei Elvis Presley gehen die Bezeichnungen auseinander. Die englische Wikipedia spricht vom hohen Quiff-Pompadour, die deutsche nennt im Artikel zur Haartolle die Tolle und im Artikel zur Pomade den „Ducktail (Entenschwanz) oder Pompadour" von Elvis. Gemeint ist in allen drei Fällen die Kombination aus hochgekämmter Stirnpartie und nach hinten gelegten Seiten.
+Bei Elvis Presley gehen die Bezeichnungen auseinander. Die englische Wikipedia spricht vom hohen Quiff-Pompadour, die deutsche nennt im Artikel zur [Haartolle](/lexikon/tolle/) die Tolle und im Artikel zur Pomade den „Ducktail (Entenschwanz) oder Pompadour" von Elvis. Gemeint ist in allen drei Fällen die Kombination aus hochgekämmter Stirnpartie und nach hinten gelegten Seiten.
 
 Die britischen [Teddy Boys](/lexikon/teddy-boy/) trugen in den 1950er Jahren eine gefettete Tolle vorn und einen [Ducktail](/lexikon/ducktail/) hinten; ausgeprägte Pompadours mit langen Koteletten, gehalten mit Haarspray und Pomade, nennt die englische Wikipedia erst für die Teds der 1970er Jahre. Im [Psychobilly](/lexikon/psychobilly/) wird der Pompadour leicht abgewandelt zum Quiff, und der „Psychobilly Wedge" verbindet ihn mit rasierten Seiten.
 

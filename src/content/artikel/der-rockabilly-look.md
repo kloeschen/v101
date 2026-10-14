@@ -189,11 +189,11 @@ Der weite Rock lebt von der Taille. Die Damenmode der Fünfziger bestimmten nach
 
 Praktisch heißt das nach der Beratung von Peggy Sue Vintage: Der Petticoat sitzt in der natürlichen Taille und nicht auf der Hüfte, das Oberteil ist taillenkurz oder in den Rock gesteckt, und auch Jacken enden in der Taille oder haben ein Schößchen. Wer bisher nur moderne Kleidung getragen hat, findet die natürliche Taille dort ausdrücklich ungewohnt.
 
-Haare und Make-up leihen sich viel vom [Pin-up](/lexikon/pin-up/). Pin Curls gelten nach der englischen Wikipedia als Grundtechnik des Pin-up-Stils, Victory Rolls als seine kennzeichnende Frisur; dort wird das Pin-up-Modeln auch als eigene Subkultur mit Zeitschriften und Foren beschrieben.
+Haare und Make-up leihen sich viel vom [Pin-up](/lexikon/pin-up/). [Pin Curls](/lexikon/pin-curls/) gelten nach der englischen Wikipedia als Grundtechnik des Pin-up-Stils, [Victory Rolls](/lexikon/victory-rolls/) als seine kennzeichnende Frisur; dort wird das Pin-up-Modeln auch als eigene Subkultur mit Zeitschriften und Foren beschrieben.
 
 ## Der Rockabilly-Look der Männer
 
-Bei den Männern beschreibt die deutsche Wikipedia ausladende Haartollen mit [Pomade](/lexikon/pomade/), lange seitliche Koteletten, Jeans oder schwarze Stoffhosen und [Creepers](/lexikon/creepers/). Die Schuhe mit der hohen Kreppsohle waren nach derselben Quelle schon in den 1950er Jahren bei Rockabilly-Kids beliebt.
+Bei den Männern beschreibt die deutsche Wikipedia ausladende [Haartollen](/lexikon/tolle/) mit [Pomade](/lexikon/pomade/), lange seitliche Koteletten, Jeans oder schwarze Stoffhosen und [Creepers](/lexikon/creepers/). Die Schuhe mit der hohen Kreppsohle waren nach derselben Quelle schon in den 1950er Jahren bei Rockabilly-Kids beliebt.
 
 Ausführlicher ist die englische Wikipedia zum Greaser, dem amerikanischen Vorbild dieses Bildes. Die Frisuren übernahmen die Greaser von frühen Rock-'n'-Roll- und Rockabilly-Musikern wie Elvis Presley und Little Richard, gebaut mit Pomade und ständig nachgekämmt. Getragen wurden dunkle Stoffhosen oder dunkelblaue Jeans, oft über schwarzen oder braunen Lederstiefeln umgeschlagen, dazu schlichte schwarze oder weiße T-Shirts und Jacken aus Denim oder Leder. Frauen im Greaser-Umfeld trugen nach derselben Quelle ebenfalls Lederjacken und enge, kurze Caprihosen.
 

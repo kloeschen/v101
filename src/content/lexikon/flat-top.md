@@ -107,7 +107,7 @@ quellen:
     art: presse
 ---
 
-Ein Flat Top ist ein kurzer Männerhaarschnitt, bei dem das aufrecht stehende Deckhaar so geschnitten wird, dass es oben eine flache, ebene Fläche bildet, während Seiten und Hinterkopf sehr kurz sind. Er gilt als Spielart des Crew Cut und wurde in der britischen [Rockabilly](/lexikon/rockabilly/)-Szene Ende der 1970er Jahre zur Frisur der jüngeren Generation, im Unterschied zur Tolle der Teddy Boys. Im Deutschen wird er oft mit dem Bürstenschnitt gleichgesetzt; was ihn davon unterscheidet, ist die ebene Oberseite.
+Ein Flat Top ist ein kurzer Männerhaarschnitt, bei dem das aufrecht stehende Deckhaar so geschnitten wird, dass es oben eine flache, ebene Fläche bildet, während Seiten und Hinterkopf sehr kurz sind. Er gilt als Spielart des Crew Cut und wurde in der britischen [Rockabilly](/lexikon/rockabilly/)-Szene Ende der 1970er Jahre zur Frisur der jüngeren Generation, im Unterschied zur [Tolle](/lexikon/tolle/) der Teddy Boys. Im Deutschen wird er oft mit dem Bürstenschnitt gleichgesetzt; was ihn davon unterscheidet, ist die ebene Oberseite.
 
 ## Der Name Flat Top
 
