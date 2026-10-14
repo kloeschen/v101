@@ -16,6 +16,7 @@ veranstalter: BWC Gmunden
 veranstalterUrl: https://bwc-gmunden.jimdofree.com/
 djs: [DJ Klaus]
 eintritt: unveroeffentlicht
+genres: [boogie-woogie-tanz]
 durchfuehrung: geplant
 links:
   website: https://boogie.at/event/sommer-boogie-party-bwc-gmunden
@@ -36,18 +37,32 @@ redaktionsnotiz: >-
   EINTRITT unveroeffentlicht: Weder Flyer noch Detailseite nennen einen
   Preis, nur Anmeldung und Platzreservierung; die Kontaktdaten dafuer
   sind privat und stehen nicht im Text.
-  DJ, Vereinsseite (bwc-gmunden.com loest nicht auf), Reihe und leere
-  Genres wie bei der Herbstparty am 2026-10-24; die Begruendung steht
-  dort.
+  DJ, Vereinsseite (bwc-gmunden.com loest nicht auf) und Reihe wie bei
+  der Herbstparty am 2026-10-24; die Begruendung steht dort.
+  GENRES `boogie-woogie-tanz` (nachgetragen 2026-10-14) wie bei der
+  Herbstparty am 2026-10-24: Die Startseite des Vereins (Union
+  Boogie-Woogie-Club Gmunden Traunsee) nennt "die Leidenschaft am
+  Boogie-Woogie-Tanz" und zaehlt die "Boogiepartys" zu den
+  "Tanzabende[n]", die der Verein anbietet. Gemeint ist der Tanz (Falle
+  "Boogie Woogie an einem Tanzabend", Regel Markus 2026-10-03; "Boogie"
+  als Kurzform des Tanzes steht im Lexikoneintrag). Die "fetzige Rock'n
+  Roll Musik" auf derselben Seite beschreibt den Verein allgemein, nicht
+  einen Abend; ein Musikeintrag bleibt deshalb leer.
+  Startseite am 2026-10-14 abgerufen und als Quelle fuer `genres`
+  ergaenzt.
+  FLYER-URL KORRIGIERT 2026-10-14: Die Quelle verwies auf den Flyer der
+  Herbstparty am 2027-10-23 (Bilder bei boogie.at am 2026-10-14 geprueft).
+  Die Werte stimmen auf beiden Flyern ueberein (Einlass 19.30, Beginn
+  20.00, DJ Klaus), geaendert hat sich nur die URL.
   Nicht gefuellt: ende, preise, ticketUrl, drinnenDraussen, kapazitaet,
-  barrierefrei, kinder, genres.
+  barrierefrei, kinder.
 quellen:
   - url: https://boogie.at/event/sommer-boogie-party-bwc-gmunden
     titel: Sommer Boogie Party BWC Gmunden (BOOGIE.at)
     abgerufenAm: 2026-09-28
     felder: [beginn, ort, djs, veranstalter, eintritt, name, aliases, kurzbeschreibung, links, durchfuehrung, body:termin, body:eintritt]
     art: aggregator
-  - url: https://boogie.at/sites/default/files/medien/event/2026/1000166336.jpg
+  - url: https://boogie.at/sites/default/files/medien/event/2026/1000166340.jpg
     titel: Flyer Gmundner Sommer Boogie Party, 5. Juni 2027 (BOOGIE.at)
     abgerufenAm: 2026-09-28
     felder: [beginn, ort, djs, veranstalter, eintritt, name, kurzbeschreibung, reihe, reiheName, body:termin, body:eintritt]
@@ -61,6 +76,11 @@ quellen:
     titel: Flyer Gmundner Sommer Boogie Party, 27. Juni 2026 (BWC Gmunden)
     abgerufenAm: 2026-09-28
     felder: [reihe, reiheName, body:reihe]
+    art: offiziell
+  - url: https://bwc-gmunden.jimdofree.com/
+    titel: Union Boogie-Woogie-Club Gmunden Traunsee
+    abgerufenAm: 2026-10-14
+    felder: [genres]
     art: offiziell
 ---
 
