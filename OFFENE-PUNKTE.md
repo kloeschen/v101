@@ -125,16 +125,21 @@ gezogen. Wäsche, Instrument und Klang und Autos hat der Suchlauf am
 Halbstarke (Szene), Genre und Tanz hat der Suchlauf am 2026-10-11 nach
 oben gezogen. Frisur (Tolle, Quiff, Victory Rolls, Pin Curls) ist am 2026-10-13
 in einer Sitzung mit Markus direkt gebaut worden, ohne Umweg über die
-Warteschlange.
+Warteschlange. Ebenso Szene am selben Tag (Weekender, Greaser, Mods).
+**Rockabella nicht angelegt** (2026-10-13): Viele Gebrauchsbelege
+(Songtitel seit 1984, Bandnamen, „Miss Rockabella"), aber keine Quelle,
+die den Begriff erklärt und nach dem Vorrat zählt — Duden, DWDS,
+Wiktionary und Wikipedia führen ihn nicht, erklärt wird er nur in
+Blogs, Shops und im Urban Dictionary. Offen, falls sich jemand
+die Mühe macht: ein Heimatzeitung-Artikel (PNP, „Rockabilly: Zurück in
+die 50er Jahre", Pullman City), der aus der Cloud nicht ladbar war, und
+eine Suche in den DWDS-Korpora mit Anmeldung. Ohne erklärende Quelle
+bleibt der Begriff draußen.
 
 Aufgefüllt am 2026-10-09 (Auswahl Markus, nach Vorschlag; Begründung und
 Messung in ENTSCHEIDUNGEN.md vom selben Tag). Die Zahl hinter einem
 Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
 setzt der Autolink später an.
-- *Szene:* Weekender (gegen Festival; auch Termintyp `weekender`; 18×),
-  Greaser (gegen Teddy Boy; 12×), Mods (gegen Rocker und gegen
-  Halbstarke), Rockabella (Selbstbezeichnung; nur anlegen, wenn eine
-  Quelle den Begriff erklärt, sonst mit Befund zurück).
 - *Medium:* Jukebox (gegen Musikbox als Möbel; Termin „Jukebox Christmas
   Party"), Schellackplatte (gegen Vinyl), Single (gegen LP und EP),
   Pin-up-Magazin (gegen `lexikon/pin-up`).

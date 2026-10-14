@@ -79,7 +79,7 @@ const kurz = "Wort ".repeat(20);
   gleich("je Veranstaltungsart eine Facette", typen.length, 2);
   pruefe(
     "Art wird ausgeschrieben",
-    typen.some((f) => f.label === "Festivals") && typen.some((f) => f.label === "Weekender"),
+    typen.some((f) => f.label === "Festivals") && typen.some((f) => f.label === "Weekender-Termine"),
     typen.map((f) => f.label).join(", "),
   );
 }

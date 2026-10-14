@@ -89,7 +89,9 @@ function nachDatum(a: EintragMeta, b: EintragMeta): number {
 }
 
 const ART: Record<string, string> = {
-  weekender: "Weekender", festival: "Festivals", konzert: "Konzerte",
+  // Nicht „Weekender": Singular und Plural sind gleich, und der Titel
+  // kollidierte mit lexikon/weekender (2026-10-13, test-facetten.ts).
+  weekender: "Weekender-Termine", festival: "Festivals", konzert: "Konzerte",
   convention: "Conventions", carshow: "Car Shows", markt: "Märkte",
   tanzabend: "Tanzabende", workshop: "Workshops", stammtisch: "Stammtische",
 };
