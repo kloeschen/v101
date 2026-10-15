@@ -313,22 +313,6 @@ const registry = buildRegistry([
   pruefe("Handlinks auf Single und Jukebox bleiben stehen", hand.markdown === "Eine [Single](/lexikon/single/) für die [Jukebox](/lexikon/jukebox/).", hand.markdown);
 }
 
-/* „Fifties" (2026-10-15): meint im Bestand meist die bloße Zeit oder steht
- * in Namen („Fifties-Party"). Lebenszeichen: der Petticoat im selben Satz
- * wird verlinkt, also kennt die Registry beide Einträge. */
-{
-  const reg = buildRegistry([lex("fifties", "Fifties"), lex("petticoat", "Petticoat")]);
-  pruefe("„fifties\" steht auf der Liste", NUR_VON_HAND.has("fifties"));
-  const satz = "Zur Fifties-Party im Stil der Fifties trägt man einen Petticoat.";
-  gleich(
-    "Fifties wird nicht verlinkt, auch nicht vor dem Bindestrich; der Petticoat daneben schon",
-    autolink(satz, reg).markdown,
-    satz.replace("einen Petticoat", "einen [Petticoat](/lexikon/petticoat/)"),
-  );
-  const hand = autolink("Der Stil der [Fifties](/lexikon/fifties/).", reg);
-  pruefe("ein Handlink auf die Fifties bleibt stehen", hand.markdown === "Der Stil der [Fifties](/lexikon/fifties/).", hand.markdown);
-}
-
 /* Zitate (2026-10-13): Was in „…" steht, ist fremder Wortlaut und bleibt
  * unverlinkt. Anlass: „Tolle Musik mit DJ- Ernst und Charly" bei der
  * Boogie-Party vom 2026-09-20. Lebenszeichen: dieselbe Tolle außerhalb des

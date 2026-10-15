@@ -155,7 +155,8 @@ Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
 setzt der Autolink später an.
 - *(leer)* — Epoche (Fifties, Wirtschaftswunder, Mid-Century Modern)
   hat der Suchlauf am 2026-10-15 nach oben gezogen; am selben Tag in
-  einer Sitzung mit Markus gebaut. Der Vorrat ist damit leer;
+  einer Sitzung mit Markus gebaut, **ohne Fifties**: Kein deutsches
+  Nachschlagewerk erklärt den Begriff (ENTSCHEIDUNGEN.md, 2026-10-15). Der Vorrat ist damit leer;
   die nächsten Begriffe wählt Markus aus.
 
 Bewusst nicht: Personen (`/thema/elvis`, Bettie Page, Sailor Jerry),

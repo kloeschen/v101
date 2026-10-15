@@ -40,13 +40,21 @@ Gemessen am 2026-10-15:
 
 Damit ist das Kriterium mit der anstehenden Freigabe erfüllt.
 
-**Bündel Epoche gebaut** (Fifties, Wirtschaftswunder, Mid-Century Modern),
-direkt in der Sitzung, damit die Startschwelle von 80 Lexikonbegriffen
-erreicht wird. „fifties" steht in `NUR_VON_HAND` (Auswahl Markus vom
-2026-10-09). Negativtest in `scripts/test-links.ts` mit dem Petticoat als
-Lebenszeichen; Mutationsbeleg: ohne „fifties" auf der Liste fallen genau
-die Listenprüfung und der Satztest („[Fifties](…)-Party"), zurückgebaut
-98 von 98 grün.
+**Bündel Epoche: Wirtschaftswunder und Mid-Century Modern gebaut,
+Fifties nicht.** Direkt in der Sitzung, damit die Startschwelle von 80
+Lexikonbegriffen erreicht wird (mit der Freigabe 81). Für „Fifties"
+erklärt kein deutsches Nachschlagewerk den Begriff: Duden, DWDS,
+Wikipedia und Wiktionary führen ihn nicht (404) oder nur die Zählung
+„Fünfzigerjahre"; der Wikipedia-Artikel „1950er" ist eine Ereignisliste.
+Einzig das englische Wiktionary kennt „fifties" als Adjektiv („evoking
+the 1950s") — das englische Wort, nicht der deutsche Szenegebrauch. Die
+Abgrenzung „Stil, nicht Zählung" müsste erfunden werden; also nicht
+angelegt, wie Rockabella und Pin-up-Magazin. Die zunächst eingebaute
+Sperre „fifties" in `NUR_VON_HAND` ist wieder entfernt — eine Regel für
+einen Eintrag, den es nicht gibt, ist toter Code. Kommt der Eintrag
+später, kommt sie mit ihm (Auswahl Markus vom 2026-10-09 gilt weiter).
+`/jahrzehnt/50s` bliebe dann über `ZUORDNUNG` weiterzuleiten, nicht über
+einen Alias „50s".
 
 ## 2026-10-14 — Lexikon-Bündel Medium und Mode: vier Entscheidungen
 

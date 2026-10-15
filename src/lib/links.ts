@@ -334,20 +334,11 @@ function maskiere(s: string): string {
  * Christmas Party-Night", die Band „The Jukebox Bandits"). Der Alias
  * „Singleplatte" bleibt verlinkbar.
  *
- * „Fifties" folgt am 2026-10-15 (Auswahl Markus vom 2026-10-09, mit
- * `lexikon/fifties`): Der Eintrag meint das Jahrzehnt als Stilbegriff.
- * „Fifties" steht im Fließtext des Bestands heute nur in Zusammensetzungen
- * aus fremden Angeboten („Fifties-Haarschnitte" eines Barbershops) — ein
- * Link dort erklärte das Angebot, nicht den Laden. „50er" (gut 270-mal im
- * Bestand, meist als bloße Zeitangabe) ist kein Name des Eintrags und wird
- * ohnehin nicht verlinkt. Welche Stelle den Stil meint, entscheidet, wer
- * schreibt.
- *
  * Verglichen wird das ganze Wort in Kleinschreibung. Andere Formen desselben
  * Eintrags (Aliase) bleiben verlinkbar. Die richtigen Stellen verlinkt, wer
  * schreibt, von Hand; bestehende Links sind geschützt.
  */
-export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing", "jive", "vintage", "single", "jukebox", "fifties"]);
+export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing", "jive", "vintage", "single", "jukebox"]);
 
 function baueBegriffe(eintraege: Map<string, EintragMeta>): {
   muster: BegriffMuster[];
