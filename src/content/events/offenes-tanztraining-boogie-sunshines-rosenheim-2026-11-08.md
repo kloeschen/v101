@@ -2,7 +2,7 @@
 name: Offenes Tanztraining der Boogie Sunshines im November 2026
 aliases: [Offenes Tanztraining der Boogie Sunshines, Boogie Sunshines Rosenheim Offenes Tanztraining, Offenes Tanztraining Höhensteiger]
 kurzbeschreibung: Offener Tanznachmittag des 1. Boogie Woogie Club Rosenheim 2000 am Sonntag, 8. November 2026, von 16 bis 20 Uhr im Gasthof Höhensteiger in Rosenheim, mit DJ Opa Franz; Eintritt frei, Spenden erwünscht.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-15
 geprueftAm: 2026-10-15
 autor: markus
