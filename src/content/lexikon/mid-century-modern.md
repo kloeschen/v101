@@ -2,7 +2,7 @@
 name: Mid-Century Modern
 aliases: [Midcentury Modern]
 kurzbeschreibung: Mid-Century Modern ist ein Gestaltungsstil der Mitte des 20. Jahrhunderts in Architektur, Innenarchitektur sowie Möbel- und Produktdesign, gekennzeichnet durch klare Linien, organische Formen und den Verzicht auf Ornament; wie weit sein Zeitraum reicht, geben die Quellen verschieden an.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-15
 geprueftAm: 2026-10-15
 autor: markus
