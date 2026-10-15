@@ -134,7 +134,7 @@ Auch beim heutigen Gebrauch gehen die Angaben auseinander. Die deutsche Wikipedi
 
 ## Geschichte der Halbstarken
 
-Die Halbstarken gehören zu den Jahren des westdeutschen Wirtschaftswunders, in denen Jugendliche nach der Darstellung der deutschen Wikipedia erstmals nennenswert Geld für ihre Freizeit hatten. Ihre Vorbilder kamen aus amerikanischen Filmen: James Dean in „… denn sie wissen nicht, was sie tun" und Marlon Brando in „Der Wilde", dazu die Stars des Rock 'n' Roll. Mangels anderer Orte trafen sich die Cliquen an Straßenecken, in Parks und auf Plätzen, tranken und prügelten sich. Die Presse, besonders die des Springer-Verlags, kritisierte das.
+Die Halbstarken gehören zu den Jahren des westdeutschen [Wirtschaftswunders](/lexikon/wirtschaftswunder/), in denen Jugendliche nach der Darstellung der deutschen Wikipedia erstmals nennenswert Geld für ihre Freizeit hatten. Ihre Vorbilder kamen aus amerikanischen Filmen: James Dean in „… denn sie wissen nicht, was sie tun" und Marlon Brando in „Der Wilde", dazu die Stars des Rock 'n' Roll. Mangels anderer Orte trafen sich die Cliquen an Straßenecken, in Parks und auf Plätzen, tranken und prügelten sich. Die Presse, besonders die des Springer-Verlags, kritisierte das.
 
 Die englische Wikipedia nennt neben Westdeutschland auch Österreich und die Schweiz. In Zürich fotografierte Karlheinz Weinberger die Halbstarken ab 1958; die deutsche Wikipedia hebt hervor, dass er zu den wenigen Fotografen gehörte, die Zugang zu ihnen bekamen, und dass Museen seine Bilder heute sammeln.
 

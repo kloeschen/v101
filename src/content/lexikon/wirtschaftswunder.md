@@ -2,7 +2,7 @@
 name: Wirtschaftswunder
 aliases: []
 kurzbeschreibung: Als Wirtschaftswunder bezeichnet man den unerwartet schnellen wirtschaftlichen Aufschwung Westdeutschlands nach dem Zweiten Weltkrieg, vor allem in den 1950er Jahren; ob es ein Wunder war, ist unter Wirtschaftshistorikern umstritten.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-15
 geprueftAm: 2026-10-15
 autor: markus
