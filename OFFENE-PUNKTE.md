@@ -25,18 +25,12 @@ Rückstau, keine Warteschlange, und tragen keine Marken.
 
 ## Vor dem Go-Live
 
-**Datenschutzerklärung: zwei offene Prüfpunkte.** Impressum und Aufsicht
-sind seit dem 2026-09-27 vollständig (`src/lib/rechtliches.ts`). Offen sind
-noch zwei Punkte (`PRUEFEN`):
-- **Log-Speicherdauer:** Wie lange speichert Netlify die Server-Logs? Die
-  Datenschutzerklärung von Netlify nennt keine Frist, also beim Support
-  nachfragen.
-- **Akismet:** Welche Daten gehen zur Spamprüfung an Akismet? Die Doku sagt
-  es nicht, ebenfalls beim Support nachfragen.
-
-Solange ein Punkt offen ist, bricht der Build mit `PUBLIC_INDEXIERBAR=true`
-ab. Vor dem Go-Live gehört ein fachkundiger Blick auf beide Texte. Sie sind
-ein Entwurf, keine Rechtsberatung.
+**Datenschutzerklärung: fachkundiger Blick vor dem Go-Live.** Die beiden
+Prüfpunkte (Log-Speicherdauer, Akismet) sind seit dem 2026-10-15 geklärt
+und stehen im Text (ENTSCHEIDUNGEN.md, 2026-10-15); die Go-Live-Sperre im
+Build ist damit frei. Impressum und Datenschutzerklärung sind ein Entwurf,
+keine Rechtsberatung — vor dem Umschalten gehört ein fachkundiger Blick
+darauf.
 
 **Analytics ohne Einwilligungsbanner — Empfehlung: Netlify Web
 Analytics, zum Go-Live einschalten.** Verglichen am 2026-09-29 mit

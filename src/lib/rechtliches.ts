@@ -71,16 +71,10 @@ export const PRUEFEN: { thema: string; frage: string }[] = [
   // eigene Unterschrift vereinbart; für Übermittlungen aus der EU nennt die
   // Datenschutzerklärung von Netlify die Standardvertragsklauseln
   // (Durchführungsbeschluss 2021/914). Steht jetzt im Text.
-  {
-    thema: "Hosting",
-    frage:
-      "Wie lange speichert Netlify die Server-Logdateien? Die Datenschutzerklärung von Netlify nennt keine Frist, nur Kriterien — beim Support nachfragen?",
-  },
-  {
-    thema: "Formular",
-    frage:
-      "Welche Daten gibt Netlify zur Spamprüfung an Akismet (Automattic Inc., USA) weiter — nur den Inhalt oder auch IP-Adresse und Browserkennung? Die Doku von Netlify sagt es nicht — beim Support nachfragen?",
-  },
+  // Geklärt am 2026-10-15 (Auskunft des Netlify-Supports, weitergegeben
+  // von Markus): Server-Logdateien werden sieben Tage gespeichert; zur
+  // Spamprüfung gehen IP-Adresse und, falls angegeben, E-Mail-Adresse an
+  // Akismet. Steht jetzt im Text.
   // Geklärt am 2026-09-27 (Löschfrist, Entscheidung Markus): Entschiedene
   // Einsendungen und Spam löscht der Suchlauf mit `vorschlaege --aufraeumen`
   // als ersten Schritt, also beim nächsten Lauf nach der Entscheidung
@@ -88,7 +82,7 @@ export const PRUEFEN: { thema: string; frage: string }[] = [
 ];
 
 /** Stand der Datenschutzerklärung. Bei jeder inhaltlichen Änderung setzen. */
-export const DATENSCHUTZ_STAND = "2026-09-27";
+export const DATENSCHUTZ_STAND = "2026-10-15";
 
 /** Welche Pflichtangaben fehlen noch? Leere Liste = vollständig. */
 export function fehlendeAngaben(a: Angaben): string[] {
