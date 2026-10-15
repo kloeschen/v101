@@ -2,9 +2,9 @@
 name: Explosion Rockets und Ike & the Capers im Roadrunner's
 aliases: [Explosion Rockets / Ike & the Capers, Memphis Flash B-Day Bash, Explosion Rockets Berlin 2027]
 kurzbeschreibung: Konzert von Explosion Rockets und Ike & the Capers mit Record Hop von DJ Fontana am Samstag, 9. Januar 2027, im Roadrunner's Rock & Motor Club in Berlin-Prenzlauer Berg, angekündigt als „Memphis Flash B-Day Bash".
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 typ: konzert
 beginn: 2027-01-09T20:00:00+01:00

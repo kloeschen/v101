@@ -2,7 +2,7 @@
 name: Gasthof Höhensteiger
 aliases: [Gasthaus Höhensteiger, Gasthof Hotel Höhensteiger, Höhensteiger Rosenheim]
 kurzbeschreibung: Der Gasthof Höhensteiger ist ein Hotel und Traditionswirtshaus in Rosenheim-Westerndorf mit Festsaal, in dem der 1. Boogie Woogie Club Rosenheim seine Tanzabende ausrichtet.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-15
 geprueftAm: 2026-10-15
 autor: markus
