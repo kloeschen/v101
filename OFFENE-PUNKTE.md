@@ -147,11 +147,10 @@ Aufgefüllt am 2026-10-09 (Auswahl Markus, nach Vorschlag; Begründung und
 Messung in ENTSCHEIDUNGEN.md vom selben Tag). Die Zahl hinter einem
 Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
 setzt der Autolink später an.
-- *Epoche:* Fifties (gegen „50er" als bloße Jahreszahl; alter Pfad
-  `/jahrzehnt/50s`), Wirtschaftswunder, Mid-Century Modern (gegen
-  Vintage). **Fifties nur von Hand verlinken:** „50er" steht 97-mal in
-  48 Dateien. Beim Bauen den Slug in `NUR_VON_HAND`
-  (`src/lib/links.ts`) eintragen, mit Negativtest wie bei „Vintage".
+- *(leer)* — Epoche (Fifties, Wirtschaftswunder, Mid-Century Modern)
+  hat der Suchlauf am 2026-10-15 nach oben gezogen
+  (`docs/posten/lexikon-buendel-epoche.md`). Der Vorrat ist damit leer;
+  die nächsten Begriffe wählt Markus aus.
 
 Bewusst nicht: Personen (`/thema/elvis`, Bettie Page, Sailor Jerry),
 Marken (`lindy-bop`, Gretsch), reine Farb- und Adjektivpfade der alten
