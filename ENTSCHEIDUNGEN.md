@@ -18,6 +18,36 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-15 — Startschwelle: Was „Säule vollständig" heißt; Bündel Epoche
+
+**Entscheidung Markus**, nach dem Launch-Check vom selben Tag. Die
+Startschwelle (BETRIEB.md 1.6) verlangt „2 Säulen der Themenkarte
+vollständig", ohne zu sagen, was das heißt. Ab jetzt: **Eine Säule ist
+vollständig, wenn sie einen freigegebenen Pillar-Artikel (`typ: pillar`)
+hat und alle Lexikoneinträge ihrer Kategorie freigegeben sind.**
+
+Gemessen am 2026-10-15:
+- *Kustom Kulture* (Lexikon-Kategorie `auto`): Pillar
+  `artikel/hot-rod-und-kustom-kulture`, 7 von 7 Einträgen frei —
+  vollständig.
+- *Mode* (`mode`): Pillar `artikel/der-rockabilly-look`, 24 von 28 frei;
+  vollständig mit der Freigabe von plateausohle, slingback, kitten-heel
+  und budapester.
+- *Musik* (`genre`): 14 von 14 frei, aber **kein Pillar**. Der
+  Pillar im Launch-Check war das Golden Example, und das wird nicht
+  gebaut. Musik zählt deshalb nicht.
+- Frisur und Tanz: alle Einträge frei, kein Pillar.
+
+Damit ist das Kriterium mit der anstehenden Freigabe erfüllt.
+
+**Bündel Epoche gebaut** (Fifties, Wirtschaftswunder, Mid-Century Modern),
+direkt in der Sitzung, damit die Startschwelle von 80 Lexikonbegriffen
+erreicht wird. „fifties" steht in `NUR_VON_HAND` (Auswahl Markus vom
+2026-10-09). Negativtest in `scripts/test-links.ts` mit dem Petticoat als
+Lebenszeichen; Mutationsbeleg: ohne „fifties" auf der Liste fallen genau
+die Listenprüfung und der Satztest („[Fifties](…)-Party"), zurückgebaut
+98 von 98 grün.
+
 ## 2026-10-14 — Lexikon-Bündel Medium und Mode: vier Entscheidungen
 
 **Entscheidung Markus** zu den Fragen aus PR #219 (sieben Entwürfe:
