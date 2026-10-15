@@ -18,6 +18,36 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-14 — Lexikon-Bündel Medium und Mode: vier Entscheidungen
+
+**Entscheidung Markus** zu den Fragen aus PR #219 (sieben Entwürfe:
+Jukebox, Schellackplatte, Single, Plateausohle, Slingback, Kitten Heel,
+Budapester).
+
+1. **„single“ und „jukebox“ in `NUR_VON_HAND`.** „Single“ heißt auch die
+   alleinstehende Person, und der Bindestrich hält den Autolink nicht auf
+   („Single-Party“). „Jukebox“ stand im Bestand nur in Eigennamen (Termin
+   „Jukebox Christmas Party-Night“, Band „The Jukebox Bandits“). Der Alias
+   „Singleplatte“ bleibt verlinkbar. Negativtest in
+   `scripts/test-links.ts`, mit dem Alias als Lebenszeichen.
+   Mutationsbeleg: Ohne „single“ auf der Liste fallen genau die
+   Listenprüfung und der Satztest („[Single](…)-Party“); ohne „jukebox“
+   ebenso (Link in „Jukebox Christmas Party-Night“). Zurückgebaut, 95 von
+   95 grün.
+2. **„budapester“ nicht in `NUR_VON_HAND`.** Heute steht kein Adjektiv
+   oder Einwohnername im Register. Neu zu entscheiden, sobald ein Termin
+   oder Ort in Budapest dazukommt.
+3. **Abgrenzung in `lexikon/creepers` neu gefasst.** Das Argument, ein
+   Plateau erhöhe über eine harte Sohle, trug keine Quelle; die englische
+   Wikipedia nennt Krepp und Gummi als Materialien von Plateausohlen.
+   Jetzt trägt die deutsche Wikipedia: Creepers sind dort flache
+   Lederschuhe, ihr Merkmal ist die weiche Kreppsohle.
+4. **`lexikon/budapester` geht mit der deutschen Wikipedia und dem
+   Wiktionary als Quellen zur Freigabe**, ohne Fachquelle.
+
+Außerdem nicht angelegt: Pin-up-Magazin (keine erklärende Quelle, wie
+Rockabella; OFFENE-PUNKTE).
+
 ## 2026-10-13 — Autolink lässt wörtliche Zitate in Ruhe
 
 **Entscheidung Markus**, nach einer Messung beim Bündel Frisur. „Tolle“

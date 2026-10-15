@@ -326,11 +326,19 @@ function maskiere(s: string): string {
  * seiner Altersfrage, über den der Eintrag schreibt. Nur sieben Stellen
  * passten.
  *
+ * „Single" und „Jukebox" folgen am 2026-10-14 (Entscheidung Markus, mit
+ * den Einträgen `lexikon/single` und `lexikon/jukebox`). „Single" heißt
+ * auch die alleinstehende Person, und der Bindestrich hält den Autolink
+ * nicht auf: „Single-Party" wäre auf den Tonträger verlinkt worden.
+ * „Jukebox" stand im Bestand nur in Eigennamen (der Termin „Jukebox
+ * Christmas Party-Night", die Band „The Jukebox Bandits"). Der Alias
+ * „Singleplatte" bleibt verlinkbar.
+ *
  * Verglichen wird das ganze Wort in Kleinschreibung. Andere Formen desselben
  * Eintrags (Aliase) bleiben verlinkbar. Die richtigen Stellen verlinkt, wer
  * schreibt, von Hand; bestehende Links sind geschützt.
  */
-export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing", "jive", "vintage"]);
+export const NUR_VON_HAND: ReadonlySet<string> = new Set(["swing", "jive", "vintage", "single", "jukebox"]);
 
 function baueBegriffe(eintraege: Map<string, EintragMeta>): {
   muster: BegriffMuster[];

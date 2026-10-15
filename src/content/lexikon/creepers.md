@@ -5,7 +5,7 @@ kurzbeschreibung: Creepers sind flache Lederschuhe mit einer bis zu fünf Zentim
 status: veroeffentlicht
 erstelltAm: 2026-09-03
 geprueftAm: 2026-09-09
-geaendertAm: 2026-10-03
+geaendertAm: 2026-10-14
 autor: markus
 kategorie: mode
 bezeichnungDe: Leisetreter
@@ -15,10 +15,12 @@ verwandt: [pork-pie, pomade]
 herkunftsland: GB
 aeraVon: 1949
 abgrenzung: >-
-  Creepers sind keine Plateauschuhe, auch wenn die Sohle hoch ist. Ein
-  Plateau erhöht über eine starre, meist harte Sohle; die Kreppsohle des
-  Creepers ist weich und federt — daher der Name Leisetreter, und daher
-  ihre Eignung für lange Tanzabende. Zweite Verwechslung, und die
+  Creepers werden oft für Plateauschuhe gehalten, weil die Sohle hoch
+  ist. Die deutsche Wikipedia führt sie aber als flache Lederschuhe: Ihr
+  Merkmal ist die weiche, gerillte Kreppsohle, nicht die Erhöhung. Am
+  Material allein lässt sich der Unterschied nicht festmachen — Krepp und
+  Gummi nennt die englische Wikipedia auch für Plateausohlen. Die weiche
+  Sohle erklärt den Namen Leisetreter. Zweite Verwechslung, und die
   häufigere in der Szene: Creepers sind nicht der Rockabilly-Schuh
   schlechthin, sondern der Schuh der britischen Teddy Boys. Der
   amerikanische Rock 'n' Roll derselben Jahre trug anderes Schuhwerk.
@@ -26,6 +28,15 @@ abgrenzung: >-
   gleichsetzt, verliert genau die Unterscheidung, an der man einen
   durchdachten Ted-Look von einem beliebigen Fünfziger-Look erkennt.
 redaktionsnotiz: >-
+  ABGRENZUNG GEGEN DAS PLATEAU NEU GEFASST (2026-10-14, Entscheidung
+  Markus, mit lexikon/plateausohle): Die alte Fassung trug das Argument,
+  ein Plateau erhöhe über eine starre, harte Sohle. Das stützte keine
+  Quelle; die englische Wikipedia ("Platform shoe") nennt Krepp und
+  Gummi ausdrücklich als Materialien von Plateausohlen. Jetzt trägt die
+  deutsche Wikipedia: Creepers sind dort "flache Lederschuhe" mit dicken,
+  weichen Kreppsohlen, in der Regel bis zu 5 Zentimeter (am 2026-10-14
+  erneut gelesen). Der Satz über lange Tanzabende ist mit entfallen; er
+  hing an keiner Quelle.
   Quellen am 2026-09-03 einzeln geöffnet und gegen die Behauptungen
   geprüft. Der deutsche Artikel liegt unter "Creepers (Schuhe)";
   "Creeper (Schuh)" ist keine gültige Adresse (HTTP 404). aeraVon 1949 ist
@@ -69,6 +80,11 @@ quellen:
     titel: Creepers (Schuhe) (Wikipedia)
     abgerufenAm: 2026-09-03
     felder: [definition, kurzbeschreibung, bezeichnungDe, abgrenzung, body:aufbau, body:geschichte, body:szene]
+    art: nachschlagewerk
+  - url: https://en.wikipedia.org/wiki/Platform_shoe
+    titel: Platform shoe (Wikipedia, englisch)
+    abgerufenAm: 2026-10-14
+    felder: [abgrenzung, body:abgrenzung]
     art: nachschlagewerk
   - url: https://en.wikipedia.org/wiki/Brothel_creeper
     titel: Brothel creeper (Wikipedia, englisch)
@@ -127,6 +143,6 @@ Ihren Höhepunkt hatten Creepers bei den Teds der 1950er und frühen 1960er Jahr
 
 ## Abgrenzung der Creepers
 
-Der häufigste Irrtum ist, Creepers für Plateauschuhe zu halten. Optisch liegt das nahe, konstruktiv nicht: Ein Plateau hebt über eine starre Sohle, die Kreppsohle ist weich und federnd. Für den Gebrauch macht das den Unterschied — auf einer Kreppsohle lässt sich einen Abend lang tanzen, und der Schuh ist dabei leise.
+Der häufigste Irrtum ist, Creepers für Plateauschuhe zu halten. Optisch liegt das nahe. Die deutsche Wikipedia beschreibt Creepers aber als flache Lederschuhe; was sie ausmacht, ist die dicke, weiche Kreppsohle mit senkrechten Riefen, in der Regel bis zu fünf Zentimeter stark. Das Material allein trennt die beiden nicht: Krepp und Gummi nennt die englische Wikipedia auch unter den Materialien der Plateausohle. Was bleibt, ist die Weichheit der Kreppsohle, und von ihr kommt der Name: Creepers sind Leisetreter.
 
 Der zweite Irrtum ist in der Szene folgenreicher. Creepers gelten oft pauschal als *der* Rockabilly-Schuh. Die Quellen ordnen sie aber durchgehend den britischen Teddy Boys zu — sie sind ein englisches Kleidungsstück mit englischer Herstellungsgeschichte, das von der amerikanischen Rock-'n'-Roll-Mode derselben Jahre zu unterscheiden ist. Wer einen Ted-Look aufbaut, kommt an ihnen nicht vorbei; wer einen amerikanischen Fünfziger-Look sucht, sollte wissen, dass er sich damit für die britische Linie entscheidet.
