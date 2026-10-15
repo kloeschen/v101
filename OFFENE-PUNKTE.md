@@ -64,6 +64,12 @@ Auswertung der Server-Logs kommt dazu, `DATENSCHUTZ_STAND` neu.
 **Startschwelle prüfen.** Vor `PUBLIC_INDEXIERBAR=true`: 80+
 Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
 Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
+Stand 2026-10-15: 100 Termine frei, 92 davon künftig; 14 Regionsseiten.
+Lexikon und Säulen hängen an der Freigabe der Entwürfe (Mode, Medium,
+Szene, Epoche); was „Säule vollständig" heißt, steht in ENTSCHEIDUNGEN.md
+vom 2026-10-15. Offen bleiben damit die zwei Datenschutz-Prüfpunkte
+(Netlify-Support), der fachkundige Blick auf die Rechtstexte und die
+Analytics-Entscheidung.
 
 ## Später, mit Bedingung
 
@@ -148,8 +154,9 @@ Messung in ENTSCHEIDUNGEN.md vom selben Tag). Die Zahl hinter einem
 Begriff ist, wie oft er schon im Fließtext des Registers steht — dort
 setzt der Autolink später an.
 - *(leer)* — Epoche (Fifties, Wirtschaftswunder, Mid-Century Modern)
-  hat der Suchlauf am 2026-10-15 nach oben gezogen
-  (`docs/posten/lexikon-buendel-epoche.md`). Der Vorrat ist damit leer;
+  hat der Suchlauf am 2026-10-15 nach oben gezogen; am selben Tag in
+  einer Sitzung mit Markus gebaut, **ohne Fifties**: Kein deutsches
+  Nachschlagewerk erklärt den Begriff (ENTSCHEIDUNGEN.md, 2026-10-15). Der Vorrat ist damit leer;
   die nächsten Begriffe wählt Markus aus.
 
 Bewusst nicht: Personen (`/thema/elvis`, Bettie Page, Sailor Jerry),

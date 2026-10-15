@@ -18,6 +18,44 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-15 — Startschwelle: Was „Säule vollständig" heißt; Bündel Epoche
+
+**Entscheidung Markus**, nach dem Launch-Check vom selben Tag. Die
+Startschwelle (BETRIEB.md 1.6) verlangt „2 Säulen der Themenkarte
+vollständig", ohne zu sagen, was das heißt. Ab jetzt: **Eine Säule ist
+vollständig, wenn sie einen freigegebenen Pillar-Artikel (`typ: pillar`)
+hat und alle Lexikoneinträge ihrer Kategorie freigegeben sind.**
+
+Gemessen am 2026-10-15:
+- *Kustom Kulture* (Lexikon-Kategorie `auto`): Pillar
+  `artikel/hot-rod-und-kustom-kulture`, 7 von 7 Einträgen frei —
+  vollständig.
+- *Mode* (`mode`): Pillar `artikel/der-rockabilly-look`, 24 von 28 frei;
+  vollständig mit der Freigabe von plateausohle, slingback, kitten-heel
+  und budapester.
+- *Musik* (`genre`): 14 von 14 frei, aber **kein Pillar**. Der
+  Pillar im Launch-Check war das Golden Example, und das wird nicht
+  gebaut. Musik zählt deshalb nicht.
+- Frisur und Tanz: alle Einträge frei, kein Pillar.
+
+Damit ist das Kriterium mit der anstehenden Freigabe erfüllt.
+
+**Bündel Epoche: Wirtschaftswunder und Mid-Century Modern gebaut,
+Fifties nicht.** Direkt in der Sitzung, damit die Startschwelle von 80
+Lexikonbegriffen erreicht wird (mit der Freigabe 81). Für „Fifties"
+erklärt kein deutsches Nachschlagewerk den Begriff: Duden, DWDS,
+Wikipedia und Wiktionary führen ihn nicht (404) oder nur die Zählung
+„Fünfzigerjahre"; der Wikipedia-Artikel „1950er" ist eine Ereignisliste.
+Einzig das englische Wiktionary kennt „fifties" als Adjektiv („evoking
+the 1950s") — das englische Wort, nicht der deutsche Szenegebrauch. Die
+Abgrenzung „Stil, nicht Zählung" müsste erfunden werden; also nicht
+angelegt, wie Rockabella und Pin-up-Magazin. Die zunächst eingebaute
+Sperre „fifties" in `NUR_VON_HAND` ist wieder entfernt — eine Regel für
+einen Eintrag, den es nicht gibt, ist toter Code. Kommt der Eintrag
+später, kommt sie mit ihm (Auswahl Markus vom 2026-10-09 gilt weiter).
+`/jahrzehnt/50s` bliebe dann über `ZUORDNUNG` weiterzuleiten, nicht über
+einen Alias „50s".
+
 ## 2026-10-14 — Lexikon-Bündel Medium und Mode: vier Entscheidungen
 
 **Entscheidung Markus** zu den Fragen aus PR #219 (sieben Entwürfe:
