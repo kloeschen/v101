@@ -29,9 +29,10 @@
 # der Schalter je Kontext gesetzt und nicht global.
 
 [context.production.environment]
-  # Erst auf "true" umstellen, wenn die Startschwelle erreicht ist —
-  # siehe BETRIEB.md. Diese eine Zeile ist der Go-Live.
-  PUBLIC_INDEXIERBAR = "false"
+  # Diese eine Zeile ist der Go-Live (umgestellt am 2026-10-15, Startschwelle
+  # erreicht, ENTSCHEIDUNGEN.md). Werte hier gehen dem Netlify-UI vor; zum
+  # Zurücknehmen diese Zeile auf "false" setzen, nicht die Oberfläche.
+  PUBLIC_INDEXIERBAR = "true"
   # Die Produktion zeigt ausschließlich, was ein Mensch freigegeben hat.
   # Ausdrücklich gesetzt statt weggelassen: Ein fehlender Wert wirkt zwar
   # genauso, aber dann steht die wichtigste Zusage dieser Datei nirgends.

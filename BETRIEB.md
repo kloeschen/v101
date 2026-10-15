@@ -31,9 +31,11 @@ behandelt worden. Jetzt in `netlify.toml`.
 indexierbar gewesen. Ein Register mit zwanzig Einträgen erzeugt keine
 Autorität, und der erste Eindruck bei Crawlern ist schwer zu korrigieren.
 `PUBLIC_INDEXIERBAR=false` (Voreinstellung) setzt jetzt `noindex` auf jede
-Seite und liefert eine `robots.txt`, die alles sperrt. Umgestellt wird über
-die Umgebungsvariable in der Netlify-Oberfläche — kein Commit, kein
-Zurückrollen, falls es zu früh war.
+Seite und liefert eine `robots.txt`, die alles sperrt. Umgestellt wird in
+`netlify.toml`, Abschnitt `[context.production.environment]` — nicht in der
+Netlify-Oberfläche: Werte aus der Datei gehen dort gesetzten Variablen vor,
+eine Variable im UI bliebe also wirkungslos (korrigiert am 2026-10-15, als
+genau das beim Go-Live auffiel). Zurückgenommen wird auf demselben Weg.
 
 Beim Einbau des Schalters ist mir prompt derselbe Fehler unterlaufen wie
 seinerzeit bei `facetten.ts`: `import.meta.env` direkt in `site.config.ts`,
