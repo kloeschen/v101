@@ -47,8 +47,9 @@ redaktionsnotiz: >-
   ausdrücklich Krepp und Gummi zu den Materialien von Plateausohlen und
   schreibt, das Publikum der 1930er habe gelernt, dass Plateausohlen den
   Fuß polstern. Die Härte trägt als Unterscheidung also keine geöffnete
-  Quelle; Entscheidung, ob creepers nachgezogen wird, bei Markus. Der
-  Eintrag hier behauptet nichts über die Härte.
+  Quelle. Am 2026-10-14 auf Entscheidung von Markus in lexikon/creepers
+  nachgezogen: Die Härte ist dort gestrichen, die Abgrenzung stützt sich
+  auf die Kreppsohle selbst.
   ALIAS UND AUTOLINK (Zählung 2026-10-14, grep über src/content):
   "Plateausohle" trifft lexikon/stiletto (Abschnitt Form, "nur mit
   Plateausohle") — richtig. Alias "Plateauschuh" (Weiterleitungsziel der
