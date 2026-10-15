@@ -2,7 +2,7 @@
 name: Vorsilvester Party der Boogie Sunshines 2026
 aliases: [Vorsilvester Party Rosenheim 2026, Vorsilvester bei den Boogie Sunshines in Rosenheim, Boogie Sunshines Vorsilvester Party]
 kurzbeschreibung: Tanzparty des 1. Boogie Woogie Club Rosenheim 2000 am Mittwoch, 30. Dezember 2026, im Gasthof Höhensteiger in Rosenheim, Einlass 18 Uhr, Beginn 19 Uhr, mit den DJs Ronny und Helmut; Eintritt 18 Euro nach Anmeldung und Vorauszahlung.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-15
 geprueftAm: 2026-10-15
 autor: markus
