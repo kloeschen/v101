@@ -173,7 +173,7 @@ Rockabilly-Frisuren sind die Haarschnitte und Frisuren, die die Szene um den [Ro
 
 ## Welche Frisuren zum Rockabilly-Look gehören
 
-Dass Frisuren überhaupt zur Szene zählen, ist der Ausgangspunkt: Nach der englischen Wikipedia verband sich der Pompadour in den 1980er Jahren mit der Rockabilly-Kultur, und Friseure der Szene werben damit. Der KS Barbershop in Berlin-Steglitz etwa bietet „Flat Tops, Crew Cuts, Pompadour (Elvis Tolle) oder was immer Ihr Euch für Euren Rockabilly Stil wünscht". Wie das auf einer großen Veranstaltung aussieht, beschreibt ein Bericht von Rise Up Daily von der 29. Ausgabe des Rockabilly-Festivals Viva Las Vegas: Pin-ups mit Victory Rolls, Rockabillies und Greaser mit sorgfältig gelegten Pompadours.
+Dass Frisuren überhaupt zur Szene zählen, ist der Ausgangspunkt: Nach der englischen Wikipedia verband sich der Pompadour in den 1980er Jahren mit der Rockabilly-Kultur, und Friseure der Szene werben damit. Der KS Barbershop in Berlin-Steglitz etwa bietet „Flat Tops, Crew Cuts, Pompadour (Elvis Tolle) oder was immer Ihr Euch für Euren Rockabilly Stil wünscht". Wie das auf einer großen Veranstaltung aussieht, beschreibt ein Bericht von Rise Up Daily von der 29. Ausgabe des Rockabilly-Festivals Viva Las Vegas: Pin-ups mit Victory Rolls, Rockabillies und [Greaser](/lexikon/greaser/) mit sorgfältig gelegten Pompadours.
 
 Die Liste folgt dieser Reihenfolge — erst die Männerfrisuren, dann die der Frauen. Was zum Look als Ganzem gehört, steht im Artikel [Der Rockabilly-Look](/artikel/der-rockabilly-look/).
 

@@ -128,7 +128,7 @@ Pomade ist im Register dieser Begriffe der Sonderfall: [Petticoat](/lexikon/pett
 
 Sichtbar wird das an der britischen Seite derselben Jahre. Die [Teddy Boys](/lexikon/teddy-boy/) trugen zu ihren Drapes, Röhrenhosen und [Creepers](/lexikon/creepers/) langes, gefettetes Haar, vorn zur Tolle geformt und hinten zum [Ducktail](/lexikon/ducktail/) gekämmt — die Frisur war Teil der Uniform, nicht ihr Zubehör, und ohne ein Produkt, das formbar bleibt, ist sie nicht zu bauen. Die deutsche Wikipedia nennt sie „Elvis-Tolle"; nach der englischen Wikipedia übernahmen die Teds Rock 'n' Roll aber erst ab 1955, die ersten von ihnen trugen die Tolle also schon vor Elvis.
 
-Die Renaissance seit 2010 läuft über die Barbershops, und damit über dieselben Betriebe, die auch Pompadour und Ducktail wieder anbieten. Für den Aufbau einer Frisur heißt das praktisch: Die Wahl zwischen ölbasiert und wasserbasiert entscheidet über Halt, Glanz und Waschbarkeit — und wer eine Tolle möchte, die einen Weekender übersteht, wählt anders als jemand, der abends duschen will.
+Die Renaissance seit 2010 läuft über die Barbershops, und damit über dieselben Betriebe, die auch Pompadour und Ducktail wieder anbieten. Für den Aufbau einer Frisur heißt das praktisch: Die Wahl zwischen ölbasiert und wasserbasiert entscheidet über Halt, Glanz und Waschbarkeit — und wer eine Tolle möchte, die einen [Weekender](/lexikon/weekender/) übersteht, wählt anders als jemand, der abends duschen will.
 
 ## Abgrenzung der Pomade
 

@@ -1,9 +1,9 @@
 ---
 name: Jukebox
 kurzbeschreibung: Eine Jukebox ist ein Musikautomat, der nach dem Einwurf von Münzen einen vom Gast gewählten Titel aus einem eingebauten Plattenvorrat abspielt; ihre große Zeit waren die 1940er bis 1960er Jahre.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 kategorie: medium
 bezeichnungDe: Jukebox

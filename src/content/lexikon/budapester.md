@@ -1,9 +1,9 @@
 ---
 name: Budapester
 kurzbeschreibung: Ein Budapester ist ein klassischer Herrenschnürschuh mit breiter, hoch aufgeworfener Spitze, Flügelkappe und offener Derby-Schnürung, meist mit Lochverzierung; sein Kennzeichen ist die Leistenform, nicht das Lochmuster.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 kategorie: mode
 definition: Ein Budapester ist ein Herrenschnürschuh auf breitem Leisten mit hoch aufgeworfener, breit gerundeter Spitze, Flügelkappe und offener Derby-Schnürung.

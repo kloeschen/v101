@@ -76,7 +76,7 @@ Ein Stiletto ist ein hoher, sehr schlanker und spitz zulaufender Schuhabsatz mit
 
 ## Form des Stilettos
 
-Den Stiletto macht nicht die Höhe aus, sondern die Schlankheit. Die englische Wikipedia nennt Höhen von 2,5 bis 25 Zentimetern — die oberen Werte nur mit Plateausohle — und eine gelegentlich verwendete Bestimmung: weniger als einen Zentimeter Durchmesser am Boden. Die deutsche Wikipedia beschreibt den Stilettoabsatz als schlanke, spitz zulaufende Form mit kleinem Oberfleck.
+Den Stiletto macht nicht die Höhe aus, sondern die Schlankheit. Die englische Wikipedia nennt Höhen von 2,5 bis 25 Zentimetern — die oberen Werte nur mit [Plateausohle](/lexikon/plateausohle/) — und eine gelegentlich verwendete Bestimmung: weniger als einen Zentimeter Durchmesser am Boden. Die deutsche Wikipedia beschreibt den Stilettoabsatz als schlanke, spitz zulaufende Form mit kleinem Oberfleck.
 
 Möglich wurde die Form erst durch einen Stift aus Metall im Inneren des Absatzes. Holz und andere ältere Werkstoffe brauchten einen breiten Absatz, um nicht zu brechen; erst ein Kunststoffabsatz mit eingesetztem Stahlstab hielt die Last auf so kleiner Fläche. Die Kehrseite nennt die englische Wikipedia auch: Unter dem Absatz entsteht ein Druck, der höher ist als unter dem Fuß eines Elefanten, was Böden und Teppiche beschädigen kann.
 
@@ -96,6 +96,6 @@ Mit den Beatles verschwand der Stiletto aus den Läden, nicht von der Straße. 1
 
 ## Abgrenzung des Stilettos
 
-Am ehesten verwechselt wird der Stiletto mit dem Kitten Heel, weil beide schlank sind. Der Kitten Heel ist aber kurz, leicht geschwungen und von der Hinterkante des Schuhs nach innen versetzt. Bei der Höhe sind sich die Quellen nicht ganz einig: Die englische Wikipedia zieht die Grenze bei fünf Zentimetern und nennt 2,5 bis 5, die deutsche gibt drei bis fünf Zentimeter an. Beide führen ihn als kurze Spielart des Stilettos. Er kam nach der englischen Wikipedia Ende der 1950er Jahre für junge Mädchen auf, denen hohe Absätze nicht zugetraut wurden, und wurde 1964 durch Audrey Hepburn populär.
+Am ehesten verwechselt wird der Stiletto mit dem [Kitten Heel](/lexikon/kitten-heel/), weil beide schlank sind. Der Kitten Heel ist aber kurz, leicht geschwungen und von der Hinterkante des Schuhs nach innen versetzt. Bei der Höhe sind sich die Quellen nicht ganz einig: Die englische Wikipedia zieht die Grenze bei fünf Zentimetern und nennt 2,5 bis 5, die deutsche gibt drei bis fünf Zentimeter an. Beide führen ihn als kurze Spielart des Stilettos. Er kam nach der englischen Wikipedia Ende der 1950er Jahre für junge Mädchen auf, denen hohe Absätze nicht zugetraut wurden, und wurde 1964 durch Audrey Hepburn populär.
 
 Die zweite Verwechslung ist sprachlich. Ein Stilett ist im Deutschen zuerst eine Waffe: ein Dolch mit dünner, spitzer, oft drei- oder vierkantiger Klinge, der aus Italien stammt. Der Absatz hat von ihm nur den Namen.

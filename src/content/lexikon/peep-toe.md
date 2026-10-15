@@ -56,7 +56,7 @@ quellen:
     art: nachschlagewerk
 ---
 
-Ein Peep Toe ist ein Damenschuh mit einer kleinen Öffnung an der Schuhspitze, durch die die Zehen nur andeutungsweise zu sehen sind. Meist ist es ein Pumps, die Öffnung findet sich aber ebenso an Slingbacks, Stiefeletten und anderen Ausgehschuhen. In der Vintage-Szene steht der Peep Toe für die vierziger Jahre, in denen er seine erste große Zeit hatte.
+Ein Peep Toe ist ein Damenschuh mit einer kleinen Öffnung an der Schuhspitze, durch die die Zehen nur andeutungsweise zu sehen sind. Meist ist es ein Pumps, die Öffnung findet sich aber ebenso an [Slingbacks](/lexikon/slingback/), Stiefeletten und anderen Ausgehschuhen. In der Vintage-Szene steht der Peep Toe für die vierziger Jahre, in denen er seine erste große Zeit hatte.
 
 ## Form des Peep Toes
 
