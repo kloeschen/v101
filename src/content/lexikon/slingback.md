@@ -2,9 +2,9 @@
 name: Slingback
 aliases: [Slingpumps]
 kurzbeschreibung: Ein Slingback ist ein Damenschuh mit offener Ferse, den hinten nur ein schmaler Riemen hält, der um die Ferse läuft und den Knöchel nicht umschließt; in den 1940er Jahren ein Schuh der Pin-ups.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 kategorie: mode
 bezeichnungEn: Slingback

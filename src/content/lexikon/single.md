@@ -2,9 +2,9 @@
 name: Single
 aliases: [Singleplatte]
 kurzbeschreibung: Eine Single ist ein Tonträger mit meist nur einem oder zwei Titeln, klassisch eine kleine Schallplatte mit dem Haupttitel auf der A-Seite und einem weiteren Stück auf der B-Seite, in den 1950er Jahren die 7-Zoll-Platte mit 45 Umdrehungen.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 kategorie: medium
 bezeichnungDe: Single

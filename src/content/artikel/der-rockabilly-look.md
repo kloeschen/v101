@@ -195,7 +195,7 @@ Haare und Make-up leihen sich viel vom [Pin-up](/lexikon/pin-up/). [Pin Curls](/
 
 Bei den Männern beschreibt die deutsche Wikipedia ausladende [Haartollen](/lexikon/tolle/) mit [Pomade](/lexikon/pomade/), lange seitliche Koteletten, Jeans oder schwarze Stoffhosen und [Creepers](/lexikon/creepers/). Die Schuhe mit der hohen Kreppsohle waren nach derselben Quelle schon in den 1950er Jahren bei Rockabilly-Kids beliebt.
 
-Ausführlicher ist die englische Wikipedia zum Greaser, dem amerikanischen Vorbild dieses Bildes. Die Frisuren übernahmen die Greaser von frühen Rock-'n'-Roll- und Rockabilly-Musikern wie Elvis Presley und Little Richard, gebaut mit Pomade und ständig nachgekämmt. Getragen wurden dunkle Stoffhosen oder dunkelblaue Jeans, oft über schwarzen oder braunen Lederstiefeln umgeschlagen, dazu schlichte schwarze oder weiße T-Shirts und Jacken aus Denim oder Leder. Frauen im Greaser-Umfeld trugen nach derselben Quelle ebenfalls Lederjacken und enge, kurze Caprihosen.
+Ausführlicher ist die englische Wikipedia zum [Greaser](/lexikon/greaser/), dem amerikanischen Vorbild dieses Bildes. Die Frisuren übernahmen die Greaser von frühen Rock-'n'-Roll- und Rockabilly-Musikern wie Elvis Presley und Little Richard, gebaut mit Pomade und ständig nachgekämmt. Getragen wurden dunkle Stoffhosen oder dunkelblaue Jeans, oft über schwarzen oder braunen Lederstiefeln umgeschlagen, dazu schlichte schwarze oder weiße T-Shirts und Jacken aus Denim oder Leder. Frauen im Greaser-Umfeld trugen nach derselben Quelle ebenfalls Lederjacken und enge, kurze Caprihosen.
 
 ## Woher der Rockabilly-Look kommt
 

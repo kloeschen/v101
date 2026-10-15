@@ -1,9 +1,9 @@
 ---
 name: Schellackplatte
 kurzbeschreibung: Eine Schellackplatte ist eine Schallplatte aus einer Pressmasse mit Schellack als Bindemittel, meist mit 78 Umdrehungen pro Minute abgespielt; sie war bis in die 1950er Jahre der übliche Tonträger und ist der Vorläufer der Vinylplatte.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 kategorie: medium
 bezeichnungDe: Schellackplatte

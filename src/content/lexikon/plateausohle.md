@@ -2,9 +2,9 @@
 name: Plateausohle
 aliases: [Plateauschuh]
 kurzbeschreibung: Eine Plateausohle ist eine auffallend dicke Schuhsohle unter dem Vorderfuß oder dem ganzen Schuh, meist drei bis zehn Zentimeter stark; bekannt aus den Korksohlen der späten 1930er und 1940er Jahre und aus der Mode der 1970er.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 kategorie: mode
 bezeichnungEn: Platform sole

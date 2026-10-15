@@ -82,6 +82,6 @@ Herrenschuhe mit Keilabsatz kamen nach der englischen Wikipedia in den 1970er Ja
 
 ## Abgrenzung des Keilabsatzes
 
-Am häufigsten wird der Keilabsatz mit dem Plateau verwechselt, auch weil die Begriffe sich in den Quellen berühren: Die deutsche Wikipedia beschreibt den Keilabsatz selbst als „Plateauerhöhung an der Ferse". Der Unterschied liegt darin, wo erhöht wird. Das Plateau ist nach der deutschen Wikipedia eine auffallend starke Sohle unter dem Vorderfuß oder dem ganzen Schuh, meist drei bis zehn Zentimeter dick. Der Keilabsatz hebt dagegen die Ferse über den Vorderfuß. Ein Plateauschuh kann einen Keilabsatz haben, ebenso aber einen Block- oder Stilettoabsatz; und ein Keilabsatz kommt ohne Plateau aus.
+Am häufigsten wird der Keilabsatz mit dem Plateau verwechselt, auch weil die Begriffe sich in den Quellen berühren: Die deutsche Wikipedia beschreibt den Keilabsatz selbst als „Plateauerhöhung an der Ferse". Der Unterschied liegt darin, wo erhöht wird. Das Plateau ist nach der deutschen Wikipedia eine auffallend starke Sohle unter dem Vorderfuß oder dem ganzen Schuh, meist drei bis zehn Zentimeter dick. Der Keilabsatz hebt dagegen die Ferse über den Vorderfuß. Ein [Plateauschuh](/lexikon/plateausohle/) kann einen Keilabsatz haben, ebenso aber einen Block- oder Stilettoabsatz; und ein Keilabsatz kommt ohne Plateau aus.
 
 Aus demselben Grund ist auch die dicke Sohle der [Creepers](/lexikon/creepers/) kein Keilabsatz: Sie ist nach dem dortigen Eintrag eine weiche Kreppsohle, die den ganzen Fuß hebt, nicht die Ferse über den Vorderfuß.

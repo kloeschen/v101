@@ -2,9 +2,9 @@
 name: Kitten Heel
 aliases: [Kitten Heels]
 kurzbeschreibung: Ein Kitten Heel ist ein kurzer, schlanker Absatz von höchstens etwa fünf Zentimetern, leicht geschwungen und von der Hinterkante des Schuhs nach innen versetzt; eine kurze Spielart des Stilettos, die Ende der 1950er Jahre aufkam.
-status: entwurf
+status: veroeffentlicht
 erstelltAm: 2026-10-14
-geprueftAm: 2026-10-14
+geprueftAm: 2026-10-15
 autor: markus
 kategorie: mode
 bezeichnungEn: Kitten heel
