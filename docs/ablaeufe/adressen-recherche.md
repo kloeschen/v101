@@ -101,6 +101,7 @@ Grenzen:
 | Quelle | Region | Hinweis |
 |---|---|---|
 | [Walldorf Weekender, „Vintage Hair & Tattoo“](https://www.walldorf-weekender.net/deutsch/50s-markt/vintage-hair-tattoo-2024/) | überregional | Barber, Vintage-Friseure und Tätowierer auf dem Markt, jeweils mit eigener Website. Die URL trägt ein altes Jahr, der Seitentitel das aktuelle |
+| [Walldorf Weekender, „Clothes & More“](https://www.walldorf-weekender.net/deutsch/50s-markt/clothes-more-2026/) | überregional | Händlerliste des 50s-Markts, rund zwanzig Anbieter mit eigener Website. Überwiegend Onlineshops und Marken; Läden mit Adresse öffnen oft nur nach Termin (Grenzfall, 2026-10-15 an Markus) |
 | Händler- und Ausstellerlisten anderer Weekender und Festivals im Register | je nach Veranstaltung | über `links.website` der Events und Reihen |
 | Einsendungen über das Formular | beliebig | wie Termin-Vorschläge: Seite öffnen, Kriterium prüfen |
 
