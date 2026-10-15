@@ -1,7 +1,7 @@
 ---
 marke: frei
-titel: "Tanztermine: `genres` nachtragen (Rest: 3 Termine, zwei davon mit neuen Angaben bei boogie.at)"
-angelegt: 2026-10-14
+titel: "Tanztermine: `genres` nachtragen (Rest: Boogie Mix im Haslinger Hof, 08.01.2027 — wartet auf eine Quelle mit Stilen für 2027)"
+angelegt: 2026-10-15
 ---
 
 Rest des Postens vom 2026-10-03. Entscheidung Markus vom 2026-10-03
@@ -12,40 +12,28 @@ Weekendern dürfen Tanzeinträge in `genres` stehen (`boogie-woogie-tanz`,
 
 Erledigt: am 2026-10-12 17 Termine (Hippmann, Boogie Lions, Boogie Cats),
 am 2026-10-14 neun (Mödling 2, Gmundner Boogie Party 5, Steyrtal, Swinging
-Wellness). Vorgehen wie dort: je Termin die Quelle neu öffnen, die Quelle
-mit dem Zitat bekommt `genres` in `felder` und `abgerufenAm` auf den Tag
-des Abrufs — dann aber auch die übrigen Felder dieser Quelle gegenlesen —,
-die Redaktionsnotiz das Zitat, „genres" aus „Nicht gefuellt" streichen.
+Wellness), am 2026-10-15 die beiden Abende der Rock Dock Teddys in
+Perchtoldsdorf (Herbstparty 20.11., Rock this Christmas 18.12.; Ort und
+Text waren am 2026-10-14 schon an boogie.at angeglichen, der
+Preiswiderspruch 10 gegen 12 Euro steht im Text und wartet auf Markus).
 
-Noch offen, und warum es am 2026-10-14 nicht ging:
+Noch offen:
 
-- **Rock Dock Teddys, `herbstparty-rock-dock-teddys-perchtoldsdorf-2026-11-20`
-  und `rock-this-christmas-perchtoldsdorf-2026-12-18`.** Die Zuordnung
-  selbst ist klar (boogie.at „Ein Tanzabend für alle Fans von Boogie
-  Woogie, Rock'n'Roll und Swing" → `boogie-woogie-tanz`, `rocknroll-tanz`;
-  die Vereinsseite nennt für den 20.11. „Boogie Woogie, Swing und
-  Standard-Latein"). Aber boogie.at hat seine Angaben geändert (Abruf
-  2026-10-14): Die „Boogie-Herbstparty" steht jetzt am **Fr., 20.11.2026,
-  18:30, Burg Perchtoldsdorf**, Musikspende **EUR 12** (Eintrag: 10,
-  Vereinsseite weiterhin 10); damit ist der im Eintrag beschriebene
-  Widerspruch 06.11./Kulturzentrum gegen 20.11./Burg aufgelöst. „Rock this
-  Christmas" steht bei boogie.at jetzt in der **Burg Perchtoldsdorf**
-  (Eintrag: Kulturzentrum, gewählt gerade wegen boogie.at) mit
-  Musikspende **EUR 12** (Eintrag: 10). Die boogie.at-Quellen beider
-  Einträge lassen sich deshalb nicht einfach mit neuem `abgerufenAm`
-  versehen. Gehört zuerst: Ort, Preis und Text an die neuen Angaben
-  angleichen (Preis 12 gegen 10 als Widerspruch im Text, Regel 5), dann
-  `genres`. Gemeldet im PR des 2026-10-14 unter „Nachprüfung".
 - **`boogie-mix-haslinger-hof-2027-01-08`.** Das Haus nennt für den
-  08.01.2027 weiterhin nur „BoogieMix, DJ Rockin´Daddy, ab 19 Uhr",
-  keinen Stil; boogie.at führt die Reihe (`/event/boogie-mix-3`) nur bis
-  zum 11.12.2026. Nach der Leseregel wäre es der Musikeintrag wie in den
-  Vorgängerterminen (`boogie-woogie, rocknroll, rockabilly, swing`), aber
-  keine Quelle sagt es für 2027. Erst bauen, wenn boogie.at oder ein Flyer
-  2027 den Termin mit Stilen führt. Ohne solche Quelle bleibt `genres`
-  leer — dann den Termin hier streichen, sobald er archiviert ist.
+  08.01.2027 weiterhin nur „BoogieMix, DJ Rockin´Daddy, ab 19 Uhr,
+  GartenStadl", keinen Stil (Abruf 2026-10-15, Tabelle „eingetragen bis
+  So, 14.2.2027"). boogie.at führt die Reihe (`/event/boogie-mix-3`) nur
+  bis zum 11.12.2026. Neu am 2026-10-15: www.rockindaddy.de ist über http
+  erreichbar (https weiterhin TLS-Fehler); die Terminliste
+  `http://www.rockindaddy.de/events.htm` endet ebenfalls im Dezember 2026
+  („Weihnachts Boogie Mix im Haslinger Hof / Gartenstadl", 11.12.) und
+  nennt keinen Stil. Nach der Leseregel wäre es der Musikeintrag wie in
+  den Vorgängerterminen (`boogie-woogie, rocknroll, rockabilly, swing`),
+  aber keine Quelle sagt es für 2027. Erst bauen, wenn boogie.at,
+  rockindaddy.de oder ein Flyer 2027 den Termin mit Stilen führt. Ohne
+  solche Quelle bleibt `genres` leer — dann diesen Posten löschen, sobald
+  der Termin archiviert ist.
 
 Leseregel aus `docs/ablaeufe/termin-recherche.md` (Falle „Boogie Woogie an
-einem Tanzabend"). Nur eintragen, was die Quelle nennt. Ein Tanz ohne
-Lexikoneintrag (Discofox, Balboa, Foxtrott, Swing als Tanz) bleibt im
-Text. Geändert wird Freigegebenes, also wartet der PR auf Markus.
+einem Tanzabend"). Nur eintragen, was die Quelle nennt. Geändert wird
+Freigegebenes, also wartet der PR auf Markus.
