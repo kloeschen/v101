@@ -73,6 +73,25 @@ Analytics-Entscheidung.
 
 ## Später, mit Bedingung
 
+**Boogie Mix im Haslinger Hof, 08.01.2027: `genres` nachtragen, sobald
+eine Quelle die Stile für 2027 nennt.** Rest des Postens „Tanztermine:
+`genres` nachtragen" (`docs/posten/tanztermine-genres-nachtragen.md`, am
+2026-10-15 hierher verschoben, alle übrigen Termine des Postens sind
+gebaut). Am 2026-10-15 zweimal nachgeprüft, beide Male ohne Stil für 2027:
+das Musikprogramm des Hauses nennt für „Fr - 08.01." nur „BoogieMix,
+DJ Rockin´Daddy, ab 19 Uhr, GartenStadl"; boogie.at (`/event/boogie-mix-3`)
+führt die Reihe nur bis zum 11.12.2026, eine Folgeseite für 2027 gibt es
+nicht (`/event/boogie-mix-4` 404); `http://www.rockindaddy.de/events.htm`
+endet mit dem „Weihnachts Boogie Mix" am 11.12. Verschoben, weil ein
+`frei`-Posten ohne baubaren Inhalt als neuester oben in der Warteschlange
+steht und jeder Lauf ihn wieder zieht, statt die Termin-Posten zu bauen.
+**Bedingung:** boogie.at, rockindaddy.de oder ein Flyer 2027 führt den
+Termin mit Stilen. Dann als `frei`-Posten nach oben ziehen; Leseregel aus
+der Falle „Boogie Woogie an einem Tanzabend" in
+`docs/ablaeufe/termin-recherche.md`, Musik wie in den Vorgängerterminen
+nur, wenn die Quelle sie nennt. Fällt der Termin ohne solche Quelle,
+diesen Absatz nach der Archivierung streichen; `genres` bleibt dann leer.
+
 **Berlin, Quasimodo: Nikki Hill am 11.05.2027 anlegen, sobald das Haus den Abend führt.**
 Aus dem Bündel „Berlin, Rockin' Wildcat" (2026-10-05) zurückgegeben, die
 übrigen drei Termine sind gebaut. Datum und Ort sind belegt: Rockin'
