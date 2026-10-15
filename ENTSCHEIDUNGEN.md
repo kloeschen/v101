@@ -18,6 +18,23 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-15 — Go-Live: `PUBLIC_INDEXIERBAR` in netlify.toml auf true
+
+**Entscheidung Markus.** Startschwelle erreicht (100 Termine, 92 künftig;
+14 Regionsseiten; 81 Lexikonbegriffe; Kustom Kulture und Mode
+vollständig; Rechtsseiten gebaut, Go-Live-Sperre frei).
+
+**Fund dabei:** Markus hatte die Variable in der Netlify-Oberfläche
+gesetzt, wie BETRIEB.md 1.1 es beschrieb. `netlify.toml` setzt sie aber für
+`context.production` selbst auf `"false"`, und Werte aus der Datei gehen
+denen aus der Oberfläche vor. Der nächste Deploy hätte also weiter mit
+`noindex` gebaut. Geändert wird deshalb die Zeile in `netlify.toml`;
+BETRIEB.md ist korrigiert. Deploy Previews und Branch-Deploys bleiben auf
+`"false"` (`scripts/test-netlify.ts` prüft das).
+
+**Noch offen:** der fachkundige Blick auf
+Impressum und Datenschutzerklärung, die Analytics-Entscheidung.
+
 ## 2026-10-15 — Datenschutzerklärung: die zwei offenen Prüfpunkte geklärt
 
 **Auskunft des Netlify-Supports, weitergegeben von Markus.**
