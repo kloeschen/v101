@@ -18,6 +18,21 @@ geänderten Regel oder einem Fund, der über seinen Posten hinaus gilt.
 ---
 
 
+## 2026-10-15 — Datenschutzerklärung: die zwei offenen Prüfpunkte geklärt
+
+**Auskunft des Netlify-Supports, weitergegeben von Markus.**
+- *Server-Logs:* Netlify speichert sie sieben Tage.
+- *Akismet:* Zur Spamprüfung gehen IP-Adresse und E-Mail-Adresse an
+  Akismet. Das Vorschlagsformular fragt keine E-Mail-Adresse ab; der Text
+  sagt deshalb „falls angegeben".
+
+Beides steht jetzt in `src/pages/datenschutz.astro`, die Einträge sind aus
+`PRUEFEN` (`src/lib/rechtliches.ts`) entfernt, `DATENSCHUTZ_STAND` ist
+2026-10-15. Damit bricht der Build mit `PUBLIC_INDEXIERBAR=true` nicht mehr
+ab. Belegt am echten Impressum: `goLiveSperre(true, IMPRESSUM, PRUEFEN)`
+liefert keine Sperre; Gegenprobe mit einem künstlichen offenen Punkt
+sperrt. Der fachkundige Blick auf beide Rechtstexte steht weiter aus.
+
 ## 2026-10-15 — Startschwelle: Was „Säule vollständig" heißt; Bündel Epoche
 
 **Entscheidung Markus**, nach dem Launch-Check vom selben Tag. Die
