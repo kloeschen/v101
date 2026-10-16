@@ -73,7 +73,7 @@ Als älteste größere Gruppe, die Customizing als Leidenschaft betrieb, gelten 
 
 ## Custom Car im deutschsprachigen Raum
 
-Deutschland zählt die Quelle zu den Ländern mit starker Custom-Car-Szene, neben den USA, England und Schweden; eigene Fachzeitschriften wie das *Kustom Life Magazine* oder *Chrom & Flammen* bedienen sie. Bemerkenswert ist der Kontrast: Während US-Fahrzeuge in Deutschland insgesamt kaum verbreitet sind, sind sie unter Custom-Car-Fans außerordentlich beliebt. Einen eigenen Fall bildet Island, wo Custom Cars vor allem als Geländewagenumbauten für Schnee und Gletscher vorkommen — mit der Vintage-Ästhetik hat das nichts zu tun.
+Deutschland zählt die Quelle zu den Ländern mit starker Custom-Car-Szene, neben den USA, England und Schweden; eigene Fachzeitschriften wie das *Kustom Life Magazine* oder *Chrom & Flammen* bedienen sie. Bemerkenswert ist der Kontrast: Während US-Fahrzeuge in Deutschland insgesamt kaum verbreitet sind, sind sie unter Custom-Car-Fans außerordentlich beliebt. Einen eigenen Fall bildet Island, wo Custom Cars vor allem als Geländewagenumbauten für Schnee und Gletscher vorkommen — mit der [Vintage](/lexikon/vintage/)-Ästhetik hat das nichts zu tun.
 
 ## Custom Car in diesem Register
 

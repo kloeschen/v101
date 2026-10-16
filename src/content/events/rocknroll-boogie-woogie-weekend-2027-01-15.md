@@ -128,7 +128,7 @@ Der Termin liegt im Winterbetrieb der Anlage und damit in einer Zeit, in der ein
 
 ## Programm
 
-Die Ankündigung verspricht Tanzkurse in Rock'n'Roll und Boogie Woogie; im Tagesprogramm stehen zwei Boogie-Woogie-Kurse, beide am Samstag, von 11 bis 13 Uhr und von 14:30 bis 17:15 Uhr. Live spielt am Freitag um 20:30 Uhr das Scotty Bullock Trio in der Music Hall; an beiden Abenden legt ab 21 Uhr ein DJ in der Pina Colada Bar auf. Wer im Vintage-Outfit anreist, ist ausdrücklich eingeladen — die Ankündigung wirbt mit Fünfziger-Jahre-Atmosphäre.
+Die Ankündigung verspricht Tanzkurse in Rock'n'Roll und Boogie Woogie; im Tagesprogramm stehen zwei Boogie-Woogie-Kurse, beide am Samstag, von 11 bis 13 Uhr und von 14:30 bis 17:15 Uhr. Live spielt am Freitag um 20:30 Uhr das Scotty Bullock Trio in der Music Hall; an beiden Abenden legt ab 21 Uhr ein DJ in der Pina Colada Bar auf. Wer im [Vintage](/lexikon/vintage/)-Outfit anreist, ist ausdrücklich eingeladen — die Ankündigung wirbt mit Fünfziger-Jahre-Atmosphäre.
 
 Das übrige Winterprogramm der Anlage läuft parallel weiter: Wild-West-Show, Lichtershow und Schauschmieden gehören dazu, ebenso Angebote für Kinder. Wer wegen des Tanzens kommt, teilt sich das Gelände also mit einem Familienpublikum.
 

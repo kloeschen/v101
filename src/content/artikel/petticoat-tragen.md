@@ -92,7 +92,7 @@ Einen [Petticoat](/lexikon/petticoat/) trägt man in der natürlichen Taille, un
 
 ## Zuerst der Rock
 
-Ob ein Petticoat gut aussieht, entscheidet sich am Rock darüber. Er muss so viel Weite haben, dass sich die Lagen darunter ausbreiten und beim Gehen mitschwingen können. Ist der Rock zu schmal für das Volumen, staut sich der Petticoat und steht als starre Glocke ab — Peggy Sue Vintage, ein Fachgeschäft für Vintage-Mode, vergleicht das Ergebnis mit einem Lampenschirm.
+Ob ein Petticoat gut aussieht, entscheidet sich am Rock darüber. Er muss so viel Weite haben, dass sich die Lagen darunter ausbreiten und beim Gehen mitschwingen können. Ist der Rock zu schmal für das Volumen, staut sich der Petticoat und steht als starre Glocke ab — Peggy Sue Vintage, ein Fachgeschäft für [Vintage](/lexikon/vintage/)-Mode, vergleicht das Ergebnis mit einem Lampenschirm.
 
 Am besten passen Tellerröcke, also sehr weite Röcke, und schwingende Kleider im Stil der 1950er Jahre. Falten- und Plisseeröcke eignen sich nach derselben Beratung grundsätzlich nicht, Volantröcke nur bedingt. Für einen Rock aus dem eigenen Schrank gibt es einen einfachen Test: flach auf den Tisch legen. Ergibt er nur ein schmales Dreieck, ist er für einen Petticoat wahrscheinlich zu eng geschnitten.
 
