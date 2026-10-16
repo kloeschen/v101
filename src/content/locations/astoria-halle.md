@@ -45,6 +45,6 @@ Die Astoria-Halle in Walldorf ist eine Mehrzweckhalle in der Metropolregion Rhei
 
 ## Nutzung
 
-Wie die Halle bespielt wurde, lässt sich dagegen genau nachlesen. Das Programm des [Weekenders](/lexikon/weekender/) verteilte sich über vier Tage von Freitag bis Montag, mit eigenen Unterseiten je Tag. Neben den Konzerten in der Halle gehörten ein Vintage-Markt, Tanzworkshops, Tattoo-Artists und eine Pool-Party im Hotel nebenan zum Ablauf — die Halle war also der Kern eines Formats, das über sie hinausreichte.
+Wie die Halle bespielt wurde, lässt sich dagegen genau nachlesen. Das Programm des [Weekenders](/lexikon/weekender/) verteilte sich über vier Tage von Freitag bis Montag, mit eigenen Unterseiten je Tag. Neben den Konzerten in der Halle gehörten ein [Vintage](/lexikon/vintage/)-Markt, Tanzworkshops, Tattoo-Artists und eine Pool-Party im Hotel nebenan zum Ablauf — die Halle war also der Kern eines Formats, das über sie hinausreichte.
 
 Mit dem Ende der Reihe im Mai 2026 verliert die [Region Rhein-Neckar](/regionen/rhein-neckar/) diesen Termin. Ob die Halle danach weiter für Szeneveranstaltungen genutzt wird, sagt keine der geöffneten Quellen.
