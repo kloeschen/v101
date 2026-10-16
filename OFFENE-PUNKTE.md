@@ -20,20 +20,38 @@ die Liste. Grund: Parallele Läufe änderten benachbarte Zeilen dieses
 Abschnitts und erzeugten fünf von sieben Merge-Konflikten seit dem
 2026-09-30 (ENTSCHEIDUNGEN.md, 2026-10-07).
 
-„Vor dem Go-Live" und „Später, mit Bedingung" bleiben hier. Sie sind
+„Nach dem Go-Live" und „Später, mit Bedingung" bleiben hier. Sie sind
 Rückstau, keine Warteschlange, und tragen keine Marken.
 
-## Vor dem Go-Live
+## Nach dem Go-Live
 
-**Datenschutzerklärung: fachkundiger Blick vor dem Go-Live.** Die beiden
-Prüfpunkte (Log-Speicherdauer, Akismet) sind seit dem 2026-10-15 geklärt
-und stehen im Text (ENTSCHEIDUNGEN.md, 2026-10-15); die Go-Live-Sperre im
-Build ist damit frei. Impressum und Datenschutzerklärung sind ein Entwurf,
-keine Rechtsberatung — vor dem Umschalten gehört ein fachkundiger Blick
-darauf.
+**Live seit dem 2026-10-15** (PR #229, `PUBLIC_INDEXIERBAR` in
+`netlify.toml`). Auf v101.de geprüft: `robots.txt` lässt alle Crawler zu
+und nennt die Sitemap, Seiten tragen kein `noindex`; Vorschauen bleiben
+gesperrt.
+
+**Search Console: Sitemap anmelden — wartet auf DNS-Zugang (Markus).**
+`https://v101.de/sitemap-index.xml`. Die Bestätigung als Domain-Property
+braucht einen TXT-Eintrag im DNS, den Markus gerade nicht setzen kann.
+Ausweg ohne DNS, falls es länger dauert: eine URL-Präfix-Property für
+`https://v101.de/`, bestätigt über die HTML-Datei, die Google vorgibt —
+die Datei kommt nach `public/` und ist mit dem nächsten Deploy erreichbar.
+
+**Netlify-Oberfläche: Variable `PUBLIC_INDEXIERBAR` löschen** (Markus).
+Sie wirkt nicht, weil `netlify.toml` vorgeht; so steht der Wert nur an
+einer Stelle.
+
+**Wikidata und Profile anlegen, danach `sameAs`** in `src/site.config.ts`
+(Markus; die Datei ist für Agenten gesperrt). Nur eintragen, was existiert
+und auflöst.
+
+**Rechtstexte: fachkundiger Blick.** Die beiden Prüfpunkte (Log-Speicher-
+dauer, Akismet) sind seit dem 2026-10-15 geklärt und stehen im Text.
+Impressum und Datenschutzerklärung sind ein Entwurf, keine
+Rechtsberatung — ein fachkundiger Blick steht weiter aus.
 
 **Analytics ohne Einwilligungsbanner — Empfehlung: Netlify Web
-Analytics, zum Go-Live einschalten.** Verglichen am 2026-09-29 mit
+Analytics, Entscheidung Markus steht aus.** Verglichen am 2026-09-29 mit
 Primärquellen (Preisseiten, Doku, DSK-Orientierungshilfe Digitale Dienste,
 EDSA-Leitlinien 2/2023):
 - *Netlify Web Analytics:* aus den Server-Logs, kein Code im Browser, kein
@@ -54,16 +72,6 @@ Credit-Plan (davon hängen $9 oder $20 ab; ein Wechsel ist nicht
 umkehrbar)? Reichen 30 Tage Rückblick? Die Datenschutzerklärung sagt
 heute „misst keine Reichweite" — der Satz fällt dann weg, ein Absatz zur
 Auswertung der Server-Logs kommt dazu, `DATENSCHUTZ_STAND` neu.
-
-**Startschwelle prüfen.** Vor `PUBLIC_INDEXIERBAR=true`: 80+
-Veranstaltungen mit Mehrzahl in der Zukunft, 5 Regionsseiten mit echter
-Einordnung, 80 Lexikonbegriffe, zwei Säulen der Themenkarte vollständig.
-Stand 2026-10-15: 100 Termine frei, 92 davon künftig; 14 Regionsseiten.
-Lexikon und Säulen hängen an der Freigabe der Entwürfe (Mode, Medium,
-Szene, Epoche); was „Säule vollständig" heißt, steht in ENTSCHEIDUNGEN.md
-vom 2026-10-15. Offen bleiben damit die zwei Datenschutz-Prüfpunkte
-(Netlify-Support), der fachkundige Blick auf die Rechtstexte und die
-Analytics-Entscheidung.
 
 ## Später, mit Bedingung
 
