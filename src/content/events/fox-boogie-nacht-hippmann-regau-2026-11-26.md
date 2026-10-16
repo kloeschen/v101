@@ -29,8 +29,11 @@ redaktionsnotiz: >-
   JAHRESZAHL: Die Terminzeile traegt kein Jahr; es steht nur im Kopf der
   Seite ("im Herbst 2026"). Der 26.11.2026 ist ein Donnerstag, passend zum
   "Do" der Zeile und zur Ueberschrift "Jeden 2. Donnerstag" (Falle
-  "Programmtabellen ohne Jahreszahl"). Dieselbe Seite nennt den
-  3. Oktober als Samstag, auch das passt nur zu 2026.
+  "Programmtabellen ohne Jahreszahl"). Die Wochentage allein tragen das
+  Jahr nicht: Sie passen ebenso zu 2020 (Kalender wie 2026), auch der
+  "Samstag, den 3. Oktober" derselben Seite. Belegt ist 2026 allein durch
+  den Kopf "im Herbst 2026"; die Seite nennt Termine ab Oktober, ist also
+  die laufende Ankuendigung (vom Gegenleser 2026-10-16 ebenso vermerkt).
   ENDE leer: "spaetestens 23:30 Uhr" ist eine Obergrenze, kein fester
   Schluss; die Angabe steht im Text, zugeordnet.
   ZEITZONE +01:00: nach dem Ende der Sommerzeit am 25.10.2026.
