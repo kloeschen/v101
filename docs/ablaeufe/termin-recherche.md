@@ -235,6 +235,16 @@ Fehler verursacht oder beinahe verursacht.
   Abend noch nicht, ist die Uhrzeit offen — beim Quasimodo stehen sonst
   „Einlass 21:00, Beginn 22:00", der Gig Guide nannte für Nikki Hill
   21:00. Dann den Termin mit Bedingung zurückgeben, nicht raten.
+- **Programme, die erst im Browser vollständig sind** (2026-10-16). Kino
+  Union: Die Partyreihe unter `/reihe/S3/Partys` lädt per Skript; curl
+  sieht nur Navigation, die Detailseite trägt Datum und Uhrzeit im
+  JSON-LD (`ScreeningEvent`). Frannz: Die Startseite zeigt nur einen
+  Ausschnitt, erst Monatsfilter plus „mehr“ bis zum Ende laden zeigt den
+  ganzen Monat. Erst nach vollständigem Laden ist „das Haus führt den
+  Abend nicht“ eine Aussage. Reicht das Programm des Hauses über den
+  Termin hinaus und fehlt er trotzdem, ist das ein Widerspruch, keine
+  Lücke — beim Record Hop im Kino Union (Gig Guide 4.12.) führte das
+  Haus stattdessen eine Rockabilly Night mit denselben DJs am 23.10.
 - **Das Datum im Pfad einer Lido-Seite kann falsch sein.** Demented Are
   Go am 30.01.2027 liegt unter `/events/2026-06-30-demented-are-go-`
   (2026-10-05). Maßgeblich ist der Seitentext; die Liste des Hauses nach
