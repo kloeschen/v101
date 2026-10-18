@@ -22,7 +22,7 @@ preise:
 ticketUrl: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
 drinnenDraussen: drinnen
 genres: [boogie-woogie-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
 redaktionsnotiz: >-
