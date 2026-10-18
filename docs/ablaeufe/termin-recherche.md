@@ -51,6 +51,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [District 28](https://www.district28.ch/) | Schweiz (Siebnen, Kanton Schwyz) | Haus | nein | Programm auf der Startseite, überwiegend Metal und Punk; einmal im Jahr das Rockabilly/Rock'n'Roll Festival (2026: 12. Ausgabe am 28.11.). Uhrzeit nur bei Ticketino, das Haus nennt sie nicht (2026-10-13) |
 | [Rockabilly Mafia, Termine](https://rockabillymafia.de/) | Schleswig-Holstein (Elmshorn), Niedersachsen | Band | nein | Terminliste auf der Startseite, je Termin mit Link auf das Haus; jährliches Weihnachtskonzert im Stadttheater Elmshorn. Regioactive antwortet Skripten mit 403 (2026-10-13) |
 | [Boogie Sunshines Rosenheim, Terminkalender](https://bwcro.de/events) | Bayern (Rosenheim) | Verein | ja, „The Events Calendar“ (`/wp-json/tribe/events/v1/events`) | Trainings, Kurse, Vereinsfeiern und öffentliche Partys im selben Kalender; Uhrzeit, Preis und Ort der Partys oft nur im Flyer auf der Detailseite. Gefunden über boogie.at (2026-10-15) |
+| [Birdland Hamburg, Monatsprogramm](https://www.birdlandhamburg.de/dezember/) | Hamburg | Haus | nein | Jazzclub; Programm je Monat unter `/<monat>/` (`/november/`, `/dezember/`, `/januar/` …), Szenebezug selten (2026-10-18: Rockabilly Special der Rockhouse Brothers am 30.12., sonst Jazz, Swing, Bigband). Tickets bei Tixforgigs. Gefunden über den Kalender von hamburg-tourism.de |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
@@ -479,6 +480,13 @@ Fehler verursacht oder beinahe verursacht.
   nennt beide im großen Saal. Der Verein bezeichnet sich als geschlossen
   (Mitgliedschaft nötig, Tagesmitgliedschaft 10–20 €), Flyer nennen
   trotzdem Eintritt — beides nennen, nicht verrechnen.
+  **Nachtrag 2026-10-18:** Das Reservierungsformular unten auf derselben
+  Seite wird nicht mit dem Programm nachgeführt. Die „Golden Dance
+  Night" am 14.11.2026 stand dort noch, während Programm und boogie.at
+  denselben Abend (DJ, Saal, Preis, Uhrzeit) inzwischen als „Boogie
+  Comeback Night" am 13.11. führten. Das Formular ist kein Beleg für ein
+  Datum. Der Suchlauf gleicht die Harlekin-Abende im Register deshalb
+  gegen das Programm ab, nicht nur gegen neue Termine.
 - **Flyer auf boogie.at sind oft die einzige Stelle mit Uhrzeit und
   Logo.** Bei den Partys der Tanzschule Hippmann in Regau (2026-10-02)
   nannte nur der Flyer Einlass und Beginn; für den 13.03.2027 kündigte
