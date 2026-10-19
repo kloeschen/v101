@@ -15,7 +15,7 @@ veranstalter: Crazy Boogiefreaks
 veranstalterUrl: https://crazy-boogiefreaks.at/
 eintritt: unveroeffentlicht
 genres: [boogie-woogie-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://crazy-boogiefreaks.at/Veranstaltung/steyrtal-boogie-party-2/
 redaktionsnotiz: >-
