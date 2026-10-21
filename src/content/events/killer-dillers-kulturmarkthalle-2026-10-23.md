@@ -73,6 +73,11 @@ quellen:
     abgerufenAm: 2026-10-01
     felder: [genres, kurzbeschreibung, body:musik]
     art: offiziell
+  - url: https://www.kulturmarkthalle.berlin/event-details/dance-around-the-clock-2026-10-23-20-00
+    titel: Dance around the clock, 23. Oktober 2026 (KulturMarktHalle)
+    abgerufenAm: 2026-10-21
+    felder: [beginn, ort, durchfuehrung]
+    art: offiziell
 ---
 
 Das Konzert der Killer Dillers in der [KulturMarktHalle](/locations/kulturmarkthalle-prenzlauer-berg/) in Berlin-Prenzlauer Berg ist für Freitag, den 23. Oktober 2026, ab 20 Uhr angekündigt. Zum Abend gehört ein Record Hop mit DJ Capt'n K.; der Eintritt kostet 12 Euro.

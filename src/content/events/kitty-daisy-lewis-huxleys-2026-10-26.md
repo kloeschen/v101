@@ -55,12 +55,12 @@ redaktionsnotiz: >-
 quellen:
   - url: https://huxleysneuewelt.de/event/2026-10-26-kitty-daisy-lewis
     titel: Kitty, Daisy & Lewis, 26.10.2026 (Huxleys Neue Welt)
-    abgerufenAm: 2026-10-01
+    abgerufenAm: 2026-10-21
     felder: [beginn, ort, veranstalter, lineupWeitere, eintritt, ticketUrl, durchfuehrung, name, aliases, kurzbeschreibung, body:termin, body:musik]
     art: offiziell
   - url: https://huxleysneuewelt.de/events
     titel: Events (Huxleys Neue Welt)
-    abgerufenAm: 2026-10-01
+    abgerufenAm: 2026-10-21
     felder: [beginn, durchfuehrung, body:termin]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/events/kitty-daisy-lewis-2
