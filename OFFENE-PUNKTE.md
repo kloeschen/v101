@@ -75,6 +75,48 @@ Auswertung der Server-Logs kommt dazu, `DATENSCHUTZ_STAND` neu.
 
 ## Später, mit Bedingung
 
+**Rockabilly Mafia, Termine 2027: fünf Termine anlegen, sobald das jeweilige Haus sie führt.**
+Posten `docs/posten/rockabilly-mafia-2027.md` (Suchlauf 2026-10-22), am
+2026-10-22 hierher verschoben, kein Termin gebaut. Datum, Ort und Uhrzeit
+nennt bisher nur die Band, auf https://rockabillymafia.de/termine/ (mit
+PLZ und „Einlass") und im Feed `/?feed=gigpress`. Der Posten verlangt,
+jeden Termin beim Haus gegenzulesen und einen Termin, der dort ganz
+fehlt, zurückzugeben. Abgerufen am 2026-10-22:
+- **Sa 17.04.2027, Weissenbrunn, Gasthof Frankenwald („18. Bierdorf
+  Rockabilly Nacht", Einlass 20:00 laut Band):** keine eigene Seite des
+  Gasthofs gefunden. Ein undatierter Bericht bei franken-aktuell.de
+  (`/bierdorf-rockabilly-weissenbrunn/`, über ein früheres
+  Jubiläumsfestival) nennt als Gründer die „Freunde des Panhandle Walks"
+  aus dem Landkreis Kronach; eine eigene Seite von ihnen fand sich nicht.
+- **Fr 04.06.2027, Berlin, Roadrunners Paradise (Einlass 20:00 laut Band):**
+  Das ist der Ort `locations/roadrunners-rock-motor-club`; die Website
+  heißt im Kopf „ROADRUNNER'S PARADISE CLUB", zählt aber nicht als
+  Quelle, weil sie nur über http erreichbar ist. Ihr Programm endet mit
+  dem 12.12.2026, der Gig Guide von Rockin' Wildcat führt den Abend nicht.
+- **Sa 05.06.2027, Freiberg, „Freiberger US Car Meeting", Pappelallee 227
+  (Einlass 20:00 laut Band):** Der Veranstalter hat nur eine
+  Facebook-Seite. Im Browser lesbar war allein die Veranstaltung 2026
+  (9. Ausgabe, 05.–07.06.2026, altes Volksgut am Biberteich, Freiberg/OT
+  Zug); eine Ausgabe 2027 kündigt er nicht an.
+- **Fr 22.10.2027, Greven, Landhaus Rickermann („Rickermann`s Rock'n
+  Roll", Einlass 21:00 laut Band):** Die Seite des Hauses
+  (https://www.landhausrickermann.com/; `landhaus-rickermann.de` ist eine
+  geparkte Domain) nennt unter „Kommende Termine" nur Termine bis zum
+  23.02.2027, keinen Rock-'n'-Roll-Abend im Oktober 2027.
+- **Sa 23.10.2027, Nürnberg, Golden Nugget (Einlass 20:00 laut Band):**
+  Das Programm unter https://www.goldennugget-nuernberg.de/ endet mit dem
+  30.12.2026.
+
+**Bedingung:** Das Haus oder der Veranstalter führt den Termin. Dann nur
+diesen als `frei`-Posten nach oben ziehen; die Uhrzeit der Band trägt die
+Bezeichnung „Einlass", aber 20:00 steht fast überall und ist
+möglicherweise ein Vorgabewert des Plugins (siehe Elmshorn). Freiberg und
+Weissenbrunn brauchen dann neue Orte, Freiberg auch die Region Sachsen.
+Fällt ein Termin, ohne dass ein Haus ihn je geführt hat, seinen
+Spiegelstrich nach dem Datum streichen. Warum verschoben statt
+zurückgegeben: Wie beim Boogie Mix steht ein `frei`-Posten ohne baubaren
+Inhalt als neuester ganz oben, und jeder Lauf würde ihn wieder ziehen.
+
 **Boogie Mix im Haslinger Hof, 08.01.2027: `genres` nachtragen, sobald
 eine Quelle die Stile für 2027 nennt.** Rest des Postens „Tanztermine:
 `genres` nachtragen" (`docs/posten/tanztermine-genres-nachtragen.md`, am
