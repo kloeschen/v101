@@ -52,6 +52,11 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [Rockabilly Mafia, Termine](https://rockabillymafia.de/) | Schleswig-Holstein (Elmshorn), Niedersachsen | Band | nein | Terminliste auf der Startseite, je Termin mit Link auf das Haus; jährliches Weihnachtskonzert im Stadttheater Elmshorn. Regioactive antwortet Skripten mit 403 (2026-10-13) |
 | [Boogie Sunshines Rosenheim, Terminkalender](https://bwcro.de/events) | Bayern (Rosenheim) | Verein | ja, „The Events Calendar“ (`/wp-json/tribe/events/v1/events`) | Trainings, Kurse, Vereinsfeiern und öffentliche Partys im selben Kalender; Uhrzeit, Preis und Ort der Partys oft nur im Flyer auf der Detailseite. Gefunden über boogie.at (2026-10-15) |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
+| [Vintage Club München, Partys](https://www.vintage-club.de/parties.aspx) | Bayern | Haus (Tanzschule) | nein | Fifties Record Hop jeden Sonntag seit 1972, Terminliste rund sechs Wochen voraus mit DJ und Preis, Zeilen ohne Jahr. Betreiber World of Swing, auch Rock That Swing Festival und Munich Balboa & Shag Weekend (2026-10-20) |
+| [Rock That Swing Festival](https://www.rockthatswing.com/) | Bayern (München) | Festival | nein | einmal im Jahr im Februar; die Daten der nächsten Ausgabe stehen lange vor dem Programm fest, der übrige Seiteninhalt gehört dann noch zur letzten (2026-10-20) |
+| [Hafenklang, Programm](https://hafenklang.com/programm/) | Hamburg | Haus | nein | breites Programm, Szenebezug selten; Genrezeile je Abend („Psychobilly"), Säle „Hafenklang" und „Goldener Salon", Liste reicht rund vier Monate voraus (2026-10-20) |
+| [Backstage München](https://www.backstage.eu/events) | Bayern | Haus | nein, rendert per Skript | Suche unter `/events?search=<Name>` nur mit Browser; Genre je Termin, Säle Halle, Club, Werk. `/veranstaltungen/live.html` ist eine 404-Seite (2026-10-20) |
+| Bandsintown-Termine von Szenebands (`rest.bandsintown.com/artists/<Name>/events?app_id=…`) | überregional | Sammler | ja, JSON | **nur Suchhinweis**: jeden Treffer auf der Seite des Hauses bestätigen; gleichnamige Künstler werden zusammengeführt (siehe Fallen) |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
 die Posten, die aus ihr entstanden sind. Regionen ohne eigene Quelle
@@ -334,6 +339,13 @@ Fehler verursacht oder beinahe verursacht.
   liefert denselben Datensatz als JSON. Datum und Ort daraus sind
   brauchbar, die **Uhrzeit nicht allein**: Bei Boppin'B wich sie in zwei
   von vier geprüften Terminen vom Haus bzw. von Reservix ab.
+- **Bandsintown führt gleichnamige Künstler unter einem Namen.** Unter
+  „Frenzy" standen am 2026-10-20 neben dem Psychobilly-Osterfestival in
+  Weinheim sechs Termine der „Verrückt nach Frenzy – Tour 2027" in großen
+  Hallen (Capitol Hannover, Turbinenhalle Oberhausen, Backstage Werk
+  München); das Backstage ordnet den Abend als „Pop" ein — eine andere
+  Band. Vor jedem Posten aus Bandsintown den Abend beim Haus öffnen und
+  Genre bzw. Tourname mit der Band im Register abgleichen.
 - **Terminseiten, die die Uhrzeit im Browser umrechnen.** Das Pitcher
   Düsseldorf (2026-10-06) lädt seine Termine per Skript aus
   `/wp-json/eventflow/v1/public/events` und zeigt sie in der Zeitzone des
