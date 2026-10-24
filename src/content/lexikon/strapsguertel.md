@@ -73,7 +73,7 @@ quellen:
     art: museum
 ---
 
-Ein Strapsgürtel ist ein Gürtel mit herabhängenden elastischen Bändern, an deren Enden Strümpfe befestigt werden. Er ist damit das seltene Kleidungsstück, das genau eine Aufgabe hat: Strümpfe am Herunterrutschen zu hindern. Für die Vintage-Garderobe ist er die Voraussetzung für [Nahtstrümpfe](/lexikon/nahtstrumpf/), weil diese naturgemäß keinen Halt aus sich selbst haben.
+Ein Strapsgürtel ist ein Gürtel mit herabhängenden elastischen Bändern, an deren Enden Strümpfe befestigt werden. Er ist damit das seltene Kleidungsstück, das genau eine Aufgabe hat: Strümpfe am Herunterrutschen zu hindern. Für die [Vintage](/lexikon/vintage/)-Garderobe ist er die Voraussetzung für [Nahtstrümpfe](/lexikon/nahtstrumpf/), weil diese naturgemäß keinen Halt aus sich selbst haben.
 
 ## Aufbau eines Strapsgürtels
 

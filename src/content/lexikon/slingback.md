@@ -124,7 +124,7 @@ Einig sind sich WWD und SATRA, dass der Slingback zunächst zu bodenlangen Abend
 
 ## Der Slingback in der Szene
 
-Seinen Platz im Vintage-Look verdankt der Slingback den Pin-ups. Nach Vogue Scandinavia gehörten offene Fersen und Riemen in den vierziger Jahren zum Bild der [Pin-up](/lexikon/pin-up/)-Plakate, zusammen mit nackten Knöcheln, spitzer Schuhspitze und kurzem Rock; WWD nennt Slingbacks den Standardschuh der Pin-up-Girls. Vogue Scandinavia erwähnt außerdem weiße Riemchen-Slingbacks mit Stilettoabsatz von Salvatore Ferragamo, die Marilyn Monroe in „Das verflixte 7. Jahr" trug — eine Angabe, die an keiner weiteren geöffneten Quelle hängt. Ist zusätzlich die Spitze offen, ist der Slingback zugleich ein [Peep Toe](/lexikon/peep-toe/).
+Seinen Platz im [Vintage](/lexikon/vintage/)-Look verdankt der Slingback den Pin-ups. Nach Vogue Scandinavia gehörten offene Fersen und Riemen in den vierziger Jahren zum Bild der [Pin-up](/lexikon/pin-up/)-Plakate, zusammen mit nackten Knöcheln, spitzer Schuhspitze und kurzem Rock; WWD nennt Slingbacks den Standardschuh der Pin-up-Girls. Vogue Scandinavia erwähnt außerdem weiße Riemchen-Slingbacks mit Stilettoabsatz von Salvatore Ferragamo, die Marilyn Monroe in „Das verflixte 7. Jahr" trug — eine Angabe, die an keiner weiteren geöffneten Quelle hängt. Ist zusätzlich die Spitze offen, ist der Slingback zugleich ein [Peep Toe](/lexikon/peep-toe/).
 
 ## Abgrenzung des Slingbacks
 
