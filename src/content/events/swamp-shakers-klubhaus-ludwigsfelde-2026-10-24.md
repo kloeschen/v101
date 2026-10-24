@@ -66,7 +66,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.klubhaus-ludwigsfelde.de/programmuebersicht/lilu_oktober
     titel: Live in Lu — Swamp Shakers, 24.10.26 (Klubhaus Ludwigsfelde)
-    abgerufenAm: 2026-10-01
+    abgerufenAm: 2026-10-21
     felder: [beginn, ort, ortHinweis, eintritt, preise, ticketUrl, lineupWeitere, genres, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.reservix.de/tickets-swamp-shakers-swamp-shakers-in-ludwigsfelde-klubhaus-ludwigsfelde-lounge-am-24-10-2026/e2534327

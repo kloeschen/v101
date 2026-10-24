@@ -64,12 +64,12 @@ redaktionsnotiz: >-
 quellen:
   - url: https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/idd3f9df92ce61b8c/version/1771178127/image.jpg
     titel: Flyer Gmundner Herbst Boogie Party, 24. Oktober 2026 (BWC Gmunden)
-    abgerufenAm: 2026-09-28
+    abgerufenAm: 2026-10-21
     felder: [beginn, ort, djs, veranstalter, eintritt, name, kurzbeschreibung, reihe, reiheName, durchfuehrung, body:termin, body:eintritt]
     art: offiziell
   - url: https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/
     titel: Unser Aktivitätenkalender (BWC Gmunden)
-    abgerufenAm: 2026-09-28
+    abgerufenAm: 2026-10-21
     felder: [veranstalter, veranstalterUrl, links, reihe, reiheName, body:termin, body:reihe]
     art: offiziell
   - url: https://bwc-gmunden.jimdofree.com/
