@@ -21,7 +21,7 @@ preise:
     hinweis: „ab 25,40 €“ im Vorverkauf, Ermäßigung verfügbar
 ticketUrl: https://www.reservix.de/tickets-swamp-shakers-swamp-shakers-in-ludwigsfelde-klubhaus-ludwigsfelde-lounge-am-24-10-2026/e2534327
 genres: [rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.klubhaus-ludwigsfelde.de/programmuebersicht/lilu_oktober
 redaktionsnotiz: >-

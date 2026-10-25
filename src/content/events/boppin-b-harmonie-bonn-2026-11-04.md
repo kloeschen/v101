@@ -51,12 +51,12 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.harmonie-bonn.de/veranstaltung/boppin-b-solid-as-a-rock-tour-2026/
     titel: BOPPIN' B – „Solid as a Rock Tour 2026“, 4. November 2026 (Harmonie Bonn)
-    abgerufenAm: 2026-10-10
+    abgerufenAm: 2026-10-25
     felder: [beginn, ort, veranstalter, preise, eintritt, ticketUrl, lineupBands, genres, name, aliases, kurzbeschreibung, durchfuehrung, links, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.harmonie-bonn.de/wp-json/tribe/events/v1/events?search=boppin&start_date=2026-10-10
     titel: Veranstaltungskalender der Harmonie Bonn (Schnittstelle, Suche „boppin“)
-    abgerufenAm: 2026-10-10
+    abgerufenAm: 2026-10-25
     felder: [beginn, preise, eintritt, body:termin]
     art: offiziell
   - url: https://www.boppinb.de/live
