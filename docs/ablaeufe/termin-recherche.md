@@ -453,6 +453,11 @@ Fehler verursacht oder beinahe verursacht.
   zeigen, nicht anzunehmen. Ein strittiger Ort lässt sich mit Gründen
   gewichten und im Text benennen; ein strittiges Datum nicht, weil
   `beginn` nicht leer bleiben kann — dann zurück an den Menschen.
+- **boogie.at: ein Abend kann doppelt stehen.** Die Boogieparty im
+  Aufriss Mainburg am 13.03.2027 steht unter `/event/boogieparty-22` und
+  `/event/boogieparty-23`, beide mit gleichem Datum, Ort und Titel
+  (2026-10-25). Vor dem Zählen der Termine Datum und Ort je Eintrag
+  vergleichen, nicht die Zahl der Detail-URLs.
 - **boogie.at: die Übersichtsliste kann Termine auslassen.** Am
   2026-10-02 stand die Boogie Party der Boogie Lions am 06.03.2027 auf
   keiner der Listenseiten (`?page=2` endete mit dem 20.02., `?page=3`
