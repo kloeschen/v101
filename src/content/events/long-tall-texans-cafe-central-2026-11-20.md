@@ -51,7 +51,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://cafecentral.de/konzert/long-tall-texans/
     titel: Long Tall Texans (Café Central Weinheim)
-    abgerufenAm: 2026-09-23
+    abgerufenAm: 2026-10-25
     felder: [beginn, ort, lineupWeitere, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH

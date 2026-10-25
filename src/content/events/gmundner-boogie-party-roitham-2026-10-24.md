@@ -17,7 +17,7 @@ veranstalterUrl: https://bwc-gmunden.jimdofree.com/
 djs: [DJ Klaus]
 eintritt: unveroeffentlicht
 genres: [boogie-woogie-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/
 redaktionsnotiz: >-

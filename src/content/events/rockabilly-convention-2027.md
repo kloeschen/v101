@@ -114,7 +114,7 @@ quellen:
     art: offiziell
   - url: https://www.pullmancity.de/events-shows-musik/events/rockabilly-convention
     titel: Rockabilly Convention meets Rock'n'Roll & Boogie Woogie (Pullman City), erneuter Abruf
-    abgerufenAm: 2026-09-23
+    abgerufenAm: 2026-10-25
     felder: [beginn, ende, preise, lineupWeitere, body:programm, body:eintritt, body:oldtimer]
     art: offiziell
 ---
