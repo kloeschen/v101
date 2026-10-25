@@ -106,7 +106,7 @@ quellen:
     art: offiziell
   - url: https://rocknroll-festival.de/
     titel: Rock'n'Roll Festival Ganderkesee, erneuter Abruf
-    abgerufenAm: 2026-09-23
+    abgerufenAm: 2026-10-25
     felder: [beginn, ende, preise, camping]
     art: offiziell
 ---
