@@ -71,6 +71,39 @@ const STRUKTUR = new Intl.DateTimeFormat("de-DE", {
   weekday: "short", day: "2-digit", month: "2-digit", year: "numeric",
   hour: "2-digit", minute: "2-digit", timeZone: site.zeitzone,
 });
+const TAG = new Intl.DateTimeFormat("de-DE", {
+  weekday: "short", day: "2-digit", month: "2-digit", year: "numeric", timeZone: site.zeitzone,
+});
+/*
+ * Für ein Datum ohne Uhrzeit (`beginn: 2027-06-04`) in UTC: `z.coerce.date()`
+ * macht daraus Mitternacht UTC, und in UTC gelesen ist das genau der Tag,
+ * der in der Datei steht — gleich, in welcher Zone die Site liegt.
+ */
+const TAG_UTC = new Intl.DateTimeFormat("de-DE", {
+  weekday: "short", day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC",
+});
+
+/** Steht das Feld im Frontmatter als reines Datum, ohne Uhrzeit? */
+export function nurDatum(frontmatter: string, feld: string): boolean {
+  return new RegExp(`^${feld}:\\s*["']?\\d{4}-\\d{2}-\\d{2}["']?\\s*(#.*)?$`, "m").test(frontmatter);
+}
+
+/*
+ * Beginn und Ende, wie Markus sie gegen die Quelle prüft. Bis zum
+ * 2026-10-26 hängte der Zettel an jedes Datum eine Uhrzeit: Ein
+ * ganztägiger Termin mit `beginn: 2027-06-04` erschien als
+ * „Fr., 04.06.2027, 02:00 Uhr" — eine Uhrzeit, die keine Quelle nennt,
+ * an genau der Stelle, an der die Uhrzeit geprüft wird. Ganztägig heißt
+ * jetzt: nur das Datum, wie im Faktenblock der Seite.
+ */
+export function zeitText(e: Pick<GeladenerEintrag, "daten" | "frontmatter">, feld: "beginn" | "ende"): string | undefined {
+  const wert = e.daten?.[feld];
+  if (!wert) return undefined;
+  const d = new Date(wert);
+  if (nurDatum(e.frontmatter, feld)) return TAG_UTC.format(d);
+  if (e.daten?.ganztaegig) return TAG.format(d);
+  return `${STRUKTUR.format(d)} Uhr`;
+}
 
 export function belegeFuer(daten: Record<string, any>, feld: string): Beleg[] {
   return (daten.quellen ?? [])
@@ -110,8 +143,11 @@ export function zettelFuer(e: GeladenerEintrag, k: Kontext): Zettel {
 
   if (e.collection === "events") {
     const beginn = d.beginn ? new Date(d.beginn) : undefined;
-    hart("Beginn", "beginn", beginn ? `${STRUKTUR.format(beginn)} Uhr` : undefined);
-    if (d.ende) hart("Ende", "ende", `${STRUKTUR.format(new Date(d.ende))} Uhr`);
+    hart("Beginn", "beginn", zeitText(e, "beginn"));
+    hart("Ende", "ende", zeitText(e, "ende"));
+    // Der Zettel zeigt hier nur das Datum, die Seite aber eine Uhrzeit (Faktenblock).
+    if (!d.ganztaegig && (["beginn", "ende"] as const).some((f) => d[f] && nurDatum(e.frontmatter, f)))
+      signale.push("Ein **Datum ohne Uhrzeit**, aber nicht `ganztaegig` — die Seite zeigt dann eine Uhrzeit, die keine Quelle nennt.");
     const ortSlug = typeof d.ort === "string" ? d.ort : undefined;
     if (ortSlug) {
       hart("Ort", "ort", ortText(k.alle.get(`locations/${ortSlug}`), ortSlug));

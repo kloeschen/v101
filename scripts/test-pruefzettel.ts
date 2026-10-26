@@ -11,7 +11,7 @@
  *   npx tsx scripts/test-pruefzettel.ts
  */
 import { ladeAlle, type GeladenerEintrag } from "./_laden";
-import { zettelFuer, alsMarkdown, belegeFuer, NAH_TAGE, type Kontext } from "./pruefzettel";
+import { zettelFuer, alsMarkdown, belegeFuer, nurDatum, NAH_TAGE, type Kontext } from "./pruefzettel";
 
 let bestanden = 0;
 const fehler: string[] = [];
@@ -52,6 +52,38 @@ pruefe("Beginn mit Wochentag in Berliner Zeit", ruhig.fakten[0]?.wert === "Sa., 
 pruefe("Ort mit Adresse aufgelöst", ruhig.fakten[1]?.wert === "Testhalle, Hauptstraße 1, 10115 Berlin", ruhig.fakten[1]?.wert);
 pruefe("Preis lesbar", ruhig.fakten[2]?.wert === "Abendkasse 15 EUR", ruhig.fakten[2]?.wert);
 pruefe("Beleg je Fakt verlinkt", ruhig.fakten[0]?.belege.length === 2);
+
+/* --- Ganztägige Termine ---------------------------------------------- */
+// Bis zum 2026-10-26 stand hier „Fr., 04.06.2027, 02:00 Uhr" — eine Uhrzeit,
+// die keine Quelle nennt. Sommer (02:00) und Winter (01:00) je einmal.
+const fakt = (e: GeladenerEintrag, name: string) => zettelFuer(e, kontext()).fakten.find((f) => f.name === name)?.wert;
+const ganztaegig = (beginn: string, ende: string): GeladenerEintrag => {
+  const e = termin({ beginn: new Date(beginn), ende: new Date(ende), ganztaegig: true });
+  return { ...e, frontmatter: `name: Testabend\nbeginn: ${beginn}\nende: ${ende}\nganztaegig: true\n` };
+};
+for (const [beginn, ende, sollB, sollE] of [
+  ["2027-06-04", "2027-06-05", "Fr., 04.06.2027", "Sa., 05.06.2027"],
+  ["2026-12-05", "2026-12-06", "Sa., 05.12.2026", "So., 06.12.2026"],
+]) {
+  const g = ganztaegig(beginn, ende);
+  pruefe(`ganztägig ${beginn}: Beginn nur als Datum`, fakt(g, "Beginn") === sollB, fakt(g, "Beginn"));
+  pruefe(`ganztägig ${beginn}: Ende nur als Datum`, fakt(g, "Ende") === sollE, fakt(g, "Ende"));
+  pruefe(`ganztägig ${beginn}: nirgends „Uhr“`, 
+    alsMarkdown([zettelFuer(g, kontext())]).split("\n").filter((z) => /^\| (Beginn|Ende) \|/.test(z)).length === 2
+    && !alsMarkdown([zettelFuer(g, kontext())]).split("\n").some((z) => /^\| (Beginn|Ende) \|.*(Uhr|\d\d:\d\d)/.test(z)));
+  pruefe(`ganztägig ${beginn}: kein Signal „ohne Uhrzeit“`, !/ohne Uhrzeit/.test(signale(g)), signale(g));
+}
+// ganztaegig mit Zeitstempel im Frontmatter: Datum in site.zeitzone, wie auf der Seite.
+const mitZeit = termin({ beginn: new Date("2026-12-05T00:00:00+01:00"), ganztaegig: true });
+pruefe("ganztägig mit Zeitstempel: Datum in Berliner Zeit, ohne Uhr", fakt(mitZeit, "Beginn") === "Sa., 05.12.2026", fakt(mitZeit, "Beginn"));
+// Datum ohne Uhrzeit, aber nicht ganztägig: Datum stimmt, und der Zettel sagt, dass die Seite eine Uhrzeit erfindet.
+const ohneFlag = { ...termin({ beginn: new Date("2027-06-04") }), frontmatter: "beginn: 2027-06-04\n" };
+pruefe("Datum ohne Uhrzeit, nicht ganztägig: nur das Datum", fakt(ohneFlag, "Beginn") === "Fr., 04.06.2027", fakt(ohneFlag, "Beginn"));
+pruefe("Datum ohne Uhrzeit, nicht ganztägig → Signal", /Datum ohne Uhrzeit/.test(signale(ohneFlag)), signale(ohneFlag));
+pruefe("Gegenfall: Termin mit Uhrzeit → kein Signal „ohne Uhrzeit“", !/ohne Uhrzeit/.test(signale(termin())));
+pruefe("nurDatum: reines Datum, auch in Anführungszeichen", nurDatum("beginn: 2027-06-04\n", "beginn") && nurDatum("beginn: '2027-06-04'", "beginn"));
+pruefe("nurDatum: Zeitstempel und anderes Feld zählen nicht",
+  !nurDatum("beginn: 2027-06-04T20:00:00+02:00", "beginn") && !nurDatum("erstelltAm: 2027-06-04", "beginn") && !nurDatum("beginn: 2027-06-04", "ende"));
 
 /* --- Signale, je mit Gegenfall --------------------------------------- */
 const nurAggregator = termin({
@@ -115,6 +147,9 @@ pruefe("echter Bestand: jeder Termin hat einen Beginn mit Beleg", z.length > 5 &
   z.filter((x) => !(x.fakten.find((f) => f.name === "Beginn")?.belege.length)).map((x) => x.pfad).join(", "));
 pruefe("echter Bestand: Orte werden aufgelöst", z.some((x) => /,\s*\d{4,5} /.test(x.fakten.find((f) => f.name === "Ort")?.wert ?? "")));
 pruefe("belegeFuer liest echte Felder", belegeFuer(echt[0].daten!, "beginn").length > 0);
+const echtGanz = z.filter((x, i) => echt[i].daten!.ganztaegig);
+pruefe("echter Bestand: ganztägige Termine vorhanden und ohne Uhrzeit", echtGanz.length > 0 && echtGanz.every((x) => !/Uhr/.test(x.fakten.find((f) => f.name === "Beginn")!.wert)),
+  echtGanz.map((x) => `${x.pfad}: ${x.fakten.find((f) => f.name === "Beginn")?.wert}`).join(", "));
 
 console.log(`\n${bestanden} Prüfungen bestanden, ${fehler.length} fehlgeschlagen`);
 for (const f of fehler) console.log(`  FEHLER  ${f}`);
