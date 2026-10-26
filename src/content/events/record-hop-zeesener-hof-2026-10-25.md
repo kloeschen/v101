@@ -19,7 +19,7 @@ preise:
     waehrung: EUR
     hinweis: Spende ab 6 Euro
 genres: [rocknroll, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/record-hop-62
 redaktionsnotiz: >-

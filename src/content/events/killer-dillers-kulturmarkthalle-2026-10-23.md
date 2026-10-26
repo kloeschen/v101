@@ -18,7 +18,7 @@ preise:
     betrag: 12
     waehrung: EUR
 genres: [rocknroll, jump-blues]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/killer-dillers-5
 redaktionsnotiz: >-
