@@ -51,6 +51,7 @@ Stand der Spalte „maschinenlesbar": Abruf vom 2026-09-23, gezählt wurden
 | [District 28](https://www.district28.ch/) | Schweiz (Siebnen, Kanton Schwyz) | Haus | nein | Programm auf der Startseite, überwiegend Metal und Punk; einmal im Jahr das Rockabilly/Rock'n'Roll Festival (2026: 12. Ausgabe am 28.11.). Uhrzeit nur bei Ticketino, das Haus nennt sie nicht (2026-10-13) |
 | [Rockabilly Mafia, Termine](https://rockabillymafia.de/) | Schleswig-Holstein (Elmshorn), Niedersachsen | Band | ja, GigPress-Feed (`/?feed=gigpress`) | Terminliste auf der Startseite, je Termin mit Link auf das Haus; jährliches Weihnachtskonzert im Stadttheater Elmshorn. Regioactive antwortet Skripten mit 403 (2026-10-13). Die Seitenleiste zeigt nur fünf Termine, der Feed alle, mit Uhrzeit und Adresse (2026-10-22) |
 | [Boogie Sunshines Rosenheim, Terminkalender](https://bwcro.de/events) | Bayern (Rosenheim) | Verein | ja, „The Events Calendar“ (`/wp-json/tribe/events/v1/events`) | Trainings, Kurse, Vereinsfeiern und öffentliche Partys im selben Kalender; Uhrzeit, Preis und Ort der Partys oft nur im Flyer auf der Detailseite. Gefunden über boogie.at (2026-10-15) |
+| [Axel Zwingenberger, Tourdaten](https://www.boogiewoogie.net/tour) | überregional (DE, AT) | Musiker | nein, Liste lädt erst im Browser | Boogie-Woogie-Klavier, rund zwei Monate im Voraus, je Termin Uhrzeit, Haus mit Adresse und Ticketlink, kein Preis. Konzerthäuser und Kleinkunstbühnen außerhalb der übrigen Quellen (2026-10-27) |
 | Terminlisten der Bands im Register (`links.website`) | überregional | Band | je Band | Boppin'B führt eine Live-Seite (Bandsintown-Widget, siehe Fallen); Reservix-Bandlisten antworteten Skripten mit 403 (am 2026-09-27 mit Browser-Kennung: 200) |
 
 **Eine neue Quelle** kommt als Zeile in diese Tabelle, im selben PR wie
@@ -469,6 +470,13 @@ Fehler verursacht oder beinahe verursacht.
   Seite, sondern als toter Link plus neuer Titel. Der Suchlauf gleicht
   die boogie.at-Liste deshalb auch gegen die Termine im Register ab;
   `links:extern` meldet den toten Link, aber nicht die Absage.
+- **boogie.at: Konzerteinträge gegen die Seite des Künstlers lesen.** Am
+  2026-10-27 stand dort ein Konzert „Axel Zeingenber & Michael Pewny" am
+  19.12.2026 in der Burg Perchtoldsdorf. Der Name ist vermutlich falsch
+  geschrieben (Axel Zwingenberger), aber dessen Tourseite nennt den Abend
+  nicht, und der Kalender der Burg auch nicht. Ein Konzert, das allein
+  boogie.at führt, ist kein Posten — erst die Tourseite des Künstlers oder
+  das Haus öffnen.
 - **boogie.at: „Person/Organisation" kann der DJ sein.** Bei der Boogie
   Party im Mostlandhof Purgstall (05.05.2027) steht dort „DJ. K.", der
   Flyer nennt als Veranstalter die „Sport Union (Sektion Boogie Woogie)"
