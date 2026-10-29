@@ -69,17 +69,17 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.boogielions.at/component/content/article/74-boogie-halloween-31-10-2026?catid=2&Itemid=101
     titel: Boogie Halloween - 31.10.2026 (Boogie Lions)
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-10-29
     felder: [beginn, ort, djs, veranstalter, veranstalterUrl, eintritt, preise, name, aliases, kurzbeschreibung, links, durchfuehrung, genres, body:termin, body:eintritt]
     art: offiziell
   - url: https://www.boogielions.at/images/Halloween-20261031-400.jpg
     titel: Flyer Boogieparty Halloween, 31.10.2026 (Boogie Lions)
-    abgerufenAm: 2026-09-28
+    abgerufenAm: 2026-10-29
     felder: [beginn, ort, djs, eintritt, preise, name, kurzbeschreibung, body:termin, body:eintritt]
     art: offiziell
   - url: https://www.boogielions.at/veranstaltungen
     titel: Veranstaltungen (Boogie Lions)
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-10-29
     felder: [beginn, djs, veranstalter, veranstalterUrl, reihe, reiheName, aliases, genres, body:termin, body:reihe]
     art: offiziell
   - url: https://www.boogielions.at/component/content/article/72-boogie-party-19-09-2026?catid=2&Itemid=101
@@ -89,7 +89,7 @@ quellen:
     art: offiziell
   - url: https://www.boogielions.at/
     titel: Boogie Lions
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-10-29
     felder: [veranstalter, veranstalterUrl, reihe, reiheName, genres, body:reihe]
     art: offiziell
 ---
