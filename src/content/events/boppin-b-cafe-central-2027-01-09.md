@@ -53,7 +53,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://cafecentral.de/konzert/goppin-b/
     titel: boppin b. (Café Central Weinheim)
-    abgerufenAm: 2026-09-27
+    abgerufenAm: 2026-10-30
     felder: [beginn, ort, lineupBands, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/boppin-b-weinheim-E6K26Z6
