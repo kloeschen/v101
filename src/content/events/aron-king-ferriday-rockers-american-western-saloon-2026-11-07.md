@@ -64,17 +64,17 @@ quellen:
     art: aggregator
   - url: https://www.western-saloon.de/weeklyflyer/2026/7.11.2026AronKing.jpg
     titel: Flyer Aron King & his Ferriday Rockers, 7. November 2026 (American Western Saloon)
-    abgerufenAm: 2026-09-27
+    abgerufenAm: 2026-10-30
     felder: [beginn, eintritt, preise, ort, lineupWeitere, body:termin]
     art: offiziell
   - url: https://www.western-saloon.de/weeklyspecials.html
     titel: Weekly Specials (American Western Saloon Berlin)
-    abgerufenAm: 2026-09-27
+    abgerufenAm: 2026-10-30
     felder: [beginn, ort, lineupWeitere, durchfuehrung, body:termin]
     art: offiziell
   - url: https://www.western-saloon.de/veranstaltungen.html
     titel: Veranstaltungen 2026 (American Western Saloon Berlin)
-    abgerufenAm: 2026-09-27
+    abgerufenAm: 2026-10-30
     felder: [beginn, eintritt, body:termin]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/guide
