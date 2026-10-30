@@ -66,7 +66,7 @@ quellen:
     art: museum
 ---
 
-Ein Bleistiftrock ist ein körpernaher Rock mit geradem Schnitt, der knapp unter dem Knie endet. Der Name kommt von den Proportionen: lang und dünn wie ein Bleistift. In der Vintage-Mode steht er für die zweite, seltener erzählte Hälfte der fünfziger Jahre — die schmale Silhouette neben der weiten, die der [Petticoat](/lexikon/petticoat/) trägt.
+Ein Bleistiftrock ist ein körpernaher Rock mit geradem Schnitt, der knapp unter dem Knie endet. Der Name kommt von den Proportionen: lang und dünn wie ein Bleistift. In der [Vintage](/lexikon/vintage/)-Mode steht er für die zweite, seltener erzählte Hälfte der fünfziger Jahre — die schmale Silhouette neben der weiten, die der [Petticoat](/lexikon/petticoat/) trägt.
 
 ## Schnitt eines Bleistiftrocks
 
