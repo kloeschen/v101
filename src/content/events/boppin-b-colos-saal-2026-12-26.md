@@ -57,7 +57,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.colos-saal.de/komplettes-programm/programm-nach-genres/rockabilly/boppin-b-4290.html
     titel: Boppin' B Rockabilly X-Mas Wipe-Out (Colos-Saal Aschaffenburg)
-    abgerufenAm: 2026-09-27
+    abgerufenAm: 2026-10-30
     felder: [beginn, ort, preise, eintritt, ticketUrl, lineupBands, lineupWeitere, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.reservix.de/tickets-boppinb/t3454
