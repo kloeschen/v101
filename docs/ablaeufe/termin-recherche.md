@@ -544,6 +544,19 @@ Fehler verursacht oder beinahe verursacht.
   des Artikels (2026-10-08); Eventim, koelnticket und ticket.io brachen
   aus der Cloud ab oder zeigten eine Sicherheitsabfrage. Anderes Abrufwerkzeug nehmen, nicht die Quelle
   weglassen.
+- **Nachprüfung (0b) ohne offizielle Quelle für `beginn`** (2026-10-30).
+  Die Record Hops im Rathaus Friedrichshagen (08.11., 06.12.) belegen
+  `beginn` nur über Rockin' Wildcat; das Rathaus ist `offiziell`, führt
+  den Termin aber nicht und trägt kein `beginn` in `felder`. Ein Lauf
+  kann solche Termine nicht nachprüfen: Ein Aggregatorabruf zählt nicht
+  (`src/lib/pruefung.ts`), und `beginn` in die `felder` einer Seite zu
+  schreiben, die den Termin nicht nennt, wäre ein falscher Beleg. Sie
+  bleiben im Abschnitt „Überfällige Prüfungen" stehen, bis die Freigabe
+  `geprueftAm` setzt. Überspringen, im PR vermerken, nicht jedes Mal neu
+  untersuchen. Dasselbe gilt für die Abende der Rock Dock Teddys,
+  solange web.archive.org aus der Cloud abbricht: Die offizielle Quelle
+  ist dort die Archivkopie, und die http-Fassung der Vereinsseite lässt
+  sich lesen, aber nicht zitieren (Schema verlangt https).
 
 ## Auswertung nach vier Wochen
 
