@@ -58,7 +58,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://privatclub-berlin.de/event/boppin-b-2-2-2-2-2-2-2-2/
     titel: Boppin' B, 27. Dezember (Privatclub Berlin)
-    abgerufenAm: 2026-10-01
+    abgerufenAm: 2026-11-01
     felder: [beginn, ort, veranstalter, lineupBands, eintritt, preise, ticketUrl, genres, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:musik]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/events/boppin-b-5
