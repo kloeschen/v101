@@ -63,7 +63,7 @@ quellen:
     art: aggregator
   - url: https://www.rathaus-friedrichshagen.de/veranstaltungen.php
     titel: Veranstaltungen (Rathaus Friedrichshagen)
-    abgerufenAm: 2026-09-27
+    abgerufenAm: 2026-11-04
     felder: [ort, body:termin]
     art: offiziell
 ---
