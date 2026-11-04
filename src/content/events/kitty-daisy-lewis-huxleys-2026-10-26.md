@@ -15,7 +15,7 @@ lineupWeitere: [Kitty, Daisy & Lewis]
 eintritt: unveroeffentlicht
 ticketUrl: https://www.eventim.de/noapp/event/kitty-daisy-lewis-germany-tour-2026-huxleys-neue-welt-21749879/
 genres: [rocknroll, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://huxleysneuewelt.de/event/2026-10-26-kitty-daisy-lewis
 redaktionsnotiz: >-
