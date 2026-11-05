@@ -49,7 +49,7 @@ quellen:
     art: aggregator
   - url: https://www.wildatheartberlin.de/concerts.php
     titel: Konzertkalender (Wild at Heart Berlin)
-    abgerufenAm: 2026-10-01
+    abgerufenAm: 2026-11-05
     felder: [beginn, ort, lineupWeitere, djs, genres, eintritt, kurzbeschreibung, body:termin, body:musik]
     art: offiziell
   - url: https://www.wildatheartberlin.de/club.htm
