@@ -58,7 +58,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.lido-berlin.de/events/2026-12-05-guana-batz
     titel: Guana Batz, 5. Dezember 2026 (Lido Berlin)
-    abgerufenAm: 2026-10-01
+    abgerufenAm: 2026-11-07
     felder: [beginn, ort, veranstalter, lineupWeitere, eintritt, preise, ticketUrl, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:musik]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/events/guana-batz-3
