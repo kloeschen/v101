@@ -69,7 +69,7 @@ quellen:
     art: offiziell
   - url: https://boogie.at/sites/default/files/medien/event/2025/1000120230.jpg
     titel: Flyer Weihnachts-Boogie & Discofox Party, 05.12.2026 (Hippmann, auf BOOGIE.at)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-07
     felder: [beginn, ort, veranstalter, djs, eintritt, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt]
     art: offiziell
   - url: https://boogie.at/event/chrismas-big-boogie-und-discofox-party
@@ -79,7 +79,7 @@ quellen:
     art: aggregator
   - url: https://www.tanzschule.at/newsbeitrag/big-boogie-discofox-party/
     titel: Big Boogie & Discofox-Party 2026 (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-07
     felder: [veranstalter, reihe, reiheName, body:reihe]
     art: offiziell
 ---
