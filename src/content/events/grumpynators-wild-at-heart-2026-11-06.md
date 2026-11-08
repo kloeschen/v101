@@ -14,7 +14,7 @@ lineupWeitere: [Grumpynators, Kollision]
 djs: [DJ Skalex]
 eintritt: unveroeffentlicht
 genres: [psychobilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/grumpynators
 redaktionsnotiz: >-

@@ -58,7 +58,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
     titel: Fox & Boogie Nacht – Donnerstags beim Hippmann in Regau (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-16
+    abgerufenAm: 2026-11-08
     felder: [beginn, ort, veranstalter, veranstalterUrl, djs, eintritt, genres, name, aliases, kurzbeschreibung, durchfuehrung, links, reihe, reiheName, body:termin, body:abend, body:reihe]
     art: offiziell
 ---
