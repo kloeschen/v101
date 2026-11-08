@@ -60,7 +60,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.asb-bahnhof-barsinghausen.de/2026/05/19/12-12-2026-boogielicious/
     titel: 12.12.2026 – Boogielicious (ASB-Bahnhof Barsinghausen)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-08
     felder: [beginn, ort, preise, eintritt, lineupWeitere, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://asb-bahnhof.reservix.de/tickets-boogielicious-deutsch-niederlaendisches-boogie--blues-und-jazz-trio-in-barsinghausen-asb-bahnhof-barsinghausen-am-12-12-2026/e2583285
