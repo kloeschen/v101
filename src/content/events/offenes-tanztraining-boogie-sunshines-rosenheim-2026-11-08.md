@@ -55,17 +55,17 @@ redaktionsnotiz: >-
 quellen:
   - url: https://bwcro.de/event/offenes-tanztraining-der-boogie-sunshines-5/
     titel: Offenes Tanztraining der Boogie Sunshines (1. BWC Rosenheim 2000 e.V.)
-    abgerufenAm: 2026-10-15
+    abgerufenAm: 2026-11-08
     felder: [beginn, ende, ort, region, veranstalter, veranstalterUrl, djs, eintritt, name, kurzbeschreibung, durchfuehrung, links, body:termin, body:abend]
     art: offiziell
   - url: https://bwcro.de/wp-content/uploads/2026/08/20260821-2.jpg
     titel: Flyer Offenes Tanztraining, 08.11.2026 (Boogie Sunshines Rosenheim)
-    abgerufenAm: 2026-10-15
+    abgerufenAm: 2026-11-08
     felder: [beginn, ende, ort, veranstalter, djs, eintritt, genres, name, aliases, kurzbeschreibung, body:termin, body:abend]
     art: offiziell
   - url: https://bwcro.de/wp-json/tribe/events/v1/events?start_date=2026-10-15
     titel: Terminkalender des 1. BWC Rosenheim 2000 e.V. (Schnittstelle)
-    abgerufenAm: 2026-10-15
+    abgerufenAm: 2026-11-08
     felder: [beginn, ende, ort, body:termin]
     art: offiziell
 ---
