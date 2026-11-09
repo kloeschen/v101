@@ -60,6 +60,14 @@ redaktionsnotiz: >-
   Tanzabend", Regel Markus 2026-10-03; "Boogie" als Kurzform des Tanzes
   steht im Lexikoneintrag). Seite am 2026-10-12 erneut abgerufen,
   Datumszeile unveraendert ("Sa., 21.11.2026 - 17:00").
+  NACHPRUEFUNG 2026-11-09: Der Veranstaltungskalender der Stadt
+  Traiskirchen fuehrt den Termin jetzt unter eigener Adresse
+  (/boogie-cats-tanzparty00/): "Beginn: 21. November 2026, 17 Uhr",
+  "Ende: 21. November 2026, 20 Uhr", Wolfstrasse 18, 2514 Moellersdorf,
+  "Eintritt mit Reservierung: EUR 5,00, Tageskassa: EUR 8,00". Als
+  offizielle Quelle mit `beginn` ergaenzt. Das Ende 20 Uhr ist nicht
+  eingetragen und der Text ("zweite Quelle nicht gefunden") nicht
+  angepasst -- beides gemeldet, Markus entscheidet.
   Nicht gefuellt: ende, djs, ticketUrl, kapazitaet, barrierefrei,
   kinder, drinnenDraussen.
 quellen:
@@ -72,6 +80,11 @@ quellen:
     titel: Boogie Cats – Tanzparty (Stadtgemeinde Traiskirchen)
     abgerufenAm: 2026-10-02
     felder: [aliases, body:eintritt, body:reihe]
+    art: offiziell
+  - url: https://www.traiskirchen.gv.at/veranstaltungen/veranstaltungsdetails/boogie-cats-tanzparty00/
+    titel: Boogie Cats – Tanzparty, 21. November 2026 (Stadtgemeinde Traiskirchen)
+    abgerufenAm: 2026-11-09
+    felder: [beginn, ort, eintritt, preise, body:termin]
     art: offiziell
 ---
 
