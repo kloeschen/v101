@@ -57,7 +57,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.buergerhaeuser-dreieich.de/programm/veranstaltungen/silvestersause
     titel: Silvestersause, 31.12.2026 (Bürgerhäuser Dreieich)
-    abgerufenAm: 2026-10-06
+    abgerufenAm: 2026-11-10
     felder: [beginn, ort, veranstalter, veranstalterUrl, preise, eintritt, ticketUrl, lineupBands, lineupWeitere, genres, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.buergerhaeuser-dreieich.de/programm/veranstaltungen
@@ -72,7 +72,7 @@ quellen:
     art: offiziell
   - url: https://www.boppinb.de/live
     titel: Live – Tourdaten (Boppin'B, offizielle Website, Bandsintown-Widget)
-    abgerufenAm: 2026-10-06
+    abgerufenAm: 2026-11-10
     felder: [beginn, ort, aliases, lineupBands, durchfuehrung, body:termin]
     art: offiziell
 ---
