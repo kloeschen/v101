@@ -482,6 +482,21 @@ Fehler verursacht oder beinahe verursacht.
   21.08.2027 stimmen alle überein. Die Liste ist nur über http
   erreichbar (https: abgelaufenes Zertifikat), zählt also nicht als
   Quelle; der Eintrag folgt dem Flyer und nennt den Widerspruch.
+  **Nachtrag 2026-11-10:** Dieselbe Liste führt die Boogie-Party auf der
+  Pielachtanzterrasse als „19.06.2026“, mitten zwischen Terminen von
+  2027; boogie.at sagt „Sa., 19.06.2027“, und nur 2027 passt zum
+  Samstag. Eine Jahreszahl in einer Hausliste ist also nicht von selbst
+  richtiger als der Kalender — Wochentag gegenrechnen.
+- **boogie.at führt denselben Abend mitunter doppelt** (2026-11-10): Die
+  Boogieparty im Aufriss Mainburg am 13.03.2027 steht unter
+  `/event/boogieparty-22` und `/event/boogieparty-23` mit identischen
+  Angaben. Zwei Adressen sind nicht zwei Termine.
+- **Terminlisten mit Wochentag, aber ohne Jahr, können aus einem
+  Vorjahr übernommen sein.** Der Newsbeitrag zum West Coast Swing Social
+  der Tanzschule Hippmann (2026-11-10) nennt „Freitag 4. Oktober“ — 2026
+  ein Sonntag — neben „Freitag, 6. November“ und „Freitag, 4. Dezember“,
+  die zu 2026 passen. Jeden Termin einzeln gegenrechnen, nicht vom
+  ersten auf alle schließen.
 - **Tanzclub Harlekin: die Zeitangabe ist oft ein Textbaustein.** Auf
   der Veranstaltungsseite des Vereins steht unter fast jedem Abend
   derselbe Block („Tanzen wie früher … DISCOFOX, SCHLAGER, OLDIES,
