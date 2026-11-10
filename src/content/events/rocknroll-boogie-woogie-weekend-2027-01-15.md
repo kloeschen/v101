@@ -108,7 +108,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.pullmancity.de/events-shows-musik/events/rocknroll-boogie-woogie
     titel: Rock 'n' Roll & Boogie Woogie Weekend, 15.–16. Januar 2027 (Pullman City)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-10
     felder: [beginn, ende, ort, eintritt, preise, veranstalter, veranstalterUrl, genres, lineupWeitere, programm, name, kurzbeschreibung, durchfuehrung, body:termin, body:programm, body:eintritt]
     art: offiziell
   - url: https://www.pullmancity.de/events-shows-musik/events

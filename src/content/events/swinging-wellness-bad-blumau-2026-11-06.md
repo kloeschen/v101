@@ -125,7 +125,7 @@ preise:
     hinweis: pro Person; Samstagsparty mit Livemusik, DJs und Shows
 ticketUrl: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
 genres: [boogie-woogie-tanz, lindy-hop, west-coast-swing]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.erleebnisse.at/Meine-Events-Termine/Swinging-Wellness/index.php/
 redaktionsnotiz: >-
