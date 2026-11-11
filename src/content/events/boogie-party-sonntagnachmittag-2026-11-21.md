@@ -38,6 +38,13 @@ redaktionsnotiz: >-
   ("Boogie Cats - Tanzparty", 17-20 Uhr, Wolfstrasse 18, 2514
   Moellersdorf, Eintritt mit Reservierung 5 Euro, Tageskassa 8 Euro), den
   21.11. nicht. Eine eigene Website des Vereins habe ich nicht gefunden.
+  NACHPRUEFUNG 2026-11-11: Der Kalender der Stadt fuehrt den 21.11.
+  inzwischen mit eigener Seite (boogie-cats-tanzparty00): "Beginn: 21.
+  November 2026, 17 Uhr", "Ende: 21. November 2026, 20 Uhr", Wolfstrasse
+  18, 2514 Moellersdorf, Eintritt mit Reservierung 5 Euro, Tageskassa 8
+  Euro. Datum, Beginn, Ort und Preise stimmen mit dem Eintrag. Als Quelle
+  nur fuer `beginn` und `ort` eingetragen; das Ende (20 Uhr) ist nicht
+  uebernommen, das entscheidet die Freigabe.
   PREISE: Tageskassa 8 Euro, Vorreservierung 5 Euro. ENTSCHIEDEN
   2026-10-12 (Markus, zu PR #198, nach Abweichung des Gegenlesers): Die
   Sammelseite nennt "Eintritt: Tageskassa EUR 8.- / Vorreservierung
@@ -72,6 +79,11 @@ quellen:
     titel: Boogie Cats – Tanzparty (Stadtgemeinde Traiskirchen)
     abgerufenAm: 2026-10-02
     felder: [aliases, body:eintritt, body:reihe]
+    art: offiziell
+  - url: https://www.traiskirchen.gv.at/veranstaltungen/veranstaltungsdetails/boogie-cats-tanzparty00/
+    titel: Boogie Cats – Tanzparty, 21. November 2026 (Stadtgemeinde Traiskirchen)
+    abgerufenAm: 2026-11-11
+    felder: [beginn, ort]
     art: offiziell
 ---
 
