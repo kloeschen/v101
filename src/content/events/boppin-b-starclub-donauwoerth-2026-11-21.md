@@ -49,7 +49,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://starclub25.live/ticketsboppinb
     titel: Boppin`B, 21.11.2026 (Starclub Donauwörth)
-    abgerufenAm: 2026-10-10
+    abgerufenAm: 2026-11-11
     felder: [beginn, ort, preise, eintritt, ticketUrl, lineupBands, genres, name, kurzbeschreibung, durchfuehrung, links, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://starclub25.live/impressum

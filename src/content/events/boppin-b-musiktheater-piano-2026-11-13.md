@@ -70,7 +70,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.musiktheater-piano.de/events/boppin-b-live-20261113/
     titel: Boppin' B Live 2026, Support Mr. Motor, 13. November 2026 (Musiktheater Piano)
-    abgerufenAm: 2026-10-10
+    abgerufenAm: 2026-11-11
     felder: [beginn, ort, veranstalter, preise, eintritt, ticketUrl, lineupBands, lineupWeitere, genres, name, aliases, kurzbeschreibung, durchfuehrung, links, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://3dogentertainment.reservix.de/p/reservix/event/2489152
