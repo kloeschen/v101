@@ -76,8 +76,13 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/boogie-swing-ball/
     titel: Boogie & Swing Ball 2027 (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-14
+    abgerufenAm: 2026-11-11
     felder: [ort, veranstalter, veranstalterUrl, lineupWeitere, djs, eintritt, preise, ticketUrl, links, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:lineup, body:eintritt]
+    art: offiziell
+  - url: https://ticketing.nimbuscloud.at/shop/2014/boogie-swing-ball-2027-301
+    titel: Ticketshop Boogie & Swing Ball 2027 (Tanzschule Hippmann GmbH)
+    abgerufenAm: 2026-11-11
+    felder: [beginn]
     art: offiziell
   - url: https://www.tanzschule.at/events/
     titel: Events (Tanzschule Hippmann)
