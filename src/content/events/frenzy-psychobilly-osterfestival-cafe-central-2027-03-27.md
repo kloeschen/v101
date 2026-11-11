@@ -69,7 +69,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://cafecentral.de/konzert/frenzy/
     titel: frenzy (Café Central Weinheim)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-11
     felder: [beginn, ort, lineupWeitere, djs, genres, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/frenzy-drekhund-weinheim-E83Y9Z0
@@ -84,7 +84,7 @@ quellen:
     art: aggregator
   - url: https://cafecentral.de/
     titel: Programm (Café Central Weinheim, Startseite)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-11
     felder: [beginn, body:einordnung]
     art: offiziell
 ---

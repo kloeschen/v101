@@ -54,7 +54,7 @@ quellen:
     art: aggregator
   - url: https://boogie.at/sites/default/files/medien/event/2026/1000177988.jpg
     titel: Flyer Big Boogie & Discofox Party, 13. März 2027 (auf BOOGIE.at)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-11
     felder: [beginn, ort, djs, name, kurzbeschreibung, reihe, reiheName, body:termin, body:reihe]
     art: offiziell
   - url: https://www.tanzschule.at/newsbeitrag/big-boogie-discofox-party/
