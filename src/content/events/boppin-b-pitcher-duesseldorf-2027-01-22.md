@@ -54,7 +54,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://pitcher29.com/veranstaltungen-pitcher-duesseldorf/boppin-b-duesseldorf/
     titel: BOPPIN` B - Düsseldorf, 22. Januar 2027 (Pitcher Düsseldorf)
-    abgerufenAm: 2026-10-06
+    abgerufenAm: 2026-11-12
     felder: [beginn, ort, veranstalter, eintritt, ticketUrl, lineupBands, name, aliases, kurzbeschreibung, durchfuehrung, body:termin]
     art: offiziell
   - url: https://pitcher29.com/wp-content/uploads/2026/08/27-Boppin-B-2027.jpg
