@@ -82,7 +82,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.stadtgaleriekultur.info/va/rock-n-boogie/
     titel: ROCK'N'BOOGIE (KulturQuadrat in der Stadtgalerie)
-    abgerufenAm: 2026-10-14
+    abgerufenAm: 2026-11-12
     felder: [beginn, ort, eintritt, preise, ticketUrl, drinnenDraussen, reihe, reiheName, name, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://image.jimcdn.com/app/cms/image/transf/none/path/sa7eb66c5406d01f3/image/idd1dfd09357f2c1c/version/1790077001/image.png
@@ -92,7 +92,7 @@ quellen:
     art: offiziell
   - url: https://www.stadtgaleriekultur.info/events/kalender/
     titel: Kalender (KulturQuadrat in der Stadtgalerie)
-    abgerufenAm: 2026-10-14
+    abgerufenAm: 2026-11-12
     felder: [beginn, ort, typ, name, kurzbeschreibung, durchfuehrung, genres, body:termin]
     art: offiziell
   - url: https://boogie.at/event/boogieball-0
