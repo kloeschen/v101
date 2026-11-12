@@ -52,7 +52,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://cafecentral.de/konzert/demented-are-go/
     titel: demented are go (Café Central Weinheim)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-12
     felder: [beginn, ort, lineupWeitere, djs, genres, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:einordnung]
     art: offiziell
   - url: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/demented-are-go-les-weinheim-ESCC32X
