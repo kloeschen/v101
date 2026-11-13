@@ -21,6 +21,9 @@ durchfuehrung: geplant
 links:
   website: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
 redaktionsnotiz: >-
+  NACHPRUEFUNG 2026-11-13: Seite der Tanzschule unveraendert -- "Do
+  26.11. DJ Joeseppe", "Musikbeginn: 20.00 Uhr", "EINTRITT FREI", Star
+  Movie Regau; kein Hinweis auf Absage.
   QUELLE: Seite der Tanzschule Hippmann zur Fox & Boogie Nacht in Regau,
   abgerufen 2026-10-16. Sie nennt "(Disco-) FOX & BOOGIE NACHT" in der
   "Tanz-Location im Star Movie Regau", "im Herbst 2026: EINTRITT FREI -
@@ -58,7 +61,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
     titel: Fox & Boogie Nacht – Donnerstags beim Hippmann in Regau (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-16
+    abgerufenAm: 2026-11-13
     felder: [beginn, ort, veranstalter, veranstalterUrl, djs, eintritt, genres, name, aliases, kurzbeschreibung, durchfuehrung, links, reihe, reiheName, body:termin, body:abend, body:reihe]
     art: offiziell
 ---
