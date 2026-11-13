@@ -27,6 +27,10 @@ durchfuehrung: geplant
 links:
   website: https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html
 redaktionsnotiz: >-
+  NACHPRUEFUNG 2026-11-13 (Tag des Abends): Programmseite des Hauses
+  unveraendert -- "Fr - 13.11.", "Eintritt 5 € inkl. Zutritt zu allen
+  Musikbereichen", "BoogieMix DJ Rockin´Daddy ab 19 Uhr GartenStadl";
+  kein Hinweis auf Absage.
   AKTUALITAETSBELEG dreifach, ohne Abweichung: Das Musikprogramm des
   Hauses (abgerufen 2026-09-30, "eingetragen bis So, 14.2.2027",
   beginnend mit "Mi - 30.09.") nennt "Fr - 13.11.", "BoogieMix", "DJ
@@ -74,7 +78,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html
     titel: Das aktuelle Musikprogramm (Haslinger Hof)
-    abgerufenAm: 2026-09-30
+    abgerufenAm: 2026-11-13
     felder: [beginn, ort, ortHinweis, djs, veranstalter, veranstalterUrl, eintritt, preise, name, aliases, kurzbeschreibung, links, reihe, reiheName, durchfuehrung, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://boogie.at/sites/default/files/medien/event/2026/1000105397.jpg

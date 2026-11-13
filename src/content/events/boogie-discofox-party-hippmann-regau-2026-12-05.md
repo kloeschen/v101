@@ -21,6 +21,11 @@ durchfuehrung: geplant
 links:
   website: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
 redaktionsnotiz: >-
+  NACHPRUEFUNG 2026-11-13: Flyer unveraendert abrufbar -- "Samstag
+  05.Dezember 2026", "DJ.K & DJ Walter", "Einlass 19.30 Uhr / Beginn
+  20.00 Uhr", Star Movie Regau. Die Seite der Tanzschule nennt weiter
+  "am Samstag, den 5.12. eine grosse Boogie & Fox-Nacht"; kein Hinweis
+  auf Absage.
   AKTUALITAETSBELEG: Die Seite der Tanzschule zur Fox & Boogie Nacht in
   Regau nennt "am Samstag, den 5.12. eine grosse Boogie & Fox-Nacht" --
   ohne Jahr, aber auf einer Seite, die ausdruecklich vom "Herbst 2026"
@@ -64,12 +69,12 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
     titel: Fox & Boogie Nacht – Donnerstags beim Hippmann in Regau (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-13
     felder: [ort, veranstalter, veranstalterUrl, eintritt, links, reihe, body:termin, body:reihe]
     art: offiziell
   - url: https://boogie.at/sites/default/files/medien/event/2025/1000120230.jpg
     titel: Flyer Weihnachts-Boogie & Discofox Party, 05.12.2026 (Hippmann, auf BOOGIE.at)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-13
     felder: [beginn, ort, veranstalter, djs, eintritt, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt]
     art: offiziell
   - url: https://boogie.at/event/chrismas-big-boogie-und-discofox-party
