@@ -73,6 +73,11 @@ quellen:
     abgerufenAm: 2026-10-02
     felder: [aliases, body:eintritt, body:reihe]
     art: offiziell
+  - url: https://www.traiskirchen.gv.at/veranstaltungen/veranstaltungsdetails/boogie-cats-tanzparty00/
+    titel: Boogie Cats – Tanzparty, 21. November 2026 (Stadtgemeinde Traiskirchen)
+    abgerufenAm: 2026-11-14
+    felder: [beginn]
+    art: offiziell
 ---
 
 Die Boogie-Party am Sonntagnachmittag im November 2026 ist ein Tanznachmittag des Union Tanzsportvereins Möllersdorf im [Kammgarnsaal](/locations/kammgarnsaal-traiskirchen/) in Traiskirchen, am Samstag, dem 21. November 2026, mit Beginn um 17 Uhr. Es ist der letzte von sechs Terminen, die der Verein für 2026 angekündigt hat.

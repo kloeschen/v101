@@ -28,7 +28,7 @@ preise:
     hinweis: laut Ticketshop zuzüglich 2,00 € Servicegebühr je Bestellung
 ticketUrl: https://3dogentertainment.reservix.de/p/reservix/event/2489152
 genres: [rocknroll, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.musiktheater-piano.de/events/boppin-b-live-20261113/
 redaktionsnotiz: >-

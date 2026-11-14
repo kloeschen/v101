@@ -78,12 +78,12 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.tanzschule.at/newsbeitrag/boogiefox2026/
     titel: Big Boogie + Fox Party 2026 (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-11-14
     felder: [beginn, ort, ortHinweis, veranstalter, veranstalterUrl, lineupWeitere, djs, eintritt, preise, ticketUrl, links, name, aliases, kurzbeschreibung, durchfuehrung, genres, body:termin, body:lineup, body:eintritt]
     art: offiziell
   - url: https://www.tanzschule.at/events/
     titel: Events (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-02
+    abgerufenAm: 2026-11-14
     felder: [beginn, veranstalter, aliases, body:termin]
     art: offiziell
   - url: https://www.tanzschule.at/hippmann7-die-tanzbar/
