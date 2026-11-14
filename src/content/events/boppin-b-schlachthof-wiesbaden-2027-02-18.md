@@ -57,7 +57,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://schlachthof-wiesbaden.de/events/boppin-b-2027
     titel: Boppin' B / Das Rock´n´roll Quartett, 18.02.2027 (Schlachthof Wiesbaden)
-    abgerufenAm: 2026-10-06
+    abgerufenAm: 2026-11-14
     felder: [beginn, ort, ortHinweis, preise, eintritt, ticketUrl, lineupBands, lineupWeitere, genres, name, aliases, kurzbeschreibung, durchfuehrung, veranstalter, veranstalterUrl, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.reservix.de/tickets-boppin-b-in-wiesbaden-schlachthof-wiesbaden-kesselhaus-am-18-2-2027/e2576318

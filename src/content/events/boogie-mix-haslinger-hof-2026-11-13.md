@@ -23,7 +23,7 @@ preise:
     waehrung: EUR
     hinweis: gilt für alle Musikbereiche des Hauses an diesem Abend
 genres: [boogie-woogie, rocknroll, rockabilly, swing]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html
 redaktionsnotiz: >-

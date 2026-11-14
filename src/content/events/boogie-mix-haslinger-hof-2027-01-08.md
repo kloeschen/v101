@@ -72,7 +72,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.haslinger-hof.de/de/tanzen-essen-erleben/musik-tanz-programm/aktuelles-musik-programm.html
     titel: Das aktuelle Musikprogramm (Haslinger Hof)
-    abgerufenAm: 2026-09-30
+    abgerufenAm: 2026-11-14
     felder: [beginn, ort, ortHinweis, djs, veranstalter, veranstalterUrl, eintritt, preise, name, aliases, kurzbeschreibung, links, reihe, reiheName, durchfuehrung, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://boogie.at/event/boogie-mix-3
