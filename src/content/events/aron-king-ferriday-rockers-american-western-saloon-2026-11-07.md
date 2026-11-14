@@ -17,7 +17,7 @@ preise:
     betrag: 15
     waehrung: EUR
 genres: [rocknroll, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/aron-king-his-ferriday-rockers
 redaktionsnotiz: >-
