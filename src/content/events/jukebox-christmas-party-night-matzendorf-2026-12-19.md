@@ -77,12 +77,12 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.simmatthi.at/images/veranstaltungsplakate/26_Dez_Jukebox_Christmas_Party_Night.jpg
     titel: Plakat Jukebox Christmas Party-Night, 19. Dezember 2026 (Simmatthi Boogie Woogie)
-    abgerufenAm: 2026-10-07
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, veranstalter, lineupWeitere, djs, eintritt, preise, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:abend]
     art: offiziell
   - url: https://www.simmatthi.at/buchen
     titel: Buchungsanfrage (Simmatthi Boogie Woogie)
-    abgerufenAm: 2026-10-07
+    abgerufenAm: 2026-11-15
     felder: [beginn, ticketUrl, eintritt, body:eintritt]
     art: offiziell
   - url: https://www.simmatthi.at/

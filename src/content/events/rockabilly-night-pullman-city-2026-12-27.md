@@ -97,7 +97,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.pullmancity.de/events-shows-musik/events/rockabilly-night
     titel: Rockabilly Night – Boogie Woogie meets Wild West (Pullman City)
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, ortHinweis, eintritt, preise, veranstalter, veranstalterUrl, lineupWeitere, djs, programm, genres, name, aliases, kurzbeschreibung, durchfuehrung, links, body:termin, body:programm, body:eintritt, body:umfeld]
     art: offiziell
   - url: https://www.pullmancity.de/events-shows-musik/events
