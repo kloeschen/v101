@@ -63,17 +63,17 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.stadttheater-elmshorn.de/index.php?auswahl=3093
     titel: Rockabilly Mafia „Traditionelles Adventssingen 2026“ (Stadttheater Elmshorn)
-    abgerufenAm: 2026-10-13
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, lineupWeitere, durchfuehrung, durchfuehrungHinweis, eintritt, name, aliases, kurzbeschreibung, links, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.stadttheater-elmshorn.de/index.php?info=Karteninfo
     titel: Karteninfo (Stadttheater Elmshorn)
-    abgerufenAm: 2026-10-13
+    abgerufenAm: 2026-11-15
     felder: [beginn, body:termin]
     art: offiziell
   - url: https://rockabillymafia.de/termine/
     titel: Termine (Rockabilly Mafia)
-    abgerufenAm: 2026-10-13
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, ausgabe, lineupWeitere, eintritt, aliases, kurzbeschreibung, body:termin]
     art: offiziell
   - url: https://rockabillymafia.de/2026/09/17/die-mafia-im-herbst-2026/

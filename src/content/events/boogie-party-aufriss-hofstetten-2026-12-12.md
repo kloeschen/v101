@@ -50,7 +50,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://boogie.at/sites/default/files/medien/event/2026/1000632285.jpg
     titel: Flyer Boogie-Party, Samstag 12.12. (Aufriss Mainburg, auf BOOGIE.at)
-    abgerufenAm: 2026-10-09
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, djs, genres, eintritt, name, durchfuehrung, body:termin, body:eintritt, body:abend]
     art: offiziell
   - url: https://boogie.at/event/boogieparty-20
