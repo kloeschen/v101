@@ -53,7 +53,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.huettenwerk.events/live-event-programm/196-boppin-b-the-riwwels-2026-12-11.html
     titel: Boppin`B & The Riwwels – Rockin` together (Hüttenwerk Michelstadt)
-    abgerufenAm: 2026-10-10
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, lineupBands, lineupWeitere, genres, ticketUrl, name, aliases, kurzbeschreibung, durchfuehrung, links, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://huettenwerk.ticket.io/zR3GHELr/

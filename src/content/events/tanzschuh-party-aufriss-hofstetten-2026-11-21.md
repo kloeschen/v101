@@ -57,7 +57,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://boogie.at/sites/default/files/medien/event/2026/1000108669.jpg
     titel: Flyer Tanzschuh-Party, 21. November 2026 (Tanzlokal Aufriss, auf BOOGIE.at)
-    abgerufenAm: 2026-10-09
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, djs, genres, eintritt, name, reihe, reiheName, durchfuehrung, body:termin, body:eintritt, body:abend]
     art: offiziell
   - url: https://boogie.at/event/tanzschuh-party-9

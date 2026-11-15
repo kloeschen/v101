@@ -21,7 +21,7 @@ preise:
     waehrung: EUR
 eintritt: beziffert
 genres: [boogie-woogie-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.tanzclub-harlekin.at/veranstaltungen
 redaktionsnotiz: >-

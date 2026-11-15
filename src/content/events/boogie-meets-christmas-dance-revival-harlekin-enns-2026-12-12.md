@@ -59,7 +59,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.tanzclub-harlekin.at/veranstaltungen
     titel: Veranstaltungen (Tanzclub Harlekin)
-    abgerufenAm: 2026-10-08
+    abgerufenAm: 2026-11-15
     felder: [beginn, ort, eintritt, preise, veranstalter, veranstalterUrl, links, reihe, reiheName, genres, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://boogie.at/event/christmas-dance-revival
