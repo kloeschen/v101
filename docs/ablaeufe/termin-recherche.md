@@ -516,6 +516,14 @@ Fehler verursacht oder beinahe verursacht.
   Ludwigsfelde; 2026-10-01). Solche Termine brauchen die Region
   Brandenburg, die es bis dahin nicht gab; der Suchlauf schreibt sie
   deshalb als eigenen Posten, nicht im Berliner Bündel.
+- **Zeesener Hof: neue Website, alte Terminseite tot.** Seit Herbst 2026
+  antwortet `/index.php/veranstaltungen-aktuelles/` mit 404; die neue
+  Startseite (`zeesenerhof.de`) lädt „Unsere nächsten Termine" und die
+  Ticketseite (`tickets.html`) erst per JavaScript — nur im Browser
+  rendern. Am 2026-11-17 standen dort nur Silvester 2026, kein Record Hop
+  vom 22.11., den Rockin' Wildcat weiter führt. Fehlt ein Abend auf der
+  neuen Seite, ist das keine Absage — das Haus führte schon vorher nicht
+  jeden Fremdtermin —, aber auch kein Beleg mehr.
 - **Kalender ist nicht Veranstalter.** boogie.at, Rockin' Wildcat und
   Reservix sammeln Termine anderer; sie gehören in `quellen[]`, nicht in
   `veranstalterUrl`. Seit dem 2026-09-24 führen neue Einträge Rockin'
