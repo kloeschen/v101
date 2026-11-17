@@ -21,7 +21,7 @@ preise:
     betrag: 5
     waehrung: EUR
 genres: [boogie-woogie-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.boogielions.at/component/content/article/74-boogie-halloween-31-10-2026?catid=2&Itemid=101
 redaktionsnotiz: >-
