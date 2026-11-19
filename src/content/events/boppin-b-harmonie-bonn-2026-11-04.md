@@ -20,7 +20,7 @@ preise:
     hinweis: laut Haus nur bei Abholung in der Harmonie bis einen Tag vor dem Konzert; Online-Tickets zuzüglich Gebühren
 ticketUrl: https://www.bonnticket.de/artist/boppin-b/?affiliate=5HB
 genres: [rocknroll]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.harmonie-bonn.de/veranstaltung/boppin-b-solid-as-a-rock-tour-2026/
 redaktionsnotiz: >-
