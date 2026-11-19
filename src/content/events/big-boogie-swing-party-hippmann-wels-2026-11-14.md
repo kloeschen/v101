@@ -27,7 +27,7 @@ preise:
 ticketUrl: https://www.tanzschule.at/newsbeitrag/boogiefox2026/
 drinnenDraussen: drinnen
 genres: [boogie-woogie-tanz, lindy-hop]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.tanzschule.at/newsbeitrag/boogiefox2026/
 redaktionsnotiz: >-
