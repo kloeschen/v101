@@ -15,7 +15,7 @@ region: niederoesterreich
 djs: [DJ Klaus]
 eintritt: unveroeffentlicht
 genres: [boogie-woogie-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 redaktionsnotiz: >-
   UHRZEIT einheitlich: boogie.at (Datumszeile "Sa., 21.11.2026 - 19:30")
   und der Flyer ("am Samstag den 21.11.2026 ab 19:30") stimmen ueberein.
