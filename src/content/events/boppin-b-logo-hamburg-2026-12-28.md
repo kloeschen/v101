@@ -48,7 +48,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.logohamburg.de/event/boppin-b_111609544/
     titel: Boppin' B, 28.12.2026 (Logo Hamburg)
-    abgerufenAm: 2026-10-06
+    abgerufenAm: 2026-11-22
     felder: [beginn, ort, preise, eintritt, ticketUrl, lineupBands, lineupWeitere, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://www.logohamburg.de/programm/
