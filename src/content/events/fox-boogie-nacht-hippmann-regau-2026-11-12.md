@@ -17,7 +17,7 @@ veranstalterUrl: https://www.tanzschule.at/
 djs: [DJ Walter]
 eintritt: frei
 genres: [discofox, boogie-woogie-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.tanzschule.at/newsbeitrag/fox-boogie-nacht-jeden-donnerstag-beim-hippmann-in-regau/
 redaktionsnotiz: >-
