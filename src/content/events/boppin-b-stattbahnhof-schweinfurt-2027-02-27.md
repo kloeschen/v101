@@ -54,7 +54,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.stattbahnhof.de/events/boppin-b/
     titel: Boppin' B, 27. Februar 2027 (Kulturhaus Stattbahnhof Schweinfurt)
-    abgerufenAm: 2026-10-06
+    abgerufenAm: 2026-11-23
     felder: [beginn, ort, ortHinweis, preise, eintritt, lineupBands, genres, name, kurzbeschreibung, durchfuehrung, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://script.stattbahnhof.net/cms/wp/?mec-ical-feed=1
