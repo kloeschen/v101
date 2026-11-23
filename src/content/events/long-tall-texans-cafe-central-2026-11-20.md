@@ -19,7 +19,7 @@ preise:
 eintritt: beziffert
 ticketUrl: https://loveyourartist.com/de/profiles/cafe-central-tocopilla-events-QVVS7L/events/long-tall-texans-cobra-weinheim-ECGPRXH
 genres: [psychobilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://cafecentral.de/konzert/long-tall-texans/
 redaktionsnotiz: >-
