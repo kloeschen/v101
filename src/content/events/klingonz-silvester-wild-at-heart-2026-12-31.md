@@ -50,17 +50,17 @@ quellen:
     art: aggregator
   - url: https://www.wildatheartberlin.de/concerts.php
     titel: Konzertkalender (Wild at Heart Berlin)
-    abgerufenAm: 2026-10-05
+    abgerufenAm: 2026-11-23
     felder: [beginn, ort, lineupWeitere, djs, genres, eintritt, name, aliases, kurzbeschreibung, body:termin, body:musik]
     art: offiziell
   - url: https://www.wildatheartberlin.de/club.htm
     titel: Club (Wild at Heart Berlin)
-    abgerufenAm: 2026-10-05
+    abgerufenAm: 2026-11-23
     felder: [beginn, body:termin]
     art: offiziell
   - url: https://www.wildatheartberlin.de/info.htm
     titel: Info (Wild at Heart Berlin)
-    abgerufenAm: 2026-10-05
+    abgerufenAm: 2026-11-23
     felder: [beginn, body:termin]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/guide

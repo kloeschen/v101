@@ -65,7 +65,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.lido-berlin.de/events/2026-06-30-demented-are-go-
     titel: Demented Are Go, 30. Januar 2027 (Lido Berlin)
-    abgerufenAm: 2026-10-05
+    abgerufenAm: 2026-11-23
     felder: [beginn, ort, veranstalter, lineupWeitere, eintritt, preise, ticketUrl, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:musik]
     art: offiziell
   - url: https://www.rockin-wildcat.com/rwc/events/demented-are-go-6
