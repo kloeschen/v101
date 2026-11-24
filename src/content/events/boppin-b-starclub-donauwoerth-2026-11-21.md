@@ -22,7 +22,7 @@ preise:
     waehrung: EUR
 ticketUrl: https://www.eventim-light.com/de/a/68383101953bfc2f71f50f0c/e/6a8ea7c8de97322707bfcd1a
 genres: [rocknroll, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://starclub25.live/ticketsboppinb
 redaktionsnotiz: >-

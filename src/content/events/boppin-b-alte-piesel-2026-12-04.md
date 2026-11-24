@@ -54,7 +54,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.altepiesel.de/
     titel: Alte Piesel – Termine, Boppin B, 04.12.2026
-    abgerufenAm: 2026-10-10
+    abgerufenAm: 2026-11-24
     felder: [beginn, ort, preise, eintritt, lineupBands, genres, name, aliases, kurzbeschreibung, durchfuehrung, links, body:termin, body:musik, body:einordnung]
     art: offiziell
   - url: https://rest.bandsintown.com/artists/id_310419/events?app_id=js_www.boppinb.de
