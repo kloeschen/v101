@@ -56,12 +56,12 @@ redaktionsnotiz: >-
 quellen:
   - url: https://bwcro.de/wp-content/uploads/2026/10/Vorsilvester_2026-quer-V2-2.jpg
     titel: Flyer Vorsilvester Party, 30.12.2026 (Boogie Sunshines Rosenheim)
-    abgerufenAm: 2026-10-15
+    abgerufenAm: 2026-11-24
     felder: [beginn, ort, veranstalter, djs, eintritt, preise, name, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:abend]
     art: offiziell
   - url: https://bwcro.de/event/vorsilvester-party/
     titel: Vorsilvester Party (1. BWC Rosenheim 2000 e.V.)
-    abgerufenAm: 2026-10-15
+    abgerufenAm: 2026-11-24
     felder: [beginn, ort, region, veranstalter, veranstalterUrl, name, durchfuehrung, links, body:termin]
     art: offiziell
   - url: https://bwcro.de/wp-json/tribe/events/v1/events?start_date=2026-10-15
