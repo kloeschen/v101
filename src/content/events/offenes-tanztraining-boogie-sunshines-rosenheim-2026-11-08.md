@@ -16,7 +16,7 @@ veranstalterUrl: https://bwcro.de/
 djs: [DJ Opa Franz]
 eintritt: frei
 genres: [boogie-woogie-tanz, rocknroll-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://bwcro.de/event/offenes-tanztraining-der-boogie-sunshines-5/
 redaktionsnotiz: >-
