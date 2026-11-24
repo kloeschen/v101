@@ -66,7 +66,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://fives.at/event/silvester-boogie-night-2026
     titel: Silvester Boogie Night 2026 (THE FIVES)
-    abgerufenAm: 2026-10-07
+    abgerufenAm: 2026-11-24
     felder: [beginn, ort, veranstalter, veranstalterUrl, djs, eintritt, preise, ticketUrl, genres, reihe, reiheName, links, name, aliases, kurzbeschreibung, durchfuehrung, body:termin, body:eintritt, body:abend, body:reihe]
     art: offiziell
   - url: https://fives.at/sites/default/files/bilder/event/Silvester-Boogie-Night-2026-v2.jpg

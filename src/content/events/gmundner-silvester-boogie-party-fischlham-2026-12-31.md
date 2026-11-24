@@ -66,7 +66,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://image.jimcdn.com/app/cms/image/transf/none/path/sa84da72958df021e/image/if99e578758ad1872/version/1777874935/image.jpg
     titel: Flyer Gmundner Silvester Boogie Party, 31. Dezember 2026 (BWC Gmunden)
-    abgerufenAm: 2026-10-14
+    abgerufenAm: 2026-11-24
     felder: [beginn, ort, djs, veranstalter, eintritt, preise, name, kurzbeschreibung, reihe, reiheName, durchfuehrung, genres, body:termin, body:eintritt, body:abend]
     art: offiziell
   - url: https://bwc-gmunden.jimdofree.com/club-aktivit%C3%A4ten/
