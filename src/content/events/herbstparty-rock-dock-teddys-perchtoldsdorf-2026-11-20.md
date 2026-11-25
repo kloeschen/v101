@@ -21,7 +21,7 @@ preise:
     waehrung: EUR
     hinweis: Platzreservierung beim Verein erbeten
 genres: [boogie-woogie-tanz, rocknroll-tanz]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 redaktionsnotiz: >-
   PREIS ENTSCHIEDEN 2026-10-15 (Markus, zu PR #226): 12 Euro nach
   boogie.at. Dort pflegt der Verein den Termin selbst, und der Eintrag ist
