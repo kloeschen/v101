@@ -79,8 +79,8 @@ quellen:
     art: aggregator
   - url: https://www.tanzschule.at/newsbeitrag/big-boogie-discofox-party/
     titel: Big Boogie & Discofox-Party 2026 (Tanzschule Hippmann)
-    abgerufenAm: 2026-10-02
-    felder: [veranstalter, reihe, reiheName, body:reihe]
+    abgerufenAm: 2026-11-25
+    felder: [beginn, veranstalter, reihe, reiheName, body:reihe]
     art: offiziell
 ---
 
