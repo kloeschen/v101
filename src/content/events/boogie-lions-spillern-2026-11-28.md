@@ -52,7 +52,7 @@ redaktionsnotiz: >-
 quellen:
   - url: https://www.boogielions.at/veranstaltungen
     titel: Veranstaltungen (Boogie Lions)
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-11-27
     felder: [beginn, veranstalter, veranstalterUrl, eintritt, reihe, reiheName, links, djs, name, kurzbeschreibung, durchfuehrung, genres, body:termin, body:eintritt, body:reihe]
     art: offiziell
   - url: https://boogie.at/event/boogie-party-44
@@ -67,7 +67,7 @@ quellen:
     art: offiziell
   - url: https://www.boogielions.at/
     titel: Boogie Lions
-    abgerufenAm: 2026-10-12
+    abgerufenAm: 2026-11-27
     felder: [veranstalter, veranstalterUrl, genres, body:termin, body:reihe]
     art: offiziell
 ---
