@@ -13,7 +13,7 @@ region: berlin
 lineupWeitere: [Zombina and the Skeletones, Thee Flanders, The Real Deal]
 eintritt: unveroeffentlicht
 genres: [psychobilly, rockabilly]
-durchfuehrung: geplant
+durchfuehrung: stattgefunden
 links:
   website: https://www.rockin-wildcat.com/rwc/events/zombina-and-the-skeletons-thee-flanders-the-real-halloween-deal
 redaktionsnotiz: >-
